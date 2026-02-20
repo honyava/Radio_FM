@@ -1,0 +1,43 @@
+# Vivado build and simulation files
+**/.Xil/
+**/*.cache/
+**/*.hw/
+**/*.tmp/
+xsim/
+
+# Logs, reports, backups
+*.jou
+*.log
+*.rpt
+*.pb
+hs_err_pid*
+vivado*.backup*
+vivado*.jou
+vivado*.log
+webtalk.*
+
+# Simulation outputs
+*.wdb
+*.vcd
+*.saif
+*.wcfg
+
+myenv/
+.venv/
+API/.venv/
+
+# Intermediate files
+*.dcp
+*.edf
+*.edif
+*.vm
+*.vn
+
+
+
+
+# Misc
+*.dmp
+*.tmp
+*.html
+*.json

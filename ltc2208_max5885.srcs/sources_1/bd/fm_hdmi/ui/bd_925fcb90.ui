@@ -1,0 +1,33 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-634,-270",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port port-id_adc_clk -pg 1 -lvl 0 -x 0 -y 20 -defaultsOSRD
+preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
+preplace port port-id_locked -pg 1 -lvl 0 -x 0 -y 110 -defaultsOSRD
+preplace port port-id_sys -pg 1 -lvl 0 -x 0 -y 200 -defaultsOSRD
+preplace portBus adc_dai -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
+preplace portBus hdmi_d1 -pg 1 -lvl 3 -x 590 -y 180 -defaultsOSRD
+preplace portBus hdmi_clk -pg 1 -lvl 3 -x 590 -y 120 -defaultsOSRD
+preplace portBus hdmi_d2 -pg 1 -lvl 3 -x 590 -y 210 -defaultsOSRD
+preplace portBus hdmi_d0 -pg 1 -lvl 3 -x 590 -y 150 -defaultsOSRD
+preplace inst fm_demod -pg 1 -lvl 1 -x 160 -y 100 -defaultsOSRD
+preplace inst hdmi_core -pg 1 -lvl 2 -x 440 -y 170 -defaultsOSRD
+preplace netloc adc_dci_0_1 1 0 2 20 10 310
+preplace netloc sys_rst_n_0_1 1 0 2 20 180 NJ
+preplace netloc adc_dai_0_1 1 0 1 20J 80n
+preplace netloc en_0_1 1 0 1 NJ 110
+preplace netloc clk_in1_0_1 1 0 2 NJ 200 NJ
+preplace netloc fm_demod_m_axis_dout 1 1 1 300 100n
+preplace netloc hdmi_tmds_audio_0_hdmi_d1 1 2 1 NJ 180
+preplace netloc hdmi_tmds_audio_0_hdmi_clk 1 2 1 560J 120n
+preplace netloc hdmi_tmds_audio_0_hdmi_d2 1 2 1 560J 200n
+preplace netloc hdmi_tmds_audio_0_hdmi_d0 1 2 1 560J 150n
+levelinfo -pg 1 0 160 440 590
+pagesize -pg 1 -db -bbox -sgen -150 0 740 250
+"
+}
+
