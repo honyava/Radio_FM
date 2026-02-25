@@ -21,7 +21,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.runs/fm_hdmi_cic_compiler_0_2_synth_1'
+HD_PWD='/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_cic_compiler_0_2_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

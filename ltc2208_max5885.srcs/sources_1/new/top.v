@@ -22,11 +22,14 @@ wire [31:0] adc_data    ;
 wire        adc_valid   ;
 wire        clk_ADC_R   ;   
 wire        locked      ;
+wire        clk_50M     ;
+wire        clk_100M    ;
 
 clk_wiz_0 U_clk_wiz_0 (
-    .clk_DAC        (dac_dco            ),
+    .clk_100M       (clk_100M           ),
     .clk_ADC        (adc_clk            ),
     .clk_ADC_R      (clk_ADC_R          ),
+    .clk_50M        (clk_50M            ),
     .reset          (~sys_rst_n         ),
     .locked         (locked             ),
     .clk_in1        (sys_clk_50M        )
@@ -65,7 +68,7 @@ clk_wiz_0 U_clk_wiz_0 (
         .hdmi_d1(hdmi_d1),
         .hdmi_d2(hdmi_d2),
         .locked(locked),
-        .sys(dac_dco),
+        .sys(clk_100M),
         .sys_rst_n(sys_rst_n));
 
 

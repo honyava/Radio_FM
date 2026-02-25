@@ -48,6 +48,20 @@ module hdmi_tmds_audio(
 	reg [15:0] audio_sample_r;
 	reg	[15:0]	sampling_clk;
 	
+    localparam FPIX = 148500000; // или 74250000 / 25200000 под твой режим
+    localparam FS   = 48000;
+    
+    reg [31:0] acc;
+    wire tick48k = (acc >= (FPIX - FS));
+    
+    always @(posedge clk_pixel) begin
+      if(!sys_nrst) acc <= 0;
+      else acc <= tick48k ? (acc + FS - FPIX) : (acc + FS);
+    end	
+	
+	
+	
+	
 	always @(posedge clk_pixel)begin
 		if(sampling_clk >= 16'd3093)begin
 			audio_sample_l <= hdmi_l;
@@ -78,7 +92,8 @@ module hdmi_tmds_audio(
 	)hdmi(
 		.clk_pixel_x5(clk_pixel_x5),
 		.clk_pixel(clk_pixel),
-		.clk_audio(clk_pixel),
+		.audio_tick(tick48k),
+//		.clk_audio(clk_pixel),
 		.reset(!sys_nrst),
 		.rgb(rgb),
 		.audio_sample_l(audio_sample_l),

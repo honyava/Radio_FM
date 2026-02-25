@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "/home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.runs/impl_1/top.tcl"
+  variable script "/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/impl_1/top.tcl"
   variable category "vivado_impl"
 }
 
@@ -115,7 +115,6 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
-set_msg_config -id {HDL-1065} -limit 10000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
@@ -133,22 +132,22 @@ OPTRACE "create in-memory project" START { }
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir /home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.cache/wt [current_project]
-  set_property parent.project_path /home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.xpr [current_project]
-  set_property ip_output_repo /home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.cache/ip [current_project]
+  set_property webtalk.parent_dir /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.cache/wt [current_project]
+  set_property parent.project_path /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.xpr [current_project]
+  set_property ip_output_repo /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet /home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.runs/synth_1/top.dcp
+  add_files -quiet /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/top.dcp
   set_msg_config -source 4 -id {BD 41-1661} -limit 0
   set_param project.isImplRun true
-  add_files /home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.srcs/sources_1/bd/fm_hdmi/fm_hdmi.bd
-  read_ip -quiet /home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.srcs/sources_1/ip/ila_0/ila_0.xci
-  read_ip -quiet /home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+  add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/bd/fm_hdmi/fm_hdmi.bd
+  read_ip -quiet /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/ip/ila_0/ila_0.xci
+  read_ip -quiet /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
-  read_xdc /home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.srcs/constrs_1/new/111.xdc
+  read_xdc /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/new/111.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "read constraints: implementation_pre" START { }
 OPTRACE "read constraints: implementation_pre" END { }

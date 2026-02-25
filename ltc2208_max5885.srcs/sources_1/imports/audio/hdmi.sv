@@ -64,7 +64,8 @@ module hdmi
 (
     input logic clk_pixel_x5,
     input logic clk_pixel,
-    input logic clk_audio,
+//    input logic clk_audio,
+    input logic audio_tick,   // <-- новый вход 48k strobe
     // synchronous reset back to 0,0
     input logic reset,
     input logic [23:0] rgb,
@@ -312,7 +313,7 @@ generate
             .VENDOR_NAME(VENDOR_NAME),
             .PRODUCT_DESCRIPTION(PRODUCT_DESCRIPTION),
             .SOURCE_DEVICE_INFORMATION(SOURCE_DEVICE_INFORMATION)
-        ) packet_picker (.clk_pixel(clk_pixel), .clk_audio(clk_audio), .reset(reset), .video_field_end(video_field_end), .packet_enable(packet_enable), .packet_pixel_counter(packet_pixel_counter), .audio_sample_word(audio_sample_word), .header(header), .sub(sub));
+        ) packet_picker (.clk_pixel(clk_pixel), /*.clk_audio(clk_audio),*/.audio_tick(audio_tick), .reset(reset), .video_field_end(video_field_end), .packet_enable(packet_enable), .packet_pixel_counter(packet_pixel_counter), .audio_sample_word(audio_sample_word), .header(header), .sub(sub));
         logic [8:0] packet_data;
         packet_assembler packet_assembler (.clk_pixel(clk_pixel), .reset(reset), .data_island_period(data_island_period), .header(header), .sub(sub), .packet_data(packet_data), .counter(packet_pixel_counter));
 

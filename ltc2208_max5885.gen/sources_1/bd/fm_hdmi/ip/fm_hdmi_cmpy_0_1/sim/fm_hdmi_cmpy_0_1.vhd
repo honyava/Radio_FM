@@ -63,6 +63,8 @@ ENTITY fm_hdmi_cmpy_0_1 IS
     s_axis_a_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     s_axis_b_tvalid : IN STD_LOGIC;
     s_axis_b_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    s_axis_ctrl_tvalid : IN STD_LOGIC;
+    s_axis_ctrl_tdata : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     m_axis_dout_tvalid : OUT STD_LOGIC;
     m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
@@ -158,6 +160,9 @@ ARCHITECTURE fm_hdmi_cmpy_0_1_arch OF fm_hdmi_cmpy_0_1 IS
 " chanid_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} d" & 
 "atatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_offset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_b_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_B TVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axis_ctrl_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CTRL TDATA";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_ctrl_tvalid: SIGNAL IS "XIL_INTERFACENAME S_AXIS_CTRL, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 10000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axis_ctrl_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CTRL TVALID";
 BEGIN
   U0 : cmpy_v6_0_22
     GENERIC MAP (
@@ -172,7 +177,7 @@ BEGIN
       C_OPTIMIZE_GOAL => 1,
       HAS_NEGATE => 0,
       SINGLE_OUTPUT => 0,
-      ROUND => 0,
+      ROUND => 1,
       USE_DSP_CASCADES => 1,
       C_THROTTLE_SCHEME => 3,
       C_HAS_ACLKEN => 0,
@@ -205,10 +210,10 @@ BEGIN
       s_axis_b_tuser => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),
       s_axis_b_tlast => '0',
       s_axis_b_tdata => s_axis_b_tdata,
-      s_axis_ctrl_tvalid => '0',
+      s_axis_ctrl_tvalid => s_axis_ctrl_tvalid,
       s_axis_ctrl_tuser => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),
       s_axis_ctrl_tlast => '0',
-      s_axis_ctrl_tdata => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 8)),
+      s_axis_ctrl_tdata => s_axis_ctrl_tdata,
       m_axis_dout_tvalid => m_axis_dout_tvalid,
       m_axis_dout_tready => '0',
       m_axis_dout_tdata => m_axis_dout_tdata

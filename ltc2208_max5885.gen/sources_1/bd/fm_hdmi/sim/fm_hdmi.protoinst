@@ -23,36 +23,6 @@
 						"TVALID": { "actual": "m_axis_q_tvalid"}
 					}
 				},
-				"/fm_demod/cic_compiler_0/S_AXIS_DATA": {
-					"interface": "xilinx.com:interface:axis:1.0",
-					"ports": {
-						"ACLK": { "actual": "aclk"},
-						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "s_axis_data_tdata[15:0]"},
-						"TREADY": { "actual": "s_axis_data_tready"},
-						"TVALID": { "actual": "s_axis_data_tvalid"}
-					}
-				},
-				"/fm_demod/cic_compiler_1/S_AXIS_DATA": {
-					"interface": "xilinx.com:interface:axis:1.0",
-					"ports": {
-						"ACLK": { "actual": "aclk"},
-						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "s_axis_data_tdata[15:0]"},
-						"TREADY": { "actual": "s_axis_data_tready"},
-						"TVALID": { "actual": "s_axis_data_tvalid"}
-					}
-				},
-				"/fm_demod/cic_compiler_2/M_AXIS_DATA": {
-					"interface": "xilinx.com:interface:axis:1.0",
-					"ports": {
-						"ACLK": { "actual": "aclk"},
-						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "m_axis_data_tdata[15:0]"},
-						"TREADY": { "actual": "m_axis_data_tready"},
-						"TVALID": { "actual": "m_axis_data_tvalid"}
-					}
-				},
 				"/fm_demod/cic_compiler_2/S_AXIS_DATA": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
@@ -61,16 +31,6 @@
 						"TDATA": { "actual": "s_axis_data_tdata[15:0]"},
 						"TREADY": { "actual": "s_axis_data_tready"},
 						"TVALID": { "actual": "s_axis_data_tvalid"}
-					}
-				},
-				"/fm_demod/cic_compiler_3/M_AXIS_DATA": {
-					"interface": "xilinx.com:interface:axis:1.0",
-					"ports": {
-						"ACLK": { "actual": "aclk"},
-						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "m_axis_data_tdata[15:0]"},
-						"TREADY": { "actual": "m_axis_data_tready"},
-						"TVALID": { "actual": "m_axis_data_tvalid"}
 					}
 				},
 				"/fm_demod/cic_compiler_3/S_AXIS_DATA": {

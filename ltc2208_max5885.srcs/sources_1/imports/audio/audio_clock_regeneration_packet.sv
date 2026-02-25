@@ -8,7 +8,8 @@ module audio_clock_regeneration_packet
 )
 (
     input logic clk_pixel,
-    input logic clk_audio,
+//    input logic clk_audio,
+    input logic audio_tick,
     output logic clk_audio_counter_wrap = 0,
     output logic [23:0] header,
     output logic [55:0] sub [3:0]
@@ -19,17 +20,19 @@ localparam bit [19:0] N = AUDIO_RATE % 125 == 0 ? 20'(16 * AUDIO_RATE / 125) : A
 
 localparam int CLK_AUDIO_COUNTER_WIDTH = $clog2(N / 128);
 localparam bit [CLK_AUDIO_COUNTER_WIDTH-1:0] CLK_AUDIO_COUNTER_END = CLK_AUDIO_COUNTER_WIDTH'(N / 128 - 1);
+
 logic [CLK_AUDIO_COUNTER_WIDTH-1:0] clk_audio_counter = CLK_AUDIO_COUNTER_WIDTH'(0);
-logic internal_clk_audio_counter_wrap = 1'd0;
-always_ff @(posedge clk_audio)
-begin
-    if (clk_audio_counter == CLK_AUDIO_COUNTER_END)
-    begin
-        clk_audio_counter <= CLK_AUDIO_COUNTER_WIDTH'(0);
-        internal_clk_audio_counter_wrap <= !internal_clk_audio_counter_wrap;
+logic internal_clk_audio_counter_wrap = 1'b0;
+
+always_ff @(posedge clk_pixel) begin
+  if (audio_tick) begin
+    if (clk_audio_counter == CLK_AUDIO_COUNTER_END) begin
+      clk_audio_counter <= CLK_AUDIO_COUNTER_WIDTH'(0);
+      internal_clk_audio_counter_wrap <= !internal_clk_audio_counter_wrap;
+    end else begin
+      clk_audio_counter <= clk_audio_counter + 1'd1;
     end
-    else
-        clk_audio_counter <= clk_audio_counter + 1'd1;
+  end
 end
 
 logic [1:0] clk_audio_counter_wrap_synchronizer_chain = 2'd0;

@@ -64,9 +64,7 @@ ENTITY fm_hdmi_cic_compiler_0_2 IS
     s_axis_data_tvalid : IN STD_LOGIC;
     s_axis_data_tready : OUT STD_LOGIC;
     m_axis_data_tdata : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-    m_axis_data_tvalid : OUT STD_LOGIC;
-    m_axis_data_tready : IN STD_LOGIC;
-    event_halted : OUT STD_LOGIC
+    m_axis_data_tvalid : OUT STD_LOGIC
   );
 END fm_hdmi_cic_compiler_0_2;
 
@@ -140,9 +138,7 @@ ARCHITECTURE fm_hdmi_cic_compiler_0_2_arch OF fm_hdmi_cic_compiler_0_2 IS
   ATTRIBUTE X_INTERFACE_INFO OF aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 aclk_intf CLK";
   ATTRIBUTE X_INTERFACE_PARAMETER OF aresetn: SIGNAL IS "XIL_INTERFACENAME aresetn_intf, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 aresetn_intf RST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF event_halted: SIGNAL IS "XIL_INTERFACENAME event_halted_intf, SENSITIVITY EDGE_RISING, PORTWIDTH 1";
-  ATTRIBUTE X_INTERFACE_INFO OF event_halted: SIGNAL IS "xilinx.com:signal:interrupt:1.0 event_halted_intf INTERRUPT";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF m_axis_data_tdata: SIGNAL IS "XIL_INTERFACENAME M_AXIS_DATA, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency " & 
+  ATTRIBUTE X_INTERFACE_PARAMETER OF m_axis_data_tdata: SIGNAL IS "XIL_INTERFACENAME M_AXIS_DATA, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency " & 
 "{} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 16} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {r" & 
 "esolve_type generated dependency data_width format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency data_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}} TDATA_WIDTH 16 TUSER {datatype {name {attribs {resolve_type immediate depen" & 
 "dency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_chan_out {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan_out} enabled {attribs {resolve_type generated dependency enabled format bool minimum {} maximum {}} value false} dataty" & 
@@ -150,7 +146,6 @@ ARCHITECTURE fm_hdmi_cic_compiler_0_2_arch OF fm_hdmi_cic_compiler_0_2 IS
 "ormat string minimum {} maximum {}} value chan_sync} enabled {attribs {resolve_type generated dependency enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chan_sync_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chan_sync_offset format long minimum {} maximum {}} value 0}}}}" & 
 "}} TUSER_WIDTH 0}, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TDATA";
-  ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TREADY";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TVALID";
   ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_data_tdata: SIGNAL IS "XIL_INTERFACENAME S_AXIS_DATA, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TDATA";
@@ -193,7 +188,7 @@ BEGIN
       C_S_AXIS_DATA_TDATA_WIDTH => 16,
       C_M_AXIS_DATA_TDATA_WIDTH => 16,
       C_M_AXIS_DATA_TUSER_WIDTH => 1,
-      C_HAS_DOUT_TREADY => 1,
+      C_HAS_DOUT_TREADY => 0,
       C_HAS_ACLKEN => 0,
       C_HAS_ARESETN => 1
     )
@@ -209,7 +204,6 @@ BEGIN
       s_axis_data_tlast => '0',
       m_axis_data_tdata => m_axis_data_tdata,
       m_axis_data_tvalid => m_axis_data_tvalid,
-      m_axis_data_tready => m_axis_data_tready,
-      event_halted => event_halted
+      m_axis_data_tready => '0'
     );
 END fm_hdmi_cic_compiler_0_2_arch;

@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Fri Feb 20 16:42:21 2026
+-- Date        : Tue Feb 24 17:40:15 2026
 -- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
 -- Command     : write_vhdl -force -mode funcsim
---               /home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_hdmi_tmds_audio_0_0/fm_hdmi_hdmi_tmds_audio_0_0_sim_netlist.vhdl
+--               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_hdmi_tmds_audio_0_0/fm_hdmi_hdmi_tmds_audio_0_0_sim_netlist.vhdl
 -- Design      : fm_hdmi_hdmi_tmds_audio_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -18,6 +18,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet is
   port (
     E : out STD_LOGIC_VECTOR ( 0 to 0 );
+    acc_reg_21_sp_1 : out STD_LOGIC;
     last_clk_audio_counter_wrap_reg : out STD_LOGIC;
     source_product_description_info_frame_sent_reg : out STD_LOGIC;
     sample_buffer_ready_reg : out STD_LOGIC;
@@ -53,6 +54,7 @@ entity fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet is
     \parity[0][6]_i_2_0\ : in STD_LOGIC_VECTOR ( 2 downto 0 );
     \packet_type_reg[1]_1\ : in STD_LOGIC;
     \packet_type_reg[2]_1\ : in STD_LOGIC;
+    acc_reg : in STD_LOGIC_VECTOR ( 26 downto 0 );
     \true_hdmi_output.data_island_data[8]_i_7_0\ : in STD_LOGIC;
     \true_hdmi_output.data_island_data[8]_i_7_1\ : in STD_LOGIC;
     \parity[0][6]_i_8_0\ : in STD_LOGIC;
@@ -99,9 +101,21 @@ entity fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet is
 end fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet;
 
 architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet is
+  signal acc_reg_21_sn_1 : STD_LOGIC;
   signal clk_audio_counter : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal \clk_audio_counter[0]_i_1_n_0\ : STD_LOGIC;
+  signal \clk_audio_counter[1]_i_1_n_0\ : STD_LOGIC;
   signal \clk_audio_counter[2]_i_1_n_0\ : STD_LOGIC;
+  signal \clk_audio_counter[3]_i_1_n_0\ : STD_LOGIC;
+  signal \clk_audio_counter[4]_i_1_n_0\ : STD_LOGIC;
+  signal \clk_audio_counter[5]_i_10_n_0\ : STD_LOGIC;
   signal \clk_audio_counter[5]_i_1_n_0\ : STD_LOGIC;
+  signal \clk_audio_counter[5]_i_4_n_0\ : STD_LOGIC;
+  signal \clk_audio_counter[5]_i_5_n_0\ : STD_LOGIC;
+  signal \clk_audio_counter[5]_i_6_n_0\ : STD_LOGIC;
+  signal \clk_audio_counter[5]_i_7_n_0\ : STD_LOGIC;
+  signal \clk_audio_counter[5]_i_8_n_0\ : STD_LOGIC;
+  signal \clk_audio_counter[5]_i_9_n_0\ : STD_LOGIC;
   signal clk_audio_counter_wrap : STD_LOGIC;
   signal clk_audio_counter_wrap_i_1_n_0 : STD_LOGIC;
   signal clk_audio_counter_wrap_i_2_n_0 : STD_LOGIC;
@@ -183,10 +197,11 @@ architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_p
   signal \cycle_time_stamp_reg[8]_i_1_n_5\ : STD_LOGIC;
   signal \cycle_time_stamp_reg[8]_i_1_n_6\ : STD_LOGIC;
   signal \cycle_time_stamp_reg[8]_i_1_n_7\ : STD_LOGIC;
+  signal data0 : STD_LOGIC_VECTOR ( 5 to 5 );
   signal internal_clk_audio_counter_wrap : STD_LOGIC;
   signal internal_clk_audio_counter_wrap_i_1_n_0 : STD_LOGIC;
+  signal internal_clk_audio_counter_wrap_i_2_n_0 : STD_LOGIC;
   signal p_1_in : STD_LOGIC;
-  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal \packet_type[7]_i_3_n_0\ : STD_LOGIC;
   signal \parity[0][6]_i_19_n_0\ : STD_LOGIC;
   signal \parity[0][6]_i_20_n_0\ : STD_LOGIC;
@@ -263,10 +278,10 @@ architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_p
   signal \NLW_cycle_time_stamp_reg[17]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \audio_sample_word_packet[3][1][23]_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \clk_audio_counter[0]_i_1\ : label is "soft_lutpair38";
   attribute SOFT_HLUTNM of \clk_audio_counter[1]_i_1\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \clk_audio_counter[2]_i_1\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \clk_audio_counter[3]_i_1\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \clk_audio_counter[4]_i_1\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \clk_audio_counter[2]_i_1\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \clk_audio_counter[3]_i_1\ : label is "soft_lutpair34";
   attribute SOFT_HLUTNM of clk_audio_counter_wrap_i_2 : label is "soft_lutpair41";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \cycle_time_stamp_counter_reg[0]_i_1\ : label is 11;
@@ -282,16 +297,17 @@ architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_p
   attribute SOFT_HLUTNM of last_clk_audio_counter_wrap_i_1 : label is "soft_lutpair37";
   attribute SOFT_HLUTNM of \packet_type[2]_i_2\ : label is "soft_lutpair41";
   attribute SOFT_HLUTNM of \packet_type[7]_i_3\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \parity[0][6]_i_24\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \parity[1][6]_i_20\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \parity[1][6]_i_21\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \parity[0][6]_i_24\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \parity[1][6]_i_20\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \parity[1][6]_i_21\ : label is "soft_lutpair36";
   attribute SOFT_HLUTNM of \parity[2][1]_i_1\ : label is "soft_lutpair40";
   attribute SOFT_HLUTNM of \parity[2][7]_i_1\ : label is "soft_lutpair40";
   attribute SOFT_HLUTNM of \parity[3][6]_i_1\ : label is "soft_lutpair39";
   attribute SOFT_HLUTNM of \parity[3][7]_i_1\ : label is "soft_lutpair39";
   attribute SOFT_HLUTNM of source_product_description_info_frame_sent_i_2 : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \true_hdmi_output.data_island_data[6]_i_15\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \true_hdmi_output.data_island_data[6]_i_15\ : label is "soft_lutpair36";
 begin
+  acc_reg_21_sp_1 <= acc_reg_21_sn_1;
   \counter_reg[2]\ <= \^counter_reg[2]\;
   \counter_reg[3]_0\ <= \^counter_reg[3]_0\;
   \counter_reg[3]_1\ <= \^counter_reg[3]_1\;
@@ -336,70 +352,95 @@ auxiliary_video_information_info_frame_sent_i_1: unisim.vcomponents.LUT6
       I5 => \packet_type_reg[2]_0\,
       O => sample_buffer_ready_reg
     );
-\clk_audio_counter[0]_i_1\: unisim.vcomponents.LUT1
+\clk_audio_counter[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"1"
+      INIT => X"2"
     )
         port map (
-      I0 => clk_audio_counter(0),
-      O => \p_1_in__0\(0)
-    );
-\clk_audio_counter[1]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => clk_audio_counter(0),
-      I1 => clk_audio_counter(1),
-      O => \p_1_in__0\(1)
-    );
-\clk_audio_counter[2]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"78"
-    )
-        port map (
-      I0 => clk_audio_counter(1),
+      I0 => \clk_audio_counter[5]_i_4_n_0\,
       I1 => clk_audio_counter(0),
-      I2 => clk_audio_counter(2),
-      O => \clk_audio_counter[2]_i_1_n_0\
+      O => \clk_audio_counter[0]_i_1_n_0\
     );
-\clk_audio_counter[3]_i_1\: unisim.vcomponents.LUT4
+\clk_audio_counter[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"7F80"
+      INIT => X"28"
     )
         port map (
-      I0 => clk_audio_counter(1),
-      I1 => clk_audio_counter(0),
-      I2 => clk_audio_counter(2),
-      I3 => clk_audio_counter(3),
-      O => \p_1_in__0\(3)
-    );
-\clk_audio_counter[4]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"7FFF8000"
-    )
-        port map (
-      I0 => clk_audio_counter(2),
+      I0 => \clk_audio_counter[5]_i_4_n_0\,
       I1 => clk_audio_counter(0),
       I2 => clk_audio_counter(1),
-      I3 => clk_audio_counter(3),
-      I4 => clk_audio_counter(4),
-      O => \p_1_in__0\(4)
+      O => \clk_audio_counter[1]_i_1_n_0\
     );
-\clk_audio_counter[5]_i_1\: unisim.vcomponents.LUT6
+\clk_audio_counter[2]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"4000000000000000"
+      INIT => X"2A80"
     )
         port map (
-      I0 => clk_audio_counter(4),
-      I1 => clk_audio_counter(3),
-      I2 => clk_audio_counter(5),
+      I0 => \clk_audio_counter[5]_i_4_n_0\,
+      I1 => clk_audio_counter(1),
+      I2 => clk_audio_counter(0),
       I3 => clk_audio_counter(2),
-      I4 => clk_audio_counter(0),
-      I5 => clk_audio_counter(1),
+      O => \clk_audio_counter[2]_i_1_n_0\
+    );
+\clk_audio_counter[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"2AAA8000"
+    )
+        port map (
+      I0 => \clk_audio_counter[5]_i_4_n_0\,
+      I1 => clk_audio_counter(1),
+      I2 => clk_audio_counter(0),
+      I3 => clk_audio_counter(2),
+      I4 => clk_audio_counter(3),
+      O => \clk_audio_counter[3]_i_1_n_0\
+    );
+\clk_audio_counter[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"2AAAAAAA80000000"
+    )
+        port map (
+      I0 => \clk_audio_counter[5]_i_4_n_0\,
+      I1 => clk_audio_counter(2),
+      I2 => clk_audio_counter(0),
+      I3 => clk_audio_counter(1),
+      I4 => clk_audio_counter(3),
+      I5 => clk_audio_counter(4),
+      O => \clk_audio_counter[4]_i_1_n_0\
+    );
+\clk_audio_counter[5]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => acc_reg_21_sn_1,
+      I1 => \clk_audio_counter[5]_i_4_n_0\,
       O => \clk_audio_counter[5]_i_1_n_0\
     );
+\clk_audio_counter[5]_i_10\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8880"
+    )
+        port map (
+      I0 => acc_reg(2),
+      I1 => acc_reg(4),
+      I2 => acc_reg(0),
+      I3 => acc_reg(1),
+      O => \clk_audio_counter[5]_i_10_n_0\
+    );
 \clk_audio_counter[5]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFFEEEA"
+    )
+        port map (
+      I0 => \clk_audio_counter[5]_i_5_n_0\,
+      I1 => \clk_audio_counter[5]_i_6_n_0\,
+      I2 => acc_reg(16),
+      I3 => \clk_audio_counter[5]_i_7_n_0\,
+      I4 => acc_reg(23),
+      I5 => acc_reg(26),
+      O => acc_reg_21_sn_1
+    );
+\clk_audio_counter[5]_i_3\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"7FFFFFFF80000000"
     )
@@ -410,7 +451,81 @@ auxiliary_video_information_info_frame_sent_i_1: unisim.vcomponents.LUT6
       I3 => clk_audio_counter(2),
       I4 => clk_audio_counter(4),
       I5 => clk_audio_counter(5),
-      O => \p_1_in__0\(5)
+      O => data0(5)
+    );
+\clk_audio_counter[5]_i_4\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F7FFFFFFFFFFFFFF"
+    )
+        port map (
+      I0 => clk_audio_counter(5),
+      I1 => clk_audio_counter(0),
+      I2 => clk_audio_counter(4),
+      I3 => clk_audio_counter(1),
+      I4 => clk_audio_counter(3),
+      I5 => clk_audio_counter(2),
+      O => \clk_audio_counter[5]_i_4_n_0\
+    );
+\clk_audio_counter[5]_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFCFFFCFFFCFEFC"
+    )
+        port map (
+      I0 => acc_reg(21),
+      I1 => acc_reg(24),
+      I2 => acc_reg(25),
+      I3 => acc_reg(22),
+      I4 => acc_reg(20),
+      I5 => acc_reg(19),
+      O => \clk_audio_counter[5]_i_5_n_0\
+    );
+\clk_audio_counter[5]_i_6\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"80"
+    )
+        port map (
+      I0 => acc_reg(18),
+      I1 => acc_reg(17),
+      I2 => acc_reg(22),
+      O => \clk_audio_counter[5]_i_6_n_0\
+    );
+\clk_audio_counter[5]_i_7\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8888888888800000"
+    )
+        port map (
+      I0 => acc_reg(15),
+      I1 => acc_reg(14),
+      I2 => acc_reg(9),
+      I3 => acc_reg(10),
+      I4 => acc_reg(11),
+      I5 => \clk_audio_counter[5]_i_8_n_0\,
+      O => \clk_audio_counter[5]_i_7_n_0\
+    );
+\clk_audio_counter[5]_i_8\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FEEEEEEEEEEEEEEE"
+    )
+        port map (
+      I0 => acc_reg(13),
+      I1 => acc_reg(12),
+      I2 => \clk_audio_counter[5]_i_9_n_0\,
+      I3 => acc_reg(8),
+      I4 => acc_reg(7),
+      I5 => acc_reg(11),
+      O => \clk_audio_counter[5]_i_8_n_0\
+    );
+\clk_audio_counter[5]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFFFF8"
+    )
+        port map (
+      I0 => acc_reg(4),
+      I1 => acc_reg(3),
+      I2 => acc_reg(5),
+      I3 => acc_reg(6),
+      I4 => \clk_audio_counter[5]_i_10_n_0\,
+      O => \clk_audio_counter[5]_i_9_n_0\
     );
 \clk_audio_counter_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -418,10 +533,10 @@ auxiliary_video_information_info_frame_sent_i_1: unisim.vcomponents.LUT6
     )
         port map (
       C => clk_pixel,
-      CE => '1',
-      D => \p_1_in__0\(0),
+      CE => acc_reg_21_sn_1,
+      D => \clk_audio_counter[0]_i_1_n_0\,
       Q => clk_audio_counter(0),
-      R => \clk_audio_counter[5]_i_1_n_0\
+      R => '0'
     );
 \clk_audio_counter_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -429,10 +544,10 @@ auxiliary_video_information_info_frame_sent_i_1: unisim.vcomponents.LUT6
     )
         port map (
       C => clk_pixel,
-      CE => '1',
-      D => \p_1_in__0\(1),
+      CE => acc_reg_21_sn_1,
+      D => \clk_audio_counter[1]_i_1_n_0\,
       Q => clk_audio_counter(1),
-      R => \clk_audio_counter[5]_i_1_n_0\
+      R => '0'
     );
 \clk_audio_counter_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -440,10 +555,10 @@ auxiliary_video_information_info_frame_sent_i_1: unisim.vcomponents.LUT6
     )
         port map (
       C => clk_pixel,
-      CE => '1',
+      CE => acc_reg_21_sn_1,
       D => \clk_audio_counter[2]_i_1_n_0\,
       Q => clk_audio_counter(2),
-      R => \clk_audio_counter[5]_i_1_n_0\
+      R => '0'
     );
 \clk_audio_counter_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -451,10 +566,10 @@ auxiliary_video_information_info_frame_sent_i_1: unisim.vcomponents.LUT6
     )
         port map (
       C => clk_pixel,
-      CE => '1',
-      D => \p_1_in__0\(3),
+      CE => acc_reg_21_sn_1,
+      D => \clk_audio_counter[3]_i_1_n_0\,
       Q => clk_audio_counter(3),
-      R => \clk_audio_counter[5]_i_1_n_0\
+      R => '0'
     );
 \clk_audio_counter_reg[4]\: unisim.vcomponents.FDRE
     generic map(
@@ -462,10 +577,10 @@ auxiliary_video_information_info_frame_sent_i_1: unisim.vcomponents.LUT6
     )
         port map (
       C => clk_pixel,
-      CE => '1',
-      D => \p_1_in__0\(4),
+      CE => acc_reg_21_sn_1,
+      D => \clk_audio_counter[4]_i_1_n_0\,
       Q => clk_audio_counter(4),
-      R => \clk_audio_counter[5]_i_1_n_0\
+      R => '0'
     );
 \clk_audio_counter_reg[5]\: unisim.vcomponents.FDRE
     generic map(
@@ -473,8 +588,8 @@ auxiliary_video_information_info_frame_sent_i_1: unisim.vcomponents.LUT6
     )
         port map (
       C => clk_pixel,
-      CE => '1',
-      D => \p_1_in__0\(5),
+      CE => acc_reg_21_sn_1,
+      D => data0(5),
       Q => clk_audio_counter(5),
       R => \clk_audio_counter[5]_i_1_n_0\
     );
@@ -1085,14 +1200,28 @@ clk_audio_counter_wrap_reg: unisim.vcomponents.FDRE
       Q => \subs[1][3]_6\(17),
       R => '0'
     );
-internal_clk_audio_counter_wrap_i_1: unisim.vcomponents.LUT2
+internal_clk_audio_counter_wrap_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"6"
+      INIT => X"FFBFFFFF00400000"
     )
         port map (
-      I0 => \clk_audio_counter[5]_i_1_n_0\,
-      I1 => internal_clk_audio_counter_wrap,
+      I0 => clk_audio_counter(4),
+      I1 => clk_audio_counter(3),
+      I2 => clk_audio_counter(5),
+      I3 => internal_clk_audio_counter_wrap_i_2_n_0,
+      I4 => acc_reg_21_sn_1,
+      I5 => internal_clk_audio_counter_wrap,
       O => internal_clk_audio_counter_wrap_i_1_n_0
+    );
+internal_clk_audio_counter_wrap_i_2: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"7F"
+    )
+        port map (
+      I0 => clk_audio_counter(1),
+      I1 => clk_audio_counter(0),
+      I2 => clk_audio_counter(2),
+      O => internal_clk_audio_counter_wrap_i_2_n_0
     );
 internal_clk_audio_counter_wrap_reg: unisim.vcomponents.FDRE
     generic map(
@@ -5912,12 +6041,13 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity fm_hdmi_hdmi_tmds_audio_0_0_packet_picker is
   port (
+    SR : out STD_LOGIC_VECTOR ( 0 to 0 );
     \packet_type_reg[7]_0\ : out STD_LOGIC;
+    acc_reg_21_sp_1 : out STD_LOGIC;
     \packet_type_reg[0]_0\ : out STD_LOGIC;
     \cy_reg[7]\ : out STD_LOGIC;
     \cx_reg[10]\ : out STD_LOGIC;
     \cy_reg[0]\ : out STD_LOGIC;
-    SR : out STD_LOGIC_VECTOR ( 0 to 0 );
     \counter_reg[2]\ : out STD_LOGIC;
     \counter_reg[2]_0\ : out STD_LOGIC;
     \counter_reg[3]\ : out STD_LOGIC;
@@ -5952,6 +6082,7 @@ entity fm_hdmi_hdmi_tmds_audio_0_0_packet_picker is
     clk_pixel : in STD_LOGIC;
     sys_nrst : in STD_LOGIC;
     frame_counter10_in : in STD_LOGIC;
+    acc_reg : in STD_LOGIC_VECTOR ( 26 downto 0 );
     Q : in STD_LOGIC_VECTOR ( 10 downto 0 );
     \parity_reg[3][6]\ : in STD_LOGIC_VECTOR ( 4 downto 0 );
     \parity_reg[1][6]\ : in STD_LOGIC;
@@ -5975,14 +6106,15 @@ end fm_hdmi_hdmi_tmds_audio_0_0_packet_picker;
 
 architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_packet_picker is
   signal \^sr\ : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal audio_clock_regeneration_packet_n_1 : STD_LOGIC;
+  signal acc_reg_21_sn_1 : STD_LOGIC;
   signal audio_clock_regeneration_packet_n_2 : STD_LOGIC;
-  signal audio_clock_regeneration_packet_n_20 : STD_LOGIC;
   signal audio_clock_regeneration_packet_n_21 : STD_LOGIC;
   signal audio_clock_regeneration_packet_n_22 : STD_LOGIC;
   signal audio_clock_regeneration_packet_n_23 : STD_LOGIC;
+  signal audio_clock_regeneration_packet_n_24 : STD_LOGIC;
   signal audio_clock_regeneration_packet_n_3 : STD_LOGIC;
   signal audio_clock_regeneration_packet_n_4 : STD_LOGIC;
+  signal audio_clock_regeneration_packet_n_5 : STD_LOGIC;
   signal audio_info_frame_sent : STD_LOGIC;
   signal audio_sample_word_buffer : STD_LOGIC_VECTOR ( 8 to 8 );
   signal \audio_sample_word_buffer[0][0][0][10]_i_3_n_0\ : STD_LOGIC;
@@ -6430,6 +6562,7 @@ architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_packet_picker is
   signal \audio_sample_word_packet_reg_n_0_[0][1][23]\ : STD_LOGIC;
   signal \audio_sample_word_packet_reg_n_0_[0][1][8]\ : STD_LOGIC;
   signal \audio_sample_word_packet_reg_n_0_[0][1][9]\ : STD_LOGIC;
+  signal \audio_sample_word_transfer[1][15]_i_1_n_0\ : STD_LOGIC;
   signal audio_sample_word_transfer_control : STD_LOGIC;
   signal audio_sample_word_transfer_control_i_1_n_0 : STD_LOGIC;
   signal \audio_sample_word_transfer_control_synchronizer_chain_reg_n_0_[0]\ : STD_LOGIC;
@@ -6742,6 +6875,7 @@ architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_packet_picker is
   attribute SOFT_HLUTNM of \true_hdmi_output.data_island_period_i_2\ : label is "soft_lutpair43";
 begin
   SR(0) <= \^sr\(0);
+  acc_reg_21_sp_1 <= acc_reg_21_sn_1;
   \counter_reg[0]\ <= \^counter_reg[0]\;
   \counter_reg[1]\ <= \^counter_reg[1]\;
   \counter_reg[2]_1\ <= \^counter_reg[2]_1\;
@@ -6761,8 +6895,10 @@ audio_clock_regeneration_packet: entity work.fm_hdmi_hdmi_tmds_audio_0_0_audio_c
       Q(10 downto 3) => \subs[2][3]_2\(23 downto 16),
       Q(2) => \subs[2][3]_2\(13),
       Q(1 downto 0) => \subs[2][3]_2\(9 downto 8),
+      acc_reg(26 downto 0) => acc_reg(26 downto 0),
+      acc_reg_21_sp_1 => acc_reg_21_sn_1,
       audio_info_frame_sent => audio_info_frame_sent,
-      audio_info_frame_sent_reg => audio_clock_regeneration_packet_n_4,
+      audio_info_frame_sent_reg => audio_clock_regeneration_packet_n_5,
       auxiliary_video_information_info_frame_sent => auxiliary_video_information_info_frame_sent,
       clk_pixel => clk_pixel,
       \counter_reg[2]\ => \counter_reg[2]_3\,
@@ -6776,17 +6912,17 @@ audio_clock_regeneration_packet: entity work.fm_hdmi_hdmi_tmds_audio_0_0_audio_c
       \counter_reg[4]_0\ => \counter_reg[4]_0\,
       \counter_reg[4]_1\(2 downto 0) => \counter_reg[4]_1\(2 downto 0),
       \counter_reg[4]_2\ => \counter_reg[4]_2\,
-      last_clk_audio_counter_wrap_reg => audio_clock_regeneration_packet_n_1,
+      last_clk_audio_counter_wrap_reg => audio_clock_regeneration_packet_n_2,
       packet_type(1 downto 0) => packet_type(1 downto 0),
-      \packet_type_reg[0]\ => audio_clock_regeneration_packet_n_23,
+      \packet_type_reg[0]\ => audio_clock_regeneration_packet_n_24,
       \packet_type_reg[0]_0\ => \packet_type_reg_n_0_[0]\,
-      \packet_type_reg[1]\ => audio_clock_regeneration_packet_n_22,
+      \packet_type_reg[1]\ => audio_clock_regeneration_packet_n_23,
       \packet_type_reg[1]_0\ => last_clk_audio_counter_wrap_reg_n_0,
       \packet_type_reg[1]_1\ => \packet_type_reg_n_0_[1]\,
-      \packet_type_reg[2]\ => audio_clock_regeneration_packet_n_21,
+      \packet_type_reg[2]\ => audio_clock_regeneration_packet_n_22,
       \packet_type_reg[2]_0\ => \packet_type[2]_i_3_n_0\,
       \packet_type_reg[2]_1\ => \packet_type_reg_n_0_[2]\,
-      \packet_type_reg[7]\ => audio_clock_regeneration_packet_n_20,
+      \packet_type_reg[7]\ => audio_clock_regeneration_packet_n_21,
       \packet_type_reg[7]_0\ => \^packet_type_reg[7]_0\,
       \parity[0][6]_i_2_0\(2) => \true_hdmi_output.sub[0]_0\(14),
       \parity[0][6]_i_2_0\(1) => \true_hdmi_output.sub[0]_0\(12),
@@ -6809,9 +6945,9 @@ audio_clock_regeneration_packet: entity work.fm_hdmi_hdmi_tmds_audio_0_0_audio_c
       \parity_reg[3][7]_0\ => \^packet_type_reg[7]_1\,
       \parity_reg[3][7]_1\ => \^counter_reg[2]_1\,
       sample_buffer_ready => sample_buffer_ready,
-      sample_buffer_ready_reg => audio_clock_regeneration_packet_n_3,
+      sample_buffer_ready_reg => audio_clock_regeneration_packet_n_4,
       source_product_description_info_frame_sent => source_product_description_info_frame_sent,
-      source_product_description_info_frame_sent_reg => audio_clock_regeneration_packet_n_2,
+      source_product_description_info_frame_sent_reg => audio_clock_regeneration_packet_n_3,
       \true_hdmi_output.data_island_data[10]_i_7_0\(11 downto 4) => \subs[2][2]_14\(23 downto 16),
       \true_hdmi_output.data_island_data[10]_i_7_0\(3 downto 2) => \subs[2][2]_14\(13 downto 12),
       \true_hdmi_output.data_island_data[10]_i_7_0\(1 downto 0) => \subs[2][2]_14\(9 downto 8),
@@ -6858,7 +6994,7 @@ audio_info_frame_sent_reg: unisim.vcomponents.FDRE
         port map (
       C => clk_pixel,
       CE => '1',
-      D => audio_clock_regeneration_packet_n_4,
+      D => audio_clock_regeneration_packet_n_5,
       Q => audio_info_frame_sent,
       R => '0'
     );
@@ -12742,12 +12878,22 @@ audio_sample_packet: entity work.fm_hdmi_hdmi_tmds_audio_0_0_audio_sample_packet
       Q => \subs[2][3]_2\(33),
       R => '0'
     );
-audio_sample_word_transfer_control_i_1: unisim.vcomponents.LUT1
+\audio_sample_word_transfer[1][15]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"1"
+      INIT => X"8"
     )
         port map (
-      I0 => audio_sample_word_transfer_control,
+      I0 => sys_nrst,
+      I1 => acc_reg_21_sn_1,
+      O => \audio_sample_word_transfer[1][15]_i_1_n_0\
+    );
+audio_sample_word_transfer_control_i_1: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => acc_reg_21_sn_1,
+      I1 => audio_sample_word_transfer_control,
       O => audio_sample_word_transfer_control_i_1_n_0
     );
 audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
@@ -12759,7 +12905,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => audio_sample_word_transfer_control_i_1_n_0,
       Q => audio_sample_word_transfer_control,
-      R => '0'
+      R => \^sr\(0)
     );
 \audio_sample_word_transfer_control_synchronizer_chain_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -12786,7 +12932,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][0]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(0),
       Q => \audio_sample_word_transfer_reg[0]_13\(0),
       R => '0'
@@ -12794,7 +12940,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][10]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(10),
       Q => \audio_sample_word_transfer_reg[0]_13\(10),
       R => '0'
@@ -12802,7 +12948,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][11]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(11),
       Q => \audio_sample_word_transfer_reg[0]_13\(11),
       R => '0'
@@ -12810,7 +12956,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][12]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(12),
       Q => \audio_sample_word_transfer_reg[0]_13\(12),
       R => '0'
@@ -12818,7 +12964,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][13]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(13),
       Q => \audio_sample_word_transfer_reg[0]_13\(13),
       R => '0'
@@ -12826,7 +12972,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][14]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(14),
       Q => \audio_sample_word_transfer_reg[0]_13\(14),
       R => '0'
@@ -12834,7 +12980,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][15]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(15),
       Q => \audio_sample_word_transfer_reg[0]_13\(15),
       R => '0'
@@ -12842,7 +12988,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][1]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(1),
       Q => \audio_sample_word_transfer_reg[0]_13\(1),
       R => '0'
@@ -12850,7 +12996,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][2]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(2),
       Q => \audio_sample_word_transfer_reg[0]_13\(2),
       R => '0'
@@ -12858,7 +13004,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][3]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(3),
       Q => \audio_sample_word_transfer_reg[0]_13\(3),
       R => '0'
@@ -12866,7 +13012,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][4]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(4),
       Q => \audio_sample_word_transfer_reg[0]_13\(4),
       R => '0'
@@ -12874,7 +13020,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][5]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(5),
       Q => \audio_sample_word_transfer_reg[0]_13\(5),
       R => '0'
@@ -12882,7 +13028,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][6]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(6),
       Q => \audio_sample_word_transfer_reg[0]_13\(6),
       R => '0'
@@ -12890,7 +13036,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][7]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(7),
       Q => \audio_sample_word_transfer_reg[0]_13\(7),
       R => '0'
@@ -12898,7 +13044,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][8]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(8),
       Q => \audio_sample_word_transfer_reg[0]_13\(8),
       R => '0'
@@ -12906,7 +13052,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[0][9]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[0][15]_0\(9),
       Q => \audio_sample_word_transfer_reg[0]_13\(9),
       R => '0'
@@ -12914,7 +13060,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][0]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(0),
       Q => \audio_sample_word_transfer_reg[1]_11\(0),
       R => '0'
@@ -12922,7 +13068,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][10]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(10),
       Q => \audio_sample_word_transfer_reg[1]_11\(10),
       R => '0'
@@ -12930,7 +13076,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][11]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(11),
       Q => \audio_sample_word_transfer_reg[1]_11\(11),
       R => '0'
@@ -12938,7 +13084,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][12]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(12),
       Q => \audio_sample_word_transfer_reg[1]_11\(12),
       R => '0'
@@ -12946,7 +13092,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][13]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(13),
       Q => \audio_sample_word_transfer_reg[1]_11\(13),
       R => '0'
@@ -12954,7 +13100,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][14]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(14),
       Q => \audio_sample_word_transfer_reg[1]_11\(14),
       R => '0'
@@ -12962,7 +13108,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][15]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(15),
       Q => \audio_sample_word_transfer_reg[1]_11\(15),
       R => '0'
@@ -12970,7 +13116,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][1]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(1),
       Q => \audio_sample_word_transfer_reg[1]_11\(1),
       R => '0'
@@ -12978,7 +13124,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][2]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(2),
       Q => \audio_sample_word_transfer_reg[1]_11\(2),
       R => '0'
@@ -12986,7 +13132,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][3]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(3),
       Q => \audio_sample_word_transfer_reg[1]_11\(3),
       R => '0'
@@ -12994,7 +13140,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][4]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(4),
       Q => \audio_sample_word_transfer_reg[1]_11\(4),
       R => '0'
@@ -13002,7 +13148,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][5]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(5),
       Q => \audio_sample_word_transfer_reg[1]_11\(5),
       R => '0'
@@ -13010,7 +13156,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][6]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(6),
       Q => \audio_sample_word_transfer_reg[1]_11\(6),
       R => '0'
@@ -13018,7 +13164,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][7]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(7),
       Q => \audio_sample_word_transfer_reg[1]_11\(7),
       R => '0'
@@ -13026,7 +13172,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][8]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(8),
       Q => \audio_sample_word_transfer_reg[1]_11\(8),
       R => '0'
@@ -13034,7 +13180,7 @@ audio_sample_word_transfer_control_reg: unisim.vcomponents.FDRE
 \audio_sample_word_transfer_reg[1][9]\: unisim.vcomponents.FDRE
      port map (
       C => clk_pixel,
-      CE => '1',
+      CE => \audio_sample_word_transfer[1][15]_i_1_n_0\,
       D => \audio_sample_word_transfer_reg[1][15]_0\(9),
       Q => \audio_sample_word_transfer_reg[1]_11\(9),
       R => '0'
@@ -13046,7 +13192,7 @@ auxiliary_video_information_info_frame_sent_reg: unisim.vcomponents.FDRE
         port map (
       C => clk_pixel,
       CE => '1',
-      D => audio_clock_regeneration_packet_n_3,
+      D => audio_clock_regeneration_packet_n_4,
       Q => auxiliary_video_information_info_frame_sent,
       R => '0'
     );
@@ -13217,7 +13363,7 @@ last_clk_audio_counter_wrap_reg: unisim.vcomponents.FDRE
         port map (
       C => clk_pixel,
       CE => '1',
-      D => audio_clock_regeneration_packet_n_1,
+      D => audio_clock_regeneration_packet_n_2,
       Q => last_clk_audio_counter_wrap_reg_n_0,
       R => '0'
     );
@@ -13332,7 +13478,7 @@ last_clk_audio_counter_wrap_reg: unisim.vcomponents.FDRE
         port map (
       C => clk_pixel,
       CE => '1',
-      D => audio_clock_regeneration_packet_n_23,
+      D => audio_clock_regeneration_packet_n_24,
       Q => \packet_type_reg_n_0_[0]\,
       R => '0'
     );
@@ -13343,7 +13489,7 @@ last_clk_audio_counter_wrap_reg: unisim.vcomponents.FDRE
         port map (
       C => clk_pixel,
       CE => '1',
-      D => audio_clock_regeneration_packet_n_22,
+      D => audio_clock_regeneration_packet_n_23,
       Q => \packet_type_reg_n_0_[1]\,
       R => '0'
     );
@@ -13354,7 +13500,7 @@ last_clk_audio_counter_wrap_reg: unisim.vcomponents.FDRE
         port map (
       C => clk_pixel,
       CE => '1',
-      D => audio_clock_regeneration_packet_n_21,
+      D => audio_clock_regeneration_packet_n_22,
       Q => \packet_type_reg_n_0_[2]\,
       R => '0'
     );
@@ -13365,7 +13511,7 @@ last_clk_audio_counter_wrap_reg: unisim.vcomponents.FDRE
         port map (
       C => clk_pixel,
       CE => '1',
-      D => audio_clock_regeneration_packet_n_20,
+      D => audio_clock_regeneration_packet_n_21,
       Q => \^packet_type_reg[7]_0\,
       R => '0'
     );
@@ -15154,7 +15300,7 @@ source_product_description_info_frame_sent_reg: unisim.vcomponents.FDRE
         port map (
       C => clk_pixel,
       CE => '1',
-      D => audio_clock_regeneration_packet_n_2,
+      D => audio_clock_regeneration_packet_n_3,
       Q => source_product_description_info_frame_sent,
       R => '0'
     );
@@ -15356,12 +15502,15 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity fm_hdmi_hdmi_tmds_audio_0_0_hdmi is
   port (
+    tick48k : out STD_LOGIC;
+    SR : out STD_LOGIC_VECTOR ( 0 to 0 );
     \rgb_reg[7]_i_3_0\ : out STD_LOGIC;
     \cy_reg[3]_0\ : out STD_LOGIC;
     \cx_reg[4]_0\ : out STD_LOGIC;
     tmds : out STD_LOGIC_VECTOR ( 2 downto 0 );
     tmds_clock : out STD_LOGIC;
     sys_nrst : in STD_LOGIC;
+    acc_reg : in STD_LOGIC_VECTOR ( 26 downto 0 );
     clk_pixel : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 15 downto 0 );
     \audio_sample_word_transfer_reg[0][15]\ : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -15373,6 +15522,7 @@ entity fm_hdmi_hdmi_tmds_audio_0_0_hdmi is
 end fm_hdmi_hdmi_tmds_audio_0_0_hdmi;
 
 architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_hdmi is
+  signal \^sr\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \bch[2]_18\ : STD_LOGIC_VECTOR ( 59 downto 56 );
   signal \bch[3]_19\ : STD_LOGIC_VECTOR ( 57 downto 56 );
   signal clear : STD_LOGIC;
@@ -15485,15 +15635,12 @@ architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_hdmi is
   signal \true_hdmi_output.packet_assembler_n_27\ : STD_LOGIC;
   signal \true_hdmi_output.packet_assembler_n_28\ : STD_LOGIC;
   signal \true_hdmi_output.packet_data\ : STD_LOGIC_VECTOR ( 8 downto 0 );
-  signal \true_hdmi_output.packet_picker_n_0\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_1\ : STD_LOGIC;
-  signal \true_hdmi_output.packet_picker_n_11\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_12\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_13\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_14\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_15\ : STD_LOGIC;
-  signal \true_hdmi_output.packet_picker_n_19\ : STD_LOGIC;
-  signal \true_hdmi_output.packet_picker_n_2\ : STD_LOGIC;
+  signal \true_hdmi_output.packet_picker_n_16\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_20\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_21\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_22\ : STD_LOGIC;
@@ -15513,12 +15660,14 @@ architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_hdmi is
   signal \true_hdmi_output.packet_picker_n_35\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_36\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_37\ : STD_LOGIC;
-  signal \true_hdmi_output.packet_picker_n_39\ : STD_LOGIC;
+  signal \true_hdmi_output.packet_picker_n_38\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_4\ : STD_LOGIC;
+  signal \true_hdmi_output.packet_picker_n_40\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_5\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_6\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_7\ : STD_LOGIC;
   signal \true_hdmi_output.packet_picker_n_8\ : STD_LOGIC;
+  signal \true_hdmi_output.packet_picker_n_9\ : STD_LOGIC;
   signal \true_hdmi_output.packet_pixel_counter\ : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal \true_hdmi_output.video_guard\ : STD_LOGIC;
   signal \true_hdmi_output.video_guard0\ : STD_LOGIC;
@@ -15564,6 +15713,7 @@ architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_hdmi is
   attribute SOFT_HLUTNM of \true_hdmi_output.video_guard_i_6\ : label is "soft_lutpair121";
   attribute SOFT_HLUTNM of video_data_period_i_3 : label is "soft_lutpair116";
 begin
+  SR(0) <= \^sr\(0);
 \cx[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"00008000FFFFFFFF"
@@ -15848,7 +15998,7 @@ begin
         port map (
       I0 => cy(6),
       I1 => cy(7),
-      I2 => \true_hdmi_output.packet_picker_n_4\,
+      I2 => \true_hdmi_output.packet_picker_n_6\,
       I3 => cy(3),
       I4 => cy(5),
       I5 => cy(4),
@@ -15903,7 +16053,7 @@ begin
     )
         port map (
       I0 => \true_hdmi_output.video_guard_i_2_n_0\,
-      I1 => \true_hdmi_output.packet_picker_n_4\,
+      I1 => \true_hdmi_output.packet_picker_n_6\,
       I2 => cy(3),
       I3 => cy(4),
       I4 => cy(5),
@@ -15915,7 +16065,7 @@ begin
     )
         port map (
       I0 => \true_hdmi_output.video_guard_i_2_n_0\,
-      I1 => \true_hdmi_output.packet_picker_n_4\,
+      I1 => \true_hdmi_output.packet_picker_n_6\,
       I2 => cy(3),
       I3 => cy(5),
       I4 => cy(4),
@@ -15929,7 +16079,7 @@ begin
         port map (
       I0 => cy(6),
       I1 => cy(7),
-      I2 => \true_hdmi_output.packet_picker_n_4\,
+      I2 => \true_hdmi_output.packet_picker_n_6\,
       I3 => cy(3),
       I4 => cy(5),
       I5 => cy(4),
@@ -15980,7 +16130,7 @@ begin
       CE => cy0,
       D => \cy[0]_i_1_n_0\,
       Q => cy(0),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \cy_reg[10]\: unisim.vcomponents.FDRE
     generic map(
@@ -15991,7 +16141,7 @@ begin
       CE => cy0,
       D => \cy[10]_i_2_n_0\,
       Q => cy(10),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \cy_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -16002,7 +16152,7 @@ begin
       CE => cy0,
       D => \cy[1]_i_1_n_0\,
       Q => cy(1),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \cy_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -16013,7 +16163,7 @@ begin
       CE => cy0,
       D => \cy[2]_i_1_n_0\,
       Q => cy(2),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \cy_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -16024,7 +16174,7 @@ begin
       CE => cy0,
       D => \cy[3]_i_1_n_0\,
       Q => cy(3),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \cy_reg[4]\: unisim.vcomponents.FDRE
     generic map(
@@ -16035,7 +16185,7 @@ begin
       CE => cy0,
       D => \cy[4]_i_1_n_0\,
       Q => cy(4),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \cy_reg[5]\: unisim.vcomponents.FDRE
     generic map(
@@ -16046,7 +16196,7 @@ begin
       CE => cy0,
       D => \cy[5]_i_1_n_0\,
       Q => cy(5),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \cy_reg[6]\: unisim.vcomponents.FDRE
     generic map(
@@ -16057,7 +16207,7 @@ begin
       CE => cy0,
       D => \cy[6]_i_1_n_0\,
       Q => cy(6),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \cy_reg[7]\: unisim.vcomponents.FDRE
     generic map(
@@ -16068,7 +16218,7 @@ begin
       CE => cy0,
       D => \cy[7]_i_1_n_0\,
       Q => cy(7),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \cy_reg[8]\: unisim.vcomponents.FDRE
     generic map(
@@ -16079,7 +16229,7 @@ begin
       CE => cy0,
       D => \cy[8]_i_1_n_0\,
       Q => cy(8),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \cy_reg[9]\: unisim.vcomponents.FDRE
     generic map(
@@ -16090,7 +16240,7 @@ begin
       CE => cy0,
       D => \cy[9]_i_1_n_0\,
       Q => cy(9),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \rgb[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -16357,7 +16507,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
         port map (
       I0 => cx(7),
       I1 => cx(6),
-      I2 => \true_hdmi_output.packet_picker_n_3\,
+      I2 => \true_hdmi_output.packet_picker_n_5\,
       I3 => cx(5),
       I4 => cx(3),
       I5 => cx(4),
@@ -16380,7 +16530,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       INIT => X"ABABABABAAFFAAAA"
     )
         port map (
-      I0 => \true_hdmi_output.packet_picker_n_2\,
+      I0 => \true_hdmi_output.packet_picker_n_4\,
       I1 => cy(7),
       I2 => cy(6),
       I3 => \true_hdmi_output.control_data[1]_i_2_n_0\,
@@ -16428,7 +16578,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => sys_nrst,
       D => hsync,
       Q => control_data(0),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.control_data_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -16439,7 +16589,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => sys_nrst,
       D => \true_hdmi_output.control_data[1]_i_1_n_0\,
       Q => control_data(1),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.control_data_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -16450,7 +16600,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => sys_nrst,
       D => p_0_out(2),
       Q => control_data(2),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.control_data_reg[4]\: unisim.vcomponents.FDRE
     generic map(
@@ -16461,7 +16611,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => sys_nrst,
       D => \true_hdmi_output.data_island_preamble\,
       Q => control_data(4),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_data[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -16485,7 +16635,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => hsync,
       Q => data_island_data(0),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_data_reg[10]\: unisim.vcomponents.FDRE
     generic map(
@@ -16496,7 +16646,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.packet_data\(7),
       Q => data_island_data(10),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_data_reg[11]\: unisim.vcomponents.FDRE
     generic map(
@@ -16507,7 +16657,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.packet_data\(8),
       Q => data_island_data(11),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_data_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -16518,7 +16668,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.control_data[1]_i_1_n_0\,
       Q => data_island_data(1),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_data_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -16529,7 +16679,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.packet_data\(0),
       Q => data_island_data(2),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_data_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -16540,7 +16690,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => data_island_data0,
       Q => data_island_data(3),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_data_reg[4]\: unisim.vcomponents.FDRE
     generic map(
@@ -16551,7 +16701,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.packet_data\(1),
       Q => data_island_data(4),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_data_reg[5]\: unisim.vcomponents.FDRE
     generic map(
@@ -16562,7 +16712,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.packet_data\(2),
       Q => data_island_data(5),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_data_reg[6]\: unisim.vcomponents.FDRE
     generic map(
@@ -16573,7 +16723,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.packet_data\(3),
       Q => data_island_data(6),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_data_reg[7]\: unisim.vcomponents.FDRE
     generic map(
@@ -16584,7 +16734,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.packet_data\(4),
       Q => data_island_data(7),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_data_reg[8]\: unisim.vcomponents.FDRE
     generic map(
@@ -16595,7 +16745,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.packet_data\(5),
       Q => data_island_data(8),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_data_reg[9]\: unisim.vcomponents.FDRE
     generic map(
@@ -16606,7 +16756,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.packet_data\(6),
       Q => data_island_data(9),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_guard_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -16616,7 +16766,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       I0 => \true_hdmi_output.data_island_guard_i_2_n_0\,
       I1 => cx(3),
       I2 => \true_hdmi_output.data_island_guard_i_3_n_0\,
-      I3 => \true_hdmi_output.packet_picker_n_39\,
+      I3 => \true_hdmi_output.packet_picker_n_40\,
       I4 => \true_hdmi_output.data_island_guard_i_4_n_0\,
       I5 => \true_hdmi_output.data_island_guard_i_5_n_0\,
       O => \true_hdmi_output.data_island_guard0\
@@ -16652,7 +16802,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       I1 => cx(6),
       I2 => cx(5),
       I3 => cx(4),
-      I4 => \true_hdmi_output.packet_picker_n_39\,
+      I4 => \true_hdmi_output.packet_picker_n_40\,
       O => \true_hdmi_output.data_island_guard_i_4_n_0\
     );
 \true_hdmi_output.data_island_guard_i_5\: unisim.vcomponents.LUT6
@@ -16677,7 +16827,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.data_island_guard0\,
       Q => \true_hdmi_output.data_island_guard\,
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_period_reg\: unisim.vcomponents.FDRE
     generic map(
@@ -16688,7 +16838,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.data_island_period_instantaneous\,
       Q => \true_hdmi_output.data_island_period\,
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.data_island_preamble_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -16712,7 +16862,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.data_island_preamble0\,
       Q => \true_hdmi_output.data_island_preamble\,
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.mode[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -16756,7 +16906,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.mode[1]_i_1_n_0\,
       Q => mode(1),
-      S => \true_hdmi_output.packet_picker_n_5\
+      S => \^sr\(0)
     );
 \true_hdmi_output.mode_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -16767,13 +16917,13 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.data_island_guard\,
       Q => mode(2),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.packet_assembler\: entity work.fm_hdmi_hdmi_tmds_audio_0_0_packet_assembler
      port map (
       D(8 downto 0) => \true_hdmi_output.packet_data\(8 downto 0),
       Q(4 downto 0) => \true_hdmi_output.packet_pixel_counter\(4 downto 0),
-      SR(0) => \true_hdmi_output.packet_picker_n_5\,
+      SR(0) => \^sr\(0),
       clk_pixel => clk_pixel,
       \counter_reg[1]_0\ => \true_hdmi_output.packet_assembler_n_22\,
       \counter_reg[1]_1\ => \true_hdmi_output.packet_assembler_n_23\,
@@ -16785,91 +16935,93 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       \counter_reg[3]_1\ => \true_hdmi_output.packet_assembler_n_24\,
       \counter_reg[4]_0\ => \true_hdmi_output.packet_assembler_n_26\,
       frame_counter10_in => frame_counter10_in,
-      \parity[1][6]_i_2\ => \true_hdmi_output.packet_picker_n_1\,
-      \parity[1][6]_i_2_0\ => \true_hdmi_output.packet_picker_n_0\,
-      \parity_reg[0][6]_0\ => \true_hdmi_output.packet_picker_n_33\,
-      \parity_reg[0][6]_1\ => \true_hdmi_output.packet_picker_n_31\,
-      \parity_reg[0][7]_0\ => \true_hdmi_output.packet_picker_n_34\,
-      \parity_reg[0][7]_1\ => \true_hdmi_output.packet_picker_n_32\,
-      \parity_reg[1][6]_0\ => \true_hdmi_output.packet_picker_n_28\,
-      \parity_reg[1][6]_1\ => \true_hdmi_output.packet_picker_n_7\,
-      \parity_reg[2][0]_0\ => \true_hdmi_output.packet_picker_n_19\,
+      \parity[1][6]_i_2\ => \true_hdmi_output.packet_picker_n_3\,
+      \parity[1][6]_i_2_0\ => \true_hdmi_output.packet_picker_n_1\,
+      \parity_reg[0][6]_0\ => \true_hdmi_output.packet_picker_n_34\,
+      \parity_reg[0][6]_1\ => \true_hdmi_output.packet_picker_n_32\,
+      \parity_reg[0][7]_0\ => \true_hdmi_output.packet_picker_n_35\,
+      \parity_reg[0][7]_1\ => \true_hdmi_output.packet_picker_n_33\,
+      \parity_reg[1][6]_0\ => \true_hdmi_output.packet_picker_n_29\,
+      \parity_reg[1][6]_1\ => \true_hdmi_output.packet_picker_n_8\,
+      \parity_reg[2][0]_0\ => \true_hdmi_output.packet_picker_n_20\,
       \parity_reg[2][3]_0\(2) => \bch[2]_18\(59),
       \parity_reg[2][3]_0\(1 downto 0) => \bch[2]_18\(57 downto 56),
       \parity_reg[2][7]_0\(2) => p_13_out(0),
       \parity_reg[2][7]_0\(1) => p_18_out(0),
       \parity_reg[2][7]_0\(0) => next_ecc1_return(1),
-      \parity_reg[3][0]_0\ => \true_hdmi_output.packet_picker_n_12\,
+      \parity_reg[3][0]_0\ => \true_hdmi_output.packet_picker_n_13\,
       \parity_reg[3][1]_0\(1 downto 0) => \bch[3]_19\(57 downto 56),
-      \parity_reg[3][1]_1\ => \true_hdmi_output.packet_picker_n_11\,
+      \parity_reg[3][1]_1\ => \true_hdmi_output.packet_picker_n_12\,
       \parity_reg[3][7]_0\(1) => p_4_out(0),
       \parity_reg[3][7]_0\(0) => p_9_out(0),
-      \parity_reg[4][1]_0\ => \true_hdmi_output.packet_picker_n_35\,
-      \parity_reg[4][1]_1\ => \true_hdmi_output.packet_picker_n_37\,
+      \parity_reg[4][1]_0\ => \true_hdmi_output.packet_picker_n_36\,
+      \parity_reg[4][1]_1\ => \true_hdmi_output.packet_picker_n_38\,
       sys_nrst => sys_nrst,
-      \true_hdmi_output.data_island_data_reg[10]\ => \true_hdmi_output.packet_picker_n_20\,
-      \true_hdmi_output.data_island_data_reg[10]_0\ => \true_hdmi_output.packet_picker_n_21\,
-      \true_hdmi_output.data_island_data_reg[10]_1\ => \true_hdmi_output.packet_picker_n_22\,
-      \true_hdmi_output.data_island_data_reg[11]\ => \true_hdmi_output.packet_picker_n_13\,
-      \true_hdmi_output.data_island_data_reg[11]_0\ => \true_hdmi_output.packet_picker_n_14\,
-      \true_hdmi_output.data_island_data_reg[11]_1\ => \true_hdmi_output.packet_picker_n_15\,
-      \true_hdmi_output.data_island_data_reg[2]\ => \true_hdmi_output.packet_picker_n_36\,
-      \true_hdmi_output.data_island_data_reg[4]\ => \true_hdmi_output.packet_picker_n_30\,
-      \true_hdmi_output.data_island_data_reg[5]\ => \true_hdmi_output.packet_picker_n_24\,
-      \true_hdmi_output.data_island_data_reg[6]\ => \true_hdmi_output.packet_picker_n_25\,
-      \true_hdmi_output.data_island_data_reg[6]_0\ => \true_hdmi_output.packet_picker_n_26\,
-      \true_hdmi_output.data_island_data_reg[6]_1\ => \true_hdmi_output.packet_picker_n_27\,
-      \true_hdmi_output.data_island_data_reg[8]\ => \true_hdmi_output.packet_picker_n_8\,
-      \true_hdmi_output.data_island_data_reg[9]\ => \true_hdmi_output.packet_picker_n_23\,
-      \true_hdmi_output.data_island_data_reg[9]_0\ => \true_hdmi_output.packet_picker_n_29\,
-      \true_hdmi_output.data_island_data_reg[9]_1\ => \true_hdmi_output.packet_picker_n_6\,
+      \true_hdmi_output.data_island_data_reg[10]\ => \true_hdmi_output.packet_picker_n_21\,
+      \true_hdmi_output.data_island_data_reg[10]_0\ => \true_hdmi_output.packet_picker_n_22\,
+      \true_hdmi_output.data_island_data_reg[10]_1\ => \true_hdmi_output.packet_picker_n_23\,
+      \true_hdmi_output.data_island_data_reg[11]\ => \true_hdmi_output.packet_picker_n_14\,
+      \true_hdmi_output.data_island_data_reg[11]_0\ => \true_hdmi_output.packet_picker_n_15\,
+      \true_hdmi_output.data_island_data_reg[11]_1\ => \true_hdmi_output.packet_picker_n_16\,
+      \true_hdmi_output.data_island_data_reg[2]\ => \true_hdmi_output.packet_picker_n_37\,
+      \true_hdmi_output.data_island_data_reg[4]\ => \true_hdmi_output.packet_picker_n_31\,
+      \true_hdmi_output.data_island_data_reg[5]\ => \true_hdmi_output.packet_picker_n_25\,
+      \true_hdmi_output.data_island_data_reg[6]\ => \true_hdmi_output.packet_picker_n_26\,
+      \true_hdmi_output.data_island_data_reg[6]_0\ => \true_hdmi_output.packet_picker_n_27\,
+      \true_hdmi_output.data_island_data_reg[6]_1\ => \true_hdmi_output.packet_picker_n_28\,
+      \true_hdmi_output.data_island_data_reg[8]\ => \true_hdmi_output.packet_picker_n_9\,
+      \true_hdmi_output.data_island_data_reg[9]\ => \true_hdmi_output.packet_picker_n_24\,
+      \true_hdmi_output.data_island_data_reg[9]_0\ => \true_hdmi_output.packet_picker_n_30\,
+      \true_hdmi_output.data_island_data_reg[9]_1\ => \true_hdmi_output.packet_picker_n_7\,
       \true_hdmi_output.data_island_period\ => \true_hdmi_output.data_island_period\
     );
 \true_hdmi_output.packet_picker\: entity work.fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
      port map (
       Q(10 downto 0) => cy(10 downto 0),
-      SR(0) => \true_hdmi_output.packet_picker_n_5\,
+      SR(0) => \^sr\(0),
+      acc_reg(26 downto 0) => acc_reg(26 downto 0),
+      acc_reg_21_sp_1 => tick48k,
       \audio_sample_word_transfer_reg[0][15]_0\(15 downto 0) => \audio_sample_word_transfer_reg[0][15]\(15 downto 0),
       \audio_sample_word_transfer_reg[1][15]_0\(15 downto 0) => Q(15 downto 0),
       clk_pixel => clk_pixel,
-      \counter_reg[0]\ => \true_hdmi_output.packet_picker_n_26\,
-      \counter_reg[0]_0\ => \true_hdmi_output.packet_picker_n_34\,
-      \counter_reg[1]\ => \true_hdmi_output.packet_picker_n_21\,
-      \counter_reg[1]_0\ => \true_hdmi_output.packet_picker_n_29\,
-      \counter_reg[2]\ => \true_hdmi_output.packet_picker_n_6\,
-      \counter_reg[2]_0\ => \true_hdmi_output.packet_picker_n_7\,
-      \counter_reg[2]_1\ => \true_hdmi_output.packet_picker_n_15\,
-      \counter_reg[2]_2\ => \true_hdmi_output.packet_picker_n_22\,
-      \counter_reg[2]_3\ => \true_hdmi_output.packet_picker_n_25\,
-      \counter_reg[2]_4\ => \true_hdmi_output.packet_picker_n_27\,
-      \counter_reg[2]_5\ => \true_hdmi_output.packet_picker_n_31\,
-      \counter_reg[2]_6\ => \true_hdmi_output.packet_picker_n_32\,
-      \counter_reg[2]_7\ => \true_hdmi_output.packet_picker_n_35\,
-      \counter_reg[2]_8\ => \true_hdmi_output.packet_picker_n_36\,
-      \counter_reg[3]\ => \true_hdmi_output.packet_picker_n_8\,
-      \counter_reg[3]_0\ => \true_hdmi_output.packet_picker_n_13\,
-      \counter_reg[3]_1\ => \true_hdmi_output.packet_picker_n_20\,
-      \counter_reg[3]_2\ => \true_hdmi_output.packet_picker_n_23\,
-      \counter_reg[3]_3\ => \true_hdmi_output.packet_picker_n_24\,
-      \counter_reg[3]_4\ => \true_hdmi_output.packet_picker_n_30\,
-      \counter_reg[4]\ => \true_hdmi_output.packet_picker_n_11\,
-      \counter_reg[4]_0\ => \true_hdmi_output.packet_picker_n_12\,
+      \counter_reg[0]\ => \true_hdmi_output.packet_picker_n_27\,
+      \counter_reg[0]_0\ => \true_hdmi_output.packet_picker_n_35\,
+      \counter_reg[1]\ => \true_hdmi_output.packet_picker_n_22\,
+      \counter_reg[1]_0\ => \true_hdmi_output.packet_picker_n_30\,
+      \counter_reg[2]\ => \true_hdmi_output.packet_picker_n_7\,
+      \counter_reg[2]_0\ => \true_hdmi_output.packet_picker_n_8\,
+      \counter_reg[2]_1\ => \true_hdmi_output.packet_picker_n_16\,
+      \counter_reg[2]_2\ => \true_hdmi_output.packet_picker_n_23\,
+      \counter_reg[2]_3\ => \true_hdmi_output.packet_picker_n_26\,
+      \counter_reg[2]_4\ => \true_hdmi_output.packet_picker_n_28\,
+      \counter_reg[2]_5\ => \true_hdmi_output.packet_picker_n_32\,
+      \counter_reg[2]_6\ => \true_hdmi_output.packet_picker_n_33\,
+      \counter_reg[2]_7\ => \true_hdmi_output.packet_picker_n_36\,
+      \counter_reg[2]_8\ => \true_hdmi_output.packet_picker_n_37\,
+      \counter_reg[3]\ => \true_hdmi_output.packet_picker_n_9\,
+      \counter_reg[3]_0\ => \true_hdmi_output.packet_picker_n_14\,
+      \counter_reg[3]_1\ => \true_hdmi_output.packet_picker_n_21\,
+      \counter_reg[3]_2\ => \true_hdmi_output.packet_picker_n_24\,
+      \counter_reg[3]_3\ => \true_hdmi_output.packet_picker_n_25\,
+      \counter_reg[3]_4\ => \true_hdmi_output.packet_picker_n_31\,
+      \counter_reg[4]\ => \true_hdmi_output.packet_picker_n_12\,
+      \counter_reg[4]_0\ => \true_hdmi_output.packet_picker_n_13\,
       \counter_reg[4]_1\(2) => p_13_out(0),
       \counter_reg[4]_1\(1) => p_18_out(0),
       \counter_reg[4]_1\(0) => next_ecc1_return(1),
-      \counter_reg[4]_2\ => \true_hdmi_output.packet_picker_n_19\,
+      \counter_reg[4]_2\ => \true_hdmi_output.packet_picker_n_20\,
       cx(11 downto 0) => cx(11 downto 0),
-      \cx_reg[10]\ => \true_hdmi_output.packet_picker_n_3\,
-      \cx_reg[3]\ => \true_hdmi_output.packet_picker_n_39\,
-      \cy_reg[0]\ => \true_hdmi_output.packet_picker_n_4\,
-      \cy_reg[7]\ => \true_hdmi_output.packet_picker_n_2\,
+      \cx_reg[10]\ => \true_hdmi_output.packet_picker_n_5\,
+      \cx_reg[3]\ => \true_hdmi_output.packet_picker_n_40\,
+      \cy_reg[0]\ => \true_hdmi_output.packet_picker_n_6\,
+      \cy_reg[7]\ => \true_hdmi_output.packet_picker_n_4\,
       frame_counter10_in => frame_counter10_in,
-      \packet_type_reg[0]_0\ => \true_hdmi_output.packet_picker_n_1\,
-      \packet_type_reg[2]_0\ => \true_hdmi_output.packet_picker_n_37\,
-      \packet_type_reg[7]_0\ => \true_hdmi_output.packet_picker_n_0\,
-      \packet_type_reg[7]_1\ => \true_hdmi_output.packet_picker_n_14\,
-      \packet_type_reg[7]_2\ => \true_hdmi_output.packet_picker_n_28\,
-      \packet_type_reg[7]_3\ => \true_hdmi_output.packet_picker_n_33\,
+      \packet_type_reg[0]_0\ => \true_hdmi_output.packet_picker_n_3\,
+      \packet_type_reg[2]_0\ => \true_hdmi_output.packet_picker_n_38\,
+      \packet_type_reg[7]_0\ => \true_hdmi_output.packet_picker_n_1\,
+      \packet_type_reg[7]_1\ => \true_hdmi_output.packet_picker_n_15\,
+      \packet_type_reg[7]_2\ => \true_hdmi_output.packet_picker_n_29\,
+      \packet_type_reg[7]_3\ => \true_hdmi_output.packet_picker_n_34\,
       \parity[0][7]_i_5_0\ => \true_hdmi_output.packet_assembler_n_25\,
       \parity[3][7]_i_2\ => \true_hdmi_output.packet_assembler_n_26\,
       \parity[3][7]_i_8_0\ => \true_hdmi_output.packet_assembler_n_23\,
@@ -16897,7 +17049,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => rgb(0),
       Q => video_data(0),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.video_data_reg[16]\: unisim.vcomponents.FDRE
     generic map(
@@ -16908,7 +17060,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => rgb(2),
       Q => video_data(16),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.video_data_reg[8]\: unisim.vcomponents.FDRE
     generic map(
@@ -16919,7 +17071,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => rgb(1),
       Q => video_data(8),
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 \true_hdmi_output.video_guard_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -16943,7 +17095,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       I1 => cy(3),
       I2 => cy(2),
       I3 => \true_hdmi_output.video_guard_i_6_n_0\,
-      I4 => \true_hdmi_output.packet_picker_n_2\,
+      I4 => \true_hdmi_output.packet_picker_n_4\,
       O => \true_hdmi_output.video_guard_i_2_n_0\
     );
 \true_hdmi_output.video_guard_i_3\: unisim.vcomponents.LUT4
@@ -17000,7 +17152,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.video_guard0\,
       Q => \true_hdmi_output.video_guard\,
-      S => \true_hdmi_output.packet_picker_n_5\
+      S => \^sr\(0)
     );
 \true_hdmi_output.video_preamble_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -17037,7 +17189,7 @@ serializer: entity work.fm_hdmi_hdmi_tmds_audio_0_0_serializer
       CE => '1',
       D => \true_hdmi_output.video_preamble0\,
       Q => \true_hdmi_output.video_preamble\,
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 video_data_period_i_1: unisim.vcomponents.LUT6
     generic map(
@@ -17084,7 +17236,7 @@ video_data_period_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => video_data_period0,
       Q => video_data_period,
-      R => \true_hdmi_output.packet_picker_n_5\
+      R => \^sr\(0)
     );
 end STRUCTURE;
 library IEEE;
@@ -17108,14 +17260,146 @@ entity fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio is
 end fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio;
 
 architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio is
+  signal \acc[10]_i_10_n_0\ : STD_LOGIC;
+  signal \acc[10]_i_11_n_0\ : STD_LOGIC;
+  signal \acc[10]_i_2_n_0\ : STD_LOGIC;
+  signal \acc[10]_i_3_n_0\ : STD_LOGIC;
+  signal \acc[10]_i_4_n_0\ : STD_LOGIC;
+  signal \acc[10]_i_5_n_0\ : STD_LOGIC;
+  signal \acc[10]_i_6_n_0\ : STD_LOGIC;
+  signal \acc[10]_i_7_n_0\ : STD_LOGIC;
+  signal \acc[10]_i_8_n_0\ : STD_LOGIC;
+  signal \acc[14]_i_2_n_0\ : STD_LOGIC;
+  signal \acc[14]_i_3_n_0\ : STD_LOGIC;
+  signal \acc[14]_i_4_n_0\ : STD_LOGIC;
+  signal \acc[14]_i_5_n_0\ : STD_LOGIC;
+  signal \acc[14]_i_6_n_0\ : STD_LOGIC;
+  signal \acc[14]_i_8_n_0\ : STD_LOGIC;
+  signal \acc[14]_i_9_n_0\ : STD_LOGIC;
+  signal \acc[18]_i_2_n_0\ : STD_LOGIC;
+  signal \acc[18]_i_3_n_0\ : STD_LOGIC;
+  signal \acc[18]_i_4_n_0\ : STD_LOGIC;
+  signal \acc[18]_i_5_n_0\ : STD_LOGIC;
+  signal \acc[18]_i_7_n_0\ : STD_LOGIC;
+  signal \acc[22]_i_2_n_0\ : STD_LOGIC;
+  signal \acc[22]_i_3_n_0\ : STD_LOGIC;
+  signal \acc[22]_i_4_n_0\ : STD_LOGIC;
+  signal \acc[22]_i_5_n_0\ : STD_LOGIC;
+  signal \acc[22]_i_7_n_0\ : STD_LOGIC;
+  signal \acc[22]_i_8_n_0\ : STD_LOGIC;
+  signal \acc[22]_i_9_n_0\ : STD_LOGIC;
+  signal \acc[26]_i_10_n_0\ : STD_LOGIC;
+  signal \acc[26]_i_2_n_0\ : STD_LOGIC;
+  signal \acc[26]_i_3_n_0\ : STD_LOGIC;
+  signal \acc[26]_i_4_n_0\ : STD_LOGIC;
+  signal \acc[26]_i_5_n_0\ : STD_LOGIC;
+  signal \acc[26]_i_7_n_0\ : STD_LOGIC;
+  signal \acc[26]_i_8_n_0\ : STD_LOGIC;
+  signal \acc[26]_i_9_n_0\ : STD_LOGIC;
+  signal \acc[30]_i_2_n_0\ : STD_LOGIC;
+  signal \acc[30]_i_3_n_0\ : STD_LOGIC;
+  signal \acc[5]_i_1_n_0\ : STD_LOGIC;
+  signal \acc[5]_i_3_n_0\ : STD_LOGIC;
+  signal \acc[5]_i_4_n_0\ : STD_LOGIC;
+  signal \acc[6]_i_10_n_0\ : STD_LOGIC;
+  signal \acc[6]_i_11_n_0\ : STD_LOGIC;
+  signal \acc[6]_i_12_n_0\ : STD_LOGIC;
+  signal \acc[6]_i_2_n_0\ : STD_LOGIC;
+  signal \acc[6]_i_3_n_0\ : STD_LOGIC;
+  signal \acc[6]_i_4_n_0\ : STD_LOGIC;
+  signal \acc[6]_i_5_n_0\ : STD_LOGIC;
+  signal \acc[6]_i_6_n_0\ : STD_LOGIC;
+  signal \acc[6]_i_7_n_0\ : STD_LOGIC;
+  signal \acc[6]_i_8_n_0\ : STD_LOGIC;
+  signal acc_reg : STD_LOGIC_VECTOR ( 31 downto 5 );
+  signal \acc_reg[10]_i_1_n_0\ : STD_LOGIC;
+  signal \acc_reg[10]_i_1_n_1\ : STD_LOGIC;
+  signal \acc_reg[10]_i_1_n_2\ : STD_LOGIC;
+  signal \acc_reg[10]_i_1_n_3\ : STD_LOGIC;
+  signal \acc_reg[10]_i_1_n_4\ : STD_LOGIC;
+  signal \acc_reg[10]_i_1_n_5\ : STD_LOGIC;
+  signal \acc_reg[10]_i_1_n_6\ : STD_LOGIC;
+  signal \acc_reg[10]_i_1_n_7\ : STD_LOGIC;
+  signal \acc_reg[10]_i_9_n_0\ : STD_LOGIC;
+  signal \acc_reg[10]_i_9_n_1\ : STD_LOGIC;
+  signal \acc_reg[10]_i_9_n_2\ : STD_LOGIC;
+  signal \acc_reg[10]_i_9_n_3\ : STD_LOGIC;
+  signal \acc_reg[14]_i_1_n_0\ : STD_LOGIC;
+  signal \acc_reg[14]_i_1_n_1\ : STD_LOGIC;
+  signal \acc_reg[14]_i_1_n_2\ : STD_LOGIC;
+  signal \acc_reg[14]_i_1_n_3\ : STD_LOGIC;
+  signal \acc_reg[14]_i_1_n_4\ : STD_LOGIC;
+  signal \acc_reg[14]_i_1_n_5\ : STD_LOGIC;
+  signal \acc_reg[14]_i_1_n_6\ : STD_LOGIC;
+  signal \acc_reg[14]_i_1_n_7\ : STD_LOGIC;
+  signal \acc_reg[14]_i_7_n_0\ : STD_LOGIC;
+  signal \acc_reg[14]_i_7_n_1\ : STD_LOGIC;
+  signal \acc_reg[14]_i_7_n_2\ : STD_LOGIC;
+  signal \acc_reg[14]_i_7_n_3\ : STD_LOGIC;
+  signal \acc_reg[18]_i_1_n_0\ : STD_LOGIC;
+  signal \acc_reg[18]_i_1_n_1\ : STD_LOGIC;
+  signal \acc_reg[18]_i_1_n_2\ : STD_LOGIC;
+  signal \acc_reg[18]_i_1_n_3\ : STD_LOGIC;
+  signal \acc_reg[18]_i_1_n_4\ : STD_LOGIC;
+  signal \acc_reg[18]_i_1_n_5\ : STD_LOGIC;
+  signal \acc_reg[18]_i_1_n_6\ : STD_LOGIC;
+  signal \acc_reg[18]_i_1_n_7\ : STD_LOGIC;
+  signal \acc_reg[18]_i_6_n_0\ : STD_LOGIC;
+  signal \acc_reg[18]_i_6_n_1\ : STD_LOGIC;
+  signal \acc_reg[18]_i_6_n_2\ : STD_LOGIC;
+  signal \acc_reg[18]_i_6_n_3\ : STD_LOGIC;
+  signal \acc_reg[22]_i_1_n_0\ : STD_LOGIC;
+  signal \acc_reg[22]_i_1_n_1\ : STD_LOGIC;
+  signal \acc_reg[22]_i_1_n_2\ : STD_LOGIC;
+  signal \acc_reg[22]_i_1_n_3\ : STD_LOGIC;
+  signal \acc_reg[22]_i_1_n_4\ : STD_LOGIC;
+  signal \acc_reg[22]_i_1_n_5\ : STD_LOGIC;
+  signal \acc_reg[22]_i_1_n_6\ : STD_LOGIC;
+  signal \acc_reg[22]_i_1_n_7\ : STD_LOGIC;
+  signal \acc_reg[22]_i_6_n_0\ : STD_LOGIC;
+  signal \acc_reg[22]_i_6_n_1\ : STD_LOGIC;
+  signal \acc_reg[22]_i_6_n_2\ : STD_LOGIC;
+  signal \acc_reg[22]_i_6_n_3\ : STD_LOGIC;
+  signal \acc_reg[26]_i_1_n_0\ : STD_LOGIC;
+  signal \acc_reg[26]_i_1_n_1\ : STD_LOGIC;
+  signal \acc_reg[26]_i_1_n_2\ : STD_LOGIC;
+  signal \acc_reg[26]_i_1_n_3\ : STD_LOGIC;
+  signal \acc_reg[26]_i_1_n_4\ : STD_LOGIC;
+  signal \acc_reg[26]_i_1_n_5\ : STD_LOGIC;
+  signal \acc_reg[26]_i_1_n_6\ : STD_LOGIC;
+  signal \acc_reg[26]_i_1_n_7\ : STD_LOGIC;
+  signal \acc_reg[26]_i_6_n_1\ : STD_LOGIC;
+  signal \acc_reg[26]_i_6_n_2\ : STD_LOGIC;
+  signal \acc_reg[26]_i_6_n_3\ : STD_LOGIC;
+  signal \acc_reg[30]_i_1_n_3\ : STD_LOGIC;
+  signal \acc_reg[30]_i_1_n_6\ : STD_LOGIC;
+  signal \acc_reg[30]_i_1_n_7\ : STD_LOGIC;
+  signal \acc_reg[5]_i_2_n_0\ : STD_LOGIC;
+  signal \acc_reg[5]_i_2_n_1\ : STD_LOGIC;
+  signal \acc_reg[5]_i_2_n_2\ : STD_LOGIC;
+  signal \acc_reg[5]_i_2_n_3\ : STD_LOGIC;
+  signal \acc_reg[6]_i_1_n_0\ : STD_LOGIC;
+  signal \acc_reg[6]_i_1_n_1\ : STD_LOGIC;
+  signal \acc_reg[6]_i_1_n_2\ : STD_LOGIC;
+  signal \acc_reg[6]_i_1_n_3\ : STD_LOGIC;
+  signal \acc_reg[6]_i_1_n_4\ : STD_LOGIC;
+  signal \acc_reg[6]_i_1_n_5\ : STD_LOGIC;
+  signal \acc_reg[6]_i_1_n_6\ : STD_LOGIC;
+  signal \acc_reg[6]_i_1_n_7\ : STD_LOGIC;
+  signal \acc_reg[6]_i_9_n_0\ : STD_LOGIC;
+  signal \acc_reg[6]_i_9_n_1\ : STD_LOGIC;
+  signal \acc_reg[6]_i_9_n_2\ : STD_LOGIC;
+  signal \acc_reg[6]_i_9_n_3\ : STD_LOGIC;
   signal audio_sample_l : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal \audio_sample_l[15]_i_1_n_0\ : STD_LOGIC;
   signal \audio_sample_l[15]_i_2_n_0\ : STD_LOGIC;
   signal \audio_sample_l[15]_i_3_n_0\ : STD_LOGIC;
   signal audio_sample_r : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal hdmi_n_0 : STD_LOGIC;
+  signal data : STD_LOGIC_VECTOR ( 31 downto 5 );
   signal hdmi_n_1 : STD_LOGIC;
   signal hdmi_n_2 : STD_LOGIC;
+  signal hdmi_n_3 : STD_LOGIC;
+  signal hdmi_n_4 : STD_LOGIC;
   signal rgb : STD_LOGIC_VECTOR ( 23 downto 7 );
   signal \sampling_clk[0]_i_2_n_0\ : STD_LOGIC;
   signal sampling_clk_reg : STD_LOGIC_VECTOR ( 11 downto 0 );
@@ -17142,8 +17426,13 @@ architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio is
   signal \sampling_clk_reg[8]_i_1_n_5\ : STD_LOGIC;
   signal \sampling_clk_reg[8]_i_1_n_6\ : STD_LOGIC;
   signal \sampling_clk_reg[8]_i_1_n_7\ : STD_LOGIC;
+  signal tick48k : STD_LOGIC;
   signal tmds_ck : STD_LOGIC;
   signal tmds_d : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal \NLW_acc_reg[26]_i_6_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal \NLW_acc_reg[30]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
+  signal \NLW_acc_reg[30]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
+  signal \NLW_acc_reg[5]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \NLW_sampling_clk_reg[8]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   attribute BOX_TYPE : string;
   attribute BOX_TYPE of OBUFDS_inst0 : label is "PRIMITIVE";
@@ -17156,6 +17445,20 @@ architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio is
   attribute BOX_TYPE of OBUFDS_inst3 : label is "PRIMITIVE";
   attribute CAPACITANCE of OBUFDS_inst3 : label is "DONT_CARE";
   attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of \acc_reg[10]_i_1\ : label is 11;
+  attribute ADDER_THRESHOLD of \acc_reg[10]_i_9\ : label is 35;
+  attribute ADDER_THRESHOLD of \acc_reg[14]_i_1\ : label is 11;
+  attribute ADDER_THRESHOLD of \acc_reg[14]_i_7\ : label is 35;
+  attribute ADDER_THRESHOLD of \acc_reg[18]_i_1\ : label is 11;
+  attribute ADDER_THRESHOLD of \acc_reg[18]_i_6\ : label is 35;
+  attribute ADDER_THRESHOLD of \acc_reg[22]_i_1\ : label is 11;
+  attribute ADDER_THRESHOLD of \acc_reg[22]_i_6\ : label is 35;
+  attribute ADDER_THRESHOLD of \acc_reg[26]_i_1\ : label is 11;
+  attribute ADDER_THRESHOLD of \acc_reg[26]_i_6\ : label is 35;
+  attribute ADDER_THRESHOLD of \acc_reg[30]_i_1\ : label is 11;
+  attribute ADDER_THRESHOLD of \acc_reg[5]_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \acc_reg[6]_i_1\ : label is 11;
+  attribute ADDER_THRESHOLD of \acc_reg[6]_i_9\ : label is 35;
   attribute ADDER_THRESHOLD of \sampling_clk_reg[0]_i_1\ : label is 11;
   attribute ADDER_THRESHOLD of \sampling_clk_reg[4]_i_1\ : label is 11;
   attribute ADDER_THRESHOLD of \sampling_clk_reg[8]_i_1\ : label is 11;
@@ -17184,39 +17487,977 @@ OBUFDS_inst3: unisim.vcomponents.OBUFDS
       O => hdmi_d2(1),
       OB => hdmi_d2(0)
     );
-\audio_sample_l[15]_i_1\: unisim.vcomponents.LUT6
+\acc[10]_i_10\: unisim.vcomponents.LUT1
     generic map(
-      INIT => X"AAAAAAA800000000"
+      INIT => X"1"
     )
         port map (
-      I0 => sampling_clk_reg(10),
-      I1 => sampling_clk_reg(6),
-      I2 => sampling_clk_reg(5),
-      I3 => \audio_sample_l[15]_i_2_n_0\,
-      I4 => \audio_sample_l[15]_i_3_n_0\,
-      I5 => sampling_clk_reg(11),
+      I0 => acc_reg(15),
+      O => \acc[10]_i_10_n_0\
+    );
+\acc[10]_i_11\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(14),
+      O => \acc[10]_i_11_n_0\
+    );
+\acc[10]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(13),
+      I1 => tick48k,
+      I2 => acc_reg(13),
+      O => \acc[10]_i_2_n_0\
+    );
+\acc[10]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(12),
+      I1 => tick48k,
+      I2 => acc_reg(12),
+      O => \acc[10]_i_3_n_0\
+    );
+\acc[10]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(11),
+      I1 => tick48k,
+      I2 => acc_reg(11),
+      O => \acc[10]_i_4_n_0\
+    );
+\acc[10]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"C5"
+    )
+        port map (
+      I0 => acc_reg(13),
+      I1 => data(13),
+      I2 => tick48k,
+      O => \acc[10]_i_5_n_0\
+    );
+\acc[10]_i_6\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"C5"
+    )
+        port map (
+      I0 => acc_reg(12),
+      I1 => data(12),
+      I2 => tick48k,
+      O => \acc[10]_i_6_n_0\
+    );
+\acc[10]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"C5"
+    )
+        port map (
+      I0 => acc_reg(11),
+      I1 => data(11),
+      I2 => tick48k,
+      O => \acc[10]_i_7_n_0\
+    );
+\acc[10]_i_8\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(10),
+      I1 => tick48k,
+      I2 => acc_reg(10),
+      O => \acc[10]_i_8_n_0\
+    );
+\acc[14]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(15),
+      I1 => tick48k,
+      I2 => acc_reg(15),
+      O => \acc[14]_i_2_n_0\
+    );
+\acc[14]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(17),
+      I1 => tick48k,
+      I2 => acc_reg(17),
+      O => \acc[14]_i_3_n_0\
+    );
+\acc[14]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(16),
+      I1 => tick48k,
+      I2 => acc_reg(16),
+      O => \acc[14]_i_4_n_0\
+    );
+\acc[14]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"C5"
+    )
+        port map (
+      I0 => acc_reg(15),
+      I1 => data(15),
+      I2 => tick48k,
+      O => \acc[14]_i_5_n_0\
+    );
+\acc[14]_i_6\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(14),
+      I1 => tick48k,
+      I2 => acc_reg(14),
+      O => \acc[14]_i_6_n_0\
+    );
+\acc[14]_i_8\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(18),
+      O => \acc[14]_i_8_n_0\
+    );
+\acc[14]_i_9\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(17),
+      O => \acc[14]_i_9_n_0\
+    );
+\acc[18]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(21),
+      I1 => tick48k,
+      I2 => acc_reg(21),
+      O => \acc[18]_i_2_n_0\
+    );
+\acc[18]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(20),
+      I1 => tick48k,
+      I2 => acc_reg(20),
+      O => \acc[18]_i_3_n_0\
+    );
+\acc[18]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(19),
+      I1 => tick48k,
+      I2 => acc_reg(19),
+      O => \acc[18]_i_4_n_0\
+    );
+\acc[18]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(18),
+      I1 => tick48k,
+      I2 => acc_reg(18),
+      O => \acc[18]_i_5_n_0\
+    );
+\acc[18]_i_7\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(21),
+      O => \acc[18]_i_7_n_0\
+    );
+\acc[22]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(25),
+      I1 => tick48k,
+      I2 => acc_reg(25),
+      O => \acc[22]_i_2_n_0\
+    );
+\acc[22]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(24),
+      I1 => tick48k,
+      I2 => acc_reg(24),
+      O => \acc[22]_i_3_n_0\
+    );
+\acc[22]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(23),
+      I1 => tick48k,
+      I2 => acc_reg(23),
+      O => \acc[22]_i_4_n_0\
+    );
+\acc[22]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(22),
+      I1 => tick48k,
+      I2 => acc_reg(22),
+      O => \acc[22]_i_5_n_0\
+    );
+\acc[22]_i_7\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(26),
+      O => \acc[22]_i_7_n_0\
+    );
+\acc[22]_i_8\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(25),
+      O => \acc[22]_i_8_n_0\
+    );
+\acc[22]_i_9\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(24),
+      O => \acc[22]_i_9_n_0\
+    );
+\acc[26]_i_10\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(28),
+      O => \acc[26]_i_10_n_0\
+    );
+\acc[26]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(29),
+      I1 => tick48k,
+      I2 => acc_reg(29),
+      O => \acc[26]_i_2_n_0\
+    );
+\acc[26]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(28),
+      I1 => tick48k,
+      I2 => acc_reg(28),
+      O => \acc[26]_i_3_n_0\
+    );
+\acc[26]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(27),
+      I1 => tick48k,
+      I2 => acc_reg(27),
+      O => \acc[26]_i_4_n_0\
+    );
+\acc[26]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(26),
+      I1 => tick48k,
+      I2 => acc_reg(26),
+      O => \acc[26]_i_5_n_0\
+    );
+\acc[26]_i_7\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(31),
+      O => \acc[26]_i_7_n_0\
+    );
+\acc[26]_i_8\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(30),
+      O => \acc[26]_i_8_n_0\
+    );
+\acc[26]_i_9\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(29),
+      O => \acc[26]_i_9_n_0\
+    );
+\acc[30]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(31),
+      I1 => tick48k,
+      I2 => acc_reg(31),
+      O => \acc[30]_i_2_n_0\
+    );
+\acc[30]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(30),
+      I1 => tick48k,
+      I2 => acc_reg(30),
+      O => \acc[30]_i_3_n_0\
+    );
+\acc[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(5),
+      I1 => tick48k,
+      I2 => acc_reg(5),
+      O => \acc[5]_i_1_n_0\
+    );
+\acc[5]_i_3\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(6),
+      O => \acc[5]_i_3_n_0\
+    );
+\acc[5]_i_4\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(5),
+      O => \acc[5]_i_4_n_0\
+    );
+\acc[6]_i_10\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(11),
+      O => \acc[6]_i_10_n_0\
+    );
+\acc[6]_i_11\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(10),
+      O => \acc[6]_i_11_n_0\
+    );
+\acc[6]_i_12\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => acc_reg(8),
+      O => \acc[6]_i_12_n_0\
+    );
+\acc[6]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(9),
+      I1 => tick48k,
+      I2 => acc_reg(9),
+      O => \acc[6]_i_2_n_0\
+    );
+\acc[6]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(8),
+      I1 => tick48k,
+      I2 => acc_reg(8),
+      O => \acc[6]_i_3_n_0\
+    );
+\acc[6]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(7),
+      I1 => tick48k,
+      I2 => acc_reg(7),
+      O => \acc[6]_i_4_n_0\
+    );
+\acc[6]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"C5"
+    )
+        port map (
+      I0 => acc_reg(9),
+      I1 => data(9),
+      I2 => tick48k,
+      O => \acc[6]_i_5_n_0\
+    );
+\acc[6]_i_6\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"C5"
+    )
+        port map (
+      I0 => acc_reg(8),
+      I1 => data(8),
+      I2 => tick48k,
+      O => \acc[6]_i_6_n_0\
+    );
+\acc[6]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"C5"
+    )
+        port map (
+      I0 => acc_reg(7),
+      I1 => data(7),
+      I2 => tick48k,
+      O => \acc[6]_i_7_n_0\
+    );
+\acc[6]_i_8\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => data(6),
+      I1 => tick48k,
+      I2 => acc_reg(6),
+      O => \acc[6]_i_8_n_0\
+    );
+\acc_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[10]_i_1_n_7\,
+      Q => acc_reg(10),
+      R => hdmi_n_1
+    );
+\acc_reg[10]_i_1\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \acc_reg[6]_i_1_n_0\,
+      CO(3) => \acc_reg[10]_i_1_n_0\,
+      CO(2) => \acc_reg[10]_i_1_n_1\,
+      CO(1) => \acc_reg[10]_i_1_n_2\,
+      CO(0) => \acc_reg[10]_i_1_n_3\,
+      CYINIT => '0',
+      DI(3) => \acc[10]_i_2_n_0\,
+      DI(2) => \acc[10]_i_3_n_0\,
+      DI(1) => \acc[10]_i_4_n_0\,
+      DI(0) => '0',
+      O(3) => \acc_reg[10]_i_1_n_4\,
+      O(2) => \acc_reg[10]_i_1_n_5\,
+      O(1) => \acc_reg[10]_i_1_n_6\,
+      O(0) => \acc_reg[10]_i_1_n_7\,
+      S(3) => \acc[10]_i_5_n_0\,
+      S(2) => \acc[10]_i_6_n_0\,
+      S(1) => \acc[10]_i_7_n_0\,
+      S(0) => \acc[10]_i_8_n_0\
+    );
+\acc_reg[10]_i_9\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \acc_reg[6]_i_9_n_0\,
+      CO(3) => \acc_reg[10]_i_9_n_0\,
+      CO(2) => \acc_reg[10]_i_9_n_1\,
+      CO(1) => \acc_reg[10]_i_9_n_2\,
+      CO(0) => \acc_reg[10]_i_9_n_3\,
+      CYINIT => '0',
+      DI(3 downto 2) => acc_reg(15 downto 14),
+      DI(1 downto 0) => B"00",
+      O(3 downto 0) => data(15 downto 12),
+      S(3) => \acc[10]_i_10_n_0\,
+      S(2) => \acc[10]_i_11_n_0\,
+      S(1 downto 0) => acc_reg(13 downto 12)
+    );
+\acc_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[10]_i_1_n_6\,
+      Q => acc_reg(11),
+      R => hdmi_n_1
+    );
+\acc_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[10]_i_1_n_5\,
+      Q => acc_reg(12),
+      R => hdmi_n_1
+    );
+\acc_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[10]_i_1_n_4\,
+      Q => acc_reg(13),
+      R => hdmi_n_1
+    );
+\acc_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[14]_i_1_n_7\,
+      Q => acc_reg(14),
+      R => hdmi_n_1
+    );
+\acc_reg[14]_i_1\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \acc_reg[10]_i_1_n_0\,
+      CO(3) => \acc_reg[14]_i_1_n_0\,
+      CO(2) => \acc_reg[14]_i_1_n_1\,
+      CO(1) => \acc_reg[14]_i_1_n_2\,
+      CO(0) => \acc_reg[14]_i_1_n_3\,
+      CYINIT => '0',
+      DI(3 downto 2) => B"00",
+      DI(1) => \acc[14]_i_2_n_0\,
+      DI(0) => '0',
+      O(3) => \acc_reg[14]_i_1_n_4\,
+      O(2) => \acc_reg[14]_i_1_n_5\,
+      O(1) => \acc_reg[14]_i_1_n_6\,
+      O(0) => \acc_reg[14]_i_1_n_7\,
+      S(3) => \acc[14]_i_3_n_0\,
+      S(2) => \acc[14]_i_4_n_0\,
+      S(1) => \acc[14]_i_5_n_0\,
+      S(0) => \acc[14]_i_6_n_0\
+    );
+\acc_reg[14]_i_7\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \acc_reg[10]_i_9_n_0\,
+      CO(3) => \acc_reg[14]_i_7_n_0\,
+      CO(2) => \acc_reg[14]_i_7_n_1\,
+      CO(1) => \acc_reg[14]_i_7_n_2\,
+      CO(0) => \acc_reg[14]_i_7_n_3\,
+      CYINIT => '0',
+      DI(3) => '0',
+      DI(2 downto 1) => acc_reg(18 downto 17),
+      DI(0) => '0',
+      O(3 downto 0) => data(19 downto 16),
+      S(3) => acc_reg(19),
+      S(2) => \acc[14]_i_8_n_0\,
+      S(1) => \acc[14]_i_9_n_0\,
+      S(0) => acc_reg(16)
+    );
+\acc_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[14]_i_1_n_6\,
+      Q => acc_reg(15),
+      R => hdmi_n_1
+    );
+\acc_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[14]_i_1_n_5\,
+      Q => acc_reg(16),
+      R => hdmi_n_1
+    );
+\acc_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[14]_i_1_n_4\,
+      Q => acc_reg(17),
+      R => hdmi_n_1
+    );
+\acc_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[18]_i_1_n_7\,
+      Q => acc_reg(18),
+      R => hdmi_n_1
+    );
+\acc_reg[18]_i_1\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \acc_reg[14]_i_1_n_0\,
+      CO(3) => \acc_reg[18]_i_1_n_0\,
+      CO(2) => \acc_reg[18]_i_1_n_1\,
+      CO(1) => \acc_reg[18]_i_1_n_2\,
+      CO(0) => \acc_reg[18]_i_1_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \acc_reg[18]_i_1_n_4\,
+      O(2) => \acc_reg[18]_i_1_n_5\,
+      O(1) => \acc_reg[18]_i_1_n_6\,
+      O(0) => \acc_reg[18]_i_1_n_7\,
+      S(3) => \acc[18]_i_2_n_0\,
+      S(2) => \acc[18]_i_3_n_0\,
+      S(1) => \acc[18]_i_4_n_0\,
+      S(0) => \acc[18]_i_5_n_0\
+    );
+\acc_reg[18]_i_6\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \acc_reg[14]_i_7_n_0\,
+      CO(3) => \acc_reg[18]_i_6_n_0\,
+      CO(2) => \acc_reg[18]_i_6_n_1\,
+      CO(1) => \acc_reg[18]_i_6_n_2\,
+      CO(0) => \acc_reg[18]_i_6_n_3\,
+      CYINIT => '0',
+      DI(3 downto 2) => B"00",
+      DI(1) => acc_reg(21),
+      DI(0) => '0',
+      O(3 downto 0) => data(23 downto 20),
+      S(3 downto 2) => acc_reg(23 downto 22),
+      S(1) => \acc[18]_i_7_n_0\,
+      S(0) => acc_reg(20)
+    );
+\acc_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[18]_i_1_n_6\,
+      Q => acc_reg(19),
+      R => hdmi_n_1
+    );
+\acc_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[18]_i_1_n_5\,
+      Q => acc_reg(20),
+      R => hdmi_n_1
+    );
+\acc_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[18]_i_1_n_4\,
+      Q => acc_reg(21),
+      R => hdmi_n_1
+    );
+\acc_reg[22]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[22]_i_1_n_7\,
+      Q => acc_reg(22),
+      R => hdmi_n_1
+    );
+\acc_reg[22]_i_1\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \acc_reg[18]_i_1_n_0\,
+      CO(3) => \acc_reg[22]_i_1_n_0\,
+      CO(2) => \acc_reg[22]_i_1_n_1\,
+      CO(1) => \acc_reg[22]_i_1_n_2\,
+      CO(0) => \acc_reg[22]_i_1_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \acc_reg[22]_i_1_n_4\,
+      O(2) => \acc_reg[22]_i_1_n_5\,
+      O(1) => \acc_reg[22]_i_1_n_6\,
+      O(0) => \acc_reg[22]_i_1_n_7\,
+      S(3) => \acc[22]_i_2_n_0\,
+      S(2) => \acc[22]_i_3_n_0\,
+      S(1) => \acc[22]_i_4_n_0\,
+      S(0) => \acc[22]_i_5_n_0\
+    );
+\acc_reg[22]_i_6\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \acc_reg[18]_i_6_n_0\,
+      CO(3) => \acc_reg[22]_i_6_n_0\,
+      CO(2) => \acc_reg[22]_i_6_n_1\,
+      CO(1) => \acc_reg[22]_i_6_n_2\,
+      CO(0) => \acc_reg[22]_i_6_n_3\,
+      CYINIT => '0',
+      DI(3) => '0',
+      DI(2 downto 0) => acc_reg(26 downto 24),
+      O(3 downto 0) => data(27 downto 24),
+      S(3) => acc_reg(27),
+      S(2) => \acc[22]_i_7_n_0\,
+      S(1) => \acc[22]_i_8_n_0\,
+      S(0) => \acc[22]_i_9_n_0\
+    );
+\acc_reg[23]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[22]_i_1_n_6\,
+      Q => acc_reg(23),
+      R => hdmi_n_1
+    );
+\acc_reg[24]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[22]_i_1_n_5\,
+      Q => acc_reg(24),
+      R => hdmi_n_1
+    );
+\acc_reg[25]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[22]_i_1_n_4\,
+      Q => acc_reg(25),
+      R => hdmi_n_1
+    );
+\acc_reg[26]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[26]_i_1_n_7\,
+      Q => acc_reg(26),
+      R => hdmi_n_1
+    );
+\acc_reg[26]_i_1\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \acc_reg[22]_i_1_n_0\,
+      CO(3) => \acc_reg[26]_i_1_n_0\,
+      CO(2) => \acc_reg[26]_i_1_n_1\,
+      CO(1) => \acc_reg[26]_i_1_n_2\,
+      CO(0) => \acc_reg[26]_i_1_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \acc_reg[26]_i_1_n_4\,
+      O(2) => \acc_reg[26]_i_1_n_5\,
+      O(1) => \acc_reg[26]_i_1_n_6\,
+      O(0) => \acc_reg[26]_i_1_n_7\,
+      S(3) => \acc[26]_i_2_n_0\,
+      S(2) => \acc[26]_i_3_n_0\,
+      S(1) => \acc[26]_i_4_n_0\,
+      S(0) => \acc[26]_i_5_n_0\
+    );
+\acc_reg[26]_i_6\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \acc_reg[22]_i_6_n_0\,
+      CO(3) => \NLW_acc_reg[26]_i_6_CO_UNCONNECTED\(3),
+      CO(2) => \acc_reg[26]_i_6_n_1\,
+      CO(1) => \acc_reg[26]_i_6_n_2\,
+      CO(0) => \acc_reg[26]_i_6_n_3\,
+      CYINIT => '0',
+      DI(3) => '0',
+      DI(2 downto 0) => acc_reg(30 downto 28),
+      O(3 downto 0) => data(31 downto 28),
+      S(3) => \acc[26]_i_7_n_0\,
+      S(2) => \acc[26]_i_8_n_0\,
+      S(1) => \acc[26]_i_9_n_0\,
+      S(0) => \acc[26]_i_10_n_0\
+    );
+\acc_reg[27]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[26]_i_1_n_6\,
+      Q => acc_reg(27),
+      R => hdmi_n_1
+    );
+\acc_reg[28]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[26]_i_1_n_5\,
+      Q => acc_reg(28),
+      R => hdmi_n_1
+    );
+\acc_reg[29]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[26]_i_1_n_4\,
+      Q => acc_reg(29),
+      R => hdmi_n_1
+    );
+\acc_reg[30]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[30]_i_1_n_7\,
+      Q => acc_reg(30),
+      R => hdmi_n_1
+    );
+\acc_reg[30]_i_1\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \acc_reg[26]_i_1_n_0\,
+      CO(3 downto 1) => \NLW_acc_reg[30]_i_1_CO_UNCONNECTED\(3 downto 1),
+      CO(0) => \acc_reg[30]_i_1_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3 downto 2) => \NLW_acc_reg[30]_i_1_O_UNCONNECTED\(3 downto 2),
+      O(1) => \acc_reg[30]_i_1_n_6\,
+      O(0) => \acc_reg[30]_i_1_n_7\,
+      S(3 downto 2) => B"00",
+      S(1) => \acc[30]_i_2_n_0\,
+      S(0) => \acc[30]_i_3_n_0\
+    );
+\acc_reg[31]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[30]_i_1_n_6\,
+      Q => acc_reg(31),
+      R => hdmi_n_1
+    );
+\acc_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc[5]_i_1_n_0\,
+      Q => acc_reg(5),
+      R => hdmi_n_1
+    );
+\acc_reg[5]_i_2\: unisim.vcomponents.CARRY4
+     port map (
+      CI => '0',
+      CO(3) => \acc_reg[5]_i_2_n_0\,
+      CO(2) => \acc_reg[5]_i_2_n_1\,
+      CO(1) => \acc_reg[5]_i_2_n_2\,
+      CO(0) => \acc_reg[5]_i_2_n_3\,
+      CYINIT => '0',
+      DI(3) => '0',
+      DI(2 downto 1) => acc_reg(6 downto 5),
+      DI(0) => '0',
+      O(3 downto 1) => data(7 downto 5),
+      O(0) => \NLW_acc_reg[5]_i_2_O_UNCONNECTED\(0),
+      S(3) => acc_reg(7),
+      S(2) => \acc[5]_i_3_n_0\,
+      S(1) => \acc[5]_i_4_n_0\,
+      S(0) => '0'
+    );
+\acc_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[6]_i_1_n_7\,
+      Q => acc_reg(6),
+      R => hdmi_n_1
+    );
+\acc_reg[6]_i_1\: unisim.vcomponents.CARRY4
+     port map (
+      CI => '0',
+      CO(3) => \acc_reg[6]_i_1_n_0\,
+      CO(2) => \acc_reg[6]_i_1_n_1\,
+      CO(1) => \acc_reg[6]_i_1_n_2\,
+      CO(0) => \acc_reg[6]_i_1_n_3\,
+      CYINIT => '0',
+      DI(3) => \acc[6]_i_2_n_0\,
+      DI(2) => \acc[6]_i_3_n_0\,
+      DI(1) => \acc[6]_i_4_n_0\,
+      DI(0) => '0',
+      O(3) => \acc_reg[6]_i_1_n_4\,
+      O(2) => \acc_reg[6]_i_1_n_5\,
+      O(1) => \acc_reg[6]_i_1_n_6\,
+      O(0) => \acc_reg[6]_i_1_n_7\,
+      S(3) => \acc[6]_i_5_n_0\,
+      S(2) => \acc[6]_i_6_n_0\,
+      S(1) => \acc[6]_i_7_n_0\,
+      S(0) => \acc[6]_i_8_n_0\
+    );
+\acc_reg[6]_i_9\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \acc_reg[5]_i_2_n_0\,
+      CO(3) => \acc_reg[6]_i_9_n_0\,
+      CO(2) => \acc_reg[6]_i_9_n_1\,
+      CO(1) => \acc_reg[6]_i_9_n_2\,
+      CO(0) => \acc_reg[6]_i_9_n_3\,
+      CYINIT => '0',
+      DI(3 downto 2) => acc_reg(11 downto 10),
+      DI(1) => '0',
+      DI(0) => acc_reg(8),
+      O(3 downto 0) => data(11 downto 8),
+      S(3) => \acc[6]_i_10_n_0\,
+      S(2) => \acc[6]_i_11_n_0\,
+      S(1) => acc_reg(9),
+      S(0) => \acc[6]_i_12_n_0\
+    );
+\acc_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[6]_i_1_n_6\,
+      Q => acc_reg(7),
+      R => hdmi_n_1
+    );
+\acc_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[6]_i_1_n_5\,
+      Q => acc_reg(8),
+      R => hdmi_n_1
+    );
+\acc_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_pixel,
+      CE => '1',
+      D => \acc_reg[6]_i_1_n_4\,
+      Q => acc_reg(9),
+      R => hdmi_n_1
+    );
+\audio_sample_l[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8880"
+    )
+        port map (
+      I0 => sampling_clk_reg(11),
+      I1 => sampling_clk_reg(10),
+      I2 => \audio_sample_l[15]_i_2_n_0\,
+      I3 => \audio_sample_l[15]_i_3_n_0\,
       O => \audio_sample_l[15]_i_1_n_0\
     );
 \audio_sample_l[15]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFEEEEEAAAAAAAA"
+      INIT => X"FFFEEEEEEEEEEEEE"
+    )
+        port map (
+      I0 => sampling_clk_reg(6),
+      I1 => sampling_clk_reg(5),
+      I2 => sampling_clk_reg(1),
+      I3 => sampling_clk_reg(0),
+      I4 => sampling_clk_reg(4),
+      I5 => sampling_clk_reg(2),
+      O => \audio_sample_l[15]_i_2_n_0\
+    );
+\audio_sample_l[15]_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFFFEA"
     )
         port map (
       I0 => sampling_clk_reg(9),
-      I1 => sampling_clk_reg(3),
-      I2 => sampling_clk_reg(1),
-      I3 => sampling_clk_reg(0),
-      I4 => sampling_clk_reg(2),
-      I5 => sampling_clk_reg(4),
-      O => \audio_sample_l[15]_i_2_n_0\
-    );
-\audio_sample_l[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => sampling_clk_reg(7),
-      I1 => sampling_clk_reg(8),
+      I1 => sampling_clk_reg(4),
+      I2 => sampling_clk_reg(3),
+      I3 => sampling_clk_reg(8),
+      I4 => sampling_clk_reg(7),
       O => \audio_sample_l[15]_i_3_n_0\
     );
 \audio_sample_l_reg[0]\: unisim.vcomponents.FDRE
@@ -17478,16 +18719,19 @@ OBUFDS_inst3: unisim.vcomponents.OBUFDS
 hdmi: entity work.fm_hdmi_hdmi_tmds_audio_0_0_hdmi
      port map (
       Q(15 downto 0) => audio_sample_l(15 downto 0),
+      SR(0) => hdmi_n_1,
+      acc_reg(26 downto 0) => acc_reg(31 downto 5),
       \audio_sample_word_transfer_reg[0][15]\(15 downto 0) => audio_sample_r(15 downto 0),
       clk_pixel => clk_pixel,
       clk_pixel_x5 => clk_pixel_x5,
-      \cx_reg[4]_0\ => hdmi_n_2,
-      \cy_reg[3]_0\ => hdmi_n_1,
+      \cx_reg[4]_0\ => hdmi_n_4,
+      \cy_reg[3]_0\ => hdmi_n_3,
       rgb(2) => rgb(23),
       rgb(1) => rgb(15),
       rgb(0) => rgb(7),
-      \rgb_reg[7]_i_3_0\ => hdmi_n_0,
+      \rgb_reg[7]_i_3_0\ => hdmi_n_2,
       sys_nrst => sys_nrst,
+      tick48k => tick48k,
       tmds(2 downto 0) => tmds_d(2 downto 0),
       tmds_clock => tmds_ck
     );
@@ -17498,7 +18742,7 @@ hdmi: entity work.fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         port map (
       C => clk_pixel,
       CE => '1',
-      D => hdmi_n_1,
+      D => hdmi_n_3,
       Q => rgb(15),
       R => '0'
     );
@@ -17509,7 +18753,7 @@ hdmi: entity work.fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         port map (
       C => clk_pixel,
       CE => '1',
-      D => hdmi_n_2,
+      D => hdmi_n_4,
       Q => rgb(23),
       R => '0'
     );
@@ -17520,7 +18764,7 @@ hdmi: entity work.fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         port map (
       C => clk_pixel,
       CE => '1',
-      D => hdmi_n_0,
+      D => hdmi_n_2,
       Q => rgb(7),
       R => '0'
     );

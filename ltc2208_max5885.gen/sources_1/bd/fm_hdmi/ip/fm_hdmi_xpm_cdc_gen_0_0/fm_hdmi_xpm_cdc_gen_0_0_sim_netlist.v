@@ -4,8 +4,8 @@
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
 // Date        : Fri Feb 20 16:50:48 2026
 // Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_xpm_cdc_gen_0_0/fm_hdmi_xpm_cdc_gen_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top fm_hdmi_xpm_cdc_gen_0_0 -prefix
+//               fm_hdmi_xpm_cdc_gen_0_0_ fm_hdmi_xpm_cdc_gen_0_0_sim_netlist.v
 // Design      : fm_hdmi_xpm_cdc_gen_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -72,10 +72,9 @@ module fm_hdmi_xpm_cdc_gen_0_0
         .src_send(1'b1));
 endmodule
 
-(* DEST_SYNC_FF = "4" *) (* INIT_SYNC_FF = "0" *) (* ORIG_REF_NAME = "xpm_cdc_array_single" *) 
-(* SIM_ASSERT_CHK = "0" *) (* SRC_INPUT_REG = "1" *) (* VERSION = "0" *) 
-(* WIDTH = "16" *) (* XPM_MODULE = "TRUE" *) (* keep_hierarchy = "true" *) 
-(* xpm_cdc = "ARRAY_SINGLE" *) 
+(* DEST_SYNC_FF = "4" *) (* INIT_SYNC_FF = "0" *) (* SIM_ASSERT_CHK = "0" *) 
+(* SRC_INPUT_REG = "1" *) (* VERSION = "0" *) (* WIDTH = "16" *) 
+(* XPM_MODULE = "TRUE" *) (* keep_hierarchy = "true" *) (* xpm_cdc = "ARRAY_SINGLE" *) 
 module fm_hdmi_xpm_cdc_gen_0_0_xpm_cdc_array_single
    (src_clk,
     src_in,
@@ -772,10 +771,10 @@ endmodule
 
 (* C_CDC_TYPE = "1" *) (* DEST_CLK_PERIOD = "2500" *) (* DEST_EXT_HSK = "1" *) 
 (* DEST_SYNC_FF = "4" *) (* INIT = "1" *) (* INIT_SYNC_FF = "0" *) 
-(* ORIG_REF_NAME = "xpm_cdc_gen_v1_0_3" *) (* REG_OUTPUT = "0" *) (* RST_ACTIVE_HIGH = "0" *) 
-(* RST_USED = "1" *) (* SIM_ASSERT_CHK = "0" *) (* SIM_LOSSLESS_GRAY_CHK = "0" *) 
-(* SRC_CLK_PERIOD = "5000" *) (* SRC_INPUT_REG = "1" *) (* SRC_SYNC_FF = "4" *) 
-(* VERSION = "0" *) (* WIDTH = "16" *) 
+(* REG_OUTPUT = "0" *) (* RST_ACTIVE_HIGH = "0" *) (* RST_USED = "1" *) 
+(* SIM_ASSERT_CHK = "0" *) (* SIM_LOSSLESS_GRAY_CHK = "0" *) (* SRC_CLK_PERIOD = "5000" *) 
+(* SRC_INPUT_REG = "1" *) (* SRC_SYNC_FF = "4" *) (* VERSION = "0" *) 
+(* WIDTH = "16" *) 
 module fm_hdmi_xpm_cdc_gen_0_0_xpm_cdc_gen_v1_0_3
    (src_clk,
     dest_clk,

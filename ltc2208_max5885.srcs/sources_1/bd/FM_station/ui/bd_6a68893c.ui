@@ -23,10 +23,10 @@ preplace inst cordic_0 -pg 1 -lvl 7 -x 1850 -y 310 -defaultsOSRD
 preplace inst axis_iq_packer_16_0 -pg 1 -lvl 6 -x 1560 -y 290 -defaultsOSRD
 preplace inst fm_demod_from_cordic_0 -pg 1 -lvl 8 -x 2140 -y 330 -defaultsOSRD
 preplace inst fir_compiler_2 -pg 1 -lvl 9 -x 2410 -y 350 -defaultsOSRD
-preplace netloc aclk_0_1 1 0 9 30 420 300 320 590 320 850 160 1150 340 1430 380 1690 390 2010 420 2270
+preplace netloc aclk_0_1 1 0 9 30 420 310 320 590 320 860 160 1160 340 1430 380 1700 390 2010 420 2270
 preplace netloc adc_dai_0_1 1 0 1 NJ 100
 preplace netloc en_0_1 1 0 1 NJ 240
-preplace netloc sys_rst_n_0_1 1 0 9 20 430 310 330 600 330 860 170 1140 350 1440 390 1680 400 2020 410 2260
+preplace netloc sys_rst_n_0_1 1 0 9 20 430 320 330 600 330 870 170 1150 350 1440 390 1690 400 2020 410 2260
 preplace netloc LTC_2208_0_m_axis 1 1 1 290 80n
 preplace netloc axis_iq_packer_16_0_m_axis 1 6 1 N 290
 preplace netloc axis_iq_slicer_to_2c_0_m_axis_i 1 3 1 N 230
@@ -36,7 +36,7 @@ preplace netloc cic_compiler_1_M_AXIS_DATA 1 4 1 N 70
 preplace netloc cmpy_0_M_AXIS_DOUT 1 2 1 N 220
 preplace netloc cordic_0_M_AXIS_DOUT 1 7 1 N 310
 preplace netloc dds_compiler_0_M_AXIS_DATA 1 1 1 290 200n
-preplace netloc fir_compiler_0_M_AXIS_DATA 1 5 1 1430 90n
+preplace netloc fir_compiler_0_M_AXIS_DATA 1 5 1 1420 90n
 preplace netloc fir_compiler_1_M_AXIS_DATA 1 5 1 N 260
 preplace netloc fir_compiler_2_M_AXIS_DATA 1 9 1 N 350
 preplace netloc fm_demod_from_cordic_0_m_axis 1 8 1 N 330

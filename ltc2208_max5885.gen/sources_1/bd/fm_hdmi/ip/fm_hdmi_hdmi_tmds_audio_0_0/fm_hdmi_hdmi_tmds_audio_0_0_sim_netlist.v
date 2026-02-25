@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Fri Feb 20 16:42:21 2026
+// Date        : Tue Feb 24 17:40:15 2026
 // Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
 // Command     : write_verilog -force -mode funcsim
-//               /home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_hdmi_tmds_audio_0_0/fm_hdmi_hdmi_tmds_audio_0_0_sim_netlist.v
+//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_hdmi_tmds_audio_0_0/fm_hdmi_hdmi_tmds_audio_0_0_sim_netlist.v
 // Design      : fm_hdmi_hdmi_tmds_audio_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -61,6 +61,7 @@ endmodule
 (* ORIG_REF_NAME = "audio_clock_regeneration_packet" *) 
 module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
    (E,
+    acc_reg_21_sp_1,
     last_clk_audio_counter_wrap_reg,
     source_product_description_info_frame_sent_reg,
     sample_buffer_ready_reg,
@@ -96,6 +97,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
     \parity[0][6]_i_2_0 ,
     \packet_type_reg[1]_1 ,
     \packet_type_reg[2]_1 ,
+    acc_reg,
     \true_hdmi_output.data_island_data[8]_i_7_0 ,
     \true_hdmi_output.data_island_data[8]_i_7_1 ,
     \parity[0][6]_i_8_0 ,
@@ -137,6 +139,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
     packet_type,
     \packet_type_reg[0]_0 );
   output [0:0]E;
+  output acc_reg_21_sp_1;
   output last_clk_audio_counter_wrap_reg;
   output source_product_description_info_frame_sent_reg;
   output sample_buffer_ready_reg;
@@ -172,6 +175,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
   input [2:0]\parity[0][6]_i_2_0 ;
   input \packet_type_reg[1]_1 ;
   input \packet_type_reg[2]_1 ;
+  input [26:0]acc_reg;
   input \true_hdmi_output.data_island_data[8]_i_7_0 ;
   input \true_hdmi_output.data_island_data[8]_i_7_1 ;
   input \parity[0][6]_i_8_0 ;
@@ -215,12 +219,25 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
 
   wire [0:0]E;
   wire [10:0]Q;
+  wire [26:0]acc_reg;
+  wire acc_reg_21_sn_1;
   wire audio_info_frame_sent;
   wire audio_info_frame_sent_reg;
   wire auxiliary_video_information_info_frame_sent;
   wire [5:0]clk_audio_counter;
+  wire \clk_audio_counter[0]_i_1_n_0 ;
+  wire \clk_audio_counter[1]_i_1_n_0 ;
   wire \clk_audio_counter[2]_i_1_n_0 ;
+  wire \clk_audio_counter[3]_i_1_n_0 ;
+  wire \clk_audio_counter[4]_i_1_n_0 ;
+  wire \clk_audio_counter[5]_i_10_n_0 ;
   wire \clk_audio_counter[5]_i_1_n_0 ;
+  wire \clk_audio_counter[5]_i_4_n_0 ;
+  wire \clk_audio_counter[5]_i_5_n_0 ;
+  wire \clk_audio_counter[5]_i_6_n_0 ;
+  wire \clk_audio_counter[5]_i_7_n_0 ;
+  wire \clk_audio_counter[5]_i_8_n_0 ;
+  wire \clk_audio_counter[5]_i_9_n_0 ;
   wire clk_audio_counter_wrap;
   wire clk_audio_counter_wrap_i_1_n_0;
   wire clk_audio_counter_wrap_i_2_n_0;
@@ -308,11 +325,12 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
   wire \cycle_time_stamp_reg[8]_i_1_n_5 ;
   wire \cycle_time_stamp_reg[8]_i_1_n_6 ;
   wire \cycle_time_stamp_reg[8]_i_1_n_7 ;
+  wire [5:5]data0;
   wire internal_clk_audio_counter_wrap;
   wire internal_clk_audio_counter_wrap_i_1_n_0;
+  wire internal_clk_audio_counter_wrap_i_2_n_0;
   wire last_clk_audio_counter_wrap_reg;
   wire p_1_in;
-  wire [5:0]p_1_in__0;
   wire [1:0]packet_type;
   wire \packet_type[7]_i_3_n_0 ;
   wire \packet_type_reg[0] ;
@@ -446,6 +464,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
   wire [3:0]\NLW_cycle_time_stamp_reg[17]_i_1_CO_UNCONNECTED ;
   wire [3:1]\NLW_cycle_time_stamp_reg[17]_i_1_O_UNCONNECTED ;
 
+  assign acc_reg_21_sp_1 = acc_reg_21_sn_1;
   LUT6 #(
     .INIT(64'h00000000BAAAAABA)) 
     audio_info_frame_sent_i_1
@@ -476,111 +495,186 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
         .I4(audio_info_frame_sent),
         .I5(\packet_type_reg[2]_0 ),
         .O(sample_buffer_ready_reg));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \clk_audio_counter[0]_i_1 
-       (.I0(clk_audio_counter[0]),
-        .O(p_1_in__0[0]));
   (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT2 #(
-    .INIT(4'h6)) 
-    \clk_audio_counter[1]_i_1 
-       (.I0(clk_audio_counter[0]),
-        .I1(clk_audio_counter[1]),
-        .O(p_1_in__0[1]));
+    .INIT(4'h2)) 
+    \clk_audio_counter[0]_i_1 
+       (.I0(\clk_audio_counter[5]_i_4_n_0 ),
+        .I1(clk_audio_counter[0]),
+        .O(\clk_audio_counter[0]_i_1_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT3 #(
-    .INIT(8'h78)) 
-    \clk_audio_counter[2]_i_1 
-       (.I0(clk_audio_counter[1]),
-        .I1(clk_audio_counter[0]),
-        .I2(clk_audio_counter[2]),
-        .O(\clk_audio_counter[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
-  LUT4 #(
-    .INIT(16'h7F80)) 
-    \clk_audio_counter[3]_i_1 
-       (.I0(clk_audio_counter[1]),
-        .I1(clk_audio_counter[0]),
-        .I2(clk_audio_counter[2]),
-        .I3(clk_audio_counter[3]),
-        .O(p_1_in__0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
-  LUT5 #(
-    .INIT(32'h7FFF8000)) 
-    \clk_audio_counter[4]_i_1 
-       (.I0(clk_audio_counter[2]),
+    .INIT(8'h28)) 
+    \clk_audio_counter[1]_i_1 
+       (.I0(\clk_audio_counter[5]_i_4_n_0 ),
         .I1(clk_audio_counter[0]),
         .I2(clk_audio_counter[1]),
-        .I3(clk_audio_counter[3]),
-        .I4(clk_audio_counter[4]),
-        .O(p_1_in__0[4]));
-  LUT6 #(
-    .INIT(64'h4000000000000000)) 
-    \clk_audio_counter[5]_i_1 
-       (.I0(clk_audio_counter[4]),
-        .I1(clk_audio_counter[3]),
-        .I2(clk_audio_counter[5]),
+        .O(\clk_audio_counter[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  LUT4 #(
+    .INIT(16'h2A80)) 
+    \clk_audio_counter[2]_i_1 
+       (.I0(\clk_audio_counter[5]_i_4_n_0 ),
+        .I1(clk_audio_counter[1]),
+        .I2(clk_audio_counter[0]),
         .I3(clk_audio_counter[2]),
-        .I4(clk_audio_counter[0]),
-        .I5(clk_audio_counter[1]),
+        .O(\clk_audio_counter[2]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  LUT5 #(
+    .INIT(32'h2AAA8000)) 
+    \clk_audio_counter[3]_i_1 
+       (.I0(\clk_audio_counter[5]_i_4_n_0 ),
+        .I1(clk_audio_counter[1]),
+        .I2(clk_audio_counter[0]),
+        .I3(clk_audio_counter[2]),
+        .I4(clk_audio_counter[3]),
+        .O(\clk_audio_counter[3]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h2AAAAAAA80000000)) 
+    \clk_audio_counter[4]_i_1 
+       (.I0(\clk_audio_counter[5]_i_4_n_0 ),
+        .I1(clk_audio_counter[2]),
+        .I2(clk_audio_counter[0]),
+        .I3(clk_audio_counter[1]),
+        .I4(clk_audio_counter[3]),
+        .I5(clk_audio_counter[4]),
+        .O(\clk_audio_counter[4]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \clk_audio_counter[5]_i_1 
+       (.I0(acc_reg_21_sn_1),
+        .I1(\clk_audio_counter[5]_i_4_n_0 ),
         .O(\clk_audio_counter[5]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h8880)) 
+    \clk_audio_counter[5]_i_10 
+       (.I0(acc_reg[2]),
+        .I1(acc_reg[4]),
+        .I2(acc_reg[0]),
+        .I3(acc_reg[1]),
+        .O(\clk_audio_counter[5]_i_10_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFEEEA)) 
+    \clk_audio_counter[5]_i_2 
+       (.I0(\clk_audio_counter[5]_i_5_n_0 ),
+        .I1(\clk_audio_counter[5]_i_6_n_0 ),
+        .I2(acc_reg[16]),
+        .I3(\clk_audio_counter[5]_i_7_n_0 ),
+        .I4(acc_reg[23]),
+        .I5(acc_reg[26]),
+        .O(acc_reg_21_sn_1));
   LUT6 #(
     .INIT(64'h7FFFFFFF80000000)) 
-    \clk_audio_counter[5]_i_2 
+    \clk_audio_counter[5]_i_3 
        (.I0(clk_audio_counter[3]),
         .I1(clk_audio_counter[1]),
         .I2(clk_audio_counter[0]),
         .I3(clk_audio_counter[2]),
         .I4(clk_audio_counter[4]),
         .I5(clk_audio_counter[5]),
-        .O(p_1_in__0[5]));
+        .O(data0));
+  LUT6 #(
+    .INIT(64'hF7FFFFFFFFFFFFFF)) 
+    \clk_audio_counter[5]_i_4 
+       (.I0(clk_audio_counter[5]),
+        .I1(clk_audio_counter[0]),
+        .I2(clk_audio_counter[4]),
+        .I3(clk_audio_counter[1]),
+        .I4(clk_audio_counter[3]),
+        .I5(clk_audio_counter[2]),
+        .O(\clk_audio_counter[5]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFCFFFCFFFCFEFC)) 
+    \clk_audio_counter[5]_i_5 
+       (.I0(acc_reg[21]),
+        .I1(acc_reg[24]),
+        .I2(acc_reg[25]),
+        .I3(acc_reg[22]),
+        .I4(acc_reg[20]),
+        .I5(acc_reg[19]),
+        .O(\clk_audio_counter[5]_i_5_n_0 ));
+  LUT3 #(
+    .INIT(8'h80)) 
+    \clk_audio_counter[5]_i_6 
+       (.I0(acc_reg[18]),
+        .I1(acc_reg[17]),
+        .I2(acc_reg[22]),
+        .O(\clk_audio_counter[5]_i_6_n_0 ));
+  LUT6 #(
+    .INIT(64'h8888888888800000)) 
+    \clk_audio_counter[5]_i_7 
+       (.I0(acc_reg[15]),
+        .I1(acc_reg[14]),
+        .I2(acc_reg[9]),
+        .I3(acc_reg[10]),
+        .I4(acc_reg[11]),
+        .I5(\clk_audio_counter[5]_i_8_n_0 ),
+        .O(\clk_audio_counter[5]_i_7_n_0 ));
+  LUT6 #(
+    .INIT(64'hFEEEEEEEEEEEEEEE)) 
+    \clk_audio_counter[5]_i_8 
+       (.I0(acc_reg[13]),
+        .I1(acc_reg[12]),
+        .I2(\clk_audio_counter[5]_i_9_n_0 ),
+        .I3(acc_reg[8]),
+        .I4(acc_reg[7]),
+        .I5(acc_reg[11]),
+        .O(\clk_audio_counter[5]_i_8_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFFFFF8)) 
+    \clk_audio_counter[5]_i_9 
+       (.I0(acc_reg[4]),
+        .I1(acc_reg[3]),
+        .I2(acc_reg[5]),
+        .I3(acc_reg[6]),
+        .I4(\clk_audio_counter[5]_i_10_n_0 ),
+        .O(\clk_audio_counter[5]_i_9_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \clk_audio_counter_reg[0] 
        (.C(clk_pixel),
-        .CE(1'b1),
-        .D(p_1_in__0[0]),
+        .CE(acc_reg_21_sn_1),
+        .D(\clk_audio_counter[0]_i_1_n_0 ),
         .Q(clk_audio_counter[0]),
-        .R(\clk_audio_counter[5]_i_1_n_0 ));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \clk_audio_counter_reg[1] 
        (.C(clk_pixel),
-        .CE(1'b1),
-        .D(p_1_in__0[1]),
+        .CE(acc_reg_21_sn_1),
+        .D(\clk_audio_counter[1]_i_1_n_0 ),
         .Q(clk_audio_counter[1]),
-        .R(\clk_audio_counter[5]_i_1_n_0 ));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \clk_audio_counter_reg[2] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(acc_reg_21_sn_1),
         .D(\clk_audio_counter[2]_i_1_n_0 ),
         .Q(clk_audio_counter[2]),
-        .R(\clk_audio_counter[5]_i_1_n_0 ));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \clk_audio_counter_reg[3] 
        (.C(clk_pixel),
-        .CE(1'b1),
-        .D(p_1_in__0[3]),
+        .CE(acc_reg_21_sn_1),
+        .D(\clk_audio_counter[3]_i_1_n_0 ),
         .Q(clk_audio_counter[3]),
-        .R(\clk_audio_counter[5]_i_1_n_0 ));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \clk_audio_counter_reg[4] 
        (.C(clk_pixel),
-        .CE(1'b1),
-        .D(p_1_in__0[4]),
+        .CE(acc_reg_21_sn_1),
+        .D(\clk_audio_counter[4]_i_1_n_0 ),
         .Q(clk_audio_counter[4]),
-        .R(\clk_audio_counter[5]_i_1_n_0 ));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \clk_audio_counter_reg[5] 
        (.C(clk_pixel),
-        .CE(1'b1),
-        .D(p_1_in__0[5]),
+        .CE(acc_reg_21_sn_1),
+        .D(data0),
         .Q(clk_audio_counter[5]),
         .R(\clk_audio_counter[5]_i_1_n_0 ));
   LUT2 #(
@@ -997,12 +1091,23 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
         .D(\cycle_time_stamp_reg[12]_i_1_n_7 ),
         .Q(\subs[1][3]_6 [17]),
         .R(1'b0));
-  LUT2 #(
-    .INIT(4'h6)) 
+  LUT6 #(
+    .INIT(64'hFFBFFFFF00400000)) 
     internal_clk_audio_counter_wrap_i_1
-       (.I0(\clk_audio_counter[5]_i_1_n_0 ),
-        .I1(internal_clk_audio_counter_wrap),
+       (.I0(clk_audio_counter[4]),
+        .I1(clk_audio_counter[3]),
+        .I2(clk_audio_counter[5]),
+        .I3(internal_clk_audio_counter_wrap_i_2_n_0),
+        .I4(acc_reg_21_sn_1),
+        .I5(internal_clk_audio_counter_wrap),
         .O(internal_clk_audio_counter_wrap_i_1_n_0));
+  LUT3 #(
+    .INIT(8'h7F)) 
+    internal_clk_audio_counter_wrap_i_2
+       (.I0(clk_audio_counter[1]),
+        .I1(clk_audio_counter[0]),
+        .I2(clk_audio_counter[2]),
+        .O(internal_clk_audio_counter_wrap_i_2_n_0));
   FDRE #(
     .INIT(1'b0)) 
     internal_clk_audio_counter_wrap_reg
@@ -1135,7 +1240,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
         .I4(\true_hdmi_output.data_island_data[8]_i_5_0 ),
         .I5(\subs[1][3]_6 [28]),
         .O(\parity[0][6]_i_23_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT5 #(
     .INIT(32'h88B88888)) 
     \parity[0][6]_i_24 
@@ -1253,7 +1358,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
         .I4(\parity[1][6]_i_7_n_0 ),
         .I5(\true_hdmi_output.data_island_data_reg[5] ),
         .O(\counter_reg[3]_3 ));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT4 #(
     .INIT(16'h0020)) 
     \parity[1][6]_i_20 
@@ -1262,7 +1367,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
         .I2(\true_hdmi_output.data_island_data[6]_i_8_0 ),
         .I3(\packet_type_reg[7]_0 ),
         .O(\parity[1][6]_i_20_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT5 #(
     .INIT(32'h88B88888)) 
     \parity[1][6]_i_21 
@@ -1739,7 +1844,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
         .I3(\subs[1][3]_6 [18]),
         .I4(\packet_type_reg[7]_0 ),
         .O(\true_hdmi_output.data_island_data[6]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT4 #(
     .INIT(16'h0020)) 
     \true_hdmi_output.data_island_data[6]_i_15 
@@ -2110,23 +2215,29 @@ endmodule
 
 (* ORIG_REF_NAME = "hdmi" *) 
 module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
-   (\rgb_reg[7]_i_3_0 ,
+   (tick48k,
+    SR,
+    \rgb_reg[7]_i_3_0 ,
     \cy_reg[3]_0 ,
     \cx_reg[4]_0 ,
     tmds,
     tmds_clock,
     sys_nrst,
+    acc_reg,
     clk_pixel,
     Q,
     \audio_sample_word_transfer_reg[0][15] ,
     clk_pixel_x5,
     rgb);
+  output tick48k;
+  output [0:0]SR;
   output \rgb_reg[7]_i_3_0 ;
   output \cy_reg[3]_0 ;
   output \cx_reg[4]_0 ;
   output [2:0]tmds;
   output tmds_clock;
   input sys_nrst;
+  input [26:0]acc_reg;
   input clk_pixel;
   input [15:0]Q;
   input [15:0]\audio_sample_word_transfer_reg[0][15] ;
@@ -2134,6 +2245,8 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
   input [2:0]rgb;
 
   wire [15:0]Q;
+  wire [0:0]SR;
+  wire [26:0]acc_reg;
   wire [15:0]\audio_sample_word_transfer_reg[0][15] ;
   wire [59:56]\bch[2]_18 ;
   wire [57:56]\bch[3]_19 ;
@@ -2221,6 +2334,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
   wire \rgb_reg[7]_i_3_n_2 ;
   wire \rgb_reg[7]_i_3_n_3 ;
   wire sys_nrst;
+  wire tick48k;
   wire [2:0]tmds;
   wire tmds_clock;
   wire \tmds_gen[2].tmds_channel_n_0 ;
@@ -2256,15 +2370,12 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
   wire \true_hdmi_output.packet_assembler_n_27 ;
   wire \true_hdmi_output.packet_assembler_n_28 ;
   wire [8:0]\true_hdmi_output.packet_data ;
-  wire \true_hdmi_output.packet_picker_n_0 ;
   wire \true_hdmi_output.packet_picker_n_1 ;
-  wire \true_hdmi_output.packet_picker_n_11 ;
   wire \true_hdmi_output.packet_picker_n_12 ;
   wire \true_hdmi_output.packet_picker_n_13 ;
   wire \true_hdmi_output.packet_picker_n_14 ;
   wire \true_hdmi_output.packet_picker_n_15 ;
-  wire \true_hdmi_output.packet_picker_n_19 ;
-  wire \true_hdmi_output.packet_picker_n_2 ;
+  wire \true_hdmi_output.packet_picker_n_16 ;
   wire \true_hdmi_output.packet_picker_n_20 ;
   wire \true_hdmi_output.packet_picker_n_21 ;
   wire \true_hdmi_output.packet_picker_n_22 ;
@@ -2284,12 +2395,14 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
   wire \true_hdmi_output.packet_picker_n_35 ;
   wire \true_hdmi_output.packet_picker_n_36 ;
   wire \true_hdmi_output.packet_picker_n_37 ;
-  wire \true_hdmi_output.packet_picker_n_39 ;
+  wire \true_hdmi_output.packet_picker_n_38 ;
   wire \true_hdmi_output.packet_picker_n_4 ;
+  wire \true_hdmi_output.packet_picker_n_40 ;
   wire \true_hdmi_output.packet_picker_n_5 ;
   wire \true_hdmi_output.packet_picker_n_6 ;
   wire \true_hdmi_output.packet_picker_n_7 ;
   wire \true_hdmi_output.packet_picker_n_8 ;
+  wire \true_hdmi_output.packet_picker_n_9 ;
   wire [4:0]\true_hdmi_output.packet_pixel_counter ;
   wire \true_hdmi_output.video_guard ;
   wire \true_hdmi_output.video_guard0 ;
@@ -2509,7 +2622,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
     \cy[10]_i_5 
        (.I0(cy[6]),
         .I1(cy[7]),
-        .I2(\true_hdmi_output.packet_picker_n_4 ),
+        .I2(\true_hdmi_output.packet_picker_n_6 ),
         .I3(cy[3]),
         .I4(cy[5]),
         .I5(cy[4]),
@@ -2553,7 +2666,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
     .INIT(32'h45551000)) 
     \cy[5]_i_1 
        (.I0(\true_hdmi_output.video_guard_i_2_n_0 ),
-        .I1(\true_hdmi_output.packet_picker_n_4 ),
+        .I1(\true_hdmi_output.packet_picker_n_6 ),
         .I2(cy[3]),
         .I3(cy[4]),
         .I4(cy[5]),
@@ -2562,7 +2675,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
     .INIT(64'h4555555510000000)) 
     \cy[6]_i_1 
        (.I0(\true_hdmi_output.video_guard_i_2_n_0 ),
-        .I1(\true_hdmi_output.packet_picker_n_4 ),
+        .I1(\true_hdmi_output.packet_picker_n_6 ),
         .I2(cy[3]),
         .I3(cy[5]),
         .I4(cy[4]),
@@ -2573,7 +2686,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
     \cy[7]_i_1 
        (.I0(cy[6]),
         .I1(cy[7]),
-        .I2(\true_hdmi_output.packet_picker_n_4 ),
+        .I2(\true_hdmi_output.packet_picker_n_6 ),
         .I3(cy[3]),
         .I4(cy[5]),
         .I5(cy[4]),
@@ -2614,7 +2727,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(cy0),
         .D(\cy[0]_i_1_n_0 ),
         .Q(cy[0]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \cy_reg[10] 
@@ -2622,7 +2735,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(cy0),
         .D(\cy[10]_i_2_n_0 ),
         .Q(cy[10]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \cy_reg[1] 
@@ -2630,7 +2743,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(cy0),
         .D(\cy[1]_i_1_n_0 ),
         .Q(cy[1]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \cy_reg[2] 
@@ -2638,7 +2751,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(cy0),
         .D(\cy[2]_i_1_n_0 ),
         .Q(cy[2]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \cy_reg[3] 
@@ -2646,7 +2759,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(cy0),
         .D(\cy[3]_i_1_n_0 ),
         .Q(cy[3]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \cy_reg[4] 
@@ -2654,7 +2767,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(cy0),
         .D(\cy[4]_i_1_n_0 ),
         .Q(cy[4]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \cy_reg[5] 
@@ -2662,7 +2775,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(cy0),
         .D(\cy[5]_i_1_n_0 ),
         .Q(cy[5]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \cy_reg[6] 
@@ -2670,7 +2783,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(cy0),
         .D(\cy[6]_i_1_n_0 ),
         .Q(cy[6]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \cy_reg[7] 
@@ -2678,7 +2791,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(cy0),
         .D(\cy[7]_i_1_n_0 ),
         .Q(cy[7]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \cy_reg[8] 
@@ -2686,7 +2799,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(cy0),
         .D(\cy[8]_i_1_n_0 ),
         .Q(cy[8]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \cy_reg[9] 
@@ -2694,7 +2807,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(cy0),
         .D(\cy[9]_i_1_n_0 ),
         .Q(cy[9]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   LUT6 #(
     .INIT(64'h0000000100000000)) 
     \rgb[15]_i_1 
@@ -2884,7 +2997,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
     \true_hdmi_output.control_data[1]_i_2 
        (.I0(cx[7]),
         .I1(cx[6]),
-        .I2(\true_hdmi_output.packet_picker_n_3 ),
+        .I2(\true_hdmi_output.packet_picker_n_5 ),
         .I3(cx[5]),
         .I4(cx[3]),
         .I5(cx[4]),
@@ -2902,7 +3015,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
   LUT6 #(
     .INIT(64'hABABABABAAFFAAAA)) 
     \true_hdmi_output.control_data[1]_i_4 
-       (.I0(\true_hdmi_output.packet_picker_n_2 ),
+       (.I0(\true_hdmi_output.packet_picker_n_4 ),
         .I1(cy[7]),
         .I2(cy[6]),
         .I3(\true_hdmi_output.control_data[1]_i_2_n_0 ),
@@ -2940,7 +3053,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(sys_nrst),
         .D(hsync),
         .Q(control_data[0]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.control_data_reg[1] 
@@ -2948,7 +3061,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(sys_nrst),
         .D(\true_hdmi_output.control_data[1]_i_1_n_0 ),
         .Q(control_data[1]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.control_data_reg[2] 
@@ -2956,7 +3069,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(sys_nrst),
         .D(p_0_out),
         .Q(control_data[2]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.control_data_reg[4] 
@@ -2964,7 +3077,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(sys_nrst),
         .D(\true_hdmi_output.data_island_preamble ),
         .Q(control_data[4]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFFFFFD)) 
     \true_hdmi_output.data_island_data[3]_i_1 
@@ -2982,7 +3095,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(hsync),
         .Q(data_island_data[0]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.data_island_data_reg[10] 
@@ -2990,7 +3103,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.packet_data [7]),
         .Q(data_island_data[10]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.data_island_data_reg[11] 
@@ -2998,7 +3111,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.packet_data [8]),
         .Q(data_island_data[11]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.data_island_data_reg[1] 
@@ -3006,7 +3119,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.control_data[1]_i_1_n_0 ),
         .Q(data_island_data[1]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.data_island_data_reg[2] 
@@ -3014,7 +3127,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.packet_data [0]),
         .Q(data_island_data[2]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.data_island_data_reg[3] 
@@ -3022,7 +3135,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(data_island_data0),
         .Q(data_island_data[3]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.data_island_data_reg[4] 
@@ -3030,7 +3143,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.packet_data [1]),
         .Q(data_island_data[4]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.data_island_data_reg[5] 
@@ -3038,7 +3151,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.packet_data [2]),
         .Q(data_island_data[5]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.data_island_data_reg[6] 
@@ -3046,7 +3159,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.packet_data [3]),
         .Q(data_island_data[6]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.data_island_data_reg[7] 
@@ -3054,7 +3167,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.packet_data [4]),
         .Q(data_island_data[7]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.data_island_data_reg[8] 
@@ -3062,7 +3175,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.packet_data [5]),
         .Q(data_island_data[8]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.data_island_data_reg[9] 
@@ -3070,14 +3183,14 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.packet_data [6]),
         .Q(data_island_data[9]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   LUT6 #(
     .INIT(64'hFFFF004000400040)) 
     \true_hdmi_output.data_island_guard_i_1 
        (.I0(\true_hdmi_output.data_island_guard_i_2_n_0 ),
         .I1(cx[3]),
         .I2(\true_hdmi_output.data_island_guard_i_3_n_0 ),
-        .I3(\true_hdmi_output.packet_picker_n_39 ),
+        .I3(\true_hdmi_output.packet_picker_n_40 ),
         .I4(\true_hdmi_output.data_island_guard_i_4_n_0 ),
         .I5(\true_hdmi_output.data_island_guard_i_5_n_0 ),
         .O(\true_hdmi_output.data_island_guard0 ));
@@ -3107,7 +3220,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .I1(cx[6]),
         .I2(cx[5]),
         .I3(cx[4]),
-        .I4(\true_hdmi_output.packet_picker_n_39 ),
+        .I4(\true_hdmi_output.packet_picker_n_40 ),
         .O(\true_hdmi_output.data_island_guard_i_4_n_0 ));
   LUT6 #(
     .INIT(64'h77777FFF00000000)) 
@@ -3126,7 +3239,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.data_island_guard0 ),
         .Q(\true_hdmi_output.data_island_guard ),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.data_island_period_reg 
@@ -3134,7 +3247,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.data_island_period_instantaneous ),
         .Q(\true_hdmi_output.data_island_period ),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   LUT6 #(
     .INIT(64'h0000000040000000)) 
     \true_hdmi_output.data_island_preamble_i_1 
@@ -3152,7 +3265,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.data_island_preamble0 ),
         .Q(\true_hdmi_output.data_island_preamble ),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   LUT5 #(
     .INIT(32'h40404440)) 
     \true_hdmi_output.mode[0]_i_1 
@@ -3184,7 +3297,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.mode[1]_i_1_n_0 ),
         .Q(mode[1]),
-        .S(\true_hdmi_output.packet_picker_n_5 ));
+        .S(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.mode_reg[2] 
@@ -3192,11 +3305,11 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.data_island_guard ),
         .Q(mode[2]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   fm_hdmi_hdmi_tmds_audio_0_0_packet_assembler \true_hdmi_output.packet_assembler 
        (.D(\true_hdmi_output.packet_data ),
         .Q(\true_hdmi_output.packet_pixel_counter ),
-        .SR(\true_hdmi_output.packet_picker_n_5 ),
+        .SR(SR),
         .clk_pixel(clk_pixel),
         .\counter_reg[1]_0 (\true_hdmi_output.packet_assembler_n_22 ),
         .\counter_reg[1]_1 (\true_hdmi_output.packet_assembler_n_23 ),
@@ -3208,83 +3321,85 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .\counter_reg[3]_1 (\true_hdmi_output.packet_assembler_n_24 ),
         .\counter_reg[4]_0 (\true_hdmi_output.packet_assembler_n_26 ),
         .frame_counter10_in(frame_counter10_in),
-        .\parity[1][6]_i_2 (\true_hdmi_output.packet_picker_n_1 ),
-        .\parity[1][6]_i_2_0 (\true_hdmi_output.packet_picker_n_0 ),
-        .\parity_reg[0][6]_0 (\true_hdmi_output.packet_picker_n_33 ),
-        .\parity_reg[0][6]_1 (\true_hdmi_output.packet_picker_n_31 ),
-        .\parity_reg[0][7]_0 (\true_hdmi_output.packet_picker_n_34 ),
-        .\parity_reg[0][7]_1 (\true_hdmi_output.packet_picker_n_32 ),
-        .\parity_reg[1][6]_0 (\true_hdmi_output.packet_picker_n_28 ),
-        .\parity_reg[1][6]_1 (\true_hdmi_output.packet_picker_n_7 ),
-        .\parity_reg[2][0]_0 (\true_hdmi_output.packet_picker_n_19 ),
+        .\parity[1][6]_i_2 (\true_hdmi_output.packet_picker_n_3 ),
+        .\parity[1][6]_i_2_0 (\true_hdmi_output.packet_picker_n_1 ),
+        .\parity_reg[0][6]_0 (\true_hdmi_output.packet_picker_n_34 ),
+        .\parity_reg[0][6]_1 (\true_hdmi_output.packet_picker_n_32 ),
+        .\parity_reg[0][7]_0 (\true_hdmi_output.packet_picker_n_35 ),
+        .\parity_reg[0][7]_1 (\true_hdmi_output.packet_picker_n_33 ),
+        .\parity_reg[1][6]_0 (\true_hdmi_output.packet_picker_n_29 ),
+        .\parity_reg[1][6]_1 (\true_hdmi_output.packet_picker_n_8 ),
+        .\parity_reg[2][0]_0 (\true_hdmi_output.packet_picker_n_20 ),
         .\parity_reg[2][3]_0 ({\bch[2]_18 [59],\bch[2]_18 [57:56]}),
         .\parity_reg[2][7]_0 ({p_13_out,p_18_out,next_ecc1_return}),
-        .\parity_reg[3][0]_0 (\true_hdmi_output.packet_picker_n_12 ),
+        .\parity_reg[3][0]_0 (\true_hdmi_output.packet_picker_n_13 ),
         .\parity_reg[3][1]_0 (\bch[3]_19 ),
-        .\parity_reg[3][1]_1 (\true_hdmi_output.packet_picker_n_11 ),
+        .\parity_reg[3][1]_1 (\true_hdmi_output.packet_picker_n_12 ),
         .\parity_reg[3][7]_0 ({p_4_out,p_9_out}),
-        .\parity_reg[4][1]_0 (\true_hdmi_output.packet_picker_n_35 ),
-        .\parity_reg[4][1]_1 (\true_hdmi_output.packet_picker_n_37 ),
+        .\parity_reg[4][1]_0 (\true_hdmi_output.packet_picker_n_36 ),
+        .\parity_reg[4][1]_1 (\true_hdmi_output.packet_picker_n_38 ),
         .sys_nrst(sys_nrst),
-        .\true_hdmi_output.data_island_data_reg[10] (\true_hdmi_output.packet_picker_n_20 ),
-        .\true_hdmi_output.data_island_data_reg[10]_0 (\true_hdmi_output.packet_picker_n_21 ),
-        .\true_hdmi_output.data_island_data_reg[10]_1 (\true_hdmi_output.packet_picker_n_22 ),
-        .\true_hdmi_output.data_island_data_reg[11] (\true_hdmi_output.packet_picker_n_13 ),
-        .\true_hdmi_output.data_island_data_reg[11]_0 (\true_hdmi_output.packet_picker_n_14 ),
-        .\true_hdmi_output.data_island_data_reg[11]_1 (\true_hdmi_output.packet_picker_n_15 ),
-        .\true_hdmi_output.data_island_data_reg[2] (\true_hdmi_output.packet_picker_n_36 ),
-        .\true_hdmi_output.data_island_data_reg[4] (\true_hdmi_output.packet_picker_n_30 ),
-        .\true_hdmi_output.data_island_data_reg[5] (\true_hdmi_output.packet_picker_n_24 ),
-        .\true_hdmi_output.data_island_data_reg[6] (\true_hdmi_output.packet_picker_n_25 ),
-        .\true_hdmi_output.data_island_data_reg[6]_0 (\true_hdmi_output.packet_picker_n_26 ),
-        .\true_hdmi_output.data_island_data_reg[6]_1 (\true_hdmi_output.packet_picker_n_27 ),
-        .\true_hdmi_output.data_island_data_reg[8] (\true_hdmi_output.packet_picker_n_8 ),
-        .\true_hdmi_output.data_island_data_reg[9] (\true_hdmi_output.packet_picker_n_23 ),
-        .\true_hdmi_output.data_island_data_reg[9]_0 (\true_hdmi_output.packet_picker_n_29 ),
-        .\true_hdmi_output.data_island_data_reg[9]_1 (\true_hdmi_output.packet_picker_n_6 ),
+        .\true_hdmi_output.data_island_data_reg[10] (\true_hdmi_output.packet_picker_n_21 ),
+        .\true_hdmi_output.data_island_data_reg[10]_0 (\true_hdmi_output.packet_picker_n_22 ),
+        .\true_hdmi_output.data_island_data_reg[10]_1 (\true_hdmi_output.packet_picker_n_23 ),
+        .\true_hdmi_output.data_island_data_reg[11] (\true_hdmi_output.packet_picker_n_14 ),
+        .\true_hdmi_output.data_island_data_reg[11]_0 (\true_hdmi_output.packet_picker_n_15 ),
+        .\true_hdmi_output.data_island_data_reg[11]_1 (\true_hdmi_output.packet_picker_n_16 ),
+        .\true_hdmi_output.data_island_data_reg[2] (\true_hdmi_output.packet_picker_n_37 ),
+        .\true_hdmi_output.data_island_data_reg[4] (\true_hdmi_output.packet_picker_n_31 ),
+        .\true_hdmi_output.data_island_data_reg[5] (\true_hdmi_output.packet_picker_n_25 ),
+        .\true_hdmi_output.data_island_data_reg[6] (\true_hdmi_output.packet_picker_n_26 ),
+        .\true_hdmi_output.data_island_data_reg[6]_0 (\true_hdmi_output.packet_picker_n_27 ),
+        .\true_hdmi_output.data_island_data_reg[6]_1 (\true_hdmi_output.packet_picker_n_28 ),
+        .\true_hdmi_output.data_island_data_reg[8] (\true_hdmi_output.packet_picker_n_9 ),
+        .\true_hdmi_output.data_island_data_reg[9] (\true_hdmi_output.packet_picker_n_24 ),
+        .\true_hdmi_output.data_island_data_reg[9]_0 (\true_hdmi_output.packet_picker_n_30 ),
+        .\true_hdmi_output.data_island_data_reg[9]_1 (\true_hdmi_output.packet_picker_n_7 ),
         .\true_hdmi_output.data_island_period (\true_hdmi_output.data_island_period ));
   fm_hdmi_hdmi_tmds_audio_0_0_packet_picker \true_hdmi_output.packet_picker 
        (.Q(cy),
-        .SR(\true_hdmi_output.packet_picker_n_5 ),
+        .SR(SR),
+        .acc_reg(acc_reg),
+        .acc_reg_21_sp_1(tick48k),
         .\audio_sample_word_transfer_reg[0][15]_0 (\audio_sample_word_transfer_reg[0][15] ),
         .\audio_sample_word_transfer_reg[1][15]_0 (Q),
         .clk_pixel(clk_pixel),
-        .\counter_reg[0] (\true_hdmi_output.packet_picker_n_26 ),
-        .\counter_reg[0]_0 (\true_hdmi_output.packet_picker_n_34 ),
-        .\counter_reg[1] (\true_hdmi_output.packet_picker_n_21 ),
-        .\counter_reg[1]_0 (\true_hdmi_output.packet_picker_n_29 ),
-        .\counter_reg[2] (\true_hdmi_output.packet_picker_n_6 ),
-        .\counter_reg[2]_0 (\true_hdmi_output.packet_picker_n_7 ),
-        .\counter_reg[2]_1 (\true_hdmi_output.packet_picker_n_15 ),
-        .\counter_reg[2]_2 (\true_hdmi_output.packet_picker_n_22 ),
-        .\counter_reg[2]_3 (\true_hdmi_output.packet_picker_n_25 ),
-        .\counter_reg[2]_4 (\true_hdmi_output.packet_picker_n_27 ),
-        .\counter_reg[2]_5 (\true_hdmi_output.packet_picker_n_31 ),
-        .\counter_reg[2]_6 (\true_hdmi_output.packet_picker_n_32 ),
-        .\counter_reg[2]_7 (\true_hdmi_output.packet_picker_n_35 ),
-        .\counter_reg[2]_8 (\true_hdmi_output.packet_picker_n_36 ),
-        .\counter_reg[3] (\true_hdmi_output.packet_picker_n_8 ),
-        .\counter_reg[3]_0 (\true_hdmi_output.packet_picker_n_13 ),
-        .\counter_reg[3]_1 (\true_hdmi_output.packet_picker_n_20 ),
-        .\counter_reg[3]_2 (\true_hdmi_output.packet_picker_n_23 ),
-        .\counter_reg[3]_3 (\true_hdmi_output.packet_picker_n_24 ),
-        .\counter_reg[3]_4 (\true_hdmi_output.packet_picker_n_30 ),
-        .\counter_reg[4] (\true_hdmi_output.packet_picker_n_11 ),
-        .\counter_reg[4]_0 (\true_hdmi_output.packet_picker_n_12 ),
+        .\counter_reg[0] (\true_hdmi_output.packet_picker_n_27 ),
+        .\counter_reg[0]_0 (\true_hdmi_output.packet_picker_n_35 ),
+        .\counter_reg[1] (\true_hdmi_output.packet_picker_n_22 ),
+        .\counter_reg[1]_0 (\true_hdmi_output.packet_picker_n_30 ),
+        .\counter_reg[2] (\true_hdmi_output.packet_picker_n_7 ),
+        .\counter_reg[2]_0 (\true_hdmi_output.packet_picker_n_8 ),
+        .\counter_reg[2]_1 (\true_hdmi_output.packet_picker_n_16 ),
+        .\counter_reg[2]_2 (\true_hdmi_output.packet_picker_n_23 ),
+        .\counter_reg[2]_3 (\true_hdmi_output.packet_picker_n_26 ),
+        .\counter_reg[2]_4 (\true_hdmi_output.packet_picker_n_28 ),
+        .\counter_reg[2]_5 (\true_hdmi_output.packet_picker_n_32 ),
+        .\counter_reg[2]_6 (\true_hdmi_output.packet_picker_n_33 ),
+        .\counter_reg[2]_7 (\true_hdmi_output.packet_picker_n_36 ),
+        .\counter_reg[2]_8 (\true_hdmi_output.packet_picker_n_37 ),
+        .\counter_reg[3] (\true_hdmi_output.packet_picker_n_9 ),
+        .\counter_reg[3]_0 (\true_hdmi_output.packet_picker_n_14 ),
+        .\counter_reg[3]_1 (\true_hdmi_output.packet_picker_n_21 ),
+        .\counter_reg[3]_2 (\true_hdmi_output.packet_picker_n_24 ),
+        .\counter_reg[3]_3 (\true_hdmi_output.packet_picker_n_25 ),
+        .\counter_reg[3]_4 (\true_hdmi_output.packet_picker_n_31 ),
+        .\counter_reg[4] (\true_hdmi_output.packet_picker_n_12 ),
+        .\counter_reg[4]_0 (\true_hdmi_output.packet_picker_n_13 ),
         .\counter_reg[4]_1 ({p_13_out,p_18_out,next_ecc1_return}),
-        .\counter_reg[4]_2 (\true_hdmi_output.packet_picker_n_19 ),
+        .\counter_reg[4]_2 (\true_hdmi_output.packet_picker_n_20 ),
         .cx(cx),
-        .\cx_reg[10] (\true_hdmi_output.packet_picker_n_3 ),
-        .\cx_reg[3] (\true_hdmi_output.packet_picker_n_39 ),
-        .\cy_reg[0] (\true_hdmi_output.packet_picker_n_4 ),
-        .\cy_reg[7] (\true_hdmi_output.packet_picker_n_2 ),
+        .\cx_reg[10] (\true_hdmi_output.packet_picker_n_5 ),
+        .\cx_reg[3] (\true_hdmi_output.packet_picker_n_40 ),
+        .\cy_reg[0] (\true_hdmi_output.packet_picker_n_6 ),
+        .\cy_reg[7] (\true_hdmi_output.packet_picker_n_4 ),
         .frame_counter10_in(frame_counter10_in),
-        .\packet_type_reg[0]_0 (\true_hdmi_output.packet_picker_n_1 ),
-        .\packet_type_reg[2]_0 (\true_hdmi_output.packet_picker_n_37 ),
-        .\packet_type_reg[7]_0 (\true_hdmi_output.packet_picker_n_0 ),
-        .\packet_type_reg[7]_1 (\true_hdmi_output.packet_picker_n_14 ),
-        .\packet_type_reg[7]_2 (\true_hdmi_output.packet_picker_n_28 ),
-        .\packet_type_reg[7]_3 (\true_hdmi_output.packet_picker_n_33 ),
+        .\packet_type_reg[0]_0 (\true_hdmi_output.packet_picker_n_3 ),
+        .\packet_type_reg[2]_0 (\true_hdmi_output.packet_picker_n_38 ),
+        .\packet_type_reg[7]_0 (\true_hdmi_output.packet_picker_n_1 ),
+        .\packet_type_reg[7]_1 (\true_hdmi_output.packet_picker_n_15 ),
+        .\packet_type_reg[7]_2 (\true_hdmi_output.packet_picker_n_29 ),
+        .\packet_type_reg[7]_3 (\true_hdmi_output.packet_picker_n_34 ),
         .\parity[0][7]_i_5_0 (\true_hdmi_output.packet_assembler_n_25 ),
         .\parity[3][7]_i_2 (\true_hdmi_output.packet_assembler_n_26 ),
         .\parity[3][7]_i_8_0 (\true_hdmi_output.packet_assembler_n_23 ),
@@ -3307,7 +3422,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(rgb[0]),
         .Q(video_data[0]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.video_data_reg[16] 
@@ -3315,7 +3430,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(rgb[2]),
         .Q(video_data[16]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \true_hdmi_output.video_data_reg[8] 
@@ -3323,7 +3438,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(rgb[1]),
         .Q(video_data[8]),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   LUT6 #(
     .INIT(64'h0000EEE000000000)) 
     \true_hdmi_output.video_guard_i_1 
@@ -3341,7 +3456,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .I1(cy[3]),
         .I2(cy[2]),
         .I3(\true_hdmi_output.video_guard_i_6_n_0 ),
-        .I4(\true_hdmi_output.packet_picker_n_2 ),
+        .I4(\true_hdmi_output.packet_picker_n_4 ),
         .O(\true_hdmi_output.video_guard_i_2_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair119" *) 
   LUT4 #(
@@ -3387,7 +3502,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.video_guard0 ),
         .Q(\true_hdmi_output.video_guard ),
-        .S(\true_hdmi_output.packet_picker_n_5 ));
+        .S(SR));
   LUT6 #(
     .INIT(64'h0000000000E00000)) 
     \true_hdmi_output.video_preamble_i_1 
@@ -3415,7 +3530,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(\true_hdmi_output.video_preamble0 ),
         .Q(\true_hdmi_output.video_preamble ),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
   LUT6 #(
     .INIT(64'h0222222222222222)) 
     video_data_period_i_1
@@ -3451,7 +3566,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .CE(1'b1),
         .D(video_data_period0),
         .Q(video_data_period),
-        .R(\true_hdmi_output.packet_picker_n_5 ));
+        .R(SR));
 endmodule
 
 (* ORIG_REF_NAME = "hdmi_tmds_audio" *) 
@@ -3475,6 +3590,136 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio
   input [15:0]hdmi_l;
   input [15:0]hdmi_r;
 
+  wire \acc[10]_i_10_n_0 ;
+  wire \acc[10]_i_11_n_0 ;
+  wire \acc[10]_i_2_n_0 ;
+  wire \acc[10]_i_3_n_0 ;
+  wire \acc[10]_i_4_n_0 ;
+  wire \acc[10]_i_5_n_0 ;
+  wire \acc[10]_i_6_n_0 ;
+  wire \acc[10]_i_7_n_0 ;
+  wire \acc[10]_i_8_n_0 ;
+  wire \acc[14]_i_2_n_0 ;
+  wire \acc[14]_i_3_n_0 ;
+  wire \acc[14]_i_4_n_0 ;
+  wire \acc[14]_i_5_n_0 ;
+  wire \acc[14]_i_6_n_0 ;
+  wire \acc[14]_i_8_n_0 ;
+  wire \acc[14]_i_9_n_0 ;
+  wire \acc[18]_i_2_n_0 ;
+  wire \acc[18]_i_3_n_0 ;
+  wire \acc[18]_i_4_n_0 ;
+  wire \acc[18]_i_5_n_0 ;
+  wire \acc[18]_i_7_n_0 ;
+  wire \acc[22]_i_2_n_0 ;
+  wire \acc[22]_i_3_n_0 ;
+  wire \acc[22]_i_4_n_0 ;
+  wire \acc[22]_i_5_n_0 ;
+  wire \acc[22]_i_7_n_0 ;
+  wire \acc[22]_i_8_n_0 ;
+  wire \acc[22]_i_9_n_0 ;
+  wire \acc[26]_i_10_n_0 ;
+  wire \acc[26]_i_2_n_0 ;
+  wire \acc[26]_i_3_n_0 ;
+  wire \acc[26]_i_4_n_0 ;
+  wire \acc[26]_i_5_n_0 ;
+  wire \acc[26]_i_7_n_0 ;
+  wire \acc[26]_i_8_n_0 ;
+  wire \acc[26]_i_9_n_0 ;
+  wire \acc[30]_i_2_n_0 ;
+  wire \acc[30]_i_3_n_0 ;
+  wire \acc[5]_i_1_n_0 ;
+  wire \acc[5]_i_3_n_0 ;
+  wire \acc[5]_i_4_n_0 ;
+  wire \acc[6]_i_10_n_0 ;
+  wire \acc[6]_i_11_n_0 ;
+  wire \acc[6]_i_12_n_0 ;
+  wire \acc[6]_i_2_n_0 ;
+  wire \acc[6]_i_3_n_0 ;
+  wire \acc[6]_i_4_n_0 ;
+  wire \acc[6]_i_5_n_0 ;
+  wire \acc[6]_i_6_n_0 ;
+  wire \acc[6]_i_7_n_0 ;
+  wire \acc[6]_i_8_n_0 ;
+  wire [31:5]acc_reg;
+  wire \acc_reg[10]_i_1_n_0 ;
+  wire \acc_reg[10]_i_1_n_1 ;
+  wire \acc_reg[10]_i_1_n_2 ;
+  wire \acc_reg[10]_i_1_n_3 ;
+  wire \acc_reg[10]_i_1_n_4 ;
+  wire \acc_reg[10]_i_1_n_5 ;
+  wire \acc_reg[10]_i_1_n_6 ;
+  wire \acc_reg[10]_i_1_n_7 ;
+  wire \acc_reg[10]_i_9_n_0 ;
+  wire \acc_reg[10]_i_9_n_1 ;
+  wire \acc_reg[10]_i_9_n_2 ;
+  wire \acc_reg[10]_i_9_n_3 ;
+  wire \acc_reg[14]_i_1_n_0 ;
+  wire \acc_reg[14]_i_1_n_1 ;
+  wire \acc_reg[14]_i_1_n_2 ;
+  wire \acc_reg[14]_i_1_n_3 ;
+  wire \acc_reg[14]_i_1_n_4 ;
+  wire \acc_reg[14]_i_1_n_5 ;
+  wire \acc_reg[14]_i_1_n_6 ;
+  wire \acc_reg[14]_i_1_n_7 ;
+  wire \acc_reg[14]_i_7_n_0 ;
+  wire \acc_reg[14]_i_7_n_1 ;
+  wire \acc_reg[14]_i_7_n_2 ;
+  wire \acc_reg[14]_i_7_n_3 ;
+  wire \acc_reg[18]_i_1_n_0 ;
+  wire \acc_reg[18]_i_1_n_1 ;
+  wire \acc_reg[18]_i_1_n_2 ;
+  wire \acc_reg[18]_i_1_n_3 ;
+  wire \acc_reg[18]_i_1_n_4 ;
+  wire \acc_reg[18]_i_1_n_5 ;
+  wire \acc_reg[18]_i_1_n_6 ;
+  wire \acc_reg[18]_i_1_n_7 ;
+  wire \acc_reg[18]_i_6_n_0 ;
+  wire \acc_reg[18]_i_6_n_1 ;
+  wire \acc_reg[18]_i_6_n_2 ;
+  wire \acc_reg[18]_i_6_n_3 ;
+  wire \acc_reg[22]_i_1_n_0 ;
+  wire \acc_reg[22]_i_1_n_1 ;
+  wire \acc_reg[22]_i_1_n_2 ;
+  wire \acc_reg[22]_i_1_n_3 ;
+  wire \acc_reg[22]_i_1_n_4 ;
+  wire \acc_reg[22]_i_1_n_5 ;
+  wire \acc_reg[22]_i_1_n_6 ;
+  wire \acc_reg[22]_i_1_n_7 ;
+  wire \acc_reg[22]_i_6_n_0 ;
+  wire \acc_reg[22]_i_6_n_1 ;
+  wire \acc_reg[22]_i_6_n_2 ;
+  wire \acc_reg[22]_i_6_n_3 ;
+  wire \acc_reg[26]_i_1_n_0 ;
+  wire \acc_reg[26]_i_1_n_1 ;
+  wire \acc_reg[26]_i_1_n_2 ;
+  wire \acc_reg[26]_i_1_n_3 ;
+  wire \acc_reg[26]_i_1_n_4 ;
+  wire \acc_reg[26]_i_1_n_5 ;
+  wire \acc_reg[26]_i_1_n_6 ;
+  wire \acc_reg[26]_i_1_n_7 ;
+  wire \acc_reg[26]_i_6_n_1 ;
+  wire \acc_reg[26]_i_6_n_2 ;
+  wire \acc_reg[26]_i_6_n_3 ;
+  wire \acc_reg[30]_i_1_n_3 ;
+  wire \acc_reg[30]_i_1_n_6 ;
+  wire \acc_reg[30]_i_1_n_7 ;
+  wire \acc_reg[5]_i_2_n_0 ;
+  wire \acc_reg[5]_i_2_n_1 ;
+  wire \acc_reg[5]_i_2_n_2 ;
+  wire \acc_reg[5]_i_2_n_3 ;
+  wire \acc_reg[6]_i_1_n_0 ;
+  wire \acc_reg[6]_i_1_n_1 ;
+  wire \acc_reg[6]_i_1_n_2 ;
+  wire \acc_reg[6]_i_1_n_3 ;
+  wire \acc_reg[6]_i_1_n_4 ;
+  wire \acc_reg[6]_i_1_n_5 ;
+  wire \acc_reg[6]_i_1_n_6 ;
+  wire \acc_reg[6]_i_1_n_7 ;
+  wire \acc_reg[6]_i_9_n_0 ;
+  wire \acc_reg[6]_i_9_n_1 ;
+  wire \acc_reg[6]_i_9_n_2 ;
+  wire \acc_reg[6]_i_9_n_3 ;
   wire [15:0]audio_sample_l;
   wire \audio_sample_l[15]_i_1_n_0 ;
   wire \audio_sample_l[15]_i_2_n_0 ;
@@ -3482,14 +3727,16 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio
   wire [15:0]audio_sample_r;
   wire clk_pixel;
   wire clk_pixel_x5;
+  wire [31:5]data;
   wire [1:0]hdmi_clk;
   wire [1:0]hdmi_d0;
   wire [1:0]hdmi_d1;
   wire [1:0]hdmi_d2;
   wire [15:0]hdmi_l;
-  wire hdmi_n_0;
   wire hdmi_n_1;
   wire hdmi_n_2;
+  wire hdmi_n_3;
+  wire hdmi_n_4;
   wire [15:0]hdmi_r;
   wire [23:7]rgb;
   wire \sampling_clk[0]_i_2_n_0 ;
@@ -3518,8 +3765,13 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio
   wire \sampling_clk_reg[8]_i_1_n_6 ;
   wire \sampling_clk_reg[8]_i_1_n_7 ;
   wire sys_nrst;
+  wire tick48k;
   wire tmds_ck;
   wire [2:0]tmds_d;
+  wire [3:3]\NLW_acc_reg[26]_i_6_CO_UNCONNECTED ;
+  wire [3:1]\NLW_acc_reg[30]_i_1_CO_UNCONNECTED ;
+  wire [3:2]\NLW_acc_reg[30]_i_1_O_UNCONNECTED ;
+  wire [0:0]\NLW_acc_reg[5]_i_2_O_UNCONNECTED ;
   wire [3:3]\NLW_sampling_clk_reg[8]_i_1_CO_UNCONNECTED ;
 
   (* BOX_TYPE = "PRIMITIVE" *) 
@@ -3546,31 +3798,629 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio
        (.I(tmds_d[2]),
         .O(hdmi_d2[1]),
         .OB(hdmi_d2[0]));
-  LUT6 #(
-    .INIT(64'hAAAAAAA800000000)) 
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[10]_i_10 
+       (.I0(acc_reg[15]),
+        .O(\acc[10]_i_10_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[10]_i_11 
+       (.I0(acc_reg[14]),
+        .O(\acc[10]_i_11_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[10]_i_2 
+       (.I0(data[13]),
+        .I1(tick48k),
+        .I2(acc_reg[13]),
+        .O(\acc[10]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[10]_i_3 
+       (.I0(data[12]),
+        .I1(tick48k),
+        .I2(acc_reg[12]),
+        .O(\acc[10]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[10]_i_4 
+       (.I0(data[11]),
+        .I1(tick48k),
+        .I2(acc_reg[11]),
+        .O(\acc[10]_i_4_n_0 ));
+  LUT3 #(
+    .INIT(8'hC5)) 
+    \acc[10]_i_5 
+       (.I0(acc_reg[13]),
+        .I1(data[13]),
+        .I2(tick48k),
+        .O(\acc[10]_i_5_n_0 ));
+  LUT3 #(
+    .INIT(8'hC5)) 
+    \acc[10]_i_6 
+       (.I0(acc_reg[12]),
+        .I1(data[12]),
+        .I2(tick48k),
+        .O(\acc[10]_i_6_n_0 ));
+  LUT3 #(
+    .INIT(8'hC5)) 
+    \acc[10]_i_7 
+       (.I0(acc_reg[11]),
+        .I1(data[11]),
+        .I2(tick48k),
+        .O(\acc[10]_i_7_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[10]_i_8 
+       (.I0(data[10]),
+        .I1(tick48k),
+        .I2(acc_reg[10]),
+        .O(\acc[10]_i_8_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[14]_i_2 
+       (.I0(data[15]),
+        .I1(tick48k),
+        .I2(acc_reg[15]),
+        .O(\acc[14]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[14]_i_3 
+       (.I0(data[17]),
+        .I1(tick48k),
+        .I2(acc_reg[17]),
+        .O(\acc[14]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[14]_i_4 
+       (.I0(data[16]),
+        .I1(tick48k),
+        .I2(acc_reg[16]),
+        .O(\acc[14]_i_4_n_0 ));
+  LUT3 #(
+    .INIT(8'hC5)) 
+    \acc[14]_i_5 
+       (.I0(acc_reg[15]),
+        .I1(data[15]),
+        .I2(tick48k),
+        .O(\acc[14]_i_5_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[14]_i_6 
+       (.I0(data[14]),
+        .I1(tick48k),
+        .I2(acc_reg[14]),
+        .O(\acc[14]_i_6_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[14]_i_8 
+       (.I0(acc_reg[18]),
+        .O(\acc[14]_i_8_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[14]_i_9 
+       (.I0(acc_reg[17]),
+        .O(\acc[14]_i_9_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[18]_i_2 
+       (.I0(data[21]),
+        .I1(tick48k),
+        .I2(acc_reg[21]),
+        .O(\acc[18]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[18]_i_3 
+       (.I0(data[20]),
+        .I1(tick48k),
+        .I2(acc_reg[20]),
+        .O(\acc[18]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[18]_i_4 
+       (.I0(data[19]),
+        .I1(tick48k),
+        .I2(acc_reg[19]),
+        .O(\acc[18]_i_4_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[18]_i_5 
+       (.I0(data[18]),
+        .I1(tick48k),
+        .I2(acc_reg[18]),
+        .O(\acc[18]_i_5_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[18]_i_7 
+       (.I0(acc_reg[21]),
+        .O(\acc[18]_i_7_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[22]_i_2 
+       (.I0(data[25]),
+        .I1(tick48k),
+        .I2(acc_reg[25]),
+        .O(\acc[22]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[22]_i_3 
+       (.I0(data[24]),
+        .I1(tick48k),
+        .I2(acc_reg[24]),
+        .O(\acc[22]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[22]_i_4 
+       (.I0(data[23]),
+        .I1(tick48k),
+        .I2(acc_reg[23]),
+        .O(\acc[22]_i_4_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[22]_i_5 
+       (.I0(data[22]),
+        .I1(tick48k),
+        .I2(acc_reg[22]),
+        .O(\acc[22]_i_5_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[22]_i_7 
+       (.I0(acc_reg[26]),
+        .O(\acc[22]_i_7_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[22]_i_8 
+       (.I0(acc_reg[25]),
+        .O(\acc[22]_i_8_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[22]_i_9 
+       (.I0(acc_reg[24]),
+        .O(\acc[22]_i_9_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[26]_i_10 
+       (.I0(acc_reg[28]),
+        .O(\acc[26]_i_10_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[26]_i_2 
+       (.I0(data[29]),
+        .I1(tick48k),
+        .I2(acc_reg[29]),
+        .O(\acc[26]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[26]_i_3 
+       (.I0(data[28]),
+        .I1(tick48k),
+        .I2(acc_reg[28]),
+        .O(\acc[26]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[26]_i_4 
+       (.I0(data[27]),
+        .I1(tick48k),
+        .I2(acc_reg[27]),
+        .O(\acc[26]_i_4_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[26]_i_5 
+       (.I0(data[26]),
+        .I1(tick48k),
+        .I2(acc_reg[26]),
+        .O(\acc[26]_i_5_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[26]_i_7 
+       (.I0(acc_reg[31]),
+        .O(\acc[26]_i_7_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[26]_i_8 
+       (.I0(acc_reg[30]),
+        .O(\acc[26]_i_8_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[26]_i_9 
+       (.I0(acc_reg[29]),
+        .O(\acc[26]_i_9_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[30]_i_2 
+       (.I0(data[31]),
+        .I1(tick48k),
+        .I2(acc_reg[31]),
+        .O(\acc[30]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[30]_i_3 
+       (.I0(data[30]),
+        .I1(tick48k),
+        .I2(acc_reg[30]),
+        .O(\acc[30]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[5]_i_1 
+       (.I0(data[5]),
+        .I1(tick48k),
+        .I2(acc_reg[5]),
+        .O(\acc[5]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[5]_i_3 
+       (.I0(acc_reg[6]),
+        .O(\acc[5]_i_3_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[5]_i_4 
+       (.I0(acc_reg[5]),
+        .O(\acc[5]_i_4_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[6]_i_10 
+       (.I0(acc_reg[11]),
+        .O(\acc[6]_i_10_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[6]_i_11 
+       (.I0(acc_reg[10]),
+        .O(\acc[6]_i_11_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \acc[6]_i_12 
+       (.I0(acc_reg[8]),
+        .O(\acc[6]_i_12_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[6]_i_2 
+       (.I0(data[9]),
+        .I1(tick48k),
+        .I2(acc_reg[9]),
+        .O(\acc[6]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[6]_i_3 
+       (.I0(data[8]),
+        .I1(tick48k),
+        .I2(acc_reg[8]),
+        .O(\acc[6]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[6]_i_4 
+       (.I0(data[7]),
+        .I1(tick48k),
+        .I2(acc_reg[7]),
+        .O(\acc[6]_i_4_n_0 ));
+  LUT3 #(
+    .INIT(8'hC5)) 
+    \acc[6]_i_5 
+       (.I0(acc_reg[9]),
+        .I1(data[9]),
+        .I2(tick48k),
+        .O(\acc[6]_i_5_n_0 ));
+  LUT3 #(
+    .INIT(8'hC5)) 
+    \acc[6]_i_6 
+       (.I0(acc_reg[8]),
+        .I1(data[8]),
+        .I2(tick48k),
+        .O(\acc[6]_i_6_n_0 ));
+  LUT3 #(
+    .INIT(8'hC5)) 
+    \acc[6]_i_7 
+       (.I0(acc_reg[7]),
+        .I1(data[7]),
+        .I2(tick48k),
+        .O(\acc[6]_i_7_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \acc[6]_i_8 
+       (.I0(data[6]),
+        .I1(tick48k),
+        .I2(acc_reg[6]),
+        .O(\acc[6]_i_8_n_0 ));
+  FDRE \acc_reg[10] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[10]_i_1_n_7 ),
+        .Q(acc_reg[10]),
+        .R(hdmi_n_1));
+  (* ADDER_THRESHOLD = "11" *) 
+  CARRY4 \acc_reg[10]_i_1 
+       (.CI(\acc_reg[6]_i_1_n_0 ),
+        .CO({\acc_reg[10]_i_1_n_0 ,\acc_reg[10]_i_1_n_1 ,\acc_reg[10]_i_1_n_2 ,\acc_reg[10]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({\acc[10]_i_2_n_0 ,\acc[10]_i_3_n_0 ,\acc[10]_i_4_n_0 ,1'b0}),
+        .O({\acc_reg[10]_i_1_n_4 ,\acc_reg[10]_i_1_n_5 ,\acc_reg[10]_i_1_n_6 ,\acc_reg[10]_i_1_n_7 }),
+        .S({\acc[10]_i_5_n_0 ,\acc[10]_i_6_n_0 ,\acc[10]_i_7_n_0 ,\acc[10]_i_8_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \acc_reg[10]_i_9 
+       (.CI(\acc_reg[6]_i_9_n_0 ),
+        .CO({\acc_reg[10]_i_9_n_0 ,\acc_reg[10]_i_9_n_1 ,\acc_reg[10]_i_9_n_2 ,\acc_reg[10]_i_9_n_3 }),
+        .CYINIT(1'b0),
+        .DI({acc_reg[15:14],1'b0,1'b0}),
+        .O(data[15:12]),
+        .S({\acc[10]_i_10_n_0 ,\acc[10]_i_11_n_0 ,acc_reg[13:12]}));
+  FDRE \acc_reg[11] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[10]_i_1_n_6 ),
+        .Q(acc_reg[11]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[12] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[10]_i_1_n_5 ),
+        .Q(acc_reg[12]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[13] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[10]_i_1_n_4 ),
+        .Q(acc_reg[13]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[14] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[14]_i_1_n_7 ),
+        .Q(acc_reg[14]),
+        .R(hdmi_n_1));
+  (* ADDER_THRESHOLD = "11" *) 
+  CARRY4 \acc_reg[14]_i_1 
+       (.CI(\acc_reg[10]_i_1_n_0 ),
+        .CO({\acc_reg[14]_i_1_n_0 ,\acc_reg[14]_i_1_n_1 ,\acc_reg[14]_i_1_n_2 ,\acc_reg[14]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,\acc[14]_i_2_n_0 ,1'b0}),
+        .O({\acc_reg[14]_i_1_n_4 ,\acc_reg[14]_i_1_n_5 ,\acc_reg[14]_i_1_n_6 ,\acc_reg[14]_i_1_n_7 }),
+        .S({\acc[14]_i_3_n_0 ,\acc[14]_i_4_n_0 ,\acc[14]_i_5_n_0 ,\acc[14]_i_6_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \acc_reg[14]_i_7 
+       (.CI(\acc_reg[10]_i_9_n_0 ),
+        .CO({\acc_reg[14]_i_7_n_0 ,\acc_reg[14]_i_7_n_1 ,\acc_reg[14]_i_7_n_2 ,\acc_reg[14]_i_7_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,acc_reg[18:17],1'b0}),
+        .O(data[19:16]),
+        .S({acc_reg[19],\acc[14]_i_8_n_0 ,\acc[14]_i_9_n_0 ,acc_reg[16]}));
+  FDRE \acc_reg[15] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[14]_i_1_n_6 ),
+        .Q(acc_reg[15]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[16] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[14]_i_1_n_5 ),
+        .Q(acc_reg[16]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[17] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[14]_i_1_n_4 ),
+        .Q(acc_reg[17]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[18] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[18]_i_1_n_7 ),
+        .Q(acc_reg[18]),
+        .R(hdmi_n_1));
+  (* ADDER_THRESHOLD = "11" *) 
+  CARRY4 \acc_reg[18]_i_1 
+       (.CI(\acc_reg[14]_i_1_n_0 ),
+        .CO({\acc_reg[18]_i_1_n_0 ,\acc_reg[18]_i_1_n_1 ,\acc_reg[18]_i_1_n_2 ,\acc_reg[18]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\acc_reg[18]_i_1_n_4 ,\acc_reg[18]_i_1_n_5 ,\acc_reg[18]_i_1_n_6 ,\acc_reg[18]_i_1_n_7 }),
+        .S({\acc[18]_i_2_n_0 ,\acc[18]_i_3_n_0 ,\acc[18]_i_4_n_0 ,\acc[18]_i_5_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \acc_reg[18]_i_6 
+       (.CI(\acc_reg[14]_i_7_n_0 ),
+        .CO({\acc_reg[18]_i_6_n_0 ,\acc_reg[18]_i_6_n_1 ,\acc_reg[18]_i_6_n_2 ,\acc_reg[18]_i_6_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,acc_reg[21],1'b0}),
+        .O(data[23:20]),
+        .S({acc_reg[23:22],\acc[18]_i_7_n_0 ,acc_reg[20]}));
+  FDRE \acc_reg[19] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[18]_i_1_n_6 ),
+        .Q(acc_reg[19]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[20] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[18]_i_1_n_5 ),
+        .Q(acc_reg[20]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[21] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[18]_i_1_n_4 ),
+        .Q(acc_reg[21]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[22] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[22]_i_1_n_7 ),
+        .Q(acc_reg[22]),
+        .R(hdmi_n_1));
+  (* ADDER_THRESHOLD = "11" *) 
+  CARRY4 \acc_reg[22]_i_1 
+       (.CI(\acc_reg[18]_i_1_n_0 ),
+        .CO({\acc_reg[22]_i_1_n_0 ,\acc_reg[22]_i_1_n_1 ,\acc_reg[22]_i_1_n_2 ,\acc_reg[22]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\acc_reg[22]_i_1_n_4 ,\acc_reg[22]_i_1_n_5 ,\acc_reg[22]_i_1_n_6 ,\acc_reg[22]_i_1_n_7 }),
+        .S({\acc[22]_i_2_n_0 ,\acc[22]_i_3_n_0 ,\acc[22]_i_4_n_0 ,\acc[22]_i_5_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \acc_reg[22]_i_6 
+       (.CI(\acc_reg[18]_i_6_n_0 ),
+        .CO({\acc_reg[22]_i_6_n_0 ,\acc_reg[22]_i_6_n_1 ,\acc_reg[22]_i_6_n_2 ,\acc_reg[22]_i_6_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,acc_reg[26:24]}),
+        .O(data[27:24]),
+        .S({acc_reg[27],\acc[22]_i_7_n_0 ,\acc[22]_i_8_n_0 ,\acc[22]_i_9_n_0 }));
+  FDRE \acc_reg[23] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[22]_i_1_n_6 ),
+        .Q(acc_reg[23]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[24] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[22]_i_1_n_5 ),
+        .Q(acc_reg[24]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[25] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[22]_i_1_n_4 ),
+        .Q(acc_reg[25]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[26] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[26]_i_1_n_7 ),
+        .Q(acc_reg[26]),
+        .R(hdmi_n_1));
+  (* ADDER_THRESHOLD = "11" *) 
+  CARRY4 \acc_reg[26]_i_1 
+       (.CI(\acc_reg[22]_i_1_n_0 ),
+        .CO({\acc_reg[26]_i_1_n_0 ,\acc_reg[26]_i_1_n_1 ,\acc_reg[26]_i_1_n_2 ,\acc_reg[26]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\acc_reg[26]_i_1_n_4 ,\acc_reg[26]_i_1_n_5 ,\acc_reg[26]_i_1_n_6 ,\acc_reg[26]_i_1_n_7 }),
+        .S({\acc[26]_i_2_n_0 ,\acc[26]_i_3_n_0 ,\acc[26]_i_4_n_0 ,\acc[26]_i_5_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \acc_reg[26]_i_6 
+       (.CI(\acc_reg[22]_i_6_n_0 ),
+        .CO({\NLW_acc_reg[26]_i_6_CO_UNCONNECTED [3],\acc_reg[26]_i_6_n_1 ,\acc_reg[26]_i_6_n_2 ,\acc_reg[26]_i_6_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,acc_reg[30:28]}),
+        .O(data[31:28]),
+        .S({\acc[26]_i_7_n_0 ,\acc[26]_i_8_n_0 ,\acc[26]_i_9_n_0 ,\acc[26]_i_10_n_0 }));
+  FDRE \acc_reg[27] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[26]_i_1_n_6 ),
+        .Q(acc_reg[27]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[28] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[26]_i_1_n_5 ),
+        .Q(acc_reg[28]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[29] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[26]_i_1_n_4 ),
+        .Q(acc_reg[29]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[30] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[30]_i_1_n_7 ),
+        .Q(acc_reg[30]),
+        .R(hdmi_n_1));
+  (* ADDER_THRESHOLD = "11" *) 
+  CARRY4 \acc_reg[30]_i_1 
+       (.CI(\acc_reg[26]_i_1_n_0 ),
+        .CO({\NLW_acc_reg[30]_i_1_CO_UNCONNECTED [3:1],\acc_reg[30]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW_acc_reg[30]_i_1_O_UNCONNECTED [3:2],\acc_reg[30]_i_1_n_6 ,\acc_reg[30]_i_1_n_7 }),
+        .S({1'b0,1'b0,\acc[30]_i_2_n_0 ,\acc[30]_i_3_n_0 }));
+  FDRE \acc_reg[31] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[30]_i_1_n_6 ),
+        .Q(acc_reg[31]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[5] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc[5]_i_1_n_0 ),
+        .Q(acc_reg[5]),
+        .R(hdmi_n_1));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \acc_reg[5]_i_2 
+       (.CI(1'b0),
+        .CO({\acc_reg[5]_i_2_n_0 ,\acc_reg[5]_i_2_n_1 ,\acc_reg[5]_i_2_n_2 ,\acc_reg[5]_i_2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,acc_reg[6:5],1'b0}),
+        .O({data[7:5],\NLW_acc_reg[5]_i_2_O_UNCONNECTED [0]}),
+        .S({acc_reg[7],\acc[5]_i_3_n_0 ,\acc[5]_i_4_n_0 ,1'b0}));
+  FDRE \acc_reg[6] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[6]_i_1_n_7 ),
+        .Q(acc_reg[6]),
+        .R(hdmi_n_1));
+  (* ADDER_THRESHOLD = "11" *) 
+  CARRY4 \acc_reg[6]_i_1 
+       (.CI(1'b0),
+        .CO({\acc_reg[6]_i_1_n_0 ,\acc_reg[6]_i_1_n_1 ,\acc_reg[6]_i_1_n_2 ,\acc_reg[6]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({\acc[6]_i_2_n_0 ,\acc[6]_i_3_n_0 ,\acc[6]_i_4_n_0 ,1'b0}),
+        .O({\acc_reg[6]_i_1_n_4 ,\acc_reg[6]_i_1_n_5 ,\acc_reg[6]_i_1_n_6 ,\acc_reg[6]_i_1_n_7 }),
+        .S({\acc[6]_i_5_n_0 ,\acc[6]_i_6_n_0 ,\acc[6]_i_7_n_0 ,\acc[6]_i_8_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \acc_reg[6]_i_9 
+       (.CI(\acc_reg[5]_i_2_n_0 ),
+        .CO({\acc_reg[6]_i_9_n_0 ,\acc_reg[6]_i_9_n_1 ,\acc_reg[6]_i_9_n_2 ,\acc_reg[6]_i_9_n_3 }),
+        .CYINIT(1'b0),
+        .DI({acc_reg[11:10],1'b0,acc_reg[8]}),
+        .O(data[11:8]),
+        .S({\acc[6]_i_10_n_0 ,\acc[6]_i_11_n_0 ,acc_reg[9],\acc[6]_i_12_n_0 }));
+  FDRE \acc_reg[7] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[6]_i_1_n_6 ),
+        .Q(acc_reg[7]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[8] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[6]_i_1_n_5 ),
+        .Q(acc_reg[8]),
+        .R(hdmi_n_1));
+  FDRE \acc_reg[9] 
+       (.C(clk_pixel),
+        .CE(1'b1),
+        .D(\acc_reg[6]_i_1_n_4 ),
+        .Q(acc_reg[9]),
+        .R(hdmi_n_1));
+  LUT4 #(
+    .INIT(16'h8880)) 
     \audio_sample_l[15]_i_1 
-       (.I0(sampling_clk_reg[10]),
-        .I1(sampling_clk_reg[6]),
-        .I2(sampling_clk_reg[5]),
-        .I3(\audio_sample_l[15]_i_2_n_0 ),
-        .I4(\audio_sample_l[15]_i_3_n_0 ),
-        .I5(sampling_clk_reg[11]),
+       (.I0(sampling_clk_reg[11]),
+        .I1(sampling_clk_reg[10]),
+        .I2(\audio_sample_l[15]_i_2_n_0 ),
+        .I3(\audio_sample_l[15]_i_3_n_0 ),
         .O(\audio_sample_l[15]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFEEEEEAAAAAAAA)) 
+    .INIT(64'hFFFEEEEEEEEEEEEE)) 
     \audio_sample_l[15]_i_2 
-       (.I0(sampling_clk_reg[9]),
-        .I1(sampling_clk_reg[3]),
+       (.I0(sampling_clk_reg[6]),
+        .I1(sampling_clk_reg[5]),
         .I2(sampling_clk_reg[1]),
         .I3(sampling_clk_reg[0]),
-        .I4(sampling_clk_reg[2]),
-        .I5(sampling_clk_reg[4]),
+        .I4(sampling_clk_reg[4]),
+        .I5(sampling_clk_reg[2]),
         .O(\audio_sample_l[15]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT5 #(
+    .INIT(32'hFFFFFFEA)) 
     \audio_sample_l[15]_i_3 
-       (.I0(sampling_clk_reg[7]),
-        .I1(sampling_clk_reg[8]),
+       (.I0(sampling_clk_reg[9]),
+        .I1(sampling_clk_reg[4]),
+        .I2(sampling_clk_reg[3]),
+        .I3(sampling_clk_reg[8]),
+        .I4(sampling_clk_reg[7]),
         .O(\audio_sample_l[15]_i_3_n_0 ));
   FDRE \audio_sample_l_reg[0] 
        (.C(clk_pixel),
@@ -3766,14 +4616,17 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio
         .R(1'b0));
   fm_hdmi_hdmi_tmds_audio_0_0_hdmi hdmi
        (.Q(audio_sample_l),
+        .SR(hdmi_n_1),
+        .acc_reg(acc_reg),
         .\audio_sample_word_transfer_reg[0][15] (audio_sample_r),
         .clk_pixel(clk_pixel),
         .clk_pixel_x5(clk_pixel_x5),
-        .\cx_reg[4]_0 (hdmi_n_2),
-        .\cy_reg[3]_0 (hdmi_n_1),
+        .\cx_reg[4]_0 (hdmi_n_4),
+        .\cy_reg[3]_0 (hdmi_n_3),
         .rgb({rgb[23],rgb[15],rgb[7]}),
-        .\rgb_reg[7]_i_3_0 (hdmi_n_0),
+        .\rgb_reg[7]_i_3_0 (hdmi_n_2),
         .sys_nrst(sys_nrst),
+        .tick48k(tick48k),
         .tmds(tmds_d),
         .tmds_clock(tmds_ck));
   FDRE #(
@@ -3781,7 +4634,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio
     \rgb_reg[15] 
        (.C(clk_pixel),
         .CE(1'b1),
-        .D(hdmi_n_1),
+        .D(hdmi_n_3),
         .Q(rgb[15]),
         .R(1'b0));
   FDRE #(
@@ -3789,7 +4642,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio
     \rgb_reg[23] 
        (.C(clk_pixel),
         .CE(1'b1),
-        .D(hdmi_n_2),
+        .D(hdmi_n_4),
         .Q(rgb[23]),
         .R(1'b0));
   FDRE #(
@@ -3797,7 +4650,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio
     \rgb_reg[7] 
        (.C(clk_pixel),
         .CE(1'b1),
-        .D(hdmi_n_0),
+        .D(hdmi_n_2),
         .Q(rgb[7]),
         .R(1'b0));
   LUT1 #(
@@ -5002,12 +5855,13 @@ endmodule
 
 (* ORIG_REF_NAME = "packet_picker" *) 
 module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
-   (\packet_type_reg[7]_0 ,
+   (SR,
+    \packet_type_reg[7]_0 ,
+    acc_reg_21_sp_1,
     \packet_type_reg[0]_0 ,
     \cy_reg[7] ,
     \cx_reg[10] ,
     \cy_reg[0] ,
-    SR,
     \counter_reg[2] ,
     \counter_reg[2]_0 ,
     \counter_reg[3] ,
@@ -5042,6 +5896,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
     clk_pixel,
     sys_nrst,
     frame_counter10_in,
+    acc_reg,
     Q,
     \parity_reg[3][6] ,
     \parity_reg[1][6] ,
@@ -5058,12 +5913,13 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
     cx,
     \audio_sample_word_transfer_reg[1][15]_0 ,
     \audio_sample_word_transfer_reg[0][15]_0 );
+  output [0:0]SR;
   output \packet_type_reg[7]_0 ;
+  output acc_reg_21_sp_1;
   output \packet_type_reg[0]_0 ;
   output \cy_reg[7] ;
   output \cx_reg[10] ;
   output \cy_reg[0] ;
-  output [0:0]SR;
   output \counter_reg[2] ;
   output \counter_reg[2]_0 ;
   output \counter_reg[3] ;
@@ -5098,6 +5954,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
   input clk_pixel;
   input sys_nrst;
   input frame_counter10_in;
+  input [26:0]acc_reg;
   input [10:0]Q;
   input [4:0]\parity_reg[3][6] ;
   input \parity_reg[1][6] ;
@@ -5117,14 +5974,16 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
 
   wire [10:0]Q;
   wire [0:0]SR;
-  wire audio_clock_regeneration_packet_n_1;
+  wire [26:0]acc_reg;
+  wire acc_reg_21_sn_1;
   wire audio_clock_regeneration_packet_n_2;
-  wire audio_clock_regeneration_packet_n_20;
   wire audio_clock_regeneration_packet_n_21;
   wire audio_clock_regeneration_packet_n_22;
   wire audio_clock_regeneration_packet_n_23;
+  wire audio_clock_regeneration_packet_n_24;
   wire audio_clock_regeneration_packet_n_3;
   wire audio_clock_regeneration_packet_n_4;
+  wire audio_clock_regeneration_packet_n_5;
   wire audio_info_frame_sent;
   wire [8:8]audio_sample_word_buffer;
   wire \audio_sample_word_buffer[0][0][0][10]_i_3_n_0 ;
@@ -5572,6 +6431,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
   wire \audio_sample_word_packet_reg_n_0_[0][1][23] ;
   wire \audio_sample_word_packet_reg_n_0_[0][1][8] ;
   wire \audio_sample_word_packet_reg_n_0_[0][1][9] ;
+  wire \audio_sample_word_transfer[1][15]_i_1_n_0 ;
   wire audio_sample_word_transfer_control;
   wire audio_sample_word_transfer_control_i_1_n_0;
   wire \audio_sample_word_transfer_control_synchronizer_chain_reg_n_0_[0] ;
@@ -5781,11 +6641,14 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
   wire \true_hdmi_output.packet_enable ;
   wire [38:10]\true_hdmi_output.sub[0]_0 ;
 
+  assign acc_reg_21_sp_1 = acc_reg_21_sn_1;
   fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet audio_clock_regeneration_packet
        (.E(audio_sample_word_packet),
         .Q({\subs[2][3]_2 [23:16],\subs[2][3]_2 [13],\subs[2][3]_2 [9:8]}),
+        .acc_reg(acc_reg),
+        .acc_reg_21_sp_1(acc_reg_21_sn_1),
         .audio_info_frame_sent(audio_info_frame_sent),
-        .audio_info_frame_sent_reg(audio_clock_regeneration_packet_n_4),
+        .audio_info_frame_sent_reg(audio_clock_regeneration_packet_n_5),
         .auxiliary_video_information_info_frame_sent(auxiliary_video_information_info_frame_sent),
         .clk_pixel(clk_pixel),
         .\counter_reg[2] (\counter_reg[2]_3 ),
@@ -5799,17 +6662,17 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
         .\counter_reg[4]_0 (\counter_reg[4]_0 ),
         .\counter_reg[4]_1 (\counter_reg[4]_1 ),
         .\counter_reg[4]_2 (\counter_reg[4]_2 ),
-        .last_clk_audio_counter_wrap_reg(audio_clock_regeneration_packet_n_1),
+        .last_clk_audio_counter_wrap_reg(audio_clock_regeneration_packet_n_2),
         .packet_type(packet_type),
-        .\packet_type_reg[0] (audio_clock_regeneration_packet_n_23),
+        .\packet_type_reg[0] (audio_clock_regeneration_packet_n_24),
         .\packet_type_reg[0]_0 (\packet_type_reg_n_0_[0] ),
-        .\packet_type_reg[1] (audio_clock_regeneration_packet_n_22),
+        .\packet_type_reg[1] (audio_clock_regeneration_packet_n_23),
         .\packet_type_reg[1]_0 (last_clk_audio_counter_wrap_reg_n_0),
         .\packet_type_reg[1]_1 (\packet_type_reg_n_0_[1] ),
-        .\packet_type_reg[2] (audio_clock_regeneration_packet_n_21),
+        .\packet_type_reg[2] (audio_clock_regeneration_packet_n_22),
         .\packet_type_reg[2]_0 (\packet_type[2]_i_3_n_0 ),
         .\packet_type_reg[2]_1 (\packet_type_reg_n_0_[2] ),
-        .\packet_type_reg[7] (audio_clock_regeneration_packet_n_20),
+        .\packet_type_reg[7] (audio_clock_regeneration_packet_n_21),
         .\packet_type_reg[7]_0 (\packet_type_reg[7]_0 ),
         .\parity[0][6]_i_2_0 ({\true_hdmi_output.sub[0]_0 [14],\true_hdmi_output.sub[0]_0 [12],\true_hdmi_output.sub[0]_0 [10]}),
         .\parity[0][6]_i_8_0 (\parity[0][6]_i_36_n_0 ),
@@ -5830,9 +6693,9 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
         .\parity_reg[3][7]_0 (\packet_type_reg[7]_1 ),
         .\parity_reg[3][7]_1 (\counter_reg[2]_1 ),
         .sample_buffer_ready(sample_buffer_ready),
-        .sample_buffer_ready_reg(audio_clock_regeneration_packet_n_3),
+        .sample_buffer_ready_reg(audio_clock_regeneration_packet_n_4),
         .source_product_description_info_frame_sent(source_product_description_info_frame_sent),
-        .source_product_description_info_frame_sent_reg(audio_clock_regeneration_packet_n_2),
+        .source_product_description_info_frame_sent_reg(audio_clock_regeneration_packet_n_3),
         .\true_hdmi_output.data_island_data[10]_i_7_0 ({\subs[2][2]_14 [23:16],\subs[2][2]_14 [13:12],\subs[2][2]_14 [9:8]}),
         .\true_hdmi_output.data_island_data[6]_i_8_0 (\parity[0][6]_i_13_n_0 ),
         .\true_hdmi_output.data_island_data[8]_i_3_0 (\true_hdmi_output.data_island_data[8]_i_17_n_0 ),
@@ -5863,7 +6726,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
     audio_info_frame_sent_reg
        (.C(clk_pixel),
         .CE(1'b1),
-        .D(audio_clock_regeneration_packet_n_4),
+        .D(audio_clock_regeneration_packet_n_5),
         .Q(audio_info_frame_sent),
         .R(1'b0));
   fm_hdmi_hdmi_tmds_audio_0_0_audio_sample_packet audio_sample_packet
@@ -10328,10 +11191,17 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
         .D(\audio_sample_word_packet[3][1][9]_i_1_n_0 ),
         .Q(\subs[2][3]_2 [33]),
         .R(1'b0));
-  LUT1 #(
-    .INIT(2'h1)) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \audio_sample_word_transfer[1][15]_i_1 
+       (.I0(sys_nrst),
+        .I1(acc_reg_21_sn_1),
+        .O(\audio_sample_word_transfer[1][15]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
     audio_sample_word_transfer_control_i_1
-       (.I0(audio_sample_word_transfer_control),
+       (.I0(acc_reg_21_sn_1),
+        .I1(audio_sample_word_transfer_control),
         .O(audio_sample_word_transfer_control_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -10340,7 +11210,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
         .CE(1'b1),
         .D(audio_sample_word_transfer_control_i_1_n_0),
         .Q(audio_sample_word_transfer_control),
-        .R(1'b0));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \audio_sample_word_transfer_control_synchronizer_chain_reg[0] 
@@ -10359,193 +11229,193 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][0] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [0]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [0]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][10] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [10]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [10]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][11] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [11]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [11]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][12] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [12]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [12]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][13] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [13]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [13]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][14] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [14]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [14]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][15] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [15]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [15]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][1] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [1]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [1]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][2] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [2]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [2]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][3] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [3]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [3]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][4] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [4]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [4]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][5] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [5]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [5]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][6] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [6]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [6]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][7] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [7]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [7]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][8] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [8]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [8]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[0][9] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[0][15]_0 [9]),
         .Q(\audio_sample_word_transfer_reg[0]_13 [9]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][0] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [0]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [0]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][10] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [10]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [10]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][11] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [11]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [11]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][12] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [12]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [12]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][13] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [13]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [13]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][14] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [14]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [14]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][15] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [15]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [15]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][1] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [1]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [1]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][2] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [2]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [2]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][3] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [3]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [3]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][4] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [4]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [4]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][5] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [5]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [5]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][6] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [6]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [6]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][7] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [7]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [7]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][8] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [8]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [8]),
         .R(1'b0));
   FDRE \audio_sample_word_transfer_reg[1][9] 
        (.C(clk_pixel),
-        .CE(1'b1),
+        .CE(\audio_sample_word_transfer[1][15]_i_1_n_0 ),
         .D(\audio_sample_word_transfer_reg[1][15]_0 [9]),
         .Q(\audio_sample_word_transfer_reg[1]_11 [9]),
         .R(1'b0));
@@ -10554,7 +11424,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
     auxiliary_video_information_info_frame_sent_reg
        (.C(clk_pixel),
         .CE(1'b1),
-        .D(audio_clock_regeneration_packet_n_3),
+        .D(audio_clock_regeneration_packet_n_4),
         .Q(auxiliary_video_information_info_frame_sent),
         .R(1'b0));
   LUT3 #(
@@ -10681,7 +11551,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
     last_clk_audio_counter_wrap_reg
        (.C(clk_pixel),
         .CE(1'b1),
-        .D(audio_clock_regeneration_packet_n_1),
+        .D(audio_clock_regeneration_packet_n_2),
         .Q(last_clk_audio_counter_wrap_reg_n_0),
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair45" *) 
@@ -10769,7 +11639,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
     \packet_type_reg[0] 
        (.C(clk_pixel),
         .CE(1'b1),
-        .D(audio_clock_regeneration_packet_n_23),
+        .D(audio_clock_regeneration_packet_n_24),
         .Q(\packet_type_reg_n_0_[0] ),
         .R(1'b0));
   FDRE #(
@@ -10777,7 +11647,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
     \packet_type_reg[1] 
        (.C(clk_pixel),
         .CE(1'b1),
-        .D(audio_clock_regeneration_packet_n_22),
+        .D(audio_clock_regeneration_packet_n_23),
         .Q(\packet_type_reg_n_0_[1] ),
         .R(1'b0));
   FDRE #(
@@ -10785,7 +11655,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
     \packet_type_reg[2] 
        (.C(clk_pixel),
         .CE(1'b1),
-        .D(audio_clock_regeneration_packet_n_21),
+        .D(audio_clock_regeneration_packet_n_22),
         .Q(\packet_type_reg_n_0_[2] ),
         .R(1'b0));
   FDRE #(
@@ -10793,7 +11663,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
     \packet_type_reg[7] 
        (.C(clk_pixel),
         .CE(1'b1),
-        .D(audio_clock_regeneration_packet_n_20),
+        .D(audio_clock_regeneration_packet_n_21),
         .Q(\packet_type_reg[7]_0 ),
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair47" *) 
@@ -12155,7 +13025,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
     source_product_description_info_frame_sent_reg
        (.C(clk_pixel),
         .CE(1'b1),
-        .D(audio_clock_regeneration_packet_n_2),
+        .D(audio_clock_regeneration_packet_n_3),
         .Q(source_product_description_info_frame_sent),
         .R(1'b0));
   LUT6 #(

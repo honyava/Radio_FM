@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Fri Feb 20 17:59:32 2026
+-- Date        : Tue Feb 24 14:13:42 2026
 -- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
 -- Command     : write_vhdl -force -mode synth_stub -rename_top fm_hdmi_cic_compiler_2_2 -prefix
 --               fm_hdmi_cic_compiler_2_2_ fm_hdmi_cic_compiler_0_2_stub.vhdl
@@ -21,9 +21,7 @@ entity fm_hdmi_cic_compiler_2_2 is
     s_axis_data_tvalid : in STD_LOGIC;
     s_axis_data_tready : out STD_LOGIC;
     m_axis_data_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    m_axis_data_tvalid : out STD_LOGIC;
-    m_axis_data_tready : in STD_LOGIC;
-    event_halted : out STD_LOGIC
+    m_axis_data_tvalid : out STD_LOGIC
   );
 
 end fm_hdmi_cic_compiler_2_2;
@@ -32,7 +30,7 @@ architecture stub of fm_hdmi_cic_compiler_2_2 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,s_axis_data_tdata[15:0],s_axis_data_tvalid,s_axis_data_tready,m_axis_data_tdata[15:0],m_axis_data_tvalid,m_axis_data_tready,event_halted";
+attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,s_axis_data_tdata[15:0],s_axis_data_tvalid,s_axis_data_tready,m_axis_data_tdata[15:0],m_axis_data_tvalid";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "cic_compiler_v4_0_17,Vivado 2023.2";
 begin

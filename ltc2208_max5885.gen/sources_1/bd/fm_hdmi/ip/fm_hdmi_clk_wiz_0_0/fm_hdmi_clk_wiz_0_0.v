@@ -55,7 +55,6 @@
 //----------------------------------------------------------------------------
 // clk_pixel_x5__742.50000______0.000______50.0______230.050____322.999
 // clk_pixel__148.50000______0.000______50.0______296.316____322.999
-// sys_clk_20M__13.50000______0.000______50.0______450.001____322.999
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -64,7 +63,7 @@
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "fm_hdmi_clk_wiz_0_0,clk_wiz_v6_0_13_0_0,{component_name=fm_hdmi_clk_wiz_0_0,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_ONCHIP,PRIMITIVE=MMCM,num_out_clk=3,clkin1_period=5.000,clkin2_period=10.0,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
+(* CORE_GENERATION_INFO = "fm_hdmi_clk_wiz_0_0,clk_wiz_v6_0_13_0_0,{component_name=fm_hdmi_clk_wiz_0_0,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_ONCHIP,PRIMITIVE=MMCM,num_out_clk=2,clkin1_period=5.000,clkin2_period=10.0,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
 
 module fm_hdmi_clk_wiz_0_0 
  (
@@ -72,7 +71,6 @@ module fm_hdmi_clk_wiz_0_0
   // Clock out ports
   output        clk_pixel_x5,
   output        clk_pixel,
-  output        sys_clk_20M,
   output        clkfb_out,
   // Status and control signals
   input         resetn,
@@ -87,7 +85,6 @@ module fm_hdmi_clk_wiz_0_0
   // Clock out ports  
   .clk_pixel_x5(clk_pixel_x5),
   .clk_pixel(clk_pixel),
-  .sys_clk_20M(sys_clk_20M),
   .clkfb_out(clkfb_out),
   // Status and control signals               
   .resetn(resetn), 

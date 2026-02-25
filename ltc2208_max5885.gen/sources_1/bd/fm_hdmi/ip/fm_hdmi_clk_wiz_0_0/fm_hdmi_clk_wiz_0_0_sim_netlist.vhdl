@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Fri Feb 20 16:50:48 2026
+-- Date        : Tue Feb 24 17:13:51 2026
 -- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
 -- Command     : write_vhdl -force -mode funcsim
---               /home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_0/fm_hdmi_clk_wiz_0_0_sim_netlist.vhdl
+--               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_0/fm_hdmi_clk_wiz_0_0_sim_netlist.vhdl
 -- Design      : fm_hdmi_clk_wiz_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -20,7 +20,6 @@ entity fm_hdmi_clk_wiz_0_0_clk_wiz is
     clkfb_in : in STD_LOGIC;
     clk_pixel_x5 : out STD_LOGIC;
     clk_pixel : out STD_LOGIC;
-    sys_clk_20M : out STD_LOGIC;
     clkfb_out : out STD_LOGIC;
     resetn : in STD_LOGIC;
     locked : out STD_LOGIC;
@@ -32,12 +31,12 @@ architecture STRUCTURE of fm_hdmi_clk_wiz_0_0_clk_wiz is
   signal clk_in1_fm_hdmi_clk_wiz_0_0 : STD_LOGIC;
   signal clk_pixel_fm_hdmi_clk_wiz_0_0 : STD_LOGIC;
   signal reset_high : STD_LOGIC;
-  signal sys_clk_20M_fm_hdmi_clk_wiz_0_0 : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED : STD_LOGIC;
+  signal NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT3_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED : STD_LOGIC;
@@ -56,7 +55,6 @@ architecture STRUCTURE of fm_hdmi_clk_wiz_0_0_clk_wiz is
   attribute IFD_DELAY_VALUE : string;
   attribute IFD_DELAY_VALUE of clkin1_ibufg : label is "AUTO";
   attribute BOX_TYPE of clkout2_buf : label is "PRIMITIVE";
-  attribute BOX_TYPE of clkout3_buf : label is "PRIMITIVE";
   attribute BOX_TYPE of mmcm_adv_inst : label is "PRIMITIVE";
 begin
 clkin1_ibufg: unisim.vcomponents.IBUF
@@ -71,11 +69,6 @@ clkout2_buf: unisim.vcomponents.BUFG
      port map (
       I => clk_pixel_fm_hdmi_clk_wiz_0_0,
       O => clk_pixel
-    );
-clkout3_buf: unisim.vcomponents.BUFG
-     port map (
-      I => sys_clk_20M_fm_hdmi_clk_wiz_0_0,
-      O => sys_clk_20M
     );
 mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
     generic map(
@@ -93,7 +86,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKOUT1_DUTY_CYCLE => 0.500000,
       CLKOUT1_PHASE => 0.000000,
       CLKOUT1_USE_FINE_PS => false,
-      CLKOUT2_DIVIDE => 55,
+      CLKOUT2_DIVIDE => 1,
       CLKOUT2_DUTY_CYCLE => 0.500000,
       CLKOUT2_PHASE => 0.000000,
       CLKOUT2_USE_FINE_PS => false,
@@ -141,7 +134,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKOUT0B => NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED,
       CLKOUT1 => clk_pixel_fm_hdmi_clk_wiz_0_0,
       CLKOUT1B => NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED,
-      CLKOUT2 => sys_clk_20M_fm_hdmi_clk_wiz_0_0,
+      CLKOUT2 => NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED,
       CLKOUT2B => NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED,
       CLKOUT3 => NLW_mmcm_adv_inst_CLKOUT3_UNCONNECTED,
       CLKOUT3B => NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED,
@@ -181,7 +174,6 @@ entity fm_hdmi_clk_wiz_0_0 is
     clkfb_in : in STD_LOGIC;
     clk_pixel_x5 : out STD_LOGIC;
     clk_pixel : out STD_LOGIC;
-    sys_clk_20M : out STD_LOGIC;
     clkfb_out : out STD_LOGIC;
     resetn : in STD_LOGIC;
     locked : out STD_LOGIC;
@@ -201,7 +193,6 @@ inst: entity work.fm_hdmi_clk_wiz_0_0_clk_wiz
       clkfb_in => clkfb_in,
       clkfb_out => clkfb_out,
       locked => locked,
-      resetn => resetn,
-      sys_clk_20M => sys_clk_20M
+      resetn => resetn
     );
 end STRUCTURE;

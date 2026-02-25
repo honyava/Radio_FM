@@ -55,7 +55,6 @@
 //----------------------------------------------------------------------------
 // clk_pixel_x5__742.50000______0.000______50.0______230.050____322.999
 // clk_pixel__148.50000______0.000______50.0______296.316____322.999
-// sys_clk_20M__13.50000______0.000______50.0______450.001____322.999
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -71,7 +70,6 @@ module fm_hdmi_clk_wiz_0_0_clk_wiz
   // Clock out ports
   output        clk_pixel_x5,
   output        clk_pixel,
-  output        sys_clk_20M,
   output        clkfb_out,
   // Status and control signals
   input         resetn,
@@ -112,6 +110,7 @@ wire clk_in2_fm_hdmi_clk_wiz_0_0;
   wire        clkfboutb_unused;
     wire clkout0b_unused;
    wire clkout1b_unused;
+   wire clkout2_unused;
    wire clkout2b_unused;
    wire clkout3_unused;
    wire clkout3b_unused;
@@ -139,10 +138,6 @@ wire clk_in2_fm_hdmi_clk_wiz_0_0;
     .CLKOUT1_PHASE        (0.000),
     .CLKOUT1_DUTY_CYCLE   (0.500),
     .CLKOUT1_USE_FINE_PS  ("FALSE"),
-    .CLKOUT2_DIVIDE       (55),
-    .CLKOUT2_PHASE        (0.000),
-    .CLKOUT2_DUTY_CYCLE   (0.500),
-    .CLKOUT2_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (5.000))
   mmcm_adv_inst
     // Output clocks
@@ -153,7 +148,7 @@ wire clk_in2_fm_hdmi_clk_wiz_0_0;
     .CLKOUT0B            (clkout0b_unused),
     .CLKOUT1             (clk_pixel_fm_hdmi_clk_wiz_0_0),
     .CLKOUT1B            (clkout1b_unused),
-    .CLKOUT2             (sys_clk_20M_fm_hdmi_clk_wiz_0_0),
+    .CLKOUT2             (clkout2_unused),
     .CLKOUT2B            (clkout2b_unused),
     .CLKOUT3             (clkout3_unused),
     .CLKOUT3B            (clkout3b_unused),
@@ -205,10 +200,6 @@ wire clk_in2_fm_hdmi_clk_wiz_0_0;
   BUFG clkout2_buf
    (.O   (clk_pixel),
     .I   (clk_pixel_fm_hdmi_clk_wiz_0_0));
-
-  BUFG clkout3_buf
-   (.O   (sys_clk_20M),
-    .I   (sys_clk_20M_fm_hdmi_clk_wiz_0_0));
 
 
 

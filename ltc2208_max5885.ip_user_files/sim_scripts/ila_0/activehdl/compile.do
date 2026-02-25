@@ -12,7 +12,6 @@ vmap xil_defaultlib activehdl/xil_defaultlib
 
 vlog -work xpm  -sv2k12 "+incdir+../../../../ltc2208_max5885.gen/sources_1/ip/ila_0/hdl/verilog" -l xpm -l xil_defaultlib \
 "/home/reting/Programs/2023/Vivado/2023.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
-"/home/reting/Programs/2023/Vivado/2023.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv" \
 "/home/reting/Programs/2023/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -  \

@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Fri Feb 20 17:27:32 2026
+// Date        : Tue Feb 24 17:10:41 2026
 // Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
 // Command     : write_verilog -force -mode funcsim
-//               /home/reting/Desktop/LTC2208_MAX5885_without_dci/ltc2208_max5885.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_sim_netlist.v
+//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_sim_netlist.v
 // Design      : clk_wiz_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -15,72 +15,82 @@
 
 (* NotValidForBitStream *)
 module clk_wiz_0
-   (clk_DAC,
-    clk_ADC,
+   (clk_ADC,
     clk_ADC_R,
+    clk_50M,
+    clk_100M,
     reset,
     locked,
     clk_in1);
-  output clk_DAC;
   output clk_ADC;
   output clk_ADC_R;
+  output clk_50M;
+  output clk_100M;
   input reset;
   output locked;
   input clk_in1;
 
+  wire clk_100M;
+  wire clk_50M;
   wire clk_ADC;
   wire clk_ADC_R;
-  wire clk_DAC;
   (* IBUF_LOW_PWR *) wire clk_in1;
   wire locked;
   wire reset;
 
   clk_wiz_0_clk_wiz inst
-       (.clk_ADC(clk_ADC),
+       (.clk_100M(clk_100M),
+        .clk_50M(clk_50M),
+        .clk_ADC(clk_ADC),
         .clk_ADC_R(clk_ADC_R),
-        .clk_DAC(clk_DAC),
         .clk_in1(clk_in1),
         .locked(locked),
         .reset(reset));
 endmodule
 
 module clk_wiz_0_clk_wiz
-   (clk_DAC,
-    clk_ADC,
+   (clk_ADC,
     clk_ADC_R,
+    clk_50M,
+    clk_100M,
     reset,
     locked,
     clk_in1);
-  output clk_DAC;
   output clk_ADC;
   output clk_ADC_R;
+  output clk_50M;
+  output clk_100M;
   input reset;
   output locked;
   input clk_in1;
 
+  wire clk_100M;
+  wire clk_100M_clk_wiz_0;
+  wire clk_50M;
+  wire clk_50M_clk_wiz_0;
   wire clk_ADC;
   wire clk_ADC_R;
   wire clk_ADC_R_clk_wiz_0;
-  wire clk_ADC_R_clk_wiz_0_en_clk;
   wire clk_ADC_clk_wiz_0;
-  wire clk_ADC_clk_wiz_0_en_clk;
-  wire clk_DAC;
-  wire clk_DAC_clk_wiz_0;
-  wire clk_DAC_clk_wiz_0_en_clk;
   wire clk_in1;
   wire clk_in1_clk_wiz_0;
   wire clkfbout_buf_clk_wiz_0;
   wire clkfbout_clk_wiz_0;
   wire locked;
   wire reset;
-  (* RTL_KEEP = "true" *) (* async_reg = "true" *) wire [7:0]seq_reg1;
-  (* RTL_KEEP = "true" *) (* async_reg = "true" *) wire [7:0]seq_reg2;
-  (* RTL_KEEP = "true" *) (* async_reg = "true" *) wire [7:0]seq_reg3;
-  wire NLW_plle2_adv_inst_CLKOUT3_UNCONNECTED;
-  wire NLW_plle2_adv_inst_CLKOUT4_UNCONNECTED;
-  wire NLW_plle2_adv_inst_CLKOUT5_UNCONNECTED;
-  wire NLW_plle2_adv_inst_DRDY_UNCONNECTED;
-  wire [15:0]NLW_plle2_adv_inst_DO_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_DRDY_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_PSDONE_UNCONNECTED;
+  wire [15:0]NLW_mmcm_adv_inst_DO_UNCONNECTED;
 
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG clkf_buf
@@ -96,366 +106,105 @@ module clk_wiz_0_clk_wiz
        (.I(clk_in1),
         .O(clk_in1_clk_wiz_0));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* XILINX_LEGACY_PRIM = "BUFGCE" *) 
-  (* XILINX_TRANSFORM_PINMAP = "CE:CE0 I:I0 GND:S1,IGNORE0,CE1 VCC:S0,IGNORE1,I1" *) 
-  BUFGCTRL #(
-    .INIT_OUT(0),
-    .PRESELECT_I0("TRUE"),
-    .PRESELECT_I1("FALSE"),
-    .SIM_DEVICE("7SERIES")) 
-    clkout1_buf
-       (.CE0(seq_reg1[7]),
-        .CE1(1'b0),
-        .I0(clk_DAC_clk_wiz_0),
-        .I1(1'b1),
-        .IGNORE0(1'b0),
-        .IGNORE1(1'b1),
-        .O(clk_DAC),
-        .S0(1'b1),
-        .S1(1'b0));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFH clkout1_buf_en
-       (.I(clk_DAC_clk_wiz_0),
-        .O(clk_DAC_clk_wiz_0_en_clk));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  (* XILINX_LEGACY_PRIM = "BUFGCE" *) 
-  (* XILINX_TRANSFORM_PINMAP = "CE:CE0 I:I0 GND:S1,IGNORE0,CE1 VCC:S0,IGNORE1,I1" *) 
-  BUFGCTRL #(
-    .INIT_OUT(0),
-    .PRESELECT_I0("TRUE"),
-    .PRESELECT_I1("FALSE"),
-    .SIM_DEVICE("7SERIES")) 
-    clkout2_buf
-       (.CE0(seq_reg2[7]),
-        .CE1(1'b0),
-        .I0(clk_ADC_clk_wiz_0),
-        .I1(1'b1),
-        .IGNORE0(1'b0),
-        .IGNORE1(1'b1),
-        .O(clk_ADC),
-        .S0(1'b1),
-        .S1(1'b0));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFH clkout2_buf_en
+  BUFG clkout1_buf
        (.I(clk_ADC_clk_wiz_0),
-        .O(clk_ADC_clk_wiz_0_en_clk));
+        .O(clk_ADC));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* XILINX_LEGACY_PRIM = "BUFGCE" *) 
-  (* XILINX_TRANSFORM_PINMAP = "CE:CE0 I:I0 GND:S1,IGNORE0,CE1 VCC:S0,IGNORE1,I1" *) 
-  BUFGCTRL #(
-    .INIT_OUT(0),
-    .PRESELECT_I0("TRUE"),
-    .PRESELECT_I1("FALSE"),
-    .SIM_DEVICE("7SERIES")) 
-    clkout3_buf
-       (.CE0(seq_reg3[7]),
-        .CE1(1'b0),
-        .I0(clk_ADC_R_clk_wiz_0),
-        .I1(1'b1),
-        .IGNORE0(1'b0),
-        .IGNORE1(1'b1),
-        .O(clk_ADC_R),
-        .S0(1'b1),
-        .S1(1'b0));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFH clkout3_buf_en
+  BUFG clkout2_buf
        (.I(clk_ADC_R_clk_wiz_0),
-        .O(clk_ADC_R_clk_wiz_0_en_clk));
+        .O(clk_ADC_R));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  PLLE2_ADV #(
+  BUFG clkout3_buf
+       (.I(clk_50M_clk_wiz_0),
+        .O(clk_50M));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  BUFG clkout4_buf
+       (.I(clk_100M_clk_wiz_0),
+        .O(clk_100M));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  MMCME2_ADV #(
     .BANDWIDTH("HIGH"),
-    .CLKFBOUT_MULT(24),
+    .CLKFBOUT_MULT_F(24.000000),
     .CLKFBOUT_PHASE(0.000000),
+    .CLKFBOUT_USE_FINE_PS("FALSE"),
     .CLKIN1_PERIOD(20.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE(6),
+    .CLKOUT0_DIVIDE_F(15.000000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
-    .CLKOUT1_DIVIDE(13),
+    .CLKOUT0_USE_FINE_PS("FALSE"),
+    .CLKOUT1_DIVIDE(15),
     .CLKOUT1_DUTY_CYCLE(0.500000),
-    .CLKOUT1_PHASE(0.000000),
-    .CLKOUT2_DIVIDE(13),
+    .CLKOUT1_PHASE(66.000000),
+    .CLKOUT1_USE_FINE_PS("FALSE"),
+    .CLKOUT2_DIVIDE(24),
     .CLKOUT2_DUTY_CYCLE(0.500000),
-    .CLKOUT2_PHASE(65.769000),
-    .CLKOUT3_DIVIDE(1),
+    .CLKOUT2_PHASE(0.000000),
+    .CLKOUT2_USE_FINE_PS("FALSE"),
+    .CLKOUT3_DIVIDE(6),
     .CLKOUT3_DUTY_CYCLE(0.500000),
     .CLKOUT3_PHASE(0.000000),
+    .CLKOUT3_USE_FINE_PS("FALSE"),
+    .CLKOUT4_CASCADE("FALSE"),
     .CLKOUT4_DIVIDE(1),
     .CLKOUT4_DUTY_CYCLE(0.500000),
     .CLKOUT4_PHASE(0.000000),
+    .CLKOUT4_USE_FINE_PS("FALSE"),
     .CLKOUT5_DIVIDE(1),
     .CLKOUT5_DUTY_CYCLE(0.500000),
     .CLKOUT5_PHASE(0.000000),
+    .CLKOUT5_USE_FINE_PS("FALSE"),
+    .CLKOUT6_DIVIDE(1),
+    .CLKOUT6_DUTY_CYCLE(0.500000),
+    .CLKOUT6_PHASE(0.000000),
+    .CLKOUT6_USE_FINE_PS("FALSE"),
     .COMPENSATION("ZHOLD"),
     .DIVCLK_DIVIDE(1),
     .IS_CLKINSEL_INVERTED(1'b0),
+    .IS_PSEN_INVERTED(1'b0),
+    .IS_PSINCDEC_INVERTED(1'b0),
     .IS_PWRDWN_INVERTED(1'b0),
     .IS_RST_INVERTED(1'b0),
     .REF_JITTER1(0.010000),
     .REF_JITTER2(0.010000),
+    .SS_EN("FALSE"),
+    .SS_MODE("CENTER_HIGH"),
+    .SS_MOD_PERIOD(10000),
     .STARTUP_WAIT("FALSE")) 
-    plle2_adv_inst
+    mmcm_adv_inst
        (.CLKFBIN(clkfbout_buf_clk_wiz_0),
         .CLKFBOUT(clkfbout_clk_wiz_0),
+        .CLKFBOUTB(NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED),
+        .CLKFBSTOPPED(NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED),
         .CLKIN1(clk_in1_clk_wiz_0),
         .CLKIN2(1'b0),
         .CLKINSEL(1'b1),
-        .CLKOUT0(clk_DAC_clk_wiz_0),
-        .CLKOUT1(clk_ADC_clk_wiz_0),
-        .CLKOUT2(clk_ADC_R_clk_wiz_0),
-        .CLKOUT3(NLW_plle2_adv_inst_CLKOUT3_UNCONNECTED),
-        .CLKOUT4(NLW_plle2_adv_inst_CLKOUT4_UNCONNECTED),
-        .CLKOUT5(NLW_plle2_adv_inst_CLKOUT5_UNCONNECTED),
+        .CLKINSTOPPED(NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED),
+        .CLKOUT0(clk_ADC_clk_wiz_0),
+        .CLKOUT0B(NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED),
+        .CLKOUT1(clk_ADC_R_clk_wiz_0),
+        .CLKOUT1B(NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED),
+        .CLKOUT2(clk_50M_clk_wiz_0),
+        .CLKOUT2B(NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED),
+        .CLKOUT3(clk_100M_clk_wiz_0),
+        .CLKOUT3B(NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED),
+        .CLKOUT4(NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED),
+        .CLKOUT5(NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED),
+        .CLKOUT6(NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED),
         .DADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .DCLK(1'b0),
         .DEN(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .DO(NLW_plle2_adv_inst_DO_UNCONNECTED[15:0]),
-        .DRDY(NLW_plle2_adv_inst_DRDY_UNCONNECTED),
+        .DO(NLW_mmcm_adv_inst_DO_UNCONNECTED[15:0]),
+        .DRDY(NLW_mmcm_adv_inst_DRDY_UNCONNECTED),
         .DWE(1'b0),
         .LOCKED(locked),
+        .PSCLK(1'b0),
+        .PSDONE(NLW_mmcm_adv_inst_PSDONE_UNCONNECTED),
+        .PSEN(1'b0),
+        .PSINCDEC(1'b0),
         .PWRDWN(1'b0),
         .RST(reset));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[0] 
-       (.C(clk_DAC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(locked),
-        .Q(seq_reg1[0]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[1] 
-       (.C(clk_DAC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg1[0]),
-        .Q(seq_reg1[1]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[2] 
-       (.C(clk_DAC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg1[1]),
-        .Q(seq_reg1[2]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[3] 
-       (.C(clk_DAC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg1[2]),
-        .Q(seq_reg1[3]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[4] 
-       (.C(clk_DAC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg1[3]),
-        .Q(seq_reg1[4]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[5] 
-       (.C(clk_DAC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg1[4]),
-        .Q(seq_reg1[5]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[6] 
-       (.C(clk_DAC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg1[5]),
-        .Q(seq_reg1[6]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[7] 
-       (.C(clk_DAC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg1[6]),
-        .Q(seq_reg1[7]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[0] 
-       (.C(clk_ADC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(locked),
-        .Q(seq_reg2[0]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[1] 
-       (.C(clk_ADC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg2[0]),
-        .Q(seq_reg2[1]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[2] 
-       (.C(clk_ADC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg2[1]),
-        .Q(seq_reg2[2]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[3] 
-       (.C(clk_ADC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg2[2]),
-        .Q(seq_reg2[3]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[4] 
-       (.C(clk_ADC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg2[3]),
-        .Q(seq_reg2[4]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[5] 
-       (.C(clk_ADC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg2[4]),
-        .Q(seq_reg2[5]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[6] 
-       (.C(clk_ADC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg2[5]),
-        .Q(seq_reg2[6]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[7] 
-       (.C(clk_ADC_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg2[6]),
-        .Q(seq_reg2[7]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg3_reg[0] 
-       (.C(clk_ADC_R_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(locked),
-        .Q(seq_reg3[0]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg3_reg[1] 
-       (.C(clk_ADC_R_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg3[0]),
-        .Q(seq_reg3[1]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg3_reg[2] 
-       (.C(clk_ADC_R_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg3[1]),
-        .Q(seq_reg3[2]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg3_reg[3] 
-       (.C(clk_ADC_R_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg3[2]),
-        .Q(seq_reg3[3]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg3_reg[4] 
-       (.C(clk_ADC_R_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg3[3]),
-        .Q(seq_reg3[4]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg3_reg[5] 
-       (.C(clk_ADC_R_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg3[4]),
-        .Q(seq_reg3[5]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg3_reg[6] 
-       (.C(clk_ADC_R_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg3[5]),
-        .Q(seq_reg3[6]));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \seq_reg3_reg[7] 
-       (.C(clk_ADC_R_clk_wiz_0_en_clk),
-        .CE(1'b1),
-        .CLR(reset),
-        .D(seq_reg3[6]),
-        .Q(seq_reg3[7]));
 endmodule
 `ifndef GLBL
 `define GLBL
