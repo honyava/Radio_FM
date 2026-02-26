@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Wed Feb 25 16:08:06 2026
+-- Date        : Thu Feb 26 10:43:51 2026
 -- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
--- Command     : write_vhdl -force -mode synth_stub
---               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_compiler_0_1/fm_hdmi_dds_compiler_0_1_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top fm_hdmi_dds_compiler_0_1 -prefix
+--               fm_hdmi_dds_compiler_0_1_ fm_hdmi_dds_compiler_0_1_stub.vhdl
 -- Design      : fm_hdmi_dds_compiler_0_1
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg400-2

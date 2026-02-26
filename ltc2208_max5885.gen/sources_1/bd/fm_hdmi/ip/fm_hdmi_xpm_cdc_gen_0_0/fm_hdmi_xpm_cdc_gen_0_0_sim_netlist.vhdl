@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Fri Feb 20 16:50:48 2026
+-- Date        : Thu Feb 26 16:40:38 2026
 -- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
 -- Command     : write_vhdl -force -mode funcsim -rename_top fm_hdmi_xpm_cdc_gen_0_0 -prefix
 --               fm_hdmi_xpm_cdc_gen_0_0_ fm_hdmi_xpm_cdc_gen_0_0_sim_netlist.vhdl
@@ -1068,7 +1068,7 @@ architecture STRUCTURE of fm_hdmi_xpm_cdc_gen_0_0 is
   attribute X_INTERFACE_PARAMETER : string;
   attribute X_INTERFACE_PARAMETER of dest_clk : signal is "XIL_INTERFACENAME dest_signal_clock, FREQ_HZ 148500000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /hdmi_core/clk_wiz_0_clk_out1, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of src_clk : signal is "xilinx.com:signal:clock:1.0 src_signal_clock CLK";
-  attribute X_INTERFACE_PARAMETER of src_clk : signal is "XIL_INTERFACENAME src_signal_clock, FREQ_HZ 200000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of src_clk : signal is "XIL_INTERFACENAME src_signal_clock, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN /clk_wiz_1_clk_out1, INSERT_VIP 0";
 begin
 inst: entity work.fm_hdmi_xpm_cdc_gen_0_0_xpm_cdc_gen_v1_0_3
      port map (

@@ -54,6 +54,6 @@
 
 create_clock -period 6.734 -name dest_clk [get_ports dest_clk]
 
-create_clock -period 5 -name src_clk [get_ports src_clk]
+create_clock -period 13.021 -name src_clk [get_ports src_clk]
 
 

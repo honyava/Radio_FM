@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Fri Feb 20 16:50:48 2026
+// Date        : Thu Feb 26 16:40:38 2026
 // Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
 // Command     : write_verilog -force -mode funcsim -rename_top fm_hdmi_xpm_cdc_gen_0_0 -prefix
 //               fm_hdmi_xpm_cdc_gen_0_0_ fm_hdmi_xpm_cdc_gen_0_0_sim_netlist.v
@@ -20,7 +20,7 @@ module fm_hdmi_xpm_cdc_gen_0_0
     dest_clk,
     src_in,
     dest_out);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 src_signal_clock CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME src_signal_clock, FREQ_HZ 200000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) input src_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 src_signal_clock CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME src_signal_clock, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN /clk_wiz_1_clk_out1, INSERT_VIP 0" *) input src_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 dest_signal_clock CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME dest_signal_clock, FREQ_HZ 148500000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /hdmi_core/clk_wiz_0_clk_out1, INSERT_VIP 0" *) input dest_clk;
   input [15:0]src_in;
   output [15:0]dest_out;

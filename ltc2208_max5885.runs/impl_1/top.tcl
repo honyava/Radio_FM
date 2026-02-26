@@ -136,14 +136,13 @@ OPTRACE "set parameters" START { }
   set_property parent.project_path /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.xpr [current_project]
   set_property ip_output_repo /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
+  set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/top.dcp
   set_msg_config -source 4 -id {BD 41-1661} -limit 0
   set_param project.isImplRun true
   add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/bd/fm_hdmi/fm_hdmi.bd
-  read_ip -quiet /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/ip/ila_0/ila_0.xci
   read_ip -quiet /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
@@ -316,7 +315,7 @@ set rc [catch {
   create_msg_db write_bitstream.pb
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }
-  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
+  set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
   catch { write_mem_info -force -no_partial_mmi top.mmi }
 OPTRACE "write_bitstream setup" END { }
 OPTRACE "write_bitstream" START { }

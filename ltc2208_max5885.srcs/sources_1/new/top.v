@@ -23,58 +23,38 @@ wire        adc_valid   ;
 wire        clk_ADC_R   ;   
 wire        locked      ;
 wire        clk_50M     ;
-wire        clk_100M    ;
+wire        clk_200M    ;
+wire        clk_10M     ;
 
-clk_wiz_0 U_clk_wiz_0 (
-    .clk_100M       (clk_100M           ),
-    .clk_ADC        (adc_clk            ),
-    .clk_ADC_R      (clk_ADC_R          ),
+clk_wiz_0 clk_main (
+    .clk_200M       (clk_200M           ),
     .clk_50M        (clk_50M            ),
+    .clk_10M        (clk_10M            ),
     .reset          (~sys_rst_n         ),
     .locked         (locked             ),
     .clk_in1        (sys_clk_50M        )
 );
 
-//wire [31:0] m_adc_data;
-//wire        m_adc_valid;
-//wire        m_adc_ready = 1'b1;
-
-//axis_data_fifo_0 fifo(
-//    .s_axis_tdata    (adc_data),
-//    .s_axis_tvalid   (adc_valid),
-//    .s_axis_tready   (),               // можно оставить как есть
-//    .s_axis_aresetn  (sys_rst_n),
-//    .s_axis_aclk     (clk_ADC_R),
-//    .m_axis_tdata    (m_adc_data),
-//    .m_axis_tready   (m_adc_ready),
-//    .m_axis_tvalid   (m_adc_valid)
-//);
-
-//LTC_2208 U_LTC_2208 (
-//    .sys_rst_n      (sys_rst_n),
-//    .adc_dci        (clk_ADC_R),
-//    .adc_dai        (adc_dai),
-//    .m_axis_tdata   (adc_data),
-//    .m_axis_tvalid  (adc_valid)
-//); 
     
   assign hdmi_out_en  = 1'b1;
     
   fm_hdmi fm_hdmi_i
-       (.adc_clk(clk_ADC_R),
+       (.clk_50M(clk_50M),
+        .clk_10M(clk_10M),
         .adc_dai(adc_dai),
         .hdmi_clk(hdmi_clk),
         .hdmi_d0(hdmi_d0),
         .hdmi_d1(hdmi_d1),
         .hdmi_d2(hdmi_d2),
         .locked(locked),
-        .sys(clk_100M),
+        .sys(clk_200M),
+        .adc_clk(adc_clk),
         .sys_rst_n(sys_rst_n));
 
 
-ila_0 adc_ila_0 ( 
-    .clk    (clk_ADC_R),
-    .probe0 (adc_dai)
-);
+//ila_0 adc_ila_0 ( 
+//    .clk    (clk_ADC_R),
+//    .probe0 (adc_dai)
+//);
 
 endmodule

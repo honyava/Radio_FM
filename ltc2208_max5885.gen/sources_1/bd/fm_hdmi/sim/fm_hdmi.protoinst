@@ -3,7 +3,7 @@
 	"modules": {
 		"fm_hdmi": {
 			"proto_instances": {
-				"/fm_demod/axis_iq_slicer_to_2c_0/m_axis_i": {
+				"/fm_demod/Dec200/axis_iq_slicer_to_2c_0/m_axis_i": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -13,7 +13,7 @@
 						"TVALID": { "actual": "m_axis_i_tvalid"}
 					}
 				},
-				"/fm_demod/axis_iq_slicer_to_2c_0/m_axis_q": {
+				"/fm_demod/Dec200/axis_iq_slicer_to_2c_0/m_axis_q": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -23,7 +23,17 @@
 						"TVALID": { "actual": "m_axis_q_tvalid"}
 					}
 				},
-				"/fm_demod/cic_compiler_2/S_AXIS_DATA": {
+				"/fm_demod/Dec200/cic_compiler_2/M_AXIS_DATA": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "m_axis_data_tdata[39:0]"},
+						"TREADY": { "actual": "m_axis_data_tready"},
+						"TVALID": { "actual": "m_axis_data_tvalid"}
+					}
+				},
+				"/fm_demod/Dec200/cic_compiler_2/S_AXIS_DATA": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -33,7 +43,17 @@
 						"TVALID": { "actual": "s_axis_data_tvalid"}
 					}
 				},
-				"/fm_demod/cic_compiler_3/S_AXIS_DATA": {
+				"/fm_demod/Dec200/cic_compiler_3/M_AXIS_DATA": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "m_axis_data_tdata[39:0]"},
+						"TREADY": { "actual": "m_axis_data_tready"},
+						"TVALID": { "actual": "m_axis_data_tvalid"}
+					}
+				},
+				"/fm_demod/Dec200/cic_compiler_3/S_AXIS_DATA": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -41,6 +61,58 @@
 						"TDATA": { "actual": "s_axis_data_tdata[15:0]"},
 						"TREADY": { "actual": "s_axis_data_tready"},
 						"TVALID": { "actual": "s_axis_data_tvalid"}
+					}
+				},
+				"/fm_demod/Dec200/fir_compiler_0/S_AXIS_DATA": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"TDATA": { "actual": "s_axis_data_tdata[39:0]"},
+						"TREADY": { "actual": "s_axis_data_tready"},
+						"TVALID": { "actual": "s_axis_data_tvalid"}
+					}
+				},
+				"/fm_demod/Dec200/fir_compiler_1/S_AXIS_DATA": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"TDATA": { "actual": "s_axis_data_tdata[39:0]"},
+						"TREADY": { "actual": "s_axis_data_tready"},
+						"TVALID": { "actual": "s_axis_data_tvalid"}
+					}
+				},
+				"/fm_mod/dds_deviation/S_AXIS_PHASE": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"TDATA": { "actual": "s_axis_phase_tdata[23:0]"},
+						"TVALID": { "actual": "s_axis_phase_tvalid"}
+					}
+				},
+				"/fm_mod/dds_ton/M_AXIS_DATA": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"TDATA": { "actual": "m_axis_data_tdata[23:0]"},
+						"TVALID": { "actual": "m_axis_data_tvalid"}
+					}
+				},
+				"/fm_mod/fm_pinc_modulator_ax_0/m_axis": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "m_axis_tdata[23:0]"},
+						"TVALID": { "actual": "m_axis_tvalid"}
+					}
+				},
+				"/fm_mod/fm_pinc_modulator_ax_0/s_axis": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_tdata[23:0]"},
+						"TVALID": { "actual": "s_axis_tvalid"}
 					}
 				}
 			}

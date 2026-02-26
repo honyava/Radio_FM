@@ -84,7 +84,7 @@ set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.cache/wt [current_project]
 set_property parent.project_path /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.xpr [current_project]
-set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.cache/ip [current_project]

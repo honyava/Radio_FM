@@ -1,36 +1,92 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"-429,-279",
+   "Default View_ScaleFactor":"0.824686",
+   "Default View_TopLeft":"2983,41",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port port-id_adc_clk -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
-preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
-preplace port port-id_locked -pg 1 -lvl 0 -x 0 -y 10 -defaultsOSRD
-preplace port port-id_sys -pg 1 -lvl 0 -x 0 -y 230 -defaultsOSRD
-preplace portBus adc_dai -pg 1 -lvl 0 -x 0 -y -20 -defaultsOSRD
-preplace portBus hdmi_d1 -pg 1 -lvl 4 -x 1000 -y 200 -defaultsOSRD
-preplace portBus hdmi_clk -pg 1 -lvl 4 -x 1000 -y 140 -defaultsOSRD
-preplace portBus hdmi_d2 -pg 1 -lvl 4 -x 1000 -y 230 -defaultsOSRD
-preplace portBus hdmi_d0 -pg 1 -lvl 4 -x 1000 -y 170 -defaultsOSRD
-preplace inst fm_demod -pg 1 -lvl 2 -x 570 -y 110 -defaultsOSRD
-preplace inst hdmi_core -pg 1 -lvl 3 -x 860 -y 190 -defaultsOSRD
-preplace inst fm_mod -pg 1 -lvl 1 -x 210 -y 80 -defaultsOSRD
-preplace netloc adc_dai_0_1 1 0 2 NJ -20 400J
-preplace netloc adc_dci_0_1 1 0 3 50 0 410 0 740
-preplace netloc en_0_1 1 0 2 20J -10 390J
-preplace netloc hdmi_tmds_audio_0_hdmi_clk 1 3 1 980J 140n
-preplace netloc hdmi_tmds_audio_0_hdmi_d0 1 3 1 980J 170n
-preplace netloc hdmi_tmds_audio_0_hdmi_d1 1 3 1 NJ 200
-preplace netloc hdmi_tmds_audio_0_hdmi_d2 1 3 1 980J 220n
-preplace netloc sys_1 1 0 3 NJ 230 NJ 230 730J
-preplace netloc sys_rst_n_0_1 1 0 3 60 10 380 210 740J
-preplace netloc fm_demod_m_axis_dout 1 2 1 730 110n
-preplace netloc fm_mod_m_axis_data_tdata_0 1 1 1 370 70n
-preplace netloc fm_mod_m_axis_data_tvalid_0 1 1 1 360 90n
-levelinfo -pg 1 0 210 570 860 1000
-pagesize -pg 1 -db -bbox -sgen -200 -40 1220 270
+preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x 0 -y 290 -defaultsOSRD
+preplace port port-id_locked -pg 1 -lvl 0 -x 0 -y 350 -defaultsOSRD
+preplace port port-id_sys -pg 1 -lvl 0 -x 0 -y 260 -defaultsOSRD
+preplace port port-id_clk_10M -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
+preplace port port-id_clk_50M -pg 1 -lvl 0 -x 0 -y 450 -defaultsOSRD
+preplace port port-id_adc_clk -pg 1 -lvl 5 -x 5080 -y 410 -defaultsOSRD
+preplace portBus adc_dai -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
+preplace portBus hdmi_d1 -pg 1 -lvl 5 -x 5080 -y 250 -defaultsOSRD
+preplace portBus hdmi_clk -pg 1 -lvl 5 -x 5080 -y 190 -defaultsOSRD
+preplace portBus hdmi_d2 -pg 1 -lvl 5 -x 5080 -y 280 -defaultsOSRD
+preplace portBus hdmi_d0 -pg 1 -lvl 5 -x 5080 -y 220 -defaultsOSRD
+preplace inst fm_demod -pg 1 -lvl 2 -x 850 -y 130 -defaultsOSRD
+preplace inst hdmi_core -pg 1 -lvl 4 -x 4940 -y 230 -defaultsOSRD
+preplace inst fm_mod -pg 1 -lvl 1 -x 340 -y 330 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 340 -y 440 -defaultsOSRD
+preplace inst clk_wiz_1 -pg 1 -lvl 3 -x 4710 -y 410 -defaultsOSRD
+preplace inst fm_demod|cic_compiler_Q1 -pg 1 -lvl 8 -x 3360 -y 130 -defaultsOSRD
+preplace inst fm_demod|xlconcat_0 -pg 1 -lvl 9 -x 3670 -y 150 -defaultsOSRD
+preplace inst fm_demod|xlslice_0 -pg 1 -lvl 7 -x 3040 -y 120 -defaultsOSRD
+preplace inst fm_demod|lfsr_rng_0 -pg 1 -lvl 2 -x 1270 -y 550 -defaultsOSRD
+preplace inst fm_demod|cmpy_0 -pg 1 -lvl 6 -x 2720 -y 320 -defaultsOSRD
+preplace inst fm_demod|xlslice_1 -pg 1 -lvl 7 -x 3040 -y 280 -defaultsOSRD
+preplace inst fm_demod|del_m_0 -pg 1 -lvl 5 -x 2330 -y 270 -defaultsOSRD
+preplace inst fm_demod|LTC_2208_0 -pg 1 -lvl 2 -x 1270 -y 710 -defaultsOSRD
+preplace inst fm_demod|cic_compiler_I1 -pg 1 -lvl 8 -x 3360 -y 290 -defaultsOSRD
+preplace inst fm_demod|dds_compiler_0 -pg 1 -lvl 2 -x 1270 -y 290 -defaultsOSRD
+preplace inst fm_demod|cmpy_1 -pg 1 -lvl 3 -x 1640 -y 300 -defaultsOSRD
+preplace inst fm_demod|ila_0 -pg 1 -lvl 11 -x 4340 -y 400 -defaultsOSRD
+preplace inst fm_demod|xlconstant_0 -pg 1 -lvl 1 -x 920 -y 570 -defaultsOSRD
+preplace inst fm_demod|axis_data_fifo_0 -pg 1 -lvl 1 -x 920 -y 850 -defaultsOSRD
+preplace inst fm_demod|cordic_0 -pg 1 -lvl 10 -x 4000 -y 300 -defaultsOSRD
+preplace inst fm_demod|Dec200 -pg 1 -lvl 4 -x 2020 -y 290 -defaultsOSRD
+preplace netloc adc_clk_0_1 1 0 2 180J 260 520J
+preplace netloc adc_dai_0_1 1 0 2 NJ 90 540J
+preplace netloc adc_dci_0_1 1 1 3 580 -20 N -20 4800
+preplace netloc en_0_1 1 0 2 170J 750 NJ
+preplace netloc fm_mod_m_axis_data_tdata_0 1 1 1 500 320n
+preplace netloc fm_mod_m_axis_data_tvalid_0 1 1 1 490 340n
+preplace netloc hdmi_tmds_audio_0_hdmi_clk 1 4 1 5060J 190n
+preplace netloc hdmi_tmds_audio_0_hdmi_d0 1 4 1 NJ 220
+preplace netloc hdmi_tmds_audio_0_hdmi_d1 1 4 1 5060J 240n
+preplace netloc hdmi_tmds_audio_0_hdmi_d2 1 4 1 5060J 260n
+preplace netloc src_in_1 1 2 2 4620 220 N
+preplace netloc sys_1 1 0 4 20J -30 NJ -30 NJ -30 4820
+preplace netloc sys_rst_n_0_1 1 0 4 190J 250 570 -10 NJ -10 4810
+preplace netloc clk_wiz_0_locked 1 1 2 530 10 4600
+preplace netloc clk_wiz_1_clk_adc 1 3 2 N 410 NJ
+preplace netloc clk_50M_1 1 0 1 NJ 450
+preplace netloc clk_wiz_0_clk_out1 1 1 2 510 0 4610J
+preplace netloc fm_demod|adc_dai_1 1 0 2 NJ 730 N
+preplace netloc fm_demod|adc_dci_0_1 1 0 11 740 710 1120 370 1420 150 1860 180 2200 180 2490 170 2930J 180 3160 380 NJ 380 3780 390 4220J
+preplace netloc fm_demod|axis_data_fifo_0_m_axis_tdata 1 1 10 1110J 470 1430 470 N 470 N 470 N 470 N 470 N 470 N 470 N 470 4230
+preplace netloc fm_demod|axis_data_fifo_0_m_axis_tvalid 1 1 2 1100J 210 1410
+preplace netloc fm_demod|cic_compiler_2_m_axis_data_tdata 1 4 7 2200 490 N 490 2920 400 N 400 N 400 N 400 N
+preplace netloc fm_demod|cic_compiler_3_m_axis_data_tdata 1 4 1 N 300
+preplace netloc fm_demod|cic_compiler_I1_m_axis_data_tdata 1 8 1 3560 160n
+preplace netloc fm_demod|cic_compiler_I1_m_axis_data_tvalid 1 8 2 NJ 310 N
+preplace netloc fm_demod|cic_compiler_Q1_m_axis_data_tdata 1 8 1 N 140
+preplace netloc fm_demod|cmpy_0_m_axis_dout_tdata 1 6 1 2920 120n
+preplace netloc fm_demod|cmpy_0_m_axis_dout_tvalid 1 6 2 NJ 340 3150
+preplace netloc fm_demod|cmpy_1_m_axis_dout_tdata 1 3 8 1880 450 N 450 2510 480 2930 420 N 420 N 420 N 420 N
+preplace netloc fm_demod|cmpy_1_m_axis_dout_tvalid 1 3 1 N 320
+preplace netloc fm_demod|cordic_0_m_axis_dout_tdata 1 10 2 4240 300 NJ
+preplace netloc fm_demod|dds_compiler_0_m_axis_data_tdata 1 2 1 N 290
+preplace netloc fm_demod|dds_compiler_0_m_axis_data_tvalid 1 2 1 N 310
+preplace netloc fm_demod|del_m_0_out0 1 5 1 N 250
+preplace netloc fm_demod|del_m_0_out1 1 5 1 2500 270n
+preplace netloc fm_demod|del_m_0_valid 1 5 1 2520 270n
+preplace netloc fm_demod|lfsr_rng_0_m_axis_tdata 1 2 4 1410 480 NJ 480 NJ 480 2500
+preplace netloc fm_demod|lfsr_rng_0_m_axis_tvalid 1 2 4 1440 460 NJ 460 NJ 460 2520
+preplace netloc fm_demod|s_axis_aclk_0_1 1 0 1 730 800n
+preplace netloc fm_demod|s_axis_tdata_0_1 1 0 1 N 820
+preplace netloc fm_demod|s_axis_tvalid_0_1 1 0 1 N 840
+preplace netloc fm_demod|sys_rst_n_0_1 1 0 5 750 690 1130 450 NJ 450 1870 200 2160
+preplace netloc fm_demod|xlconcat_0_dout 1 9 1 3780 150n
+preplace netloc fm_demod|xlconstant_0_dout 1 1 1 1090 570n
+preplace netloc fm_demod|xlslice_0_Dout 1 7 1 NJ 120
+preplace netloc fm_demod|xlslice_1_Dout 1 7 1 N 280
+levelinfo -pg 1 0 340 850 4710 4940 5080
+levelinfo -hier fm_demod * 920 1270 1640 2020 2330 2720 3040 3360 3670 4000 4340 *
+pagesize -pg 1 -db -bbox -sgen -140 -60 5220 1180
+pagesize -hier fm_demod -db -bbox -sgen 700 40 4470 960
 "
 }
 0

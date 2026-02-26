@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Tue Feb 24 17:13:51 2026
+-- Date        : Thu Feb 26 16:58:54 2026
 -- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
--- Command     : write_vhdl -force -mode funcsim
---               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_0/fm_hdmi_clk_wiz_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top fm_hdmi_clk_wiz_0_0 -prefix
+--               fm_hdmi_clk_wiz_0_0_ fm_hdmi_clk_wiz_0_0_sim_netlist.vhdl
 -- Design      : fm_hdmi_clk_wiz_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -15,7 +15,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity fm_hdmi_clk_wiz_0_0_clk_wiz is
+entity fm_hdmi_clk_wiz_0_0_fm_hdmi_clk_wiz_0_0_clk_wiz is
   port (
     clkfb_in : in STD_LOGIC;
     clk_pixel_x5 : out STD_LOGIC;
@@ -25,10 +25,9 @@ entity fm_hdmi_clk_wiz_0_0_clk_wiz is
     locked : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
-end fm_hdmi_clk_wiz_0_0_clk_wiz;
+end fm_hdmi_clk_wiz_0_0_fm_hdmi_clk_wiz_0_0_clk_wiz;
 
-architecture STRUCTURE of fm_hdmi_clk_wiz_0_0_clk_wiz is
-  signal clk_in1_fm_hdmi_clk_wiz_0_0 : STD_LOGIC;
+architecture STRUCTURE of fm_hdmi_clk_wiz_0_0_fm_hdmi_clk_wiz_0_0_clk_wiz is
   signal clk_pixel_fm_hdmi_clk_wiz_0_0 : STD_LOGIC;
   signal reset_high : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED : STD_LOGIC;
@@ -47,24 +46,9 @@ architecture STRUCTURE of fm_hdmi_clk_wiz_0_0_clk_wiz is
   signal NLW_mmcm_adv_inst_PSDONE_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_DO_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute BOX_TYPE : string;
-  attribute BOX_TYPE of clkin1_ibufg : label is "PRIMITIVE";
-  attribute CAPACITANCE : string;
-  attribute CAPACITANCE of clkin1_ibufg : label is "DONT_CARE";
-  attribute IBUF_DELAY_VALUE : string;
-  attribute IBUF_DELAY_VALUE of clkin1_ibufg : label is "0";
-  attribute IFD_DELAY_VALUE : string;
-  attribute IFD_DELAY_VALUE of clkin1_ibufg : label is "AUTO";
   attribute BOX_TYPE of clkout2_buf : label is "PRIMITIVE";
   attribute BOX_TYPE of mmcm_adv_inst : label is "PRIMITIVE";
 begin
-clkin1_ibufg: unisim.vcomponents.IBUF
-    generic map(
-      IOSTANDARD => "DEFAULT"
-    )
-        port map (
-      I => clk_in1,
-      O => clk_in1_fm_hdmi_clk_wiz_0_0
-    );
 clkout2_buf: unisim.vcomponents.BUFG
      port map (
       I => clk_pixel_fm_hdmi_clk_wiz_0_0,
@@ -126,7 +110,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKFBOUT => clkfb_out,
       CLKFBOUTB => NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED,
       CLKFBSTOPPED => NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED,
-      CLKIN1 => clk_in1_fm_hdmi_clk_wiz_0_0,
+      CLKIN1 => clk_in1,
       CLKIN2 => '0',
       CLKINSEL => '1',
       CLKINSTOPPED => NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED,
@@ -185,7 +169,7 @@ end fm_hdmi_clk_wiz_0_0;
 
 architecture STRUCTURE of fm_hdmi_clk_wiz_0_0 is
 begin
-inst: entity work.fm_hdmi_clk_wiz_0_0_clk_wiz
+inst: entity work.fm_hdmi_clk_wiz_0_0_fm_hdmi_clk_wiz_0_0_clk_wiz
      port map (
       clk_in1 => clk_in1,
       clk_pixel => clk_pixel,

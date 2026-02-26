@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Tue Feb 24 14:13:42 2026
+// Date        : Thu Feb 26 18:53:11 2026
 // Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
 // Command     : write_verilog -force -mode synth_stub -rename_top fm_hdmi_cic_compiler_2_2 -prefix
 //               fm_hdmi_cic_compiler_2_2_ fm_hdmi_cic_compiler_0_2_stub.v
@@ -16,14 +16,17 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "cic_compiler_v4_0_17,Vivado 2023.2" *)
 module fm_hdmi_cic_compiler_2_2(aclk, aresetn, s_axis_data_tdata, 
-  s_axis_data_tvalid, s_axis_data_tready, m_axis_data_tdata, m_axis_data_tvalid)
-/* synthesis syn_black_box black_box_pad_pin="aresetn,s_axis_data_tdata[15:0],s_axis_data_tvalid,s_axis_data_tready,m_axis_data_tdata[15:0],m_axis_data_tvalid" */
+  s_axis_data_tvalid, s_axis_data_tready, m_axis_data_tdata, m_axis_data_tvalid, 
+  m_axis_data_tready, event_halted)
+/* synthesis syn_black_box black_box_pad_pin="aresetn,s_axis_data_tdata[15:0],s_axis_data_tvalid,s_axis_data_tready,m_axis_data_tdata[39:0],m_axis_data_tvalid,m_axis_data_tready,event_halted" */
 /* synthesis syn_force_seq_prim="aclk" */;
   input aclk /* synthesis syn_isclock = 1 */;
   input aresetn;
   input [15:0]s_axis_data_tdata;
   input s_axis_data_tvalid;
   output s_axis_data_tready;
-  output [15:0]m_axis_data_tdata;
+  output [39:0]m_axis_data_tdata;
   output m_axis_data_tvalid;
+  input m_axis_data_tready;
+  output event_halted;
 endmodule
