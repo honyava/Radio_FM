@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Thu Feb 26 19:14:16 2026
+// Date        : Fri Feb 27 18:08:40 2026
 // Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
 // Command     : write_verilog -force -mode synth_stub
 //               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_0/fm_hdmi_ila_0_0_stub.v
@@ -16,11 +16,11 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* X_CORE_INFO = "ila,Vivado 2023.2" *)
 module fm_hdmi_ila_0_0(clk, probe0, probe1, probe2, probe3)
-/* synthesis syn_black_box black_box_pad_pin="probe0[15:0],probe1[15:0],probe2[15:0],probe3[15:0]" */
+/* synthesis syn_black_box black_box_pad_pin="probe0[15:0],probe1[31:0],probe2[31:0],probe3[31:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   input [15:0]probe0;
-  input [15:0]probe1;
-  input [15:0]probe2;
-  input [15:0]probe3;
+  input [31:0]probe1;
+  input [31:0]probe2;
+  input [31:0]probe3;
 endmodule

@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Thu Feb 26 17:06:15 2026
+// Date        : Fri Feb 27 18:31:36 2026
 // Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_del_m_0_0/fm_hdmi_del_m_0_0_sim_netlist.v
@@ -19,49 +19,55 @@
 module fm_hdmi_del_m_0_0
    (aclk,
     aresetn,
+    sample_valid,
     tap_i,
     tap_q,
     out0,
     out1,
     valid);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 aclk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aclk, ASSOCIATED_RESET aresetn, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN /clk_wiz_1_clk_out1, INSERT_VIP 0" *) input aclk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 aclk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aclk, ASSOCIATED_RESET aresetn, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_in1_0, INSERT_VIP 0" *) input aclk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 aresetn RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input aresetn;
+  input sample_valid;
   input [15:0]tap_i;
   input [15:0]tap_q;
   output [31:0]out0;
   output [31:0]out1;
   output valid;
 
-  wire \<const1> ;
   wire aclk;
   wire aresetn;
   wire [31:0]out0;
   wire [31:0]out1;
+  wire sample_valid;
   wire [15:0]tap_i;
   wire [15:0]tap_q;
+  wire valid;
 
-  assign valid = \<const1> ;
-  VCC VCC
-       (.P(\<const1> ));
   fm_hdmi_del_m_0_0_del_m inst
        (.aclk(aclk),
         .aresetn(aresetn),
         .out0(out0),
         .out1(out1),
+        .sample_valid(sample_valid),
         .tap_i(tap_i),
-        .tap_q(tap_q));
+        .tap_q(tap_q),
+        .valid(valid));
 endmodule
 
 (* ORIG_REF_NAME = "del_m" *) 
 module fm_hdmi_del_m_0_0_del_m
    (out0,
     out1,
+    valid,
+    sample_valid,
     tap_i,
     aclk,
     tap_q,
     aresetn);
   output [31:0]out0;
   output [31:0]out1;
+  output valid;
+  input sample_valid;
   input [15:0]tap_i;
   input aclk;
   input [15:0]tap_q;
@@ -103,199 +109,203 @@ module fm_hdmi_del_m_0_0_del_m
   wire [31:0]out0;
   wire [31:0]out1;
   wire [15:0]p_0_in;
+  wire p_0_in_0;
+  wire sample_valid;
   wire [15:0]tap_i;
   wire [15:0]tap_q;
+  wire valid;
+  wire \valid_sr_reg_n_0_[0] ;
   wire [3:3]\NLW_delay_q1_reg[15]_i_1_CO_UNCONNECTED ;
 
   FDCE \delay_i0_reg[0] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[0]),
         .Q(out0[0]));
   FDCE \delay_i0_reg[10] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[10]),
         .Q(out0[10]));
   FDCE \delay_i0_reg[11] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[11]),
         .Q(out0[11]));
   FDCE \delay_i0_reg[12] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[12]),
         .Q(out0[12]));
   FDCE \delay_i0_reg[13] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[13]),
         .Q(out0[13]));
   FDCE \delay_i0_reg[14] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[14]),
         .Q(out0[14]));
   FDCE \delay_i0_reg[15] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[15]),
         .Q(out0[15]));
   FDCE \delay_i0_reg[1] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[1]),
         .Q(out0[1]));
   FDCE \delay_i0_reg[2] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[2]),
         .Q(out0[2]));
   FDCE \delay_i0_reg[3] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[3]),
         .Q(out0[3]));
   FDCE \delay_i0_reg[4] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[4]),
         .Q(out0[4]));
   FDCE \delay_i0_reg[5] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[5]),
         .Q(out0[5]));
   FDCE \delay_i0_reg[6] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[6]),
         .Q(out0[6]));
   FDCE \delay_i0_reg[7] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[7]),
         .Q(out0[7]));
   FDCE \delay_i0_reg[8] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[8]),
         .Q(out0[8]));
   FDCE \delay_i0_reg[9] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_i[9]),
         .Q(out0[9]));
   FDCE \delay_i1_reg[0] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[0]),
         .Q(out1[0]));
   FDCE \delay_i1_reg[10] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[10]),
         .Q(out1[10]));
   FDCE \delay_i1_reg[11] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[11]),
         .Q(out1[11]));
   FDCE \delay_i1_reg[12] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[12]),
         .Q(out1[12]));
   FDCE \delay_i1_reg[13] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[13]),
         .Q(out1[13]));
   FDCE \delay_i1_reg[14] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[14]),
         .Q(out1[14]));
   FDCE \delay_i1_reg[15] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[15]),
         .Q(out1[15]));
   FDCE \delay_i1_reg[1] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[1]),
         .Q(out1[1]));
   FDCE \delay_i1_reg[2] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[2]),
         .Q(out1[2]));
   FDCE \delay_i1_reg[3] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[3]),
         .Q(out1[3]));
   FDCE \delay_i1_reg[4] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[4]),
         .Q(out1[4]));
   FDCE \delay_i1_reg[5] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[5]),
         .Q(out1[5]));
   FDCE \delay_i1_reg[6] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[6]),
         .Q(out1[6]));
   FDCE \delay_i1_reg[7] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[7]),
         .Q(out1[7]));
   FDCE \delay_i1_reg[8] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[8]),
         .Q(out1[8]));
   FDCE \delay_i1_reg[9] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(out0[9]),
         .Q(out1[9]));
@@ -306,97 +316,97 @@ module fm_hdmi_del_m_0_0_del_m
         .O(\delay_q0[15]_i_1_n_0 ));
   FDCE \delay_q0_reg[0] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[0]),
         .Q(out0[16]));
   FDCE \delay_q0_reg[10] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[10]),
         .Q(out0[26]));
   FDCE \delay_q0_reg[11] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[11]),
         .Q(out0[27]));
   FDCE \delay_q0_reg[12] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[12]),
         .Q(out0[28]));
   FDCE \delay_q0_reg[13] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[13]),
         .Q(out0[29]));
   FDCE \delay_q0_reg[14] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[14]),
         .Q(out0[30]));
   FDCE \delay_q0_reg[15] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[15]),
         .Q(out0[31]));
   FDCE \delay_q0_reg[1] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[1]),
         .Q(out0[17]));
   FDCE \delay_q0_reg[2] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[2]),
         .Q(out0[18]));
   FDCE \delay_q0_reg[3] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[3]),
         .Q(out0[19]));
   FDCE \delay_q0_reg[4] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[4]),
         .Q(out0[20]));
   FDCE \delay_q0_reg[5] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[5]),
         .Q(out0[21]));
   FDCE \delay_q0_reg[6] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[6]),
         .Q(out0[22]));
   FDCE \delay_q0_reg[7] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[7]),
         .Q(out0[23]));
   FDCE \delay_q0_reg[8] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[8]),
         .Q(out0[24]));
   FDCE \delay_q0_reg[9] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(tap_q[9]),
         .Q(out0[25]));
@@ -477,19 +487,19 @@ module fm_hdmi_del_m_0_0_del_m
         .O(\delay_q1[7]_i_5_n_0 ));
   FDCE \delay_q1_reg[0] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[0]),
         .Q(out1[16]));
   FDCE \delay_q1_reg[10] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[10]),
         .Q(out1[26]));
   FDCE \delay_q1_reg[11] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[11]),
         .Q(out1[27]));
@@ -503,25 +513,25 @@ module fm_hdmi_del_m_0_0_del_m
         .S({\delay_q1[11]_i_2_n_0 ,\delay_q1[11]_i_3_n_0 ,\delay_q1[11]_i_4_n_0 ,\delay_q1[11]_i_5_n_0 }));
   FDCE \delay_q1_reg[12] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[12]),
         .Q(out1[28]));
   FDCE \delay_q1_reg[13] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[13]),
         .Q(out1[29]));
   FDCE \delay_q1_reg[14] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[14]),
         .Q(out1[30]));
   FDCE \delay_q1_reg[15] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[15]),
         .Q(out1[31]));
@@ -535,19 +545,19 @@ module fm_hdmi_del_m_0_0_del_m
         .S({\delay_q1[15]_i_2_n_0 ,\delay_q1[15]_i_3_n_0 ,\delay_q1[15]_i_4_n_0 ,\delay_q1[15]_i_5_n_0 }));
   FDCE \delay_q1_reg[1] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[1]),
         .Q(out1[17]));
   FDCE \delay_q1_reg[2] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[2]),
         .Q(out1[18]));
   FDCE \delay_q1_reg[3] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[3]),
         .Q(out1[19]));
@@ -561,25 +571,25 @@ module fm_hdmi_del_m_0_0_del_m
         .S({\delay_q1[3]_i_2_n_0 ,\delay_q1[3]_i_3_n_0 ,\delay_q1[3]_i_4_n_0 ,out0[16]}));
   FDCE \delay_q1_reg[4] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[4]),
         .Q(out1[20]));
   FDCE \delay_q1_reg[5] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[5]),
         .Q(out1[21]));
   FDCE \delay_q1_reg[6] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[6]),
         .Q(out1[22]));
   FDCE \delay_q1_reg[7] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[7]),
         .Q(out1[23]));
@@ -593,16 +603,34 @@ module fm_hdmi_del_m_0_0_del_m
         .S({\delay_q1[7]_i_2_n_0 ,\delay_q1[7]_i_3_n_0 ,\delay_q1[7]_i_4_n_0 ,\delay_q1[7]_i_5_n_0 }));
   FDCE \delay_q1_reg[8] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[8]),
         .Q(out1[24]));
   FDCE \delay_q1_reg[9] 
        (.C(aclk),
-        .CE(1'b1),
+        .CE(sample_valid),
         .CLR(\delay_q0[15]_i_1_n_0 ),
         .D(p_0_in[9]),
         .Q(out1[25]));
+  LUT2 #(
+    .INIT(4'h8)) 
+    valid_INST_0
+       (.I0(sample_valid),
+        .I1(p_0_in_0),
+        .O(valid));
+  FDCE \valid_sr_reg[0] 
+       (.C(aclk),
+        .CE(sample_valid),
+        .CLR(\delay_q0[15]_i_1_n_0 ),
+        .D(1'b1),
+        .Q(\valid_sr_reg_n_0_[0] ));
+  FDCE \valid_sr_reg[1] 
+       (.C(aclk),
+        .CE(sample_valid),
+        .CLR(\delay_q0[15]_i_1_n_0 ),
+        .D(\valid_sr_reg_n_0_[0] ),
+        .Q(p_0_in_0));
 endmodule
 `ifndef GLBL
 `define GLBL

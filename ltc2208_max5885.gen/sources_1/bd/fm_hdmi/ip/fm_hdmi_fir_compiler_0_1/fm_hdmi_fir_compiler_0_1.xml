@@ -1052,11 +1052,11 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Feb 26 15:52:49 UTC 2026</spirit:value>
+            <spirit:value>Fri Feb 27 11:59:46 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:33785908</spirit:value>
+            <spirit:value>9:12c4162e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1070,11 +1070,11 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Feb 26 15:53:34 UTC 2026</spirit:value>
+            <spirit:value>Fri Feb 27 12:00:26 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:33785908</spirit:value>
+            <spirit:value>9:12c4162e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1088,11 +1088,11 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Feb 26 15:52:49 UTC 2026</spirit:value>
+            <spirit:value>Fri Feb 27 11:59:46 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:33785908</spirit:value>
+            <spirit:value>9:12c4162e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1118,7 +1118,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7fa8d6f0</spirit:value>
+            <spirit:value>9:e16de41a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1134,11 +1134,11 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Feb 26 15:52:49 UTC 2026</spirit:value>
+            <spirit:value>Fri Feb 27 11:59:46 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7fa8d6f0</spirit:value>
+            <spirit:value>9:e16de41a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1164,7 +1164,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:33785908</spirit:value>
+            <spirit:value>9:12c4162e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1180,11 +1180,11 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Feb 26 15:52:49 UTC 2026</spirit:value>
+            <spirit:value>Fri Feb 27 11:59:46 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:33785908</spirit:value>
+            <spirit:value>9:12c4162e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1833,7 +1833,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_COEF_FILE_LINES</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_COEF_FILE_LINES">80</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_COEF_FILE_LINES">120</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_FILTER_TYPE</spirit:name>
@@ -1861,7 +1861,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_NUM_TAPS</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUM_TAPS">143</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUM_TAPS">233</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_NUM_CHANNELS</spirit:name>
@@ -1893,7 +1893,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>C_COL_CONFIG</spirit:name>
-        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_COL_CONFIG">8</spirit:value>
+        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_COL_CONFIG">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_OPTIMIZATION</spirit:name>
@@ -1945,7 +1945,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>C_ACCUM_PATH_WIDTHS</spirit:name>
-        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ACCUM_PATH_WIDTHS">38,37</spirit:value>
+        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ACCUM_PATH_WIDTHS">39,38</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_OUTPUT_WIDTH</spirit:name>
@@ -1957,7 +1957,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>C_ACCUM_OP_PATH_WIDTHS</spirit:name>
-        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ACCUM_OP_PATH_WIDTHS">56</spirit:value>
+        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ACCUM_OP_PATH_WIDTHS">57</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>C_EXT_MULT_CNFG</spirit:name>
@@ -1973,7 +1973,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_NUM_MADDS</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUM_MADDS">8</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUM_MADDS">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>C_OPT_MADDS</spirit:name>
@@ -1981,19 +1981,19 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_OVERSAMPLING_RATE</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_OVERSAMPLING_RATE">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_OVERSAMPLING_RATE">12</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_INPUT_RATE</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_INPUT_RATE">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_INPUT_RATE">20</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_OUTPUT_RATE</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_OUTPUT_RATE">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_OUTPUT_RATE">200</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DATA_MEMTYPE</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DATA_MEMTYPE">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DATA_MEMTYPE">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_COEF_MEMTYPE</spirit:name>
@@ -2017,7 +2017,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DATA_MEM_PACKING</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DATA_MEM_PACKING">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DATA_MEM_PACKING">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_COEF_MEM_PACKING</spirit:name>
@@ -2029,7 +2029,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_LATENCY</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_LATENCY">20</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_LATENCY">24</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_HAS_ARESETn</spirit:name>
@@ -2113,10 +2113,6 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
       <spirit:enumeration>All</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
-      <spirit:name>choice_list_5e9d103c</spirit:name>
-      <spirit:enumeration>Signed</spirit:enumeration>
-    </spirit:choice>
-    <spirit:choice>
       <spirit:name>choice_list_8506c89f</spirit:name>
       <spirit:enumeration>Signed</spirit:enumeration>
       <spirit:enumeration>Unsigned</spirit:enumeration>
@@ -2183,13 +2179,6 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
       <spirit:enumeration spirit:text="Symmetric">Symmetric</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
-      <spirit:name>choice_pairs_6748615b</spirit:name>
-      <spirit:enumeration spirit:text="Integer Coefficients">Integer_Coefficients</spirit:enumeration>
-      <spirit:enumeration spirit:text="Quantize Only">Quantize_Only</spirit:enumeration>
-      <spirit:enumeration spirit:text="Maximize Dynamic Range">Maximize_Dynamic_Range</spirit:enumeration>
-      <spirit:enumeration spirit:text="Normalize to Centre Coefficient">Normalize_to_Centre_Coefficient</spirit:enumeration>
-    </spirit:choice>
-    <spirit:choice>
       <spirit:name>choice_pairs_74144f21</spirit:name>
       <spirit:enumeration spirit:text="COE File">COE_File</spirit:enumeration>
       <spirit:enumeration spirit:text="Vector">Vector</spirit:enumeration>
@@ -2215,6 +2204,10 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
       <spirit:name>choice_pairs_b6c64168</spirit:name>
       <spirit:enumeration spirit:text="Single">Single</spirit:enumeration>
       <spirit:enumeration spirit:text="By Channel">By_Channel</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
+      <spirit:name>choice_pairs_b82c2ac3</spirit:name>
+      <spirit:enumeration spirit:text="Integer Coefficients">Integer_Coefficients</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
       <spirit:name>choice_pairs_eb2746f0</spirit:name>
@@ -2419,7 +2412,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>CoefficientSource</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.CoefficientSource" spirit:choiceRef="choice_pairs_74144f21" spirit:order="3">Vector</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.CoefficientSource" spirit:choiceRef="choice_pairs_74144f21" spirit:order="3">COE_File</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>CoefficientVector</spirit:name>
@@ -2428,7 +2421,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Coefficient_File</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Coefficient_File" spirit:order="5">no_coe_file_loaded</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Coefficient_File" spirit:order="5">../../../../../../fir_384_140_190.coe</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Coefficient_Sets</spirit:name>
@@ -2488,7 +2481,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>SamplePeriod</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.SamplePeriod" spirit:order="20" spirit:minimum="0.00390625" spirit:maximum="1e+07">1</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.SamplePeriod" spirit:order="20" spirit:minimum="0.00390625" spirit:maximum="1e+07">20</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Sample_Frequency</spirit:name>
@@ -2500,11 +2493,11 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Coefficient_Sign</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Coefficient_Sign" spirit:choiceRef="choice_list_5e9d103c" spirit:order="23">Signed</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Coefficient_Sign" spirit:choiceRef="choice_list_8506c89f" spirit:order="23">Signed</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Quantization</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Quantization" spirit:choiceRef="choice_pairs_6748615b" spirit:order="24">Integer_Coefficients</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Quantization" spirit:choiceRef="choice_pairs_b82c2ac3" spirit:order="24">Integer_Coefficients</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Coefficient_Width</spirit:name>
@@ -2540,7 +2533,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Output_Width</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.Output_Width" spirit:order="33" spirit:minimum="1" spirit:maximum="55" spirit:rangeType="long">16</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.Output_Width" spirit:order="33" spirit:minimum="1" spirit:maximum="56" spirit:rangeType="long">16</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Filter_Architecture</spirit:name>
@@ -2640,7 +2633,7 @@ nimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ColumnConfig</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.ColumnConfig" spirit:order="43">8</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.ColumnConfig" spirit:order="43">1</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>DATA_Has_TLAST</spirit:name>

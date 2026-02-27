@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg400-2" LaunchTime="1772122416">
+<GenRun Id="impl_1" LaunchPart="xc7z020clg400-2" LaunchTime="1772206279">
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-RQS" Name="top_postroute_physopted.rqs"/>
   <File Type="ROUTE-RQS" Name="top_routed.rqs"/>
@@ -108,6 +108,13 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/axis_iq_slicer_to_2cic.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/iq16_truncate.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -293,6 +300,12 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PPRDIR/fir_384_140_190.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="top"/>
@@ -339,14 +352,21 @@
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_ila_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_util_vector_logic_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_del_m_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_cic_compiler_2_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_dds_compiler_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_iq16_truncate_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_iq16_truncate_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_fir_compiler_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_cmpy_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_fir_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_cic_compiler_2_2"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_ila_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_cic_compiler_0_2"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_clk_wiz_0_2"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_clk_wiz_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_cic_compiler_2_1"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_axis_iq_slicer_to_2c_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_fir_compiler_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_cic_compiler_2_2"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_del_m_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_lfsr_rng_0_0"/>
 </GenRun>

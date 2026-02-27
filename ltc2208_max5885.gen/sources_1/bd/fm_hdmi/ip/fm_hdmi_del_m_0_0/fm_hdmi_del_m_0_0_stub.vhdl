@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Thu Feb 26 17:06:15 2026
+-- Date        : Fri Feb 27 18:31:36 2026
 -- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_del_m_0_0/fm_hdmi_del_m_0_0_stub.vhdl
@@ -17,6 +17,7 @@ entity fm_hdmi_del_m_0_0 is
   Port ( 
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC;
+    sample_valid : in STD_LOGIC;
     tap_i : in STD_LOGIC_VECTOR ( 15 downto 0 );
     tap_q : in STD_LOGIC_VECTOR ( 15 downto 0 );
     out0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -30,7 +31,7 @@ architecture stub of fm_hdmi_del_m_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,tap_i[15:0],tap_q[15:0],out0[31:0],out1[31:0],valid";
+attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,sample_valid,tap_i[15:0],tap_q[15:0],out0[31:0],out1[31:0],valid";
 attribute X_CORE_INFO : string;
 attribute X_CORE_INFO of stub : architecture is "del_m,Vivado 2023.2";
 begin

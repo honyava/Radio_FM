@@ -3,13 +3,13 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Thu Feb 26 18:52:52 2026
-# Process ID: 1341855
+# Start of session at: Fri Feb 27 14:59:49 2026
+# Process ID: 382837
 # Current directory: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_fir_compiler_0_0_synth_1
 # Command line: vivado -log fm_hdmi_fir_compiler_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fm_hdmi_fir_compiler_0_0.tcl
 # Log file: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_fir_compiler_0_0_synth_1/fm_hdmi_fir_compiler_0_0.vds
 # Journal file: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_fir_compiler_0_0_synth_1/vivado.jou
-# Running On: reting-B650-EAGLE-AX, OS: Linux, CPU Frequency: 5025.424 MHz, CPU Physical cores: 32, Host memory: 66468 MB
+# Running On: reting-B650-EAGLE-AX, OS: Linux, CPU Frequency: 5038.822 MHz, CPU Physical cores: 32, Host memory: 66468 MB
 #-----------------------------------------------------------
 source fm_hdmi_fir_compiler_0_0.tcl -notrace
 INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: fm_hdmi_fir_compiler_0_0
@@ -20,23 +20,23 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg400-2
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 1341921
+INFO: [Synth 8-7075] Helper process launched with PID 382897
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2117.078 ; gain = 408.598 ; free physical = 36728 ; free virtual = 48691
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2117.852 ; gain = 408.598 ; free physical = 42184 ; free virtual = 50827
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'fm_hdmi_fir_compiler_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_0/synth/fm_hdmi_fir_compiler_0_0.vhd:70]
 	Parameter C_XDEVICEFAMILY bound to: zynq - type: string 
 	Parameter C_ELABORATION_DIR bound to: ./ - type: string 
 	Parameter C_COMPONENT_NAME bound to: fm_hdmi_fir_compiler_0_0 - type: string 
 	Parameter C_COEF_FILE bound to: fm_hdmi_fir_compiler_0_0.mif - type: string 
-	Parameter C_COEF_FILE_LINES bound to: 80 - type: integer 
+	Parameter C_COEF_FILE_LINES bound to: 120 - type: integer 
 	Parameter C_FILTER_TYPE bound to: 1 - type: integer 
 	Parameter C_INTERP_RATE bound to: 1 - type: integer 
 	Parameter C_DECIM_RATE bound to: 10 - type: integer 
 	Parameter C_ZERO_PACKING_FACTOR bound to: 1 - type: integer 
 	Parameter C_SYMMETRY bound to: 1 - type: integer 
 	Parameter C_NUM_FILTS bound to: 1 - type: integer 
-	Parameter C_NUM_TAPS bound to: 143 - type: integer 
+	Parameter C_NUM_TAPS bound to: 233 - type: integer 
 	Parameter C_NUM_CHANNELS bound to: 1 - type: integer 
 	Parameter C_CHANNEL_PATTERN bound to: fixed - type: string 
 	Parameter C_ROUND_MODE bound to: 4 - type: integer 
@@ -44,7 +44,7 @@ INFO: [Synth 8-638] synthesizing module 'fm_hdmi_fir_compiler_0_0' [/home/reting
 	Parameter C_NUM_RELOAD_SLOTS bound to: 1 - type: integer 
 	Parameter C_COL_MODE bound to: 1 - type: integer 
 	Parameter C_COL_PIPE_LEN bound to: 4 - type: integer 
-	Parameter C_COL_CONFIG bound to: 8 - type: string 
+	Parameter C_COL_CONFIG bound to: 1 - type: string 
 	Parameter C_OPTIMIZATION bound to: 2046 - type: integer 
 	Parameter C_DATA_PATH_WIDTHS bound to: 19,19 - type: string 
 	Parameter C_DATA_IP_PATH_WIDTHS bound to: 38 - type: string 
@@ -57,28 +57,28 @@ INFO: [Synth 8-638] synthesizing module 'fm_hdmi_fir_compiler_0_0' [/home/reting
 	Parameter C_PX_PATH_SRC bound to: 0,1 - type: string 
 	Parameter C_DATA_PATH_SIGN bound to: 1,0 - type: string 
 	Parameter C_COEF_PATH_SIGN bound to: 0,0 - type: string 
-	Parameter C_ACCUM_PATH_WIDTHS bound to: 38,37 - type: string 
+	Parameter C_ACCUM_PATH_WIDTHS bound to: 39,38 - type: string 
 	Parameter C_OUTPUT_WIDTH bound to: 16 - type: integer 
 	Parameter C_OUTPUT_PATH_WIDTHS bound to: 16 - type: string 
-	Parameter C_ACCUM_OP_PATH_WIDTHS bound to: 56 - type: string 
+	Parameter C_ACCUM_OP_PATH_WIDTHS bound to: 57 - type: string 
 	Parameter C_EXT_MULT_CNFG bound to: 0,1,0,19 - type: string 
 	Parameter C_DATA_PATH_PSAMP_SRC bound to: 0 - type: string 
 	Parameter C_OP_PATH_PSAMP_SRC bound to: 0 - type: string 
-	Parameter C_NUM_MADDS bound to: 8 - type: integer 
+	Parameter C_NUM_MADDS bound to: 1 - type: integer 
 	Parameter C_OPT_MADDS bound to: none - type: string 
-	Parameter C_OVERSAMPLING_RATE bound to: 1 - type: integer 
-	Parameter C_INPUT_RATE bound to: 1 - type: integer 
-	Parameter C_OUTPUT_RATE bound to: 10 - type: integer 
-	Parameter C_DATA_MEMTYPE bound to: 0 - type: integer 
+	Parameter C_OVERSAMPLING_RATE bound to: 12 - type: integer 
+	Parameter C_INPUT_RATE bound to: 20 - type: integer 
+	Parameter C_OUTPUT_RATE bound to: 200 - type: integer 
+	Parameter C_DATA_MEMTYPE bound to: 1 - type: integer 
 	Parameter C_COEF_MEMTYPE bound to: 2 - type: integer 
 	Parameter C_IPBUFF_MEMTYPE bound to: 2 - type: integer 
 	Parameter C_OPBUFF_MEMTYPE bound to: 0 - type: integer 
 	Parameter C_DATAPATH_MEMTYPE bound to: 2 - type: integer 
 	Parameter C_MEM_ARRANGEMENT bound to: 1 - type: integer 
-	Parameter C_DATA_MEM_PACKING bound to: 0 - type: integer 
+	Parameter C_DATA_MEM_PACKING bound to: 1 - type: integer 
 	Parameter C_COEF_MEM_PACKING bound to: 0 - type: integer 
 	Parameter C_FILTS_PACKED bound to: 0 - type: integer 
-	Parameter C_LATENCY bound to: 20 - type: integer 
+	Parameter C_LATENCY bound to: 24 - type: integer 
 	Parameter C_HAS_ARESETn bound to: 0 - type: integer 
 	Parameter C_HAS_ACLKEN bound to: 0 - type: integer 
 	Parameter C_DATA_HAS_TLAST bound to: 0 - type: integer 
@@ -100,121 +100,121 @@ INFO: [Synth 8-3919] null assignment ignored
 INFO: [Synth 8-3919] null assignment ignored
 INFO: [Synth 8-3919] null assignment ignored
 INFO: [Synth 8-256] done synthesizing module 'fm_hdmi_fir_compiler_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_0/synth/fm_hdmi_fir_compiler_0_0.vhd:70]
-WARNING: [Synth 8-7129] Port SCLR in module delay__parameterized39 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SCLR_ALT in module delay__parameterized39 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SCLR in module delay__parameterized38 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SCLR_ALT in module delay__parameterized38 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WE in module delay__parameterized30 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CE in module delay__parameterized30 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port SCLR in module delay__parameterized30 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port SCLR_ALT in module delay__parameterized30 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CLK in module delay__parameterized30 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WE in module delay__parameterized29 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CE in module delay__parameterized29 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port SCLR in module delay__parameterized29 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port SCLR_ALT in module delay__parameterized29 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CLK in module delay__parameterized29 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PRE_ADDSUB in module calc__parameterized3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PRE_ADD_BYPASS in module calc__parameterized3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CED in module calc__parameterized3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WE in module delay__parameterized37 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CE in module delay__parameterized37 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SCLR in module delay__parameterized37 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SCLR_ALT in module delay__parameterized37 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CLK in module delay__parameterized37 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WE in module delay__parameterized36 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CE in module delay__parameterized36 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SCLR in module delay__parameterized36 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SCLR_ALT in module delay__parameterized36 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CLK in module delay__parameterized36 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[fab][57] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[fab][56] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[fab][55] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[fab][54] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[fab][53] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[fab][52] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[fab][51] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[fab][50] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[fab][49] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[fab][48] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][62] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][61] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][60] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][59] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][58] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][57] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][56] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][55] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][54] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][53] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][52] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][51] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][50] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][49] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port POUT[casc][48] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][57] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][56] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][55] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][54] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][53] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][52] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][51] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][50] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][49] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][48] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][47] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][46] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][45] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][44] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][43] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][42] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][41] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][40] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][39] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][38] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][37] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][36] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][35] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][34] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][33] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][32] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][31] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][30] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][29] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][28] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][27] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][26] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][25] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][24] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][23] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][22] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][21] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][20] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][19] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][18] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][17] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][16] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][15] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][14] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][13] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][12] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][11] in module add_accum__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port PIN[fab][10] in module add_accum__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WE in module delay__parameterized28 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CE in module delay__parameterized28 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module delay__parameterized28 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR_ALT in module delay__parameterized28 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CLK in module delay__parameterized28 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WE in module delay__parameterized27 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CE in module delay__parameterized27 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module delay__parameterized27 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR_ALT in module delay__parameterized27 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CLK in module delay__parameterized27 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PRE_ADDSUB in module calc__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PRE_ADD_BYPASS in module calc__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CED in module calc__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WE in module delay__parameterized26 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CE in module delay__parameterized26 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module delay__parameterized26 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR_ALT in module delay__parameterized26 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CLK in module delay__parameterized26 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WE in module delay__parameterized25 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CE in module delay__parameterized25 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module delay__parameterized25 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR_ALT in module delay__parameterized25 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CLK in module delay__parameterized25 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[fab][57] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[fab][56] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[fab][55] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[fab][54] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[fab][53] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[fab][52] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[fab][51] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[fab][50] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[fab][49] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[fab][48] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][62] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][61] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][60] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][59] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][58] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][57] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][56] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][55] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][54] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][53] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][52] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][51] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][50] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][49] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port POUT[casc][48] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][57] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][56] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][55] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][54] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][53] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][52] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][51] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][50] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][49] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][48] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][47] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][46] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][45] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][44] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][43] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][42] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][41] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][40] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][39] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][38] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][37] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][36] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][35] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][34] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][33] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][32] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][31] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][30] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][29] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][28] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][27] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][26] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][25] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][24] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][23] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][22] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][21] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][20] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][19] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][18] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][17] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][16] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][15] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][14] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][13] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][12] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][11] in module add_accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PIN[fab][10] in module add_accum is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2418.016 ; gain = 709.535 ; free physical = 36226 ; free virtual = 48200
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2363.820 ; gain = 654.566 ; free physical = 41875 ; free virtual = 50518
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2426.922 ; gain = 718.441 ; free physical = 36226 ; free virtual = 48200
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2381.633 ; gain = 672.379 ; free physical = 41875 ; free virtual = 50518
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2426.922 ; gain = 718.441 ; free physical = 36226 ; free virtual = 48200
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2381.633 ; gain = 672.379 ; free physical = 41875 ; free virtual = 50518
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.07 . Memory (MB): peak = 2429.891 ; gain = 0.000 ; free physical = 36226 ; free virtual = 48199
-INFO: [Netlist 29-17] Analyzing 19 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2387.570 ; gain = 0.000 ; free physical = 41867 ; free virtual = 50511
+INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -228,33 +228,35 @@ Parsing XDC File [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_h
 Finished Parsing XDC File [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_fir_compiler_0_0_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2520.734 ; gain = 0.000 ; free physical = 36198 ; free virtual = 48173
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2451.602 ; gain = 0.000 ; free physical = 41837 ; free virtual = 50481
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2520.770 ; gain = 0.000 ; free physical = 36198 ; free virtual = 48174
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2451.637 ; gain = 0.000 ; free physical = 41837 ; free virtual = 50481
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36548 ; free virtual = 48517
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41864 ; free virtual = 50507
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36548 ; free virtual = 48517
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41864 ; free virtual = 50507
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property KEEP_HIERARCHY = SOFT for U0. (constraint file  /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_fir_compiler_0_0_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36548 ; free virtual = 48517
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41864 ; free virtual = 50507
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-3971] The signal "dpt_mem:/gen_bram.gen_write_first.gen_double_reg.ram_reg" was recognized as a true dual port RAM template.
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36541 ; free virtual = 48511
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41859 ; free virtual = 50504
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-223] decloning instance 'U0/i_synth/g_polyphase_decimation.i_polyphase_decimation/g_parallel.g_paths[0].g_symmetric.g_madds[7].g_add_bypass.i_pre_add_bypass' (delay__parameterized24) to 'U0/i_synth/g_polyphase_decimation.i_polyphase_decimation/g_parallel.g_paths[1].g_symmetric.g_madds[7].g_add_bypass.i_pre_add_bypass'
+INFO: [Synth 8-223] decloning instance 'U0/i_synth/g_polyphase_decimation.i_polyphase_decimation/g_semi_parallel_and_smac.g_cntrl_signals[0].g_others.i_delay' (delay__parameterized5) to 'U0/i_synth/g_polyphase_decimation.i_polyphase_decimation/g_semi_parallel_and_smac.g_cntrl_signals[1].g_others.i_delay'
+INFO: [Synth 8-223] decloning instance 'U0/i_synth/g_polyphase_decimation.i_polyphase_decimation/g_semi_parallel_and_smac.g_cntrl_signals[4].g_others.i_delay' (delay__parameterized7) to 'U0/i_synth/g_polyphase_decimation.i_polyphase_decimation/g_semi_parallel_and_smac.g_cntrl_signals[5].g_others.i_delay'
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -274,26 +276,28 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+INFO: [Synth 8-3971] The signal "U0/i_synth/\g_polyphase_decimation.i_polyphase_decimation/g_semi_parallel_and_smac.g_paths[0].g_mem_array[0].i_mem/g_packed.g_true_dual_port.i_mem /gen_bram.gen_write_first.gen_double_reg.ram_reg" was recognized as a true dual port RAM template.
+INFO: [Synth 8-3971] The signal "U0/i_synth/\g_polyphase_decimation.i_polyphase_decimation/g_semi_parallel_and_smac.g_paths[1].g_mem_array[0].i_mem/g_packed.g_true_dual_port.i_mem /gen_bram.gen_write_first.gen_double_reg.ram_reg" was recognized as a true dual port RAM template.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36779 ; free virtual = 48749
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41847 ; free virtual = 50492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36790 ; free virtual = 48766
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41862 ; free virtual = 50506
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36790 ; free virtual = 48764
+Finished Timing Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41865 ; free virtual = 50510
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36794 ; free virtual = 48768
+Finished Technology Mapping : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41866 ; free virtual = 50511
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -311,66 +315,50 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36805 ; free virtual = 48778
+Finished IO Insertion : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41874 ; free virtual = 50519
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36805 ; free virtual = 48778
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41874 ; free virtual = 50519
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36805 ; free virtual = 48778
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41874 ; free virtual = 50519
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36805 ; free virtual = 48778
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41874 ; free virtual = 50519
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36805 ; free virtual = 48778
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41874 ; free virtual = 50519
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36805 ; free virtual = 48778
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41874 ; free virtual = 50519
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
 ---------------------------------------------------------------------------------
 
 DSP Final Report (the ' indicates corresponding REG is set)
-+------------------------+----------------------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name             | DSP Mapping                                  | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+------------------------+----------------------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|calc__parameterized3    | (C'+A':B')'                                  | 30     | 18     | 48     | -      | 48     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|calc__parameterized0    | Dynamic                                      | -      | -      | -      | -      | 48     | -    | -    | -    | -    | -     | 0    | 1    | 
-|calc_77                 | (PCIN+((D'+A')'*B')')'                       | 19     | 5      | -      | 19     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc_75                 | (PCIN+((D'+A')'*B')')'                       | 19     | 7      | -      | 19     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc_73                 | (PCIN+((D'+A')'*B')')'                       | 19     | 18     | -      | 19     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc_71                 | (PCIN+((D'+A')'*B')')'                       | 19     | 18     | -      | 19     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc_69                 | (PCIN+((D'+A')'*B')')'                       | 19     | 10     | -      | 19     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc_67                 | (PCIN+((D'+A')'*B')')'                       | 19     | 18     | -      | 19     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc_65                 | (PCIN+((D'+A')'*B')')'                       | 19     | 18     | -      | 19     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc                    | (C'+((Dynamically Configured Multiplier))')' | -      | -      | 0      | -      | 48     | -    | -    | 1    | -    | 1     | 1    | 1    | 
-|calc__parameterized2    | Dynamic                                      | -      | -      | -      | -      | 48     | -    | -    | -    | -    | -     | 0    | 1    | 
-|calc__parameterized1_52 | (PCIN+((D'+A')'*B')')'                       | 30     | 5      | -      | 25     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc__parameterized1_51 | (PCIN+((D'+A')'*B')')'                       | 30     | 7      | -      | 25     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc__parameterized1_50 | (PCIN+((D'+A')'*B')')'                       | 30     | 18     | -      | 25     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc__parameterized1_49 | (PCIN+((D'+A')'*B')')'                       | 30     | 18     | -      | 25     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc__parameterized1_48 | (PCIN+((D'+A')'*B')')'                       | 30     | 10     | -      | 25     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc__parameterized1_47 | (PCIN+((D'+A')'*B')')'                       | 30     | 18     | -      | 25     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc__parameterized1_46 | (PCIN+((D'+A')'*B')')'                       | 30     | 18     | -      | 25     | 48     | 1    | 1    | -    | 1    | 1     | 1    | 1    | 
-|calc__parameterized1    | (C'+((Dynamically Configured Multiplier))')' | -      | -      | 0      | -      | 48     | -    | -    | 1    | -    | 1     | 1    | 1    | 
-+------------------------+----------------------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
++---------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name          | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++---------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|calc__parameterized1 | (C'+A':B')' | 30     | 18     | 48     | -      | 48     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|calc                 | Dynamic     | -      | -      | -      | -      | 48     | -    | -    | -    | -    | 1     | 1    | 1    | 
+|calc__parameterized0 | Dynamic     | -      | -      | -      | -      | 48     | -    | -    | -    | -    | 1     | 1    | 1    | 
++---------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 
 Report BlackBoxes: 
@@ -383,47 +371,50 @@ Report Cell Usage:
 +------+---------+------+
 |      |Cell     |Count |
 +------+---------+------+
-|1     |DSP48E1  |    19|
-|6     |LUT1     |     1|
-|7     |LUT2     |    18|
-|8     |LUT3     |    30|
-|9     |LUT4     |   103|
-|10    |LUT5     |    13|
-|11    |LUT6     |    10|
+|1     |CARRY4   |     4|
+|2     |DSP48E1  |     3|
+|5     |LUT1     |     3|
+|6     |LUT2     |    26|
+|7     |LUT3     |    25|
+|8     |LUT4     |    49|
+|9     |LUT5     |    18|
+|10    |LUT6     |    42|
+|11    |MUXF7    |    10|
 |12    |RAM32X1D |    38|
-|13    |SRL16E   |   880|
-|14    |FDRE     |  1391|
-|15    |FDSE     |     2|
+|13    |RAMB36E1 |     2|
+|14    |SRL16E   |   129|
+|15    |FDRE     |   444|
+|16    |FDSE     |     2|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36805 ; free virtual = 48778
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41874 ; free virtual = 50519
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 162 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2520.770 ; gain = 718.441 ; free physical = 36805 ; free virtual = 48778
-Synthesis Optimization Complete : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2520.770 ; gain = 812.289 ; free physical = 36805 ; free virtual = 48778
+Synthesis finished with 0 errors, 0 critical warnings and 43 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2451.637 ; gain = 672.379 ; free physical = 41874 ; free virtual = 50519
+Synthesis Optimization Complete : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2451.637 ; gain = 742.383 ; free physical = 41874 ; free virtual = 50519
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2520.770 ; gain = 0.000 ; free physical = 37093 ; free virtual = 49066
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2451.637 ; gain = 0.000 ; free physical = 42156 ; free virtual = 50801
 INFO: [Netlist 29-17] Analyzing 57 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2520.770 ; gain = 0.000 ; free physical = 37093 ; free virtual = 49066
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2467.617 ; gain = 0.000 ; free physical = 42164 ; free virtual = 50809
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 38 instances were transformed.
   RAM32X1D => RAM32X1D (RAMD32(x2)): 38 instances
 
-Synth Design complete | Checksum: 38b90830
+Synth Design complete | Checksum: 8d62a034
 INFO: [Common 17-83] Releasing license: Synthesis
-26 Infos, 101 Warnings, 0 Critical Warnings and 0 Errors encountered.
+30 Infos, 101 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:20 . Memory (MB): peak = 2520.770 ; gain = 1161.820 ; free physical = 37093 ; free virtual = 49066
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1950.275; main = 1658.815; forked = 332.802
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3482.234; main = 2520.738; forked = 993.512
-Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2544.746 ; gain = 0.000 ; free physical = 37092 ; free virtual = 49066
+synth_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 2467.652 ; gain = 1107.930 ; free physical = 42164 ; free virtual = 50809
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2078.310; main = 1752.775; forked = 373.360
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3427.117; main = 2467.621; forked = 991.512
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2491.629 ; gain = 0.000 ; free physical = 42163 ; free virtual = 50808
 INFO: [Common 17-1381] The checkpoint '/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_fir_compiler_0_0_synth_1/fm_hdmi_fir_compiler_0_0.dcp' has been generated.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP fm_hdmi_fir_compiler_0_0, cache-ID = 9d6d31b13fb491f4
-INFO: [Coretcl 2-1174] Renamed 157 cell refs.
-Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2544.746 ; gain = 0.000 ; free physical = 37094 ; free virtual = 49075
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP fm_hdmi_fir_compiler_0_0, cache-ID = 735beb3a5bf96a48
+INFO: [Coretcl 2-1174] Renamed 48 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2491.629 ; gain = 0.000 ; free physical = 42164 ; free virtual = 50811
 INFO: [Common 17-1381] The checkpoint '/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_fir_compiler_0_0_synth_1/fm_hdmi_fir_compiler_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file fm_hdmi_fir_compiler_0_0_utilization_synth.rpt -pb fm_hdmi_fir_compiler_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Feb 26 18:53:18 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Feb 27 15:00:10 2026...

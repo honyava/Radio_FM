@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Thu Feb 26 17:06:15 2026
+-- Date        : Fri Feb 27 18:31:36 2026
 -- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_del_m_0_0/fm_hdmi_del_m_0_0_sim_netlist.vhdl
@@ -19,6 +19,8 @@ entity fm_hdmi_del_m_0_0_del_m is
   port (
     out0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     out1 : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    valid : out STD_LOGIC;
+    sample_valid : in STD_LOGIC;
     tap_i : in STD_LOGIC_VECTOR ( 15 downto 0 );
     aclk : in STD_LOGIC;
     tap_q : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -62,6 +64,8 @@ architecture STRUCTURE of fm_hdmi_del_m_0_0_del_m is
   signal \delay_q1_reg[7]_i_1_n_3\ : STD_LOGIC;
   signal \^out0\ : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal p_0_in : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal p_0_in_0 : STD_LOGIC;
+  signal \valid_sr_reg_n_0_[0]\ : STD_LOGIC;
   signal \NLW_delay_q1_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \delay_q1_reg[11]_i_1\ : label is 35;
@@ -73,7 +77,7 @@ begin
 \delay_i0_reg[0]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(0),
       Q => \^out0\(0)
@@ -81,7 +85,7 @@ begin
 \delay_i0_reg[10]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(10),
       Q => \^out0\(10)
@@ -89,7 +93,7 @@ begin
 \delay_i0_reg[11]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(11),
       Q => \^out0\(11)
@@ -97,7 +101,7 @@ begin
 \delay_i0_reg[12]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(12),
       Q => \^out0\(12)
@@ -105,7 +109,7 @@ begin
 \delay_i0_reg[13]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(13),
       Q => \^out0\(13)
@@ -113,7 +117,7 @@ begin
 \delay_i0_reg[14]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(14),
       Q => \^out0\(14)
@@ -121,7 +125,7 @@ begin
 \delay_i0_reg[15]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(15),
       Q => \^out0\(15)
@@ -129,7 +133,7 @@ begin
 \delay_i0_reg[1]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(1),
       Q => \^out0\(1)
@@ -137,7 +141,7 @@ begin
 \delay_i0_reg[2]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(2),
       Q => \^out0\(2)
@@ -145,7 +149,7 @@ begin
 \delay_i0_reg[3]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(3),
       Q => \^out0\(3)
@@ -153,7 +157,7 @@ begin
 \delay_i0_reg[4]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(4),
       Q => \^out0\(4)
@@ -161,7 +165,7 @@ begin
 \delay_i0_reg[5]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(5),
       Q => \^out0\(5)
@@ -169,7 +173,7 @@ begin
 \delay_i0_reg[6]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(6),
       Q => \^out0\(6)
@@ -177,7 +181,7 @@ begin
 \delay_i0_reg[7]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(7),
       Q => \^out0\(7)
@@ -185,7 +189,7 @@ begin
 \delay_i0_reg[8]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(8),
       Q => \^out0\(8)
@@ -193,7 +197,7 @@ begin
 \delay_i0_reg[9]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_i(9),
       Q => \^out0\(9)
@@ -201,7 +205,7 @@ begin
 \delay_i1_reg[0]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(0),
       Q => out1(0)
@@ -209,7 +213,7 @@ begin
 \delay_i1_reg[10]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(10),
       Q => out1(10)
@@ -217,7 +221,7 @@ begin
 \delay_i1_reg[11]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(11),
       Q => out1(11)
@@ -225,7 +229,7 @@ begin
 \delay_i1_reg[12]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(12),
       Q => out1(12)
@@ -233,7 +237,7 @@ begin
 \delay_i1_reg[13]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(13),
       Q => out1(13)
@@ -241,7 +245,7 @@ begin
 \delay_i1_reg[14]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(14),
       Q => out1(14)
@@ -249,7 +253,7 @@ begin
 \delay_i1_reg[15]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(15),
       Q => out1(15)
@@ -257,7 +261,7 @@ begin
 \delay_i1_reg[1]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(1),
       Q => out1(1)
@@ -265,7 +269,7 @@ begin
 \delay_i1_reg[2]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(2),
       Q => out1(2)
@@ -273,7 +277,7 @@ begin
 \delay_i1_reg[3]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(3),
       Q => out1(3)
@@ -281,7 +285,7 @@ begin
 \delay_i1_reg[4]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(4),
       Q => out1(4)
@@ -289,7 +293,7 @@ begin
 \delay_i1_reg[5]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(5),
       Q => out1(5)
@@ -297,7 +301,7 @@ begin
 \delay_i1_reg[6]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(6),
       Q => out1(6)
@@ -305,7 +309,7 @@ begin
 \delay_i1_reg[7]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(7),
       Q => out1(7)
@@ -313,7 +317,7 @@ begin
 \delay_i1_reg[8]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(8),
       Q => out1(8)
@@ -321,7 +325,7 @@ begin
 \delay_i1_reg[9]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => \^out0\(9),
       Q => out1(9)
@@ -337,7 +341,7 @@ begin
 \delay_q0_reg[0]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(0),
       Q => \^out0\(16)
@@ -345,7 +349,7 @@ begin
 \delay_q0_reg[10]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(10),
       Q => \^out0\(26)
@@ -353,7 +357,7 @@ begin
 \delay_q0_reg[11]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(11),
       Q => \^out0\(27)
@@ -361,7 +365,7 @@ begin
 \delay_q0_reg[12]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(12),
       Q => \^out0\(28)
@@ -369,7 +373,7 @@ begin
 \delay_q0_reg[13]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(13),
       Q => \^out0\(29)
@@ -377,7 +381,7 @@ begin
 \delay_q0_reg[14]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(14),
       Q => \^out0\(30)
@@ -385,7 +389,7 @@ begin
 \delay_q0_reg[15]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(15),
       Q => \^out0\(31)
@@ -393,7 +397,7 @@ begin
 \delay_q0_reg[1]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(1),
       Q => \^out0\(17)
@@ -401,7 +405,7 @@ begin
 \delay_q0_reg[2]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(2),
       Q => \^out0\(18)
@@ -409,7 +413,7 @@ begin
 \delay_q0_reg[3]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(3),
       Q => \^out0\(19)
@@ -417,7 +421,7 @@ begin
 \delay_q0_reg[4]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(4),
       Q => \^out0\(20)
@@ -425,7 +429,7 @@ begin
 \delay_q0_reg[5]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(5),
       Q => \^out0\(21)
@@ -433,7 +437,7 @@ begin
 \delay_q0_reg[6]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(6),
       Q => \^out0\(22)
@@ -441,7 +445,7 @@ begin
 \delay_q0_reg[7]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(7),
       Q => \^out0\(23)
@@ -449,7 +453,7 @@ begin
 \delay_q0_reg[8]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(8),
       Q => \^out0\(24)
@@ -457,7 +461,7 @@ begin
 \delay_q0_reg[9]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => tap_q(9),
       Q => \^out0\(25)
@@ -585,7 +589,7 @@ begin
 \delay_q1_reg[0]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(0),
       Q => out1(16)
@@ -593,7 +597,7 @@ begin
 \delay_q1_reg[10]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(10),
       Q => out1(26)
@@ -601,7 +605,7 @@ begin
 \delay_q1_reg[11]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(11),
       Q => out1(27)
@@ -624,7 +628,7 @@ begin
 \delay_q1_reg[12]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(12),
       Q => out1(28)
@@ -632,7 +636,7 @@ begin
 \delay_q1_reg[13]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(13),
       Q => out1(29)
@@ -640,7 +644,7 @@ begin
 \delay_q1_reg[14]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(14),
       Q => out1(30)
@@ -648,7 +652,7 @@ begin
 \delay_q1_reg[15]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(15),
       Q => out1(31)
@@ -671,7 +675,7 @@ begin
 \delay_q1_reg[1]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(1),
       Q => out1(17)
@@ -679,7 +683,7 @@ begin
 \delay_q1_reg[2]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(2),
       Q => out1(18)
@@ -687,7 +691,7 @@ begin
 \delay_q1_reg[3]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(3),
       Q => out1(19)
@@ -710,7 +714,7 @@ begin
 \delay_q1_reg[4]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(4),
       Q => out1(20)
@@ -718,7 +722,7 @@ begin
 \delay_q1_reg[5]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(5),
       Q => out1(21)
@@ -726,7 +730,7 @@ begin
 \delay_q1_reg[6]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(6),
       Q => out1(22)
@@ -734,7 +738,7 @@ begin
 \delay_q1_reg[7]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(7),
       Q => out1(23)
@@ -757,7 +761,7 @@ begin
 \delay_q1_reg[8]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(8),
       Q => out1(24)
@@ -765,10 +769,35 @@ begin
 \delay_q1_reg[9]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
-      CE => '1',
+      CE => sample_valid,
       CLR => \delay_q0[15]_i_1_n_0\,
       D => p_0_in(9),
       Q => out1(25)
+    );
+valid_INST_0: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => sample_valid,
+      I1 => p_0_in_0,
+      O => valid
+    );
+\valid_sr_reg[0]\: unisim.vcomponents.FDCE
+     port map (
+      C => aclk,
+      CE => sample_valid,
+      CLR => \delay_q0[15]_i_1_n_0\,
+      D => '1',
+      Q => \valid_sr_reg_n_0_[0]\
+    );
+\valid_sr_reg[1]\: unisim.vcomponents.FDCE
+     port map (
+      C => aclk,
+      CE => sample_valid,
+      CLR => \delay_q0[15]_i_1_n_0\,
+      D => \valid_sr_reg_n_0_[0]\,
+      Q => p_0_in_0
     );
 end STRUCTURE;
 library IEEE;
@@ -779,6 +808,7 @@ entity fm_hdmi_del_m_0_0 is
   port (
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC;
+    sample_valid : in STD_LOGIC;
     tap_i : in STD_LOGIC_VECTOR ( 15 downto 0 );
     tap_q : in STD_LOGIC_VECTOR ( 15 downto 0 );
     out0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -798,26 +828,22 @@ entity fm_hdmi_del_m_0_0 is
 end fm_hdmi_del_m_0_0;
 
 architecture STRUCTURE of fm_hdmi_del_m_0_0 is
-  signal \<const1>\ : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of aclk : signal is "xilinx.com:signal:clock:1.0 aclk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of aclk : signal is "XIL_INTERFACENAME aclk, ASSOCIATED_RESET aresetn, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN /clk_wiz_1_clk_out1, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of aclk : signal is "XIL_INTERFACENAME aclk, ASSOCIATED_RESET aresetn, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_in1_0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of aresetn : signal is "xilinx.com:signal:reset:1.0 aresetn RST";
   attribute X_INTERFACE_PARAMETER of aresetn : signal is "XIL_INTERFACENAME aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
-  valid <= \<const1>\;
-VCC: unisim.vcomponents.VCC
-     port map (
-      P => \<const1>\
-    );
 inst: entity work.fm_hdmi_del_m_0_0_del_m
      port map (
       aclk => aclk,
       aresetn => aresetn,
       out0(31 downto 0) => out0(31 downto 0),
       out1(31 downto 0) => out1(31 downto 0),
+      sample_valid => sample_valid,
       tap_i(15 downto 0) => tap_i(15 downto 0),
-      tap_q(15 downto 0) => tap_q(15 downto 0)
+      tap_q(15 downto 0) => tap_q(15 downto 0),
+      valid => valid
     );
 end STRUCTURE;

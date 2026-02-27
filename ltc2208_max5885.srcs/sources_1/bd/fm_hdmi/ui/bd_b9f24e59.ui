@@ -1,65 +1,71 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.500828",
-   "Default View_TopLeft":"-32,-665",
+   "Default View_ScaleFactor":"0.442157",
+   "Default View_TopLeft":"-195,-339",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port port-id_adc_clk -pg 1 -lvl 0 -x -60 -y 200 -defaultsOSRD
-preplace port port-id_locked -pg 1 -lvl 0 -x -60 -y 20 -defaultsOSRD
-preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x -60 -y 320 -defaultsOSRD
-preplace port port-id_aclk_10 -pg 1 -lvl 0 -x -60 -y -30 -defaultsOSRD
-preplace port port-id_s_axis_tvalid_0 -pg 1 -lvl 0 -x -60 -y -60 -defaultsOSRD
-preplace portBus adc_dai -pg 1 -lvl 0 -x -60 -y 360 -defaultsOSRD
-preplace portBus s_axis_tdata_0 -pg 1 -lvl 0 -x -60 -y -90 -defaultsOSRD
-preplace portBus m_axis_dout_tdata -pg 1 -lvl 14 -x 4750 -y 270 -defaultsOSRD
-preplace inst cic_compiler_Q1 -pg 1 -lvl 9 -x 2990 -y 530 -defaultsOSRD
-preplace inst xlconcat_0 -pg 1 -lvl 11 -x 3730 -y 190 -defaultsOSRD
-preplace inst xlslice_0 -pg 1 -lvl 8 -x 2650 -y 350 -defaultsOSRD
-preplace inst lfsr_rng_0 -pg 1 -lvl 2 -x 420 -y 510 -defaultsOSRD
-preplace inst cmpy_0 -pg 1 -lvl 7 -x 2330 -y 390 -defaultsOSRD
-preplace inst xlslice_1 -pg 1 -lvl 8 -x 2650 -y 230 -defaultsOSRD
-preplace inst del_m_0 -pg 1 -lvl 6 -x 1960 -y 340 -defaultsOSRD
-preplace inst LTC_2208_0 -pg 1 -lvl 2 -x 420 -y 340 -defaultsOSRD
-preplace inst cic_compiler_I1 -pg 1 -lvl 9 -x 2990 -y 270 -defaultsOSRD
-preplace inst dds_compiler_0 -pg 1 -lvl 2 -x 420 -y 180 -defaultsOSRD
-preplace inst cmpy_1 -pg 1 -lvl 3 -x 860 -y 210 -defaultsOSRD
-preplace inst ila_0 -pg 1 -lvl 13 -x 4630 -y 410 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 1 -x 100 -y 530 -defaultsOSRD
-preplace inst axis_data_fifo_0 -pg 1 -lvl 2 -x 420 -y -40 -defaultsOSRD
-preplace inst cordic_0 -pg 1 -lvl 12 -x 4080 -y 210 -defaultsOSRD
-preplace inst Dec200 -pg 1 -lvl 4 -x 1260 -y 200 -defaultsOSRD
-preplace netloc adc_dai_1 1 0 2 NJ 360 NJ
-preplace netloc adc_dci_0_1 1 0 13 NJ 200 250 260 640 360 1080 280 N 280 1830 250 2110 240 2530J 290 2770 360 NJ 360 NJ 360 3850 400 NJ
-preplace netloc axis_data_fifo_0_m_axis_tdata 1 2 1 620 -50n
-preplace netloc axis_data_fifo_0_m_axis_tvalid 1 2 1 600 -10n
-preplace netloc cic_compiler_2_m_axis_data_tdata 1 4 2 NJ 190 1650
-preplace netloc cic_compiler_3_m_axis_data_tdata 1 4 2 NJ 210 1640
-preplace netloc cic_compiler_I1_m_axis_data_tdata 1 9 2 3200 200 NJ
-preplace netloc cic_compiler_I1_m_axis_data_tvalid 1 9 3 3190J 120 NJ 120 3850
-preplace netloc cic_compiler_Q1_m_axis_data_tdata 1 9 2 3210 180 NJ
-preplace netloc cmpy_0_m_axis_dout_tdata 1 7 1 2540 230n
-preplace netloc cmpy_0_m_axis_dout_tvalid 1 7 2 NJ 410 2790
-preplace netloc cmpy_1_m_axis_dout_tdata 1 3 1 N 210
-preplace netloc cmpy_1_m_axis_dout_tvalid 1 3 1 N 230
-preplace netloc cordic_0_m_axis_dout_tdata 1 12 2 4530 270 N
-preplace netloc dds_compiler_0_m_axis_data_tdata 1 2 1 620 180n
-preplace netloc dds_compiler_0_m_axis_data_tvalid 1 2 1 600 200n
-preplace netloc del_m_0_out0 1 6 1 N 320
-preplace netloc del_m_0_out1 1 6 1 2120 340n
-preplace netloc del_m_0_valid 1 6 1 2130 340n
-preplace netloc lfsr_rng_0_m_axis_tdata 1 2 5 650 440 NJ 440 NJ 440 NJ 440 N
-preplace netloc lfsr_rng_0_m_axis_tvalid 1 2 5 660 460 NJ 460 NJ 460 NJ 460 N
-preplace netloc s_axis_aclk_0_1 1 0 2 -40J -10 NJ
-preplace netloc s_axis_tdata_0_1 1 0 2 NJ -90 180J
-preplace netloc s_axis_tvalid_0_1 1 0 2 NJ -60 180J
-preplace netloc sys_rst_n_0_1 1 0 6 NJ 320 240 420 NJ 420 1090 330 NJ 330 NJ
-preplace netloc xlconcat_0_dout 1 11 1 3840 190n
-preplace netloc xlconstant_0_dout 1 1 2 240J 590 590
-preplace netloc xlslice_0_Dout 1 8 1 2780 350n
-preplace netloc xlslice_1_Dout 1 8 1 2780 230n
-levelinfo -pg 1 -60 100 420 860 1260 1620 1960 2330 2650 2990 3230 3730 4080 4630 4750
-pagesize -pg 1 -db -bbox -sgen -270 -150 5010 630
+preplace port port-id_adc_clk -pg 1 -lvl 0 -x -10 -y 730 -defaultsOSRD
+preplace port port-id_locked -pg 1 -lvl 0 -x -10 -y 20 -defaultsOSRD
+preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x -10 -y 670 -defaultsOSRD
+preplace port port-id_aclk_10 -pg 1 -lvl 0 -x -10 -y 700 -defaultsOSRD
+preplace port port-id_s_axis_tvalid_0 -pg 1 -lvl 0 -x -10 -y 640 -defaultsOSRD
+preplace portBus adc_dai -pg 1 -lvl 0 -x -10 -y 540 -defaultsOSRD
+preplace portBus s_axis_tdata_0 -pg 1 -lvl 0 -x -10 -y 610 -defaultsOSRD
+preplace portBus m_axis_dout_tdata -pg 1 -lvl 14 -x 4600 -y 270 -defaultsOSRD
+preplace inst cic_compiler_Q1 -pg 1 -lvl 10 -x 3510 -y 90 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 11 -x 3830 -y 110 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 9 -x 3180 -y 80 -defaultsOSRD
+preplace inst lfsr_rng_0 -pg 1 -lvl 2 -x 550 -y 770 -defaultsOSRD
+preplace inst cmpy_0 -pg 1 -lvl 7 -x 2450 -y 260 -defaultsOSRD
+preplace inst xlslice_1 -pg 1 -lvl 9 -x 3180 -y 240 -defaultsOSRD
+preplace inst del_m_0 -pg 1 -lvl 6 -x 2060 -y 510 -defaultsOSRD
+preplace inst LTC_2208_0 -pg 1 -lvl 2 -x 550 -y 520 -defaultsOSRD
+preplace inst cic_compiler_I1 -pg 1 -lvl 10 -x 3510 -y 250 -defaultsOSRD
+preplace inst dds_compiler_0 -pg 1 -lvl 2 -x 550 -y 910 -defaultsOSRD
+preplace inst cmpy_1 -pg 1 -lvl 3 -x 940 -y 830 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 13 -x 4480 -y 640 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 1 -x 210 -y 830 -defaultsOSRD
+preplace inst axis_data_fifo_0 -pg 1 -lvl 1 -x 210 -y 650 -defaultsOSRD
+preplace inst cordic_0 -pg 1 -lvl 12 -x 4160 -y 260 -defaultsOSRD
+preplace inst Dec200 -pg 1 -lvl 5 -x 1760 -y 530 -defaultsOSRD
+preplace inst iq16_truncate_0 -pg 1 -lvl 4 -x 1380 -y 550 -defaultsOSRD
+preplace inst iq16_truncate_1 -pg 1 -lvl 8 -x 2870 -y 290 -defaultsOSRD
+preplace netloc adc_dai_1 1 0 2 NJ 540 NJ
+preplace netloc adc_dci_0_1 1 0 13 30 760 410 690 720 620 1180 660 1580 430 1920 410 2230 420 2660J 420 NJ 420 3300 420 NJ 420 3940 600 NJ
+preplace netloc axis_data_fifo_0_m_axis_tdata 1 1 12 NJ 640 730 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 N
+preplace netloc axis_data_fifo_0_m_axis_tvalid 1 1 2 NJ 680 690
+preplace netloc cic_compiler_2_m_axis_data_tdata 1 5 8 1910 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ
+preplace netloc cic_compiler_3_m_axis_data_tdata 1 5 1 N 540
+preplace netloc cic_compiler_I1_m_axis_data_tdata 1 10 1 3720 120n
+preplace netloc cic_compiler_I1_m_axis_data_tvalid 1 10 2 NJ 270 N
+preplace netloc cic_compiler_Q1_m_axis_data_tdata 1 10 1 N 100
+preplace netloc cmpy_0_m_axis_dout_tdata 1 8 1 3070 80n
+preplace netloc cmpy_0_m_axis_dout_tvalid 1 8 2 NJ 300 3290
+preplace netloc cmpy_1_m_axis_dout_tdata 1 3 1 1160 530n
+preplace netloc cordic_0_m_axis_dout_tdata 1 12 2 4380 270 NJ
+preplace netloc dds_compiler_0_m_axis_data_tdata 1 2 1 690 820n
+preplace netloc dds_compiler_0_m_axis_data_tvalid 1 2 1 730 840n
+preplace netloc del_m_0_out0 1 6 1 2190 190n
+preplace netloc del_m_0_out1 1 6 1 2220 250n
+preplace netloc del_m_0_valid 1 6 1 2210 210n
+preplace netloc lfsr_rng_0_m_axis_tdata 1 2 5 700 310 NJ 310 NJ 310 NJ 310 NJ
+preplace netloc lfsr_rng_0_m_axis_tvalid 1 2 5 710 330 NJ 330 NJ 330 NJ 330 NJ
+preplace netloc s_axis_aclk_0_1 1 0 1 20J 680n
+preplace netloc s_axis_tdata_0_1 1 0 1 10J 610n
+preplace netloc s_axis_tvalid_0_1 1 0 1 NJ 640
+preplace netloc sys_rst_n_0_1 1 0 8 10 770 400 630 NJ 630 1150 440 1610 440 1930 420 2200 440 2670
+preplace netloc xlconcat_0_dout 1 11 1 3940 110n
+preplace netloc xlconstant_0_dout 1 1 8 390 670 NJ 670 NJ 670 1600 410 1910J 400 2240J 410 NJ 410 3070
+preplace netloc xlslice_0_Dout 1 9 1 N 80
+preplace netloc xlslice_1_Dout 1 9 1 N 240
+preplace netloc cmpy_1_m_axis_dout_tvalid 1 3 1 1170 550n
+preplace netloc iq16_truncate_0_m_axis_tdata 1 4 9 1590 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ
+preplace netloc iq16_truncate_0_m_axis_tvalid 1 4 1 N 560
+preplace netloc cmpy_0_m_axis_dout_tdata1 1 7 1 2660 260n
+preplace netloc cmpy_0_m_axis_dout_tvalid1 1 7 1 2660 280n
+levelinfo -pg 1 -10 210 550 940 1380 1760 2060 2450 2870 3180 3510 3830 4160 4480 4600
+pagesize -pg 1 -db -bbox -sgen -210 0 4820 990
 "
 }
 0

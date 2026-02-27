@@ -2,11 +2,11 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Thu Feb 26 16:40:41 2026
+// Date        : Fri Feb 27 12:08:44 2026
 // Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
-// Command     : write_verilog -force -mode synth_stub -rename_top fm_hdmi_cmpy_0_1 -prefix
-//               fm_hdmi_cmpy_0_1_ fm_hdmi_cmpy_0_0_stub.v
-// Design      : fm_hdmi_cmpy_0_0
+// Command     : write_verilog -force -mode synth_stub
+//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_cmpy_0_1/fm_hdmi_cmpy_0_1_stub.v
+// Design      : fm_hdmi_cmpy_0_1
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg400-2
 // --------------------------------------------------------------------------------
@@ -18,7 +18,7 @@
 module fm_hdmi_cmpy_0_1(aclk, s_axis_a_tvalid, s_axis_a_tdata, 
   s_axis_b_tvalid, s_axis_b_tdata, s_axis_ctrl_tvalid, s_axis_ctrl_tdata, 
   m_axis_dout_tvalid, m_axis_dout_tdata)
-/* synthesis syn_black_box black_box_pad_pin="s_axis_a_tvalid,s_axis_a_tdata[31:0],s_axis_b_tvalid,s_axis_b_tdata[31:0],s_axis_ctrl_tvalid,s_axis_ctrl_tdata[7:0],m_axis_dout_tvalid,m_axis_dout_tdata[31:0]" */
+/* synthesis syn_black_box black_box_pad_pin="s_axis_a_tvalid,s_axis_a_tdata[31:0],s_axis_b_tvalid,s_axis_b_tdata[31:0],s_axis_ctrl_tvalid,s_axis_ctrl_tdata[7:0],m_axis_dout_tvalid,m_axis_dout_tdata[63:0]" */
 /* synthesis syn_force_seq_prim="aclk" */;
   input aclk /* synthesis syn_isclock = 1 */;
   input s_axis_a_tvalid;
@@ -28,5 +28,5 @@ module fm_hdmi_cmpy_0_1(aclk, s_axis_a_tvalid, s_axis_a_tdata,
   input s_axis_ctrl_tvalid;
   input [7:0]s_axis_ctrl_tdata;
   output m_axis_dout_tvalid;
-  output [31:0]m_axis_dout_tdata;
+  output [63:0]m_axis_dout_tdata;
 endmodule

@@ -73,6 +73,7 @@ OPTRACE "fm_hdmi_fir_compiler_0_1_synth_1" START { ROLLUP_AUTO }
 set_param tcl.collectionResultDisplayLimit 0
 set_param xicom.use_bs_reader 1
 set_param chipscope.maxJobs 8
+set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }

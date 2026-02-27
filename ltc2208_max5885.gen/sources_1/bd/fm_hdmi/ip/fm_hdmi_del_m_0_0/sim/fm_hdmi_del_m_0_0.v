@@ -57,6 +57,7 @@
 module fm_hdmi_del_m_0_0 (
   aclk,
   aresetn,
+  sample_valid,
   tap_i,
   tap_q,
   out0,
@@ -64,12 +65,13 @@ module fm_hdmi_del_m_0_0 (
   valid
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aclk, ASSOCIATED_RESET aresetn, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN /clk_wiz_1_clk_out1, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aclk, ASSOCIATED_RESET aresetn, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_in1_0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 aclk CLK" *)
 input wire aclk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 aresetn RST" *)
 input wire aresetn;
+input wire sample_valid;
 input wire [15 : 0] tap_i;
 input wire [15 : 0] tap_q;
 output wire [31 : 0] out0;
@@ -79,6 +81,7 @@ output wire valid;
   del_m inst (
     .aclk(aclk),
     .aresetn(aresetn),
+    .sample_valid(sample_valid),
     .tap_i(tap_i),
     .tap_q(tap_q),
     .out0(out0),
