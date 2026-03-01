@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Thu Feb 26 12:02:12 2026
-// Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
-// Command     : write_verilog -force -mode funcsim -rename_top fm_hdmi_fm_pinc_modulator_ax_0_0 -prefix
-//               fm_hdmi_fm_pinc_modulator_ax_0_0_ fm_hdmi_fm_pinc_modulator_ax_0_0_sim_netlist.v
+// Date        : Sun Mar  1 17:31:19 2026
+// Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
+// Command     : write_verilog -force -mode funcsim
+//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fm_pinc_modulator_ax_0_0/fm_hdmi_fm_pinc_modulator_ax_0_0_sim_netlist.v
 // Design      : fm_hdmi_fm_pinc_modulator_ax_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -53,6 +53,7 @@ module fm_hdmi_fm_pinc_modulator_ax_0_0
         .s_axis_tvalid(s_axis_tvalid));
 endmodule
 
+(* ORIG_REF_NAME = "fm_pinc_modulator_axis" *) 
 module fm_hdmi_fm_pinc_modulator_ax_0_0_fm_pinc_modulator_axis
    (m_axis_tdata,
     m_axis_tvalid,

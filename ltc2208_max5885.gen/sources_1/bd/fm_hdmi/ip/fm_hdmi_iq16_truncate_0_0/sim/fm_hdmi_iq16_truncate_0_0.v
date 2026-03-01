@@ -88,7 +88,7 @@ input wire m_axis_tready;
 
   iq16_truncate #(
     .IN_WIDTH(32),
-    .SHIFT(2),
+    .SHIFT(1),
     .OUT_WIDTH(16)
   ) inst (
     .aclk(aclk),

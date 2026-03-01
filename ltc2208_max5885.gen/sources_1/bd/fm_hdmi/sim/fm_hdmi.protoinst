@@ -8,7 +8,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "m_axis_i_tdata[15:0]"},
+						"TDATA": { "actual": "m_axis_i_tdata[31:0]"},
 						"TREADY": { "actual": "m_axis_i_tready"},
 						"TVALID": { "actual": "m_axis_i_tvalid"}
 					}
@@ -18,7 +18,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "m_axis_q_tdata[15:0]"},
+						"TDATA": { "actual": "m_axis_q_tdata[31:0]"},
 						"TREADY": { "actual": "m_axis_q_tready"},
 						"TVALID": { "actual": "m_axis_q_tvalid"}
 					}
@@ -28,7 +28,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "m_axis_data_tdata[39:0]"},
+						"TDATA": { "actual": "m_axis_data_tdata[47:0]"},
 						"TREADY": { "actual": "m_axis_data_tready"},
 						"TVALID": { "actual": "m_axis_data_tvalid"}
 					}
@@ -38,7 +38,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "s_axis_data_tdata[15:0]"},
+						"TDATA": { "actual": "s_axis_data_tdata[31:0]"},
 						"TREADY": { "actual": "s_axis_data_tready"},
 						"TVALID": { "actual": "s_axis_data_tvalid"}
 					}
@@ -48,7 +48,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "m_axis_data_tdata[39:0]"},
+						"TDATA": { "actual": "m_axis_data_tdata[47:0]"},
 						"TREADY": { "actual": "m_axis_data_tready"},
 						"TVALID": { "actual": "m_axis_data_tvalid"}
 					}
@@ -58,7 +58,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "s_axis_data_tdata[15:0]"},
+						"TDATA": { "actual": "s_axis_data_tdata[31:0]"},
 						"TREADY": { "actual": "s_axis_data_tready"},
 						"TVALID": { "actual": "s_axis_data_tvalid"}
 					}
@@ -67,7 +67,7 @@
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
-						"TDATA": { "actual": "s_axis_data_tdata[39:0]"},
+						"TDATA": { "actual": "s_axis_data_tdata[47:0]"},
 						"TREADY": { "actual": "s_axis_data_tready"},
 						"TVALID": { "actual": "s_axis_data_tvalid"}
 					}
@@ -76,7 +76,7 @@
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
-						"TDATA": { "actual": "s_axis_data_tdata[39:0]"},
+						"TDATA": { "actual": "s_axis_data_tdata[47:0]"},
 						"TREADY": { "actual": "s_axis_data_tready"},
 						"TVALID": { "actual": "s_axis_data_tvalid"}
 					}

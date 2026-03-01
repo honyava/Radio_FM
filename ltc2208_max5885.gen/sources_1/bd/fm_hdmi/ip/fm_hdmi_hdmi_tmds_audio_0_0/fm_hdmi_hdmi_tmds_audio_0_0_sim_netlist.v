@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Tue Feb 24 17:40:15 2026
-// Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
-// Command     : write_verilog -force -mode funcsim -rename_top fm_hdmi_hdmi_tmds_audio_0_0 -prefix
-//               fm_hdmi_hdmi_tmds_audio_0_0_ fm_hdmi_hdmi_tmds_audio_0_0_sim_netlist.v
+// Date        : Sun Mar  1 17:31:04 2026
+// Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
+// Command     : write_verilog -force -mode funcsim
+//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_hdmi_tmds_audio_0_0/fm_hdmi_hdmi_tmds_audio_0_0_sim_netlist.v
 // Design      : fm_hdmi_hdmi_tmds_audio_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,6 +13,52 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
+(* CHECK_LICENSE_TYPE = "fm_hdmi_hdmi_tmds_audio_0_0,hdmi_tmds_audio,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
+(* X_CORE_INFO = "hdmi_tmds_audio,Vivado 2023.2" *) 
+(* NotValidForBitStream *)
+module fm_hdmi_hdmi_tmds_audio_0_0
+   (clk_pixel,
+    clk_pixel_x5,
+    sys_nrst,
+    hdmi_l,
+    hdmi_r,
+    hdmi_clk,
+    hdmi_d0,
+    hdmi_d1,
+    hdmi_d2);
+  input clk_pixel;
+  input clk_pixel_x5;
+  input sys_nrst;
+  input [15:0]hdmi_l;
+  input [15:0]hdmi_r;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 hdmi_clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME hdmi_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN fm_hdmi_hdmi_tmds_audio_0_0_hdmi_clk, INSERT_VIP 0" *) output [1:0]hdmi_clk;
+  output [1:0]hdmi_d0;
+  output [1:0]hdmi_d1;
+  output [1:0]hdmi_d2;
+
+  wire clk_pixel;
+  wire clk_pixel_x5;
+  (* IOSTANDARD = "TMDS_33" *) (* SLEW = "FAST" *) wire [1:0]hdmi_clk;
+  (* IOSTANDARD = "TMDS_33" *) (* SLEW = "FAST" *) wire [1:0]hdmi_d0;
+  (* IOSTANDARD = "TMDS_33" *) (* SLEW = "FAST" *) wire [1:0]hdmi_d1;
+  (* IOSTANDARD = "TMDS_33" *) (* SLEW = "FAST" *) wire [1:0]hdmi_d2;
+  wire [15:0]hdmi_l;
+  wire [15:0]hdmi_r;
+  wire sys_nrst;
+
+  fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio inst
+       (.clk_pixel(clk_pixel),
+        .clk_pixel_x5(clk_pixel_x5),
+        .hdmi_clk(hdmi_clk),
+        .hdmi_d0(hdmi_d0),
+        .hdmi_d1(hdmi_d1),
+        .hdmi_d2(hdmi_d2),
+        .hdmi_l(hdmi_l),
+        .hdmi_r(hdmi_r),
+        .sys_nrst(sys_nrst));
+endmodule
+
+(* ORIG_REF_NAME = "audio_clock_regeneration_packet" *) 
 module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
    (E,
     acc_reg_21_sp_1,
@@ -2053,6 +2099,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet
         .O(\true_hdmi_output.data_island_data[9]_i_9_n_0 ));
 endmodule
 
+(* ORIG_REF_NAME = "audio_sample_packet" *) 
 module fm_hdmi_hdmi_tmds_audio_0_0_audio_sample_packet
    (\subs[2][3]_2 ,
     \subs[2][0]_3 ,
@@ -2166,51 +2213,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_audio_sample_packet
         .O(\parity[3][7]_i_42_n_0 ));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "fm_hdmi_hdmi_tmds_audio_0_0,hdmi_tmds_audio,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
-(* X_CORE_INFO = "hdmi_tmds_audio,Vivado 2023.2" *) 
-(* NotValidForBitStream *)
-module fm_hdmi_hdmi_tmds_audio_0_0
-   (clk_pixel,
-    clk_pixel_x5,
-    sys_nrst,
-    hdmi_l,
-    hdmi_r,
-    hdmi_clk,
-    hdmi_d0,
-    hdmi_d1,
-    hdmi_d2);
-  input clk_pixel;
-  input clk_pixel_x5;
-  input sys_nrst;
-  input [15:0]hdmi_l;
-  input [15:0]hdmi_r;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 hdmi_clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME hdmi_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN fm_hdmi_hdmi_tmds_audio_0_0_hdmi_clk, INSERT_VIP 0" *) output [1:0]hdmi_clk;
-  output [1:0]hdmi_d0;
-  output [1:0]hdmi_d1;
-  output [1:0]hdmi_d2;
-
-  wire clk_pixel;
-  wire clk_pixel_x5;
-  (* IOSTANDARD = "TMDS_33" *) (* SLEW = "FAST" *) wire [1:0]hdmi_clk;
-  (* IOSTANDARD = "TMDS_33" *) (* SLEW = "FAST" *) wire [1:0]hdmi_d0;
-  (* IOSTANDARD = "TMDS_33" *) (* SLEW = "FAST" *) wire [1:0]hdmi_d1;
-  (* IOSTANDARD = "TMDS_33" *) (* SLEW = "FAST" *) wire [1:0]hdmi_d2;
-  wire [15:0]hdmi_l;
-  wire [15:0]hdmi_r;
-  wire sys_nrst;
-
-  fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio inst
-       (.clk_pixel(clk_pixel),
-        .clk_pixel_x5(clk_pixel_x5),
-        .hdmi_clk(hdmi_clk),
-        .hdmi_d0(hdmi_d0),
-        .hdmi_d1(hdmi_d1),
-        .hdmi_d2(hdmi_d2),
-        .hdmi_l(hdmi_l),
-        .hdmi_r(hdmi_r),
-        .sys_nrst(sys_nrst));
-endmodule
-
+(* ORIG_REF_NAME = "hdmi" *) 
 module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
    (tick48k,
     SR,
@@ -3566,6 +3569,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi
         .R(SR));
 endmodule
 
+(* ORIG_REF_NAME = "hdmi_tmds_audio" *) 
 module fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio
    (hdmi_clk,
     hdmi_d0,
@@ -4752,6 +4756,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio
         .R(\audio_sample_l[15]_i_1_n_0 ));
 endmodule
 
+(* ORIG_REF_NAME = "packet_assembler" *) 
 module fm_hdmi_hdmi_tmds_audio_0_0_packet_assembler
    (Q,
     frame_counter10_in,
@@ -5848,6 +5853,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_assembler
         .O(\counter_reg[2]_0 ));
 endmodule
 
+(* ORIG_REF_NAME = "packet_picker" *) 
 module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
    (SR,
     \packet_type_reg[7]_0 ,
@@ -13171,6 +13177,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_packet_picker
         .O(\cx_reg[3] ));
 endmodule
 
+(* ORIG_REF_NAME = "serializer" *) 
 module fm_hdmi_hdmi_tmds_audio_0_0_serializer
    (tmds,
     tmds_clock,
@@ -13708,6 +13715,7 @@ module fm_hdmi_hdmi_tmds_audio_0_0_serializer
         .TQ(\NLW_xilinx_serialize[3].secondary_TQ_UNCONNECTED ));
 endmodule
 
+(* ORIG_REF_NAME = "tmds_channel" *) 
 module fm_hdmi_hdmi_tmds_audio_0_0_tmds_channel
    (\tmds_reg[9]_0 ,
     Q,

@@ -2,8 +2,8 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Thu Feb 26 17:06:15 2026
--- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
+-- Date        : Sun Mar  1 18:26:19 2026
+-- Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_axis_iq_slicer_to_2c_0_0/fm_hdmi_axis_iq_slicer_to_2c_0_0_stub.vhdl
 -- Design      : fm_hdmi_axis_iq_slicer_to_2c_0_0
@@ -17,13 +17,13 @@ entity fm_hdmi_axis_iq_slicer_to_2c_0_0 is
   Port ( 
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC;
-    s_axis_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axis_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 );
     s_axis_tvalid : in STD_LOGIC;
     s_axis_tready : out STD_LOGIC;
-    m_axis_i_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_axis_i_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
     m_axis_i_tvalid : out STD_LOGIC;
     m_axis_i_tready : in STD_LOGIC;
-    m_axis_q_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_axis_q_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
     m_axis_q_tvalid : out STD_LOGIC;
     m_axis_q_tready : in STD_LOGIC
   );
@@ -34,7 +34,7 @@ architecture stub of fm_hdmi_axis_iq_slicer_to_2c_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,s_axis_tdata[31:0],s_axis_tvalid,s_axis_tready,m_axis_i_tdata[15:0],m_axis_i_tvalid,m_axis_i_tready,m_axis_q_tdata[15:0],m_axis_q_tvalid,m_axis_q_tready";
+attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,s_axis_tdata[63:0],s_axis_tvalid,s_axis_tready,m_axis_i_tdata[31:0],m_axis_i_tvalid,m_axis_i_tready,m_axis_q_tdata[31:0],m_axis_q_tvalid,m_axis_q_tready";
 attribute X_CORE_INFO : string;
 attribute X_CORE_INFO of stub : architecture is "axis_iq_slicer_to_2cic,Vivado 2023.2";
 begin

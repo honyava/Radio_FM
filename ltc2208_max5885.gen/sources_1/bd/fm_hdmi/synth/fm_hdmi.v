@@ -2,8 +2,8 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Fri Feb 27 18:31:17 2026
-//Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
+//Date        : Sun Mar  1 19:43:20 2026
+//Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 //Command     : generate_target fm_hdmi.bd
 //Design      : fm_hdmi
 //Purpose     : IP block netlist
@@ -14,47 +14,53 @@ module Dec200_imp_91RAY7
    (adc_clk,
     m_axis_i,
     m_axis_q,
+    m_axis_tvalid,
     s_axis_tdata,
     s_axis_tvalid,
-    sys_rst_n,
-    valid);
+    sys_rst_n);
   input adc_clk;
   output [15:0]m_axis_i;
   output [15:0]m_axis_q;
-  input [31:0]s_axis_tdata;
+  output m_axis_tvalid;
+  input [63:0]s_axis_tdata;
   input s_axis_tvalid;
   input sys_rst_n;
-  output [0:0]valid;
 
   wire adc_dci_0_1;
-  wire [15:0]axis_iq_slicer_to_2c_0_m_axis_i_TDATA;
+  wire [31:0]axis_iq_slicer_to_2c_0_m_axis_i_TDATA;
   wire axis_iq_slicer_to_2c_0_m_axis_i_TREADY;
   wire axis_iq_slicer_to_2c_0_m_axis_i_TVALID;
-  wire [15:0]axis_iq_slicer_to_2c_0_m_axis_q_TDATA;
+  wire [31:0]axis_iq_slicer_to_2c_0_m_axis_q_TDATA;
   wire axis_iq_slicer_to_2c_0_m_axis_q_TREADY;
   wire axis_iq_slicer_to_2c_0_m_axis_q_TVALID;
-  wire [39:0]cic_compiler_2_M_AXIS_DATA_TDATA;
+  wire [47:0]cic_compiler_2_M_AXIS_DATA_TDATA;
   wire cic_compiler_2_M_AXIS_DATA_TREADY;
   wire cic_compiler_2_M_AXIS_DATA_TVALID;
-  wire [39:0]cic_compiler_3_M_AXIS_DATA_TDATA;
+  wire [47:0]cic_compiler_3_M_AXIS_DATA_TDATA;
   wire cic_compiler_3_M_AXIS_DATA_TREADY;
   wire cic_compiler_3_M_AXIS_DATA_TVALID;
-  wire [31:0]cmpy_1_m_axis_dout_tdata;
+  wire [63:0]cmpy_1_m_axis_dout_tdata;
   wire cmpy_1_m_axis_dout_tvalid;
-  wire [15:0]fir_compiler_0_m_axis_data_tdata;
+  wire [31:0]fir_compiler_0_m_axis_data_tdata;
   wire fir_compiler_0_m_axis_data_tvalid;
-  wire [15:0]fir_compiler_1_m_axis_data_tdata;
+  wire [31:0]fir_compiler_1_m_axis_data_tdata;
   wire fir_compiler_1_m_axis_data_tvalid;
+  wire [31:0]iq16_truncate_0_m_axis_tdata;
+  wire iq16_truncate_0_m_axis_tvalid;
   wire sys_rst_n_0_1;
   wire [0:0]util_vector_logic_0_Res;
+  wire [63:0]xlconcat_0_dout;
+  wire [0:0]xlconstant_0_dout;
+  wire [15:0]xlslice_0_Dout;
+  wire [15:0]xlslice_1_Dout;
 
   assign adc_dci_0_1 = adc_clk;
-  assign cmpy_1_m_axis_dout_tdata = s_axis_tdata[31:0];
+  assign cmpy_1_m_axis_dout_tdata = s_axis_tdata[63:0];
   assign cmpy_1_m_axis_dout_tvalid = s_axis_tvalid;
-  assign m_axis_i[15:0] = fir_compiler_0_m_axis_data_tdata;
-  assign m_axis_q[15:0] = fir_compiler_1_m_axis_data_tdata;
+  assign m_axis_i[15:0] = xlslice_1_Dout;
+  assign m_axis_q[15:0] = xlslice_0_Dout;
+  assign m_axis_tvalid = iq16_truncate_0_m_axis_tvalid;
   assign sys_rst_n_0_1 = sys_rst_n;
-  assign valid[0] = util_vector_logic_0_Res;
   fm_hdmi_axis_iq_slicer_to_2c_0_0 axis_iq_slicer_to_2c_0
        (.aclk(adc_dci_0_1),
         .aresetn(sys_rst_n_0_1),
@@ -98,10 +104,163 @@ module Dec200_imp_91RAY7
         .s_axis_data_tdata(cic_compiler_3_M_AXIS_DATA_TDATA),
         .s_axis_data_tready(cic_compiler_3_M_AXIS_DATA_TREADY),
         .s_axis_data_tvalid(cic_compiler_3_M_AXIS_DATA_TVALID));
+  fm_hdmi_iq16_truncate_0_0 iq16_truncate_0
+       (.aclk(adc_dci_0_1),
+        .aresetn(sys_rst_n_0_1),
+        .m_axis_tdata(iq16_truncate_0_m_axis_tdata),
+        .m_axis_tready(xlconstant_0_dout),
+        .m_axis_tvalid(iq16_truncate_0_m_axis_tvalid),
+        .s_axis_tdata(xlconcat_0_dout),
+        .s_axis_tvalid(util_vector_logic_0_Res));
   fm_hdmi_util_vector_logic_0_0 util_vector_logic_0
        (.Op1(fir_compiler_0_m_axis_data_tvalid),
         .Op2(fir_compiler_1_m_axis_data_tvalid),
         .Res(util_vector_logic_0_Res));
+  fm_hdmi_xlconcat_0_0 xlconcat_0
+       (.In0(fir_compiler_0_m_axis_data_tdata),
+        .In1(fir_compiler_1_m_axis_data_tdata),
+        .dout(xlconcat_0_dout));
+  fm_hdmi_xlconstant_0_1 xlconstant_0
+       (.dout(xlconstant_0_dout));
+  fm_hdmi_xlslice_0_0 xlslice_0
+       (.Din(iq16_truncate_0_m_axis_tdata),
+        .Dout(xlslice_0_Dout));
+  fm_hdmi_xlslice_0_1 xlslice_1
+       (.Din(iq16_truncate_0_m_axis_tdata),
+        .Dout(xlslice_1_Dout));
+endmodule
+
+module demodulate_384k_imp_EO70EK
+   (adc_clk,
+    m_axis_dout_tdata,
+    m_axis_dout_tvalid,
+    s_axis_cartesian_tdata,
+    s_axis_ctrl_tdata,
+    s_axis_ctrl_tvalid,
+    sample_valid,
+    sys_rst_n,
+    tap_i,
+    tap_q);
+  input adc_clk;
+  output [15:0]m_axis_dout_tdata;
+  output m_axis_dout_tvalid;
+  output [63:0]s_axis_cartesian_tdata;
+  input [7:0]s_axis_ctrl_tdata;
+  input s_axis_ctrl_tvalid;
+  input sample_valid;
+  input sys_rst_n;
+  input [15:0]tap_i;
+  input [15:0]tap_q;
+
+  wire Dec200_Res_0;
+  wire adc_dci_0_1;
+  wire [15:0]cic_compiler_2_m_axis_data_tdata;
+  wire [15:0]cic_compiler_3_m_axis_data_tdata;
+  wire [63:0]cmpy_0_m_axis_dout_tdata1;
+  wire cmpy_0_m_axis_dout_tvalid1;
+  wire [15:0]cordic_1_m_axis_dout_tdata;
+  wire cordic_1_m_axis_dout_tvalid;
+  wire [31:0]del_m_0_out0;
+  wire [31:0]del_m_0_out1;
+  wire del_m_0_valid;
+  wire [7:0]lfsr_rng_0_m_axis_tdata;
+  wire lfsr_rng_0_m_axis_tvalid;
+  wire sys_rst_n_0_1;
+
+  assign Dec200_Res_0 = sample_valid;
+  assign adc_dci_0_1 = adc_clk;
+  assign cic_compiler_2_m_axis_data_tdata = tap_i[15:0];
+  assign cic_compiler_3_m_axis_data_tdata = tap_q[15:0];
+  assign lfsr_rng_0_m_axis_tdata = s_axis_ctrl_tdata[7:0];
+  assign lfsr_rng_0_m_axis_tvalid = s_axis_ctrl_tvalid;
+  assign m_axis_dout_tdata[15:0] = cordic_1_m_axis_dout_tdata;
+  assign m_axis_dout_tvalid = cordic_1_m_axis_dout_tvalid;
+  assign s_axis_cartesian_tdata[63:0] = cmpy_0_m_axis_dout_tdata1;
+  assign sys_rst_n_0_1 = sys_rst_n;
+  fm_hdmi_cmpy_0_0 cmpy_0
+       (.aclk(adc_dci_0_1),
+        .m_axis_dout_tdata(cmpy_0_m_axis_dout_tdata1),
+        .m_axis_dout_tvalid(cmpy_0_m_axis_dout_tvalid1),
+        .s_axis_a_tdata(del_m_0_out0),
+        .s_axis_a_tvalid(del_m_0_valid),
+        .s_axis_b_tdata(del_m_0_out1),
+        .s_axis_b_tvalid(del_m_0_valid),
+        .s_axis_ctrl_tdata(lfsr_rng_0_m_axis_tdata),
+        .s_axis_ctrl_tvalid(lfsr_rng_0_m_axis_tvalid));
+  fm_hdmi_cordic_0_1 cordic_1
+       (.aclk(adc_dci_0_1),
+        .m_axis_dout_tdata(cordic_1_m_axis_dout_tdata),
+        .m_axis_dout_tvalid(cordic_1_m_axis_dout_tvalid),
+        .s_axis_cartesian_tdata(cmpy_0_m_axis_dout_tdata1),
+        .s_axis_cartesian_tvalid(cmpy_0_m_axis_dout_tvalid1));
+  fm_hdmi_del_m_0_0 del_m_0
+       (.aclk(adc_dci_0_1),
+        .aresetn(sys_rst_n_0_1),
+        .out0(del_m_0_out0),
+        .out1(del_m_0_out1),
+        .sample_valid(Dec200_Res_0),
+        .tap_i(cic_compiler_2_m_axis_data_tdata),
+        .tap_q(cic_compiler_3_m_axis_data_tdata),
+        .valid(del_m_0_valid));
+endmodule
+
+module digital_mixer_imp_2OHHC6
+   (adc_clk,
+    m_axis_mixer,
+    m_axis_mixer_tvalid,
+    m_axis_tready,
+    s_axis_ctrl_tdata,
+    s_axis_ctrl_tvalid,
+    s_axis_tdata_0,
+    sys_rst_n);
+  input adc_clk;
+  output [63:0]m_axis_mixer;
+  output m_axis_mixer_tvalid;
+  input m_axis_tready;
+  output [7:0]s_axis_ctrl_tdata;
+  output s_axis_ctrl_tvalid;
+  input [31:0]s_axis_tdata_0;
+  input sys_rst_n;
+
+  wire adc_dci_0_1;
+  wire [63:0]cmpy_1_m_axis_dout_tdata;
+  wire cmpy_1_m_axis_dout_tvalid;
+  wire [31:0]dds_compiler_0_m_axis_data_tdata;
+  wire dds_compiler_0_m_axis_data_tvalid;
+  wire [7:0]lfsr_rng_0_m_axis_tdata;
+  wire lfsr_rng_0_m_axis_tvalid;
+  wire [31:0]s_axis_tdata_0_1;
+  wire sys_rst_n_0_1;
+  wire xlconstant_0_dout;
+
+  assign adc_dci_0_1 = adc_clk;
+  assign m_axis_mixer[63:0] = cmpy_1_m_axis_dout_tdata;
+  assign m_axis_mixer_tvalid = cmpy_1_m_axis_dout_tvalid;
+  assign s_axis_ctrl_tdata[7:0] = lfsr_rng_0_m_axis_tdata;
+  assign s_axis_ctrl_tvalid = lfsr_rng_0_m_axis_tvalid;
+  assign s_axis_tdata_0_1 = s_axis_tdata_0[31:0];
+  assign sys_rst_n_0_1 = sys_rst_n;
+  assign xlconstant_0_dout = m_axis_tready;
+  fm_hdmi_cmpy_0_1 cmpy_1
+       (.aclk(adc_dci_0_1),
+        .m_axis_dout_tdata(cmpy_1_m_axis_dout_tdata),
+        .m_axis_dout_tvalid(cmpy_1_m_axis_dout_tvalid),
+        .s_axis_a_tdata(s_axis_tdata_0_1),
+        .s_axis_a_tvalid(xlconstant_0_dout),
+        .s_axis_b_tdata(dds_compiler_0_m_axis_data_tdata),
+        .s_axis_b_tvalid(dds_compiler_0_m_axis_data_tvalid),
+        .s_axis_ctrl_tdata(lfsr_rng_0_m_axis_tdata),
+        .s_axis_ctrl_tvalid(lfsr_rng_0_m_axis_tvalid));
+  fm_hdmi_dds_compiler_0_0 dds_compiler_0
+       (.aclk(adc_dci_0_1),
+        .m_axis_data_tdata(dds_compiler_0_m_axis_data_tdata),
+        .m_axis_data_tvalid(dds_compiler_0_m_axis_data_tvalid));
+  fm_hdmi_lfsr_rng_0_0 lfsr_rng_0
+       (.clk(adc_dci_0_1),
+        .en(xlconstant_0_dout),
+        .m_axis_tdata(lfsr_rng_0_m_axis_tdata),
+        .m_axis_tvalid(lfsr_rng_0_m_axis_tvalid),
+        .rstn(sys_rst_n_0_1));
 endmodule
 
 module fm_demod_imp_KT0QRV
@@ -122,36 +281,22 @@ module fm_demod_imp_KT0QRV
   input s_axis_tvalid_0;
   input sys_rst_n;
 
-  wire [0:0]Dec200_Res_0;
+  wire Dec200_m_axis_tvalid;
   wire [15:0]adc_dai_1;
   wire adc_dci_0_1;
   wire [15:0]cic_compiler_2_m_axis_data_tdata;
   wire [15:0]cic_compiler_3_m_axis_data_tdata;
-  wire [31:0]cic_compiler_I1_m_axis_data_tdata;
-  wire cic_compiler_I1_m_axis_data_tvalid;
-  wire [31:0]cic_compiler_Q1_m_axis_data_tdata;
-  wire [31:0]cmpy_0_m_axis_dout_tdata;
   wire [63:0]cmpy_0_m_axis_dout_tdata1;
-  wire cmpy_0_m_axis_dout_tvalid;
-  wire cmpy_0_m_axis_dout_tvalid1;
-  wire [63:0]cmpy_1_m_axis_dout_tdata;
-  wire cmpy_1_m_axis_dout_tvalid;
   wire [15:0]cordic_0_m_axis_dout_tdata;
-  wire [31:0]dds_compiler_0_m_axis_data_tdata;
-  wire dds_compiler_0_m_axis_data_tvalid;
-  wire [31:0]del_m_0_out0;
-  wire [31:0]del_m_0_out1;
-  wire del_m_0_valid;
-  wire [31:0]iq16_truncate_0_m_axis_tdata;
-  wire iq16_truncate_0_m_axis_tvalid;
+  wire [15:0]cordic_1_m_axis_dout_tdata;
+  wire cordic_1_m_axis_dout_tvalid;
+  wire [63:0]digital_mixer_m_axis_dout_tdata_0;
+  wire digital_mixer_m_axis_dout_tvalid_0;
   wire [7:0]lfsr_rng_0_m_axis_tdata;
   wire lfsr_rng_0_m_axis_tvalid;
   wire [31:0]s_axis_tdata_0_1;
   wire sys_rst_n_0_1;
-  wire [63:0]xlconcat_0_dout;
   wire [0:0]xlconstant_0_dout;
-  wire [15:0]xlslice_0_Dout;
-  wire [15:0]xlslice_1_Dout;
 
   assign adc_dai_1 = adc_dai[15:0];
   assign adc_dci_0_1 = adc_clk;
@@ -162,106 +307,50 @@ module fm_demod_imp_KT0QRV
        (.adc_clk(adc_dci_0_1),
         .m_axis_i(cic_compiler_2_m_axis_data_tdata),
         .m_axis_q(cic_compiler_3_m_axis_data_tdata),
-        .s_axis_tdata(iq16_truncate_0_m_axis_tdata),
-        .s_axis_tvalid(iq16_truncate_0_m_axis_tvalid),
-        .sys_rst_n(sys_rst_n_0_1),
-        .valid(Dec200_Res_0));
+        .m_axis_tvalid(Dec200_m_axis_tvalid),
+        .s_axis_tdata(digital_mixer_m_axis_dout_tdata_0),
+        .s_axis_tvalid(digital_mixer_m_axis_dout_tvalid_0),
+        .sys_rst_n(sys_rst_n_0_1));
   fm_hdmi_LTC_2208_0_0 LTC_2208_0
        (.adc_dai(adc_dai_1),
         .adc_dci(adc_dci_0_1),
         .sys_rst_n(sys_rst_n_0_1));
-  fm_hdmi_cic_compiler_2_1 cic_compiler_I1
+  fm_hdmi_cic_compiler_Q1_0 cic_compiler_phase
        (.aclk(adc_dci_0_1),
-        .m_axis_data_tdata(cic_compiler_I1_m_axis_data_tdata),
-        .m_axis_data_tvalid(cic_compiler_I1_m_axis_data_tvalid),
-        .s_axis_data_tdata(xlslice_1_Dout),
-        .s_axis_data_tvalid(cmpy_0_m_axis_dout_tvalid));
-  fm_hdmi_cic_compiler_2_0 cic_compiler_Q1
-       (.aclk(adc_dci_0_1),
-        .m_axis_data_tdata(cic_compiler_Q1_m_axis_data_tdata),
-        .s_axis_data_tdata(xlslice_0_Dout),
-        .s_axis_data_tvalid(cmpy_0_m_axis_dout_tvalid));
-  fm_hdmi_cmpy_0_0 cmpy_0
-       (.aclk(adc_dci_0_1),
-        .m_axis_dout_tdata(cmpy_0_m_axis_dout_tdata1),
-        .m_axis_dout_tvalid(cmpy_0_m_axis_dout_tvalid1),
-        .s_axis_a_tdata(del_m_0_out0),
-        .s_axis_a_tvalid(del_m_0_valid),
-        .s_axis_b_tdata(del_m_0_out1),
-        .s_axis_b_tvalid(del_m_0_valid),
+        .m_axis_data_tdata(cordic_0_m_axis_dout_tdata),
+        .s_axis_data_tdata(cordic_1_m_axis_dout_tdata),
+        .s_axis_data_tvalid(cordic_1_m_axis_dout_tvalid));
+  demodulate_384k_imp_EO70EK demodulate_384k
+       (.adc_clk(adc_dci_0_1),
+        .m_axis_dout_tdata(cordic_1_m_axis_dout_tdata),
+        .m_axis_dout_tvalid(cordic_1_m_axis_dout_tvalid),
+        .s_axis_cartesian_tdata(cmpy_0_m_axis_dout_tdata1),
         .s_axis_ctrl_tdata(lfsr_rng_0_m_axis_tdata),
-        .s_axis_ctrl_tvalid(lfsr_rng_0_m_axis_tvalid));
-  fm_hdmi_cmpy_0_1 cmpy_1
-       (.aclk(adc_dci_0_1),
-        .m_axis_dout_tdata(cmpy_1_m_axis_dout_tdata),
-        .m_axis_dout_tvalid(cmpy_1_m_axis_dout_tvalid),
-        .s_axis_a_tdata(s_axis_tdata_0_1),
-        .s_axis_a_tvalid(xlconstant_0_dout),
-        .s_axis_b_tdata(dds_compiler_0_m_axis_data_tdata),
-        .s_axis_b_tvalid(dds_compiler_0_m_axis_data_tvalid),
-        .s_axis_ctrl_tdata(lfsr_rng_0_m_axis_tdata),
-        .s_axis_ctrl_tvalid(lfsr_rng_0_m_axis_tvalid));
-  fm_hdmi_cordic_0_0 cordic_0
-       (.aclk(adc_dci_0_1),
-        .m_axis_dout_tdata(cordic_0_m_axis_dout_tdata),
-        .s_axis_cartesian_tdata(xlconcat_0_dout),
-        .s_axis_cartesian_tvalid(cic_compiler_I1_m_axis_data_tvalid));
-  fm_hdmi_dds_compiler_0_0 dds_compiler_0
-       (.aclk(adc_dci_0_1),
-        .m_axis_data_tdata(dds_compiler_0_m_axis_data_tdata),
-        .m_axis_data_tvalid(dds_compiler_0_m_axis_data_tvalid));
-  fm_hdmi_del_m_0_0 del_m_0
-       (.aclk(adc_dci_0_1),
-        .aresetn(sys_rst_n_0_1),
-        .out0(del_m_0_out0),
-        .out1(del_m_0_out1),
-        .sample_valid(Dec200_Res_0),
+        .s_axis_ctrl_tvalid(lfsr_rng_0_m_axis_tvalid),
+        .sample_valid(Dec200_m_axis_tvalid),
+        .sys_rst_n(sys_rst_n_0_1),
         .tap_i(cic_compiler_2_m_axis_data_tdata),
-        .tap_q(cic_compiler_3_m_axis_data_tdata),
-        .valid(del_m_0_valid));
+        .tap_q(cic_compiler_3_m_axis_data_tdata));
+  digital_mixer_imp_2OHHC6 digital_mixer
+       (.adc_clk(adc_dci_0_1),
+        .m_axis_mixer(digital_mixer_m_axis_dout_tdata_0),
+        .m_axis_mixer_tvalid(digital_mixer_m_axis_dout_tvalid_0),
+        .m_axis_tready(xlconstant_0_dout),
+        .s_axis_ctrl_tdata(lfsr_rng_0_m_axis_tdata),
+        .s_axis_ctrl_tvalid(lfsr_rng_0_m_axis_tvalid),
+        .s_axis_tdata_0(s_axis_tdata_0_1),
+        .sys_rst_n(sys_rst_n_0_1));
   fm_hdmi_ila_0_0 ila_0
        (.clk(adc_dci_0_1),
         .probe0(cordic_0_m_axis_dout_tdata),
-        .probe1(cic_compiler_Q1_m_axis_data_tdata),
-        .probe2(cic_compiler_I1_m_axis_data_tdata),
-        .probe3(cmpy_0_m_axis_dout_tdata));
-  fm_hdmi_iq16_truncate_0_0 iq16_truncate_0
-       (.aclk(adc_dci_0_1),
-        .aresetn(sys_rst_n_0_1),
-        .m_axis_tdata(iq16_truncate_0_m_axis_tdata),
-        .m_axis_tready(xlconstant_0_dout),
-        .m_axis_tvalid(iq16_truncate_0_m_axis_tvalid),
-        .s_axis_tdata(cmpy_1_m_axis_dout_tdata),
-        .s_axis_tvalid(cmpy_1_m_axis_dout_tvalid));
-  fm_hdmi_iq16_truncate_0_1 iq16_truncate_1
-       (.aclk(adc_dci_0_1),
-        .aresetn(sys_rst_n_0_1),
-        .m_axis_tdata(cmpy_0_m_axis_dout_tdata),
-        .m_axis_tready(xlconstant_0_dout),
-        .m_axis_tvalid(cmpy_0_m_axis_dout_tvalid),
-        .s_axis_tdata(cmpy_0_m_axis_dout_tdata1),
-        .s_axis_tvalid(cmpy_0_m_axis_dout_tvalid1));
-  fm_hdmi_lfsr_rng_0_0 lfsr_rng_0
-       (.clk(adc_dci_0_1),
-        .en(xlconstant_0_dout),
-        .m_axis_tdata(lfsr_rng_0_m_axis_tdata),
-        .m_axis_tvalid(lfsr_rng_0_m_axis_tvalid),
-        .rstn(sys_rst_n_0_1));
-  fm_hdmi_xlconcat_0_0 xlconcat_0
-       (.In0(cic_compiler_I1_m_axis_data_tdata),
-        .In1(cic_compiler_Q1_m_axis_data_tdata),
-        .dout(xlconcat_0_dout));
+        .probe1(cmpy_0_m_axis_dout_tdata1),
+        .probe2(cordic_1_m_axis_dout_tdata),
+        .probe3(cic_compiler_2_m_axis_data_tdata));
   fm_hdmi_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
-  fm_hdmi_xlslice_0_0 xlslice_0
-       (.Din(cmpy_0_m_axis_dout_tdata),
-        .Dout(xlslice_0_Dout));
-  fm_hdmi_xlslice_0_1 xlslice_1
-       (.Din(cmpy_0_m_axis_dout_tdata),
-        .Dout(xlslice_1_Dout));
 endmodule
 
-(* CORE_GENERATION_INFO = "fm_hdmi,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fm_hdmi,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=34,numReposBlks=30,numNonXlnxBlks=0,numHierBlks=4,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=8,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fm_hdmi.hwdef" *) 
+(* CORE_GENERATION_INFO = "fm_hdmi,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fm_hdmi,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=35,numReposBlks=29,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fm_hdmi.hwdef" *) 
 module fm_hdmi
    (adc_clk,
     adc_dai,

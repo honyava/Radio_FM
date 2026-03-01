@@ -6,32 +6,17 @@
 # Block Designs: bd/fm_hdmi/fm_hdmi.bd
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi || ORIG_REF_NAME==fm_hdmi} -quiet] -quiet
 
-# IP: bd/fm_hdmi/ip/fm_hdmi_cic_compiler_2_0/fm_hdmi_cic_compiler_2_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_cic_compiler_2_0 || ORIG_REF_NAME==fm_hdmi_cic_compiler_2_0} -quiet] -quiet
-
-# IP: bd/fm_hdmi/ip/fm_hdmi_xlconcat_0_0/fm_hdmi_xlconcat_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_xlconcat_0_0 || ORIG_REF_NAME==fm_hdmi_xlconcat_0_0} -quiet] -quiet
-
-# IP: bd/fm_hdmi/ip/fm_hdmi_xlslice_0_0/fm_hdmi_xlslice_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_xlslice_0_0 || ORIG_REF_NAME==fm_hdmi_xlslice_0_0} -quiet] -quiet
-
 # IP: bd/fm_hdmi/ip/fm_hdmi_lfsr_rng_0_0/fm_hdmi_lfsr_rng_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_lfsr_rng_0_0 || ORIG_REF_NAME==fm_hdmi_lfsr_rng_0_0} -quiet] -quiet
 
 # IP: bd/fm_hdmi/ip/fm_hdmi_cmpy_0_0/fm_hdmi_cmpy_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_cmpy_0_0 || ORIG_REF_NAME==fm_hdmi_cmpy_0_0} -quiet] -quiet
 
-# IP: bd/fm_hdmi/ip/fm_hdmi_xlslice_0_1/fm_hdmi_xlslice_0_1.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_xlslice_0_1 || ORIG_REF_NAME==fm_hdmi_xlslice_0_1} -quiet] -quiet
-
 # IP: bd/fm_hdmi/ip/fm_hdmi_del_m_0_0/fm_hdmi_del_m_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_del_m_0_0 || ORIG_REF_NAME==fm_hdmi_del_m_0_0} -quiet] -quiet
 
 # IP: bd/fm_hdmi/ip/fm_hdmi_LTC_2208_0_0/fm_hdmi_LTC_2208_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_LTC_2208_0_0 || ORIG_REF_NAME==fm_hdmi_LTC_2208_0_0} -quiet] -quiet
-
-# IP: bd/fm_hdmi/ip/fm_hdmi_cic_compiler_2_1/fm_hdmi_cic_compiler_2_1.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_cic_compiler_2_1 || ORIG_REF_NAME==fm_hdmi_cic_compiler_2_1} -quiet] -quiet
 
 # IP: bd/fm_hdmi/ip/fm_hdmi_dds_compiler_0_0/fm_hdmi_dds_compiler_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_dds_compiler_0_0 || ORIG_REF_NAME==fm_hdmi_dds_compiler_0_0} -quiet] -quiet
@@ -41,9 +26,6 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_cmp
 
 # IP: bd/fm_hdmi/ip/fm_hdmi_xlconstant_0_0/fm_hdmi_xlconstant_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_xlconstant_0_0 || ORIG_REF_NAME==fm_hdmi_xlconstant_0_0} -quiet] -quiet
-
-# IP: bd/fm_hdmi/ip/fm_hdmi_cordic_0_0/fm_hdmi_cordic_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_cordic_0_0 || ORIG_REF_NAME==fm_hdmi_cordic_0_0} -quiet] -quiet
 
 # IP: bd/fm_hdmi/ip/fm_hdmi_cic_compiler_2_2/fm_hdmi_cic_compiler_2_2.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_cic_compiler_2_2 || ORIG_REF_NAME==fm_hdmi_cic_compiler_2_2} -quiet] -quiet
@@ -60,11 +42,8 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_fir
 # IP: bd/fm_hdmi/ip/fm_hdmi_cic_compiler_0_2/fm_hdmi_cic_compiler_0_2.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_cic_compiler_0_2 || ORIG_REF_NAME==fm_hdmi_cic_compiler_0_2} -quiet] -quiet
 
-# IP: bd/fm_hdmi/ip/fm_hdmi_iq16_truncate_0_0/fm_hdmi_iq16_truncate_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_iq16_truncate_0_0 || ORIG_REF_NAME==fm_hdmi_iq16_truncate_0_0} -quiet] -quiet
-
-# IP: bd/fm_hdmi/ip/fm_hdmi_iq16_truncate_0_1/fm_hdmi_iq16_truncate_0_1.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_iq16_truncate_0_1 || ORIG_REF_NAME==fm_hdmi_iq16_truncate_0_1} -quiet] -quiet
+# IP: bd/fm_hdmi/ip/fm_hdmi_util_vector_logic_0_0/fm_hdmi_util_vector_logic_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_util_vector_logic_0_0 || ORIG_REF_NAME==fm_hdmi_util_vector_logic_0_0} -quiet] -quiet
 
 # IP: bd/fm_hdmi/ip/fm_hdmi_ila_0_0/fm_hdmi_ila_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_ila_0_0 || ORIG_REF_NAME==fm_hdmi_ila_0_0} -quiet] -quiet
@@ -93,10 +72,25 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_clk
 # IP: bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_2/fm_hdmi_clk_wiz_0_2.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_clk_wiz_0_2 || ORIG_REF_NAME==fm_hdmi_clk_wiz_0_2} -quiet] -quiet
 
-# IP: bd/fm_hdmi/ip/fm_hdmi_util_vector_logic_0_0/fm_hdmi_util_vector_logic_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_util_vector_logic_0_0 || ORIG_REF_NAME==fm_hdmi_util_vector_logic_0_0} -quiet] -quiet
+# IP: bd/fm_hdmi/ip/fm_hdmi_cordic_0_1/fm_hdmi_cordic_0_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_cordic_0_1 || ORIG_REF_NAME==fm_hdmi_cordic_0_1} -quiet] -quiet
 
-# IP: ip/clk_wiz_0/clk_wiz_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==clk_wiz_0 || ORIG_REF_NAME==clk_wiz_0} -quiet] -quiet
+# IP: bd/fm_hdmi/ip/fm_hdmi_cic_compiler_Q1_0/fm_hdmi_cic_compiler_Q1_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_cic_compiler_Q1_0 || ORIG_REF_NAME==fm_hdmi_cic_compiler_Q1_0} -quiet] -quiet
+
+# IP: bd/fm_hdmi/ip/fm_hdmi_iq16_truncate_0_0/fm_hdmi_iq16_truncate_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_iq16_truncate_0_0 || ORIG_REF_NAME==fm_hdmi_iq16_truncate_0_0} -quiet] -quiet
+
+# IP: bd/fm_hdmi/ip/fm_hdmi_xlslice_0_0/fm_hdmi_xlslice_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_xlslice_0_0 || ORIG_REF_NAME==fm_hdmi_xlslice_0_0} -quiet] -quiet
+
+# IP: bd/fm_hdmi/ip/fm_hdmi_xlslice_0_1/fm_hdmi_xlslice_0_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_xlslice_0_1 || ORIG_REF_NAME==fm_hdmi_xlslice_0_1} -quiet] -quiet
+
+# IP: bd/fm_hdmi/ip/fm_hdmi_xlconcat_0_0/fm_hdmi_xlconcat_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_xlconcat_0_0 || ORIG_REF_NAME==fm_hdmi_xlconcat_0_0} -quiet] -quiet
+
+# IP: bd/fm_hdmi/ip/fm_hdmi_xlconstant_0_1/fm_hdmi_xlconstant_0_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_xlconstant_0_1 || ORIG_REF_NAME==fm_hdmi_xlconstant_0_1} -quiet] -quiet
 
 # XDC: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/fm_hdmi_ooc.xdc

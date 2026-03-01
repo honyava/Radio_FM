@@ -70,10 +70,10 @@
 // chan_seq: 0
 // num_channels: 1
 // num_paths: 1
-// data_width: 38
+// data_width: 47
 // data_fract_width: 0
 // output_rounding_mode: 4
-// output_width: 16
+// output_width: 32
 // output_fract_width: 0
 // config_method: 0
 
@@ -102,10 +102,10 @@ static xip_fir_v7_2_config gen_fm_hdmi_fir_compiler_0_1_config() {
   config.num_channels        = 1;
   config.init_pattern        = fm_hdmi_fir_compiler_0_1_chanpats[0];
   config.num_paths           = 1;
-  config.data_width          = 38;
+  config.data_width          = 47;
   config.data_fract_width    = 0;
   config.output_rounding_mode= XIP_FIR_CONVERGENT_EVEN;
-  config.output_width        = 16;
+  config.output_width        = 32;
   config.output_fract_width  = 0,
   config.config_method       = XIP_FIR_CONFIG_SINGLE;
   return config;

@@ -8,9 +8,9 @@
 # 
 
 if [ -z "$PATH" ]; then
-  PATH=/home/reting/Programs/2023/Vitis/2023.2/bin:/home/reting/Programs/2023/Vivado/2023.2/ids_lite/ISE/bin/lin64:/home/reting/Programs/2023/Vivado/2023.2/bin
+  PATH=/home/reting/Programs/Vitis/2023.2/bin:/home/reting/Programs/Vivado/2023.2/ids_lite/ISE/bin/lin64:/home/reting/Programs/Vivado/2023.2/bin
 else
-  PATH=/home/reting/Programs/2023/Vitis/2023.2/bin:/home/reting/Programs/2023/Vivado/2023.2/ids_lite/ISE/bin/lin64:/home/reting/Programs/2023/Vivado/2023.2/bin:$PATH
+  PATH=/home/reting/Programs/Vitis/2023.2/bin:/home/reting/Programs/Vivado/2023.2/ids_lite/ISE/bin/lin64:/home/reting/Programs/Vivado/2023.2/bin:$PATH
 fi
 export PATH
 

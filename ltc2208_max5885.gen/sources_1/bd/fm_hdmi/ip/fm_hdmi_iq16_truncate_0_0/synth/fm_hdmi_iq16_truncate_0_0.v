@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "iq16_truncate,Vivado 2023.2" *)
 (* CHECK_LICENSE_TYPE = "fm_hdmi_iq16_truncate_0_0,iq16_truncate,{}" *)
-(* CORE_GENERATION_INFO = "fm_hdmi_iq16_truncate_0_0,iq16_truncate,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=iq16_truncate,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,IN_WIDTH=32,SHIFT=2,OUT_WIDTH=16}" *)
+(* CORE_GENERATION_INFO = "fm_hdmi_iq16_truncate_0_0,iq16_truncate,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=iq16_truncate,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,IN_WIDTH=32,SHIFT=1,OUT_WIDTH=16}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module fm_hdmi_iq16_truncate_0_0 (
@@ -89,7 +89,7 @@ input wire m_axis_tready;
 
   iq16_truncate #(
     .IN_WIDTH(32),
-    .SHIFT(2),
+    .SHIFT(1),
     .OUT_WIDTH(16)
   ) inst (
     .aclk(aclk),

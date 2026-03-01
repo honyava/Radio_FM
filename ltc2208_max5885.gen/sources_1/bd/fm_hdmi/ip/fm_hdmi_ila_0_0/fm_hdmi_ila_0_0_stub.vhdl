@@ -2,8 +2,8 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Fri Feb 27 18:08:40 2026
--- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
+-- Date        : Sun Mar  1 19:10:57 2026
+-- Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_0/fm_hdmi_ila_0_0_stub.vhdl
 -- Design      : fm_hdmi_ila_0_0
@@ -17,9 +17,9 @@ entity fm_hdmi_ila_0_0 is
   Port ( 
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 31 downto 0 )
+    probe1 : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
 
 end fm_hdmi_ila_0_0;
@@ -28,7 +28,7 @@ architecture stub of fm_hdmi_ila_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "clk,probe0[15:0],probe1[31:0],probe2[31:0],probe3[31:0]";
+attribute black_box_pad_pin of stub : architecture is "clk,probe0[15:0],probe1[63:0],probe2[15:0],probe3[15:0]";
 attribute X_CORE_INFO : string;
 attribute X_CORE_INFO of stub : architecture is "ila,Vivado 2023.2";
 begin

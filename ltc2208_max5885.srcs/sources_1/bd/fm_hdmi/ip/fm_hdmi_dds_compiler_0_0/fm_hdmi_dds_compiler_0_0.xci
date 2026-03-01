@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "fm_hdmi_dds_compiler_0_0",
-    "cell_name": "fm_demod/dds_compiler_0",
+    "cell_name": "fm_demod/digital_mixer/dds_compiler_0",
     "component_reference": "xilinx.com:ip:dds_compiler:6.0",
     "ip_revision": "23",
     "gen_directory": "../../../../../../ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_compiler_0_0",

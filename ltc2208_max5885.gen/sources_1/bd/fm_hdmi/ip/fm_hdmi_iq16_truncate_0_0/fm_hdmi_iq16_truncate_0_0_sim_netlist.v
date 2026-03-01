@@ -2,8 +2,8 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Fri Feb 27 16:37:18 2026
-// Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
+// Date        : Sun Mar  1 19:43:42 2026
+// Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_iq16_truncate_0_0/fm_hdmi_iq16_truncate_0_0_sim_netlist.v
 // Design      : fm_hdmi_iq16_truncate_0_0
@@ -49,7 +49,7 @@ module fm_hdmi_iq16_truncate_0_0
         .m_axis_tdata(m_axis_tdata),
         .m_axis_tready(m_axis_tready),
         .m_axis_tvalid(m_axis_tvalid),
-        .s_axis_tdata({s_axis_tdata[61:44],s_axis_tdata[29:12]}),
+        .s_axis_tdata({s_axis_tdata[62:45],s_axis_tdata[30:13]}),
         .s_axis_tvalid(s_axis_tvalid));
 endmodule
 
@@ -497,113 +497,113 @@ module fm_hdmi_iq16_truncate_0_0_iq16_truncate
         .S(\/i__n_0 ));
   LUT2 #(
     .INIT(4'h8)) 
-    \i_s0[29]_i_1 
+    \i_s0[30]_i_1 
        (.I0(s_axis_tvalid),
         .I1(m_axis_tready),
         .O(accept_s0));
-  FDRE \i_s0_reg[12] 
+  FDRE \i_s0_reg[13] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[0]),
         .Q(i_shift[14]),
         .R(1'b0));
-  FDRE \i_s0_reg[13] 
+  FDRE \i_s0_reg[14] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[1]),
         .Q(i_shift[15]),
         .R(1'b0));
-  FDRE \i_s0_reg[14] 
+  FDRE \i_s0_reg[15] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[2]),
         .Q(i_shift[16]),
         .R(1'b0));
-  FDRE \i_s0_reg[15] 
+  FDRE \i_s0_reg[16] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[3]),
         .Q(i_shift[17]),
         .R(1'b0));
-  FDRE \i_s0_reg[16] 
+  FDRE \i_s0_reg[17] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[4]),
         .Q(i_shift[18]),
         .R(1'b0));
-  FDRE \i_s0_reg[17] 
+  FDRE \i_s0_reg[18] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[5]),
         .Q(i_shift[19]),
         .R(1'b0));
-  FDRE \i_s0_reg[18] 
+  FDRE \i_s0_reg[19] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[6]),
         .Q(i_shift[20]),
         .R(1'b0));
-  FDRE \i_s0_reg[19] 
+  FDRE \i_s0_reg[20] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[7]),
         .Q(i_shift[21]),
         .R(1'b0));
-  FDRE \i_s0_reg[20] 
+  FDRE \i_s0_reg[21] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[8]),
         .Q(i_shift[22]),
         .R(1'b0));
-  FDRE \i_s0_reg[21] 
+  FDRE \i_s0_reg[22] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[9]),
         .Q(i_shift[23]),
         .R(1'b0));
-  FDRE \i_s0_reg[22] 
+  FDRE \i_s0_reg[23] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[10]),
         .Q(i_shift[24]),
         .R(1'b0));
-  FDRE \i_s0_reg[23] 
+  FDRE \i_s0_reg[24] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[11]),
         .Q(i_shift[25]),
         .R(1'b0));
-  FDRE \i_s0_reg[24] 
+  FDRE \i_s0_reg[25] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[12]),
         .Q(i_shift[26]),
         .R(1'b0));
-  FDRE \i_s0_reg[25] 
+  FDRE \i_s0_reg[26] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[13]),
         .Q(i_shift[27]),
         .R(1'b0));
-  FDRE \i_s0_reg[26] 
+  FDRE \i_s0_reg[27] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[14]),
         .Q(i_shift[28]),
         .R(1'b0));
-  FDRE \i_s0_reg[27] 
+  FDRE \i_s0_reg[28] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[15]),
         .Q(i_shift[29]),
         .R(1'b0));
-  FDRE \i_s0_reg[28] 
+  FDRE \i_s0_reg[29] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[16]),
         .Q(i_shift[30]),
         .R(1'b0));
-  FDRE \i_s0_reg[29] 
+  FDRE \i_s0_reg[30] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[17]),
@@ -904,109 +904,109 @@ module fm_hdmi_iq16_truncate_0_0_iq16_truncate
         .D(\q_out[9]_i_1_n_0 ),
         .Q(m_axis_tdata[25]),
         .S(q_out));
-  FDRE \q_s0_reg[12] 
+  FDRE \q_s0_reg[13] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[18]),
         .Q(q_shift[14]),
         .R(1'b0));
-  FDRE \q_s0_reg[13] 
+  FDRE \q_s0_reg[14] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[19]),
         .Q(q_shift[15]),
         .R(1'b0));
-  FDRE \q_s0_reg[14] 
+  FDRE \q_s0_reg[15] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[20]),
         .Q(q_shift[16]),
         .R(1'b0));
-  FDRE \q_s0_reg[15] 
+  FDRE \q_s0_reg[16] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[21]),
         .Q(q_shift[17]),
         .R(1'b0));
-  FDRE \q_s0_reg[16] 
+  FDRE \q_s0_reg[17] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[22]),
         .Q(q_shift[18]),
         .R(1'b0));
-  FDRE \q_s0_reg[17] 
+  FDRE \q_s0_reg[18] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[23]),
         .Q(q_shift[19]),
         .R(1'b0));
-  FDRE \q_s0_reg[18] 
+  FDRE \q_s0_reg[19] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[24]),
         .Q(q_shift[20]),
         .R(1'b0));
-  FDRE \q_s0_reg[19] 
+  FDRE \q_s0_reg[20] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[25]),
         .Q(q_shift[21]),
         .R(1'b0));
-  FDRE \q_s0_reg[20] 
+  FDRE \q_s0_reg[21] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[26]),
         .Q(q_shift[22]),
         .R(1'b0));
-  FDRE \q_s0_reg[21] 
+  FDRE \q_s0_reg[22] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[27]),
         .Q(q_shift[23]),
         .R(1'b0));
-  FDRE \q_s0_reg[22] 
+  FDRE \q_s0_reg[23] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[28]),
         .Q(q_shift[24]),
         .R(1'b0));
-  FDRE \q_s0_reg[23] 
+  FDRE \q_s0_reg[24] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[29]),
         .Q(q_shift[25]),
         .R(1'b0));
-  FDRE \q_s0_reg[24] 
+  FDRE \q_s0_reg[25] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[30]),
         .Q(q_shift[26]),
         .R(1'b0));
-  FDRE \q_s0_reg[25] 
+  FDRE \q_s0_reg[26] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[31]),
         .Q(q_shift[27]),
         .R(1'b0));
-  FDRE \q_s0_reg[26] 
+  FDRE \q_s0_reg[27] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[32]),
         .Q(q_shift[28]),
         .R(1'b0));
-  FDRE \q_s0_reg[27] 
+  FDRE \q_s0_reg[28] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[33]),
         .Q(q_shift[29]),
         .R(1'b0));
-  FDRE \q_s0_reg[28] 
+  FDRE \q_s0_reg[29] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[34]),
         .Q(q_shift[30]),
         .R(1'b0));
-  FDRE \q_s0_reg[29] 
+  FDRE \q_s0_reg[30] 
        (.C(aclk),
         .CE(accept_s0),
         .D(s_axis_tdata[35]),

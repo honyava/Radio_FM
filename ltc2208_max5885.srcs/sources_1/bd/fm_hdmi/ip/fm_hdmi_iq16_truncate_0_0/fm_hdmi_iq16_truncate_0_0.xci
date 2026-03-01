@@ -2,20 +2,20 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "fm_hdmi_iq16_truncate_0_0",
-    "cell_name": "fm_demod/iq16_truncate_0",
+    "cell_name": "fm_demod/Dec200/iq16_truncate_0",
     "component_reference": "xilinx.com:module_ref:iq16_truncate:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_iq16_truncate_0_0",
     "parameters": {
       "component_parameters": {
         "IN_WIDTH": [ { "value": "32", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "SHIFT": [ { "value": "2", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "SHIFT": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "OUT_WIDTH": [ { "value": "16", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "fm_hdmi_iq16_truncate_0_0", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
         "IN_WIDTH": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "SHIFT": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "SHIFT": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "OUT_WIDTH": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {

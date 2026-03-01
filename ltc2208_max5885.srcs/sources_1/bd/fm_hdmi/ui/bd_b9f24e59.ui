@@ -1,71 +1,75 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.442157",
-   "Default View_TopLeft":"-195,-339",
-   "ExpandedHierarchyInLayout":"",
+   "Default View_ScaleFactor":"0.74632",
+   "Default View_TopLeft":"159,-643",
+   "ExpandedHierarchyInLayout":"/fm_demod/Dec200",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port port-id_adc_clk -pg 1 -lvl 0 -x -10 -y 730 -defaultsOSRD
-preplace port port-id_locked -pg 1 -lvl 0 -x -10 -y 20 -defaultsOSRD
-preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x -10 -y 670 -defaultsOSRD
-preplace port port-id_aclk_10 -pg 1 -lvl 0 -x -10 -y 700 -defaultsOSRD
-preplace port port-id_s_axis_tvalid_0 -pg 1 -lvl 0 -x -10 -y 640 -defaultsOSRD
-preplace portBus adc_dai -pg 1 -lvl 0 -x -10 -y 540 -defaultsOSRD
-preplace portBus s_axis_tdata_0 -pg 1 -lvl 0 -x -10 -y 610 -defaultsOSRD
-preplace portBus m_axis_dout_tdata -pg 1 -lvl 14 -x 4600 -y 270 -defaultsOSRD
-preplace inst cic_compiler_Q1 -pg 1 -lvl 10 -x 3510 -y 90 -defaultsOSRD
-preplace inst xlconcat_0 -pg 1 -lvl 11 -x 3830 -y 110 -defaultsOSRD
-preplace inst xlslice_0 -pg 1 -lvl 9 -x 3180 -y 80 -defaultsOSRD
-preplace inst lfsr_rng_0 -pg 1 -lvl 2 -x 550 -y 770 -defaultsOSRD
-preplace inst cmpy_0 -pg 1 -lvl 7 -x 2450 -y 260 -defaultsOSRD
-preplace inst xlslice_1 -pg 1 -lvl 9 -x 3180 -y 240 -defaultsOSRD
-preplace inst del_m_0 -pg 1 -lvl 6 -x 2060 -y 510 -defaultsOSRD
-preplace inst LTC_2208_0 -pg 1 -lvl 2 -x 550 -y 520 -defaultsOSRD
-preplace inst cic_compiler_I1 -pg 1 -lvl 10 -x 3510 -y 250 -defaultsOSRD
-preplace inst dds_compiler_0 -pg 1 -lvl 2 -x 550 -y 910 -defaultsOSRD
-preplace inst cmpy_1 -pg 1 -lvl 3 -x 940 -y 830 -defaultsOSRD
-preplace inst ila_0 -pg 1 -lvl 13 -x 4480 -y 640 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 1 -x 210 -y 830 -defaultsOSRD
-preplace inst axis_data_fifo_0 -pg 1 -lvl 1 -x 210 -y 650 -defaultsOSRD
-preplace inst cordic_0 -pg 1 -lvl 12 -x 4160 -y 260 -defaultsOSRD
-preplace inst Dec200 -pg 1 -lvl 5 -x 1760 -y 530 -defaultsOSRD
-preplace inst iq16_truncate_0 -pg 1 -lvl 4 -x 1380 -y 550 -defaultsOSRD
-preplace inst iq16_truncate_1 -pg 1 -lvl 8 -x 2870 -y 290 -defaultsOSRD
-preplace netloc adc_dai_1 1 0 2 NJ 540 NJ
-preplace netloc adc_dci_0_1 1 0 13 30 760 410 690 720 620 1180 660 1580 430 1920 410 2230 420 2660J 420 NJ 420 3300 420 NJ 420 3940 600 NJ
-preplace netloc axis_data_fifo_0_m_axis_tdata 1 1 12 NJ 640 730 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 N
-preplace netloc axis_data_fifo_0_m_axis_tvalid 1 1 2 NJ 680 690
-preplace netloc cic_compiler_2_m_axis_data_tdata 1 5 8 1910 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ
-preplace netloc cic_compiler_3_m_axis_data_tdata 1 5 1 N 540
-preplace netloc cic_compiler_I1_m_axis_data_tdata 1 10 1 3720 120n
-preplace netloc cic_compiler_I1_m_axis_data_tvalid 1 10 2 NJ 270 N
-preplace netloc cic_compiler_Q1_m_axis_data_tdata 1 10 1 N 100
-preplace netloc cmpy_0_m_axis_dout_tdata 1 8 1 3070 80n
-preplace netloc cmpy_0_m_axis_dout_tvalid 1 8 2 NJ 300 3290
-preplace netloc cmpy_1_m_axis_dout_tdata 1 3 1 1160 530n
-preplace netloc cordic_0_m_axis_dout_tdata 1 12 2 4380 270 NJ
-preplace netloc dds_compiler_0_m_axis_data_tdata 1 2 1 690 820n
-preplace netloc dds_compiler_0_m_axis_data_tvalid 1 2 1 730 840n
-preplace netloc del_m_0_out0 1 6 1 2190 190n
-preplace netloc del_m_0_out1 1 6 1 2220 250n
-preplace netloc del_m_0_valid 1 6 1 2210 210n
-preplace netloc lfsr_rng_0_m_axis_tdata 1 2 5 700 310 NJ 310 NJ 310 NJ 310 NJ
-preplace netloc lfsr_rng_0_m_axis_tvalid 1 2 5 710 330 NJ 330 NJ 330 NJ 330 NJ
-preplace netloc s_axis_aclk_0_1 1 0 1 20J 680n
-preplace netloc s_axis_tdata_0_1 1 0 1 10J 610n
-preplace netloc s_axis_tvalid_0_1 1 0 1 NJ 640
-preplace netloc sys_rst_n_0_1 1 0 8 10 770 400 630 NJ 630 1150 440 1610 440 1930 420 2200 440 2670
-preplace netloc xlconcat_0_dout 1 11 1 3940 110n
-preplace netloc xlconstant_0_dout 1 1 8 390 670 NJ 670 NJ 670 1600 410 1910J 400 2240J 410 NJ 410 3070
-preplace netloc xlslice_0_Dout 1 9 1 N 80
-preplace netloc xlslice_1_Dout 1 9 1 N 240
-preplace netloc cmpy_1_m_axis_dout_tvalid 1 3 1 1170 550n
-preplace netloc iq16_truncate_0_m_axis_tdata 1 4 9 1590 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ
-preplace netloc iq16_truncate_0_m_axis_tvalid 1 4 1 N 560
-preplace netloc cmpy_0_m_axis_dout_tdata1 1 7 1 2660 260n
-preplace netloc cmpy_0_m_axis_dout_tvalid1 1 7 1 2660 280n
-levelinfo -pg 1 -10 210 550 940 1380 1760 2060 2450 2870 3180 3510 3830 4160 4480 4600
-pagesize -pg 1 -db -bbox -sgen -210 0 4820 990
+preplace port port-id_adc_clk -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
+preplace port port-id_locked -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
+preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x 0 -y 170 -defaultsOSRD
+preplace port port-id_aclk_10 -pg 1 -lvl 0 -x 0 -y 20 -defaultsOSRD
+preplace port port-id_s_axis_tvalid_0 -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
+preplace portBus adc_dai -pg 1 -lvl 0 -x 0 -y 110 -defaultsOSRD
+preplace portBus s_axis_tdata_0 -pg 1 -lvl 0 -x 0 -y 290 -defaultsOSRD
+preplace portBus m_axis_dout_tdata -pg 1 -lvl 7 -x 3850 -y 20 -defaultsOSRD
+preplace inst LTC_2208_0 -pg 1 -lvl 3 -x 800 -y 90 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 1 -x 100 -y 230 -defaultsOSRD
+preplace inst Dec200 -pg 1 -lvl 3 -x 800 -y 282 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 6 -x 3730 -y 120 -defaultsOSRD
+preplace inst digital_mixer -pg 1 -lvl 2 -x 360 -y 220 -defaultsOSRD
+preplace inst cic_compiler_phase -pg 1 -lvl 5 -x 3400 -y 210 -defaultsOSRD
+preplace inst demodulate_384k -pg 1 -lvl 4 -x 2990 -y 220 -defaultsOSRD
+preplace inst Dec200|cic_compiler_3 -pg 1 -lvl 2 -x 1210 -y 462 -defaultsOSRD
+preplace inst Dec200|axis_iq_slicer_to_2c_0 -pg 1 -lvl 1 -x 890 -y 432 -defaultsOSRD
+preplace inst Dec200|fir_compiler_0 -pg 1 -lvl 3 -x 1520 -y 302 -defaultsOSRD
+preplace inst Dec200|fir_compiler_1 -pg 1 -lvl 3 -x 1520 -y 462 -defaultsOSRD
+preplace inst Dec200|cic_compiler_2 -pg 1 -lvl 2 -x 1210 -y 302 -defaultsOSRD
+preplace inst Dec200|util_vector_logic_0 -pg 1 -lvl 4 -x 1850 -y 472 -defaultsOSRD
+preplace inst Dec200|iq16_truncate_0 -pg 1 -lvl 5 -x 2200 -y 472 -defaultsOSRD
+preplace inst Dec200|xlslice_0 -pg 1 -lvl 6 -x 2510 -y 422 -defaultsOSRD
+preplace inst Dec200|xlslice_1 -pg 1 -lvl 6 -x 2510 -y 322 -defaultsOSRD
+preplace inst Dec200|xlconcat_0 -pg 1 -lvl 4 -x 1850 -y 312 -defaultsOSRD
+preplace inst Dec200|xlconstant_0 -pg 1 -lvl 5 -x 2200 -y 332 -defaultsOSRD
+preplace netloc adc_dai_1 1 0 3 NJ 110 NJ 110 NJ
+preplace netloc adc_dci_0_1 1 0 6 NJ 140 180 120 570 10 2800 80 3200 80 NJ
+preplace netloc cic_compiler_2_m_axis_data_tdata 1 3 3 2770 100 NJ 100 3610
+preplace netloc cic_compiler_3_m_axis_data_tdata 1 3 1 2800 280n
+preplace netloc cmpy_0_m_axis_dout_tdata1 1 4 2 3180 110 3630J
+preplace netloc cordic_0_m_axis_dout_tdata 1 5 2 3620 20 NJ
+preplace netloc lfsr_rng_0_m_axis_tdata 1 2 2 N 190 2800J
+preplace netloc lfsr_rng_0_m_axis_tvalid 1 2 2 560 180 NJ
+preplace netloc s_axis_tdata_0_1 1 0 2 NJ 290 180J
+preplace netloc sys_rst_n_0_1 1 0 4 NJ 170 190 130 550 594 2780J
+preplace netloc xlconstant_0_dout 1 1 1 NJ 230
+preplace netloc digital_mixer_m_axis_dout_tdata_0 1 2 1 540 230n
+preplace netloc digital_mixer_m_axis_dout_tvalid_0 1 2 1 530 250n
+preplace netloc cordic_1_m_axis_dout_tdata 1 4 2 3190 120 3600J
+preplace netloc cordic_1_m_axis_dout_tvalid 1 4 1 N 220
+preplace netloc Dec200_m_axis_tvalid 1 3 1 2790 240n
+preplace netloc Dec200|adc_dci_0_1 1 0 5 730 332 1060 382 1350 552 NJ 552 2000
+preplace netloc Dec200|cmpy_1_m_axis_dout_tdata 1 0 1 N 412
+preplace netloc Dec200|cmpy_1_m_axis_dout_tvalid 1 0 1 N 432
+preplace netloc Dec200|fir_compiler_0_m_axis_data_tvalid 1 3 1 1690 322n
+preplace netloc Dec200|fir_compiler_1_m_axis_data_tvalid 1 3 1 N 482
+preplace netloc Dec200|sys_rst_n_0_1 1 0 5 720 532 1070 542 NJ 542 NJ 542 2010
+preplace netloc Dec200|util_vector_logic_0_Res 1 4 1 N 472
+preplace netloc Dec200|iq16_truncate_0_m_axis_tdata 1 5 1 2400 322n
+preplace netloc Dec200|xlslice_0_Dout 1 6 1 NJ 422
+preplace netloc Dec200|xlslice_1_Dout 1 6 1 NJ 322
+preplace netloc Dec200|fir_compiler_1_m_axis_data_tdata 1 3 1 1700 322n
+preplace netloc Dec200|fir_compiler_0_m_axis_data_tdata 1 3 1 N 302
+preplace netloc Dec200|xlconcat_0_dout 1 4 1 2000 312n
+preplace netloc Dec200|xlconstant_0_dout 1 5 1 2390 332n
+preplace netloc Dec200|iq16_truncate_0_m_axis_tvalid 1 5 2 N 482 NJ
+preplace netloc Dec200|axis_iq_slicer_to_2c_0_m_axis_i 1 1 1 1050 282n
+preplace netloc Dec200|axis_iq_slicer_to_2c_0_m_axis_q 1 1 1 N 442
+preplace netloc Dec200|cic_compiler_2_M_AXIS_DATA 1 2 1 N 292
+preplace netloc Dec200|cic_compiler_3_M_AXIS_DATA 1 2 1 N 452
+levelinfo -pg 1 0 100 360 800 2990 3400 3730 3850
+levelinfo -hier Dec200 * 890 1210 1520 1850 2200 2510 *
+pagesize -pg 1 -db -bbox -sgen -190 0 4070 610
+pagesize -hier Dec200 -db -bbox -sgen 690 222 2650 572
 "
 }
 0

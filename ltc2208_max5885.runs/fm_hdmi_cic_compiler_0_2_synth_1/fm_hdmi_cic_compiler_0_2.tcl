@@ -72,7 +72,7 @@ proc create_report { reportName command } {
 OPTRACE "fm_hdmi_cic_compiler_0_2_synth_1" START { ROLLUP_AUTO }
 set_param tcl.collectionResultDisplayLimit 0
 set_param xicom.use_bs_reader 1
-set_param chipscope.maxJobs 8
+set_param chipscope.maxJobs 4
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }
@@ -84,7 +84,7 @@ set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.cache/wt [current_project]
 set_property parent.project_path /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.xpr [current_project]
-set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.cache/ip [current_project]

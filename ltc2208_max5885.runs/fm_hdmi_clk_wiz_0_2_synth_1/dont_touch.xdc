@@ -12,11 +12,11 @@ set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 # XDC: The top module name and the constraint reference have the same name: 'fm_hdmi_clk_wiz_0_2'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 
-# XDC: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_2/fm_hdmi_clk_wiz_0_2_ooc.xdc
+# XDC: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_2/fm_hdmi_clk_wiz_0_2_late.xdc
 # XDC: The top module name and the constraint reference have the same name: 'fm_hdmi_clk_wiz_0_2'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 
-# XDC: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_2/fm_hdmi_clk_wiz_0_2_late.xdc
+# XDC: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_2/fm_hdmi_clk_wiz_0_2_ooc.xdc
 # XDC: The top module name and the constraint reference have the same name: 'fm_hdmi_clk_wiz_0_2'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 
@@ -31,10 +31,10 @@ set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 # XDC: The top module name and the constraint reference have the same name: 'fm_hdmi_clk_wiz_0_2'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 
-# XDC: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_2/fm_hdmi_clk_wiz_0_2_ooc.xdc
+# XDC: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_2/fm_hdmi_clk_wiz_0_2_late.xdc
 # XDC: The top module name and the constraint reference have the same name: 'fm_hdmi_clk_wiz_0_2'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 
-# XDC: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_2/fm_hdmi_clk_wiz_0_2_late.xdc
+# XDC: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_2/fm_hdmi_clk_wiz_0_2_ooc.xdc
 # XDC: The top module name and the constraint reference have the same name: 'fm_hdmi_clk_wiz_0_2'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet

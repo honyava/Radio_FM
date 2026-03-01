@@ -1,0 +1,388 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Sun Mar  1 17:29:11 2026
+# Process ID: 20044
+# Current directory: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_dds_ton_0_synth_1
+# Command line: vivado -log fm_hdmi_dds_ton_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fm_hdmi_dds_ton_0.tcl
+# Log file: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_dds_ton_0_synth_1/fm_hdmi_dds_ton_0.vds
+# Journal file: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_dds_ton_0_synth_1/vivado.jou
+# Running On: reting-ThinkBook-14-G7-IAH, OS: Linux, CPU Frequency: 400.000 MHz, CPU Physical cores: 16, Host memory: 33111 MB
+#-----------------------------------------------------------
+Sourcing tcl script '/home/reting/Programs/Vivado/2023.2/scripts/Vivado_init.tcl'
+122 Beta devices matching pattern found, 0 enabled.
+enable_beta_device: Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 1289.750 ; gain = 0.027 ; free physical = 5625 ; free virtual = 19199
+source fm_hdmi_dds_ton_0.tcl -notrace
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: fm_hdmi_dds_ton_0
+Command: synth_design -top fm_hdmi_dds_ton_0 -part xc7z020clg400-2 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-2
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 21256
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2086.598 ; gain = 411.660 ; free physical = 10264 ; free virtual = 23799
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'fm_hdmi_dds_ton_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_ton_0/synth/fm_hdmi_dds_ton_0.vhd:69]
+WARNING: [Synth 8-5640] Port 'debug_axi_pinc_in' is missing in component declaration [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_ton_0/synth/fm_hdmi_dds_ton_0.vhd:72]
+WARNING: [Synth 8-5640] Port 'debug_axi_poff_in' is missing in component declaration [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_ton_0/synth/fm_hdmi_dds_ton_0.vhd:72]
+WARNING: [Synth 8-5640] Port 'debug_axi_resync_in' is missing in component declaration [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_ton_0/synth/fm_hdmi_dds_ton_0.vhd:72]
+WARNING: [Synth 8-5640] Port 'debug_axi_chan_in' is missing in component declaration [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_ton_0/synth/fm_hdmi_dds_ton_0.vhd:72]
+WARNING: [Synth 8-5640] Port 'debug_core_nd' is missing in component declaration [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_ton_0/synth/fm_hdmi_dds_ton_0.vhd:72]
+WARNING: [Synth 8-5640] Port 'debug_phase' is missing in component declaration [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_ton_0/synth/fm_hdmi_dds_ton_0.vhd:72]
+WARNING: [Synth 8-5640] Port 'debug_phase_nd' is missing in component declaration [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_ton_0/synth/fm_hdmi_dds_ton_0.vhd:72]
+	Parameter C_XDEVICEFAMILY bound to: zynq - type: string 
+	Parameter C_MODE_OF_OPERATION bound to: 0 - type: integer 
+	Parameter C_MODULUS bound to: 9 - type: integer 
+	Parameter C_ACCUMULATOR_WIDTH bound to: 24 - type: integer 
+	Parameter C_CHANNELS bound to: 1 - type: integer 
+	Parameter C_HAS_PHASE_OUT bound to: 0 - type: integer 
+	Parameter C_HAS_PHASEGEN bound to: 1 - type: integer 
+	Parameter C_HAS_SINCOS bound to: 1 - type: integer 
+	Parameter C_LATENCY bound to: 9 - type: integer 
+	Parameter C_MEM_TYPE bound to: 2 - type: integer 
+	Parameter C_NEGATIVE_COSINE bound to: 0 - type: integer 
+	Parameter C_NEGATIVE_SINE bound to: 0 - type: integer 
+	Parameter C_NOISE_SHAPING bound to: 1 - type: integer 
+	Parameter C_OUTPUTS_REQUIRED bound to: 2 - type: integer 
+	Parameter C_OUTPUT_FORM bound to: 0 - type: integer 
+	Parameter C_OUTPUT_WIDTH bound to: 16 - type: integer 
+	Parameter C_PHASE_ANGLE_WIDTH bound to: 14 - type: integer 
+	Parameter C_PHASE_INCREMENT bound to: 3 - type: integer 
+	Parameter C_PHASE_INCREMENT_VALUE bound to: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 - type: string 
+	Parameter C_RESYNC bound to: 0 - type: integer 
+	Parameter C_PHASE_OFFSET bound to: 0 - type: integer 
+	Parameter C_PHASE_OFFSET_VALUE bound to: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 - type: string 
+	Parameter C_OPTIMISE_GOAL bound to: 1 - type: integer 
+	Parameter C_USE_DSP48 bound to: 1 - type: integer 
+	Parameter C_POR_MODE bound to: 0 - type: integer 
+	Parameter C_AMPLITUDE bound to: 0 - type: integer 
+	Parameter C_HAS_ACLKEN bound to: 0 - type: integer 
+	Parameter C_HAS_ARESETN bound to: 0 - type: integer 
+	Parameter C_HAS_TLAST bound to: 0 - type: integer 
+	Parameter C_HAS_TREADY bound to: 0 - type: integer 
+	Parameter C_HAS_S_PHASE bound to: 1 - type: integer 
+	Parameter C_S_PHASE_TDATA_WIDTH bound to: 24 - type: integer 
+	Parameter C_S_PHASE_HAS_TUSER bound to: 0 - type: integer 
+	Parameter C_S_PHASE_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_HAS_S_CONFIG bound to: 0 - type: integer 
+	Parameter C_S_CONFIG_SYNC_MODE bound to: 0 - type: integer 
+	Parameter C_S_CONFIG_TDATA_WIDTH bound to: 1 - type: integer 
+	Parameter C_HAS_M_DATA bound to: 1 - type: integer 
+	Parameter C_M_DATA_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_DATA_HAS_TUSER bound to: 0 - type: integer 
+	Parameter C_M_DATA_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_HAS_M_PHASE bound to: 0 - type: integer 
+	Parameter C_M_PHASE_TDATA_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_PHASE_HAS_TUSER bound to: 0 - type: integer 
+	Parameter C_M_PHASE_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_DEBUG_INTERFACE bound to: 0 - type: integer 
+	Parameter C_CHAN_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-3491] module 'dds_compiler_v6_0_23' declared at '/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ipshared/daca/hdl/dds_compiler_v6_0_vh_rfs.vhd:46995' bound to instance 'U0' of component 'dds_compiler_v6_0_23' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_ton_0/synth/fm_hdmi_dds_ton_0.vhd:182]
+INFO: [Synth 8-256] done synthesizing module 'fm_hdmi_dds_ton_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_ton_0/synth/fm_hdmi_dds_ton_0.vhd:69]
+WARNING: [Synth 8-7129] Port CLK in module xbip_pipe_v3_0_7_viv__parameterized14 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CE in module xbip_pipe_v3_0_7_viv__parameterized14 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module xbip_pipe_v3_0_7_viv__parameterized14 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SSET in module xbip_pipe_v3_0_7_viv__parameterized14 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SINIT in module xbip_pipe_v3_0_7_viv__parameterized14 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CLK in module xbip_pipe_v3_0_7_viv__parameterized12 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CE in module xbip_pipe_v3_0_7_viv__parameterized12 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module xbip_pipe_v3_0_7_viv__parameterized12 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SSET in module xbip_pipe_v3_0_7_viv__parameterized12 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SINIT in module xbip_pipe_v3_0_7_viv__parameterized12 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module xbip_pipe_v3_0_7_viv__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SSET in module xbip_pipe_v3_0_7_viv__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SINIT in module xbip_pipe_v3_0_7_viv__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module xbip_pipe_v3_0_7_viv__parameterized8 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SSET in module xbip_pipe_v3_0_7_viv__parameterized8 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SINIT in module xbip_pipe_v3_0_7_viv__parameterized8 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module xbip_pipe_v3_0_7_viv__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SSET in module xbip_pipe_v3_0_7_viv__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SINIT in module xbip_pipe_v3_0_7_viv__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module sin_cos is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module xbip_pipe_v3_0_7_viv__parameterized4 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SSET in module xbip_pipe_v3_0_7_viv__parameterized4 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SINIT in module xbip_pipe_v3_0_7_viv__parameterized4 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module dither_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WE in module dsp48_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR_ABD in module dsp48_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port acc_phase[24] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port chan_addr[0] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port chan_addr_del2[0] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port chan_addr_del3[0] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr_i[3] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr_i[2] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr_i[1] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr_i[0] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port phase_inc_we in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port phase_adj_we in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[23] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[22] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[21] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[20] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[19] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[18] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[17] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[16] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[15] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[14] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[13] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[12] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[11] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[10] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[9] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[8] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[7] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[6] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[5] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[4] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[3] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[2] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[1] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poff_in[0] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[23] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[22] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[21] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[20] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[19] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[18] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[17] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[16] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[15] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[14] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[13] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[12] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[11] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[10] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[9] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[8] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[7] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[6] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[5] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[4] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[3] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[2] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[1] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_i[0] in module accum is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module xbip_pipe_v3_0_7_viv__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SSET in module xbip_pipe_v3_0_7_viv__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SINIT in module xbip_pipe_v3_0_7_viv__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port RFD in module dds_compiler_v6_0_23_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CHANNEL[0] in module dds_compiler_v6_0_23_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ADDR[0] in module dds_compiler_v6_0_23_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port REG_SELECT in module dds_compiler_v6_0_23_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SCLR in module dds_compiler_v6_0_23_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PHASE_IN[23] in module dds_compiler_v6_0_23_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PHASE_IN[22] in module dds_compiler_v6_0_23_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PHASE_IN[21] in module dds_compiler_v6_0_23_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PHASE_IN[20] in module dds_compiler_v6_0_23_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PHASE_IN[19] in module dds_compiler_v6_0_23_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PHASE_IN[18] in module dds_compiler_v6_0_23_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PHASE_IN[17] in module dds_compiler_v6_0_23_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PHASE_IN[16] in module dds_compiler_v6_0_23_core is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 2230.566 ; gain = 555.629 ; free physical = 11253 ; free virtual = 24766
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2242.441 ; gain = 567.504 ; free physical = 11245 ; free virtual = 24766
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2242.441 ; gain = 567.504 ; free physical = 11245 ; free virtual = 24766
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2248.379 ; gain = 0.000 ; free physical = 11250 ; free virtual = 24771
+INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_ton_0/fm_hdmi_dds_ton_0_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_ton_0/fm_hdmi_dds_ton_0_ooc.xdc] for cell 'U0'
+Parsing XDC File [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_dds_ton_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_dds_ton_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2315.379 ; gain = 0.000 ; free physical = 11507 ; free virtual = 25033
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  DSP48E => DSP48E1: 2 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2315.414 ; gain = 0.000 ; free physical = 11495 ; free virtual = 25060
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:43 ; elapsed = 00:00:45 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 11569 ; free virtual = 25082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:43 ; elapsed = 00:00:45 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 11569 ; free virtual = 25082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for U0. (constraint file  /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_dds_ton_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:43 ; elapsed = 00:00:45 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 11569 ; free virtual = 25082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 11601 ; free virtual = 25084
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:22 ; elapsed = 00:01:24 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 19597 ; free virtual = 33206
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:25 ; elapsed = 00:01:28 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 19654 ; free virtual = 33214
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:26 ; elapsed = 00:01:28 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 19683 ; free virtual = 33213
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:26 ; elapsed = 00:01:29 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 19677 ; free virtual = 33210
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:29 ; elapsed = 00:01:31 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 19671 ; free virtual = 33209
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:29 ; elapsed = 00:01:31 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 19670 ; free virtual = 33209
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:29 ; elapsed = 00:01:31 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 19636 ; free virtual = 33204
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:29 ; elapsed = 00:01:31 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 19636 ; free virtual = 33204
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:29 ; elapsed = 00:01:31 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 19636 ; free virtual = 33205
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:29 ; elapsed = 00:01:31 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 19636 ; free virtual = 33205
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |DSP48E        |         2|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+------------+------+
+|      |Cell        |Count |
++------+------------+------+
+|1     |DSP48E_bbox |     2|
+|3     |CARRY4      |     8|
+|4     |LUT1        |     4|
+|5     |LUT2        |   153|
+|6     |LUT3        |    58|
+|7     |LUT4        |    44|
+|8     |LUT5        |    95|
+|9     |LUT6        |  1326|
+|10    |MUXF7       |   542|
+|11    |MUXF8       |   268|
+|12    |SRL16E      |     3|
+|13    |FDRE        |   313|
++------+------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:29 ; elapsed = 00:01:31 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 19636 ; free virtual = 33205
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 17 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:24 ; elapsed = 00:01:26 . Memory (MB): peak = 2315.414 ; gain = 567.504 ; free physical = 19635 ; free virtual = 33204
+Synthesis Optimization Complete : Time (s): cpu = 00:01:29 ; elapsed = 00:01:31 . Memory (MB): peak = 2315.414 ; gain = 640.477 ; free physical = 19635 ; free virtual = 33204
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2315.414 ; gain = 0.000 ; free physical = 19874 ; free virtual = 33442
+INFO: [Netlist 29-17] Analyzing 820 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'fm_hdmi_dds_ton_0' is not ideal for floorplanning, since the cellview 'sin_cos' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2331.395 ; gain = 0.000 ; free physical = 19913 ; free virtual = 33485
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  DSP48E => DSP48E1: 2 instances
+
+Synth Design complete | Checksum: 7ae54646
+INFO: [Common 17-83] Releasing license: Synthesis
+22 Infos, 109 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:57 ; elapsed = 00:01:46 . Memory (MB): peak = 2331.430 ; gain = 1012.961 ; free physical = 19911 ; free virtual = 33484
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1941.020; main = 1614.712; forked = 378.128
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3315.289; main = 2331.398; forked = 1015.906
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2355.406 ; gain = 0.000 ; free physical = 19912 ; free virtual = 33484
+INFO: [Common 17-1381] The checkpoint '/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_dds_ton_0_synth_1/fm_hdmi_dds_ton_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP fm_hdmi_dds_ton_0, cache-ID = b08ddcbbad695ab0
+INFO: [Coretcl 2-1174] Renamed 19 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2355.406 ; gain = 0.000 ; free physical = 19919 ; free virtual = 33466
+INFO: [Common 17-1381] The checkpoint '/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_dds_ton_0_synth_1/fm_hdmi_dds_ton_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file fm_hdmi_dds_ton_0_utilization_synth.rpt -pb fm_hdmi_dds_ton_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Mar  1 17:31:50 2026...

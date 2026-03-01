@@ -2,8 +2,8 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Fri Feb 27 16:37:18 2026
--- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.2 LTS
+-- Date        : Sun Mar  1 19:43:42 2026
+-- Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_iq16_truncate_0_0/fm_hdmi_iq16_truncate_0_0_sim_netlist.vhdl
 -- Design      : fm_hdmi_iq16_truncate_0_0
@@ -622,7 +622,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => m_axis_tdata(9),
       S => \/i__n_0\
     );
-\i_s0[29]_i_1\: unisim.vcomponents.LUT2
+\i_s0[30]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
@@ -631,7 +631,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       I1 => m_axis_tready,
       O => accept_s0
     );
-\i_s0_reg[12]\: unisim.vcomponents.FDRE
+\i_s0_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -639,7 +639,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(14),
       R => '0'
     );
-\i_s0_reg[13]\: unisim.vcomponents.FDRE
+\i_s0_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -647,7 +647,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(15),
       R => '0'
     );
-\i_s0_reg[14]\: unisim.vcomponents.FDRE
+\i_s0_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -655,7 +655,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(16),
       R => '0'
     );
-\i_s0_reg[15]\: unisim.vcomponents.FDRE
+\i_s0_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -663,7 +663,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(17),
       R => '0'
     );
-\i_s0_reg[16]\: unisim.vcomponents.FDRE
+\i_s0_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -671,7 +671,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(18),
       R => '0'
     );
-\i_s0_reg[17]\: unisim.vcomponents.FDRE
+\i_s0_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -679,7 +679,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(19),
       R => '0'
     );
-\i_s0_reg[18]\: unisim.vcomponents.FDRE
+\i_s0_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -687,7 +687,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(20),
       R => '0'
     );
-\i_s0_reg[19]\: unisim.vcomponents.FDRE
+\i_s0_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -695,7 +695,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(21),
       R => '0'
     );
-\i_s0_reg[20]\: unisim.vcomponents.FDRE
+\i_s0_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -703,7 +703,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(22),
       R => '0'
     );
-\i_s0_reg[21]\: unisim.vcomponents.FDRE
+\i_s0_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -711,7 +711,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(23),
       R => '0'
     );
-\i_s0_reg[22]\: unisim.vcomponents.FDRE
+\i_s0_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -719,7 +719,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(24),
       R => '0'
     );
-\i_s0_reg[23]\: unisim.vcomponents.FDRE
+\i_s0_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -727,7 +727,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(25),
       R => '0'
     );
-\i_s0_reg[24]\: unisim.vcomponents.FDRE
+\i_s0_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -735,7 +735,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(26),
       R => '0'
     );
-\i_s0_reg[25]\: unisim.vcomponents.FDRE
+\i_s0_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -743,7 +743,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(27),
       R => '0'
     );
-\i_s0_reg[26]\: unisim.vcomponents.FDRE
+\i_s0_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -751,7 +751,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(28),
       R => '0'
     );
-\i_s0_reg[27]\: unisim.vcomponents.FDRE
+\i_s0_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -759,7 +759,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(29),
       R => '0'
     );
-\i_s0_reg[28]\: unisim.vcomponents.FDRE
+\i_s0_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -767,7 +767,7 @@ i_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => i_shift(30),
       R => '0'
     );
-\i_s0_reg[29]\: unisim.vcomponents.FDRE
+\i_s0_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1191,7 +1191,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => m_axis_tdata(25),
       S => q_out
     );
-\q_s0_reg[12]\: unisim.vcomponents.FDRE
+\q_s0_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1199,7 +1199,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(14),
       R => '0'
     );
-\q_s0_reg[13]\: unisim.vcomponents.FDRE
+\q_s0_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1207,7 +1207,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(15),
       R => '0'
     );
-\q_s0_reg[14]\: unisim.vcomponents.FDRE
+\q_s0_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1215,7 +1215,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(16),
       R => '0'
     );
-\q_s0_reg[15]\: unisim.vcomponents.FDRE
+\q_s0_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1223,7 +1223,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(17),
       R => '0'
     );
-\q_s0_reg[16]\: unisim.vcomponents.FDRE
+\q_s0_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1231,7 +1231,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(18),
       R => '0'
     );
-\q_s0_reg[17]\: unisim.vcomponents.FDRE
+\q_s0_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1239,7 +1239,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(19),
       R => '0'
     );
-\q_s0_reg[18]\: unisim.vcomponents.FDRE
+\q_s0_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1247,7 +1247,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(20),
       R => '0'
     );
-\q_s0_reg[19]\: unisim.vcomponents.FDRE
+\q_s0_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1255,7 +1255,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(21),
       R => '0'
     );
-\q_s0_reg[20]\: unisim.vcomponents.FDRE
+\q_s0_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1263,7 +1263,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(22),
       R => '0'
     );
-\q_s0_reg[21]\: unisim.vcomponents.FDRE
+\q_s0_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1271,7 +1271,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(23),
       R => '0'
     );
-\q_s0_reg[22]\: unisim.vcomponents.FDRE
+\q_s0_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1279,7 +1279,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(24),
       R => '0'
     );
-\q_s0_reg[23]\: unisim.vcomponents.FDRE
+\q_s0_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1287,7 +1287,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(25),
       R => '0'
     );
-\q_s0_reg[24]\: unisim.vcomponents.FDRE
+\q_s0_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1295,7 +1295,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(26),
       R => '0'
     );
-\q_s0_reg[25]\: unisim.vcomponents.FDRE
+\q_s0_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1303,7 +1303,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(27),
       R => '0'
     );
-\q_s0_reg[26]\: unisim.vcomponents.FDRE
+\q_s0_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1311,7 +1311,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(28),
       R => '0'
     );
-\q_s0_reg[27]\: unisim.vcomponents.FDRE
+\q_s0_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1319,7 +1319,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(29),
       R => '0'
     );
-\q_s0_reg[28]\: unisim.vcomponents.FDRE
+\q_s0_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1327,7 +1327,7 @@ q_out0_carry_i_2: unisim.vcomponents.LUT2
       Q => q_shift(30),
       R => '0'
     );
-\q_s0_reg[29]\: unisim.vcomponents.FDRE
+\q_s0_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => accept_s0,
@@ -1408,8 +1408,8 @@ inst: entity work.fm_hdmi_iq16_truncate_0_0_iq16_truncate
       m_axis_tdata(31 downto 0) => m_axis_tdata(31 downto 0),
       m_axis_tready => \^m_axis_tready\,
       m_axis_tvalid => m_axis_tvalid,
-      s_axis_tdata(35 downto 18) => s_axis_tdata(61 downto 44),
-      s_axis_tdata(17 downto 0) => s_axis_tdata(29 downto 12),
+      s_axis_tdata(35 downto 18) => s_axis_tdata(62 downto 45),
+      s_axis_tdata(17 downto 0) => s_axis_tdata(30 downto 13),
       s_axis_tvalid => s_axis_tvalid
     );
 end STRUCTURE;
