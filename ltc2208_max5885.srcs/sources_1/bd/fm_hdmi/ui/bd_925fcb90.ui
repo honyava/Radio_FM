@@ -1,45 +1,70 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.872155",
-   "Default View_TopLeft":"-148,-236",
+   "Default View_ScaleFactor":"1.59411",
+   "Default View_TopLeft":"-118,-46",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x -10 -y 290 -defaultsOSRD
-preplace port port-id_locked -pg 1 -lvl 0 -x -10 -y 350 -defaultsOSRD
-preplace port port-id_sys -pg 1 -lvl 0 -x -10 -y 260 -defaultsOSRD
-preplace port port-id_clk_10M -pg 1 -lvl 0 -x -10 -y 320 -defaultsOSRD
-preplace port port-id_clk_50M -pg 1 -lvl 0 -x -10 -y 450 -defaultsOSRD
-preplace port port-id_adc_clk -pg 1 -lvl 4 -x 2920 -y 400 -defaultsOSRD
-preplace portBus adc_dai -pg 1 -lvl 0 -x -10 -y 90 -defaultsOSRD
-preplace portBus hdmi_d1 -pg 1 -lvl 4 -x 2920 -y 250 -defaultsOSRD
-preplace portBus hdmi_clk -pg 1 -lvl 4 -x 2920 -y 190 -defaultsOSRD
-preplace portBus hdmi_d2 -pg 1 -lvl 4 -x 2920 -y 280 -defaultsOSRD
-preplace portBus hdmi_d0 -pg 1 -lvl 4 -x 2920 -y 220 -defaultsOSRD
-preplace inst fm_demod -pg 1 -lvl 2 -x 700 -y 132 -defaultsOSRD
-preplace inst hdmi_core -pg 1 -lvl 3 -x 2780 -y 230 -defaultsOSRD
-preplace inst fm_mod -pg 1 -lvl 1 -x 190 -y 330 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 190 -y 440 -defaultsOSRD
-preplace inst clk_wiz_1 -pg 1 -lvl 2 -x 700 -y 714 -defaultsOSRD
-preplace netloc adc_clk_0_1 1 0 2 30 152 NJ
-preplace netloc adc_dai_0_1 1 0 2 NJ 90 340J
-preplace netloc adc_dci_0_1 1 1 2 520 250 890
-preplace netloc clk_50M_1 1 0 1 NJ 450
-preplace netloc clk_wiz_0_clk_out1 1 1 1 370 430n
-preplace netloc clk_wiz_0_locked 1 1 1 340 450n
-preplace netloc clk_wiz_1_clk_adc 1 2 2 900J 400 NJ
-preplace netloc en_0_1 1 0 2 20 112 NJ
-preplace netloc fm_mod_m_axis_data_tdata_0 1 1 1 340 172n
-preplace netloc fm_mod_m_axis_data_tvalid_0 1 1 1 510 192n
-preplace netloc hdmi_tmds_audio_0_hdmi_clk 1 3 1 2900J 190n
-preplace netloc hdmi_tmds_audio_0_hdmi_d0 1 3 1 NJ 220
-preplace netloc hdmi_tmds_audio_0_hdmi_d1 1 3 1 2900J 240n
-preplace netloc hdmi_tmds_audio_0_hdmi_d2 1 3 1 2900J 260n
-preplace netloc src_in_1 1 2 1 880 132n
-preplace netloc sys_1 1 0 3 NJ 260 NJ 260 NJ
-preplace netloc sys_rst_n_0_1 1 0 3 40 240 500 240 NJ
-levelinfo -pg 1 -10 190 700 2780 2920
-pagesize -pg 1 -db -bbox -sgen -150 0 3080 800
+preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x -10 -y 450 -defaultsOSRD
+preplace port port-id_locked -pg 1 -lvl 0 -x -10 -y 20 -defaultsOSRD
+preplace port port-id_sys -pg 1 -lvl 0 -x -10 -y 250 -defaultsOSRD
+preplace port port-id_clk_10M -pg 1 -lvl 0 -x -10 -y 480 -defaultsOSRD
+preplace port port-id_clk_50M -pg 1 -lvl 0 -x -10 -y 120 -defaultsOSRD
+preplace port port-id_adc_clk -pg 1 -lvl 5 -x 1300 -y 70 -defaultsOSRD
+preplace port port-id_phy_rxc -pg 1 -lvl 0 -x -10 -y 560 -defaultsOSRD
+preplace port port-id_phy_rx_ctrl -pg 1 -lvl 0 -x -10 -y 310 -defaultsOSRD
+preplace port port-id_clk -pg 1 -lvl 0 -x -10 -y 50 -defaultsOSRD
+preplace port port-id_mdio -pg 1 -lvl 5 -x 1300 -y 460 -defaultsOSRD
+preplace port port-id_mdc -pg 1 -lvl 5 -x 1300 -y 430 -defaultsOSRD
+preplace port port-id_phy_rstn -pg 1 -lvl 5 -x 1300 -y 580 -defaultsOSRD
+preplace port port-id_phy_tx_ctrl -pg 1 -lvl 5 -x 1300 -y 550 -defaultsOSRD
+preplace port port-id_phy_txc -pg 1 -lvl 5 -x 1300 -y 520 -defaultsOSRD
+preplace portBus adc_dai -pg 1 -lvl 0 -x -10 -y 390 -defaultsOSRD
+preplace portBus hdmi_d1 -pg 1 -lvl 5 -x 1300 -y 230 -defaultsOSRD
+preplace portBus hdmi_clk -pg 1 -lvl 5 -x 1300 -y 170 -defaultsOSRD
+preplace portBus hdmi_d2 -pg 1 -lvl 5 -x 1300 -y 260 -defaultsOSRD
+preplace portBus hdmi_d0 -pg 1 -lvl 5 -x 1300 -y 200 -defaultsOSRD
+preplace portBus phy_rxd -pg 1 -lvl 0 -x -10 -y 530 -defaultsOSRD
+preplace portBus phy_txd -pg 1 -lvl 5 -x 1300 -y 400 -defaultsOSRD
+preplace portBus linkspeed -pg 1 -lvl 5 -x 1300 -y 490 -defaultsOSRD
+preplace inst fm_demod -pg 1 -lvl 3 -x 760 -y 430 -defaultsOSRD
+preplace inst hdmi_core -pg 1 -lvl 4 -x 1120 -y 220 -defaultsOSRD
+preplace inst fm_mod -pg 1 -lvl 2 -x 370 -y 470 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 110 -y 110 -defaultsOSRD
+preplace inst clk_wiz_1 -pg 1 -lvl 2 -x 370 -y 100 -defaultsOSRD
+preplace inst packer_for_udp -pg 1 -lvl 4 -x 1120 -y 480 -defaultsOSRD
+preplace netloc Net 1 4 1 1260J 460n
+preplace netloc adc_clk_0_1 1 0 3 NJ 480 200 380 550
+preplace netloc adc_dai_0_1 1 0 3 NJ 390 NJ 390 NJ
+preplace netloc adc_dci_0_1 1 2 2 570 190 980
+preplace netloc clk_50M_1 1 0 4 10 10 NJ 10 NJ 10 940
+preplace netloc clk_wiz_0_clk_out1 1 1 1 N 100
+preplace netloc clk_wiz_0_locked 1 1 3 210 200 NJ 200 960
+preplace netloc clk_wiz_1_clk_adc 1 2 3 NJ 70 NJ 70 NJ
+preplace netloc clk_wiz_1_clkfb_out 1 1 2 220 190 520
+preplace netloc en_0_1 1 0 4 20 40 200J 210 560 230 NJ
+preplace netloc fm_demod_m_axis_tdata_0 1 3 1 N 440
+preplace netloc fm_demod_m_axis_tvalid_0 1 3 1 N 460
+preplace netloc fm_mod_m_axis_data_tdata_0 1 2 1 520 460n
+preplace netloc hdmi_core_hdmi_clk 1 4 1 1260J 170n
+preplace netloc hdmi_core_hdmi_d0 1 4 1 1260J 200n
+preplace netloc hdmi_core_hdmi_d1 1 4 1 NJ 230
+preplace netloc hdmi_core_hdmi_d2 1 4 1 1260J 250n
+preplace netloc packer_for_udp_linkspeed 1 4 1 NJ 490
+preplace netloc packer_for_udp_mdc 1 4 1 1280J 430n
+preplace netloc packer_for_udp_mpx_ready 1 2 3 580 310 NJ 310 1260
+preplace netloc packer_for_udp_phy_rstn 1 4 1 1260J 550n
+preplace netloc packer_for_udp_phy_tx_ctrl 1 4 1 1280J 530n
+preplace netloc packer_for_udp_phy_txc 1 4 1 1280J 510n
+preplace netloc packer_for_udp_phy_txd 1 4 1 1270J 400n
+preplace netloc phy_rx_ctrl_0_1 1 0 4 NJ 310 NJ 310 530J 540 940J
+preplace netloc phy_rxc_0_1 1 0 4 NJ 560 NJ 560 NJ 560 NJ
+preplace netloc phy_rxd_0_1 1 0 4 20J 550 NJ 550 NJ 550 980J
+preplace netloc src_in_1 1 3 1 950 210n
+preplace netloc sys_1 1 0 4 NJ 250 NJ 250 NJ 250 970
+preplace netloc sys_rst_n_0_1 1 0 3 NJ 450 220 400 540
+levelinfo -pg 1 -10 110 370 760 1120 1300
+pagesize -pg 1 -db -bbox -sgen -150 0 1450 610
 "
 }
 0

@@ -2,11 +2,11 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Sun Mar  1 17:31:08 2026
+// Date        : Thu Mar  5 15:28:56 2026
 // Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 // Command     : write_verilog -force -mode synth_stub -rename_top fm_hdmi_cordic_0_1 -prefix
-//               fm_hdmi_cordic_0_1_ fm_hdmi_cordic_0_0_stub.v
-// Design      : fm_hdmi_cordic_0_0
+//               fm_hdmi_cordic_0_1_ fm_hdmi_cordic_0_1_stub.v
+// Design      : fm_hdmi_cordic_0_1
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg400-2
 // --------------------------------------------------------------------------------
@@ -17,11 +17,11 @@
 (* x_core_info = "cordic_v6_0_20,Vivado 2023.2" *)
 module fm_hdmi_cordic_0_1(aclk, s_axis_cartesian_tvalid, 
   s_axis_cartesian_tdata, m_axis_dout_tvalid, m_axis_dout_tdata)
-/* synthesis syn_black_box black_box_pad_pin="s_axis_cartesian_tvalid,s_axis_cartesian_tdata[63:0],m_axis_dout_tvalid,m_axis_dout_tdata[15:0]" */
+/* synthesis syn_black_box black_box_pad_pin="s_axis_cartesian_tvalid,s_axis_cartesian_tdata[63:0],m_axis_dout_tvalid,m_axis_dout_tdata[23:0]" */
 /* synthesis syn_force_seq_prim="aclk" */;
   input aclk /* synthesis syn_isclock = 1 */;
   input s_axis_cartesian_tvalid;
   input [63:0]s_axis_cartesian_tdata;
   output m_axis_dout_tvalid;
-  output [15:0]m_axis_dout_tdata;
+  output [23:0]m_axis_dout_tdata;
 endmodule

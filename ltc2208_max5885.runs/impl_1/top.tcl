@@ -147,6 +147,7 @@ OPTRACE "add files" START { }
   read_ip -quiet /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
+  read_xdc /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/imports/new/eth_loopback.xdc
   read_xdc /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/new/111.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "read constraints: implementation_pre" START { }

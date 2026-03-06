@@ -8,5 +8,6 @@
 ################################################################################
 create_clock -name sys -period 5 [get_ports sys]
 create_clock -name clk_50M -period 20 [get_ports clk_50M]
+create_clock -name clk -period 10 [get_ports clk]
 
 ################################################################################

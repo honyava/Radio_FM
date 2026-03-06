@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Sun Mar  1 17:30:17 2026
+// Date        : Sun Mar  1 17:30:15 2026
 // Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_LTC_2208_0_0/fm_hdmi_LTC_2208_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top fm_hdmi_LTC_2208_0_0 -prefix
+//               fm_hdmi_LTC_2208_0_0_ fm_hdmi_LTC_2208_0_0_sim_netlist.v
 // Design      : fm_hdmi_LTC_2208_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,56 +13,6 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "fm_hdmi_LTC_2208_0_0,LTC_2208,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
-(* X_CORE_INFO = "LTC_2208,Vivado 2023.2" *) 
-(* NotValidForBitStream *)
-module fm_hdmi_LTC_2208_0_0
-   (sys_rst_n,
-    adc_dci,
-    adc_dai,
-    m_axis_tdata,
-    m_axis_tvalid);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sys_rst_n RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sys_rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input sys_rst_n;
-  input adc_dci;
-  input [15:0]adc_dai;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TDATA" *) output [31:0]m_axis_tdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TVALID" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axis, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0" *) output m_axis_tvalid;
-
-  wire \<const0> ;
-  wire [15:0]adc_dai;
-  wire adc_dci;
-  wire [31:16]\^m_axis_tdata ;
-  wire m_axis_tvalid;
-  wire sys_rst_n;
-
-  assign m_axis_tdata[31:16] = \^m_axis_tdata [31:16];
-  assign m_axis_tdata[15] = \<const0> ;
-  assign m_axis_tdata[14] = \<const0> ;
-  assign m_axis_tdata[13] = \<const0> ;
-  assign m_axis_tdata[12] = \<const0> ;
-  assign m_axis_tdata[11] = \<const0> ;
-  assign m_axis_tdata[10] = \<const0> ;
-  assign m_axis_tdata[9] = \<const0> ;
-  assign m_axis_tdata[8] = \<const0> ;
-  assign m_axis_tdata[7] = \<const0> ;
-  assign m_axis_tdata[6] = \<const0> ;
-  assign m_axis_tdata[5] = \<const0> ;
-  assign m_axis_tdata[4] = \<const0> ;
-  assign m_axis_tdata[3] = \<const0> ;
-  assign m_axis_tdata[2] = \<const0> ;
-  assign m_axis_tdata[1] = \<const0> ;
-  assign m_axis_tdata[0] = \<const0> ;
-  GND GND
-       (.G(\<const0> ));
-  fm_hdmi_LTC_2208_0_0_LTC_2208 inst
-       (.adc_dai(adc_dai),
-        .adc_dci(adc_dci),
-        .m_axis_tdata(\^m_axis_tdata ),
-        .m_axis_tvalid(m_axis_tvalid),
-        .sys_rst_n(sys_rst_n));
-endmodule
-
-(* ORIG_REF_NAME = "LTC_2208" *) 
 module fm_hdmi_LTC_2208_0_0_LTC_2208
    (m_axis_tdata,
     m_axis_tvalid,
@@ -642,6 +592,55 @@ module fm_hdmi_LTC_2208_0_0_LTC_2208
         .D(sys_rst_n),
         .Q(m_axis_tvalid),
         .R(1'b0));
+endmodule
+
+(* CHECK_LICENSE_TYPE = "fm_hdmi_LTC_2208_0_0,LTC_2208,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
+(* X_CORE_INFO = "LTC_2208,Vivado 2023.2" *) 
+(* NotValidForBitStream *)
+module fm_hdmi_LTC_2208_0_0
+   (sys_rst_n,
+    adc_dci,
+    adc_dai,
+    m_axis_tdata,
+    m_axis_tvalid);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sys_rst_n RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sys_rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input sys_rst_n;
+  input adc_dci;
+  input [15:0]adc_dai;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TDATA" *) output [31:0]m_axis_tdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TVALID" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axis, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0" *) output m_axis_tvalid;
+
+  wire \<const0> ;
+  wire [15:0]adc_dai;
+  wire adc_dci;
+  wire [31:16]\^m_axis_tdata ;
+  wire m_axis_tvalid;
+  wire sys_rst_n;
+
+  assign m_axis_tdata[31:16] = \^m_axis_tdata [31:16];
+  assign m_axis_tdata[15] = \<const0> ;
+  assign m_axis_tdata[14] = \<const0> ;
+  assign m_axis_tdata[13] = \<const0> ;
+  assign m_axis_tdata[12] = \<const0> ;
+  assign m_axis_tdata[11] = \<const0> ;
+  assign m_axis_tdata[10] = \<const0> ;
+  assign m_axis_tdata[9] = \<const0> ;
+  assign m_axis_tdata[8] = \<const0> ;
+  assign m_axis_tdata[7] = \<const0> ;
+  assign m_axis_tdata[6] = \<const0> ;
+  assign m_axis_tdata[5] = \<const0> ;
+  assign m_axis_tdata[4] = \<const0> ;
+  assign m_axis_tdata[3] = \<const0> ;
+  assign m_axis_tdata[2] = \<const0> ;
+  assign m_axis_tdata[1] = \<const0> ;
+  assign m_axis_tdata[0] = \<const0> ;
+  GND GND
+       (.G(\<const0> ));
+  fm_hdmi_LTC_2208_0_0_LTC_2208 inst
+       (.adc_dai(adc_dai),
+        .adc_dci(adc_dci),
+        .m_axis_tdata(\^m_axis_tdata ),
+        .m_axis_tvalid(m_axis_tvalid),
+        .sys_rst_n(sys_rst_n));
 endmodule
 `ifndef GLBL
 `define GLBL

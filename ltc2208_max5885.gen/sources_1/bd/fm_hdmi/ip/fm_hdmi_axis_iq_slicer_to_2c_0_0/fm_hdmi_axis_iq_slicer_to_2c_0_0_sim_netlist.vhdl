@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Sun Mar  1 18:26:19 2026
+-- Date        : Sun Mar  1 18:26:18 2026
 -- Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
--- Command     : write_vhdl -force -mode funcsim
---               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_axis_iq_slicer_to_2c_0_0/fm_hdmi_axis_iq_slicer_to_2c_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top fm_hdmi_axis_iq_slicer_to_2c_0_0 -prefix
+--               fm_hdmi_axis_iq_slicer_to_2c_0_0_ fm_hdmi_axis_iq_slicer_to_2c_0_0_sim_netlist.vhdl
 -- Design      : fm_hdmi_axis_iq_slicer_to_2c_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -23,8 +23,6 @@ entity fm_hdmi_axis_iq_slicer_to_2c_0_0_axis_iq_slicer_to_2cic is
     m_axis_q_tready : in STD_LOGIC;
     s_axis_tvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of fm_hdmi_axis_iq_slicer_to_2c_0_0_axis_iq_slicer_to_2cic : entity is "axis_iq_slicer_to_2cic";
 end fm_hdmi_axis_iq_slicer_to_2c_0_0_axis_iq_slicer_to_2cic;
 
 architecture STRUCTURE of fm_hdmi_axis_iq_slicer_to_2c_0_0_axis_iq_slicer_to_2cic is

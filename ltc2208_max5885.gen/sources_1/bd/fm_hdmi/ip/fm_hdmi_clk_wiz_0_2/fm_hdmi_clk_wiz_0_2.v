@@ -53,8 +53,8 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// _clk_adc__76.80000______0.000______50.0______479.048____572.384
-// clk_adcR__76.80000_____65.000______50.0______479.048____572.384
+// _clk_adc__76.80000______0.000______50.0______107.365____119.507
+// clk_adcR__76.80000_____65.250______50.0______107.365____119.507
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -63,13 +63,15 @@
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "fm_hdmi_clk_wiz_0_2,clk_wiz_v6_0_13_0_0,{component_name=fm_hdmi_clk_wiz_0_2,use_phase_alignment=true,use_min_o_jitter=true,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=2,clkin1_period=15.625,clkin2_period=10.000,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
+(* CORE_GENERATION_INFO = "fm_hdmi_clk_wiz_0_2,clk_wiz_v6_0_13_0_0,{component_name=fm_hdmi_clk_wiz_0_2,use_phase_alignment=true,use_min_o_jitter=true,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_ONCHIP,PRIMITIVE=PLL,num_out_clk=2,clkin1_period=15.625,clkin2_period=10.0,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
 
 module fm_hdmi_clk_wiz_0_2 
  (
+  input         clkfb_in,
   // Clock out ports
   output        clk_adc,
   output        clk_adcR,
+  output        clkfb_out,
   // Status and control signals
   input         resetn,
   output        locked,
@@ -79,9 +81,11 @@ module fm_hdmi_clk_wiz_0_2
 
   fm_hdmi_clk_wiz_0_2_clk_wiz inst
   (
+  .clkfb_in(clkfb_in),
   // Clock out ports  
   .clk_adc(clk_adc),
   .clk_adcR(clk_adcR),
+  .clkfb_out(clkfb_out),
   // Status and control signals               
   .resetn(resetn), 
   .locked(locked),

@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Sun Mar  1 17:30:21 2026
+-- Date        : Sun Mar  1 17:30:20 2026
 -- Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
--- Command     : write_vhdl -force -mode funcsim
---               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_xpm_cdc_gen_0_0/fm_hdmi_xpm_cdc_gen_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top fm_hdmi_xpm_cdc_gen_0_0 -prefix
+--               fm_hdmi_xpm_cdc_gen_0_0_ fm_hdmi_xpm_cdc_gen_0_0_sim_netlist.vhdl
 -- Design      : fm_hdmi_xpm_cdc_gen_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -26,8 +26,6 @@ entity fm_hdmi_xpm_cdc_gen_0_0_xpm_cdc_array_single is
   attribute DEST_SYNC_FF of fm_hdmi_xpm_cdc_gen_0_0_xpm_cdc_array_single : entity is 4;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of fm_hdmi_xpm_cdc_gen_0_0_xpm_cdc_array_single : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of fm_hdmi_xpm_cdc_gen_0_0_xpm_cdc_array_single : entity is "xpm_cdc_array_single";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of fm_hdmi_xpm_cdc_gen_0_0_xpm_cdc_array_single : entity is 0;
   attribute SRC_INPUT_REG : integer;
@@ -937,8 +935,6 @@ entity fm_hdmi_xpm_cdc_gen_0_0_xpm_cdc_gen_v1_0_3 is
   attribute INIT of fm_hdmi_xpm_cdc_gen_0_0_xpm_cdc_gen_v1_0_3 : entity is "1";
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of fm_hdmi_xpm_cdc_gen_0_0_xpm_cdc_gen_v1_0_3 : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of fm_hdmi_xpm_cdc_gen_0_0_xpm_cdc_gen_v1_0_3 : entity is "xpm_cdc_gen_v1_0_3";
   attribute REG_OUTPUT : integer;
   attribute REG_OUTPUT of fm_hdmi_xpm_cdc_gen_0_0_xpm_cdc_gen_v1_0_3 : entity is 0;
   attribute RST_ACTIVE_HIGH : integer;

@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Sun Mar  1 17:31:04 2026
+-- Date        : Sun Mar  1 17:31:03 2026
 -- Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
--- Command     : write_vhdl -force -mode funcsim
---               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_hdmi_tmds_audio_0_0/fm_hdmi_hdmi_tmds_audio_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top fm_hdmi_hdmi_tmds_audio_0_0 -prefix
+--               fm_hdmi_hdmi_tmds_audio_0_0_ fm_hdmi_hdmi_tmds_audio_0_0_sim_netlist.vhdl
 -- Design      : fm_hdmi_hdmi_tmds_audio_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -96,8 +96,6 @@ entity fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet is
     packet_type : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \packet_type_reg[0]_0\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet : entity is "audio_clock_regeneration_packet";
 end fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet;
 
 architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_audio_clock_regeneration_packet is
@@ -2524,8 +2522,6 @@ entity fm_hdmi_hdmi_tmds_audio_0_0_audio_sample_packet is
     \parity[3][7]_i_20_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     Q : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of fm_hdmi_hdmi_tmds_audio_0_0_audio_sample_packet : entity is "audio_sample_packet";
 end fm_hdmi_hdmi_tmds_audio_0_0_audio_sample_packet;
 
 architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_audio_sample_packet is
@@ -2710,8 +2706,6 @@ entity fm_hdmi_hdmi_tmds_audio_0_0_packet_assembler is
     \parity_reg[3][7]_0\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     SR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of fm_hdmi_hdmi_tmds_audio_0_0_packet_assembler : entity is "packet_assembler";
 end fm_hdmi_hdmi_tmds_audio_0_0_packet_assembler;
 
 architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_packet_assembler is
@@ -4009,8 +4003,6 @@ entity fm_hdmi_hdmi_tmds_audio_0_0_serializer is
     \xilinx_serialize[2].secondary_0\ : in STD_LOGIC_VECTOR ( 9 downto 0 );
     sys_nrst : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of fm_hdmi_hdmi_tmds_audio_0_0_serializer : entity is "serializer";
 end fm_hdmi_hdmi_tmds_audio_0_0_serializer;
 
 architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_serializer is
@@ -4569,8 +4561,6 @@ entity fm_hdmi_hdmi_tmds_audio_0_0_tmds_channel is
     clk_pixel : in STD_LOGIC;
     SR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of fm_hdmi_hdmi_tmds_audio_0_0_tmds_channel : entity is "tmds_channel";
 end fm_hdmi_hdmi_tmds_audio_0_0_tmds_channel;
 
 architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_tmds_channel is
@@ -6100,8 +6090,6 @@ entity fm_hdmi_hdmi_tmds_audio_0_0_packet_picker is
     \audio_sample_word_transfer_reg[1][15]_0\ : in STD_LOGIC_VECTOR ( 15 downto 0 );
     \audio_sample_word_transfer_reg[0][15]_0\ : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of fm_hdmi_hdmi_tmds_audio_0_0_packet_picker : entity is "packet_picker";
 end fm_hdmi_hdmi_tmds_audio_0_0_packet_picker;
 
 architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_packet_picker is
@@ -15517,8 +15505,6 @@ entity fm_hdmi_hdmi_tmds_audio_0_0_hdmi is
     clk_pixel_x5 : in STD_LOGIC;
     rgb : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of fm_hdmi_hdmi_tmds_audio_0_0_hdmi : entity is "hdmi";
 end fm_hdmi_hdmi_tmds_audio_0_0_hdmi;
 
 architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_hdmi is
@@ -17255,8 +17241,6 @@ entity fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio is
     hdmi_l : in STD_LOGIC_VECTOR ( 15 downto 0 );
     hdmi_r : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio : entity is "hdmi_tmds_audio";
 end fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio;
 
 architecture STRUCTURE of fm_hdmi_hdmi_tmds_audio_0_0_hdmi_tmds_audio is

@@ -91,21 +91,35 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 add_files /home/reting/Desktop/Github/Radio_FM/fir_384_140_190.coe
+add_files /home/reting/Desktop/Github/Radio_FM/fir_decim2_hex.coe
+add_files /home/reting/Desktop/Github/Radio_FM/bpf_lr23_53_96.coe
+add_files /home/reting/Desktop/Github/Radio_FM/bpf_pilot19_96.coe
+add_files /home/reting/Desktop/Github/Radio_FM/0_15k_96.coe
 read_verilog -library xil_defaultlib /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/new/top.v
 add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/bd/fm_hdmi/fm_hdmi.bd
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_cmpy_0_0/fm_hdmi_cmpy_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_compiler_0_0/fm_hdmi_dds_compiler_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_cmpy_0_1/fm_hdmi_cmpy_0_1_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_cic_compiler_2_2/fm_hdmi_cic_compiler_2_2_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_0/constraints/fir_compiler_v7_2.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_0/fm_hdmi_fir_compiler_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_1/constraints/fir_compiler_v7_2.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_1/fm_hdmi_fir_compiler_0_1_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_cic_compiler_0_2/fm_hdmi_cic_compiler_0_2_ooc.xdc]
-set_property used_in_synthesis false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_0/ila_v6_2/constraints/ila.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_0/fm_hdmi_ila_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_cmpy_0_1/fm_hdmi_cmpy_0_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_compiler_0_0/fm_hdmi_dds_compiler_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_cmpy_0_0/fm_hdmi_cmpy_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_cordic_0_1/fm_hdmi_cordic_0_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_2/constraints/fir_compiler_v7_2.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_2/fm_hdmi_fir_compiler_0_2_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_3/constraints/fir_compiler_v7_2.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_3/fm_hdmi_fir_compiler_0_3_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_5/constraints/fir_compiler_v7_2.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_5/fm_hdmi_fir_compiler_0_5_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_DDS19_0/fm_hdmi_DDS19_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_cordic_1_0/fm_hdmi_cordic_1_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_compiler_0_2/fm_hdmi_dds_compiler_0_2_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_4/constraints/fir_compiler_v7_2.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fir_compiler_0_4/fm_hdmi_fir_compiler_0_4_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_LpluseR_0/constraints/fir_compiler_v7_2.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_LpluseR_0/fm_hdmi_LpluseR_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_xpm_cdc_gen_0_0/synth/fm_hdmi_xpm_cdc_gen_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_xpm_cdc_gen_0_0/fm_hdmi_xpm_cdc_gen_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_0/fm_hdmi_clk_wiz_0_0_board.xdc]
@@ -122,8 +136,15 @@ set_property used_in_implementation false [get_files -all /home/reting/Desktop/G
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_2/fm_hdmi_clk_wiz_0_2.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_2/fm_hdmi_clk_wiz_0_2_late.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_2/fm_hdmi_clk_wiz_0_2_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_cordic_0_1/fm_hdmi_cordic_0_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_cic_compiler_Q1_0/fm_hdmi_cic_compiler_Q1_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fifo_generator_0_0/fm_hdmi_fifo_generator_0_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fifo_generator_0_0/fm_hdmi_fifo_generator_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fifo_generator_1_0/fm_hdmi_fifo_generator_1_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fifo_generator_1_0/fm_hdmi_fifo_generator_1_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fifo_generator_1_0/fm_hdmi_fifo_generator_1_0_ooc.xdc]
+set_property used_in_synthesis false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_2/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_2/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_2/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_2/fm_hdmi_ila_0_2_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/fm_hdmi_ooc.xdc]
 
 read_ip -quiet /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
@@ -141,6 +162,9 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/imports/new/eth_loopback.xdc
+set_property used_in_implementation false [get_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/imports/new/eth_loopback.xdc]
+
 read_xdc /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/new/111.xdc
 set_property used_in_implementation false [get_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/new/111.xdc]
 

@@ -1,13 +1,13 @@
 %% ===== Параметры экспорта =====
 W = 16;                          % Coefficient_Width
-outfile = 'fir_decim10_hex.coe';
+outfile = 'fir_decim10lpf_hex.coe';
 
 % Масштабируем на полный signed 16-bit диапазон.
 % Это меняет только общий коэффициент усиления, но не форму АЧХ.
-peak = max(abs(coeff));
+peak = max(abs(coeff140to180));
 scale = (2^(W-1)-1) / peak;
 
-coeff_int = round(coeff * scale);
+coeff_int = round(coeff140to180 * scale);
 
 % Ограничение диапазона signed 16-bit
 coeff_int(coeff_int >  2^(W-1)-1) =  2^(W-1)-1;

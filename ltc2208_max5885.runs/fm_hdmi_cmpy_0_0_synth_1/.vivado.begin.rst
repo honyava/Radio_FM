@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="reting" Host="reting-ThinkBook-14-G7-IAH" Pid="19450" HostCore="16" HostMemory="32335488">
-    </Process>
-</ProcessHandle>

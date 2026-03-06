@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x645AC417D8F429C6",
+      "boundary_crc": "0x2B363681358395F2",
       "device": "xc7z020clg400-2",
       "gen_directory": "../../../../ltc2208_max5885.gen/sources_1/bd/fm_hdmi",
       "name": "fm_hdmi",
@@ -27,18 +27,28 @@
           "xlconcat_0": "",
           "xlconstant_0": ""
         },
-        "ila_0": "",
         "digital_mixer": {
           "lfsr_rng_0": "",
           "cmpy_1": "",
           "dds_compiler_0": ""
         },
-        "cic_compiler_phase": "",
         "demodulate_384k": {
           "cmpy_0": "",
           "del_m_0": "",
           "cordic_1": ""
-        }
+        },
+        "dec384to192": "",
+        "LminusR": "",
+        "LpluseR": "",
+        "pll_pilot": {
+          "DDS38": "",
+          "cordic_1": "",
+          "DDS19": "",
+          "pilot_pll_0": "",
+          "Pilot": ""
+        },
+        "axis_dc_blocker_roun_0": "",
+        "Mono48k": ""
       },
       "hdmi_core": {
         "xpm_cdc_gen_0": "",
@@ -51,7 +61,20 @@
         "fm_pinc_modulator_ax_0": ""
       },
       "clk_wiz_0": "",
-      "clk_wiz_1": ""
+      "clk_wiz_1": "",
+      "packer_for_udp": {
+        "mpx_pack16_to32_0": "",
+        "udp_mpx_framer_0": "",
+        "fifo_generator_payload": "",
+        "fifo_generator_audio": "",
+        "udp_phy_shell_0": "",
+        "udp_tx_start_ctrl_0": "",
+        "util_vector_logic_0": "",
+        "util_vector_logic_1": "",
+        "udp_top_0": "",
+        "xlconstant_0": "",
+        "ila_0": ""
+      }
     },
     "ports": {
       "sys_rst_n": {
@@ -74,14 +97,20 @@
         "right": "0"
       },
       "locked": {
-        "direction": "I"
+        "direction": "I",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default_prop"
+          }
+        }
       },
       "sys": {
         "type": "clk",
         "direction": "I",
         "parameters": {
           "CLK_DOMAIN": {
-            "value": "fm_hdmi_clk_in1_0",
+            "value": "fm_hdmi_sys",
             "value_src": "default"
           },
           "FREQ_HZ": {
@@ -152,7 +181,7 @@
         "direction": "I",
         "parameters": {
           "CLK_DOMAIN": {
-            "value": "fm_hdmi_clk_in1_0",
+            "value": "fm_hdmi_clk_50M",
             "value_src": "default"
           },
           "FREQ_HZ": {
@@ -177,7 +206,7 @@
         "direction": "O",
         "parameters": {
           "CLK_DOMAIN": {
-            "value": "fm_hdmi_clk_in1_0",
+            "value": "fm_hdmi_clk_50M",
             "value_src": "ip_prop"
           },
           "FREQ_HZ": {
@@ -197,6 +226,79 @@
             "value_src": "ip_prop"
           }
         }
+      },
+      "phy_rxc": {
+        "direction": "I"
+      },
+      "phy_rx_ctrl": {
+        "direction": "I"
+      },
+      "phy_rxd": {
+        "direction": "I",
+        "left": "3",
+        "right": "0"
+      },
+      "clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "fm_hdmi_clk",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "mdio": {
+        "direction": "IO"
+      },
+      "phy_txd": {
+        "direction": "O",
+        "left": "3",
+        "right": "0"
+      },
+      "mdc": {
+        "direction": "O"
+      },
+      "phy_rstn": {
+        "type": "rst",
+        "direction": "O",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "const_prop"
+          }
+        }
+      },
+      "phy_tx_ctrl": {
+        "direction": "O"
+      },
+      "linkspeed": {
+        "direction": "O",
+        "left": "1",
+        "right": "0"
+      },
+      "phy_txc": {
+        "direction": "O"
       }
     },
     "components": {
@@ -226,13 +328,24 @@
             "left": "31",
             "right": "0"
           },
-          "s_axis_tvalid_0": {
-            "direction": "I"
-          },
           "m_axis_dout_tdata": {
             "direction": "O",
             "left": "15",
             "right": "0"
+          },
+          "m_axis_data_tvalid": {
+            "direction": "O"
+          },
+          "m_axis_tready_0": {
+            "direction": "I"
+          },
+          "m_axis_tdata_0": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "m_axis_tvalid_0": {
+            "direction": "O"
           }
         },
         "components": {
@@ -326,7 +439,7 @@
                     "value_src": "ip_prop"
                   },
                   "CLK_DOMAIN": {
-                    "value": "fm_hdmi_clk_in1_0",
+                    "value": "fm_hdmi_clk_50M",
                     "value_src": "ip_prop"
                   }
                 }
@@ -494,7 +607,7 @@
                         "value_src": "ip_prop"
                       },
                       "CLK_DOMAIN": {
-                        "value": "fm_hdmi_clk_in1_0",
+                        "value": "fm_hdmi_clk_50M",
                         "value_src": "ip_prop"
                       }
                     },
@@ -561,7 +674,7 @@
                         "value_src": "ip_prop"
                       },
                       "CLK_DOMAIN": {
-                        "value": "fm_hdmi_clk_in1_0",
+                        "value": "fm_hdmi_clk_50M",
                         "value_src": "ip_prop"
                       }
                     },
@@ -628,7 +741,7 @@
                         "value_src": "ip_prop"
                       },
                       "CLK_DOMAIN": {
-                        "value": "fm_hdmi_clk_in1_0",
+                        "value": "fm_hdmi_clk_50M",
                         "value_src": "ip_prop"
                       }
                     },
@@ -672,7 +785,7 @@
                         "value_src": "ip_prop"
                       },
                       "CLK_DOMAIN": {
-                        "value": "fm_hdmi_clk_in1_0",
+                        "value": "fm_hdmi_clk_50M",
                         "value_src": "ip_prop"
                       }
                     }
@@ -1062,7 +1175,7 @@
                         "value_src": "ip_prop"
                       },
                       "CLK_DOMAIN": {
-                        "value": "fm_hdmi_clk_in1_0",
+                        "value": "fm_hdmi_clk_50M",
                         "value_src": "ip_prop"
                       }
                     },
@@ -1129,7 +1242,7 @@
                         "value_src": "ip_prop"
                       },
                       "CLK_DOMAIN": {
-                        "value": "fm_hdmi_clk_in1_0",
+                        "value": "fm_hdmi_clk_50M",
                         "value_src": "ip_prop"
                       }
                     },
@@ -1173,7 +1286,7 @@
                         "value_src": "ip_prop"
                       },
                       "CLK_DOMAIN": {
-                        "value": "fm_hdmi_clk_in1_0",
+                        "value": "fm_hdmi_clk_50M",
                         "value_src": "ip_prop"
                       }
                     }
@@ -1368,24 +1481,6 @@
               }
             }
           },
-          "ila_0": {
-            "vlnv": "xilinx.com:ip:ila:6.2",
-            "ip_revision": "14",
-            "xci_name": "fm_hdmi_ila_0_0",
-            "xci_path": "ip/fm_hdmi_ila_0_0/fm_hdmi_ila_0_0.xci",
-            "inst_hier_path": "fm_demod/ila_0",
-            "parameters": {
-              "C_DATA_DEPTH": {
-                "value": "32768"
-              },
-              "C_MONITOR_TYPE": {
-                "value": "Native"
-              },
-              "C_NUM_OF_PROBES": {
-                "value": "4"
-              }
-            }
-          },
           "digital_mixer": {
             "ports": {
               "adc_clk": {
@@ -1479,7 +1574,7 @@
                         "value_src": "ip_prop"
                       },
                       "CLK_DOMAIN": {
-                        "value": "fm_hdmi_clk_in1_0",
+                        "value": "fm_hdmi_clk_50M",
                         "value_src": "ip_prop"
                       }
                     },
@@ -1519,7 +1614,7 @@
                         "value_src": "ip_prop"
                       },
                       "CLK_DOMAIN": {
-                        "value": "fm_hdmi_clk_in1_0",
+                        "value": "fm_hdmi_clk_50M",
                         "value_src": "ip_prop"
                       }
                     }
@@ -1689,55 +1784,14 @@
               }
             }
           },
-          "cic_compiler_phase": {
-            "vlnv": "xilinx.com:ip:cic_compiler:4.0",
-            "ip_revision": "17",
-            "xci_name": "fm_hdmi_cic_compiler_Q1_0",
-            "xci_path": "ip/fm_hdmi_cic_compiler_Q1_0/fm_hdmi_cic_compiler_Q1_0.xci",
-            "inst_hier_path": "fm_demod/cic_compiler_phase",
-            "parameters": {
-              "Clock_Frequency": {
-                "value": "76.8"
-              },
-              "Filter_Type": {
-                "value": "Decimation"
-              },
-              "Fixed_Or_Initial_Rate": {
-                "value": "8"
-              },
-              "Input_Data_Width": {
-                "value": "16"
-              },
-              "Input_Sample_Frequency": {
-                "value": "0.384"
-              },
-              "Maximum_Rate": {
-                "value": "8"
-              },
-              "Minimum_Rate": {
-                "value": "8"
-              },
-              "Number_Of_Stages": {
-                "value": "5"
-              },
-              "Output_Data_Width": {
-                "value": "16"
-              },
-              "Quantization": {
-                "value": "Truncation"
-              },
-              "RateSpecification": {
-                "value": "Frequency_Specification"
-              },
-              "SamplePeriod": {
-                "value": "1"
-              },
-              "Use_Xtreme_DSP_Slice": {
-                "value": "false"
-              }
-            }
-          },
           "demodulate_384k": {
+            "interface_ports": {
+              "M_AXIS_DOUT": {
+                "mode": "Master",
+                "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                "vlnv": "xilinx.com:interface:axis_rtl:1.0"
+              }
+            },
             "ports": {
               "adc_clk": {
                 "direction": "I"
@@ -1748,11 +1802,6 @@
               "s_axis_ctrl_tdata": {
                 "direction": "I",
                 "left": "7",
-                "right": "0"
-              },
-              "s_axis_cartesian_tdata": {
-                "direction": "O",
-                "left": "63",
                 "right": "0"
               },
               "sys_rst_n": {
@@ -1769,14 +1818,6 @@
               },
               "tap_q": {
                 "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "m_axis_dout_tvalid": {
-                "direction": "O"
-              },
-              "m_axis_dout_tdata": {
-                "direction": "O",
                 "left": "15",
                 "right": "0"
               }
@@ -1838,7 +1879,7 @@
                         "value_src": "ip_prop"
                       },
                       "CLK_DOMAIN": {
-                        "value": "fm_hdmi_clk_in1_0",
+                        "value": "fm_hdmi_clk_50M",
                         "value_src": "ip_prop"
                       }
                     }
@@ -1908,10 +1949,10 @@
                     "value": "Arc_Tan"
                   },
                   "Input_Width": {
-                    "value": "31"
+                    "value": "32"
                   },
                   "Output_Width": {
-                    "value": "16"
+                    "value": "24"
                   },
                   "Phase_Format": {
                     "value": "Radians"
@@ -1920,6 +1961,14 @@
                     "value": "Nearest_Even"
                   }
                 }
+              }
+            },
+            "interface_nets": {
+              "Conn1": {
+                "interface_ports": [
+                  "cordic_1/M_AXIS_DOUT",
+                  "M_AXIS_DOUT"
+                ]
               }
             },
             "nets": {
@@ -1952,7 +2001,6 @@
               "cmpy_0_m_axis_dout_tdata1": {
                 "ports": [
                   "cmpy_0/m_axis_dout_tdata",
-                  "s_axis_cartesian_tdata",
                   "cordic_1/s_axis_cartesian_tdata"
                 ]
               },
@@ -1960,18 +2008,6 @@
                 "ports": [
                   "cmpy_0/m_axis_dout_tvalid",
                   "cordic_1/s_axis_cartesian_tvalid"
-                ]
-              },
-              "cordic_1_m_axis_dout_tdata": {
-                "ports": [
-                  "cordic_1/m_axis_dout_tdata",
-                  "m_axis_dout_tdata"
-                ]
-              },
-              "cordic_1_m_axis_dout_tvalid": {
-                "ports": [
-                  "cordic_1/m_axis_dout_tvalid",
-                  "m_axis_dout_tvalid"
                 ]
               },
               "del_m_0_out0": {
@@ -2012,6 +2048,1328 @@
                 ]
               }
             }
+          },
+          "dec384to192": {
+            "vlnv": "xilinx.com:ip:fir_compiler:7.2",
+            "ip_revision": "20",
+            "xci_name": "fm_hdmi_fir_compiler_0_2",
+            "xci_path": "ip/fm_hdmi_fir_compiler_0_2/fm_hdmi_fir_compiler_0_2.xci",
+            "inst_hier_path": "fm_demod/dec384to192",
+            "parameters": {
+              "Clock_Frequency": {
+                "value": "76.8"
+              },
+              "CoefficientSource": {
+                "value": "COE_File"
+              },
+              "Coefficient_File": {
+                "value": "../../../../../../fir_decim2_hex.coe"
+              },
+              "Coefficient_Fractional_Bits": {
+                "value": "0"
+              },
+              "Coefficient_Sets": {
+                "value": "1"
+              },
+              "Coefficient_Sign": {
+                "value": "Signed"
+              },
+              "Coefficient_Structure": {
+                "value": "Inferred"
+              },
+              "Coefficient_Width": {
+                "value": "16"
+              },
+              "Decimation_Rate": {
+                "value": "2"
+              },
+              "Filter_Architecture": {
+                "value": "Systolic_Multiply_Accumulate"
+              },
+              "Filter_Type": {
+                "value": "Decimation"
+              },
+              "Interpolation_Rate": {
+                "value": "1"
+              },
+              "M_DATA_Has_TREADY": {
+                "value": "true"
+              },
+              "Number_Channels": {
+                "value": "1"
+              },
+              "Output_Rounding_Mode": {
+                "value": "Convergent_Rounding_to_Even"
+              },
+              "Output_Width": {
+                "value": "24"
+              },
+              "Quantization": {
+                "value": "Integer_Coefficients"
+              },
+              "RateSpecification": {
+                "value": "Frequency_Specification"
+              },
+              "Sample_Frequency": {
+                "value": "0.384"
+              },
+              "Zero_Pack_Factor": {
+                "value": "1"
+              }
+            }
+          },
+          "LminusR": {
+            "vlnv": "xilinx.com:ip:fir_compiler:7.2",
+            "ip_revision": "20",
+            "xci_name": "fm_hdmi_fir_compiler_0_3",
+            "xci_path": "ip/fm_hdmi_fir_compiler_0_3/fm_hdmi_fir_compiler_0_3.xci",
+            "inst_hier_path": "fm_demod/LminusR",
+            "parameters": {
+              "Clock_Frequency": {
+                "value": "76.8"
+              },
+              "CoefficientSource": {
+                "value": "COE_File"
+              },
+              "Coefficient_File": {
+                "value": "../../../../../../bpf_lr23_53_96.coe"
+              },
+              "Coefficient_Fractional_Bits": {
+                "value": "0"
+              },
+              "Coefficient_Sets": {
+                "value": "1"
+              },
+              "Coefficient_Sign": {
+                "value": "Signed"
+              },
+              "Coefficient_Structure": {
+                "value": "Symmetric"
+              },
+              "Coefficient_Width": {
+                "value": "16"
+              },
+              "Filter_Architecture": {
+                "value": "Systolic_Multiply_Accumulate"
+              },
+              "Output_Rounding_Mode": {
+                "value": "Convergent_Rounding_to_Even"
+              },
+              "Output_Width": {
+                "value": "16"
+              },
+              "Quantization": {
+                "value": "Integer_Coefficients"
+              },
+              "Sample_Frequency": {
+                "value": "0.192"
+              }
+            }
+          },
+          "LpluseR": {
+            "vlnv": "xilinx.com:ip:fir_compiler:7.2",
+            "ip_revision": "20",
+            "xci_name": "fm_hdmi_fir_compiler_0_5",
+            "xci_path": "ip/fm_hdmi_fir_compiler_0_5/fm_hdmi_fir_compiler_0_5.xci",
+            "inst_hier_path": "fm_demod/LpluseR",
+            "parameters": {
+              "Clock_Frequency": {
+                "value": "76.8"
+              },
+              "CoefficientSource": {
+                "value": "COE_File"
+              },
+              "Coefficient_File": {
+                "value": "../../../../../../0_15k_96.coe"
+              },
+              "Coefficient_Fractional_Bits": {
+                "value": "0"
+              },
+              "Coefficient_Sets": {
+                "value": "1"
+              },
+              "Coefficient_Sign": {
+                "value": "Signed"
+              },
+              "Coefficient_Structure": {
+                "value": "Symmetric"
+              },
+              "Coefficient_Width": {
+                "value": "16"
+              },
+              "Filter_Architecture": {
+                "value": "Systolic_Multiply_Accumulate"
+              },
+              "Output_Rounding_Mode": {
+                "value": "Convergent_Rounding_to_Even"
+              },
+              "Output_Width": {
+                "value": "16"
+              },
+              "Quantization": {
+                "value": "Integer_Coefficients"
+              },
+              "Sample_Frequency": {
+                "value": "0.192"
+              }
+            }
+          },
+          "pll_pilot": {
+            "ports": {
+              "adc_clk": {
+                "direction": "I"
+              },
+              "sys_rst_n": {
+                "type": "rst",
+                "direction": "I"
+              },
+              "s_axis_data_tvalid": {
+                "direction": "I"
+              },
+              "s_axis_data_tdata": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              }
+            },
+            "components": {
+              "DDS38": {
+                "vlnv": "xilinx.com:ip:dds_compiler:6.0",
+                "ip_revision": "23",
+                "xci_name": "fm_hdmi_DDS19_0",
+                "xci_path": "ip/fm_hdmi_DDS19_0/fm_hdmi_DDS19_0.xci",
+                "inst_hier_path": "fm_demod/pll_pilot/DDS38",
+                "parameters": {
+                  "Channels": {
+                    "value": "1"
+                  },
+                  "DATA_Has_TLAST": {
+                    "value": "Not_Required"
+                  },
+                  "DDS_Clock_Rate": {
+                    "value": "76.8"
+                  },
+                  "Frequency_Resolution": {
+                    "value": "0.4"
+                  },
+                  "Has_ACLKEN": {
+                    "value": "true"
+                  },
+                  "Has_Phase_Out": {
+                    "value": "false"
+                  },
+                  "Latency": {
+                    "value": "8"
+                  },
+                  "M_DATA_Has_TUSER": {
+                    "value": "Not_Required"
+                  },
+                  "M_PHASE_Has_TUSER": {
+                    "value": "Not_Required"
+                  },
+                  "Noise_Shaping": {
+                    "value": "Phase_Dithering"
+                  },
+                  "Output_Frequency1": {
+                    "value": "0"
+                  },
+                  "Output_Width": {
+                    "value": "16"
+                  },
+                  "PINC1": {
+                    "value": "0"
+                  },
+                  "Parameter_Entry": {
+                    "value": "Hardware_Parameters"
+                  },
+                  "Phase_Increment": {
+                    "value": "Streaming"
+                  },
+                  "Phase_Width": {
+                    "value": "32"
+                  },
+                  "S_PHASE_Has_TUSER": {
+                    "value": "Not_Required"
+                  }
+                }
+              },
+              "cordic_1": {
+                "vlnv": "xilinx.com:ip:cordic:6.0",
+                "ip_revision": "20",
+                "xci_name": "fm_hdmi_cordic_1_0",
+                "xci_path": "ip/fm_hdmi_cordic_1_0/fm_hdmi_cordic_1_0.xci",
+                "inst_hier_path": "fm_demod/pll_pilot/cordic_1",
+                "parameters": {
+                  "Coarse_Rotation": {
+                    "value": "true"
+                  },
+                  "Data_Format": {
+                    "value": "SignedFraction"
+                  },
+                  "Functional_Selection": {
+                    "value": "Arc_Tan"
+                  },
+                  "Input_Width": {
+                    "value": "31"
+                  },
+                  "Output_Width": {
+                    "value": "16"
+                  },
+                  "Phase_Format": {
+                    "value": "Radians"
+                  },
+                  "Round_Mode": {
+                    "value": "Nearest_Even"
+                  }
+                }
+              },
+              "DDS19": {
+                "vlnv": "xilinx.com:ip:dds_compiler:6.0",
+                "ip_revision": "23",
+                "xci_name": "fm_hdmi_dds_compiler_0_2",
+                "xci_path": "ip/fm_hdmi_dds_compiler_0_2/fm_hdmi_dds_compiler_0_2.xci",
+                "inst_hier_path": "fm_demod/pll_pilot/DDS19",
+                "parameters": {
+                  "Channels": {
+                    "value": "1"
+                  },
+                  "DATA_Has_TLAST": {
+                    "value": "Not_Required"
+                  },
+                  "DDS_Clock_Rate": {
+                    "value": "76.8"
+                  },
+                  "Frequency_Resolution": {
+                    "value": "0.4"
+                  },
+                  "Has_ACLKEN": {
+                    "value": "true"
+                  },
+                  "Has_Phase_Out": {
+                    "value": "false"
+                  },
+                  "Latency": {
+                    "value": "8"
+                  },
+                  "M_DATA_Has_TUSER": {
+                    "value": "Not_Required"
+                  },
+                  "M_PHASE_Has_TUSER": {
+                    "value": "Not_Required"
+                  },
+                  "Noise_Shaping": {
+                    "value": "Phase_Dithering"
+                  },
+                  "Output_Frequency1": {
+                    "value": "0"
+                  },
+                  "Output_Width": {
+                    "value": "16"
+                  },
+                  "PINC1": {
+                    "value": "0"
+                  },
+                  "Parameter_Entry": {
+                    "value": "Hardware_Parameters"
+                  },
+                  "Phase_Increment": {
+                    "value": "Streaming"
+                  },
+                  "Phase_Width": {
+                    "value": "32"
+                  },
+                  "S_PHASE_Has_TUSER": {
+                    "value": "Not_Required"
+                  }
+                }
+              },
+              "pilot_pll_0": {
+                "vlnv": "xilinx.com:module_ref:pilot_pll:1.0",
+                "ip_revision": "1",
+                "xci_name": "fm_hdmi_pilot_pll_0_0",
+                "xci_path": "ip/fm_hdmi_pilot_pll_0_0/fm_hdmi_pilot_pll_0_0.xci",
+                "inst_hier_path": "fm_demod/pll_pilot/pilot_pll_0",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "pilot_pll",
+                  "boundary_crc": "0x0"
+                },
+                "interface_ports": {
+                  "cordic_m_axis_dout": {
+                    "mode": "Slave",
+                    "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                    "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                    "parameters": {
+                      "TDATA_NUM_BYTES": {
+                        "value": "2",
+                        "value_src": "constant"
+                      },
+                      "TDEST_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TID_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TUSER_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TREADY": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TSTRB": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TKEEP": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TLAST": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "FREQ_HZ": {
+                        "value": "76800000",
+                        "value_src": "ip_prop"
+                      },
+                      "PHASE": {
+                        "value": "65.0",
+                        "value_src": "ip_prop"
+                      },
+                      "CLK_DOMAIN": {
+                        "value": "fm_hdmi_clk_50M",
+                        "value_src": "ip_prop"
+                      },
+                      "LAYERED_METADATA": {
+                        "value": [
+                          "xilinx.com:interface:datatypes:1.0 {",
+                          "TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {}",
+                          "maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {}",
+                          "format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs",
+                          "{resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0}",
+                          "bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format",
+                          "long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate",
+                          "dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs",
+                          "{resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 16}",
+                          "bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency",
+                          "polar_phase_fractwidth format long minimum {} maximum {}} value 13} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 16 TUSER",
+                          "{datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}}",
+                          "value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format",
+                          "string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs",
+                          "{resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 0}",
+                          "bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}}",
+                          "value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency",
+                          "phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs",
+                          "{resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value",
+                          "0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 0",
+                          "}"
+                        ],
+                        "value_src": "ip_prop"
+                      }
+                    },
+                    "port_maps": {
+                      "TDATA": {
+                        "physical_name": "cordic_m_axis_dout_tdata",
+                        "direction": "I",
+                        "left": "15",
+                        "right": "0"
+                      },
+                      "TVALID": {
+                        "physical_name": "cordic_m_axis_dout_tvalid",
+                        "direction": "I"
+                      }
+                    }
+                  },
+                  "cordic_s_axis_cartesian": {
+                    "mode": "Master",
+                    "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                    "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                    "parameters": {
+                      "TDATA_NUM_BYTES": {
+                        "value": "8",
+                        "value_src": "constant"
+                      },
+                      "TDEST_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TID_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TUSER_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TREADY": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TSTRB": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TKEEP": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TLAST": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "FREQ_HZ": {
+                        "value": "76800000",
+                        "value_src": "ip_prop"
+                      },
+                      "PHASE": {
+                        "value": "65.0",
+                        "value_src": "ip_prop"
+                      },
+                      "CLK_DOMAIN": {
+                        "value": "fm_hdmi_clk_50M",
+                        "value_src": "ip_prop"
+                      }
+                    },
+                    "port_maps": {
+                      "TDATA": {
+                        "physical_name": "cordic_s_axis_cartesian_tdata",
+                        "direction": "O",
+                        "left": "63",
+                        "right": "0"
+                      },
+                      "TVALID": {
+                        "physical_name": "cordic_s_axis_cartesian_tvalid",
+                        "direction": "O"
+                      }
+                    }
+                  },
+                  "dds19_m_axis_data": {
+                    "mode": "Slave",
+                    "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                    "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                    "parameters": {
+                      "TDATA_NUM_BYTES": {
+                        "value": "4",
+                        "value_src": "constant"
+                      },
+                      "TDEST_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TID_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TUSER_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TREADY": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TSTRB": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TKEEP": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TLAST": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "FREQ_HZ": {
+                        "value": "76800000",
+                        "value_src": "ip_prop"
+                      },
+                      "PHASE": {
+                        "value": "65.0",
+                        "value_src": "ip_prop"
+                      },
+                      "CLK_DOMAIN": {
+                        "value": "fm_hdmi_clk_50M",
+                        "value_src": "ip_prop"
+                      },
+                      "LAYERED_METADATA": {
+                        "value": [
+                          "xilinx.com:interface:datatypes:1.0 {",
+                          "TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {}",
+                          "maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string",
+                          "minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride",
+                          "format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic",
+                          "dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cosine {name {attribs",
+                          "{resolve_type immediate dependency {} format string minimum {} maximum {}} value cosine} enabled {attribs {resolve_type generated dependency cosine_enabled format bool minimum {} maximum {}} value",
+                          "true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cosine_width format long minimum",
+                          "{} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency",
+                          "cosine_fractwidth format long minimum {} maximum {}} value 15} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_sine {name {attribs",
+                          "{resolve_type immediate dependency {} format string minimum {} maximum {}} value sine} enabled {attribs {resolve_type generated dependency sine_enabled format bool minimum {} maximum {}} value true}",
+                          "datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency sine_width format long minimum {}",
+                          "maximum {}} value 16} bitoffset {attribs {resolve_type generated dependency sine_offset format long minimum {} maximum {}} value 16} real {fixed {fractwidth {attribs {resolve_type generated dependency",
+                          "sine_fractwidth format long minimum {} maximum {}} value 15} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}}}} TDATA_WIDTH 32 TUSER",
+                          "{datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}}",
+                          "value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_chanid {name {attribs {resolve_type immediate dependency {} format string",
+                          "minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate",
+                          "dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_width format long minimum {} maximum {}} value 0} bitoffset {attribs",
+                          "{resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}",
+                          "field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {}",
+                          "maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_width",
+                          "format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_offset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0",
+                          "}"
+                        ],
+                        "value_src": "ip_prop"
+                      }
+                    },
+                    "port_maps": {
+                      "TDATA": {
+                        "physical_name": "dds19_m_axis_data_tdata",
+                        "direction": "I",
+                        "left": "31",
+                        "right": "0"
+                      },
+                      "TVALID": {
+                        "physical_name": "dds19_m_axis_data_tvalid",
+                        "direction": "I"
+                      }
+                    }
+                  },
+                  "dds19_s_axis_phase": {
+                    "mode": "Master",
+                    "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                    "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                    "parameters": {
+                      "TDATA_NUM_BYTES": {
+                        "value": "4",
+                        "value_src": "constant"
+                      },
+                      "TDEST_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TID_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TUSER_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TREADY": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TSTRB": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TKEEP": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TLAST": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "FREQ_HZ": {
+                        "value": "76800000",
+                        "value_src": "ip_prop"
+                      },
+                      "PHASE": {
+                        "value": "65.0",
+                        "value_src": "ip_prop"
+                      },
+                      "CLK_DOMAIN": {
+                        "value": "fm_hdmi_clk_50M",
+                        "value_src": "ip_prop"
+                      }
+                    },
+                    "port_maps": {
+                      "TDATA": {
+                        "physical_name": "dds19_s_axis_phase_tdata",
+                        "direction": "O",
+                        "left": "31",
+                        "right": "0"
+                      },
+                      "TVALID": {
+                        "physical_name": "dds19_s_axis_phase_tvalid",
+                        "direction": "O"
+                      }
+                    }
+                  },
+                  "dds38_m_axis_data": {
+                    "mode": "Slave",
+                    "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                    "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                    "parameters": {
+                      "TDATA_NUM_BYTES": {
+                        "value": "4",
+                        "value_src": "constant"
+                      },
+                      "TDEST_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TID_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TUSER_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TREADY": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TSTRB": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TKEEP": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TLAST": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "FREQ_HZ": {
+                        "value": "76800000",
+                        "value_src": "ip_prop"
+                      },
+                      "PHASE": {
+                        "value": "65.0",
+                        "value_src": "ip_prop"
+                      },
+                      "CLK_DOMAIN": {
+                        "value": "fm_hdmi_clk_50M",
+                        "value_src": "ip_prop"
+                      },
+                      "LAYERED_METADATA": {
+                        "value": [
+                          "xilinx.com:interface:datatypes:1.0 {",
+                          "TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {}",
+                          "maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string",
+                          "minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride",
+                          "format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic",
+                          "dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cosine {name {attribs",
+                          "{resolve_type immediate dependency {} format string minimum {} maximum {}} value cosine} enabled {attribs {resolve_type generated dependency cosine_enabled format bool minimum {} maximum {}} value",
+                          "true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cosine_width format long minimum",
+                          "{} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency",
+                          "cosine_fractwidth format long minimum {} maximum {}} value 15} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_sine {name {attribs",
+                          "{resolve_type immediate dependency {} format string minimum {} maximum {}} value sine} enabled {attribs {resolve_type generated dependency sine_enabled format bool minimum {} maximum {}} value true}",
+                          "datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency sine_width format long minimum {}",
+                          "maximum {}} value 16} bitoffset {attribs {resolve_type generated dependency sine_offset format long minimum {} maximum {}} value 16} real {fixed {fractwidth {attribs {resolve_type generated dependency",
+                          "sine_fractwidth format long minimum {} maximum {}} value 15} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}}}} TDATA_WIDTH 32 TUSER",
+                          "{datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}}",
+                          "value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_chanid {name {attribs {resolve_type immediate dependency {} format string",
+                          "minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate",
+                          "dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_width format long minimum {} maximum {}} value 0} bitoffset {attribs",
+                          "{resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}",
+                          "field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {}",
+                          "maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_width",
+                          "format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_offset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0",
+                          "}"
+                        ],
+                        "value_src": "ip_prop"
+                      }
+                    },
+                    "port_maps": {
+                      "TDATA": {
+                        "physical_name": "dds38_m_axis_data_tdata",
+                        "direction": "I",
+                        "left": "31",
+                        "right": "0"
+                      },
+                      "TVALID": {
+                        "physical_name": "dds38_m_axis_data_tvalid",
+                        "direction": "I"
+                      }
+                    }
+                  },
+                  "dds38_s_axis_phase": {
+                    "mode": "Master",
+                    "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                    "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                    "parameters": {
+                      "TDATA_NUM_BYTES": {
+                        "value": "4",
+                        "value_src": "constant"
+                      },
+                      "TDEST_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TID_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TUSER_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TREADY": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TSTRB": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TKEEP": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TLAST": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "FREQ_HZ": {
+                        "value": "76800000",
+                        "value_src": "ip_prop"
+                      },
+                      "PHASE": {
+                        "value": "65.0",
+                        "value_src": "ip_prop"
+                      },
+                      "CLK_DOMAIN": {
+                        "value": "fm_hdmi_clk_50M",
+                        "value_src": "ip_prop"
+                      }
+                    },
+                    "port_maps": {
+                      "TDATA": {
+                        "physical_name": "dds38_s_axis_phase_tdata",
+                        "direction": "O",
+                        "left": "31",
+                        "right": "0"
+                      },
+                      "TVALID": {
+                        "physical_name": "dds38_s_axis_phase_tvalid",
+                        "direction": "O"
+                      }
+                    }
+                  }
+                },
+                "ports": {
+                  "clk": {
+                    "type": "clk",
+                    "direction": "I",
+                    "parameters": {
+                      "ASSOCIATED_BUSIF": {
+                        "value": "cordic_m_axis_dout:cordic_s_axis_cartesian:dds19_m_axis_data:dds19_s_axis_phase:dds38_m_axis_data:dds38_s_axis_phase",
+                        "value_src": "constant"
+                      },
+                      "FREQ_HZ": {
+                        "value": "76800000",
+                        "value_src": "ip_prop"
+                      },
+                      "PHASE": {
+                        "value": "65.0",
+                        "value_src": "ip_prop"
+                      },
+                      "CLK_DOMAIN": {
+                        "value": "fm_hdmi_clk_50M",
+                        "value_src": "ip_prop"
+                      }
+                    }
+                  },
+                  "arstn": {
+                    "direction": "I",
+                    "parameters": {
+                      "POLARITY": {
+                        "value": "ACTIVE_LOW",
+                        "value_src": "default_prop"
+                      }
+                    }
+                  },
+                  "pilot_valid": {
+                    "direction": "I"
+                  },
+                  "pilot_in": {
+                    "direction": "I",
+                    "left": "15",
+                    "right": "0"
+                  },
+                  "dds19_aclken": {
+                    "direction": "O"
+                  },
+                  "dds38_aclken": {
+                    "direction": "O"
+                  },
+                  "sin38": {
+                    "direction": "O",
+                    "left": "15",
+                    "right": "0"
+                  },
+                  "cos38": {
+                    "direction": "O",
+                    "left": "15",
+                    "right": "0"
+                  },
+                  "dds38_valid": {
+                    "direction": "O"
+                  },
+                  "locked": {
+                    "direction": "O"
+                  },
+                  "i_filt_dbg": {
+                    "direction": "O",
+                    "left": "30",
+                    "right": "0"
+                  },
+                  "q_filt_dbg": {
+                    "direction": "O",
+                    "left": "30",
+                    "right": "0"
+                  },
+                  "phase_err_dbg": {
+                    "direction": "O",
+                    "left": "15",
+                    "right": "0"
+                  }
+                }
+              },
+              "Pilot": {
+                "vlnv": "xilinx.com:ip:fir_compiler:7.2",
+                "ip_revision": "20",
+                "xci_name": "fm_hdmi_fir_compiler_0_4",
+                "xci_path": "ip/fm_hdmi_fir_compiler_0_4/fm_hdmi_fir_compiler_0_4.xci",
+                "inst_hier_path": "fm_demod/pll_pilot/Pilot",
+                "parameters": {
+                  "Clock_Frequency": {
+                    "value": "76.8"
+                  },
+                  "CoefficientSource": {
+                    "value": "COE_File"
+                  },
+                  "Coefficient_File": {
+                    "value": "../../../../../../bpf_pilot19_96.coe"
+                  },
+                  "Coefficient_Fractional_Bits": {
+                    "value": "0"
+                  },
+                  "Coefficient_Sets": {
+                    "value": "1"
+                  },
+                  "Coefficient_Sign": {
+                    "value": "Signed"
+                  },
+                  "Coefficient_Structure": {
+                    "value": "Symmetric"
+                  },
+                  "Coefficient_Width": {
+                    "value": "16"
+                  },
+                  "Filter_Architecture": {
+                    "value": "Systolic_Multiply_Accumulate"
+                  },
+                  "Output_Rounding_Mode": {
+                    "value": "Convergent_Rounding_to_Even"
+                  },
+                  "Output_Width": {
+                    "value": "16"
+                  },
+                  "Quantization": {
+                    "value": "Integer_Coefficients"
+                  },
+                  "Sample_Frequency": {
+                    "value": "0.192"
+                  }
+                }
+              }
+            },
+            "interface_nets": {
+              "DDS19_M_AXIS_DATA": {
+                "interface_ports": [
+                  "DDS19/M_AXIS_DATA",
+                  "pilot_pll_0/dds19_m_axis_data"
+                ]
+              },
+              "DDS38_M_AXIS_DATA": {
+                "interface_ports": [
+                  "DDS38/M_AXIS_DATA",
+                  "pilot_pll_0/dds38_m_axis_data"
+                ]
+              },
+              "cordic_1_M_AXIS_DOUT": {
+                "interface_ports": [
+                  "cordic_1/M_AXIS_DOUT",
+                  "pilot_pll_0/cordic_m_axis_dout"
+                ]
+              },
+              "pilot_pll_0_cordic_s_axis_cartesian": {
+                "interface_ports": [
+                  "pilot_pll_0/cordic_s_axis_cartesian",
+                  "cordic_1/S_AXIS_CARTESIAN"
+                ]
+              },
+              "pilot_pll_0_dds19_s_axis_phase": {
+                "interface_ports": [
+                  "pilot_pll_0/dds19_s_axis_phase",
+                  "DDS19/S_AXIS_PHASE"
+                ]
+              },
+              "pilot_pll_0_dds38_s_axis_phase": {
+                "interface_ports": [
+                  "pilot_pll_0/dds38_s_axis_phase",
+                  "DDS38/S_AXIS_PHASE"
+                ]
+              }
+            },
+            "nets": {
+              "Pilot_m_axis_data_tdata": {
+                "ports": [
+                  "Pilot/m_axis_data_tdata",
+                  "pilot_pll_0/pilot_in"
+                ]
+              },
+              "Pilot_m_axis_data_tvalid": {
+                "ports": [
+                  "Pilot/m_axis_data_tvalid",
+                  "pilot_pll_0/pilot_valid"
+                ]
+              },
+              "adc_clk_1": {
+                "ports": [
+                  "adc_clk",
+                  "Pilot/aclk",
+                  "DDS19/aclk",
+                  "cordic_1/aclk",
+                  "DDS38/aclk",
+                  "pilot_pll_0/clk"
+                ]
+              },
+              "dec384to192_m_axis_data_tdata": {
+                "ports": [
+                  "s_axis_data_tdata",
+                  "Pilot/s_axis_data_tdata"
+                ]
+              },
+              "dec384to192_m_axis_data_tvalid": {
+                "ports": [
+                  "s_axis_data_tvalid",
+                  "Pilot/s_axis_data_tvalid"
+                ]
+              },
+              "pilot_pll_0_dds19_aclken": {
+                "ports": [
+                  "pilot_pll_0/dds19_aclken",
+                  "DDS19/aclken"
+                ]
+              },
+              "pilot_pll_0_dds38_aclken": {
+                "ports": [
+                  "pilot_pll_0/dds38_aclken",
+                  "DDS38/aclken"
+                ]
+              },
+              "sys_rst_n_0_1": {
+                "ports": [
+                  "sys_rst_n",
+                  "pilot_pll_0/arstn"
+                ]
+              }
+            }
+          },
+          "axis_dc_blocker_roun_0": {
+            "vlnv": "xilinx.com:module_ref:axis_dc_blocker_round_sat:1.0",
+            "ip_revision": "1",
+            "xci_name": "fm_hdmi_axis_dc_blocker_roun_0_0",
+            "xci_path": "ip/fm_hdmi_axis_dc_blocker_roun_0_0/fm_hdmi_axis_dc_blocker_roun_0_0.xci",
+            "inst_hier_path": "fm_demod/axis_dc_blocker_roun_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "axis_dc_blocker_round_sat",
+              "boundary_crc": "0x0"
+            },
+            "interface_ports": {
+              "m_axis": {
+                "mode": "Master",
+                "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                "parameters": {
+                  "TDATA_NUM_BYTES": {
+                    "value": "2",
+                    "value_src": "auto"
+                  },
+                  "TDEST_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TID_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TUSER_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TREADY": {
+                    "value": "1",
+                    "value_src": "constant"
+                  },
+                  "HAS_TSTRB": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TKEEP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TLAST": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "76800000",
+                    "value_src": "ip_prop"
+                  },
+                  "PHASE": {
+                    "value": "65.0",
+                    "value_src": "ip_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "fm_hdmi_clk_50M",
+                    "value_src": "ip_prop"
+                  }
+                },
+                "port_maps": {
+                  "TDATA": {
+                    "physical_name": "m_axis_tdata",
+                    "direction": "O",
+                    "left": "15",
+                    "right": "0"
+                  },
+                  "TVALID": {
+                    "physical_name": "m_axis_tvalid",
+                    "direction": "O"
+                  },
+                  "TREADY": {
+                    "physical_name": "m_axis_tready",
+                    "direction": "I"
+                  }
+                }
+              },
+              "s_axis": {
+                "mode": "Slave",
+                "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                "parameters": {
+                  "TDATA_NUM_BYTES": {
+                    "value": "3",
+                    "value_src": "auto"
+                  },
+                  "TDEST_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TID_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TUSER_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TREADY": {
+                    "value": "1",
+                    "value_src": "constant"
+                  },
+                  "HAS_TSTRB": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TKEEP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TLAST": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "76800000",
+                    "value_src": "ip_prop"
+                  },
+                  "PHASE": {
+                    "value": "65.0",
+                    "value_src": "ip_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "fm_hdmi_clk_50M",
+                    "value_src": "ip_prop"
+                  },
+                  "LAYERED_METADATA": {
+                    "value": [
+                      "xilinx.com:interface:datatypes:1.0 {",
+                      "TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {}",
+                      "maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string",
+                      "minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride",
+                      "format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic",
+                      "dependency {} format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type",
+                      "immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs",
+                      "{resolve_type generated dependency path_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}}",
+                      "bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}}",
+                      "value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 4} signed {attribs {resolve_type generated dependency out_signed",
+                      "format bool minimum {} maximum {}} value true}}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth",
+                      "{attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct",
+                      "{field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled",
+                      "format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated",
+                      "dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name",
+                      "{attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}}",
+                      "value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format",
+                      "long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate",
+                      "dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs",
+                      "{resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value",
+                      "{}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long",
+                      "minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0",
+                      "}"
+                    ],
+                    "value_src": "ip_prop"
+                  }
+                },
+                "port_maps": {
+                  "TDATA": {
+                    "physical_name": "s_axis_tdata",
+                    "direction": "I",
+                    "left": "23",
+                    "right": "0"
+                  },
+                  "TVALID": {
+                    "physical_name": "s_axis_tvalid",
+                    "direction": "I"
+                  },
+                  "TREADY": {
+                    "physical_name": "s_axis_tready",
+                    "direction": "O"
+                  }
+                }
+              }
+            },
+            "ports": {
+              "aclk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "ASSOCIATED_BUSIF": {
+                    "value": "m_axis:s_axis",
+                    "value_src": "constant"
+                  },
+                  "ASSOCIATED_RESET": {
+                    "value": "aresetn",
+                    "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "76800000",
+                    "value_src": "ip_prop"
+                  },
+                  "PHASE": {
+                    "value": "65.0",
+                    "value_src": "ip_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "fm_hdmi_clk_50M",
+                    "value_src": "ip_prop"
+                  }
+                }
+              },
+              "aresetn": {
+                "type": "rst",
+                "direction": "I",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_LOW",
+                    "value_src": "constant"
+                  }
+                }
+              }
+            }
+          },
+          "Mono48k": {
+            "vlnv": "xilinx.com:ip:fir_compiler:7.2",
+            "ip_revision": "20",
+            "xci_name": "fm_hdmi_LpluseR_0",
+            "xci_path": "ip/fm_hdmi_LpluseR_0/fm_hdmi_LpluseR_0.xci",
+            "inst_hier_path": "fm_demod/Mono48k",
+            "parameters": {
+              "Clock_Frequency": {
+                "value": "76.8"
+              },
+              "CoefficientSource": {
+                "value": "COE_File"
+              },
+              "Coefficient_File": {
+                "value": "../../../../../../0_15k_96.coe"
+              },
+              "Coefficient_Fractional_Bits": {
+                "value": "0"
+              },
+              "Coefficient_Sets": {
+                "value": "1"
+              },
+              "Coefficient_Sign": {
+                "value": "Signed"
+              },
+              "Coefficient_Structure": {
+                "value": "Symmetric"
+              },
+              "Coefficient_Width": {
+                "value": "16"
+              },
+              "Decimation_Rate": {
+                "value": "4"
+              },
+              "Filter_Architecture": {
+                "value": "Systolic_Multiply_Accumulate"
+              },
+              "Filter_Type": {
+                "value": "Decimation"
+              },
+              "Interpolation_Rate": {
+                "value": "1"
+              },
+              "Number_Channels": {
+                "value": "1"
+              },
+              "Output_Rounding_Mode": {
+                "value": "Convergent_Rounding_to_Even"
+              },
+              "Output_Width": {
+                "value": "16"
+              },
+              "Quantization": {
+                "value": "Integer_Coefficients"
+              },
+              "RateSpecification": {
+                "value": "Frequency_Specification"
+              },
+              "Sample_Frequency": {
+                "value": "0.192"
+              },
+              "Zero_Pack_Factor": {
+                "value": "1"
+              }
+            }
+          }
+        },
+        "interface_nets": {
+          "dec384to192_M_AXIS_DATA": {
+            "interface_ports": [
+              "dec384to192/M_AXIS_DATA",
+              "axis_dc_blocker_roun_0/s_axis"
+            ]
+          },
+          "demodulate_384k_M_AXIS_DOUT": {
+            "interface_ports": [
+              "dec384to192/S_AXIS_DATA",
+              "demodulate_384k/M_AXIS_DOUT"
+            ]
           }
         },
         "nets": {
@@ -2021,27 +3379,48 @@
               "demodulate_384k/sample_valid"
             ]
           },
+          "Mono48k_m_axis_data_tvalid": {
+            "ports": [
+              "Mono48k/m_axis_data_tvalid",
+              "m_axis_data_tvalid"
+            ]
+          },
+          "adc_clk_1": {
+            "ports": [
+              "adc_clk",
+              "digital_mixer/adc_clk",
+              "demodulate_384k/adc_clk",
+              "Dec200/adc_clk",
+              "LTC_2208_0/adc_dci",
+              "dec384to192/aclk",
+              "LpluseR/aclk",
+              "LminusR/aclk",
+              "pll_pilot/adc_clk",
+              "axis_dc_blocker_roun_0/aclk",
+              "Mono48k/aclk"
+            ]
+          },
           "adc_dai_1": {
             "ports": [
               "adc_dai",
               "LTC_2208_0/adc_dai"
             ]
           },
-          "adc_dci_0_1": {
+          "axis_dc_blocker_roun_0_m_axis_tdata": {
             "ports": [
-              "adc_clk",
-              "LTC_2208_0/adc_dci",
-              "Dec200/adc_clk",
-              "ila_0/clk",
-              "digital_mixer/adc_clk",
-              "cic_compiler_phase/aclk",
-              "demodulate_384k/adc_clk"
+              "axis_dc_blocker_roun_0/m_axis_tdata",
+              "m_axis_tdata_0"
+            ]
+          },
+          "axis_dc_blocker_roun_0_m_axis_tvalid": {
+            "ports": [
+              "axis_dc_blocker_roun_0/m_axis_tvalid",
+              "m_axis_tvalid_0"
             ]
           },
           "cic_compiler_2_m_axis_data_tdata": {
             "ports": [
               "Dec200/m_axis_i",
-              "ila_0/probe3",
               "demodulate_384k/tap_i"
             ]
           },
@@ -2049,32 +3428,6 @@
             "ports": [
               "Dec200/m_axis_q",
               "demodulate_384k/tap_q"
-            ]
-          },
-          "cmpy_0_m_axis_dout_tdata1": {
-            "ports": [
-              "demodulate_384k/s_axis_cartesian_tdata",
-              "ila_0/probe1"
-            ]
-          },
-          "cordic_0_m_axis_dout_tdata": {
-            "ports": [
-              "cic_compiler_phase/m_axis_data_tdata",
-              "m_axis_dout_tdata",
-              "ila_0/probe0"
-            ]
-          },
-          "cordic_1_m_axis_dout_tdata": {
-            "ports": [
-              "demodulate_384k/m_axis_dout_tdata",
-              "cic_compiler_phase/s_axis_data_tdata",
-              "ila_0/probe2"
-            ]
-          },
-          "cordic_1_m_axis_dout_tvalid": {
-            "ports": [
-              "demodulate_384k/m_axis_dout_tvalid",
-              "cic_compiler_phase/s_axis_data_tvalid"
             ]
           },
           "digital_mixer_m_axis_dout_tdata_0": {
@@ -2101,6 +3454,18 @@
               "demodulate_384k/s_axis_ctrl_tvalid"
             ]
           },
+          "m_axis_tready_0_1": {
+            "ports": [
+              "m_axis_tready_0",
+              "axis_dc_blocker_roun_0/m_axis_tready"
+            ]
+          },
+          "mono48k_m_axis_dout_tdata": {
+            "ports": [
+              "Mono48k/m_axis_data_tdata",
+              "m_axis_dout_tdata"
+            ]
+          },
           "s_axis_tdata_0_1": {
             "ports": [
               "s_axis_tdata_0",
@@ -2113,7 +3478,9 @@
               "LTC_2208_0/sys_rst_n",
               "Dec200/sys_rst_n",
               "digital_mixer/sys_rst_n",
-              "demodulate_384k/sys_rst_n"
+              "demodulate_384k/sys_rst_n",
+              "pll_pilot/sys_rst_n",
+              "axis_dc_blocker_roun_0/aresetn"
             ]
           },
           "xlconstant_0_dout": {
@@ -2204,7 +3571,7 @@
                     "value_src": "ip_prop"
                   },
                   "CLK_DOMAIN": {
-                    "value": "fm_hdmi_clk_in1_0",
+                    "value": "fm_hdmi_sys",
                     "value_src": "ip_prop"
                   }
                 }
@@ -2221,7 +3588,7 @@
                     "value_src": "ip_prop"
                   },
                   "CLK_DOMAIN": {
-                    "value": "fm_hdmi_clk_in1_0",
+                    "value": "fm_hdmi_sys",
                     "value_src": "ip_prop"
                   }
                 }
@@ -2536,7 +3903,7 @@
                 "value": "24"
               },
               "PINC1": {
-                "value": "111011010001"
+                "value": "111110010000101"
               },
               "Parameter_Entry": {
                 "value": "Hardware_Parameters"
@@ -2923,13 +4290,13 @@
             "value": "156.25"
           },
           "CLKOUT1_DRIVES": {
-            "value": "BUFG"
+            "value": "No_buffer"
           },
           "CLKOUT1_JITTER": {
-            "value": "479.048"
+            "value": "107.365"
           },
           "CLKOUT1_PHASE_ERROR": {
-            "value": "572.384"
+            "value": "119.507"
           },
           "CLKOUT1_REQUESTED_OUT_FREQ": {
             "value": "76.8"
@@ -2938,10 +4305,10 @@
             "value": "BUFG"
           },
           "CLKOUT2_JITTER": {
-            "value": "479.048"
+            "value": "107.365"
           },
           "CLKOUT2_PHASE_ERROR": {
-            "value": "572.384"
+            "value": "119.507"
           },
           "CLKOUT2_REQUESTED_OUT_FREQ": {
             "value": "76.8"
@@ -2974,7 +4341,7 @@
             "value": "clk_adcR"
           },
           "FEEDBACK_SOURCE": {
-            "value": "FDBK_AUTO"
+            "value": "FDBK_ONCHIP"
           },
           "JITTER_SEL": {
             "value": "Min_O_Jitter"
@@ -2983,28 +4350,28 @@
             "value": "HIGH"
           },
           "MMCM_CLKFBOUT_MULT_F": {
-            "value": "54.000"
+            "value": "24"
           },
           "MMCM_CLKIN1_PERIOD": {
             "value": "15.625"
           },
           "MMCM_CLKIN2_PERIOD": {
-            "value": "10.000"
+            "value": "10.0"
           },
           "MMCM_CLKOUT0_DIVIDE_F": {
-            "value": "9.000"
+            "value": "20"
           },
           "MMCM_CLKOUT1_DIVIDE": {
-            "value": "9"
+            "value": "20"
           },
           "MMCM_CLKOUT1_PHASE": {
-            "value": "65.000"
+            "value": "65.250"
           },
           "MMCM_COMPENSATION": {
             "value": "ZHOLD"
           },
           "MMCM_DIVCLK_DIVIDE": {
-            "value": "5"
+            "value": "1"
           },
           "NUM_OUT_CLKS": {
             "value": "2"
@@ -3013,7 +4380,7 @@
             "value": "15.625"
           },
           "PRIMITIVE": {
-            "value": "MMCM"
+            "value": "PLL"
           },
           "PRIM_IN_FREQ": {
             "value": "64"
@@ -3028,9 +4395,871 @@
             "value": "ACTIVE_LOW"
           }
         }
+      },
+      "packer_for_udp": {
+        "ports": {
+          "mpx_clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "arst_n": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "mpx_data": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "mpx_valid": {
+            "direction": "I"
+          },
+          "mpx_ready": {
+            "direction": "O"
+          },
+          "iodelay_ref_clk200": {
+            "direction": "I"
+          },
+          "mdio_clk50": {
+            "direction": "I"
+          },
+          "phy_rx_ctrl": {
+            "direction": "I"
+          },
+          "phy_rxd": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "phy_rxc": {
+            "direction": "I"
+          },
+          "phy_txd": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "mdc": {
+            "direction": "O"
+          },
+          "mdio": {
+            "direction": "IO"
+          },
+          "linkspeed": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "phy_txc": {
+            "direction": "O"
+          },
+          "phy_tx_ctrl": {
+            "direction": "O"
+          },
+          "phy_rstn": {
+            "type": "rst",
+            "direction": "O"
+          }
+        },
+        "components": {
+          "mpx_pack16_to32_0": {
+            "vlnv": "xilinx.com:module_ref:mpx_pack16_to32:1.0",
+            "ip_revision": "1",
+            "xci_name": "fm_hdmi_mpx_pack16_to32_0_0",
+            "xci_path": "ip/fm_hdmi_mpx_pack16_to32_0_0/fm_hdmi_mpx_pack16_to32_0_0.xci",
+            "inst_hier_path": "packer_for_udp/mpx_pack16_to32_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "mpx_pack16_to32",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "FREQ_HZ": {
+                    "value": "76800000",
+                    "value_src": "ip_prop"
+                  },
+                  "PHASE": {
+                    "value": "65.0",
+                    "value_src": "ip_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "fm_hdmi_clk_50M",
+                    "value_src": "ip_prop"
+                  }
+                }
+              },
+              "rst_n": {
+                "type": "rst",
+                "direction": "I",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_LOW",
+                    "value_src": "constant"
+                  }
+                }
+              },
+              "s_valid": {
+                "direction": "I"
+              },
+              "s_data": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "s_ready": {
+                "direction": "O"
+              },
+              "out_ready": {
+                "direction": "I",
+                "parameters": {
+                  "PortType": {
+                    "value": "undef",
+                    "value_src": "ip_prop"
+                  },
+                  "PortType.PROP_SRC": {
+                    "value": "false",
+                    "value_src": "ip_prop"
+                  }
+                }
+              },
+              "out_valid": {
+                "direction": "O"
+              },
+              "out_data": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "udp_mpx_framer_0": {
+            "vlnv": "xilinx.com:module_ref:udp_mpx_framer:1.0",
+            "ip_revision": "1",
+            "xci_name": "fm_hdmi_udp_mpx_framer_0_0",
+            "xci_path": "ip/fm_hdmi_udp_mpx_framer_0_0/fm_hdmi_udp_mpx_framer_0_0.xci",
+            "inst_hier_path": "packer_for_udp/udp_mpx_framer_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "udp_mpx_framer",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "rst_n": {
+                "type": "rst",
+                "direction": "I",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_LOW",
+                    "value_src": "constant"
+                  }
+                }
+              },
+              "audio_dout": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "audio_empty": {
+                "direction": "I"
+              },
+              "audio_rd_en": {
+                "direction": "O"
+              },
+              "pay_full": {
+                "direction": "I"
+              },
+              "pay_wr_en": {
+                "direction": "O"
+              },
+              "pay_din": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "pkt_ready_pulse": {
+                "direction": "O"
+              }
+            }
+          },
+          "fifo_generator_payload": {
+            "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+            "ip_revision": "9",
+            "xci_name": "fm_hdmi_fifo_generator_0_0",
+            "xci_path": "ip/fm_hdmi_fifo_generator_0_0/fm_hdmi_fifo_generator_0_0.xci",
+            "inst_hier_path": "packer_for_udp/fifo_generator_payload",
+            "parameters": {
+              "Data_Count": {
+                "value": "true"
+              },
+              "Enable_Safety_Circuit": {
+                "value": "true"
+              },
+              "Input_Data_Width": {
+                "value": "32"
+              },
+              "Input_Depth": {
+                "value": "1024"
+              },
+              "Performance_Options": {
+                "value": "Standard_FIFO"
+              },
+              "Reset_Type": {
+                "value": "Asynchronous_Reset"
+              }
+            }
+          },
+          "fifo_generator_audio": {
+            "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+            "ip_revision": "9",
+            "xci_name": "fm_hdmi_fifo_generator_1_0",
+            "xci_path": "ip/fm_hdmi_fifo_generator_1_0/fm_hdmi_fifo_generator_1_0.xci",
+            "inst_hier_path": "packer_for_udp/fifo_generator_audio",
+            "parameters": {
+              "Enable_Safety_Circuit": {
+                "value": "true"
+              },
+              "Fifo_Implementation": {
+                "value": "Independent_Clocks_Block_RAM"
+              },
+              "Input_Data_Width": {
+                "value": "32"
+              },
+              "Input_Depth": {
+                "value": "1024"
+              },
+              "Performance_Options": {
+                "value": "Standard_FIFO"
+              },
+              "Read_Data_Count": {
+                "value": "true"
+              }
+            }
+          },
+          "udp_phy_shell_0": {
+            "vlnv": "xilinx.com:module_ref:udp_phy_shell:1.0",
+            "ip_revision": "1",
+            "xci_name": "fm_hdmi_udp_phy_shell_0_0",
+            "xci_path": "ip/fm_hdmi_udp_phy_shell_0_0/fm_hdmi_udp_phy_shell_0_0.xci",
+            "inst_hier_path": "packer_for_udp/udp_phy_shell_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "udp_phy_shell",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "rst_n": {
+                "type": "rst",
+                "direction": "I",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_LOW",
+                    "value_src": "constant"
+                  }
+                }
+              },
+              "phy_rxc": {
+                "direction": "I"
+              },
+              "phy_rx_ctrl": {
+                "direction": "I"
+              },
+              "phy_rxd": {
+                "direction": "I",
+                "left": "3",
+                "right": "0"
+              },
+              "phy_txc": {
+                "direction": "O"
+              },
+              "phy_tx_ctrl": {
+                "direction": "O"
+              },
+              "phy_txd": {
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "phy_rstn": {
+                "type": "rst",
+                "direction": "O",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_LOW",
+                    "value_src": "constant"
+                  }
+                }
+              },
+              "iodelay_ref_clk200": {
+                "direction": "I",
+                "parameters": {
+                  "FREQ_HZ": {
+                    "value": "200000000",
+                    "value_src": "user_prop"
+                  },
+                  "PHASE": {
+                    "value": "0.0",
+                    "value_src": "default_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "fm_hdmi_sys",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "mdio_clk50": {
+                "direction": "I",
+                "parameters": {
+                  "FREQ_HZ": {
+                    "value": "50000000",
+                    "value_src": "user_prop"
+                  },
+                  "PHASE": {
+                    "value": "0.0",
+                    "value_src": "default_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "fm_hdmi_clk_50M",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "linkspeed": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "mdc": {
+                "direction": "O"
+              },
+              "mdio": {
+                "direction": "IO"
+              },
+              "gmii_rxc": {
+                "direction": "O"
+              },
+              "gmii_rxdv": {
+                "direction": "O"
+              },
+              "gmii_rxd": {
+                "direction": "O",
+                "left": "7",
+                "right": "0"
+              },
+              "gmii_txen_udp": {
+                "direction": "I"
+              },
+              "gmii_txd_udp": {
+                "direction": "I",
+                "left": "7",
+                "right": "0"
+              },
+              "gmii_txc": {
+                "direction": "O"
+              },
+              "destination_mac": {
+                "direction": "O",
+                "left": "47",
+                "right": "0"
+              },
+              "destination_ip": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "udp_tx_start_ctrl_0": {
+            "vlnv": "xilinx.com:module_ref:udp_tx_start_ctrl:1.0",
+            "ip_revision": "1",
+            "xci_name": "fm_hdmi_udp_tx_start_ctrl_0_0",
+            "xci_path": "ip/fm_hdmi_udp_tx_start_ctrl_0_0/fm_hdmi_udp_tx_start_ctrl_0_0.xci",
+            "inst_hier_path": "packer_for_udp/udp_tx_start_ctrl_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "udp_tx_start_ctrl",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "rst_n": {
+                "type": "rst",
+                "direction": "I",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_LOW",
+                    "value_src": "constant"
+                  }
+                }
+              },
+              "pkt_ready_pulse": {
+                "direction": "I"
+              },
+              "udp_tx_done": {
+                "direction": "I"
+              },
+              "tx_start_en": {
+                "direction": "O"
+              }
+            }
+          },
+          "util_vector_logic_0": {
+            "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+            "ip_revision": "3",
+            "xci_name": "fm_hdmi_util_vector_logic_0_1",
+            "xci_path": "ip/fm_hdmi_util_vector_logic_0_1/fm_hdmi_util_vector_logic_0_1.xci",
+            "inst_hier_path": "packer_for_udp/util_vector_logic_0",
+            "parameters": {
+              "C_OPERATION": {
+                "value": "not"
+              },
+              "C_SIZE": {
+                "value": "1"
+              }
+            }
+          },
+          "util_vector_logic_1": {
+            "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+            "ip_revision": "3",
+            "xci_name": "fm_hdmi_util_vector_logic_0_2",
+            "xci_path": "ip/fm_hdmi_util_vector_logic_0_2/fm_hdmi_util_vector_logic_0_2.xci",
+            "inst_hier_path": "packer_for_udp/util_vector_logic_1",
+            "parameters": {
+              "C_OPERATION": {
+                "value": "not"
+              },
+              "C_SIZE": {
+                "value": "1"
+              }
+            }
+          },
+          "udp_top_0": {
+            "vlnv": "xilinx.com:module_ref:udp_top:1.0",
+            "ip_revision": "1",
+            "xci_name": "fm_hdmi_udp_top_0_0",
+            "xci_path": "ip/fm_hdmi_udp_top_0_0/fm_hdmi_udp_top_0_0.xci",
+            "inst_hier_path": "packer_for_udp/udp_top_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "udp_top",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "rst_n": {
+                "type": "rst",
+                "direction": "I",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_LOW",
+                    "value_src": "constant"
+                  }
+                }
+              },
+              "gmii_rxc": {
+                "direction": "I"
+              },
+              "gmii_rxdv": {
+                "direction": "I"
+              },
+              "gmii_rxd": {
+                "direction": "I",
+                "left": "7",
+                "right": "0"
+              },
+              "gmii_txc": {
+                "direction": "I"
+              },
+              "gmii_txen": {
+                "direction": "O"
+              },
+              "gmii_txd": {
+                "direction": "O",
+                "left": "7",
+                "right": "0"
+              },
+              "rxd_pkt_done": {
+                "direction": "O"
+              },
+              "rxd_wr_en": {
+                "direction": "O"
+              },
+              "rxd_wr_data": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "rxd_wr_byte_num": {
+                "direction": "O",
+                "left": "15",
+                "right": "0"
+              },
+              "tx_start_en": {
+                "direction": "I"
+              },
+              "tx_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "tx_byte_num": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "destination_mac": {
+                "direction": "I",
+                "left": "47",
+                "right": "0"
+              },
+              "destination_ip": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "tx_done": {
+                "direction": "O"
+              },
+              "tx_request": {
+                "direction": "O"
+              }
+            }
+          },
+          "xlconstant_0": {
+            "vlnv": "xilinx.com:ip:xlconstant:1.1",
+            "ip_revision": "8",
+            "xci_name": "fm_hdmi_xlconstant_0_2",
+            "xci_path": "ip/fm_hdmi_xlconstant_0_2/fm_hdmi_xlconstant_0_2.xci",
+            "inst_hier_path": "packer_for_udp/xlconstant_0",
+            "parameters": {
+              "CONST_VAL": {
+                "value": "0x05BC"
+              },
+              "CONST_WIDTH": {
+                "value": "16"
+              }
+            }
+          },
+          "ila_0": {
+            "vlnv": "xilinx.com:ip:ila:6.2",
+            "ip_revision": "14",
+            "xci_name": "fm_hdmi_ila_0_2",
+            "xci_path": "ip/fm_hdmi_ila_0_2/fm_hdmi_ila_0_2.xci",
+            "inst_hier_path": "packer_for_udp/ila_0",
+            "parameters": {
+              "C_DATA_DEPTH": {
+                "value": "8192"
+              },
+              "C_MONITOR_TYPE": {
+                "value": "Native"
+              },
+              "C_NUM_OF_PROBES": {
+                "value": "7"
+              }
+            }
+          }
+        },
+        "nets": {
+          "Net": {
+            "ports": [
+              "util_vector_logic_0/Res",
+              "fifo_generator_audio/rst",
+              "fifo_generator_payload/rst"
+            ]
+          },
+          "Net1": {
+            "ports": [
+              "mdio",
+              "udp_phy_shell_0/mdio"
+            ]
+          },
+          "fifo_generator_1_dout": {
+            "ports": [
+              "fifo_generator_audio/dout",
+              "udp_mpx_framer_0/audio_dout"
+            ]
+          },
+          "fifo_generator_1_empty": {
+            "ports": [
+              "fifo_generator_audio/empty",
+              "udp_mpx_framer_0/audio_empty"
+            ]
+          },
+          "fifo_generator_audio_full": {
+            "ports": [
+              "fifo_generator_audio/full",
+              "util_vector_logic_1/Op1"
+            ]
+          },
+          "fifo_generator_audio_rd_data_count": {
+            "ports": [
+              "fifo_generator_audio/rd_data_count",
+              "ila_0/probe5"
+            ]
+          },
+          "fifo_generator_payload_data_count": {
+            "ports": [
+              "fifo_generator_payload/data_count",
+              "ila_0/probe1"
+            ]
+          },
+          "fifo_generator_payload_dout": {
+            "ports": [
+              "fifo_generator_payload/dout",
+              "udp_top_0/tx_data",
+              "ila_0/probe0"
+            ]
+          },
+          "fifo_generator_payload_full": {
+            "ports": [
+              "fifo_generator_payload/full",
+              "udp_mpx_framer_0/pay_full"
+            ]
+          },
+          "iodelay_ref_clk200_0_1": {
+            "ports": [
+              "iodelay_ref_clk200",
+              "udp_phy_shell_0/iodelay_ref_clk200"
+            ]
+          },
+          "mdio_clk50_0_1": {
+            "ports": [
+              "mdio_clk50",
+              "udp_phy_shell_0/mdio_clk50"
+            ]
+          },
+          "mpx_pack16_to32_0_out_data": {
+            "ports": [
+              "mpx_pack16_to32_0/out_data",
+              "fifo_generator_audio/din",
+              "ila_0/probe2"
+            ]
+          },
+          "mpx_pack16_to32_0_out_valid": {
+            "ports": [
+              "mpx_pack16_to32_0/out_valid",
+              "fifo_generator_audio/wr_en"
+            ]
+          },
+          "mpx_pack16_to32_0_s_ready": {
+            "ports": [
+              "mpx_pack16_to32_0/s_ready",
+              "mpx_ready"
+            ]
+          },
+          "phy_rx_ctrl_0_1": {
+            "ports": [
+              "phy_rx_ctrl",
+              "udp_phy_shell_0/phy_rx_ctrl"
+            ]
+          },
+          "phy_rxc_0_1": {
+            "ports": [
+              "phy_rxc",
+              "udp_phy_shell_0/phy_rxc"
+            ]
+          },
+          "phy_rxd_0_1": {
+            "ports": [
+              "phy_rxd",
+              "udp_phy_shell_0/phy_rxd"
+            ]
+          },
+          "rst_n_0_1": {
+            "ports": [
+              "arst_n",
+              "udp_tx_start_ctrl_0/rst_n",
+              "mpx_pack16_to32_0/rst_n",
+              "util_vector_logic_0/Op1",
+              "udp_phy_shell_0/rst_n",
+              "udp_top_0/rst_n",
+              "udp_mpx_framer_0/rst_n"
+            ]
+          },
+          "s_data_0_1": {
+            "ports": [
+              "mpx_data",
+              "mpx_pack16_to32_0/s_data"
+            ]
+          },
+          "s_valid_0_1": {
+            "ports": [
+              "mpx_valid",
+              "mpx_pack16_to32_0/s_valid"
+            ]
+          },
+          "udp_mpx_framer_0_audio_rd_en": {
+            "ports": [
+              "udp_mpx_framer_0/audio_rd_en",
+              "fifo_generator_audio/rd_en"
+            ]
+          },
+          "udp_mpx_framer_0_pay_din": {
+            "ports": [
+              "udp_mpx_framer_0/pay_din",
+              "fifo_generator_payload/din",
+              "ila_0/probe3"
+            ]
+          },
+          "udp_mpx_framer_0_pay_wr_en": {
+            "ports": [
+              "udp_mpx_framer_0/pay_wr_en",
+              "fifo_generator_payload/wr_en"
+            ]
+          },
+          "udp_mpx_framer_0_pkt_ready_pulse": {
+            "ports": [
+              "udp_mpx_framer_0/pkt_ready_pulse",
+              "udp_tx_start_ctrl_0/pkt_ready_pulse"
+            ]
+          },
+          "udp_phy_shell_0_destination_ip": {
+            "ports": [
+              "udp_phy_shell_0/destination_ip",
+              "udp_top_0/destination_ip"
+            ]
+          },
+          "udp_phy_shell_0_destination_mac": {
+            "ports": [
+              "udp_phy_shell_0/destination_mac",
+              "udp_top_0/destination_mac"
+            ]
+          },
+          "udp_phy_shell_0_gmii_rxc": {
+            "ports": [
+              "udp_phy_shell_0/gmii_rxc",
+              "fifo_generator_audio/rd_clk",
+              "fifo_generator_payload/clk",
+              "udp_tx_start_ctrl_0/clk",
+              "udp_top_0/gmii_rxc",
+              "ila_0/clk",
+              "udp_mpx_framer_0/clk"
+            ]
+          },
+          "udp_phy_shell_0_gmii_rxd": {
+            "ports": [
+              "udp_phy_shell_0/gmii_rxd",
+              "udp_top_0/gmii_rxd"
+            ]
+          },
+          "udp_phy_shell_0_gmii_rxdv": {
+            "ports": [
+              "udp_phy_shell_0/gmii_rxdv",
+              "udp_top_0/gmii_rxdv"
+            ]
+          },
+          "udp_phy_shell_0_gmii_txc": {
+            "ports": [
+              "udp_phy_shell_0/gmii_txc",
+              "udp_top_0/gmii_txc"
+            ]
+          },
+          "udp_phy_shell_0_linkspeed": {
+            "ports": [
+              "udp_phy_shell_0/linkspeed",
+              "linkspeed"
+            ]
+          },
+          "udp_phy_shell_0_mdc": {
+            "ports": [
+              "udp_phy_shell_0/mdc",
+              "mdc"
+            ]
+          },
+          "udp_phy_shell_0_phy_rstn": {
+            "ports": [
+              "udp_phy_shell_0/phy_rstn",
+              "phy_rstn"
+            ]
+          },
+          "udp_phy_shell_0_phy_tx_ctrl": {
+            "ports": [
+              "udp_phy_shell_0/phy_tx_ctrl",
+              "phy_tx_ctrl"
+            ]
+          },
+          "udp_phy_shell_0_phy_txc": {
+            "ports": [
+              "udp_phy_shell_0/phy_txc",
+              "phy_txc"
+            ]
+          },
+          "udp_phy_shell_0_phy_txd": {
+            "ports": [
+              "udp_phy_shell_0/phy_txd",
+              "phy_txd"
+            ]
+          },
+          "udp_top_0_gmii_txd": {
+            "ports": [
+              "udp_top_0/gmii_txd",
+              "udp_phy_shell_0/gmii_txd_udp",
+              "ila_0/probe6"
+            ]
+          },
+          "udp_top_0_gmii_txen": {
+            "ports": [
+              "udp_top_0/gmii_txen",
+              "udp_phy_shell_0/gmii_txen_udp"
+            ]
+          },
+          "udp_top_0_tx_done": {
+            "ports": [
+              "udp_top_0/tx_done",
+              "udp_tx_start_ctrl_0/udp_tx_done"
+            ]
+          },
+          "udp_top_0_tx_request": {
+            "ports": [
+              "udp_top_0/tx_request",
+              "fifo_generator_payload/rd_en",
+              "ila_0/probe4"
+            ]
+          },
+          "udp_tx_start_ctrl_0_tx_start_en": {
+            "ports": [
+              "udp_tx_start_ctrl_0/tx_start_en",
+              "udp_top_0/tx_start_en"
+            ]
+          },
+          "util_vector_logic_1_Res": {
+            "ports": [
+              "util_vector_logic_1/Res",
+              "mpx_pack16_to32_0/out_ready"
+            ]
+          },
+          "wr_clk_0_1": {
+            "ports": [
+              "mpx_clk",
+              "fifo_generator_audio/wr_clk",
+              "mpx_pack16_to32_0/clk"
+            ]
+          },
+          "xlconstant_0_dout": {
+            "ports": [
+              "xlconstant_0/dout",
+              "udp_top_0/tx_byte_num"
+            ]
+          }
+        }
       }
     },
     "nets": {
+      "Net": {
+        "ports": [
+          "mdio",
+          "packer_for_udp/mdio"
+        ]
+      },
       "adc_clk_0_1": {
         "ports": [
           "clk_10M",
@@ -3048,13 +5277,15 @@
         "ports": [
           "clk_wiz_1/clk_adcR",
           "fm_demod/adc_clk",
-          "hdmi_core/adc_clk"
+          "hdmi_core/adc_clk",
+          "packer_for_udp/mpx_clk"
         ]
       },
       "clk_50M_1": {
         "ports": [
           "clk_50M",
-          "clk_wiz_0/clk_in1"
+          "clk_wiz_0/clk_in1",
+          "packer_for_udp/mdio_clk50"
         ]
       },
       "clk_wiz_0_clk_out1": {
@@ -3066,7 +5297,8 @@
       "clk_wiz_0_locked": {
         "ports": [
           "clk_wiz_0/locked",
-          "clk_wiz_1/resetn"
+          "clk_wiz_1/resetn",
+          "packer_for_udp/arst_n"
         ]
       },
       "clk_wiz_1_clk_adc": {
@@ -3075,11 +5307,30 @@
           "adc_clk"
         ]
       },
+      "clk_wiz_1_clkfb_out": {
+        "ports": [
+          "clk_wiz_1/clkfb_out",
+          "clk_wiz_1/clkfb_in"
+        ]
+      },
       "en_0_1": {
         "ports": [
           "locked",
           "fm_demod/locked",
-          "clk_wiz_0/resetn"
+          "clk_wiz_0/resetn",
+          "hdmi_core/sys_rst_n"
+        ]
+      },
+      "fm_demod_m_axis_tdata_0": {
+        "ports": [
+          "fm_demod/m_axis_tdata_0",
+          "packer_for_udp/mpx_data"
+        ]
+      },
+      "fm_demod_m_axis_tvalid_0": {
+        "ports": [
+          "fm_demod/m_axis_tvalid_0",
+          "packer_for_udp/mpx_valid"
         ]
       },
       "fm_mod_m_axis_data_tdata_0": {
@@ -3088,34 +5339,88 @@
           "fm_demod/s_axis_tdata_0"
         ]
       },
-      "fm_mod_m_axis_data_tvalid_0": {
-        "ports": [
-          "fm_mod/m_axis_data_tvalid_0",
-          "fm_demod/s_axis_tvalid_0"
-        ]
-      },
-      "hdmi_tmds_audio_0_hdmi_clk": {
+      "hdmi_core_hdmi_clk": {
         "ports": [
           "hdmi_core/hdmi_clk",
           "hdmi_clk"
         ]
       },
-      "hdmi_tmds_audio_0_hdmi_d0": {
+      "hdmi_core_hdmi_d0": {
         "ports": [
           "hdmi_core/hdmi_d0",
           "hdmi_d0"
         ]
       },
-      "hdmi_tmds_audio_0_hdmi_d1": {
+      "hdmi_core_hdmi_d1": {
         "ports": [
           "hdmi_core/hdmi_d1",
           "hdmi_d1"
         ]
       },
-      "hdmi_tmds_audio_0_hdmi_d2": {
+      "hdmi_core_hdmi_d2": {
         "ports": [
           "hdmi_core/hdmi_d2",
           "hdmi_d2"
+        ]
+      },
+      "packer_for_udp_linkspeed": {
+        "ports": [
+          "packer_for_udp/linkspeed",
+          "linkspeed"
+        ]
+      },
+      "packer_for_udp_mdc": {
+        "ports": [
+          "packer_for_udp/mdc",
+          "mdc"
+        ]
+      },
+      "packer_for_udp_mpx_ready": {
+        "ports": [
+          "packer_for_udp/mpx_ready",
+          "fm_demod/m_axis_tready_0"
+        ]
+      },
+      "packer_for_udp_phy_rstn": {
+        "ports": [
+          "packer_for_udp/phy_rstn",
+          "phy_rstn"
+        ]
+      },
+      "packer_for_udp_phy_tx_ctrl": {
+        "ports": [
+          "packer_for_udp/phy_tx_ctrl",
+          "phy_tx_ctrl"
+        ]
+      },
+      "packer_for_udp_phy_txc": {
+        "ports": [
+          "packer_for_udp/phy_txc",
+          "phy_txc"
+        ]
+      },
+      "packer_for_udp_phy_txd": {
+        "ports": [
+          "packer_for_udp/phy_txd",
+          "phy_txd"
+        ]
+      },
+      "phy_rx_ctrl_0_1": {
+        "ports": [
+          "phy_rx_ctrl",
+          "packer_for_udp/phy_rx_ctrl"
+        ]
+      },
+      "phy_rxc_0_1": {
+        "ports": [
+          "phy_rxc",
+          "packer_for_udp/phy_rxc"
+        ]
+      },
+      "phy_rxd_0_1": {
+        "ports": [
+          "phy_rxd",
+          "packer_for_udp/phy_rxd"
         ]
       },
       "src_in_1": {
@@ -3127,14 +5432,14 @@
       "sys_1": {
         "ports": [
           "sys",
-          "hdmi_core/sys"
+          "hdmi_core/sys",
+          "packer_for_udp/iodelay_ref_clk200"
         ]
       },
       "sys_rst_n_0_1": {
         "ports": [
           "sys_rst_n",
           "fm_demod/sys_rst_n",
-          "hdmi_core/sys_rst_n",
           "fm_mod/sys_rst_n"
         ]
       }

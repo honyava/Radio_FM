@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"2.0",
-   "Default View_TopLeft":"-307,-49",
+   "Default View_TopLeft":"-231,-49",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
@@ -16,18 +16,18 @@ preplace portBus m_axis_mixer -pg 1 -lvl 3 -x 780 -y 210 -defaultsOSRD
 preplace inst lfsr_rng_0 -pg 1 -lvl 1 -x 170 -y 70 -defaultsOSRD
 preplace inst cmpy_1 -pg 1 -lvl 2 -x 550 -y 220 -defaultsOSRD
 preplace inst dds_compiler_0 -pg 1 -lvl 1 -x 170 -y 390 -defaultsOSRD
-preplace netloc dds_compiler_0_m_axis_data_tvalid 1 1 1 340 230n
-preplace netloc dds_compiler_0_m_axis_data_tdata 1 1 1 310 210n
 preplace netloc adc_dci_0_1 1 0 2 20 310 NJ
-preplace netloc sys_rst_n_0_1 1 0 1 30J 60n
-preplace netloc xlconstant_0_dout 1 0 2 30 170 NJ
+preplace netloc cmpy_1_m_axis_dout_tdata 1 2 1 760J 210n
+preplace netloc cmpy_1_m_axis_dout_tvalid 1 2 1 NJ 240
+preplace netloc dds_compiler_0_m_axis_data_tdata 1 1 1 310 210n
+preplace netloc dds_compiler_0_m_axis_data_tvalid 1 1 1 340 230n
 preplace netloc lfsr_rng_0_m_axis_tdata 1 1 2 320 40 NJ
 preplace netloc lfsr_rng_0_m_axis_tvalid 1 1 2 330 70 NJ
 preplace netloc s_axis_tdata_0_1 1 0 2 NJ 150 NJ
-preplace netloc cmpy_1_m_axis_dout_tdata 1 2 1 760J 210n
-preplace netloc cmpy_1_m_axis_dout_tvalid 1 2 1 NJ 240
+preplace netloc sys_rst_n_0_1 1 0 1 30J 60n
+preplace netloc xlconstant_0_dout 1 0 2 30 170 NJ
 levelinfo -pg 1 0 170 550 780
 pagesize -pg 1 -db -bbox -sgen -200 -10 1010 470
 "
 }
-
+0
