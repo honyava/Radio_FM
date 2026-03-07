@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "udp_tx_start_ctrl,Vivado 2023.2" *)
 (* CHECK_LICENSE_TYPE = "fm_hdmi_udp_tx_start_ctrl_0_0,udp_tx_start_ctrl,{}" *)
-(* CORE_GENERATION_INFO = "fm_hdmi_udp_tx_start_ctrl_0_0,udp_tx_start_ctrl,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=udp_tx_start_ctrl,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
+(* CORE_GENERATION_INFO = "fm_hdmi_udp_tx_start_ctrl_0_0,udp_tx_start_ctrl,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=udp_tx_start_ctrl,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,PENDING_W=8}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module fm_hdmi_udp_tx_start_ctrl_0_0 (
@@ -73,7 +73,9 @@ input wire pkt_ready_pulse;
 input wire udp_tx_done;
 output wire tx_start_en;
 
-  udp_tx_start_ctrl inst (
+  udp_tx_start_ctrl #(
+    .PENDING_W(8)
+  ) inst (
     .clk(clk),
     .rst_n(rst_n),
     .pkt_ready_pulse(pkt_ready_pulse),

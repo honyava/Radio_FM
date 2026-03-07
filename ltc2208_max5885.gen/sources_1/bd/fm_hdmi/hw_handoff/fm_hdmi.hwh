@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Mar  6 18:40:23 2026" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Mar  7 18:09:07 2026" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z020" NAME="fm_hdmi" PACKAGE="clg400" SPEEDGRADE="-2"/>
 
@@ -723,11 +723,11 @@
         <PORT DIR="O" NAME="locked" SIGIS="undef" SIGNAME="clk_wiz_0_locked">
           <CONNECTIONS>
             <CONNECTION INSTANCE="clk_wiz_1" PORT="resetn"/>
-            <CONNECTION INSTANCE="packer_for_udp_udp_tx_start_ctrl_0" PORT="rst_n"/>
             <CONNECTION INSTANCE="packer_for_udp_mpx_pack16_to32_0" PORT="rst_n"/>
             <CONNECTION INSTANCE="packer_for_udp_util_vector_logic_0" PORT="Op1"/>
             <CONNECTION INSTANCE="packer_for_udp_udp_phy_shell_0" PORT="rst_n"/>
             <CONNECTION INSTANCE="packer_for_udp_udp_top_0" PORT="rst_n"/>
+            <CONNECTION INSTANCE="packer_for_udp_udp_tx_start_ctrl_0" PORT="rst_n"/>
             <CONNECTION INSTANCE="packer_for_udp_udp_mpx_framer_0" PORT="rst_n"/>
           </CONNECTIONS>
         </PORT>
@@ -7102,7 +7102,7 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_fifo_generator_audio_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="packer_for_udp_udp_mpx_framer_0" PORT="audio_dout"/>
+            <CONNECTION INSTANCE="packer_for_udp_udp_mpx_framer_0" PORT="audio_dout_bus"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="empty" SIGIS="undef" SIGNAME="packer_for_udp_fifo_generator_audio_empty">
@@ -7123,6 +7123,7 @@
         <PORT DIR="O" LEFT="9" NAME="rd_data_count" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_fifo_generator_audio_rd_data_count">
           <CONNECTIONS>
             <CONNECTION INSTANCE="packer_for_udp_ila_0" PORT="probe5"/>
+            <CONNECTION INSTANCE="packer_for_udp_udp_mpx_framer_0" PORT="audio_rd_count_bus"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="rd_en" SIGIS="undef" SIGNAME="packer_for_udp_udp_mpx_framer_0_audio_rd_en">
@@ -7197,7 +7198,7 @@
         <PARAMETER NAME="C_AXI_WUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_COMMON_CLOCK" VALUE="1"/>
         <PARAMETER NAME="C_COUNT_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_DATA_COUNT_WIDTH" VALUE="10"/>
+        <PARAMETER NAME="C_DATA_COUNT_WIDTH" VALUE="11"/>
         <PARAMETER NAME="C_DEFAULT_VALUE" VALUE="BlankString"/>
         <PARAMETER NAME="C_DIN_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_DIN_WIDTH_AXIS" VALUE="1"/>
@@ -7283,7 +7284,7 @@
         <PARAMETER NAME="C_POWER_SAVING_MODE" VALUE="0"/>
         <PARAMETER NAME="C_PRELOAD_LATENCY" VALUE="1"/>
         <PARAMETER NAME="C_PRELOAD_REGS" VALUE="0"/>
-        <PARAMETER NAME="C_PRIM_FIFO_TYPE" VALUE="1kx36"/>
+        <PARAMETER NAME="C_PRIM_FIFO_TYPE" VALUE="2kx18"/>
         <PARAMETER NAME="C_PRIM_FIFO_TYPE_AXIS" VALUE="1kx18"/>
         <PARAMETER NAME="C_PRIM_FIFO_TYPE_RACH" VALUE="512x36"/>
         <PARAMETER NAME="C_PRIM_FIFO_TYPE_RDCH" VALUE="1kx36"/>
@@ -7305,14 +7306,14 @@
         <PARAMETER NAME="C_PROG_EMPTY_TYPE_WACH" VALUE="0"/>
         <PARAMETER NAME="C_PROG_EMPTY_TYPE_WDCH" VALUE="0"/>
         <PARAMETER NAME="C_PROG_EMPTY_TYPE_WRCH" VALUE="0"/>
-        <PARAMETER NAME="C_PROG_FULL_THRESH_ASSERT_VAL" VALUE="1022"/>
+        <PARAMETER NAME="C_PROG_FULL_THRESH_ASSERT_VAL" VALUE="2046"/>
         <PARAMETER NAME="C_PROG_FULL_THRESH_ASSERT_VAL_AXIS" VALUE="1023"/>
         <PARAMETER NAME="C_PROG_FULL_THRESH_ASSERT_VAL_RACH" VALUE="1023"/>
         <PARAMETER NAME="C_PROG_FULL_THRESH_ASSERT_VAL_RDCH" VALUE="1023"/>
         <PARAMETER NAME="C_PROG_FULL_THRESH_ASSERT_VAL_WACH" VALUE="1023"/>
         <PARAMETER NAME="C_PROG_FULL_THRESH_ASSERT_VAL_WDCH" VALUE="1023"/>
         <PARAMETER NAME="C_PROG_FULL_THRESH_ASSERT_VAL_WRCH" VALUE="1023"/>
-        <PARAMETER NAME="C_PROG_FULL_THRESH_NEGATE_VAL" VALUE="1021"/>
+        <PARAMETER NAME="C_PROG_FULL_THRESH_NEGATE_VAL" VALUE="2045"/>
         <PARAMETER NAME="C_PROG_FULL_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROG_FULL_TYPE_AXIS" VALUE="0"/>
         <PARAMETER NAME="C_PROG_FULL_TYPE_RACH" VALUE="0"/>
@@ -7322,10 +7323,10 @@
         <PARAMETER NAME="C_PROG_FULL_TYPE_WRCH" VALUE="0"/>
         <PARAMETER NAME="C_RACH_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_RDCH_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_RD_DATA_COUNT_WIDTH" VALUE="10"/>
-        <PARAMETER NAME="C_RD_DEPTH" VALUE="1024"/>
+        <PARAMETER NAME="C_RD_DATA_COUNT_WIDTH" VALUE="11"/>
+        <PARAMETER NAME="C_RD_DEPTH" VALUE="2048"/>
         <PARAMETER NAME="C_RD_FREQ" VALUE="1"/>
-        <PARAMETER NAME="C_RD_PNTR_WIDTH" VALUE="10"/>
+        <PARAMETER NAME="C_RD_PNTR_WIDTH" VALUE="11"/>
         <PARAMETER NAME="C_REG_SLICE_MODE_AXIS" VALUE="0"/>
         <PARAMETER NAME="C_REG_SLICE_MODE_RACH" VALUE="0"/>
         <PARAMETER NAME="C_REG_SLICE_MODE_RDCH" VALUE="0"/>
@@ -7355,8 +7356,8 @@
         <PARAMETER NAME="C_WDCH_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_WRCH_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_WR_ACK_LOW" VALUE="0"/>
-        <PARAMETER NAME="C_WR_DATA_COUNT_WIDTH" VALUE="10"/>
-        <PARAMETER NAME="C_WR_DEPTH" VALUE="1024"/>
+        <PARAMETER NAME="C_WR_DATA_COUNT_WIDTH" VALUE="11"/>
+        <PARAMETER NAME="C_WR_DEPTH" VALUE="2048"/>
         <PARAMETER NAME="C_WR_DEPTH_AXIS" VALUE="1024"/>
         <PARAMETER NAME="C_WR_DEPTH_RACH" VALUE="16"/>
         <PARAMETER NAME="C_WR_DEPTH_RDCH" VALUE="1024"/>
@@ -7364,7 +7365,7 @@
         <PARAMETER NAME="C_WR_DEPTH_WDCH" VALUE="1024"/>
         <PARAMETER NAME="C_WR_DEPTH_WRCH" VALUE="16"/>
         <PARAMETER NAME="C_WR_FREQ" VALUE="1"/>
-        <PARAMETER NAME="C_WR_PNTR_WIDTH" VALUE="10"/>
+        <PARAMETER NAME="C_WR_PNTR_WIDTH" VALUE="11"/>
         <PARAMETER NAME="C_WR_PNTR_WIDTH_AXIS" VALUE="10"/>
         <PARAMETER NAME="C_WR_PNTR_WIDTH_RACH" VALUE="4"/>
         <PARAMETER NAME="C_WR_PNTR_WIDTH_RDCH" VALUE="10"/>
@@ -7384,7 +7385,7 @@
         <PARAMETER NAME="Component_Name" VALUE="fm_hdmi_fifo_generator_0_0"/>
         <PARAMETER NAME="DATA_WIDTH" VALUE="64"/>
         <PARAMETER NAME="Data_Count" VALUE="true"/>
-        <PARAMETER NAME="Data_Count_Width" VALUE="10"/>
+        <PARAMETER NAME="Data_Count_Width" VALUE="11"/>
         <PARAMETER NAME="Disable_Timing_Violations" VALUE="false"/>
         <PARAMETER NAME="Disable_Timing_Violations_AXI" VALUE="false"/>
         <PARAMETER NAME="Dout_Reset_Value" VALUE="0"/>
@@ -7430,14 +7431,14 @@
         <PARAMETER NAME="FIFO_Implementation_wrch" VALUE="Common_Clock_Block_RAM"/>
         <PARAMETER NAME="Fifo_Implementation" VALUE="Common_Clock_Block_RAM"/>
         <PARAMETER NAME="Full_Flags_Reset_Value" VALUE="1"/>
-        <PARAMETER NAME="Full_Threshold_Assert_Value" VALUE="1022"/>
+        <PARAMETER NAME="Full_Threshold_Assert_Value" VALUE="2046"/>
         <PARAMETER NAME="Full_Threshold_Assert_Value_axis" VALUE="1023"/>
         <PARAMETER NAME="Full_Threshold_Assert_Value_rach" VALUE="1023"/>
         <PARAMETER NAME="Full_Threshold_Assert_Value_rdch" VALUE="1023"/>
         <PARAMETER NAME="Full_Threshold_Assert_Value_wach" VALUE="1023"/>
         <PARAMETER NAME="Full_Threshold_Assert_Value_wdch" VALUE="1023"/>
         <PARAMETER NAME="Full_Threshold_Assert_Value_wrch" VALUE="1023"/>
-        <PARAMETER NAME="Full_Threshold_Negate_Value" VALUE="1021"/>
+        <PARAMETER NAME="Full_Threshold_Negate_Value" VALUE="2045"/>
         <PARAMETER NAME="HAS_ACLKEN" VALUE="false"/>
         <PARAMETER NAME="HAS_TKEEP" VALUE="false"/>
         <PARAMETER NAME="HAS_TSTRB" VALUE="false"/>
@@ -7458,7 +7459,7 @@
         <PARAMETER NAME="Inject_Sbit_Error_wdch" VALUE="false"/>
         <PARAMETER NAME="Inject_Sbit_Error_wrch" VALUE="false"/>
         <PARAMETER NAME="Input_Data_Width" VALUE="32"/>
-        <PARAMETER NAME="Input_Depth" VALUE="1024"/>
+        <PARAMETER NAME="Input_Depth" VALUE="2048"/>
         <PARAMETER NAME="Input_Depth_axis" VALUE="1024"/>
         <PARAMETER NAME="Input_Depth_rach" VALUE="16"/>
         <PARAMETER NAME="Input_Depth_rdch" VALUE="1024"/>
@@ -7467,7 +7468,7 @@
         <PARAMETER NAME="Input_Depth_wrch" VALUE="16"/>
         <PARAMETER NAME="Master_interface_Clock_enable_memory_mapped" VALUE="false"/>
         <PARAMETER NAME="Output_Data_Width" VALUE="32"/>
-        <PARAMETER NAME="Output_Depth" VALUE="1024"/>
+        <PARAMETER NAME="Output_Depth" VALUE="2048"/>
         <PARAMETER NAME="Output_Register_Type" VALUE="Embedded_Reg"/>
         <PARAMETER NAME="Overflow_Flag" VALUE="false"/>
         <PARAMETER NAME="Overflow_Flag_AXI" VALUE="false"/>
@@ -7493,7 +7494,7 @@
         <PARAMETER NAME="RUSER_Width" VALUE="0"/>
         <PARAMETER NAME="Read_Clock_Frequency" VALUE="1"/>
         <PARAMETER NAME="Read_Data_Count" VALUE="false"/>
-        <PARAMETER NAME="Read_Data_Count_Width" VALUE="10"/>
+        <PARAMETER NAME="Read_Data_Count_Width" VALUE="11"/>
         <PARAMETER NAME="Register_Slice_Mode_axis" VALUE="Fully_Registered"/>
         <PARAMETER NAME="Register_Slice_Mode_rach" VALUE="Fully_Registered"/>
         <PARAMETER NAME="Register_Slice_Mode_rdch" VALUE="Fully_Registered"/>
@@ -7524,7 +7525,7 @@
         <PARAMETER NAME="Write_Acknowledge_Sense" VALUE="Active_High"/>
         <PARAMETER NAME="Write_Clock_Frequency" VALUE="1"/>
         <PARAMETER NAME="Write_Data_Count" VALUE="false"/>
-        <PARAMETER NAME="Write_Data_Count_Width" VALUE="10"/>
+        <PARAMETER NAME="Write_Data_Count_Width" VALUE="11"/>
         <PARAMETER NAME="asymmetric_port_width" VALUE="false"/>
         <PARAMETER NAME="axis_type" VALUE="FIFO"/>
         <PARAMETER NAME="dynamic_power_saving" VALUE="false"/>
@@ -7547,7 +7548,7 @@
             <CONNECTION INSTANCE="packer_for_udp_udp_phy_shell_0" PORT="gmii_rxc"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="9" NAME="data_count" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_fifo_generator_payload_data_count">
+        <PORT DIR="O" LEFT="10" NAME="data_count" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_fifo_generator_payload_data_count">
           <CONNECTIONS>
             <CONNECTION INSTANCE="packer_for_udp_ila_0" PORT="probe1"/>
           </CONNECTIONS>
@@ -8045,7 +8046,7 @@
         <PARAMETER NAME="C_PROBE19_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE1_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE1_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE1_WIDTH" VALUE="10"/>
+        <PARAMETER NAME="C_PROBE1_WIDTH" VALUE="11"/>
         <PARAMETER NAME="C_PROBE200_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE200_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE200_WIDTH" VALUE="1"/>
@@ -10754,7 +10755,7 @@
             <CONNECTION INSTANCE="packer_for_udp_fifo_generator_payload" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="9" NAME="probe1" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_fifo_generator_payload_data_count">
+        <PORT DIR="I" LEFT="10" NAME="probe1" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_fifo_generator_payload_data_count">
           <CONNECTIONS>
             <CONNECTION INSTANCE="packer_for_udp_fifo_generator_payload" PORT="data_count"/>
           </CONNECTIONS>
@@ -10841,23 +10842,36 @@
     <MODULE COREREVISION="1" FULLNAME="/packer_for_udp/udp_mpx_framer_0" HWVERSION="1.0" INSTANCE="packer_for_udp_udp_mpx_framer_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="udp_mpx_framer" VLNV="xilinx.com:module_ref:udp_mpx_framer:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="SAMPLES_PER_PKT" VALUE="728"/>
-        <PARAMETER NAME="STATION_ID" VALUE="&quot;00000000&quot;"/>
+        <PARAMETER NAME="APP_MAGIC" VALUE="0x4D58"/>
+        <PARAMETER NAME="APP_MARKER" VALUE="0xA55A"/>
+        <PARAMETER NAME="APP_VERSION" VALUE="&quot;00000010&quot;"/>
+        <PARAMETER NAME="AUDIO_COUNT_WIDTH" VALUE="10"/>
+        <PARAMETER NAME="MAX_PAYLOAD_BYTES" VALUE="1472"/>
+        <PARAMETER NAME="N_STATIONS" VALUE="1"/>
+        <PARAMETER NAME="SAMPLES_PER_ST" VALUE="0"/>
+        <PARAMETER NAME="STATION_HDR_MAGIC" VALUE="0x5354"/>
+        <PARAMETER NAME="STATION_ID_BASE" VALUE="&quot;00000000&quot;"/>
+        <PARAMETER NAME="STATION_MASK" VALUE="0x0000"/>
         <PARAMETER NAME="Component_Name" VALUE="fm_hdmi_udp_mpx_framer_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="31" NAME="audio_dout" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_fifo_generator_audio_dout">
+        <PORT DIR="I" LEFT="31" NAME="audio_dout_bus" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_fifo_generator_audio_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="packer_for_udp_fifo_generator_audio" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="audio_empty" SIGIS="undef" SIGNAME="packer_for_udp_fifo_generator_audio_empty">
+        <PORT DIR="I" LEFT="0" NAME="audio_empty" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_fifo_generator_audio_empty">
           <CONNECTIONS>
             <CONNECTION INSTANCE="packer_for_udp_fifo_generator_audio" PORT="empty"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="audio_rd_en" SIGIS="undef" SIGNAME="packer_for_udp_udp_mpx_framer_0_audio_rd_en">
+        <PORT DIR="I" LEFT="9" NAME="audio_rd_count_bus" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_fifo_generator_audio_rd_data_count">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="packer_for_udp_fifo_generator_audio" PORT="rd_data_count"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="audio_rd_en" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_udp_mpx_framer_0_audio_rd_en">
           <CONNECTIONS>
             <CONNECTION INSTANCE="packer_for_udp_fifo_generator_audio" PORT="rd_en"/>
           </CONNECTIONS>
@@ -10893,6 +10907,11 @@
             <CONNECTION INSTANCE="clk_wiz_0" PORT="locked"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" LEFT="15" NAME="tx_payload_bytes" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_udp_mpx_framer_0_tx_payload_bytes">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="packer_for_udp_udp_top_0" PORT="tx_byte_num"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -10921,9 +10940,9 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="packer_for_udp_fifo_generator_audio" PORT="rd_clk"/>
             <CONNECTION INSTANCE="packer_for_udp_fifo_generator_payload" PORT="clk"/>
-            <CONNECTION INSTANCE="packer_for_udp_udp_tx_start_ctrl_0" PORT="clk"/>
             <CONNECTION INSTANCE="packer_for_udp_udp_top_0" PORT="gmii_rxc"/>
             <CONNECTION INSTANCE="packer_for_udp_ila_0" PORT="clk"/>
+            <CONNECTION INSTANCE="packer_for_udp_udp_tx_start_ctrl_0" PORT="clk"/>
             <CONNECTION INSTANCE="packer_for_udp_udp_mpx_framer_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
@@ -11081,9 +11100,9 @@
         <PORT DIR="O" LEFT="15" NAME="rxd_wr_byte_num" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="31" NAME="rxd_wr_data" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" NAME="rxd_wr_en" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="15" NAME="tx_byte_num" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_xlconstant_0_dout">
+        <PORT DIR="I" LEFT="15" NAME="tx_byte_num" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_udp_mpx_framer_0_tx_payload_bytes">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="packer_for_udp_xlconstant_0" PORT="dout"/>
+            <CONNECTION INSTANCE="packer_for_udp_udp_mpx_framer_0" PORT="tx_payload_bytes"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="tx_data" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_fifo_generator_payload_dout">
@@ -11113,6 +11132,7 @@
     <MODULE COREREVISION="1" FULLNAME="/packer_for_udp/udp_tx_start_ctrl_0" HWVERSION="1.0" INSTANCE="packer_for_udp_udp_tx_start_ctrl_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="udp_tx_start_ctrl" VLNV="xilinx.com:module_ref:udp_tx_start_ctrl:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
+        <PARAMETER NAME="PENDING_W" VALUE="8"/>
         <PARAMETER NAME="Component_Name" VALUE="fm_hdmi_udp_tx_start_ctrl_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -11201,11 +11221,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" LEFT="15" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="packer_for_udp_xlconstant_0_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="packer_for_udp_udp_top_0" PORT="tx_byte_num"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="dout" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>

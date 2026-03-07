@@ -72,7 +72,9 @@ input wire pkt_ready_pulse;
 input wire udp_tx_done;
 output wire tx_start_en;
 
-  udp_tx_start_ctrl inst (
+  udp_tx_start_ctrl #(
+    .PENDING_W(8)
+  ) inst (
     .clk(clk),
     .rst_n(rst_n),
     .pkt_ready_pulse(pkt_ready_pulse),

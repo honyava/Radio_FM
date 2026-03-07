@@ -21,7 +21,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_fifo_generator_1_0_synth_1'
+HD_PWD='/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_udp_tx_start_ctrl_0_0_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -37,4 +37,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log fm_hdmi_fifo_generator_1_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source fm_hdmi_fifo_generator_1_0.tcl
+EAStep vivado -log fm_hdmi_udp_tx_start_ctrl_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source fm_hdmi_udp_tx_start_ctrl_0_0.tcl

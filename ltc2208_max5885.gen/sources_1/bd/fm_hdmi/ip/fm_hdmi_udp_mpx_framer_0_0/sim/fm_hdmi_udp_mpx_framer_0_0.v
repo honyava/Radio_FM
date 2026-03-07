@@ -57,13 +57,15 @@
 module fm_hdmi_udp_mpx_framer_0_0 (
   clk,
   rst_n,
-  audio_dout,
+  audio_dout_bus,
   audio_empty,
+  audio_rd_count_bus,
   audio_rd_en,
   pay_full,
   pay_wr_en,
   pay_din,
-  pkt_ready_pulse
+  pkt_ready_pulse,
+  tx_payload_bytes
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *)
@@ -72,26 +74,38 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst_n RST" *)
 input wire rst_n;
-input wire [31 : 0] audio_dout;
-input wire audio_empty;
-output wire audio_rd_en;
+input wire [31 : 0] audio_dout_bus;
+input wire [0 : 0] audio_empty;
+input wire [9 : 0] audio_rd_count_bus;
+output wire [0 : 0] audio_rd_en;
 input wire pay_full;
 output wire pay_wr_en;
 output wire [31 : 0] pay_din;
 output wire pkt_ready_pulse;
+output wire [15 : 0] tx_payload_bytes;
 
   udp_mpx_framer #(
-    .SAMPLES_PER_PKT(728),
-    .STATION_ID(8'B00000000)
+    .N_STATIONS(1),
+    .SAMPLES_PER_ST(0),
+    .AUDIO_COUNT_WIDTH(10),
+    .MAX_PAYLOAD_BYTES(1472),
+    .STATION_ID_BASE(8'B00000000),
+    .STATION_MASK(16'H0000),
+    .APP_MAGIC(16'H4D58),
+    .APP_VERSION(8'B00000010),
+    .APP_MARKER(16'HA55A),
+    .STATION_HDR_MAGIC(16'H5354)
   ) inst (
     .clk(clk),
     .rst_n(rst_n),
-    .audio_dout(audio_dout),
+    .audio_dout_bus(audio_dout_bus),
     .audio_empty(audio_empty),
+    .audio_rd_count_bus(audio_rd_count_bus),
     .audio_rd_en(audio_rd_en),
     .pay_full(pay_full),
     .pay_wr_en(pay_wr_en),
     .pay_din(pay_din),
-    .pkt_ready_pulse(pkt_ready_pulse)
+    .pkt_ready_pulse(pkt_ready_pulse),
+    .tx_payload_bytes(tx_payload_bytes)
   );
 endmodule

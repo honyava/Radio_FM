@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Fri Mar  6 18:40:23 2026
+//Date        : Sat Mar  7 18:09:06 2026
 //Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 //Command     : generate_target fm_hdmi.bd
 //Design      : fm_hdmi
@@ -687,7 +687,7 @@ module packer_for_udp_imp_G2TMFZ
   wire fifo_generator_1_empty;
   wire fifo_generator_audio_full;
   wire [9:0]fifo_generator_audio_rd_data_count;
-  wire [9:0]fifo_generator_payload_data_count;
+  wire [10:0]fifo_generator_payload_data_count;
   wire [31:0]fifo_generator_payload_dout;
   wire fifo_generator_payload_full;
   wire iodelay_ref_clk200_0_1;
@@ -701,10 +701,11 @@ module packer_for_udp_imp_G2TMFZ
   wire rst_n_0_1;
   wire [15:0]s_data_0_1;
   wire s_valid_0_1;
-  wire udp_mpx_framer_0_audio_rd_en;
+  wire [0:0]udp_mpx_framer_0_audio_rd_en;
   wire [31:0]udp_mpx_framer_0_pay_din;
   wire udp_mpx_framer_0_pay_wr_en;
   wire udp_mpx_framer_0_pkt_ready_pulse;
+  wire [15:0]udp_mpx_framer_0_tx_payload_bytes;
   wire [31:0]udp_phy_shell_0_destination_ip;
   wire [47:0]udp_phy_shell_0_destination_mac;
   wire udp_phy_shell_0_gmii_rxc;
@@ -724,7 +725,6 @@ module packer_for_udp_imp_G2TMFZ
   wire udp_tx_start_ctrl_0_tx_start_en;
   wire [0:0]util_vector_logic_1_Res;
   wire wr_clk_0_1;
-  wire [15:0]xlconstant_0_dout;
 
   assign iodelay_ref_clk200_0_1 = iodelay_ref_clk200;
   assign linkspeed[1:0] = udp_phy_shell_0_linkspeed;
@@ -781,15 +781,17 @@ module packer_for_udp_imp_G2TMFZ
         .s_ready(mpx_pack16_to32_0_s_ready),
         .s_valid(s_valid_0_1));
   fm_hdmi_udp_mpx_framer_0_0 udp_mpx_framer_0
-       (.audio_dout(fifo_generator_1_dout),
+       (.audio_dout_bus(fifo_generator_1_dout),
         .audio_empty(fifo_generator_1_empty),
+        .audio_rd_count_bus(fifo_generator_audio_rd_data_count),
         .audio_rd_en(udp_mpx_framer_0_audio_rd_en),
         .clk(udp_phy_shell_0_gmii_rxc),
         .pay_din(udp_mpx_framer_0_pay_din),
         .pay_full(fifo_generator_payload_full),
         .pay_wr_en(udp_mpx_framer_0_pay_wr_en),
         .pkt_ready_pulse(udp_mpx_framer_0_pkt_ready_pulse),
-        .rst_n(rst_n_0_1));
+        .rst_n(rst_n_0_1),
+        .tx_payload_bytes(udp_mpx_framer_0_tx_payload_bytes));
   fm_hdmi_udp_phy_shell_0_0 udp_phy_shell_0
        (.destination_ip(udp_phy_shell_0_destination_ip),
         .destination_mac(udp_phy_shell_0_destination_mac),
@@ -822,7 +824,7 @@ module packer_for_udp_imp_G2TMFZ
         .gmii_txd(udp_top_0_gmii_txd),
         .gmii_txen(udp_top_0_gmii_txen),
         .rst_n(rst_n_0_1),
-        .tx_byte_num(xlconstant_0_dout),
+        .tx_byte_num(udp_mpx_framer_0_tx_payload_bytes),
         .tx_data(fifo_generator_payload_dout),
         .tx_done(udp_top_0_tx_done),
         .tx_request(udp_top_0_tx_request),
@@ -840,7 +842,7 @@ module packer_for_udp_imp_G2TMFZ
        (.Op1(fifo_generator_audio_full),
         .Res(util_vector_logic_1_Res));
   fm_hdmi_xlconstant_0_2 xlconstant_0
-       (.dout(xlconstant_0_dout));
+       ();
 endmodule
 
 module pll_pilot_imp_1563SO5

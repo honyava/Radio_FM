@@ -28,7 +28,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log fm_hdmi_fifo_generator_1_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source fm_hdmi_fifo_generator_1_0.tcl" );
+         "-log fm_hdmi_udp_tx_start_ctrl_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source fm_hdmi_udp_tx_start_ctrl_0_0.tcl" );
 
 
 

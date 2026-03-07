@@ -1,45 +1,10 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="reting" Host="reting-ThinkBook-14-G7-IAH" Pid="13594" HostCore="16" HostMemory="32335480">
+    <Process Command="vivado" Owner="reting" Host="reting-ThinkBook-14-G7-IAH" Pid="20423" HostCore="16" HostMemory="32335484">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="reting" Host="reting-ThinkBook-14-G7-IAH" Pid="92106" HostCore="16" HostMemory="32335480">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="reting" Host="reting-ThinkBook-14-G7-IAH" Pid="166378" HostCore="16" HostMemory="32335480">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="reting" Host="reting-ThinkBook-14-G7-IAH" Pid="244687" HostCore="16" HostMemory="32335480">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="reting" Host="reting-ThinkBook-14-G7-IAH" Pid="321179" HostCore="16" HostMemory="32335480">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="reting" Host="reting-ThinkBook-14-G7-IAH" Pid="398282" HostCore="16" HostMemory="32335480">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="reting" Host="reting-ThinkBook-14-G7-IAH" Pid="475825" HostCore="16" HostMemory="32335480">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="reting" Host="reting-ThinkBook-14-G7-IAH" Pid="546461" HostCore="16" HostMemory="32335480">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="reting" Host="reting-ThinkBook-14-G7-IAH" Pid="549944" HostCore="16" HostMemory="32335480">
+    <Process Command="vivado" Owner="reting" Host="reting-ThinkBook-14-G7-IAH" Pid="94678" HostCore="16" HostMemory="32335484">
     </Process>
 </ProcessHandle>
