@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "fm_hdmi_udp_tx_start_ctrl_0_0",
-    "cell_name": "udp_tx_start_ctrl_0",
+    "cell_name": "packer_for_udp/udp_tx_start_ctrl_0",
     "component_reference": "xilinx.com:module_ref:udp_tx_start_ctrl:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_udp_tx_start_ctrl_0_0",

@@ -41,7 +41,7 @@
         "OUTPUT_FORM": [ { "value": "Twos_Complement", "resolve_type": "user", "usage": "all" } ],
         "Latency_Configuration": [ { "value": "Auto", "resolve_type": "user", "usage": "all" } ],
         "Latency": [ { "value": "8", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
-        "Has_ARESETn": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "Has_ARESETn": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Has_ACLKEN": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Output_Frequency1": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "float", "usage": "all" } ],
         "PINC1": [ { "value": "0001101010101010101010101011", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
@@ -140,7 +140,7 @@
         "C_POR_MODE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_AMPLITUDE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_ACLKEN": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_HAS_ARESETN": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_HAS_ARESETN": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_TLAST": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_TREADY": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_S_PHASE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -188,6 +188,7 @@
     "boundary": {
       "ports": {
         "aclk": [ { "direction": "in", "driver_value": "0x0" } ],
+        "aresetn": [ { "direction": "in", "driver_value": "0x1" } ],
         "m_axis_data_tvalid": [ { "direction": "out", "driver_value": "0x0" } ],
         "m_axis_data_tdata": [ { "direction": "out", "size_left": "31", "size_right": "0", "driver_value": "0" } ]
       },
@@ -288,8 +289,11 @@
           "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
           "mode": "slave",
           "parameters": {
-            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "usage": "all" } ],
+            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "value_permission": "bd", "usage": "all" } ],
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
+          },
+          "port_maps": {
+            "RST": [ { "physical_name": "aresetn" } ]
           }
         },
         "aclken_intf": {

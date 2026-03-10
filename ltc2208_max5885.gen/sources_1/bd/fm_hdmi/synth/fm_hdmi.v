@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Sat Mar  7 18:09:06 2026
+//Date        : Sun Mar  8 14:35:39 2026
 //Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 //Command     : generate_target fm_hdmi.bd
 //Design      : fm_hdmi
@@ -240,6 +240,7 @@ module digital_mixer_imp_2OHHC6
   assign xlconstant_0_dout = m_axis_tready;
   fm_hdmi_cmpy_0_1 cmpy_1
        (.aclk(adc_dci_0_1),
+        .aresetn(sys_rst_n_0_1),
         .m_axis_dout_tdata(cmpy_1_m_axis_dout_tdata),
         .m_axis_dout_tvalid(cmpy_1_m_axis_dout_tvalid),
         .s_axis_a_tdata(s_axis_tdata_0_1),
@@ -250,6 +251,7 @@ module digital_mixer_imp_2OHHC6
         .s_axis_ctrl_tvalid(lfsr_rng_0_m_axis_tvalid));
   fm_hdmi_dds_compiler_0_0 dds_compiler_0
        (.aclk(adc_dci_0_1),
+        .aresetn(sys_rst_n_0_1),
         .m_axis_data_tdata(dds_compiler_0_m_axis_data_tdata),
         .m_axis_data_tvalid(dds_compiler_0_m_axis_data_tvalid));
   fm_hdmi_lfsr_rng_0_0 lfsr_rng_0
@@ -270,6 +272,7 @@ module fm_demod_imp_KT0QRV
     m_axis_tdata_0,
     m_axis_tready_0,
     m_axis_tvalid_0,
+    probe_out0,
     s_axis_tdata_0,
     sys_rst_n);
   input aclk_10;
@@ -281,6 +284,7 @@ module fm_demod_imp_KT0QRV
   output [15:0]m_axis_tdata_0;
   input m_axis_tready_0;
   output m_axis_tvalid_0;
+  output [0:0]probe_out0;
   input [31:0]s_axis_tdata_0;
   input sys_rst_n;
 
@@ -305,6 +309,7 @@ module fm_demod_imp_KT0QRV
   wire [15:0]mono48k_m_axis_dout_tdata;
   wire [31:0]s_axis_tdata_0_1;
   wire sys_rst_n_0_1;
+  wire [0:0]vio_0_probe_out0;
   wire [0:0]xlconstant_0_dout;
 
   assign adc_clk_1 = adc_clk;
@@ -314,6 +319,7 @@ module fm_demod_imp_KT0QRV
   assign m_axis_tdata_0[15:0] = axis_dc_blocker_roun_0_m_axis_tdata;
   assign m_axis_tready_0_1 = m_axis_tready_0;
   assign m_axis_tvalid_0 = axis_dc_blocker_roun_0_m_axis_tvalid;
+  assign probe_out0[0] = vio_0_probe_out0;
   assign s_axis_tdata_0_1 = s_axis_tdata_0[31:0];
   assign sys_rst_n_0_1 = sys_rst_n;
   Dec200_imp_91RAY7 Dec200
@@ -323,7 +329,7 @@ module fm_demod_imp_KT0QRV
         .m_axis_tvalid(Dec200_m_axis_tvalid),
         .s_axis_tdata(digital_mixer_m_axis_dout_tdata_0),
         .s_axis_tvalid(digital_mixer_m_axis_dout_tvalid_0),
-        .sys_rst_n(sys_rst_n_0_1));
+        .sys_rst_n(vio_0_probe_out0));
   fm_hdmi_LTC_2208_0_0 LTC_2208_0
        (.adc_dai(adc_dai_1),
         .adc_dci(adc_clk_1),
@@ -344,7 +350,7 @@ module fm_demod_imp_KT0QRV
         .s_axis_data_tvalid(1'b0));
   fm_hdmi_axis_dc_blocker_roun_0_0 axis_dc_blocker_roun_0
        (.aclk(adc_clk_1),
-        .aresetn(sys_rst_n_0_1),
+        .aresetn(vio_0_probe_out0),
         .m_axis_tdata(axis_dc_blocker_roun_0_m_axis_tdata),
         .m_axis_tready(m_axis_tready_0_1),
         .m_axis_tvalid(axis_dc_blocker_roun_0_m_axis_tvalid),
@@ -365,7 +371,7 @@ module fm_demod_imp_KT0QRV
         .s_axis_ctrl_tdata(lfsr_rng_0_m_axis_tdata),
         .s_axis_ctrl_tvalid(lfsr_rng_0_m_axis_tvalid),
         .sample_valid(Dec200_m_axis_tvalid),
-        .sys_rst_n(sys_rst_n_0_1),
+        .sys_rst_n(vio_0_probe_out0),
         .tap_i(cic_compiler_2_m_axis_data_tdata),
         .tap_q(cic_compiler_3_m_axis_data_tdata));
   digital_mixer_imp_2OHHC6 digital_mixer
@@ -376,12 +382,16 @@ module fm_demod_imp_KT0QRV
         .s_axis_ctrl_tdata(lfsr_rng_0_m_axis_tdata),
         .s_axis_ctrl_tvalid(lfsr_rng_0_m_axis_tvalid),
         .s_axis_tdata_0(s_axis_tdata_0_1),
-        .sys_rst_n(sys_rst_n_0_1));
+        .sys_rst_n(vio_0_probe_out0));
   pll_pilot_imp_1563SO5 pll_pilot
        (.adc_clk(adc_clk_1),
         .s_axis_data_tdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .s_axis_data_tvalid(1'b0),
         .sys_rst_n(sys_rst_n_0_1));
+  fm_hdmi_vio_0_0 vio_0
+       (.clk(adc_clk_1),
+        .probe_in0(1'b0),
+        .probe_out0(vio_0_probe_out0));
   fm_hdmi_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
 endmodule
@@ -445,6 +455,7 @@ module fm_hdmi
   wire en_0_1;
   wire [15:0]fm_demod_m_axis_tdata_0;
   wire fm_demod_m_axis_tvalid_0;
+  wire [0:0]fm_demod_probe_out0;
   wire [31:0]fm_mod_m_axis_data_tdata_0;
   wire [1:0]hdmi_core_hdmi_clk;
   wire [1:0]hdmi_core_hdmi_d0;
@@ -505,6 +516,7 @@ module fm_hdmi
         .m_axis_tdata_0(fm_demod_m_axis_tdata_0),
         .m_axis_tready_0(packer_for_udp_mpx_ready),
         .m_axis_tvalid_0(fm_demod_m_axis_tvalid_0),
+        .probe_out0(fm_demod_probe_out0),
         .s_axis_tdata_0(fm_mod_m_axis_data_tdata_0),
         .sys_rst_n(sys_rst_n_0_1));
   fm_mod_imp_1XAHCD9 fm_mod
@@ -537,7 +549,8 @@ module fm_hdmi
         .phy_rxd(phy_rxd_0_1),
         .phy_tx_ctrl(packer_for_udp_phy_tx_ctrl),
         .phy_txc(packer_for_udp_phy_txc),
-        .phy_txd(packer_for_udp_phy_txd));
+        .phy_txd(packer_for_udp_phy_txd),
+        .probe7(fm_demod_probe_out0));
 endmodule
 
 module fm_mod_imp_1XAHCD9
@@ -662,7 +675,8 @@ module packer_for_udp_imp_G2TMFZ
     phy_rxd,
     phy_tx_ctrl,
     phy_txc,
-    phy_txd);
+    phy_txd,
+    probe7);
   input arst_n;
   input iodelay_ref_clk200;
   output [1:0]linkspeed;
@@ -680,6 +694,7 @@ module packer_for_udp_imp_G2TMFZ
   output phy_tx_ctrl;
   output phy_txc;
   output [3:0]phy_txd;
+  input [0:0]probe7;
 
   wire [0:0]Net;
   wire Net1;
@@ -698,6 +713,7 @@ module packer_for_udp_imp_G2TMFZ
   wire phy_rx_ctrl_0_1;
   wire phy_rxc_0_1;
   wire [3:0]phy_rxd_0_1;
+  wire [0:0]probe7_1;
   wire rst_n_0_1;
   wire [15:0]s_data_0_1;
   wire s_valid_0_1;
@@ -738,6 +754,7 @@ module packer_for_udp_imp_G2TMFZ
   assign phy_tx_ctrl = udp_phy_shell_0_phy_tx_ctrl;
   assign phy_txc = udp_phy_shell_0_phy_txc;
   assign phy_txd[3:0] = udp_phy_shell_0_phy_txd;
+  assign probe7_1 = probe7[0];
   assign rst_n_0_1 = arst_n;
   assign s_data_0_1 = mpx_data[15:0];
   assign s_valid_0_1 = mpx_valid;
@@ -770,7 +787,8 @@ module packer_for_udp_imp_G2TMFZ
         .probe3(udp_mpx_framer_0_pay_din),
         .probe4(udp_top_0_tx_request),
         .probe5(fifo_generator_audio_rd_data_count),
-        .probe6(udp_top_0_gmii_txd));
+        .probe6(udp_top_0_gmii_txd),
+        .probe7(probe7_1));
   fm_hdmi_mpx_pack16_to32_0_0 mpx_pack16_to32_0
        (.clk(wr_clk_0_1),
         .out_data(mpx_pack16_to32_0_out_data),
@@ -841,8 +859,6 @@ module packer_for_udp_imp_G2TMFZ
   fm_hdmi_util_vector_logic_0_2 util_vector_logic_1
        (.Op1(fifo_generator_audio_full),
         .Res(util_vector_logic_1_Res));
-  fm_hdmi_xlconstant_0_2 xlconstant_0
-       ();
 endmodule
 
 module pll_pilot_imp_1563SO5

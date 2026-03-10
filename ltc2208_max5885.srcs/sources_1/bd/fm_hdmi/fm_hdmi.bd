@@ -7,7 +7,8 @@
       "name": "fm_hdmi",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2023.2"
+      "tool_version": "2023.2",
+      "validated": "true"
     },
     "design_tree": {
       "fm_demod": {
@@ -47,7 +48,8 @@
           "Pilot": ""
         },
         "axis_dc_blocker_roun_0": "",
-        "Mono48k": ""
+        "Mono48k": "",
+        "vio_0": ""
       },
       "hdmi_core": {
         "xpm_cdc_gen_0": "",
@@ -77,7 +79,17 @@
     "ports": {
       "sys_rst_n": {
         "type": "rst",
-        "direction": "I"
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
       },
       "adc_dai": {
         "direction": "I",
@@ -85,14 +97,36 @@
         "right": "0"
       },
       "locked": {
-        "direction": "I"
+        "direction": "I",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default_prop"
+          }
+        }
       },
       "sys": {
         "type": "clk",
         "direction": "I",
         "parameters": {
+          "CLK_DOMAIN": {
+            "value": "fm_hdmi_sys",
+            "value_src": "default"
+          },
           "FREQ_HZ": {
             "value": "200000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
           }
         }
       },
@@ -105,7 +139,29 @@
         "type": "clk",
         "direction": "O",
         "left": "1",
-        "right": "0"
+        "right": "0",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "fm_hdmi_hdmi_tmds_audio_0_0_hdmi_clk",
+            "value_src": "default_prop"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
       },
       "hdmi_d2": {
         "direction": "O",
@@ -124,14 +180,52 @@
         "type": "clk",
         "direction": "I",
         "parameters": {
+          "CLK_DOMAIN": {
+            "value": "fm_hdmi_clk_50M",
+            "value_src": "default"
+          },
           "FREQ_HZ": {
             "value": "50000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
           }
         }
       },
       "adc_clk": {
         "type": "clk",
-        "direction": "O"
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "fm_hdmi_clk_50M",
+            "value_src": "ip_prop"
+          },
+          "FREQ_HZ": {
+            "value": "76800000",
+            "value_src": "ip_prop"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "ip_prop"
+          }
+        }
       },
       "phy_rxc": {
         "direction": "I"
@@ -146,7 +240,29 @@
       },
       "clk": {
         "type": "clk",
-        "direction": "I"
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "fm_hdmi_clk",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
       },
       "mdio": {
         "direction": "IO"
@@ -161,7 +277,17 @@
       },
       "phy_rstn": {
         "type": "rst",
-        "direction": "O"
+        "direction": "O",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "const_prop"
+          }
+        }
       },
       "phy_tx_ctrl": {
         "direction": "O"
@@ -220,6 +346,11 @@
           },
           "m_axis_tvalid_0": {
             "direction": "O"
+          },
+          "probe_out0": {
+            "direction": "O",
+            "left": "0",
+            "right": "0"
           }
         },
         "components": {
@@ -1518,6 +1649,9 @@
                   "APortWidth": {
                     "value": "16"
                   },
+                  "ARESETN": {
+                    "value": "true"
+                  },
                   "BPortWidth": {
                     "value": "16"
                   },
@@ -1550,6 +1684,9 @@
                   },
                   "Frequency_Resolution": {
                     "value": "0.4"
+                  },
+                  "Has_ARESETn": {
+                    "value": "true"
                   },
                   "Has_Phase_Out": {
                     "value": "false"
@@ -1646,7 +1783,9 @@
               "sys_rst_n_0_1": {
                 "ports": [
                   "sys_rst_n",
-                  "lfsr_rng_0/rstn"
+                  "lfsr_rng_0/rstn",
+                  "cmpy_1/aresetn",
+                  "dds_compiler_0/aresetn"
                 ]
               },
               "xlconstant_0_dout": {
@@ -3230,6 +3369,13 @@
                 "value": "1"
               }
             }
+          },
+          "vio_0": {
+            "vlnv": "xilinx.com:ip:vio:3.0",
+            "ip_revision": "24",
+            "xci_name": "fm_hdmi_vio_0_0",
+            "xci_path": "ip/fm_hdmi_vio_0_0/fm_hdmi_vio_0_0.xci",
+            "inst_hier_path": "fm_demod/vio_0"
           }
         },
         "interface_nets": {
@@ -3271,7 +3417,8 @@
               "LminusR/aclk",
               "pll_pilot/adc_clk",
               "axis_dc_blocker_roun_0/aclk",
-              "Mono48k/aclk"
+              "Mono48k/aclk",
+              "vio_0/clk"
             ]
           },
           "adc_dai_1": {
@@ -3350,11 +3497,17 @@
             "ports": [
               "sys_rst_n",
               "LTC_2208_0/sys_rst_n",
-              "Dec200/sys_rst_n",
+              "pll_pilot/sys_rst_n"
+            ]
+          },
+          "vio_0_probe_out0": {
+            "ports": [
+              "vio_0/probe_out0",
               "digital_mixer/sys_rst_n",
+              "probe_out0",
+              "axis_dc_blocker_roun_0/aresetn",
               "demodulate_384k/sys_rst_n",
-              "pll_pilot/sys_rst_n",
-              "axis_dc_blocker_roun_0/aresetn"
+              "Dec200/sys_rst_n"
             ]
           },
           "xlconstant_0_dout": {
@@ -4333,6 +4486,11 @@
           "phy_rstn": {
             "type": "rst",
             "direction": "O"
+          },
+          "probe7": {
+            "direction": "I",
+            "left": "0",
+            "right": "0"
           }
         },
         "components": {
@@ -4835,13 +4993,13 @@
             "inst_hier_path": "packer_for_udp/ila_0",
             "parameters": {
               "C_DATA_DEPTH": {
-                "value": "8192"
+                "value": "16384"
               },
               "C_MONITOR_TYPE": {
                 "value": "Native"
               },
               "C_NUM_OF_PROBES": {
-                "value": "7"
+                "value": "8"
               }
             }
           }
@@ -4951,6 +5109,12 @@
             "ports": [
               "phy_rxd",
               "udp_phy_shell_0/phy_rxd"
+            ]
+          },
+          "probe7_1": {
+            "ports": [
+              "probe7",
+              "ila_0/probe7"
             ]
           },
           "rst_n_0_1": {
@@ -5210,6 +5374,12 @@
         "ports": [
           "fm_demod/m_axis_tvalid_0",
           "packer_for_udp/mpx_valid"
+        ]
+      },
+      "fm_demod_probe_out0": {
+        "ports": [
+          "fm_demod/probe_out0",
+          "packer_for_udp/probe7"
         ]
       },
       "fm_mod_m_axis_data_tdata_0": {

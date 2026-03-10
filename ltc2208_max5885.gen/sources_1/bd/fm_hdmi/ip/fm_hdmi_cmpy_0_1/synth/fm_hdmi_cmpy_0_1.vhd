@@ -59,6 +59,7 @@ USE cmpy_v6_0_22.cmpy_v6_0_22;
 ENTITY fm_hdmi_cmpy_0_1 IS
   PORT (
     aclk : IN STD_LOGIC;
+    aresetn : IN STD_LOGIC;
     s_axis_a_tvalid : IN STD_LOGIC;
     s_axis_a_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     s_axis_b_tvalid : IN STD_LOGIC;
@@ -138,12 +139,14 @@ ARCHITECTURE fm_hdmi_cmpy_0_1_arch OF fm_hdmi_cmpy_0_1 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF fm_hdmi_cmpy_0_1_arch : ARCHITECTURE IS "fm_hdmi_cmpy_0_1,cmpy_v6_0_22,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF fm_hdmi_cmpy_0_1_arch: ARCHITECTURE IS "fm_hdmi_cmpy_0_1,cmpy_v6_0_22,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=cmpy,x_ipVersion=6.0,x_ipCoreRevision=22,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_VERBOSITY=0,C_XDEVICEFAMILY=zynq,C_XDEVICE=xc7z020,C_A_WIDTH=16,C_B_WIDTH=16,C_OUT_WIDTH=32,C_LATENCY=6,C_MULT_TYPE=1,C_OPTIMIZE_GOAL=0,HAS_NEGATE=0,SINGLE_OUTPUT=0,ROUND=1,USE_DSP_CASCADES=1,C_THROTTLE_SCHEME=3,C_HAS_ACLKEN=0,C_HAS_ARESETN=0,C_HAS_S_AXIS_A_TUSER=0,C_HAS_S_AXIS_A_TLAST=0,C_HAS_S_AXIS_B_TUSER=0" & 
+  ATTRIBUTE CORE_GENERATION_INFO OF fm_hdmi_cmpy_0_1_arch: ARCHITECTURE IS "fm_hdmi_cmpy_0_1,cmpy_v6_0_22,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=cmpy,x_ipVersion=6.0,x_ipCoreRevision=22,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_VERBOSITY=0,C_XDEVICEFAMILY=zynq,C_XDEVICE=xc7z020,C_A_WIDTH=16,C_B_WIDTH=16,C_OUT_WIDTH=32,C_LATENCY=6,C_MULT_TYPE=1,C_OPTIMIZE_GOAL=0,HAS_NEGATE=0,SINGLE_OUTPUT=0,ROUND=1,USE_DSP_CASCADES=1,C_THROTTLE_SCHEME=3,C_HAS_ACLKEN=0,C_HAS_ARESETN=1,C_HAS_S_AXIS_A_TUSER=0,C_HAS_S_AXIS_A_TLAST=0,C_HAS_S_AXIS_B_TUSER=0" & 
 ",C_HAS_S_AXIS_B_TLAST=0,C_HAS_S_AXIS_CTRL_TUSER=0,C_HAS_S_AXIS_CTRL_TLAST=0,C_TLAST_RESOLUTION=0,C_S_AXIS_A_TDATA_WIDTH=32,C_S_AXIS_A_TUSER_WIDTH=1,C_S_AXIS_B_TDATA_WIDTH=32,C_S_AXIS_B_TUSER_WIDTH=1,C_S_AXIS_CTRL_TDATA_WIDTH=8,C_S_AXIS_CTRL_TUSER_WIDTH=1,C_M_AXIS_DOUT_TDATA_WIDTH=64,C_M_AXIS_DOUT_TUSER_WIDTH=1}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF aclk: SIGNAL IS "XIL_INTERFACENAME aclk_intf, ASSOCIATED_BUSIF S_AXIS_CTRL:S_AXIS_B:S_AXIS_A:M_AXIS_DOUT, ASSOCIATED_RESET aresetn, ASSOCIATED_CLKEN aclken, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_50M, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 aclk_intf CLK";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF aresetn: SIGNAL IS "XIL_INTERFACENAME aresetn_intf, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 aresetn_intf RST";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_dout_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DOUT TDATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF m_axis_dout_tvalid: SIGNAL IS "XIL_INTERFACENAME M_AXIS_DOUT, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 76800000, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_50M, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolv" & 
 "e_type immediate dependency {} format long minimum {} maximum {}} value 0} complex {bitwidth {attribs {resolve_type generated dependency set_width format long minimum {} maximum {}} value 32} stride {attribs {resolve_type generated dependency set_stride format long minimum {} maximum {}} value 32} real {fixed {fractwidth {attribs {resolve_type generated dependency set_fractwidth format long minimum {} maximum {}} value 29} signed {attribs {resolve_type immediate dependency {} format bool minimum" & 
@@ -196,7 +199,7 @@ BEGIN
       USE_DSP_CASCADES => 1,
       C_THROTTLE_SCHEME => 3,
       C_HAS_ACLKEN => 0,
-      C_HAS_ARESETN => 0,
+      C_HAS_ARESETN => 1,
       C_HAS_S_AXIS_A_TUSER => 0,
       C_HAS_S_AXIS_A_TLAST => 0,
       C_HAS_S_AXIS_B_TUSER => 0,
@@ -216,7 +219,7 @@ BEGIN
     PORT MAP (
       aclk => aclk,
       aclken => '1',
-      aresetn => '1',
+      aresetn => aresetn,
       s_axis_a_tvalid => s_axis_a_tvalid,
       s_axis_a_tuser => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),
       s_axis_a_tlast => '0',
