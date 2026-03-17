@@ -132,3 +132,8 @@ set_property PACKAGE_PIN D19 [get_ports {hdmi_d0[1]}]
 set_property PACKAGE_PIN C20 [get_ports {hdmi_d1[1]}]
 set_property PACKAGE_PIN B19 [get_ports {hdmi_d2[1]}]
 set_property PACKAGE_PIN H16 [get_ports {hdmi_clk[1]}]
+
+
+set_clock_groups -name first -asynchronous -group [get_clocks -of_objects [get_pins fm_hdmi_i/clk_wiz_1/inst/plle2_adv_inst/CLKOUT1]] -group [get_clocks phy_rxc]
+set_clock_groups -name second -asynchronous -group [get_clocks -of_objects [get_pins clk_main/inst/mmcm_adv_inst/CLKOUT2]] -group [get_clocks -of_objects [get_pins fm_hdmi_i/clk_wiz_1/inst/plle2_adv_inst/CLKOUT1]]
+

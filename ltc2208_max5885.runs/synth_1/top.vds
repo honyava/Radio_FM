@@ -3,13 +3,13 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sun Mar  8 14:36:10 2026
-# Process ID: 102946
+# Start of session at: Tue Mar 17 17:01:15 2026
+# Process ID: 331305
 # Current directory: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1
 # Command line: vivado -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/top.vds
 # Journal file: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/vivado.jou
-# Running On: reting-ThinkBook-14-G7-IAH, OS: Linux, CPU Frequency: 400.000 MHz, CPU Physical cores: 16, Host memory: 33111 MB
+# Running On: reting-ThinkBook-14-G7-IAH, OS: Linux, CPU Frequency: 4966.962 MHz, CPU Physical cores: 16, Host memory: 33111 MB
 #-----------------------------------------------------------
 Sourcing tcl script '/home/reting/Programs/Vivado/2023.2/scripts/Vivado_init.tcl'
 122 Beta devices matching pattern found, 0 enabled.
@@ -29,44 +29,44 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 102960
+INFO: [Synth 8-7075] Helper process launched with PID 331323
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2118.250 ; gain = 404.715 ; free physical = 20388 ; free virtual = 33435
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2117.766 ; gain = 403.715 ; free physical = 4273 ; free virtual = 30749
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'top' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/new/top.v:3]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/clk_wiz_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/clk_wiz_0_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'fm_hdmi' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:399]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_clk_wiz_0_1' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_clk_wiz_0_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_clk_wiz_0_1' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_clk_wiz_0_1_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_clk_wiz_0_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_clk_wiz_0_2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_clk_wiz_0_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_clk_wiz_0_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_clk_wiz_0_1' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_clk_wiz_0_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_clk_wiz_0_1' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_clk_wiz_0_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_clk_wiz_0_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_clk_wiz_0_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_clk_wiz_0_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_clk_wiz_0_2_stub.v:6]
 WARNING: [Synth 8-7071] port 'locked' of module 'fm_hdmi_clk_wiz_0_2' is unconnected for instance 'clk_wiz_1' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:503]
 WARNING: [Synth 8-7023] instance 'clk_wiz_1' of module 'fm_hdmi_clk_wiz_0_2' has 7 connections declared, but only 6 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:503]
 INFO: [Synth 8-6157] synthesizing module 'fm_demod_imp_KT0QRV' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:265]
 INFO: [Synth 8-6157] synthesizing module 'Dec200_imp_91RAY7' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:13]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_axis_iq_slicer_to_2c_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_axis_iq_slicer_to_2c_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_axis_iq_slicer_to_2c_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_axis_iq_slicer_to_2c_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_axis_iq_slicer_to_2c_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_axis_iq_slicer_to_2c_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_axis_iq_slicer_to_2c_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_axis_iq_slicer_to_2c_0_0_stub.v:6]
 WARNING: [Synth 8-7071] port 's_axis_tready' of module 'fm_hdmi_axis_iq_slicer_to_2c_0_0' is unconnected for instance 'axis_iq_slicer_to_2c_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:64]
 WARNING: [Synth 8-7023] instance 'axis_iq_slicer_to_2c_0' of module 'fm_hdmi_axis_iq_slicer_to_2c_0_0' has 11 connections declared, but only 10 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:64]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_cic_compiler_0_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cic_compiler_0_2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_cic_compiler_0_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cic_compiler_0_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_cic_compiler_0_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cic_compiler_0_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_cic_compiler_0_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cic_compiler_0_2_stub.v:6]
 WARNING: [Synth 8-7071] port 'event_halted' of module 'fm_hdmi_cic_compiler_0_2' is unconnected for instance 'cic_compiler_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:75]
 WARNING: [Synth 8-7023] instance 'cic_compiler_2' of module 'fm_hdmi_cic_compiler_0_2' has 9 connections declared, but only 8 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:75]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_cic_compiler_2_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cic_compiler_2_2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_cic_compiler_2_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cic_compiler_2_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_cic_compiler_2_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cic_compiler_2_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_cic_compiler_2_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cic_compiler_2_2_stub.v:6]
 WARNING: [Synth 8-7071] port 'event_halted' of module 'fm_hdmi_cic_compiler_2_2' is unconnected for instance 'cic_compiler_3' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:84]
 WARNING: [Synth 8-7023] instance 'cic_compiler_3' of module 'fm_hdmi_cic_compiler_2_2' has 9 connections declared, but only 8 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:84]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fir_compiler_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fir_compiler_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fir_compiler_0_1' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fir_compiler_0_1' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_1_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_iq16_truncate_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_iq16_truncate_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_iq16_truncate_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_iq16_truncate_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fir_compiler_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fir_compiler_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fir_compiler_0_1' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fir_compiler_0_1' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_iq16_truncate_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_iq16_truncate_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_iq16_truncate_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_iq16_truncate_0_0_stub.v:6]
 WARNING: [Synth 8-7071] port 's_axis_tready' of module 'fm_hdmi_iq16_truncate_0_0' is unconnected for instance 'iq16_truncate_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:107]
 WARNING: [Synth 8-7023] instance 'iq16_truncate_0' of module 'fm_hdmi_iq16_truncate_0_0' has 8 connections declared, but only 7 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:107]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_util_vector_logic_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_util_vector_logic_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_util_vector_logic_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_util_vector_logic_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_util_vector_logic_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_util_vector_logic_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_util_vector_logic_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_util_vector_logic_0_0_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_xlconcat_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_xlconcat_0_0/synth/fm_hdmi_xlconcat_0_0.v:53]
 INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_5_xlconcat' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ipshared/147b/hdl/xlconcat_v2_1_vl_rfs.v:59]
 INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_5_xlconcat' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ipshared/147b/hdl/xlconcat_v2_1_vl_rfs.v:59]
@@ -85,65 +85,65 @@ INFO: [Synth 8-6155] done synthesizing module 'xlslice_v1_0_3_xlslice__parameter
 INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_xlslice_0_1' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_xlslice_0_1/synth/fm_hdmi_xlslice_0_1.v:53]
 INFO: [Synth 8-6155] done synthesizing module 'Dec200_imp_91RAY7' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:13]
 WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:333]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_LTC_2208_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_LTC_2208_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_LTC_2208_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_LTC_2208_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_LTC_2208_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_LTC_2208_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_LTC_2208_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_LTC_2208_0_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'm_axis_tdata' of module 'fm_hdmi_LTC_2208_0_0' is unconnected for instance 'LTC_2208_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:333]
 WARNING: [Synth 8-7071] port 'm_axis_tvalid' of module 'fm_hdmi_LTC_2208_0_0' is unconnected for instance 'LTC_2208_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:333]
 WARNING: [Synth 8-7023] instance 'LTC_2208_0' of module 'fm_hdmi_LTC_2208_0_0' has 5 connections declared, but only 3 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:333]
 WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:337]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fir_compiler_0_3' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_3_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fir_compiler_0_3' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_3_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fir_compiler_0_3' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_3_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fir_compiler_0_3' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_3_stub.v:6]
 WARNING: [Synth 8-7071] port 's_axis_data_tready' of module 'fm_hdmi_fir_compiler_0_3' is unconnected for instance 'LminusR' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:337]
 WARNING: [Synth 8-7071] port 'm_axis_data_tvalid' of module 'fm_hdmi_fir_compiler_0_3' is unconnected for instance 'LminusR' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:337]
 WARNING: [Synth 8-7071] port 'm_axis_data_tdata' of module 'fm_hdmi_fir_compiler_0_3' is unconnected for instance 'LminusR' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:337]
 WARNING: [Synth 8-7023] instance 'LminusR' of module 'fm_hdmi_fir_compiler_0_3' has 6 connections declared, but only 3 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:337]
 WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:341]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fir_compiler_0_5' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_5_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fir_compiler_0_5' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_5_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fir_compiler_0_5' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_5_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fir_compiler_0_5' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_5_stub.v:6]
 WARNING: [Synth 8-7071] port 's_axis_data_tready' of module 'fm_hdmi_fir_compiler_0_5' is unconnected for instance 'LpluseR' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:341]
 WARNING: [Synth 8-7071] port 'm_axis_data_tvalid' of module 'fm_hdmi_fir_compiler_0_5' is unconnected for instance 'LpluseR' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:341]
 WARNING: [Synth 8-7071] port 'm_axis_data_tdata' of module 'fm_hdmi_fir_compiler_0_5' is unconnected for instance 'LpluseR' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:341]
 WARNING: [Synth 8-7023] instance 'LpluseR' of module 'fm_hdmi_fir_compiler_0_5' has 6 connections declared, but only 3 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:341]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_LpluseR_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_LpluseR_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_LpluseR_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_LpluseR_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_LpluseR_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_LpluseR_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_LpluseR_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_LpluseR_0_stub.v:6]
 WARNING: [Synth 8-7071] port 's_axis_data_tready' of module 'fm_hdmi_LpluseR_0' is unconnected for instance 'Mono48k' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:345]
 WARNING: [Synth 8-7023] instance 'Mono48k' of module 'fm_hdmi_LpluseR_0' has 6 connections declared, but only 5 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:345]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_axis_dc_blocker_roun_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_axis_dc_blocker_roun_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_axis_dc_blocker_roun_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_axis_dc_blocker_roun_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fir_compiler_0_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fir_compiler_0_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_axis_dc_blocker_roun_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_axis_dc_blocker_roun_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_axis_dc_blocker_roun_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_axis_dc_blocker_roun_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fir_compiler_0_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fir_compiler_0_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_2_stub.v:6]
 WARNING: [Synth 8-7071] port 's_axis_data_tready' of module 'fm_hdmi_fir_compiler_0_2' is unconnected for instance 'dec384to192' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:360]
 WARNING: [Synth 8-7023] instance 'dec384to192' of module 'fm_hdmi_fir_compiler_0_2' has 7 connections declared, but only 6 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:360]
 INFO: [Synth 8-6157] synthesizing module 'demodulate_384k_imp_EO70EK' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:133]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_cmpy_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cmpy_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_cmpy_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cmpy_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_cordic_0_1' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cordic_0_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_cordic_0_1' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cordic_0_1_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_del_m_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_del_m_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_del_m_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_del_m_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_cmpy_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cmpy_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_cmpy_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cmpy_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_cordic_0_1' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cordic_0_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_cordic_0_1' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cordic_0_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_del_m_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_del_m_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_del_m_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_del_m_0_0_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'demodulate_384k_imp_EO70EK' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:133]
 INFO: [Synth 8-6157] synthesizing module 'digital_mixer_imp_2OHHC6' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:204]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_cmpy_0_1' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cmpy_0_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_cmpy_0_1' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cmpy_0_1_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_dds_compiler_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_compiler_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_dds_compiler_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_compiler_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_lfsr_rng_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_lfsr_rng_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_lfsr_rng_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_lfsr_rng_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_cmpy_0_1' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cmpy_0_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_cmpy_0_1' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cmpy_0_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_dds_compiler_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_compiler_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_dds_compiler_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_compiler_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_lfsr_rng_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_lfsr_rng_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_lfsr_rng_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_lfsr_rng_0_0_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'digital_mixer_imp_2OHHC6' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:204]
 WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:386]
 INFO: [Synth 8-6157] synthesizing module 'pll_pilot_imp_1563SO5' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:864]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_dds_compiler_0_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_compiler_0_2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_dds_compiler_0_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_compiler_0_2_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_DDS19_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_DDS19_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_DDS19_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_DDS19_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fir_compiler_0_4' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_4_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fir_compiler_0_4' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_4_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_dds_compiler_0_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_compiler_0_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_dds_compiler_0_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_compiler_0_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_DDS19_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_DDS19_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_DDS19_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_DDS19_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fir_compiler_0_4' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_4_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fir_compiler_0_4' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fir_compiler_0_4_stub.v:6]
 WARNING: [Synth 8-7071] port 's_axis_data_tready' of module 'fm_hdmi_fir_compiler_0_4' is unconnected for instance 'Pilot' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:913]
 WARNING: [Synth 8-7023] instance 'Pilot' of module 'fm_hdmi_fir_compiler_0_4' has 6 connections declared, but only 5 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:913]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_cordic_1_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cordic_1_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_cordic_1_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cordic_1_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_pilot_pll_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_pilot_pll_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_pilot_pll_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_pilot_pll_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_cordic_1_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cordic_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_cordic_1_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_cordic_1_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_pilot_pll_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_pilot_pll_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_pilot_pll_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_pilot_pll_0_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'sin38' of module 'fm_hdmi_pilot_pll_0_0' is unconnected for instance 'pilot_pll_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:925]
 WARNING: [Synth 8-7071] port 'cos38' of module 'fm_hdmi_pilot_pll_0_0' is unconnected for instance 'pilot_pll_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:925]
 WARNING: [Synth 8-7071] port 'dds38_valid' of module 'fm_hdmi_pilot_pll_0_0' is unconnected for instance 'pilot_pll_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:925]
@@ -153,67 +153,67 @@ WARNING: [Synth 8-7071] port 'q_filt_dbg' of module 'fm_hdmi_pilot_pll_0_0' is u
 WARNING: [Synth 8-7071] port 'phase_err_dbg' of module 'fm_hdmi_pilot_pll_0_0' is unconnected for instance 'pilot_pll_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:925]
 WARNING: [Synth 8-7023] instance 'pilot_pll_0' of module 'fm_hdmi_pilot_pll_0_0' has 25 connections declared, but only 18 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:925]
 INFO: [Synth 8-6155] done synthesizing module 'pll_pilot_imp_1563SO5' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:864]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_vio_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_vio_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_vio_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_vio_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_vio_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_vio_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_vio_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_vio_0_0_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_xlconstant_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_xlconstant_0_0/synth/fm_hdmi_xlconstant_0_0.v:53]
 INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_xlconstant_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_xlconstant_0_0/synth/fm_hdmi_xlconstant_0_0.v:53]
 INFO: [Synth 8-6155] done synthesizing module 'fm_demod_imp_KT0QRV' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:265]
 WARNING: [Synth 8-7071] port 'm_axis_data_tvalid' of module 'fm_demod_imp_KT0QRV' is unconnected for instance 'fm_demod' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:510]
 WARNING: [Synth 8-7023] instance 'fm_demod' of module 'fm_demod_imp_KT0QRV' has 12 connections declared, but only 11 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:510]
 INFO: [Synth 8-6157] synthesizing module 'fm_mod_imp_1XAHCD9' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:556]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_dds_ton_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_ton_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_dds_ton_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_ton_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_dds_compiler_0_1' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_compiler_0_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_dds_compiler_0_1' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_compiler_0_1_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fm_pinc_modulator_ax_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fm_pinc_modulator_ax_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fm_pinc_modulator_ax_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fm_pinc_modulator_ax_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_dds_ton_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_ton_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_dds_ton_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_ton_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_dds_compiler_0_1' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_compiler_0_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_dds_compiler_0_1' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_dds_compiler_0_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fm_pinc_modulator_ax_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fm_pinc_modulator_ax_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fm_pinc_modulator_ax_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fm_pinc_modulator_ax_0_0_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'fm_mod_imp_1XAHCD9' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:556]
 WARNING: [Synth 8-7071] port 'm_axis_data_tvalid_0' of module 'fm_mod_imp_1XAHCD9' is unconnected for instance 'fm_mod' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:522]
 WARNING: [Synth 8-7023] instance 'fm_mod' of module 'fm_mod_imp_1XAHCD9' has 4 connections declared, but only 3 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:522]
 INFO: [Synth 8-6157] synthesizing module 'hdmi_core_imp_IT5BOS' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:598]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_clk_wiz_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_clk_wiz_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_clk_wiz_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_clk_wiz_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_clk_wiz_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_clk_wiz_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_clk_wiz_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_clk_wiz_0_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'locked' of module 'fm_hdmi_clk_wiz_0_0' is unconnected for instance 'clk_wiz_hdmi' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:637]
 WARNING: [Synth 8-7023] instance 'clk_wiz_hdmi' of module 'fm_hdmi_clk_wiz_0_0' has 7 connections declared, but only 6 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:637]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_hdmi_tmds_audio_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_hdmi_tmds_audio_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_hdmi_tmds_audio_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_hdmi_tmds_audio_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_xpm_cdc_gen_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_xpm_cdc_gen_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_xpm_cdc_gen_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_xpm_cdc_gen_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_hdmi_tmds_audio_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_hdmi_tmds_audio_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_hdmi_tmds_audio_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_hdmi_tmds_audio_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_xpm_cdc_gen_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_xpm_cdc_gen_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_xpm_cdc_gen_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_xpm_cdc_gen_0_0_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'hdmi_core_imp_IT5BOS' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:598]
 INFO: [Synth 8-6157] synthesizing module 'packer_for_udp_imp_G2TMFZ' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:661]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fifo_generator_1_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fifo_generator_1_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fifo_generator_1_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fifo_generator_1_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fifo_generator_1_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fifo_generator_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fifo_generator_1_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fifo_generator_1_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'wr_rst_busy' of module 'fm_hdmi_fifo_generator_1_0' is unconnected for instance 'fifo_generator_audio' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:762]
 WARNING: [Synth 8-7071] port 'rd_rst_busy' of module 'fm_hdmi_fifo_generator_1_0' is unconnected for instance 'fifo_generator_audio' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:762]
 WARNING: [Synth 8-7023] instance 'fifo_generator_audio' of module 'fm_hdmi_fifo_generator_1_0' has 12 connections declared, but only 10 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:762]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fifo_generator_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fifo_generator_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fifo_generator_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fifo_generator_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_fifo_generator_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fifo_generator_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_fifo_generator_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_fifo_generator_0_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'empty' of module 'fm_hdmi_fifo_generator_0_0' is unconnected for instance 'fifo_generator_payload' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:773]
 WARNING: [Synth 8-7071] port 'wr_rst_busy' of module 'fm_hdmi_fifo_generator_0_0' is unconnected for instance 'fifo_generator_payload' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:773]
 WARNING: [Synth 8-7071] port 'rd_rst_busy' of module 'fm_hdmi_fifo_generator_0_0' is unconnected for instance 'fifo_generator_payload' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:773]
 WARNING: [Synth 8-7023] instance 'fifo_generator_payload' of module 'fm_hdmi_fifo_generator_0_0' has 11 connections declared, but only 8 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:773]
 WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:782]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_ila_0_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_ila_0_2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_ila_0_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_ila_0_2_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_mpx_pack16_to32_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_mpx_pack16_to32_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_mpx_pack16_to32_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_mpx_pack16_to32_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_udp_mpx_framer_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_mpx_framer_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_udp_mpx_framer_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_mpx_framer_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_udp_phy_shell_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_phy_shell_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_udp_phy_shell_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_phy_shell_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_udp_top_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_top_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_udp_top_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_top_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_ila_0_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_ila_0_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_ila_0_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_ila_0_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_mpx_pack16_to32_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_mpx_pack16_to32_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_mpx_pack16_to32_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_mpx_pack16_to32_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_udp_mpx_framer_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_mpx_framer_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_udp_mpx_framer_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_mpx_framer_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_udp_phy_shell_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_phy_shell_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_udp_phy_shell_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_phy_shell_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_udp_top_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_top_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_udp_top_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_top_0_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'rxd_pkt_done' of module 'fm_hdmi_udp_top_0_0' is unconnected for instance 'udp_top_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:835]
 WARNING: [Synth 8-7071] port 'rxd_wr_en' of module 'fm_hdmi_udp_top_0_0' is unconnected for instance 'udp_top_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:835]
 WARNING: [Synth 8-7071] port 'rxd_wr_data' of module 'fm_hdmi_udp_top_0_0' is unconnected for instance 'udp_top_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:835]
 WARNING: [Synth 8-7071] port 'rxd_wr_byte_num' of module 'fm_hdmi_udp_top_0_0' is unconnected for instance 'udp_top_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:835]
 WARNING: [Synth 8-7023] instance 'udp_top_0' of module 'fm_hdmi_udp_top_0_0' has 18 connections declared, but only 14 given [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:835]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_udp_tx_start_ctrl_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_tx_start_ctrl_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_udp_tx_start_ctrl_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_tx_start_ctrl_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_util_vector_logic_0_1' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_util_vector_logic_0_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_util_vector_logic_0_1' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_util_vector_logic_0_1_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_util_vector_logic_0_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_util_vector_logic_0_2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_util_vector_logic_0_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-102946-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_util_vector_logic_0_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_udp_tx_start_ctrl_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_tx_start_ctrl_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_udp_tx_start_ctrl_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_udp_tx_start_ctrl_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_util_vector_logic_0_1' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_util_vector_logic_0_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_util_vector_logic_0_1' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_util_vector_logic_0_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_util_vector_logic_0_2' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_util_vector_logic_0_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_util_vector_logic_0_2' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/.Xil/Vivado-331305-reting-ThinkBook-14-G7-IAH/realtime/fm_hdmi_util_vector_logic_0_2_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'packer_for_udp_imp_G2TMFZ' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:661]
 INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/synth/fm_hdmi.v:399]
 INFO: [Synth 8-6155] done synthesizing module 'top' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/new/top.v:3]
@@ -332,18 +332,18 @@ WARNING: [Synth 8-7129] Port In68[0] in module xlconcat_v2_1_5_xlconcat is eithe
 WARNING: [Synth 8-7129] Port In69[0] in module xlconcat_v2_1_5_xlconcat is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2208.219 ; gain = 494.684 ; free physical = 20286 ; free virtual = 33334
+Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2208.703 ; gain = 494.652 ; free physical = 4198 ; free virtual = 30659
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2211.188 ; gain = 497.652 ; free physical = 20286 ; free virtual = 33334
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2214.641 ; gain = 500.590 ; free physical = 4198 ; free virtual = 30659
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2211.188 ; gain = 497.652 ; free physical = 20286 ; free virtual = 33334
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2214.641 ; gain = 500.590 ; free physical = 4198 ; free virtual = 30659
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2219.188 ; gain = 0.000 ; free physical = 20286 ; free virtual = 33334
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2218.641 ; gain = 0.000 ; free physical = 4198 ; free virtual = 30659
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -441,29 +441,32 @@ Finished Parsing XDC File [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/imports/new/eth_loopback.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/new/111.xdc]
+WARNING: [Vivado 12-508] No pins matched 'fm_hdmi_i/clk_wiz_1/inst/plle2_adv_inst/CLKOUT1'. [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/new/111.xdc:137]
+WARNING: [Vivado 12-508] No pins matched 'clk_main/inst/mmcm_adv_inst/CLKOUT2'. [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/new/111.xdc:138]
 Finished Parsing XDC File [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/new/111.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/new/111.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/constrs_1/new/111.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2283.219 ; gain = 0.000 ; free physical = 20278 ; free virtual = 33326
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2285.641 ; gain = 0.000 ; free physical = 4196 ; free virtual = 30652
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2283.254 ; gain = 0.000 ; free physical = 20278 ; free virtual = 33326
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2285.676 ; gain = 0.000 ; free physical = 4196 ; free virtual = 30652
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20275 ; free virtual = 33323
+Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4203 ; free virtual = 30655
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20275 ; free virtual = 33323
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4203 ; free virtual = 30655
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -537,10 +540,10 @@ Applied set_property KEEP_HIERARCHY = SOFT for fm_hdmi_i/packer_for_udp/udp_top_
 Applied set_property KEEP_HIERARCHY = SOFT for fm_hdmi_i/packer_for_udp/ila_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for clk_main. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20275 ; free virtual = 33323
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4203 ; free virtual = 30655
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20274 ; free virtual = 33323
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4201 ; free virtual = 30653
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -564,25 +567,25 @@ Start Cross Boundary and Area Optimization
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 WARNING: [Synth 8-3917] design top has port hdmi_out_en driven by constant 1
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20271 ; free virtual = 33324
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4201 ; free virtual = 30657
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20273 ; free virtual = 33326
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4202 ; free virtual = 30662
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20273 ; free virtual = 33326
+Finished Timing Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4202 ; free virtual = 30662
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20273 ; free virtual = 33326
+Finished Technology Mapping : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4202 ; free virtual = 30662
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -600,37 +603,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20272 ; free virtual = 33325
+Finished IO Insertion : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4219 ; free virtual = 30686
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20272 ; free virtual = 33325
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4219 ; free virtual = 30686
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20272 ; free virtual = 33325
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4219 ; free virtual = 30686
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20272 ; free virtual = 33325
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4219 ; free virtual = 30686
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20272 ; free virtual = 33325
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4219 ; free virtual = 30686
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20272 ; free virtual = 33325
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4219 ; free virtual = 30686
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -727,27 +730,27 @@ Report Cell Usage:
 |47    |OBUF                           |    12|
 +------+-------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20272 ; free virtual = 33325
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4219 ; free virtual = 30686
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 35 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2283.254 ; gain = 497.652 ; free physical = 20272 ; free virtual = 33325
-Synthesis Optimization Complete : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2283.254 ; gain = 569.719 ; free physical = 20272 ; free virtual = 33325
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2285.676 ; gain = 500.590 ; free physical = 4219 ; free virtual = 30686
+Synthesis Optimization Complete : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2285.676 ; gain = 571.625 ; free physical = 4219 ; free virtual = 30686
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2283.254 ; gain = 0.000 ; free physical = 20560 ; free virtual = 33613
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2285.676 ; gain = 0.000 ; free physical = 4505 ; free virtual = 30972
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2283.254 ; gain = 0.000 ; free physical = 20567 ; free virtual = 33620
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2285.676 ; gain = 0.000 ; free physical = 4505 ; free virtual = 30972
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 Synth Design complete | Checksum: 429f9fea
 INFO: [Common 17-83] Releasing license: Synthesis
-162 Infos, 161 Warnings, 0 Critical Warnings and 0 Errors encountered.
+162 Infos, 164 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 2283.254 ; gain = 924.188 ; free physical = 20567 ; free virtual = 33620
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1556.019; main = 1556.019; forked = 0.000
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 2251.207; main = 2251.207; forked = 0.000
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2283.254 ; gain = 0.000 ; free physical = 20567 ; free virtual = 33620
+synth_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 2285.676 ; gain = 926.125 ; free physical = 4505 ; free virtual = 30972
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1552.589; main = 1552.589; forked = 0.000
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 2253.629; main = 2253.629; forked = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2285.676 ; gain = 0.000 ; free physical = 4505 ; free virtual = 30972
 INFO: [Common 17-1381] The checkpoint '/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/synth_1/top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Mar  8 14:36:26 2026...
+INFO: [Common 17-206] Exiting Vivado at Tue Mar 17 17:01:31 2026...
