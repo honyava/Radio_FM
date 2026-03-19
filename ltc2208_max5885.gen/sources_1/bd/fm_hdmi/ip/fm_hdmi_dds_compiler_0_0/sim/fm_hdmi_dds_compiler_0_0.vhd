@@ -60,6 +60,8 @@ ENTITY fm_hdmi_dds_compiler_0_0 IS
   PORT (
     aclk : IN STD_LOGIC;
     aresetn : IN STD_LOGIC;
+    s_axis_config_tvalid : IN STD_LOGIC;
+    s_axis_config_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     m_axis_data_tvalid : OUT STD_LOGIC;
     m_axis_data_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
@@ -129,7 +131,7 @@ ARCHITECTURE fm_hdmi_dds_compiler_0_0_arch OF fm_hdmi_dds_compiler_0_0 IS
       s_axis_phase_tuser : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       s_axis_config_tvalid : IN STD_LOGIC;
       s_axis_config_tready : OUT STD_LOGIC;
-      s_axis_config_tdata : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      s_axis_config_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       s_axis_config_tlast : IN STD_LOGIC;
       m_axis_data_tvalid : OUT STD_LOGIC;
       m_axis_data_tready : IN STD_LOGIC;
@@ -168,6 +170,9 @@ ARCHITECTURE fm_hdmi_dds_compiler_0_0_arch OF fm_hdmi_dds_compiler_0_0 IS
 "esolve_type generated dependency chanid_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minim" & 
 "um {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_offset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axis_config_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CONFIG TDATA";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_config_tvalid: SIGNAL IS "XIL_INTERFACENAME S_AXIS_CONFIG, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 76800000, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_50M, LAYERED_METADATA undef, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axis_config_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CONFIG TVALID";
 BEGIN
   U0 : dds_compiler_v6_0_23
     GENERIC MAP (
@@ -188,7 +193,7 @@ BEGIN
       C_OUTPUT_FORM => 0,
       C_OUTPUT_WIDTH => 16,
       C_PHASE_ANGLE_WIDTH => 14,
-      C_PHASE_INCREMENT => 2,
+      C_PHASE_INCREMENT => 1,
       C_PHASE_INCREMENT_VALUE => "0001101010101010101010101011,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
       C_RESYNC => 0,
       C_PHASE_OFFSET => 0,
@@ -205,9 +210,9 @@ BEGIN
       C_S_PHASE_TDATA_WIDTH => 1,
       C_S_PHASE_HAS_TUSER => 0,
       C_S_PHASE_TUSER_WIDTH => 1,
-      C_HAS_S_CONFIG => 0,
+      C_HAS_S_CONFIG => 1,
       C_S_CONFIG_SYNC_MODE => 0,
-      C_S_CONFIG_TDATA_WIDTH => 1,
+      C_S_CONFIG_TDATA_WIDTH => 32,
       C_HAS_M_DATA => 1,
       C_M_DATA_TDATA_WIDTH => 32,
       C_M_DATA_HAS_TUSER => 0,
@@ -227,8 +232,8 @@ BEGIN
       s_axis_phase_tdata => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),
       s_axis_phase_tlast => '0',
       s_axis_phase_tuser => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),
-      s_axis_config_tvalid => '0',
-      s_axis_config_tdata => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),
+      s_axis_config_tvalid => s_axis_config_tvalid,
+      s_axis_config_tdata => s_axis_config_tdata,
       s_axis_config_tlast => '0',
       m_axis_data_tvalid => m_axis_data_tvalid,
       m_axis_data_tready => '0',

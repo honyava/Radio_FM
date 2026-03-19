@@ -152,4 +152,13 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_udp
 # IP: bd/fm_hdmi/ip/fm_hdmi_ila_0_2/fm_hdmi_ila_0_2.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_ila_0_2 || ORIG_REF_NAME==fm_hdmi_ila_0_2} -quiet] -quiet
 
+# IP: bd/fm_hdmi/ip/fm_hdmi_fm_dds_cfg_0_0/fm_hdmi_fm_dds_cfg_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_fm_dds_cfg_0_0 || ORIG_REF_NAME==fm_hdmi_fm_dds_cfg_0_0} -quiet] -quiet
+
+# IP: bd/fm_hdmi/ip/fm_hdmi_vio_0_1/fm_hdmi_vio_0_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_vio_0_1 || ORIG_REF_NAME==fm_hdmi_vio_0_1} -quiet] -quiet
+
+# IP: bd/fm_hdmi/ip/fm_hdmi_ila_0_3/fm_hdmi_ila_0_3.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_ila_0_3 || ORIG_REF_NAME==fm_hdmi_ila_0_3} -quiet] -quiet
+
 # XDC: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/fm_hdmi_ooc.xdc

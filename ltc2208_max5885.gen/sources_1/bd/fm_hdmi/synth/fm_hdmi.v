@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Sun Mar  8 14:35:39 2026
+//Date        : Thu Mar 19 15:26:27 2026
 //Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 //Command     : generate_target fm_hdmi.bd
 //Design      : fm_hdmi
@@ -224,10 +224,17 @@ module digital_mixer_imp_2OHHC6
   wire cmpy_1_m_axis_dout_tvalid;
   wire [31:0]dds_compiler_0_m_axis_data_tdata;
   wire dds_compiler_0_m_axis_data_tvalid;
+  wire [15:0]fm_dds_cfg_0_dbg_if_khz;
+  wire [31:0]fm_dds_cfg_0_dbg_pinc;
+  wire [16:0]fm_dds_cfg_0_dbg_rf_khz;
+  wire [31:0]fm_dds_cfg_0_s_axis_config_TDATA;
+  wire fm_dds_cfg_0_s_axis_config_TVALID;
   wire [7:0]lfsr_rng_0_m_axis_tdata;
   wire lfsr_rng_0_m_axis_tvalid;
   wire [31:0]s_axis_tdata_0_1;
   wire sys_rst_n_0_1;
+  wire [16:0]vio_0_probe_out0;
+  wire [0:0]vio_0_probe_out1;
   wire xlconstant_0_dout;
 
   assign adc_dci_0_1 = adc_clk;
@@ -253,13 +260,35 @@ module digital_mixer_imp_2OHHC6
        (.aclk(adc_dci_0_1),
         .aresetn(sys_rst_n_0_1),
         .m_axis_data_tdata(dds_compiler_0_m_axis_data_tdata),
-        .m_axis_data_tvalid(dds_compiler_0_m_axis_data_tvalid));
+        .m_axis_data_tvalid(dds_compiler_0_m_axis_data_tvalid),
+        .s_axis_config_tdata(fm_dds_cfg_0_s_axis_config_TDATA),
+        .s_axis_config_tvalid(fm_dds_cfg_0_s_axis_config_TVALID));
+  fm_hdmi_fm_dds_cfg_0_0 fm_dds_cfg_0
+       (.clk(adc_dci_0_1),
+        .dbg_if_khz(fm_dds_cfg_0_dbg_if_khz),
+        .dbg_pinc(fm_dds_cfg_0_dbg_pinc),
+        .dbg_rf_khz(fm_dds_cfg_0_dbg_rf_khz),
+        .rstn(sys_rst_n_0_1),
+        .s_axis_config_tdata(fm_dds_cfg_0_s_axis_config_TDATA),
+        .s_axis_config_tvalid(fm_dds_cfg_0_s_axis_config_TVALID),
+        .vio_apply_toggle(vio_0_probe_out1),
+        .vio_rf_khz(vio_0_probe_out0));
+  fm_hdmi_ila_0_3 ila_0
+       (.clk(adc_dci_0_1),
+        .probe0(dds_compiler_0_m_axis_data_tdata));
   fm_hdmi_lfsr_rng_0_0 lfsr_rng_0
        (.clk(adc_dci_0_1),
         .en(xlconstant_0_dout),
         .m_axis_tdata(lfsr_rng_0_m_axis_tdata),
         .m_axis_tvalid(lfsr_rng_0_m_axis_tvalid),
         .rstn(sys_rst_n_0_1));
+  fm_hdmi_vio_0_1 vio_0
+       (.clk(adc_dci_0_1),
+        .probe_in0(fm_dds_cfg_0_dbg_rf_khz),
+        .probe_in1(fm_dds_cfg_0_dbg_if_khz),
+        .probe_in2(fm_dds_cfg_0_dbg_pinc),
+        .probe_out0(vio_0_probe_out0),
+        .probe_out1(vio_0_probe_out1));
 endmodule
 
 module fm_demod_imp_KT0QRV
@@ -396,7 +425,7 @@ module fm_demod_imp_KT0QRV
        (.dout(xlconstant_0_dout));
 endmodule
 
-(* CORE_GENERATION_INFO = "fm_hdmi,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fm_hdmi,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=56,numReposBlks=48,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=14,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fm_hdmi.hwdef" *) 
+(* CORE_GENERATION_INFO = "fm_hdmi,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fm_hdmi,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=59,numReposBlks=51,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=15,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fm_hdmi.hwdef" *) 
 module fm_hdmi
    (adc_clk,
     adc_dai,

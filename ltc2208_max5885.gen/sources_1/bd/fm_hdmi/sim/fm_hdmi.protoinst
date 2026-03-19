@@ -125,6 +125,24 @@
 						"TVALID": { "actual": "m_axis_dout_tvalid"}
 					}
 				},
+				"/fm_demod/digital_mixer/dds_compiler_0/S_AXIS_CONFIG": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_config_tdata[31:0]"},
+						"TVALID": { "actual": "s_axis_config_tvalid"}
+					}
+				},
+				"/fm_demod/digital_mixer/fm_dds_cfg_0/s_axis_config": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "clk"},
+						"ARESETN": { "actual": "rstn"},
+						"TDATA": { "actual": "s_axis_config_tdata[31:0]"},
+						"TVALID": { "actual": "s_axis_config_tvalid"}
+					}
+				},
 				"/fm_demod/pll_pilot/DDS19/M_AXIS_DATA": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {

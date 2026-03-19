@@ -1,120 +1,186 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"-148,-438",
+   "Default View_ScaleFactor":"0.659754",
+   "Default View_TopLeft":"1032,299",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x -10 -y 450 -defaultsOSRD
-preplace port port-id_locked -pg 1 -lvl 0 -x -10 -y 20 -defaultsOSRD
-preplace port port-id_sys -pg 1 -lvl 0 -x -10 -y 250 -defaultsOSRD
-preplace port port-id_clk_10M -pg 1 -lvl 0 -x -10 -y 480 -defaultsOSRD
-preplace port port-id_clk_50M -pg 1 -lvl 0 -x -10 -y 120 -defaultsOSRD
-preplace port port-id_adc_clk -pg 1 -lvl 5 -x 3850 -y 70 -defaultsOSRD
-preplace port port-id_phy_rxc -pg 1 -lvl 0 -x -10 -y 550 -defaultsOSRD
-preplace port port-id_phy_rx_ctrl -pg 1 -lvl 0 -x -10 -y 310 -defaultsOSRD
-preplace port port-id_clk -pg 1 -lvl 0 -x -10 -y 50 -defaultsOSRD
-preplace port port-id_mdio -pg 1 -lvl 5 -x 3850 -y 460 -defaultsOSRD
-preplace port port-id_mdc -pg 1 -lvl 5 -x 3850 -y 430 -defaultsOSRD
-preplace port port-id_phy_rstn -pg 1 -lvl 5 -x 3850 -y 580 -defaultsOSRD
-preplace port port-id_phy_tx_ctrl -pg 1 -lvl 5 -x 3850 -y 550 -defaultsOSRD
-preplace port port-id_phy_txc -pg 1 -lvl 5 -x 3850 -y 520 -defaultsOSRD
-preplace portBus adc_dai -pg 1 -lvl 0 -x -10 -y 390 -defaultsOSRD
-preplace portBus hdmi_d1 -pg 1 -lvl 5 -x 3850 -y 230 -defaultsOSRD
-preplace portBus hdmi_clk -pg 1 -lvl 5 -x 3850 -y 170 -defaultsOSRD
-preplace portBus hdmi_d2 -pg 1 -lvl 5 -x 3850 -y 260 -defaultsOSRD
-preplace portBus hdmi_d0 -pg 1 -lvl 5 -x 3850 -y 200 -defaultsOSRD
-preplace portBus phy_rxd -pg 1 -lvl 0 -x -10 -y 520 -defaultsOSRD
-preplace portBus phy_txd -pg 1 -lvl 5 -x 3850 -y 400 -defaultsOSRD
-preplace portBus linkspeed -pg 1 -lvl 5 -x 3850 -y 490 -defaultsOSRD
-preplace inst fm_demod -pg 1 -lvl 3 -x 870 -y 432 -defaultsOSRD
-preplace inst hdmi_core -pg 1 -lvl 4 -x 3670 -y 220 -defaultsOSRD
-preplace inst fm_mod -pg 1 -lvl 2 -x 360 -y 460 -defaultsOSRD
+preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x -20 -y 450 -defaultsOSRD
+preplace port port-id_locked -pg 1 -lvl 0 -x -20 -y 20 -defaultsOSRD
+preplace port port-id_sys -pg 1 -lvl 0 -x -20 -y 250 -defaultsOSRD
+preplace port port-id_clk_10M -pg 1 -lvl 0 -x -20 -y 480 -defaultsOSRD
+preplace port port-id_clk_50M -pg 1 -lvl 0 -x -20 -y 120 -defaultsOSRD
+preplace port port-id_adc_clk -pg 1 -lvl 5 -x 9910 -y 70 -defaultsOSRD
+preplace port port-id_phy_rxc -pg 1 -lvl 0 -x -20 -y 550 -defaultsOSRD
+preplace port port-id_phy_rx_ctrl -pg 1 -lvl 0 -x -20 -y 310 -defaultsOSRD
+preplace port port-id_clk -pg 1 -lvl 0 -x -20 -y 50 -defaultsOSRD
+preplace port port-id_mdio -pg 1 -lvl 5 -x 9910 -y 460 -defaultsOSRD
+preplace port port-id_mdc -pg 1 -lvl 5 -x 9910 -y 430 -defaultsOSRD
+preplace port port-id_phy_rstn -pg 1 -lvl 5 -x 9910 -y 580 -defaultsOSRD
+preplace port port-id_phy_tx_ctrl -pg 1 -lvl 5 -x 9910 -y 550 -defaultsOSRD
+preplace port port-id_phy_txc -pg 1 -lvl 5 -x 9910 -y 520 -defaultsOSRD
+preplace portBus adc_dai -pg 1 -lvl 0 -x -20 -y 390 -defaultsOSRD
+preplace portBus hdmi_d1 -pg 1 -lvl 5 -x 9910 -y 230 -defaultsOSRD
+preplace portBus hdmi_clk -pg 1 -lvl 5 -x 9910 -y 170 -defaultsOSRD
+preplace portBus hdmi_d2 -pg 1 -lvl 5 -x 9910 -y 260 -defaultsOSRD
+preplace portBus hdmi_d0 -pg 1 -lvl 5 -x 9910 -y 200 -defaultsOSRD
+preplace portBus phy_rxd -pg 1 -lvl 0 -x -20 -y 520 -defaultsOSRD
+preplace portBus phy_txd -pg 1 -lvl 5 -x 9910 -y 400 -defaultsOSRD
+preplace portBus linkspeed -pg 1 -lvl 5 -x 9910 -y 490 -defaultsOSRD
+preplace inst fm_demod -pg 1 -lvl 3 -x 860 -y 434 -defaultsOSRD
+preplace inst hdmi_core -pg 1 -lvl 4 -x 6297 -y 220 -defaultsOSRD
+preplace inst fm_mod -pg 1 -lvl 2 -x 370 -y 460 -defaultsOSRD
 preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 110 -y 110 -defaultsOSRD
-preplace inst clk_wiz_1 -pg 1 -lvl 2 -x 360 -y 100 -defaultsOSRD
-preplace inst packer_for_udp -pg 1 -lvl 4 -x 3670 -y 480 -defaultsOSRD
-preplace inst fm_demod|LTC_2208_0 -pg 1 -lvl 2 -x 1200 -y 1042 -defaultsOSRD
-preplace inst fm_demod|xlconstant_0 -pg 1 -lvl 1 -x 830 -y 572 -defaultsOSRD
-preplace inst fm_demod|Dec200 -pg 1 -lvl 3 -x 2180 -y 632 -defaultsOSRD
-preplace inst fm_demod|digital_mixer -pg 1 -lvl 2 -x 1200 -y 564 -defaultsOSRD
-preplace inst fm_demod|demodulate_384k -pg 1 -lvl 4 -x 2500 -y 552 -defaultsOSRD
-preplace inst fm_demod|dec384to192 -pg 1 -lvl 5 -x 2800 -y 562 -defaultsOSRD
-preplace inst fm_demod|LminusR -pg 1 -lvl 2 -x 1200 -y 1336 -defaultsOSRD
-preplace inst fm_demod|LpluseR -pg 1 -lvl 2 -x 1200 -y 1462 -defaultsOSRD
-preplace inst fm_demod|pll_pilot -pg 1 -lvl 2 -x 1200 -y 1192 -defaultsOSRD
-preplace inst fm_demod|axis_dc_blocker_roun_0 -pg 1 -lvl 6 -x 3120 -y 582 -defaultsOSRD
-preplace inst fm_demod|Mono48k -pg 1 -lvl 6 -x 3120 -y 422 -defaultsOSRD
-preplace inst fm_demod|vio_0 -pg 1 -lvl 5 -x 2800 -y 442 -defaultsOSRD
-preplace inst fm_demod|digital_mixer|lfsr_rng_0 -pg 1 -lvl 1 -x 1260 -y 874 -defaultsOSRD
-preplace inst fm_demod|digital_mixer|cmpy_1 -pg 1 -lvl 2 -x 1630 -y 684 -defaultsOSRD
-preplace inst fm_demod|digital_mixer|dds_compiler_0 -pg 1 -lvl 1 -x 1260 -y 664 -defaultsOSRD
-preplace netloc Net 1 4 1 3810J 460n
-preplace netloc adc_clk_0_1 1 0 3 NJ 480 210 752 510
-preplace netloc adc_dai_0_1 1 0 3 NJ 390 NJ 390 530J
-preplace netloc adc_dci_0_1 1 2 2 580 210 3460
-preplace netloc clk_50M_1 1 0 4 20 10 NJ 10 NJ 10 3510
+preplace inst clk_wiz_1 -pg 1 -lvl 2 -x 370 -y 100 -defaultsOSRD
+preplace inst packer_for_udp -pg 1 -lvl 4 -x 6297 -y 482 -defaultsOSRD
+preplace inst fm_demod|LTC_2208_0 -pg 1 -lvl 2 -x 1270 -y 1264 -defaultsOSRD
+preplace inst fm_demod|xlconstant_0 -pg 1 -lvl 1 -x 830 -y 574 -defaultsOSRD
+preplace inst fm_demod|Dec200 -pg 1 -lvl 3 -x 2390 -y 634 -defaultsOSRD
+preplace inst fm_demod|digital_mixer -pg 1 -lvl 2 -x 1270 -y 566 -defaultsOSRD
+preplace inst fm_demod|demodulate_384k -pg 1 -lvl 4 -x 2830 -y 554 -defaultsOSRD
+preplace inst fm_demod|dec384to192 -pg 1 -lvl 5 -x 3147 -y 564 -defaultsOSRD
+preplace inst fm_demod|LminusR -pg 1 -lvl 2 -x 1270 -y 1544 -defaultsOSRD
+preplace inst fm_demod|LpluseR -pg 1 -lvl 2 -x 1270 -y 1664 -defaultsOSRD
+preplace inst fm_demod|pll_pilot -pg 1 -lvl 2 -x 1270 -y 1414 -defaultsOSRD
+preplace inst fm_demod|axis_dc_blocker_roun_0 -pg 1 -lvl 6 -x 3480 -y 584 -defaultsOSRD
+preplace inst fm_demod|Mono48k -pg 1 -lvl 6 -x 3480 -y 424 -defaultsOSRD
+preplace inst fm_demod|vio_0 -pg 1 -lvl 5 -x 3147 -y 444 -defaultsOSRD
+preplace inst packer_for_udp|mpx_pack16_to32_0 -pg 1 -lvl 2 -x 6697 -y 542 -defaultsOSRD
+preplace inst packer_for_udp|udp_mpx_framer_0 -pg 1 -lvl 4 -x 7587 -y 812 -defaultsOSRD
+preplace inst packer_for_udp|fifo_generator_payload -pg 1 -lvl 7 -x 8907 -y 522 -defaultsOSRD
+preplace inst packer_for_udp|fifo_generator_audio -pg 1 -lvl 3 -x 7127 -y 522 -defaultsOSRD
+preplace inst packer_for_udp|udp_phy_shell_0 -pg 1 -lvl 8 -x 9387 -y 1182 -defaultsOSRD
+preplace inst packer_for_udp|udp_tx_start_ctrl_0 -pg 1 -lvl 5 -x 7977 -y 732 -defaultsOSRD
+preplace inst packer_for_udp|util_vector_logic_0 -pg 1 -lvl 2 -x 6697 -y 702 -defaultsOSRD
+preplace inst packer_for_udp|util_vector_logic_1 -pg 1 -lvl 1 -x 6367 -y 582 -defaultsOSRD
+preplace inst packer_for_udp|udp_top_0 -pg 1 -lvl 6 -x 8387 -y 782 -defaultsOSRD
+preplace inst packer_for_udp|ila_0 -pg 1 -lvl 8 -x 9387 -y 692 -defaultsOSRD
+preplace inst fm_demod|digital_mixer|lfsr_rng_0 -pg 1 -lvl 1 -x 1380 -y 886 -defaultsOSRD
+preplace inst fm_demod|digital_mixer|cmpy_1 -pg 1 -lvl 2 -x 1850 -y 736 -defaultsOSRD
+preplace inst fm_demod|digital_mixer|dds_compiler_0 -pg 1 -lvl 1 -x 1380 -y 586 -defaultsOSRD
+preplace inst fm_demod|digital_mixer|fm_dds_cfg_0 -pg 1 -lvl 1 -x 1380 -y 1036 -defaultsOSRD
+preplace inst fm_demod|digital_mixer|vio_0 -pg 1 -lvl 2 -x 1850 -y 966 -defaultsOSRD
+preplace inst fm_demod|digital_mixer|ila_0 -pg 1 -lvl 1 -x 1380 -y 756 -defaultsOSRD
+preplace netloc Net 1 4 1 9850J 460n
+preplace netloc adc_clk_0_1 1 0 3 NJ 480 220 754 520
+preplace netloc adc_dai_0_1 1 0 3 NJ 390 NJ 390 540J
+preplace netloc adc_dci_0_1 1 2 2 570 200 6047
+preplace netloc clk_50M_1 1 0 4 20 220 NJ 220 NJ 220 3860
 preplace netloc clk_wiz_0_clk_out1 1 1 1 N 100
-preplace netloc clk_wiz_0_locked 1 1 3 200 220 NJ 220 3520
+preplace netloc clk_wiz_0_locked 1 1 3 210 210 NJ 210 3810
 preplace netloc clk_wiz_1_clk_adc 1 2 3 NJ 70 NJ 70 NJ
-preplace netloc clk_wiz_1_clkfb_out 1 1 2 210 190 510
-preplace netloc en_0_1 1 0 4 10 230 NJ 230 560 230 NJ
-preplace netloc fm_demod_m_axis_tdata_0 1 3 1 3500 430n
-preplace netloc fm_demod_m_axis_tvalid_0 1 3 1 3520 450n
-preplace netloc fm_mod_m_axis_data_tdata_0 1 2 1 520 450n
-preplace netloc hdmi_core_hdmi_clk 1 4 1 3810J 170n
-preplace netloc hdmi_core_hdmi_d0 1 4 1 3810J 200n
+preplace netloc clk_wiz_1_clkfb_out 1 1 2 220 190 520
+preplace netloc en_0_1 1 0 4 10 230 NJ 230 550 230 NJ
+preplace netloc fm_demod_m_axis_tdata_0 1 3 1 3850 522n
+preplace netloc fm_demod_m_axis_tvalid_0 1 3 1 3870 542n
+preplace netloc fm_demod_probe_out0 1 3 1 3810 684n
+preplace netloc fm_mod_m_axis_data_tdata_0 1 2 1 530 450n
+preplace netloc hdmi_core_hdmi_clk 1 4 1 9820J 170n
+preplace netloc hdmi_core_hdmi_d0 1 4 1 9820J 200n
 preplace netloc hdmi_core_hdmi_d1 1 4 1 NJ 230
-preplace netloc hdmi_core_hdmi_d2 1 4 1 3810J 250n
-preplace netloc packer_for_udp_linkspeed 1 4 1 NJ 490
-preplace netloc packer_for_udp_mdc 1 4 1 3830J 430n
-preplace netloc packer_for_udp_mpx_ready 1 2 3 590 302 NJ 302 3810
-preplace netloc packer_for_udp_phy_rstn 1 4 1 3810J 550n
-preplace netloc packer_for_udp_phy_tx_ctrl 1 4 1 3830J 530n
-preplace netloc packer_for_udp_phy_txc 1 4 1 3830J 510n
-preplace netloc packer_for_udp_phy_txd 1 4 1 3820J 400n
-preplace netloc phy_rx_ctrl_0_1 1 0 4 NJ 310 NJ 310 570J 312 3450J
-preplace netloc phy_rxc_0_1 1 0 4 10J 282 NJ 282 NJ 282 3480J
-preplace netloc phy_rxd_0_1 1 0 4 20J 292 NJ 292 NJ 292 3470J
-preplace netloc src_in_1 1 3 1 3490 210n
-preplace netloc sys_1 1 0 4 NJ 250 NJ 250 NJ 250 3530
-preplace netloc sys_rst_n_0_1 1 0 3 NJ 450 200 762 N
-preplace netloc fm_demod_probe_out0 1 3 1 3530 570n
-preplace netloc fm_demod|Dec200_m_axis_tvalid 1 3 1 2330 572n
-preplace netloc fm_demod|Mono48k_m_axis_data_tvalid 1 6 1 N 442
-preplace netloc fm_demod|adc_clk_1 1 0 6 750J 512 930 474 2030 474 2340 432 2660 372 2940
-preplace netloc fm_demod|adc_dai_1 1 0 2 NJ 722 940
-preplace netloc fm_demod|axis_dc_blocker_roun_0_m_axis_tdata 1 6 1 N 572
-preplace netloc fm_demod|axis_dc_blocker_roun_0_m_axis_tvalid 1 6 1 N 592
-preplace netloc fm_demod|cic_compiler_2_m_axis_data_tdata 1 3 1 2320 592n
-preplace netloc fm_demod|cic_compiler_3_m_axis_data_tdata 1 3 1 2340 612n
-preplace netloc fm_demod|digital_mixer_m_axis_dout_tdata_0 1 2 1 2020 642n
-preplace netloc fm_demod|digital_mixer_m_axis_dout_tvalid_0 1 2 1 2030 662n
-preplace netloc fm_demod|lfsr_rng_0_m_axis_tdata 1 2 2 2010 532 NJ
-preplace netloc fm_demod|lfsr_rng_0_m_axis_tvalid 1 2 2 2000 512 NJ
-preplace netloc fm_demod|m_axis_tready_0_1 1 0 7 NJ 1192 910J 1532 NJ 1532 NJ 1532 NJ 1532 NJ 1532 3290
-preplace netloc fm_demod|mono48k_m_axis_dout_tdata 1 6 1 N 422
-preplace netloc fm_demod|s_axis_tdata_0_1 1 0 2 750J 712 940
-preplace netloc fm_demod|sys_rst_n_0_1 1 0 2 NJ 762 920
-preplace netloc fm_demod|xlconstant_0_dout 1 1 1 910J 564n
-preplace netloc fm_demod|vio_0_probe_out0 1 1 6 940 464 2040 464 2320 362 NJ 362 2950 672 NJ
-preplace netloc fm_demod|dec384to192_M_AXIS_DATA 1 5 1 N 562
-preplace netloc fm_demod|demodulate_384k_M_AXIS_DOUT 1 4 1 N 552
-preplace netloc fm_demod|digital_mixer|adc_dci_0_1 1 0 2 1110 764 N
-preplace netloc fm_demod|digital_mixer|cmpy_1_m_axis_dout_tdata 1 2 1 1840 684n
-preplace netloc fm_demod|digital_mixer|cmpy_1_m_axis_dout_tvalid 1 2 1 1830 704n
-preplace netloc fm_demod|digital_mixer|dds_compiler_0_m_axis_data_tdata 1 1 1 N 664
-preplace netloc fm_demod|digital_mixer|dds_compiler_0_m_axis_data_tvalid 1 1 1 N 684
-preplace netloc fm_demod|digital_mixer|lfsr_rng_0_m_axis_tdata 1 1 2 1420 844 NJ
-preplace netloc fm_demod|digital_mixer|lfsr_rng_0_m_axis_tvalid 1 1 2 1430 864 NJ
-preplace netloc fm_demod|digital_mixer|s_axis_tdata_0_1 1 0 2 NJ 584 1410
-preplace netloc fm_demod|digital_mixer|sys_rst_n_0_1 1 0 2 1100 784 N
-preplace netloc fm_demod|digital_mixer|xlconstant_0_dout 1 0 2 1090 574 1420
-levelinfo -pg 1 -10 110 360 870 3670 3850
-levelinfo -hier fm_demod * 830 1200 2180 2500 2800 3120 *
-levelinfo -hier fm_demod|digital_mixer * 1260 1630 *
-pagesize -pg 1 -db -bbox -sgen -150 0 4000 1590
-pagesize -hier fm_demod -db -bbox -sgen 720 342 3320 1542
-pagesize -hier fm_demod|digital_mixer -db -bbox -sgen 1060 504 1870 954
+preplace netloc hdmi_core_hdmi_d2 1 4 1 9820J 250n
+preplace netloc packer_for_udp_linkspeed 1 4 1 9860J 490n
+preplace netloc packer_for_udp_mdc 1 4 1 9840J 430n
+preplace netloc packer_for_udp_mpx_ready 1 2 3 580 304 NJ 304 9820
+preplace netloc packer_for_udp_phy_rstn 1 4 1 9890J 580n
+preplace netloc packer_for_udp_phy_tx_ctrl 1 4 1 9880J 550n
+preplace netloc packer_for_udp_phy_txc 1 4 1 9870J 520n
+preplace netloc packer_for_udp_phy_txd 1 4 1 9830J 400n
+preplace netloc phy_rx_ctrl_0_1 1 0 4 NJ 310 NJ 310 560J 314 3820J
+preplace netloc phy_rxc_0_1 1 0 4 0J 284 NJ 284 NJ 284 3840J
+preplace netloc phy_rxd_0_1 1 0 4 10J 294 NJ 294 NJ 294 3830J
+preplace netloc src_in_1 1 3 1 3850 210n
+preplace netloc sys_1 1 0 4 NJ 250 NJ 250 NJ 250 6037
+preplace netloc sys_rst_n_0_1 1 0 3 NJ 450 210 764 N
+preplace netloc fm_demod|Dec200_m_axis_tvalid 1 3 1 2660 574n
+preplace netloc fm_demod|Mono48k_m_axis_data_tvalid 1 6 1 N 444
+preplace netloc fm_demod|adc_clk_1 1 0 6 NJ 634 990 466 2250 466 2640 434 3007 374 3300
+preplace netloc fm_demod|adc_dai_1 1 0 2 NJ 724 980
+preplace netloc fm_demod|axis_dc_blocker_roun_0_m_axis_tdata 1 6 1 N 574
+preplace netloc fm_demod|axis_dc_blocker_roun_0_m_axis_tvalid 1 6 1 N 594
+preplace netloc fm_demod|cic_compiler_2_m_axis_data_tdata 1 3 1 2650 594n
+preplace netloc fm_demod|cic_compiler_3_m_axis_data_tdata 1 3 1 2670 614n
+preplace netloc fm_demod|digital_mixer_m_axis_dout_tdata_0 1 2 1 2220 644n
+preplace netloc fm_demod|digital_mixer_m_axis_dout_tvalid_0 1 2 1 2250 664n
+preplace netloc fm_demod|lfsr_rng_0_m_axis_tdata 1 2 2 2230 534 NJ
+preplace netloc fm_demod|lfsr_rng_0_m_axis_tvalid 1 2 2 2220 514 NJ
+preplace netloc fm_demod|m_axis_tready_0_1 1 0 7 740J 364 NJ 364 NJ 364 NJ 364 NJ 364 3310J 674 3650
+preplace netloc fm_demod|mono48k_m_axis_dout_tdata 1 6 1 N 424
+preplace netloc fm_demod|s_axis_tdata_0_1 1 0 2 750J 666 N
+preplace netloc fm_demod|sys_rst_n_0_1 1 0 2 NJ 764 970
+preplace netloc fm_demod|vio_0_probe_out0 1 1 6 1010 476 2240 544 2640 664 NJ 664 3290 684 NJ
+preplace netloc fm_demod|xlconstant_0_dout 1 1 1 1000J 574n
+preplace netloc fm_demod|dec384to192_M_AXIS_DATA 1 5 1 N 564
+preplace netloc fm_demod|demodulate_384k_M_AXIS_DOUT 1 4 1 N 554
+preplace netloc packer_for_udp|Net 1 2 5 6887 702 7317J 512 NJ 512 NJ 512 8707J
+preplace netloc packer_for_udp|Net1 1 8 1 9637 1122n
+preplace netloc packer_for_udp|fifo_generator_1_dout 1 2 2 6917 802 NJ
+preplace netloc packer_for_udp|fifo_generator_1_empty 1 2 2 6907 822 NJ
+preplace netloc packer_for_udp|fifo_generator_audio_full 1 0 3 6217 432 NJ 432 6917J
+preplace netloc packer_for_udp|fifo_generator_audio_rd_data_count 1 3 5 7337 522 NJ 522 NJ 522 8667J 732 NJ
+preplace netloc packer_for_udp|fifo_generator_payload_data_count 1 7 1 9167 502n
+preplace netloc packer_for_udp|fifo_generator_payload_dout 1 5 3 8167 552 8717 672 9157
+preplace netloc packer_for_udp|fifo_generator_payload_full 1 3 4 7387 462 NJ 462 NJ 462 NJ
+preplace netloc packer_for_udp|iodelay_ref_clk200_0_1 1 0 8 NJ 992 NJ 992 NJ 992 NJ 992 NJ 992 NJ 992 NJ 992 9137
+preplace netloc packer_for_udp|mdio_clk50_0_1 1 0 8 NJ 1012 NJ 1012 NJ 1012 NJ 1012 NJ 1012 NJ 1012 NJ 1012 9107
+preplace netloc packer_for_udp|mpx_pack16_to32_0_out_data 1 2 6 6897 682 7327J 612 NJ 612 NJ 612 8647J 682 9167
+preplace netloc packer_for_udp|mpx_pack16_to32_0_out_valid 1 2 1 6867 482n
+preplace netloc packer_for_udp|mpx_pack16_to32_0_s_ready 1 2 7 6857 712 7367J 642 7817J 622 NJ 622 8597J 832 NJ 832 NJ
+preplace netloc packer_for_udp|phy_rx_ctrl_0_1 1 0 8 NJ 1032 NJ 1032 NJ 1032 NJ 1032 NJ 1032 NJ 1032 NJ 1032 9127
+preplace netloc packer_for_udp|phy_rxc_0_1 1 0 8 NJ 1072 NJ 1072 NJ 1072 NJ 1072 NJ 1072 NJ 1072 NJ 1072 9117
+preplace netloc packer_for_udp|phy_rxd_0_1 1 0 8 NJ 1052 NJ 1052 NJ 1052 NJ 1052 NJ 1052 NJ 1052 NJ 1052 9097
+preplace netloc packer_for_udp|probe7_1 1 0 8 6197J 642 NJ 642 6847J 722 7357J 632 NJ 632 NJ 632 8607J 752 9097
+preplace netloc packer_for_udp|rst_n_0_1 1 0 8 6197J 512 6527 762 NJ 762 7347 702 7817 832 8137 592 8637J 762 9197
+preplace netloc packer_for_udp|s_data_0_1 1 0 2 NJ 522 6517
+preplace netloc packer_for_udp|s_valid_0_1 1 0 2 6207J 502 6537
+preplace netloc packer_for_udp|udp_mpx_framer_0_audio_rd_en 1 2 3 6937 692 NJ 692 7787
+preplace netloc packer_for_udp|udp_mpx_framer_0_pay_din 1 4 4 7787J 822 8117J 542 8697 692 NJ
+preplace netloc packer_for_udp|udp_mpx_framer_0_pay_wr_en 1 4 3 7807J 532 NJ 532 8577
+preplace netloc packer_for_udp|udp_mpx_framer_0_pkt_ready_pulse 1 4 1 7797 742n
+preplace netloc packer_for_udp|udp_mpx_framer_0_tx_payload_bytes 1 4 2 NJ 852 8147
+preplace netloc packer_for_udp|udp_phy_shell_0_destination_ip 1 5 4 8197 932 NJ 932 NJ 932 9577
+preplace netloc packer_for_udp|udp_phy_shell_0_destination_mac 1 5 4 8157 372 NJ 372 NJ 372 9617
+preplace netloc packer_for_udp|udp_phy_shell_0_gmii_rxc 1 2 7 6927 732 7377 682 7827 642 8147 572 8677 702 9207 852 9567
+preplace netloc packer_for_udp|udp_phy_shell_0_gmii_rxd 1 5 4 8187 602 8687J 662 9147J 552 9597
+preplace netloc packer_for_udp|udp_phy_shell_0_gmii_rxdv 1 5 4 8197 582 8627J 842 NJ 842 9587
+preplace netloc packer_for_udp|udp_phy_shell_0_gmii_txc 1 5 4 8177 382 NJ 382 NJ 382 9607
+preplace netloc packer_for_udp|udp_phy_shell_0_linkspeed 1 8 1 N 1142
+preplace netloc packer_for_udp|udp_phy_shell_0_mdc 1 8 1 9667 1102n
+preplace netloc packer_for_udp|udp_phy_shell_0_phy_rstn 1 8 1 9627 1122n
+preplace netloc packer_for_udp|udp_phy_shell_0_phy_tx_ctrl 1 8 1 9647 1082n
+preplace netloc packer_for_udp|udp_phy_shell_0_phy_txc 1 8 1 9677 1062n
+preplace netloc packer_for_udp|udp_phy_shell_0_phy_txd 1 8 1 9657 1082n
+preplace netloc packer_for_udp|udp_top_0_gmii_txd 1 6 2 8587 742 9177
+preplace netloc packer_for_udp|udp_top_0_gmii_txen 1 6 2 8617J 722 9187
+preplace netloc packer_for_udp|udp_top_0_tx_done 1 4 3 7837 562 NJ 562 8577
+preplace netloc packer_for_udp|udp_top_0_tx_request 1 6 2 8657 712 NJ
+preplace netloc packer_for_udp|udp_tx_start_ctrl_0_tx_start_en 1 5 1 8127 732n
+preplace netloc packer_for_udp|util_vector_logic_1_Res 1 1 1 NJ 582
+preplace netloc packer_for_udp|wr_clk_0_1 1 0 3 NJ 482 6547 442 6877
+preplace netloc fm_demod|digital_mixer|adc_dci_0_1 1 0 2 1180 1136 1630
+preplace netloc fm_demod|digital_mixer|cmpy_1_m_axis_dout_tdata 1 2 1 N 736
+preplace netloc fm_demod|digital_mixer|cmpy_1_m_axis_dout_tvalid 1 2 1 N 756
+preplace netloc fm_demod|digital_mixer|dds_compiler_0_m_axis_data_tdata 1 0 2 1200 676 1610
+preplace netloc fm_demod|digital_mixer|dds_compiler_0_m_axis_data_tvalid 1 1 1 1600 606n
+preplace netloc fm_demod|digital_mixer|lfsr_rng_0_m_axis_tdata 1 1 2 1560 556 NJ
+preplace netloc fm_demod|digital_mixer|lfsr_rng_0_m_axis_tvalid 1 1 2 1580 576 NJ
+preplace netloc fm_demod|digital_mixer|s_axis_tdata_0_1 1 0 2 NJ 666 1570
+preplace netloc fm_demod|digital_mixer|sys_rst_n_0_1 1 0 2 1170 686 1590
+preplace netloc fm_demod|digital_mixer|xlconstant_0_dout 1 0 2 1160 1146 1620
+preplace netloc fm_demod|digital_mixer|vio_0_probe_out0 1 0 3 1200 1156 NJ 1156 2060
+preplace netloc fm_demod|digital_mixer|vio_0_probe_out1 1 0 3 1170 1166 NJ 1166 2050
+preplace netloc fm_demod|digital_mixer|fm_dds_cfg_0_dbg_rf_khz 1 1 1 1600 956n
+preplace netloc fm_demod|digital_mixer|fm_dds_cfg_0_dbg_if_khz 1 1 1 1640 976n
+preplace netloc fm_demod|digital_mixer|fm_dds_cfg_0_dbg_pinc 1 1 1 1650 996n
+preplace netloc fm_demod|digital_mixer|fm_dds_cfg_0_s_axis_config 1 0 2 1190 1126 1560
+levelinfo -pg 1 -20 110 370 860 6297 9910
+levelinfo -hier fm_demod * 830 1270 2390 2830 3147 3480 *
+levelinfo -hier packer_for_udp * 6367 6697 7127 7587 7977 8387 8907 9387 *
+levelinfo -hier fm_demod|digital_mixer * 1380 1850 *
+pagesize -pg 1 -db -bbox -sgen -170 0 10060 1760
+pagesize -hier fm_demod -db -bbox -sgen 710 344 3680 1734
+pagesize -hier packer_for_udp -db -bbox -sgen 6167 362 9707 1362
+pagesize -hier fm_demod|digital_mixer -db -bbox -sgen 1130 506 2090 1176
 "
 }
 0

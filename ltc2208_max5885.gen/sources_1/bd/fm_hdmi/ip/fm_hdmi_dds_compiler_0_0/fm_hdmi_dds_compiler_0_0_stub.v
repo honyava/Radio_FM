@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Sun Mar  8 14:35:59 2026
+// Date        : Thu Mar 19 15:26:56 2026
 // Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 // Command     : write_verilog -force -mode synth_stub
 //               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_dds_compiler_0_0/fm_hdmi_dds_compiler_0_0_stub.v
@@ -15,12 +15,14 @@
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "dds_compiler_v6_0_23,Vivado 2023.2" *)
-module fm_hdmi_dds_compiler_0_0(aclk, aresetn, m_axis_data_tvalid, 
-  m_axis_data_tdata)
-/* synthesis syn_black_box black_box_pad_pin="aresetn,m_axis_data_tvalid,m_axis_data_tdata[31:0]" */
+module fm_hdmi_dds_compiler_0_0(aclk, aresetn, s_axis_config_tvalid, 
+  s_axis_config_tdata, m_axis_data_tvalid, m_axis_data_tdata)
+/* synthesis syn_black_box black_box_pad_pin="aresetn,s_axis_config_tvalid,s_axis_config_tdata[31:0],m_axis_data_tvalid,m_axis_data_tdata[31:0]" */
 /* synthesis syn_force_seq_prim="aclk" */;
   input aclk /* synthesis syn_isclock = 1 */;
   input aresetn;
+  input s_axis_config_tvalid;
+  input [31:0]s_axis_config_tdata;
   output m_axis_data_tvalid;
   output [31:0]m_axis_data_tdata;
 endmodule

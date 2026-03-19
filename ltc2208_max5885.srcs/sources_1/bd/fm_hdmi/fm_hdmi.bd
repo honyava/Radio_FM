@@ -30,7 +30,10 @@
         "digital_mixer": {
           "lfsr_rng_0": "",
           "cmpy_1": "",
-          "dds_compiler_0": ""
+          "dds_compiler_0": "",
+          "fm_dds_cfg_0": "",
+          "vio_0": "",
+          "ila_0": ""
         },
         "demodulate_384k": {
           "cmpy_0": "",
@@ -1679,6 +1682,9 @@
                 "xci_path": "ip/fm_hdmi_dds_compiler_0_0/fm_hdmi_dds_compiler_0_0.xci",
                 "inst_hier_path": "fm_demod/digital_mixer/dds_compiler_0",
                 "parameters": {
+                  "DATA_Has_TLAST": {
+                    "value": "Not_Required"
+                  },
                   "DDS_Clock_Rate": {
                     "value": "76.8"
                   },
@@ -1721,10 +1727,204 @@
                   "Parameter_Entry": {
                     "value": "Hardware_Parameters"
                   },
+                  "Phase_Increment": {
+                    "value": "Programmable"
+                  },
                   "Phase_Width": {
+                    "value": "32"
+                  },
+                  "S_PHASE_Has_TUSER": {
+                    "value": "Not_Required"
+                  }
+                }
+              },
+              "fm_dds_cfg_0": {
+                "vlnv": "xilinx.com:module_ref:fm_dds_cfg:1.0",
+                "ip_revision": "1",
+                "xci_name": "fm_hdmi_fm_dds_cfg_0_0",
+                "xci_path": "ip/fm_hdmi_fm_dds_cfg_0_0/fm_hdmi_fm_dds_cfg_0_0.xci",
+                "inst_hier_path": "fm_demod/digital_mixer/fm_dds_cfg_0",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "fm_dds_cfg",
+                  "boundary_crc": "0x0"
+                },
+                "interface_ports": {
+                  "s_axis_config": {
+                    "mode": "Master",
+                    "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                    "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                    "parameters": {
+                      "TDATA_NUM_BYTES": {
+                        "value": "4",
+                        "value_src": "constant"
+                      },
+                      "TDEST_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TID_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TUSER_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TREADY": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TSTRB": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TKEEP": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TLAST": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "FREQ_HZ": {
+                        "value": "76800000",
+                        "value_src": "ip_prop"
+                      },
+                      "PHASE": {
+                        "value": "65.0",
+                        "value_src": "ip_prop"
+                      },
+                      "CLK_DOMAIN": {
+                        "value": "fm_hdmi_clk_50M",
+                        "value_src": "ip_prop"
+                      }
+                    },
+                    "port_maps": {
+                      "TDATA": {
+                        "physical_name": "s_axis_config_tdata",
+                        "direction": "O",
+                        "left": "31",
+                        "right": "0"
+                      },
+                      "TVALID": {
+                        "physical_name": "s_axis_config_tvalid",
+                        "direction": "O"
+                      }
+                    }
+                  }
+                },
+                "ports": {
+                  "clk": {
+                    "type": "clk",
+                    "direction": "I",
+                    "parameters": {
+                      "ASSOCIATED_BUSIF": {
+                        "value": "s_axis_config",
+                        "value_src": "constant"
+                      },
+                      "ASSOCIATED_RESET": {
+                        "value": "rstn",
+                        "value_src": "constant"
+                      },
+                      "FREQ_HZ": {
+                        "value": "76800000",
+                        "value_src": "ip_prop"
+                      },
+                      "PHASE": {
+                        "value": "65.0",
+                        "value_src": "ip_prop"
+                      },
+                      "CLK_DOMAIN": {
+                        "value": "fm_hdmi_clk_50M",
+                        "value_src": "ip_prop"
+                      }
+                    }
+                  },
+                  "rstn": {
+                    "type": "rst",
+                    "direction": "I",
+                    "parameters": {
+                      "POLARITY": {
+                        "value": "ACTIVE_LOW",
+                        "value_src": "constant"
+                      }
+                    }
+                  },
+                  "vio_rf_khz": {
+                    "direction": "I",
+                    "left": "16",
+                    "right": "0"
+                  },
+                  "vio_apply_toggle": {
+                    "direction": "I"
+                  },
+                  "dbg_rf_khz": {
+                    "direction": "O",
+                    "left": "16",
+                    "right": "0"
+                  },
+                  "dbg_if_khz": {
+                    "direction": "O",
+                    "left": "15",
+                    "right": "0"
+                  },
+                  "dbg_pinc": {
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  }
+                }
+              },
+              "vio_0": {
+                "vlnv": "xilinx.com:ip:vio:3.0",
+                "ip_revision": "24",
+                "xci_name": "fm_hdmi_vio_0_1",
+                "xci_path": "ip/fm_hdmi_vio_0_1/fm_hdmi_vio_0_1.xci",
+                "inst_hier_path": "fm_demod/digital_mixer/vio_0",
+                "parameters": {
+                  "C_NUM_PROBE_IN": {
+                    "value": "3"
+                  },
+                  "C_NUM_PROBE_OUT": {
+                    "value": "2"
+                  },
+                  "C_PROBE_OUT0_INIT_VAL": {
+                    "value": "0x155CC"
+                  },
+                  "C_PROBE_OUT0_WIDTH": {
+                    "value": "17"
+                  },
+                  "C_PROBE_OUT1_INIT_VAL": {
+                    "value": "0x1"
+                  }
+                }
+              },
+              "ila_0": {
+                "vlnv": "xilinx.com:ip:ila:6.2",
+                "ip_revision": "14",
+                "xci_name": "fm_hdmi_ila_0_3",
+                "xci_path": "ip/fm_hdmi_ila_0_3/fm_hdmi_ila_0_3.xci",
+                "inst_hier_path": "fm_demod/digital_mixer/ila_0",
+                "parameters": {
+                  "C_DATA_DEPTH": {
+                    "value": "4096"
+                  },
+                  "C_MONITOR_TYPE": {
+                    "value": "Native"
+                  },
+                  "C_PROBE0_WIDTH": {
                     "value": "32"
                   }
                 }
+              }
+            },
+            "interface_nets": {
+              "fm_dds_cfg_0_s_axis_config": {
+                "interface_ports": [
+                  "fm_dds_cfg_0/s_axis_config",
+                  "dds_compiler_0/S_AXIS_CONFIG"
+                ]
               }
             },
             "nets": {
@@ -1733,7 +1933,10 @@
                   "adc_clk",
                   "dds_compiler_0/aclk",
                   "cmpy_1/aclk",
-                  "lfsr_rng_0/clk"
+                  "lfsr_rng_0/clk",
+                  "fm_dds_cfg_0/clk",
+                  "vio_0/clk",
+                  "ila_0/clk"
                 ]
               },
               "cmpy_1_m_axis_dout_tdata": {
@@ -1751,13 +1954,32 @@
               "dds_compiler_0_m_axis_data_tdata": {
                 "ports": [
                   "dds_compiler_0/m_axis_data_tdata",
-                  "cmpy_1/s_axis_b_tdata"
+                  "cmpy_1/s_axis_b_tdata",
+                  "ila_0/probe0"
                 ]
               },
               "dds_compiler_0_m_axis_data_tvalid": {
                 "ports": [
                   "dds_compiler_0/m_axis_data_tvalid",
                   "cmpy_1/s_axis_b_tvalid"
+                ]
+              },
+              "fm_dds_cfg_0_dbg_if_khz": {
+                "ports": [
+                  "fm_dds_cfg_0/dbg_if_khz",
+                  "vio_0/probe_in1"
+                ]
+              },
+              "fm_dds_cfg_0_dbg_pinc": {
+                "ports": [
+                  "fm_dds_cfg_0/dbg_pinc",
+                  "vio_0/probe_in2"
+                ]
+              },
+              "fm_dds_cfg_0_dbg_rf_khz": {
+                "ports": [
+                  "fm_dds_cfg_0/dbg_rf_khz",
+                  "vio_0/probe_in0"
                 ]
               },
               "lfsr_rng_0_m_axis_tdata": {
@@ -1785,7 +2007,20 @@
                   "sys_rst_n",
                   "lfsr_rng_0/rstn",
                   "cmpy_1/aresetn",
-                  "dds_compiler_0/aresetn"
+                  "dds_compiler_0/aresetn",
+                  "fm_dds_cfg_0/rstn"
+                ]
+              },
+              "vio_0_probe_out0": {
+                "ports": [
+                  "vio_0/probe_out0",
+                  "fm_dds_cfg_0/vio_rf_khz"
+                ]
+              },
+              "vio_0_probe_out1": {
+                "ports": [
+                  "vio_0/probe_out1",
+                  "fm_dds_cfg_0/vio_apply_toggle"
                 ]
               },
               "xlconstant_0_dout": {
