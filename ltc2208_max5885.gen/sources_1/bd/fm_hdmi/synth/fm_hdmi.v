@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Thu Mar 19 15:26:27 2026
+//Date        : Fri Mar 20 10:31:35 2026
 //Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 //Command     : generate_target fm_hdmi.bd
 //Design      : fm_hdmi
@@ -318,6 +318,7 @@ module fm_demod_imp_KT0QRV
   input sys_rst_n;
 
   wire Dec200_m_axis_tvalid;
+  wire [31:0]LTC_2208_0_m_axis_tdata;
   wire Mono48k_m_axis_data_tvalid;
   wire adc_clk_1;
   wire [15:0]adc_dai_1;
@@ -362,6 +363,7 @@ module fm_demod_imp_KT0QRV
   fm_hdmi_LTC_2208_0_0 LTC_2208_0
        (.adc_dai(adc_dai_1),
         .adc_dci(adc_clk_1),
+        .m_axis_tdata(LTC_2208_0_m_axis_tdata),
         .sys_rst_n(sys_rst_n_0_1));
   fm_hdmi_fir_compiler_0_3 LminusR
        (.aclk(adc_clk_1),
@@ -375,8 +377,8 @@ module fm_demod_imp_KT0QRV
        (.aclk(adc_clk_1),
         .m_axis_data_tdata(mono48k_m_axis_dout_tdata),
         .m_axis_data_tvalid(Mono48k_m_axis_data_tvalid),
-        .s_axis_data_tdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .s_axis_data_tvalid(1'b0));
+        .s_axis_data_tdata(axis_dc_blocker_roun_0_m_axis_tdata),
+        .s_axis_data_tvalid(axis_dc_blocker_roun_0_m_axis_tvalid));
   fm_hdmi_axis_dc_blocker_roun_0_0 axis_dc_blocker_roun_0
        (.aclk(adc_clk_1),
         .aresetn(vio_0_probe_out0),
@@ -412,6 +414,12 @@ module fm_demod_imp_KT0QRV
         .s_axis_ctrl_tvalid(lfsr_rng_0_m_axis_tvalid),
         .s_axis_tdata_0(s_axis_tdata_0_1),
         .sys_rst_n(vio_0_probe_out0));
+  fm_hdmi_ila_0_4 ila_0
+       (.clk(adc_clk_1),
+        .probe0(LTC_2208_0_m_axis_tdata),
+        .probe1(cic_compiler_2_m_axis_data_tdata),
+        .probe2(cic_compiler_3_m_axis_data_tdata),
+        .probe3(axis_dc_blocker_roun_0_m_axis_tdata));
   pll_pilot_imp_1563SO5 pll_pilot
        (.adc_clk(adc_clk_1),
         .s_axis_data_tdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
@@ -425,7 +433,7 @@ module fm_demod_imp_KT0QRV
        (.dout(xlconstant_0_dout));
 endmodule
 
-(* CORE_GENERATION_INFO = "fm_hdmi,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fm_hdmi,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=59,numReposBlks=51,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=15,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fm_hdmi.hwdef" *) 
+(* CORE_GENERATION_INFO = "fm_hdmi,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fm_hdmi,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=60,numReposBlks=52,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=15,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fm_hdmi.hwdef" *) 
 module fm_hdmi
    (adc_clk,
     adc_dai,

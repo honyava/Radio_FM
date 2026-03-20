@@ -118,6 +118,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/new/fm_dds_cfg.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/new/del_m.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -370,13 +377,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/fm_dds_cfg.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/bd/fm_hdmi/fm_hdmi.bd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -400,6 +400,9 @@
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="fm_hdmi.bd" FileRelPathName="ip/fm_hdmi_ila_0_3/fm_hdmi_ila_0_3.xci">
           <Proxy FileSetName="fm_hdmi_ila_0_3"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="fm_hdmi.bd" FileRelPathName="ip/fm_hdmi_ila_0_4/fm_hdmi_ila_0_4.xci">
+          <Proxy FileSetName="fm_hdmi_ila_0_4"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="fm_hdmi.bd" FileRelPathName="ip/fm_hdmi_udp_mpx_framer_0_0/fm_hdmi_udp_mpx_framer_0_0.xci">
           <Proxy FileSetName="fm_hdmi_udp_mpx_framer_0_0"/>
@@ -725,6 +728,12 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
+    <FileSet Name="fm_hdmi_ila_0_4" Type="BlockSrcs" RelSrcDir="$PSRCDIR/fm_hdmi_ila_0_4" RelGenDir="$PGENDIR/fm_hdmi_ila_0_4">
+      <Config>
+        <Option Name="TopModule" Val="fm_hdmi_ila_0_4"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
   </FileSets>
   <Simulators>
     <Simulator Name="XSim">
@@ -767,7 +776,7 @@
         <ReportConfig DisplayName="synthesis_report" Name="synth_1_copy_1_synth_synthesis_report_0" Spec="" RunStep="synth_design" ReportFile="top.vds">
           <ReportConfigOption Name="dummy_option" Type="string"/>
         </ReportConfig>
-        <ReportConfig DisplayName="Utilization - Synth Design" Name="synth_1_copy_1_synth_report_utilization_0" Spec="report_utilization" RunStep="synth_design" ReportFile="top_utilization_synth.rpt" Version="1" Minor="0">
+        <ReportConfig DisplayName="Utilization - Synth Design" Name="synth_1_copy_1_synth_report_utilization_0" Spec="report_utilization" RunStep="synth_design" ReportFile="top_utilization_synth_1.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
           <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
         </ReportConfig>
@@ -887,9 +896,7 @@
     </Run>
     <Run Id="fm_hdmi_fm_dds_cfg_0_0_synth_1" Type="Ft3:Synth" SrcSet="fm_hdmi_fm_dds_cfg_0_0" Part="xc7z020clg400-2" ConstrsSet="fm_hdmi_fm_dds_cfg_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/fm_hdmi_fm_dds_cfg_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/fm_hdmi_fm_dds_cfg_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/fm_hdmi_fm_dds_cfg_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -899,9 +906,7 @@
     </Run>
     <Run Id="fm_hdmi_vio_0_1_synth_1" Type="Ft3:Synth" SrcSet="fm_hdmi_vio_0_1" Part="xc7z020clg400-2" ConstrsSet="fm_hdmi_vio_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/fm_hdmi_vio_0_1_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/fm_hdmi_vio_0_1_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/fm_hdmi_vio_0_1_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -910,6 +915,16 @@
       <RQSFiles/>
     </Run>
     <Run Id="fm_hdmi_ila_0_3_synth_1" Type="Ft3:Synth" SrcSet="fm_hdmi_ila_0_3" Part="xc7z020clg400-2" ConstrsSet="fm_hdmi_ila_0_3" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/fm_hdmi_ila_0_3_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/fm_hdmi_ila_0_3_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/fm_hdmi_ila_0_3_synth_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2023"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="fm_hdmi_ila_0_4_synth_1" Type="Ft3:Synth" SrcSet="fm_hdmi_ila_0_4" Part="xc7z020clg400-2" ConstrsSet="fm_hdmi_ila_0_4" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/fm_hdmi_ila_0_4_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/fm_hdmi_ila_0_4_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/fm_hdmi_ila_0_4_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -1128,9 +1143,7 @@
     </Run>
     <Run Id="fm_hdmi_fm_dds_cfg_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-2" ConstrsSet="fm_hdmi_fm_dds_cfg_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="fm_hdmi_fm_dds_cfg_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/fm_hdmi_fm_dds_cfg_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/fm_hdmi_fm_dds_cfg_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -1147,9 +1160,7 @@
     </Run>
     <Run Id="fm_hdmi_vio_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-2" ConstrsSet="fm_hdmi_vio_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="fm_hdmi_vio_0_1_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/fm_hdmi_vio_0_1_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/fm_hdmi_vio_0_1_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -1165,6 +1176,23 @@
       <RQSFiles/>
     </Run>
     <Run Id="fm_hdmi_ila_0_3_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-2" ConstrsSet="fm_hdmi_ila_0_3" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="fm_hdmi_ila_0_3_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/fm_hdmi_ila_0_3_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/fm_hdmi_ila_0_3_impl_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2023"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="fm_hdmi_ila_0_4_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-2" ConstrsSet="fm_hdmi_ila_0_4" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="fm_hdmi_ila_0_4_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/fm_hdmi_ila_0_4_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/fm_hdmi_ila_0_4_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
           <Desc>Default settings for Implementation.</Desc>

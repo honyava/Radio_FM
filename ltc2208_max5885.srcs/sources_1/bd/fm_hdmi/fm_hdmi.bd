@@ -52,7 +52,8 @@
         },
         "axis_dc_blocker_roun_0": "",
         "Mono48k": "",
-        "vio_0": ""
+        "vio_0": "",
+        "ila_0": ""
       },
       "hdmi_core": {
         "xpm_cdc_gen_0": "",
@@ -1908,7 +1909,7 @@
                 "inst_hier_path": "fm_demod/digital_mixer/ila_0",
                 "parameters": {
                   "C_DATA_DEPTH": {
-                    "value": "4096"
+                    "value": "1024"
                   },
                   "C_MONITOR_TYPE": {
                     "value": "Native"
@@ -3611,6 +3612,27 @@
             "xci_name": "fm_hdmi_vio_0_0",
             "xci_path": "ip/fm_hdmi_vio_0_0/fm_hdmi_vio_0_0.xci",
             "inst_hier_path": "fm_demod/vio_0"
+          },
+          "ila_0": {
+            "vlnv": "xilinx.com:ip:ila:6.2",
+            "ip_revision": "14",
+            "xci_name": "fm_hdmi_ila_0_4",
+            "xci_path": "ip/fm_hdmi_ila_0_4/fm_hdmi_ila_0_4.xci",
+            "inst_hier_path": "fm_demod/ila_0",
+            "parameters": {
+              "C_DATA_DEPTH": {
+                "value": "8192"
+              },
+              "C_MONITOR_TYPE": {
+                "value": "Native"
+              },
+              "C_NUM_OF_PROBES": {
+                "value": "4"
+              },
+              "C_PROBE0_WIDTH": {
+                "value": "32"
+              }
+            }
           }
         },
         "interface_nets": {
@@ -3634,6 +3656,12 @@
               "demodulate_384k/sample_valid"
             ]
           },
+          "LTC_2208_0_m_axis_tdata": {
+            "ports": [
+              "LTC_2208_0/m_axis_tdata",
+              "ila_0/probe0"
+            ]
+          },
           "Mono48k_m_axis_data_tvalid": {
             "ports": [
               "Mono48k/m_axis_data_tvalid",
@@ -3653,7 +3681,8 @@
               "pll_pilot/adc_clk",
               "axis_dc_blocker_roun_0/aclk",
               "Mono48k/aclk",
-              "vio_0/clk"
+              "vio_0/clk",
+              "ila_0/clk"
             ]
           },
           "adc_dai_1": {
@@ -3665,25 +3694,30 @@
           "axis_dc_blocker_roun_0_m_axis_tdata": {
             "ports": [
               "axis_dc_blocker_roun_0/m_axis_tdata",
-              "m_axis_tdata_0"
+              "m_axis_tdata_0",
+              "Mono48k/s_axis_data_tdata",
+              "ila_0/probe3"
             ]
           },
           "axis_dc_blocker_roun_0_m_axis_tvalid": {
             "ports": [
               "axis_dc_blocker_roun_0/m_axis_tvalid",
-              "m_axis_tvalid_0"
+              "m_axis_tvalid_0",
+              "Mono48k/s_axis_data_tvalid"
             ]
           },
           "cic_compiler_2_m_axis_data_tdata": {
             "ports": [
               "Dec200/m_axis_i",
-              "demodulate_384k/tap_i"
+              "demodulate_384k/tap_i",
+              "ila_0/probe1"
             ]
           },
           "cic_compiler_3_m_axis_data_tdata": {
             "ports": [
               "Dec200/m_axis_q",
-              "demodulate_384k/tap_q"
+              "demodulate_384k/tap_q",
+              "ila_0/probe2"
             ]
           },
           "digital_mixer_m_axis_dout_tdata_0": {
@@ -5228,7 +5262,7 @@
             "inst_hier_path": "packer_for_udp/ila_0",
             "parameters": {
               "C_DATA_DEPTH": {
-                "value": "16384"
+                "value": "4096"
               },
               "C_MONITOR_TYPE": {
                 "value": "Native"
