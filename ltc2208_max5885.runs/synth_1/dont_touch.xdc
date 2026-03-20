@@ -107,6 +107,9 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_Lpl
 # IP: bd/fm_hdmi/ip/fm_hdmi_vio_0_0/fm_hdmi_vio_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_vio_0_0 || ORIG_REF_NAME==fm_hdmi_vio_0_0} -quiet] -quiet
 
+# IP: bd/fm_hdmi/ip/fm_hdmi_ila_0_4/fm_hdmi_ila_0_4.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_ila_0_4 || ORIG_REF_NAME==fm_hdmi_ila_0_4} -quiet] -quiet
+
 # IP: bd/fm_hdmi/ip/fm_hdmi_xpm_cdc_gen_0_0/fm_hdmi_xpm_cdc_gen_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_xpm_cdc_gen_0_0 || ORIG_REF_NAME==fm_hdmi_xpm_cdc_gen_0_0} -quiet] -quiet
 
@@ -160,8 +163,5 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_udp
 
 # IP: bd/fm_hdmi/ip/fm_hdmi_ila_0_2/fm_hdmi_ila_0_2.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_ila_0_2 || ORIG_REF_NAME==fm_hdmi_ila_0_2} -quiet] -quiet
-
-# IP: bd/fm_hdmi/ip/fm_hdmi_ila_0_4/fm_hdmi_ila_0_4.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fm_hdmi_ila_0_4 || ORIG_REF_NAME==fm_hdmi_ila_0_4} -quiet] -quiet
 
 # XDC: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/fm_hdmi_ooc.xdc

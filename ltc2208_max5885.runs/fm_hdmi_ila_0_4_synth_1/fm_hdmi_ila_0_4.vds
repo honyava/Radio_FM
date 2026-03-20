@@ -3,16 +3,14 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Fri Mar 20 10:31:40 2026
-# Process ID: 9243
+# Start of session at: Fri Mar 20 13:54:59 2026
+# Process ID: 299733
 # Current directory: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_ila_0_4_synth_1
 # Command line: vivado -log fm_hdmi_ila_0_4.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fm_hdmi_ila_0_4.tcl
 # Log file: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_ila_0_4_synth_1/fm_hdmi_ila_0_4.vds
 # Journal file: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_ila_0_4_synth_1/vivado.jou
-# Running On: reting-ThinkBook-14-G7-IAH, OS: Linux, CPU Frequency: 4890.390 MHz, CPU Physical cores: 16, Host memory: 33111 MB
+# Running On: reting-B650-EAGLE-AX, OS: Linux, CPU Frequency: 4788.661 MHz, CPU Physical cores: 32, Host memory: 66468 MB
 #-----------------------------------------------------------
-Sourcing tcl script '/home/reting/Programs/Vivado/2023.2/scripts/Vivado_init.tcl'
-122 Beta devices matching pattern found, 0 enabled.
 source fm_hdmi_ila_0_4.tcl -notrace
 INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: fm_hdmi_ila_0_4
 Command: synth_design -top fm_hdmi_ila_0_4 -part xc7z020clg400-2 -incremental_mode off -mode out_of_context
@@ -22,9 +20,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg400-2
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 9325
+INFO: [Synth 8-7075] Helper process launched with PID 300163
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2098.387 ; gain = 402.746 ; free physical = 19527 ; free virtual = 30816
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2137.914 ; gain = 407.684 ; free physical = 21169 ; free virtual = 45092
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ipshared/ae90/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:30]
 INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ipshared/ae90/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:32]
@@ -128,18 +126,18 @@ INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wir
 INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ipshared/ae90/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:277]
 INFO: [Common 17-14] Message 'Synth 8-11241' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_ila_0_4' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_4/synth/fm_hdmi_ila_0_4.v:48]
-INFO: [Synth 8-6157] synthesizing module 'CFGLUT5' [/home/reting/Programs/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2403]
-INFO: [Synth 8-6155] done synthesizing module 'CFGLUT5' (0#1) [/home/reting/Programs/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2403]
-INFO: [Synth 8-6157] synthesizing module 'CARRY4' [/home/reting/Programs/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2366]
-INFO: [Synth 8-6155] done synthesizing module 'CARRY4' (0#1) [/home/reting/Programs/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2366]
-INFO: [Synth 8-6157] synthesizing module 'SRLC32E' [/home/reting/Programs/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133887]
-INFO: [Synth 8-6155] done synthesizing module 'SRLC32E' (0#1) [/home/reting/Programs/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133887]
-INFO: [Synth 8-6157] synthesizing module 'SRL16E' [/home/reting/Programs/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133737]
-INFO: [Synth 8-6155] done synthesizing module 'SRL16E' (0#1) [/home/reting/Programs/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133737]
-INFO: [Synth 8-6157] synthesizing module 'SRLC16E' [/home/reting/Programs/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133826]
-INFO: [Synth 8-6155] done synthesizing module 'SRLC16E' (0#1) [/home/reting/Programs/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133826]
-INFO: [Synth 8-6157] synthesizing module 'FDRE' [/home/reting/Programs/Vivado/2023.2/scripts/rt/data/unisim_comp.v:41005]
-INFO: [Synth 8-6155] done synthesizing module 'FDRE' (0#1) [/home/reting/Programs/Vivado/2023.2/scripts/rt/data/unisim_comp.v:41005]
+INFO: [Synth 8-6157] synthesizing module 'CFGLUT5' [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2403]
+INFO: [Synth 8-6155] done synthesizing module 'CFGLUT5' (0#1) [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2403]
+INFO: [Synth 8-6157] synthesizing module 'CARRY4' [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2366]
+INFO: [Synth 8-6155] done synthesizing module 'CARRY4' (0#1) [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2366]
+INFO: [Synth 8-6157] synthesizing module 'SRLC32E' [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133887]
+INFO: [Synth 8-6155] done synthesizing module 'SRLC32E' (0#1) [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133887]
+INFO: [Synth 8-6157] synthesizing module 'SRL16E' [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133737]
+INFO: [Synth 8-6155] done synthesizing module 'SRL16E' (0#1) [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133737]
+INFO: [Synth 8-6157] synthesizing module 'SRLC16E' [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133826]
+INFO: [Synth 8-6155] done synthesizing module 'SRLC16E' (0#1) [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133826]
+INFO: [Synth 8-6157] synthesizing module 'FDRE' [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:41005]
+INFO: [Synth 8-6155] done synthesizing module 'FDRE' (0#1) [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:41005]
 WARNING: [Synth 8-7071] port 'clk_nobuf' of module 'ila_v6_2_14_ila' is unconnected for instance 'inst' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_4/synth/fm_hdmi_ila_0_4.v:3215]
 WARNING: [Synth 8-7071] port 'clkdiv_out' of module 'ila_v6_2_14_ila' is unconnected for instance 'inst' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_4/synth/fm_hdmi_ila_0_4.v:3215]
 WARNING: [Synth 8-7071] port 'trig_in' of module 'ila_v6_2_14_ila' is unconnected for instance 'inst' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_ila_0_4/synth/fm_hdmi_ila_0_4.v:3215]
@@ -251,18 +249,18 @@ WARNING: [Synth 8-7129] Port DOUTA[7] in module blk_mem_gen_v8_4_7_blk_mem_gen_p
 WARNING: [Synth 8-7129] Port DOUTA[6] in module blk_mem_gen_v8_4_7_blk_mem_gen_prim_wrapper__parameterized16 is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2529.832 ; gain = 834.191 ; free physical = 18336 ; free virtual = 29588
+Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 2569.523 ; gain = 839.293 ; free physical = 21185 ; free virtual = 45135
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2529.832 ; gain = 834.191 ; free physical = 18338 ; free virtual = 29591
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 2569.523 ; gain = 839.293 ; free physical = 21645 ; free virtual = 45597
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2529.832 ; gain = 834.191 ; free physical = 18338 ; free virtual = 29591
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 2569.523 ; gain = 839.293 ; free physical = 21652 ; free virtual = 45605
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2529.832 ; gain = 0.000 ; free physical = 18338 ; free virtual = 29590
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2569.523 ; gain = 0.000 ; free physical = 22534 ; free virtual = 46475
 INFO: [Netlist 29-17] Analyzing 119 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -277,30 +275,30 @@ Parsing XDC File [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_h
 Finished Parsing XDC File [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_ila_0_4_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2593.863 ; gain = 0.000 ; free physical = 18371 ; free virtual = 29620
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2633.555 ; gain = 0.000 ; free physical = 22589 ; free virtual = 46531
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 76 instances were transformed.
   CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 68 instances
   CFGLUT5 => SRLC32E: 8 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2593.898 ; gain = 0.000 ; free physical = 18371 ; free virtual = 29620
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2633.590 ; gain = 0.000 ; free physical = 22588 ; free virtual = 46530
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18396 ; free virtual = 29658
+Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 25331 ; free virtual = 49275
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18395 ; free virtual = 29658
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 25331 ; free virtual = 49275
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_ila_0_4_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18392 ; free virtual = 29658
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 25331 ; free virtual = 49275
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized0'
@@ -383,7 +381,7 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in m
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'ltlib_v1_0_1_generic_memrd'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18400 ; free virtual = 29664
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 25347 ; free virtual = 49294
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -405,25 +403,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18402 ; free virtual = 29662
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 25454 ; free virtual = 49401
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18403 ; free virtual = 29656
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 25994 ; free virtual = 49942
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18402 ; free virtual = 29655
+Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 25994 ; free virtual = 49942
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18677 ; free virtual = 29940
+Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 26287 ; free virtual = 50235
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -481,37 +479,37 @@ INFO: [Synth 8-3295] tying undriven pin inst:sl_iport0[0] to constant 0
 INFO: [Synth 8-3295] tying undriven pin inst:trig_in to constant 0
 INFO: [Synth 8-3295] tying undriven pin inst:trig_out_ack to constant 0
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18670 ; free virtual = 29944
+Finished IO Insertion : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 26380 ; free virtual = 50336
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18670 ; free virtual = 29944
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 26380 ; free virtual = 50336
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18663 ; free virtual = 29941
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 26380 ; free virtual = 50337
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18663 ; free virtual = 29941
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 26380 ; free virtual = 50337
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18663 ; free virtual = 29941
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 26379 ; free virtual = 50335
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18663 ; free virtual = 29941
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 26377 ; free virtual = 50333
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -544,18 +542,18 @@ Report Cell Usage:
 |15    |FDSE     |    10|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18663 ; free virtual = 29941
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 26378 ; free virtual = 50334
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 2752 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2593.898 ; gain = 834.191 ; free physical = 18663 ; free virtual = 29941
-Synthesis Optimization Complete : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2593.898 ; gain = 898.258 ; free physical = 18663 ; free virtual = 29941
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 2633.590 ; gain = 839.293 ; free physical = 26388 ; free virtual = 50345
+Synthesis Optimization Complete : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 2633.590 ; gain = 903.359 ; free physical = 26388 ; free virtual = 50345
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2593.898 ; gain = 0.000 ; free physical = 18952 ; free virtual = 30230
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2633.590 ; gain = 0.000 ; free physical = 26686 ; free virtual = 50644
 INFO: [Netlist 29-17] Analyzing 133 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2593.898 ; gain = 0.000 ; free physical = 18944 ; free virtual = 30228
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2633.590 ; gain = 0.000 ; free physical = 26693 ; free virtual = 50650
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 76 instances were transformed.
   CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 68 instances
@@ -565,14 +563,14 @@ Synth Design complete | Checksum: 69de728b
 INFO: [Common 17-83] Releasing license: Synthesis
 188 Infos, 109 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 2593.898 ; gain = 1246.758 ; free physical = 18944 ; free virtual = 30228
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2046.670; main = 1726.290; forked = 330.942
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3577.730; main = 2593.867; forked = 1015.879
-Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2617.875 ; gain = 0.000 ; free physical = 18944 ; free virtual = 30228
+synth_design: Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2633.590 ; gain = 1253.859 ; free physical = 26693 ; free virtual = 50650
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2063.025; main = 1774.775; forked = 319.747
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3592.055; main = 2633.559; forked = 990.512
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2657.566 ; gain = 0.000 ; free physical = 26693 ; free virtual = 50650
 INFO: [Common 17-1381] The checkpoint '/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_ila_0_4_synth_1/fm_hdmi_ila_0_4.dcp' has been generated.
 INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP fm_hdmi_ila_0_4, cache-ID = 2b928374b77f8bd9
 INFO: [Coretcl 2-1174] Renamed 161 cell refs.
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2617.875 ; gain = 0.000 ; free physical = 19216 ; free virtual = 30501
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2657.566 ; gain = 0.000 ; free physical = 26982 ; free virtual = 50949
 INFO: [Common 17-1381] The checkpoint '/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_ila_0_4_synth_1/fm_hdmi_ila_0_4.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file fm_hdmi_ila_0_4_utilization_synth.rpt -pb fm_hdmi_ila_0_4_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Mar 20 10:32:19 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 20 13:55:35 2026...
