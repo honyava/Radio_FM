@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "fm_hdmi_LTC_2208_0_0",
-    "cell_name": "fm_demod/LTC_2208_0",
+    "cell_name": "LTC_2208_0",
     "component_reference": "xilinx.com:module_ref:LTC_2208:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_LTC_2208_0_0",

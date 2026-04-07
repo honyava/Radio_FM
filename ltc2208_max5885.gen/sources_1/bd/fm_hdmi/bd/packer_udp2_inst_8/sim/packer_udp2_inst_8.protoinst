@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"packer_udp2_inst_8": {
+			"proto_instances": {
+			}
+		}
+	}
+}

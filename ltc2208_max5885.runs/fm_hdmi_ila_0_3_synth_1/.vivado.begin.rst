@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="reting" Host="reting-B650-EAGLE-AX" Pid="298893" HostCore="32" HostMemory="64910168">
-    </Process>
-</ProcessHandle>

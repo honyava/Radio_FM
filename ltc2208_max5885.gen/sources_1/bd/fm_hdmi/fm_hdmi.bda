@@ -175,16 +175,196 @@
         ],
         "vertices": {
             "V0": {
-                "VM": "fm_hdmi",
+                "VM": "/station0/fm_demod2",
                 "VT": "BC"
             },
             "V1": {
+                "VM": "/station0/packer_udp2",
+                "VT": "BC"
+            },
+            "V2": {
+                "VM": "/station1/fm_demod2",
+                "VT": "BC"
+            },
+            "V3": {
+                "VM": "/station1/packer_udp2",
+                "VT": "BC"
+            },
+            "V4": {
+                "VM": "/station2/fm_demod2",
+                "VT": "BC"
+            },
+            "V5": {
+                "VM": "/station2/packer_udp2",
+                "VT": "BC"
+            },
+            "V6": {
+                "VM": "/station3/fm_demod2",
+                "VT": "BC"
+            },
+            "V7": {
+                "VM": "/station3/packer_udp2",
+                "VT": "BC"
+            },
+            "V8": {
+                "VM": "/station4/fm_demod2",
+                "VT": "BC"
+            },
+            "V9": {
+                "VM": "/station4/packer_udp2",
+                "VT": "BC"
+            },
+            "V10": {
+                "VM": "/station5/fm_demod2",
+                "VT": "BC"
+            },
+            "V11": {
+                "VM": "/station5/packer_udp2",
+                "VT": "BC"
+            },
+            "V12": {
+                "VM": "/station6/fm_demod2",
+                "VT": "BC"
+            },
+            "V13": {
+                "VM": "/station6/packer_udp2",
+                "VT": "BC"
+            },
+            "V14": {
+                "VM": "/station7/fm_demod2",
+                "VT": "BC"
+            },
+            "V15": {
+                "VM": "/station7/packer_udp2",
+                "VT": "BC"
+            },
+            "V16": {
+                "VM": "/station8/fm_demod2",
+                "VT": "BC"
+            },
+            "V17": {
+                "VM": "/station8/packer_udp2",
+                "VT": "BC"
+            },
+            "V18": {
+                "VM": "/station9/fm_demod2",
+                "VT": "BC"
+            },
+            "V19": {
+                "VM": "/station9/packer_udp2",
+                "VT": "BC"
+            },
+            "V20": {
+                "VM": "fm_hdmi",
+                "VT": "BC"
+            },
+            "V21": {
                 "VH": "2",
                 "VM": "fm_hdmi",
                 "VT": "VR"
             },
-            "V2": {
-                "VH": "2",
+            "V22": {
+                "VH": "5",
+                "VM": "fm_demod2_inst_0",
+                "VT": "VR"
+            },
+            "V23": {
+                "VH": "7",
+                "VM": "packer_udp2_inst_0",
+                "VT": "VR"
+            },
+            "V24": {
+                "VH": "11",
+                "VM": "fm_demod2_inst_2",
+                "VT": "VR"
+            },
+            "V25": {
+                "VH": "13",
+                "VM": "packer_udp2_inst_1",
+                "VT": "VR"
+            },
+            "V26": {
+                "VH": "17",
+                "VM": "fm_demod2_inst_3",
+                "VT": "VR"
+            },
+            "V27": {
+                "VH": "19",
+                "VM": "packer_udp2_inst_2",
+                "VT": "VR"
+            },
+            "V28": {
+                "VH": "23",
+                "VM": "fm_demod2_inst_4",
+                "VT": "VR"
+            },
+            "V29": {
+                "VH": "29",
+                "VM": "packer_udp2_inst_3",
+                "VT": "VR"
+            },
+            "V30": {
+                "VH": "31",
+                "VM": "fm_demod2_inst_5",
+                "VT": "VR"
+            },
+            "V31": {
+                "VH": "37",
+                "VM": "packer_udp2_inst_4",
+                "VT": "VR"
+            },
+            "V32": {
+                "VH": "41",
+                "VM": "fm_demod2_inst_6",
+                "VT": "VR"
+            },
+            "V33": {
+                "VH": "43",
+                "VM": "packer_udp2_inst_5",
+                "VT": "VR"
+            },
+            "V34": {
+                "VH": "47",
+                "VM": "fm_demod2_inst_7",
+                "VT": "VR"
+            },
+            "V35": {
+                "VH": "53",
+                "VM": "packer_udp2_inst_6",
+                "VT": "VR"
+            },
+            "V36": {
+                "VH": "59",
+                "VM": "fm_demod2_inst_8",
+                "VT": "VR"
+            },
+            "V37": {
+                "VH": "61",
+                "VM": "packer_udp2_inst_7",
+                "VT": "VR"
+            },
+            "V38": {
+                "VH": "67",
+                "VM": "fm_demod2_inst_9",
+                "VT": "VR"
+            },
+            "V39": {
+                "VH": "71",
+                "VM": "packer_udp2_inst_8",
+                "VT": "VR"
+            },
+            "V40": {
+                "VH": "73",
+                "VM": "fm_demod2_inst_10",
+                "VT": "VR"
+            },
+            "V41": {
+                "VH": "79",
+                "VM": "packer_udp2_inst_9",
+                "VT": "VR"
+            },
+            "V42": {
+                "VH": "1441032838",
                 "VT": "PM",
                 "TU": "active"
             }
@@ -192,11 +372,171 @@
         "edges": [
             {
                 "src": "V0",
-                "trg": "V1"
+                "trg": "V22"
             },
             {
                 "src": "V1",
-                "trg": "V2"
+                "trg": "V23"
+            },
+            {
+                "src": "V2",
+                "trg": "V24"
+            },
+            {
+                "src": "V3",
+                "trg": "V25"
+            },
+            {
+                "src": "V4",
+                "trg": "V26"
+            },
+            {
+                "src": "V5",
+                "trg": "V27"
+            },
+            {
+                "src": "V6",
+                "trg": "V28"
+            },
+            {
+                "src": "V7",
+                "trg": "V29"
+            },
+            {
+                "src": "V8",
+                "trg": "V30"
+            },
+            {
+                "src": "V9",
+                "trg": "V31"
+            },
+            {
+                "src": "V10",
+                "trg": "V32"
+            },
+            {
+                "src": "V11",
+                "trg": "V33"
+            },
+            {
+                "src": "V12",
+                "trg": "V34"
+            },
+            {
+                "src": "V13",
+                "trg": "V35"
+            },
+            {
+                "src": "V14",
+                "trg": "V36"
+            },
+            {
+                "src": "V15",
+                "trg": "V37"
+            },
+            {
+                "src": "V16",
+                "trg": "V38"
+            },
+            {
+                "src": "V17",
+                "trg": "V39"
+            },
+            {
+                "src": "V18",
+                "trg": "V40"
+            },
+            {
+                "src": "V19",
+                "trg": "V41"
+            },
+            {
+                "src": "V20",
+                "trg": "V21"
+            },
+            {
+                "src": "V21",
+                "trg": "V42"
+            },
+            {
+                "src": "V22",
+                "trg": "V42"
+            },
+            {
+                "src": "V23",
+                "trg": "V42"
+            },
+            {
+                "src": "V24",
+                "trg": "V42"
+            },
+            {
+                "src": "V25",
+                "trg": "V42"
+            },
+            {
+                "src": "V26",
+                "trg": "V42"
+            },
+            {
+                "src": "V27",
+                "trg": "V42"
+            },
+            {
+                "src": "V28",
+                "trg": "V42"
+            },
+            {
+                "src": "V29",
+                "trg": "V42"
+            },
+            {
+                "src": "V30",
+                "trg": "V42"
+            },
+            {
+                "src": "V31",
+                "trg": "V42"
+            },
+            {
+                "src": "V32",
+                "trg": "V42"
+            },
+            {
+                "src": "V33",
+                "trg": "V42"
+            },
+            {
+                "src": "V34",
+                "trg": "V42"
+            },
+            {
+                "src": "V35",
+                "trg": "V42"
+            },
+            {
+                "src": "V36",
+                "trg": "V42"
+            },
+            {
+                "src": "V37",
+                "trg": "V42"
+            },
+            {
+                "src": "V38",
+                "trg": "V42"
+            },
+            {
+                "src": "V39",
+                "trg": "V42"
+            },
+            {
+                "src": "V40",
+                "trg": "V42"
+            },
+            {
+                "src": "V41",
+                "trg": "V42"
             }
         ]
     }

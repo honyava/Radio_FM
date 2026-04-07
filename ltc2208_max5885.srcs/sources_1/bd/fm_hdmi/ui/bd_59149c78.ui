@@ -1,0 +1,43 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"2.0",
+   "Default View_TopLeft":"-241,-53",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port port-id_wr_clk -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
+preplace port port-id_rst_n -pg 1 -lvl 0 -x 0 -y 70 -defaultsOSRD
+preplace port port-id_s_valid -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
+preplace port port-id_s_ready -pg 1 -lvl 3 -x 750 -y 70 -defaultsOSRD
+preplace port port-id_out_ready -pg 1 -lvl 0 -x 0 -y 130 -defaultsOSRD
+preplace port port-id_rst -pg 1 -lvl 0 -x 0 -y 350 -defaultsOSRD
+preplace port port-id_rd_clk -pg 1 -lvl 0 -x 0 -y 390 -defaultsOSRD
+preplace port port-id_rd_en -pg 1 -lvl 0 -x 0 -y 330 -defaultsOSRD
+preplace port port-id_full -pg 1 -lvl 3 -x 750 -y 110 -defaultsOSRD
+preplace port port-id_empty -pg 1 -lvl 3 -x 750 -y 130 -defaultsOSRD
+preplace portBus s_data -pg 1 -lvl 0 -x 0 -y 110 -defaultsOSRD
+preplace portBus din -pg 1 -lvl 3 -x 750 -y 90 -defaultsOSRD
+preplace portBus dout -pg 1 -lvl 3 -x 750 -y 450 -defaultsOSRD
+preplace portBus rd_data_count -pg 1 -lvl 3 -x 750 -y 270 -defaultsOSRD
+preplace inst mpx_pack16_to32_0 -pg 1 -lvl 1 -x 170 -y 90 -defaultsOSRD
+preplace inst fifo_generator_audio -pg 1 -lvl 2 -x 540 -y 290 -defaultsOSRD
+preplace netloc mpx_pack16_to32_0_out_valid 1 1 1 320 90n
+preplace netloc adc_dci_0_1 1 0 2 20 370 NJ
+preplace netloc clk_wiz_0_locked 1 0 1 NJ 70
+preplace netloc fm_demod_m_axis_tvalid 1 0 1 NJ 90
+preplace netloc fm_demod_m_axis_tdata 1 0 1 NJ 110
+preplace netloc packer_for_udp_mpx_ready 1 1 2 NJ 70 NJ
+preplace netloc packer_for_udp_Res 1 0 1 NJ 130
+preplace netloc mpx_pack16_to32_0_out_data 1 1 2 330 90 NJ
+preplace netloc packer_for_udp_Res1 1 0 2 NJ 350 NJ
+preplace netloc packer_for_udp_gmii_rxc 1 0 2 NJ 390 NJ
+preplace netloc packer_for_udp_audio_rd_en 1 0 2 NJ 330 NJ
+preplace netloc fifo_generator_audio_dout 1 1 2 350 450 NJ
+preplace netloc fifo_generator_audio_full 1 1 2 350 110 NJ
+preplace netloc fifo_generator_audio_empty 1 1 2 340 130 NJ
+preplace netloc fifo_generator_audio_rd_data_count 1 2 1 NJ 270
+levelinfo -pg 1 0 170 540 750
+pagesize -pg 1 -db -bbox -sgen -140 0 930 470
+"
+}
+

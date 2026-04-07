@@ -1,71 +1,113 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.83144",
-   "Default View_TopLeft":"-777,-132",
+   "Default View_ScaleFactor":"0.911292",
+   "Default View_TopLeft":"248,1847",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x -10 -y 450 -defaultsOSRD
-preplace port port-id_locked -pg 1 -lvl 0 -x -10 -y 20 -defaultsOSRD
-preplace port port-id_sys -pg 1 -lvl 0 -x -10 -y 250 -defaultsOSRD
-preplace port port-id_clk_10M -pg 1 -lvl 0 -x -10 -y 480 -defaultsOSRD
-preplace port port-id_clk_50M -pg 1 -lvl 0 -x -10 -y 120 -defaultsOSRD
-preplace port port-id_adc_clk -pg 1 -lvl 5 -x 1450 -y 70 -defaultsOSRD
-preplace port port-id_phy_rxc -pg 1 -lvl 0 -x -10 -y 550 -defaultsOSRD
-preplace port port-id_phy_rx_ctrl -pg 1 -lvl 0 -x -10 -y 310 -defaultsOSRD
-preplace port port-id_clk -pg 1 -lvl 0 -x -10 -y 50 -defaultsOSRD
-preplace port port-id_mdio -pg 1 -lvl 5 -x 1450 -y 460 -defaultsOSRD
-preplace port port-id_mdc -pg 1 -lvl 5 -x 1450 -y 430 -defaultsOSRD
-preplace port port-id_phy_rstn -pg 1 -lvl 5 -x 1450 -y 580 -defaultsOSRD
-preplace port port-id_phy_tx_ctrl -pg 1 -lvl 5 -x 1450 -y 550 -defaultsOSRD
-preplace port port-id_phy_txc -pg 1 -lvl 5 -x 1450 -y 520 -defaultsOSRD
-preplace portBus adc_dai -pg 1 -lvl 0 -x -10 -y 390 -defaultsOSRD
-preplace portBus hdmi_d1 -pg 1 -lvl 5 -x 1450 -y 230 -defaultsOSRD
-preplace portBus hdmi_clk -pg 1 -lvl 5 -x 1450 -y 170 -defaultsOSRD
-preplace portBus hdmi_d2 -pg 1 -lvl 5 -x 1450 -y 260 -defaultsOSRD
-preplace portBus hdmi_d0 -pg 1 -lvl 5 -x 1450 -y 200 -defaultsOSRD
-preplace portBus phy_rxd -pg 1 -lvl 0 -x -10 -y 520 -defaultsOSRD
-preplace portBus phy_txd -pg 1 -lvl 5 -x 1450 -y 400 -defaultsOSRD
-preplace portBus linkspeed -pg 1 -lvl 5 -x 1450 -y 490 -defaultsOSRD
-preplace inst fm_demod -pg 1 -lvl 3 -x 870 -y 430 -defaultsOSRD
-preplace inst hdmi_core -pg 1 -lvl 4 -x 1263 -y 220 -defaultsOSRD
-preplace inst fm_mod -pg 1 -lvl 2 -x 370 -y 460 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 110 -y 110 -defaultsOSRD
-preplace inst clk_wiz_1 -pg 1 -lvl 2 -x 370 -y 100 -defaultsOSRD
-preplace inst packer_for_udp -pg 1 -lvl 4 -x 1263 -y 480 -defaultsOSRD
-preplace netloc Net 1 4 1 1410J 460n
-preplace netloc adc_clk_0_1 1 0 3 NJ 480 200 520 540
-preplace netloc adc_dai_0_1 1 0 3 NJ 390 NJ 390 NJ
-preplace netloc adc_dci_0_1 1 2 2 680 190 1123
-preplace netloc clk_50M_1 1 0 4 10 10 NJ 10 NJ 10 1080
-preplace netloc clk_wiz_0_clk_out1 1 1 1 N 100
-preplace netloc clk_wiz_0_locked 1 1 3 210 200 NJ 200 1090
-preplace netloc clk_wiz_1_clk_adc 1 2 3 NJ 70 NJ 70 NJ
-preplace netloc clk_wiz_1_clkfb_out 1 1 2 220 190 520
-preplace netloc en_0_1 1 0 4 20 40 200J 210 670 230 NJ
-preplace netloc fm_demod_m_axis_tdata_0 1 3 1 N 430
-preplace netloc fm_demod_m_axis_tvalid_0 1 3 1 N 450
-preplace netloc fm_demod_probe_out0 1 3 1 1050 470n
-preplace netloc fm_mod_m_axis_data_tdata_0 1 2 1 520 450n
-preplace netloc hdmi_core_hdmi_clk 1 4 1 1410J 170n
-preplace netloc hdmi_core_hdmi_d0 1 4 1 1410J 200n
-preplace netloc hdmi_core_hdmi_d1 1 4 1 NJ 230
-preplace netloc hdmi_core_hdmi_d2 1 4 1 1410J 250n
-preplace netloc packer_for_udp_linkspeed 1 4 1 NJ 490
-preplace netloc packer_for_udp_mdc 1 4 1 1430J 430n
-preplace netloc packer_for_udp_mpx_ready 1 2 3 690 300 NJ 300 1410
-preplace netloc packer_for_udp_phy_rstn 1 4 1 1410J 550n
-preplace netloc packer_for_udp_phy_tx_ctrl 1 4 1 1430J 530n
-preplace netloc packer_for_udp_phy_txc 1 4 1 1430J 510n
-preplace netloc packer_for_udp_phy_txd 1 4 1 1420J 400n
-preplace netloc phy_rx_ctrl_0_1 1 0 4 NJ 310 NJ 310 NJ 310 1060J
-preplace netloc phy_rxc_0_1 1 0 4 NJ 550 NJ 550 NJ 550 NJ
-preplace netloc phy_rxd_0_1 1 0 4 20J 540 NJ 540 NJ 540 1110J
-preplace netloc src_in_1 1 3 1 1070 210n
-preplace netloc sys_1 1 0 4 NJ 250 NJ 250 NJ 250 1113
-preplace netloc sys_rst_n_0_1 1 0 3 NJ 450 220 380 520
-levelinfo -pg 1 -10 110 370 870 1263 1450
-pagesize -pg 1 -db -bbox -sgen -150 0 3690 1170
+preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x -30 -y 2350 -defaultsOSRD
+preplace port port-id_locked -pg 1 -lvl 0 -x -30 -y 2410 -defaultsOSRD
+preplace port port-id_sys -pg 1 -lvl 0 -x -30 -y 2620 -defaultsOSRD
+preplace port port-id_clk_10M -pg 1 -lvl 0 -x -30 -y 50 -defaultsOSRD
+preplace port port-id_clk_50M -pg 1 -lvl 0 -x -30 -y 2450 -defaultsOSRD
+preplace port port-id_adc_clk -pg 1 -lvl 7 -x 2440 -y 2490 -defaultsOSRD
+preplace port port-id_phy_rxc -pg 1 -lvl 0 -x -30 -y 2710 -defaultsOSRD
+preplace port port-id_phy_rx_ctrl -pg 1 -lvl 0 -x -30 -y 2650 -defaultsOSRD
+preplace port port-id_clk -pg 1 -lvl 0 -x -30 -y 20 -defaultsOSRD
+preplace port port-id_mdio -pg 1 -lvl 7 -x 2440 -y 2620 -defaultsOSRD
+preplace port port-id_mdc -pg 1 -lvl 7 -x 2440 -y 2590 -defaultsOSRD
+preplace port port-id_phy_rstn -pg 1 -lvl 7 -x 2440 -y 2740 -defaultsOSRD
+preplace port port-id_phy_tx_ctrl -pg 1 -lvl 7 -x 2440 -y 2710 -defaultsOSRD
+preplace port port-id_phy_txc -pg 1 -lvl 7 -x 2440 -y 2680 -defaultsOSRD
+preplace portBus adc_dai -pg 1 -lvl 0 -x -30 -y 2380 -defaultsOSRD
+preplace portBus phy_rxd -pg 1 -lvl 0 -x -30 -y 2680 -defaultsOSRD
+preplace portBus phy_txd -pg 1 -lvl 7 -x 2440 -y 2560 -defaultsOSRD
+preplace portBus linkspeed -pg 1 -lvl 7 -x 2440 -y 2650 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 120 -y 2440 -defaultsOSRD
+preplace inst clk_wiz_1 -pg 1 -lvl 2 -x 350 -y 2250 -defaultsOSRD
+preplace inst packer_for_udp -pg 1 -lvl 6 -x 2210 -y 2680 -defaultsOSRD
+preplace inst LTC_2208_0 -pg 1 -lvl 3 -x 650 -y 2340 -defaultsOSRD
+preplace inst station0 -pg 1 -lvl 4 -x 1160 -y 130 -defaultsOSRD
+preplace inst stations_to_packet_0 -pg 1 -lvl 5 -x 1746 -y 1360 -defaultsOSRD
+preplace inst station1 -pg 1 -lvl 4 -x 1160 -y 640 -defaultsOSRD
+preplace inst station2 -pg 1 -lvl 4 -x 1160 -y 390 -defaultsOSRD
+preplace inst station3 -pg 1 -lvl 4 -x 1160 -y 870 -defaultsOSRD
+preplace inst station4 -pg 1 -lvl 4 -x 1160 -y 1120 -defaultsOSRD
+preplace inst station5 -pg 1 -lvl 4 -x 1160 -y 1370 -defaultsOSRD
+preplace inst station6 -pg 1 -lvl 4 -x 1160 -y 1620 -defaultsOSRD
+preplace inst station7 -pg 1 -lvl 4 -x 1160 -y 1870 -defaultsOSRD
+preplace inst station8 -pg 1 -lvl 4 -x 1160 -y 2380 -defaultsOSRD
+preplace inst station9 -pg 1 -lvl 4 -x 1160 -y 2130 -defaultsOSRD
+preplace netloc LTC_2208_0_m_axis_tdata 1 3 1 940 80n
+preplace netloc LTC_2208_0_m_axis_tvalid 1 3 1 970 120n
+preplace netloc Net 1 6 1 2420J 2620n
+preplace netloc adc_dai_1 1 0 3 -10J 2370 NJ 2370 480J
+preplace netloc adc_dci_0_1 1 2 2 480 2240 960
+preplace netloc audio_dout_bus_1 1 5 1 2010 1460n
+preplace netloc audio_empty_1 1 5 1 2030 1440n
+preplace netloc clk_50M_1 1 0 6 20 2590 NJ 2590 NJ 2590 NJ 2590 NJ 2590 2020
+preplace netloc clk_wiz_0_clk_out1 1 1 1 240 2250n
+preplace netloc clk_wiz_0_locked 1 1 5 230 2160 NJ 2160 980 2600 NJ 2600 NJ
+preplace netloc clk_wiz_1_clk_adc 1 2 5 460J 2520 NJ 2520 1300J 2490 NJ 2490 NJ
+preplace netloc clk_wiz_1_clkfb_out 1 1 2 250 2340 450
+preplace netloc en_0_1 1 0 4 30 2360 NJ 2360 450J 2420 950
+preplace netloc packer_for_udp_Res1 1 3 4 990 2510 NJ 2510 NJ 2510 2390
+preplace netloc packer_for_udp_audio_rd_en 1 4 3 1546 970 NJ 970 2400
+preplace netloc packer_for_udp_gmii_rxc 1 3 4 1000 2500 NJ 2500 NJ 2500 2380
+preplace netloc packer_for_udp_linkspeed 1 6 1 NJ 2650
+preplace netloc packer_for_udp_mdc 1 6 1 2420J 2590n
+preplace netloc packer_for_udp_phy_rstn 1 6 1 2410J 2710n
+preplace netloc packer_for_udp_phy_tx_ctrl 1 6 1 2420J 2690n
+preplace netloc packer_for_udp_phy_txc 1 6 1 2420J 2670n
+preplace netloc packer_for_udp_phy_txd 1 6 1 2410J 2560n
+preplace netloc phy_rx_ctrl_0_1 1 0 6 NJ 2650 NJ 2650 NJ 2650 NJ 2650 NJ 2650 2000J
+preplace netloc phy_rxc_0_1 1 0 6 0J 2700 NJ 2700 NJ 2700 NJ 2700 NJ 2700 NJ
+preplace netloc phy_rxd_0_1 1 0 6 NJ 2680 NJ 2680 NJ 2680 NJ 2680 NJ 2680 NJ
+preplace netloc rd_en_1 1 3 3 1020 250 NJ 250 1960
+preplace netloc station0_dout 1 4 1 1440 150n
+preplace netloc station0_empty 1 4 1 1460 110n
+preplace netloc station0_rd_data_count 1 4 1 1450 130n
+preplace netloc station1_dout 1 4 1 1380 660n
+preplace netloc station1_empty 1 4 1 1420 620n
+preplace netloc station1_rd_data_count 1 4 1 1390 640n
+preplace netloc station2_dout 1 4 1 1400 410n
+preplace netloc station2_empty 1 4 1 1430 370n
+preplace netloc station2_rd_data_count 1 4 1 1410 390n
+preplace netloc station3_dout 1 4 1 1350 890n
+preplace netloc station3_empty 1 4 1 1370 850n
+preplace netloc station3_rd_data_count 1 4 1 1360 870n
+preplace netloc station4_dout 1 4 1 1320 1140n
+preplace netloc station4_empty 1 4 1 1340 1100n
+preplace netloc station4_rd_data_count 1 4 1 1330 1120n
+preplace netloc station5_dout 1 4 1 1390 1380n
+preplace netloc station5_empty 1 4 1 1300 1350n
+preplace netloc station5_rd_data_count 1 4 1 1300 1370n
+preplace netloc station6_dout 1 4 1 1350 1440n
+preplace netloc station6_empty 1 4 1 1330 1420n
+preplace netloc station6_rd_data_count 1 4 1 1360 1460n
+preplace netloc station7_dout 1 4 1 1390 1500n
+preplace netloc station7_empty 1 4 1 1370 1480n
+preplace netloc station7_rd_data_count 1 4 1 1400 1520n
+preplace netloc station8_dout 1 4 1 1430 1560n
+preplace netloc station8_empty 1 4 1 1410 1540n
+preplace netloc station8_rd_data_count 1 4 1 1440 1580n
+preplace netloc station9_dout 1 4 1 1450 1620n
+preplace netloc station9_empty 1 4 1 1420 1600n
+preplace netloc station9_rd_data_count 1 4 1 1460 1640n
+preplace netloc stations_to_packet_0_audio_rd_count_bus 1 5 1 1990 1480n
+preplace netloc stations_to_packet_0_st1_rd_en 1 3 3 1010 260 NJ 260 1980
+preplace netloc stations_to_packet_0_st2_rd_en 1 3 3 1020 510 NJ 510 1950
+preplace netloc stations_to_packet_0_st3_rd_en 1 3 3 1020 990 NJ 990 2010
+preplace netloc stations_to_packet_0_st4_rd_en 1 3 3 1020 1240 1300J 980 2030
+preplace netloc stations_to_packet_0_st5_rd_en 1 3 3 1020 1490 1310J 1000 1970
+preplace netloc stations_to_packet_0_st6_rd_en 1 3 3 1020 1740 NJ 1740 1970
+preplace netloc stations_to_packet_0_st7_rd_en 1 3 3 1020 1990 NJ 1990 1980
+preplace netloc stations_to_packet_0_st8_rd_en 1 3 3 1010 2000 NJ 2000 1960
+preplace netloc stations_to_packet_0_st9_rd_en 1 3 3 1020 2250 NJ 2250 1950
+preplace netloc sys_1 1 0 6 NJ 2620 NJ 2620 NJ 2620 NJ 2620 NJ 2620 NJ
+preplace netloc sys_rst_n_1 1 0 3 NJ 2350 NJ 2350 470J
+levelinfo -pg 1 -30 120 350 650 1160 1746 2210 2440
+pagesize -pg 1 -db -bbox -sgen -180 0 4350 3020
 "
 }
 0

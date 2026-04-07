@@ -10,9 +10,14 @@ proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "MAX_PAYLOAD_BYTES" -parent ${Page_0}
   ipgui::add_param $IPINST -name "N_STATIONS" -parent ${Page_0}
   ipgui::add_param $IPINST -name "SAMPLES_PER_ST" -parent ${Page_0}
+  ipgui::add_param $IPINST -name "SAMPLE_RATE_HZ" -parent ${Page_0}
   ipgui::add_param $IPINST -name "STATION_HDR_MAGIC" -parent ${Page_0}
   ipgui::add_param $IPINST -name "STATION_ID_BASE" -parent ${Page_0}
   ipgui::add_param $IPINST -name "STATION_MASK" -parent ${Page_0}
+  ipgui::add_param $IPINST -name "TARGET_DELAY_US" -parent ${Page_0}
+  ipgui::add_param $IPINST -name "UDP_CLK_HZ" -parent ${Page_0}
+  ipgui::add_param $IPINST -name "UDP_TX_FIXED_CYCLES" -parent ${Page_0}
+  ipgui::add_param $IPINST -name "UDP_WIRE_OVERHEAD_B" -parent ${Page_0}
 
 
 }
@@ -80,6 +85,15 @@ proc validate_PARAM_VALUE.SAMPLES_PER_ST { PARAM_VALUE.SAMPLES_PER_ST } {
 	return true
 }
 
+proc update_PARAM_VALUE.SAMPLE_RATE_HZ { PARAM_VALUE.SAMPLE_RATE_HZ } {
+	# Procedure called to update SAMPLE_RATE_HZ when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.SAMPLE_RATE_HZ { PARAM_VALUE.SAMPLE_RATE_HZ } {
+	# Procedure called to validate SAMPLE_RATE_HZ
+	return true
+}
+
 proc update_PARAM_VALUE.STATION_HDR_MAGIC { PARAM_VALUE.STATION_HDR_MAGIC } {
 	# Procedure called to update STATION_HDR_MAGIC when any of the dependent parameters in the arguments change
 }
@@ -107,6 +121,42 @@ proc validate_PARAM_VALUE.STATION_MASK { PARAM_VALUE.STATION_MASK } {
 	return true
 }
 
+proc update_PARAM_VALUE.TARGET_DELAY_US { PARAM_VALUE.TARGET_DELAY_US } {
+	# Procedure called to update TARGET_DELAY_US when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.TARGET_DELAY_US { PARAM_VALUE.TARGET_DELAY_US } {
+	# Procedure called to validate TARGET_DELAY_US
+	return true
+}
+
+proc update_PARAM_VALUE.UDP_CLK_HZ { PARAM_VALUE.UDP_CLK_HZ } {
+	# Procedure called to update UDP_CLK_HZ when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.UDP_CLK_HZ { PARAM_VALUE.UDP_CLK_HZ } {
+	# Procedure called to validate UDP_CLK_HZ
+	return true
+}
+
+proc update_PARAM_VALUE.UDP_TX_FIXED_CYCLES { PARAM_VALUE.UDP_TX_FIXED_CYCLES } {
+	# Procedure called to update UDP_TX_FIXED_CYCLES when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.UDP_TX_FIXED_CYCLES { PARAM_VALUE.UDP_TX_FIXED_CYCLES } {
+	# Procedure called to validate UDP_TX_FIXED_CYCLES
+	return true
+}
+
+proc update_PARAM_VALUE.UDP_WIRE_OVERHEAD_B { PARAM_VALUE.UDP_WIRE_OVERHEAD_B } {
+	# Procedure called to update UDP_WIRE_OVERHEAD_B when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.UDP_WIRE_OVERHEAD_B { PARAM_VALUE.UDP_WIRE_OVERHEAD_B } {
+	# Procedure called to validate UDP_WIRE_OVERHEAD_B
+	return true
+}
+
 
 proc update_MODELPARAM_VALUE.N_STATIONS { MODELPARAM_VALUE.N_STATIONS PARAM_VALUE.N_STATIONS } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
@@ -126,6 +176,31 @@ proc update_MODELPARAM_VALUE.AUDIO_COUNT_WIDTH { MODELPARAM_VALUE.AUDIO_COUNT_WI
 proc update_MODELPARAM_VALUE.MAX_PAYLOAD_BYTES { MODELPARAM_VALUE.MAX_PAYLOAD_BYTES PARAM_VALUE.MAX_PAYLOAD_BYTES } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
 	set_property value [get_property value ${PARAM_VALUE.MAX_PAYLOAD_BYTES}] ${MODELPARAM_VALUE.MAX_PAYLOAD_BYTES}
+}
+
+proc update_MODELPARAM_VALUE.TARGET_DELAY_US { MODELPARAM_VALUE.TARGET_DELAY_US PARAM_VALUE.TARGET_DELAY_US } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.TARGET_DELAY_US}] ${MODELPARAM_VALUE.TARGET_DELAY_US}
+}
+
+proc update_MODELPARAM_VALUE.SAMPLE_RATE_HZ { MODELPARAM_VALUE.SAMPLE_RATE_HZ PARAM_VALUE.SAMPLE_RATE_HZ } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.SAMPLE_RATE_HZ}] ${MODELPARAM_VALUE.SAMPLE_RATE_HZ}
+}
+
+proc update_MODELPARAM_VALUE.UDP_CLK_HZ { MODELPARAM_VALUE.UDP_CLK_HZ PARAM_VALUE.UDP_CLK_HZ } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.UDP_CLK_HZ}] ${MODELPARAM_VALUE.UDP_CLK_HZ}
+}
+
+proc update_MODELPARAM_VALUE.UDP_WIRE_OVERHEAD_B { MODELPARAM_VALUE.UDP_WIRE_OVERHEAD_B PARAM_VALUE.UDP_WIRE_OVERHEAD_B } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.UDP_WIRE_OVERHEAD_B}] ${MODELPARAM_VALUE.UDP_WIRE_OVERHEAD_B}
+}
+
+proc update_MODELPARAM_VALUE.UDP_TX_FIXED_CYCLES { MODELPARAM_VALUE.UDP_TX_FIXED_CYCLES PARAM_VALUE.UDP_TX_FIXED_CYCLES } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.UDP_TX_FIXED_CYCLES}] ${MODELPARAM_VALUE.UDP_TX_FIXED_CYCLES}
 }
 
 proc update_MODELPARAM_VALUE.STATION_ID_BASE { MODELPARAM_VALUE.STATION_ID_BASE PARAM_VALUE.STATION_ID_BASE } {

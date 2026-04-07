@@ -55,7 +55,6 @@
 //----------------------------------------------------------------------------
 // _clk_50M__50.00000______0.000______50.0______192.113____164.985
 // clk_200M__200.00000______0.000______50.0______142.107____164.985
-// _clk_10M__10.00000______0.000______50.0______285.743____164.985
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -70,7 +69,6 @@ module clk_wiz_0_clk_wiz
   // Clock out ports
   output        clk_50M,
   output        clk_200M,
-  output        clk_10M,
   // Status and control signals
   input         reset,
   output        locked,
@@ -111,6 +109,7 @@ wire clk_in2_clk_wiz_0;
   wire        clkfboutb_unused;
     wire clkout0b_unused;
    wire clkout1b_unused;
+   wire clkout2_unused;
    wire clkout2b_unused;
    wire clkout3_unused;
    wire clkout3b_unused;
@@ -126,9 +125,6 @@ wire clk_in2_clk_wiz_0;
   (* KEEP = "TRUE" *) 
   (* ASYNC_REG = "TRUE" *)
   reg  [7 :0] seq_reg2 = 0;
-  (* KEEP = "TRUE" *) 
-  (* ASYNC_REG = "TRUE" *)
-  reg  [7 :0] seq_reg3 = 0;
 
   MMCME2_ADV
   #(.BANDWIDTH            ("OPTIMIZED"),
@@ -147,10 +143,6 @@ wire clk_in2_clk_wiz_0;
     .CLKOUT1_PHASE        (0.000),
     .CLKOUT1_DUTY_CYCLE   (0.500),
     .CLKOUT1_USE_FINE_PS  ("FALSE"),
-    .CLKOUT2_DIVIDE       (100),
-    .CLKOUT2_PHASE        (0.000),
-    .CLKOUT2_DUTY_CYCLE   (0.500),
-    .CLKOUT2_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (20.000))
   mmcm_adv_inst
     // Output clocks
@@ -161,7 +153,7 @@ wire clk_in2_clk_wiz_0;
     .CLKOUT0B            (clkout0b_unused),
     .CLKOUT1             (clk_200M_clk_wiz_0),
     .CLKOUT1B            (clkout1b_unused),
-    .CLKOUT2             (clk_10M_clk_wiz_0),
+    .CLKOUT2             (clkout2_unused),
     .CLKOUT2B            (clkout2b_unused),
     .CLKOUT3             (clkout3_unused),
     .CLKOUT3B            (clkout3b_unused),
@@ -245,26 +237,6 @@ wire clk_in2_clk_wiz_0;
     end
     else begin
         seq_reg2 <= {seq_reg2[6:0],locked_int};
-  
-    end
-  end
-
-
-  BUFGCE clkout3_buf
-   (.O   (clk_10M),
-    .CE  (seq_reg3[7]),
-    .I   (clk_10M_clk_wiz_0));
- 
-  BUFH clkout3_buf_en
-   (.O   (clk_10M_clk_wiz_0_en_clk),
-    .I   (clk_10M_clk_wiz_0));
- 
-  always @(posedge clk_10M_clk_wiz_0_en_clk or posedge reset_high) begin
-    if(reset_high == 1'b1) begin
-	  seq_reg3 <= 8'h00;
-    end
-    else begin
-        seq_reg3 <= {seq_reg3[6:0],locked_int};
   
     end
   end

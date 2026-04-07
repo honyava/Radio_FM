@@ -1,0 +1,94 @@
+{
+  "schema": "xilinx.com:schema:json_instance:1.0",
+  "ip_inst": {
+    "xci_name": "fm_hdmi_stations_to_packet_0_0",
+    "cell_name": "stations_to_packet_0",
+    "component_reference": "xilinx.com:module_ref:stations_to_packet:1.0",
+    "ip_revision": "1",
+    "gen_directory": "../../../../../../ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_stations_to_packet_0_0",
+    "parameters": {
+      "component_parameters": {
+        "DATA_W": [ { "value": "32", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "COUNT_W": [ { "value": "8", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "STATIONS": [ { "value": "10", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "Component_Name": [ { "value": "fm_hdmi_stations_to_packet_0_0", "resolve_type": "user", "usage": "all" } ]
+      },
+      "model_parameters": {
+        "DATA_W": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "COUNT_W": [ { "value": "8", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "STATIONS": [ { "value": "10", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+      },
+      "project_parameters": {
+        "ARCHITECTURE": [ { "value": "zynq" } ],
+        "BASE_BOARD_PART": [ { "value": "" } ],
+        "BOARD_CONNECTIONS": [ { "value": "" } ],
+        "DEVICE": [ { "value": "xc7z020" } ],
+        "PACKAGE": [ { "value": "clg400" } ],
+        "PREFHDL": [ { "value": "VERILOG" } ],
+        "SILICON_REVISION": [ { "value": "" } ],
+        "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
+        "SPEEDGRADE": [ { "value": "-2" } ],
+        "STATIC_POWER": [ { "value": "" } ],
+        "TEMPERATURE_GRADE": [ { "value": "" } ]
+      },
+      "runtime_parameters": {
+        "IPCONTEXT": [ { "value": "IP_Integrator" } ],
+        "IPREVISION": [ { "value": "1" } ],
+        "MANAGED": [ { "value": "TRUE" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_stations_to_packet_0_0" } ],
+        "SELECTEDSIMMODEL": [ { "value": "" } ],
+        "SHAREDDIR": [ { "value": "../../ipshared" } ],
+        "SWVERSION": [ { "value": "2023.2" } ],
+        "SYNTHESISFLOW": [ { "value": "OOC_HIERARCHICAL" } ]
+      }
+    },
+    "boundary": {
+      "ports": {
+        "st0_empty": [ { "direction": "in" } ],
+        "st0_dout": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "st0_rd_data_count": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "st0_rd_en": [ { "direction": "out" } ],
+        "st1_empty": [ { "direction": "in" } ],
+        "st1_dout": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "st1_rd_data_count": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "st1_rd_en": [ { "direction": "out" } ],
+        "st2_empty": [ { "direction": "in" } ],
+        "st2_dout": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "st2_rd_data_count": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "st2_rd_en": [ { "direction": "out" } ],
+        "st3_empty": [ { "direction": "in" } ],
+        "st3_dout": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "st3_rd_data_count": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "st3_rd_en": [ { "direction": "out" } ],
+        "st4_empty": [ { "direction": "in" } ],
+        "st4_dout": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "st4_rd_data_count": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "st4_rd_en": [ { "direction": "out" } ],
+        "st5_empty": [ { "direction": "in" } ],
+        "st5_dout": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "st5_rd_data_count": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "st5_rd_en": [ { "direction": "out" } ],
+        "st6_empty": [ { "direction": "in" } ],
+        "st6_dout": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "st6_rd_data_count": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "st6_rd_en": [ { "direction": "out" } ],
+        "st7_empty": [ { "direction": "in" } ],
+        "st7_dout": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "st7_rd_data_count": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "st7_rd_en": [ { "direction": "out" } ],
+        "st8_empty": [ { "direction": "in" } ],
+        "st8_dout": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "st8_rd_data_count": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "st8_rd_en": [ { "direction": "out" } ],
+        "st9_empty": [ { "direction": "in" } ],
+        "st9_dout": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "st9_rd_data_count": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "st9_rd_en": [ { "direction": "out" } ],
+        "audio_empty": [ { "direction": "out", "size_left": "9", "size_right": "0" } ],
+        "audio_dout_bus": [ { "direction": "out", "size_left": "319", "size_right": "0" } ],
+        "audio_rd_count_bus": [ { "direction": "out", "size_left": "79", "size_right": "0" } ],
+        "audio_rd_en": [ { "direction": "in", "size_left": "9", "size_right": "0" } ]
+      }
+    }
+  }
+}

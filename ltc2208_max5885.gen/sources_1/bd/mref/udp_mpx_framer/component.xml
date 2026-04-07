@@ -55,7 +55,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>d0005663</spirit:value>
+            <spirit:value>693c0d3f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -68,7 +68,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>d0005663</spirit:value>
+            <spirit:value>693c0d3f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -272,6 +272,31 @@
         <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.MAX_PAYLOAD_BYTES">1472</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>TARGET_DELAY_US</spirit:name>
+        <spirit:displayName>Target Delay Us</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.TARGET_DELAY_US">0</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>SAMPLE_RATE_HZ</spirit:name>
+        <spirit:displayName>Sample Rate Hz</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.SAMPLE_RATE_HZ">192000</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>UDP_CLK_HZ</spirit:name>
+        <spirit:displayName>Udp Clk Hz</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.UDP_CLK_HZ">125000000</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>UDP_WIRE_OVERHEAD_B</spirit:name>
+        <spirit:displayName>Udp Wire Overhead B</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.UDP_WIRE_OVERHEAD_B">54</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>UDP_TX_FIXED_CYCLES</spirit:name>
+        <spirit:displayName>Udp Tx Fixed Cycles</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.UDP_TX_FIXED_CYCLES">8</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>STATION_ID_BASE</spirit:name>
         <spirit:displayName>Station Id Base</spirit:displayName>
         <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.STATION_ID_BASE" spirit:bitStringLength="8">&quot;00000000&quot;</spirit:value>
@@ -316,7 +341,7 @@
       <spirit:file>
         <spirit:name>xgui/udp_mpx_framer_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_7e31964e</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_160e04e4</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -342,6 +367,31 @@
       <spirit:name>MAX_PAYLOAD_BYTES</spirit:name>
       <spirit:displayName>Max Payload Bytes</spirit:displayName>
       <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.MAX_PAYLOAD_BYTES">1472</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>TARGET_DELAY_US</spirit:name>
+      <spirit:displayName>Target Delay Us</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.TARGET_DELAY_US">0</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>SAMPLE_RATE_HZ</spirit:name>
+      <spirit:displayName>Sample Rate Hz</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.SAMPLE_RATE_HZ">192000</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>UDP_CLK_HZ</spirit:name>
+      <spirit:displayName>Udp Clk Hz</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.UDP_CLK_HZ">125000000</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>UDP_WIRE_OVERHEAD_B</spirit:name>
+      <spirit:displayName>Udp Wire Overhead B</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.UDP_WIRE_OVERHEAD_B">54</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>UDP_TX_FIXED_CYCLES</spirit:name>
+      <spirit:displayName>Udp Tx Fixed Cycles</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.UDP_TX_FIXED_CYCLES">8</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>STATION_ID_BASE</spirit:name>
@@ -393,7 +443,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-03-07T14:53:36Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2026-04-07T07:04:39Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.2</xilinx:xilinxVersion>

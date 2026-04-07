@@ -1,0 +1,339 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0xFD79B206D66501C4",
+      "design_src": "/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_1/packer_udp2_inst_1.bd",
+      "device": "xc7z020clg400-2",
+      "name": "packer_udp2_inst_3",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2023.2",
+      "validated": "true",
+      "variant": "true"
+    },
+    "design_tree": {
+      "fifo_generator_audio": "",
+      "mpx_pack16_to32_0": "",
+      "util_vector_logic_1": ""
+    },
+    "ports": {
+      "dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "empty": {
+        "direction": "O"
+      },
+      "rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "packer_udp2_rd_clk",
+            "value_src": "strong"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "strong"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "strong"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "strong"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "strong"
+          }
+        }
+      },
+      "rd_data_count": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "rd_en": {
+        "direction": "I"
+      },
+      "rst": {
+        "direction": "I",
+        "parameters": {
+          "PortType": {
+            "value": "rst",
+            "value_src": "ip_prop"
+          },
+          "PortType.PROP_SRC": {
+            "value": "false",
+            "value_src": "ip_prop"
+          }
+        }
+      },
+      "rst_n": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "strong"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "strong"
+          }
+        }
+      },
+      "s_data": {
+        "direction": "I",
+        "left": "15",
+        "right": "0"
+      },
+      "s_ready": {
+        "direction": "O"
+      },
+      "s_valid": {
+        "direction": "I"
+      },
+      "wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "fm_hdmi_clk_50M",
+            "value_src": "ip_prop"
+          },
+          "FREQ_HZ": {
+            "value": "76800000",
+            "value_src": "ip_prop"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "strong"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "strong"
+          },
+          "PHASE": {
+            "value": "65.0",
+            "value_src": "ip_prop"
+          }
+        }
+      }
+    },
+    "components": {
+      "fifo_generator_audio": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "ip_revision": "9",
+        "xci_name": "packer_udp2_inst_3_fifo_generator_audio_0",
+        "xci_path": "ip/packer_udp2_inst_3_fifo_generator_audio_0/packer_udp2_inst_3_fifo_generator_audio_0.xci",
+        "inst_hier_path": "fifo_generator_audio",
+        "parameters": {
+          "Enable_Safety_Circuit": {
+            "value": "true"
+          },
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Block_RAM"
+          },
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Input_Depth": {
+            "value": "256"
+          },
+          "Performance_Options": {
+            "value": "Standard_FIFO"
+          },
+          "Read_Data_Count": {
+            "value": "true"
+          }
+        }
+      },
+      "mpx_pack16_to32_0": {
+        "vlnv": "xilinx.com:module_ref:mpx_pack16_to32:1.0",
+        "ip_revision": "1",
+        "xci_name": "packer_udp2_inst_3_mpx_pack16_to32_0_0",
+        "xci_path": "ip/packer_udp2_inst_3_mpx_pack16_to32_0_0/packer_udp2_inst_3_mpx_pack16_to32_0_0.xci",
+        "inst_hier_path": "mpx_pack16_to32_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mpx_pack16_to32",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "76800000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "65.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "fm_hdmi_clk_50M",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "rst_n": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "s_valid": {
+            "direction": "I"
+          },
+          "s_data": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "s_ready": {
+            "direction": "O"
+          },
+          "out_ready": {
+            "direction": "I",
+            "parameters": {
+              "PortType": {
+                "value": "undef",
+                "value_src": "ip_prop"
+              },
+              "PortType.PROP_SRC": {
+                "value": "false",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "out_valid": {
+            "direction": "O"
+          },
+          "out_data": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "util_vector_logic_1": {
+        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+        "ip_revision": "3",
+        "xci_name": "packer_udp2_inst_3_util_vector_logic_1_0",
+        "xci_path": "ip/packer_udp2_inst_3_util_vector_logic_1_0/packer_udp2_inst_3_util_vector_logic_1_0.xci",
+        "inst_hier_path": "util_vector_logic_1",
+        "parameters": {
+          "C_OPERATION": {
+            "value": "not"
+          },
+          "C_SIZE": {
+            "value": "1"
+          }
+        }
+      }
+    },
+    "nets": {
+      "adc_dci_0_1": {
+        "ports": [
+          "wr_clk",
+          "fifo_generator_audio/wr_clk",
+          "mpx_pack16_to32_0/clk"
+        ]
+      },
+      "clk_wiz_0_locked": {
+        "ports": [
+          "rst_n",
+          "mpx_pack16_to32_0/rst_n"
+        ]
+      },
+      "fifo_generator_audio_dout": {
+        "ports": [
+          "fifo_generator_audio/dout",
+          "dout"
+        ]
+      },
+      "fifo_generator_audio_empty": {
+        "ports": [
+          "fifo_generator_audio/empty",
+          "empty"
+        ]
+      },
+      "fifo_generator_audio_full": {
+        "ports": [
+          "fifo_generator_audio/full",
+          "util_vector_logic_1/Op1"
+        ]
+      },
+      "fifo_generator_audio_rd_data_count": {
+        "ports": [
+          "fifo_generator_audio/rd_data_count",
+          "rd_data_count"
+        ]
+      },
+      "fm_demod_m_axis_tdata": {
+        "ports": [
+          "s_data",
+          "mpx_pack16_to32_0/s_data"
+        ]
+      },
+      "fm_demod_m_axis_tvalid": {
+        "ports": [
+          "s_valid",
+          "mpx_pack16_to32_0/s_valid"
+        ]
+      },
+      "mpx_pack16_to32_0_out_data": {
+        "ports": [
+          "mpx_pack16_to32_0/out_data",
+          "fifo_generator_audio/din"
+        ]
+      },
+      "mpx_pack16_to32_0_out_valid": {
+        "ports": [
+          "mpx_pack16_to32_0/out_valid",
+          "fifo_generator_audio/wr_en"
+        ]
+      },
+      "packer_for_udp_Res1": {
+        "ports": [
+          "rst",
+          "fifo_generator_audio/rst"
+        ]
+      },
+      "packer_for_udp_audio_rd_en": {
+        "ports": [
+          "rd_en",
+          "fifo_generator_audio/rd_en"
+        ]
+      },
+      "packer_for_udp_gmii_rxc": {
+        "ports": [
+          "rd_clk",
+          "fifo_generator_audio/rd_clk"
+        ]
+      },
+      "packer_for_udp_mpx_ready": {
+        "ports": [
+          "mpx_pack16_to32_0/s_ready",
+          "s_ready"
+        ]
+      },
+      "util_vector_logic_1_Res": {
+        "ports": [
+          "util_vector_logic_1/Res",
+          "mpx_pack16_to32_0/out_ready"
+        ]
+      }
+    }
+  }
+}

@@ -9,6 +9,9 @@ module udp_mpx_framer #(
     // One input FIFO word = 32 bits = 2 x 16-bit MPX samples.
     // If SAMPLES_PER_ST = 0, the module auto-picks the largest even
     // value that still fits into one UDP payload <= MAX_PAYLOAD_BYTES.
+    // If TARGET_DELAY_US > 0, the auto-mode also limits the packet so
+    // that the total "wait for samples + frame packing + UDP send"
+    // delay stays within TARGET_DELAY_US.
     // ============================================================
     parameter integer SAMPLES_PER_ST    = 0,
 
@@ -17,6 +20,27 @@ module udp_mpx_framer #(
 
     // Maximum UDP payload size accepted by udp_top.
     parameter integer MAX_PAYLOAD_BYTES = 1472,
+
+    // ============================================================
+    // Optional compile-time delay budget for UDP packaging and send.
+    // 0  -> legacy mode: auto-size only by MTU
+    // >0 -> delay-aware auto-size
+    //
+    // Intended use:
+    //   N_STATIONS      >= 6
+    //   TARGET_DELAY_US = 300..600
+    //   SAMPLE_RATE_HZ  = 192000 or 384000
+    //
+    // Timing model in delay-aware mode:
+    //   1) wait until one packet worth of samples is accumulated
+    //   2) write payload into pay_fifo using this FSM
+    //   3) start udp_top and wait until tx_done
+    // ============================================================
+    parameter integer TARGET_DELAY_US      = 0,
+    parameter integer SAMPLE_RATE_HZ       = 192000,
+    parameter integer UDP_CLK_HZ           = 125000000,
+    parameter integer UDP_WIRE_OVERHEAD_B  = 54,
+    parameter integer UDP_TX_FIXED_CYCLES  = 8,
 
     // First logical station id placed into per-station sub-header.
     parameter [7:0]   STATION_ID_BASE   = 8'd0,
@@ -122,6 +146,72 @@ module udp_mpx_framer #(
         end
     endfunction
 
+    function integer f_min2;
+        input integer a;
+        input integer b;
+        begin
+            if (a < b)
+                f_min2 = a;
+            else
+                f_min2 = b;
+        end
+    endfunction
+
+    function integer f_words_per_st_mtu_cap;
+        input integer active_stations;
+        input integer max_payload_bytes;
+        integer max_payload_words;
+        begin
+            max_payload_words = (max_payload_bytes / 4);
+            f_words_per_st_mtu_cap =
+                ((max_payload_words - 6) / active_stations) - 1;
+        end
+    endfunction
+
+    function integer f_words_per_st_delay_cap;
+        input integer active_stations;
+        input integer sample_rate_hz;
+        input integer target_delay_us;
+        input integer max_payload_bytes;
+        input integer udp_clk_hz;
+        input integer udp_wire_overhead_b;
+        input integer udp_tx_fixed_cycles;
+        integer mtu_cap;
+        integer w;
+        integer payload_bytes;
+        integer framer_cycles;
+        integer total_udp_cycles;
+        reg [63:0] lhs;
+        reg [63:0] rhs;
+        begin
+            mtu_cap = f_words_per_st_mtu_cap(active_stations, max_payload_bytes);
+            f_words_per_st_delay_cap = 0;
+
+            if (target_delay_us <= 0) begin
+                f_words_per_st_delay_cap = mtu_cap;
+            end else begin
+                // target_delay_us is in microseconds, so divide by 1e6
+                // after multiplying by Fs * UDP_CLK.
+                rhs = (64'd1 * target_delay_us * sample_rate_hz * udp_clk_hz) / 64'd1000000;
+
+                for (w = 1; w <= mtu_cap; w = w + 1) begin
+                    // Worst-case packetization delay for the oldest sample:
+                    // wait for 2*w samples on a station, then package, then send.
+                    payload_bytes  = 4 * (6 + active_stations * (1 + w));
+                    framer_cycles  = 8 + active_stations * (1 + 3*w);
+                    total_udp_cycles = framer_cycles + udp_tx_fixed_cycles +
+                                       udp_wire_overhead_b + payload_bytes;
+
+                    lhs = (64'd1 * 2 * w * udp_clk_hz) +
+                          (64'd1 * sample_rate_hz * total_udp_cycles);
+
+                    if (lhs <= rhs)
+                        f_words_per_st_delay_cap = w;
+                end
+            end
+        end
+    endfunction
+
     // ------------------------------------------------------------
     // Compile-time derived constants
     // ------------------------------------------------------------
@@ -137,12 +227,25 @@ module udp_mpx_framer #(
     localparam [7:0]   FIRST_ACTIVE_ST   = f_first_active(ACTIVE_MASK);
 
     // Auto payload sizing: reserve common header and one station header per active station.
-    localparam integer AUTO_WORDS_PER_ST =
-        ((MAX_PAYLOAD_WORDS - PKT_HDR_WORDS) / ACTIVE_STATIONS) - ST_HDR_WORDS;
+    localparam integer AUTO_WORDS_PER_ST_MTU =
+        f_words_per_st_mtu_cap(ACTIVE_STATIONS, MAX_PAYLOAD_BYTES);
+
+    localparam integer AUTO_WORDS_PER_ST_DELAY =
+        f_words_per_st_delay_cap(
+            ACTIVE_STATIONS,
+            SAMPLE_RATE_HZ,
+            TARGET_DELAY_US,
+            MAX_PAYLOAD_BYTES,
+            UDP_CLK_HZ,
+            UDP_WIRE_OVERHEAD_B,
+            UDP_TX_FIXED_CYCLES
+        );
 
     localparam integer WORDS_PER_ST = (SAMPLES_PER_ST != 0)
                                     ? (SAMPLES_PER_ST / 2)
-                                    : AUTO_WORDS_PER_ST;
+                                    : ((TARGET_DELAY_US > 0)
+                                        ? f_min2(AUTO_WORDS_PER_ST_MTU, AUTO_WORDS_PER_ST_DELAY)
+                                        : AUTO_WORDS_PER_ST_MTU);
 
     localparam integer SAMPLES_PER_ST_EFF = WORDS_PER_ST * 2;
     localparam integer TOTAL_WORDS        = PKT_HDR_WORDS + ACTIVE_STATIONS * (ST_HDR_WORDS + WORDS_PER_ST);
@@ -212,11 +315,23 @@ module udp_mpx_framer #(
         if (ACTIVE_STATIONS < 1)
             $error("udp_mpx_framer: at least one station must be active in STATION_MASK");
 
+        if ((SAMPLES_PER_ST == 0) && (TARGET_DELAY_US > 0) && (N_STATIONS < 6))
+            $error("udp_mpx_framer: delay-aware auto mode requires N_STATIONS >= 6");
+
         if (WORDS_PER_ST < 1)
-            $error("udp_mpx_framer: WORDS_PER_ST must be >= 1");
+            $error("udp_mpx_framer: WORDS_PER_ST must be >= 1 (target delay too small or MTU too small)");
 
         if ((SAMPLES_PER_ST != 0) && ((SAMPLES_PER_ST % 2) != 0))
             $error("udp_mpx_framer: SAMPLES_PER_ST must be even because one FIFO word contains 2 samples");
+
+        if ((TARGET_DELAY_US != 0) && (TARGET_DELAY_US < 300 || TARGET_DELAY_US > 600))
+            $error("udp_mpx_framer: TARGET_DELAY_US must be 0 or inside 300..600 us");
+
+        if (SAMPLE_RATE_HZ <= 0)
+            $error("udp_mpx_framer: SAMPLE_RATE_HZ must be > 0");
+
+        if (UDP_CLK_HZ <= 0)
+            $error("udp_mpx_framer: UDP_CLK_HZ must be > 0");
 
         if (TOTAL_BYTES > MAX_PAYLOAD_BYTES)
             $error("udp_mpx_framer: TOTAL_BYTES=%0d exceeds MAX_PAYLOAD_BYTES=%0d", TOTAL_BYTES, MAX_PAYLOAD_BYTES);

@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Fri Mar 20 10:31:35 2026
+//Date        : Tue Apr  7 14:24:55 2026
 //Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 //Command     : generate_target fm_hdmi_wrapper.bd
 //Design      : fm_hdmi_wrapper
@@ -16,10 +16,6 @@ module fm_hdmi_wrapper
     clk,
     clk_10M,
     clk_50M,
-    hdmi_clk,
-    hdmi_d0,
-    hdmi_d1,
-    hdmi_d2,
     linkspeed,
     locked,
     mdc,
@@ -38,10 +34,6 @@ module fm_hdmi_wrapper
   input clk;
   input clk_10M;
   input clk_50M;
-  output [1:0]hdmi_clk;
-  output [1:0]hdmi_d0;
-  output [1:0]hdmi_d1;
-  output [1:0]hdmi_d2;
   output [1:0]linkspeed;
   input locked;
   output mdc;
@@ -61,10 +53,6 @@ module fm_hdmi_wrapper
   wire clk;
   wire clk_10M;
   wire clk_50M;
-  wire [1:0]hdmi_clk;
-  wire [1:0]hdmi_d0;
-  wire [1:0]hdmi_d1;
-  wire [1:0]hdmi_d2;
   wire [1:0]linkspeed;
   wire locked;
   wire mdc;
@@ -85,10 +73,6 @@ module fm_hdmi_wrapper
         .clk(clk),
         .clk_10M(clk_10M),
         .clk_50M(clk_50M),
-        .hdmi_clk(hdmi_clk),
-        .hdmi_d0(hdmi_d0),
-        .hdmi_d1(hdmi_d1),
-        .hdmi_d2(hdmi_d2),
         .linkspeed(linkspeed),
         .locked(locked),
         .mdc(mdc),

@@ -89,7 +89,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>bd3df0ed</spirit:value>
+            <spirit:value>10f58d77</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -102,7 +102,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>bd3df0ed</spirit:value>
+            <spirit:value>10f58d77</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -261,19 +261,19 @@
         <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.ADC_FS_KHZ">76800</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
-        <spirit:name>FM_MIN_KHZ</spirit:name>
-        <spirit:displayName>Fm Min Khz</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.FM_MIN_KHZ">87500</spirit:value>
+        <spirit:name>SIG_MIN_KHZ</spirit:name>
+        <spirit:displayName>Sig Min Khz</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.SIG_MIN_KHZ">12220</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
-        <spirit:name>FM_MAX_KHZ</spirit:name>
-        <spirit:displayName>Fm Max Khz</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.FM_MAX_KHZ">108000</spirit:value>
+        <spirit:name>SIG_MAX_KHZ</spirit:name>
+        <spirit:displayName>Sig Max Khz</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.SIG_MAX_KHZ">32720</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>DEFAULT_RF_KHZ</spirit:name>
         <spirit:displayName>Default Rf Khz</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.DEFAULT_RF_KHZ">87500</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.DEFAULT_RF_KHZ">12220</spirit:value>
       </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
@@ -290,7 +290,7 @@
       <spirit:file>
         <spirit:name>xgui/fm_dds_cfg_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_a0b63844</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_bd69a3a5</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -303,19 +303,19 @@
       <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_FS_KHZ">76800</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
-      <spirit:name>FM_MIN_KHZ</spirit:name>
-      <spirit:displayName>Fm Min Khz</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.FM_MIN_KHZ">87500</spirit:value>
+      <spirit:name>SIG_MIN_KHZ</spirit:name>
+      <spirit:displayName>Sig Min Khz</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.SIG_MIN_KHZ">12220</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
-      <spirit:name>FM_MAX_KHZ</spirit:name>
-      <spirit:displayName>Fm Max Khz</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.FM_MAX_KHZ">108000</spirit:value>
+      <spirit:name>SIG_MAX_KHZ</spirit:name>
+      <spirit:displayName>Sig Max Khz</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.SIG_MAX_KHZ">32720</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>DEFAULT_RF_KHZ</spirit:name>
       <spirit:displayName>Default Rf Khz</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DEFAULT_RF_KHZ">87500</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DEFAULT_RF_KHZ">12220</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
@@ -337,7 +337,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-03-19T12:20:10Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2026-04-03T11:15:59Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.2</xilinx:xilinxVersion>
