@@ -4,14 +4,42 @@
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
 // Date        : Wed Apr  8 12:33:58 2026
 // Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.4 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_8/ip/fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0/fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0 -prefix
+//               fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0_ fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0_sim_netlist.v
 // Design      : fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7z020clg400-2
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
+
+module fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0_axis_iq_slicer_to_2cic
+   (m_axis_i_tvalid,
+    aresetn,
+    m_axis_i_tready,
+    m_axis_q_tready,
+    s_axis_tvalid);
+  output m_axis_i_tvalid;
+  input aresetn;
+  input m_axis_i_tready;
+  input m_axis_q_tready;
+  input s_axis_tvalid;
+
+  wire aresetn;
+  wire m_axis_i_tready;
+  wire m_axis_i_tvalid;
+  wire m_axis_q_tready;
+  wire s_axis_tvalid;
+
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \/i_ 
+       (.I0(aresetn),
+        .I1(m_axis_i_tready),
+        .I2(m_axis_q_tready),
+        .I3(s_axis_tvalid),
+        .O(m_axis_i_tvalid));
+endmodule
 
 (* CHECK_LICENSE_TYPE = "fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0,axis_iq_slicer_to_2cic,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
 (* X_CORE_INFO = "axis_iq_slicer_to_2cic,Vivado 2023.2" *) 
@@ -64,35 +92,6 @@ module fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0
         .I1(m_axis_q_tready),
         .I2(m_axis_i_tready),
         .O(s_axis_tready));
-endmodule
-
-(* ORIG_REF_NAME = "axis_iq_slicer_to_2cic" *) 
-module fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0_axis_iq_slicer_to_2cic
-   (m_axis_i_tvalid,
-    aresetn,
-    m_axis_i_tready,
-    m_axis_q_tready,
-    s_axis_tvalid);
-  output m_axis_i_tvalid;
-  input aresetn;
-  input m_axis_i_tready;
-  input m_axis_q_tready;
-  input s_axis_tvalid;
-
-  wire aresetn;
-  wire m_axis_i_tready;
-  wire m_axis_i_tvalid;
-  wire m_axis_q_tready;
-  wire s_axis_tvalid;
-
-  LUT4 #(
-    .INIT(16'h8000)) 
-    \/i_ 
-       (.I0(aresetn),
-        .I1(m_axis_i_tready),
-        .I2(m_axis_q_tready),
-        .I3(s_axis_tvalid),
-        .O(m_axis_i_tvalid));
 endmodule
 `ifndef GLBL
 `define GLBL

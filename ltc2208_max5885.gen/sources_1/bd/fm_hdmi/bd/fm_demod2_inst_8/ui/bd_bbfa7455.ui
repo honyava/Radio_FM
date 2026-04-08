@@ -1,38 +1,57 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"-212,-185",
-   "ExpandedHierarchyInLayout":"",
+   "Default View_TopLeft":"1027,-185",
+   "ExpandedHierarchyInLayout":"/digital_mixer",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port port-id_adc_clk -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
-preplace port port-id_locked -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
-preplace port port-id_m_axis_tready -pg 1 -lvl 0 -x 0 -y 110 -defaultsOSRD
-preplace port port-id_m_axis_tready_0 -pg 1 -lvl 0 -x 0 -y 250 -defaultsOSRD
-preplace port port-id_m_axis_tvalid -pg 1 -lvl 5 -x 1420 -y 140 -defaultsOSRD
-preplace portBus adc_data -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
-preplace portBus m_axis_tdata -pg 1 -lvl 5 -x 1420 -y 170 -defaultsOSRD
-preplace inst Dec200 -pg 1 -lvl 2 -x 570 -y 340 -defaultsOSRD
-preplace inst dec384to192_blockDC -pg 1 -lvl 4 -x 1240 -y 160 -defaultsOSRD
-preplace inst demodulate_384k -pg 1 -lvl 3 -x 910 -y 130 -defaultsOSRD
-preplace inst digital_mixer -pg 1 -lvl 1 -x 210 -y 100 -defaultsOSRD
-preplace netloc Dec200_m_axis_tvalid 1 2 1 740 150n
-preplace netloc LTC_2208_0_m_axis_tdata 1 0 1 40J 130n
-preplace netloc adc_clk_1 1 0 4 30 10 430 10 750 10 1070
+preplace port port-id_adc_clk -pg 1 -lvl 0 -x -30 -y 50 -defaultsOSRD
+preplace port port-id_locked -pg 1 -lvl 0 -x -30 -y 80 -defaultsOSRD
+preplace port port-id_m_axis_tready -pg 1 -lvl 0 -x -30 -y 110 -defaultsOSRD
+preplace port port-id_m_axis_tready_0 -pg 1 -lvl 0 -x -30 -y 250 -defaultsOSRD
+preplace port port-id_m_axis_tvalid -pg 1 -lvl 5 -x 2730 -y 140 -defaultsOSRD
+preplace portBus adc_data -pg 1 -lvl 0 -x -30 -y 140 -defaultsOSRD
+preplace portBus m_axis_tdata -pg 1 -lvl 5 -x 2730 -y 170 -defaultsOSRD
+preplace inst Dec200 -pg 1 -lvl 2 -x 1860 -y 340 -defaultsOSRD
+preplace inst dec384to192_blockDC -pg 1 -lvl 4 -x 2550 -y 160 -defaultsOSRD
+preplace inst demodulate_384k -pg 1 -lvl 3 -x 2210 -y 130 -defaultsOSRD
+preplace inst digital_mixer -pg 1 -lvl 1 -x 300 -y 102 -defaultsOSRD
+preplace inst digital_mixer|lfsr_rng_0 -pg 1 -lvl 3 -x 930 -y 382 -defaultsOSRD
+preplace inst digital_mixer|cmpy_1 -pg 1 -lvl 4 -x 1310 -y 222 -defaultsOSRD
+preplace inst digital_mixer|dds_compiler_0 -pg 1 -lvl 3 -x 930 -y 202 -defaultsOSRD
+preplace inst digital_mixer|fm_dds_cfg_0 -pg 1 -lvl 2 -x 600 -y 182 -defaultsOSRD
+preplace inst digital_mixer|vio_0 -pg 1 -lvl 1 -x 310 -y 202 -defaultsOSRD
+preplace netloc Dec200_m_axis_tvalid 1 2 1 2040 150n
+preplace netloc LTC_2208_0_m_axis_tdata 1 0 1 30J 122n
+preplace netloc adc_clk_1 1 0 4 20 490 1700 240 2020 240 2370
 preplace netloc axis_dc_blocker_roun_0_m_axis_tdata 1 4 1 NJ 170
-preplace netloc axis_dc_blocker_roun_0_m_axis_tvalid 1 4 1 1400J 140n
-preplace netloc cic_compiler_2_m_axis_data_tdata 1 2 1 710 170n
-preplace netloc cic_compiler_3_m_axis_data_tdata 1 2 1 750 190n
-preplace netloc digital_mixer_m_axis_dout_tdata_0 1 1 1 390 110n
-preplace netloc digital_mixer_m_axis_dout_tvalid_0 1 1 1 380 130n
-preplace netloc lfsr_rng_0_m_axis_tdata 1 1 2 NJ 70 710
-preplace netloc lfsr_rng_0_m_axis_tvalid 1 1 2 NJ 90 N
-preplace netloc m_axis_tready_0_1 1 0 4 NJ 250 NJ 250 NJ 250 1080J
-preplace netloc m_axis_tready_1 1 0 1 NJ 110
-preplace netloc vio_0_probe_out0 1 0 4 30 180 420 180 730 240 1070J
+preplace netloc axis_dc_blocker_roun_0_m_axis_tvalid 1 4 1 2710J 140n
+preplace netloc cic_compiler_2_m_axis_data_tdata 1 2 1 2030 170n
+preplace netloc cic_compiler_3_m_axis_data_tdata 1 2 1 2050 190n
+preplace netloc digital_mixer_m_axis_dout_tdata_0 1 1 1 1710 222n
+preplace netloc digital_mixer_m_axis_dout_tvalid_0 1 1 1 1670 242n
+preplace netloc lfsr_rng_0_m_axis_tdata 1 1 2 NJ 62 2000
+preplace netloc lfsr_rng_0_m_axis_tvalid 1 1 2 NJ 82 2050
+preplace netloc m_axis_tready_0_1 1 0 4 10J 12 1720J 230 2010J 250 2390J
+preplace netloc m_axis_tready_1 1 0 1 0J 102n
+preplace netloc vio_0_probe_out0 1 0 4 -10 500 1720 250 2000 260 2380J
 preplace netloc demodulate_384k_M_AXIS_DOUT 1 3 1 N 130
-levelinfo -pg 1 0 210 570 910 1240 1420
-pagesize -pg 1 -db -bbox -sgen -160 0 1600 420
+preplace netloc digital_mixer|adc_dci_0_1 1 0 4 180 72 440 72 780 282 NJ
+preplace netloc digital_mixer|cmpy_1_m_axis_dout_tdata 1 4 1 N 222
+preplace netloc digital_mixer|cmpy_1_m_axis_dout_tvalid 1 4 1 N 242
+preplace netloc digital_mixer|lfsr_rng_0_m_axis_tdata 1 3 2 1100 62 NJ
+preplace netloc digital_mixer|lfsr_rng_0_m_axis_tvalid 1 3 2 1110 82 NJ
+preplace netloc digital_mixer|s_axis_tdata_0_1 1 0 4 190J 62 NJ 62 NJ 62 1090
+preplace netloc digital_mixer|sys_rst_n_0_1 1 0 4 NJ 82 430 82 770 302 NJ
+preplace netloc digital_mixer|vio_0_probe_out0 1 1 1 N 192
+preplace netloc digital_mixer|vio_0_probe_out1 1 1 1 N 212
+preplace netloc digital_mixer|xlconstant_0_dout 1 0 4 200J 92 NJ 92 760 122 1080J
+preplace netloc digital_mixer|dds_compiler_0_M_AXIS_DATA 1 3 1 N 202
+preplace netloc digital_mixer|fm_dds_cfg_0_s_axis_config 1 2 1 N 182
+levelinfo -pg 1 -30 300 1860 2210 2550 2730
+levelinfo -hier digital_mixer * 310 600 930 1310 *
+pagesize -pg 1 -db -bbox -sgen -190 0 2910 570
+pagesize -hier digital_mixer -db -bbox -sgen 150 42 1540 462
 "
 }
 0

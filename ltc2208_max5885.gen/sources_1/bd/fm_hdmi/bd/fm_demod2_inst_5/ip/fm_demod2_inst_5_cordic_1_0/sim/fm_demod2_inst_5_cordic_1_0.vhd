@@ -171,7 +171,7 @@ BEGIN
       C_PRECISION => 0,
       C_ROUND_MODE => 3,
       C_SCALE_COMP => 0,
-      C_THROTTLE_SCHEME => 1,
+      C_THROTTLE_SCHEME => 2,
       C_TLAST_RESOLUTION => 0,
       C_HAS_S_AXIS_PHASE_TUSER => 0,
       C_HAS_S_AXIS_PHASE_TLAST => 0,

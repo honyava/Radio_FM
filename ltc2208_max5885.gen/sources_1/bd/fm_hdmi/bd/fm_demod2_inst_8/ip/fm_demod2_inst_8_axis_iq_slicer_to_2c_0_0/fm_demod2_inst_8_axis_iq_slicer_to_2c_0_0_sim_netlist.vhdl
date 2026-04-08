@@ -4,8 +4,8 @@
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
 -- Date        : Wed Apr  8 12:33:58 2026
 -- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.4 LTS
--- Command     : write_vhdl -force -mode funcsim
---               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_8/ip/fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0/fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0 -prefix
+--               fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0_ fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0_sim_netlist.vhdl
 -- Design      : fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -23,8 +23,6 @@ entity fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0_axis_iq_slicer_to_2cic is
     m_axis_q_tready : in STD_LOGIC;
     s_axis_tvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0_axis_iq_slicer_to_2cic : entity is "axis_iq_slicer_to_2cic";
 end fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0_axis_iq_slicer_to_2cic;
 
 architecture STRUCTURE of fm_demod2_inst_8_axis_iq_slicer_to_2c_0_0_axis_iq_slicer_to_2cic is

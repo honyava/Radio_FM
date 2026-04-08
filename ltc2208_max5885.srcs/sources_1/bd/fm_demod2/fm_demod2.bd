@@ -1582,7 +1582,7 @@
                 "value": "Blocking"
               },
               "optimize_goal": {
-                "value": "Resources"
+                "value": "Performance"
               },
               "out_tready": {
                 "value": "true"

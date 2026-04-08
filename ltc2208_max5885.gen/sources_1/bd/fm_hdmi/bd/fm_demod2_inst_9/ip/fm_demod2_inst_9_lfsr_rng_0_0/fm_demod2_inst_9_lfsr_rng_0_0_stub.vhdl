@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Wed Apr  8 12:33:59 2026
+-- Date        : Wed Apr  8 12:33:58 2026
 -- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.4 LTS
--- Command     : write_vhdl -force -mode synth_stub
---               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_9/ip/fm_demod2_inst_9_lfsr_rng_0_0/fm_demod2_inst_9_lfsr_rng_0_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top fm_demod2_inst_9_lfsr_rng_0_0 -prefix
+--               fm_demod2_inst_9_lfsr_rng_0_0_ fm_demod2_inst_9_lfsr_rng_0_0_stub.vhdl
 -- Design      : fm_demod2_inst_9_lfsr_rng_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg400-2

@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param xicom.use_bs_reader 1
 set_param chipscope.maxJobs 8
 set_msg_config -id {HDL-1065} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -106,6 +107,66 @@ set_property used_in_implementation false [get_files -all /home/reting/Desktop/G
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fifo_generator_0_0/fm_hdmi_fifo_generator_0_0.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_fifo_generator_0_0/fm_hdmi_fifo_generator_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/fm_hdmi_ooc.xdc]
+
+add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_8/packer_udp2_inst_8.bd
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_8/ip/packer_udp2_inst_8_fifo_generator_audio_0/packer_udp2_inst_8_fifo_generator_audio_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_8/ip/packer_udp2_inst_8_fifo_generator_audio_0/packer_udp2_inst_8_fifo_generator_audio_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_8/ip/packer_udp2_inst_8_fifo_generator_audio_0/packer_udp2_inst_8_fifo_generator_audio_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_8/packer_udp2_inst_8_ooc.xdc]
+
+add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_1/packer_udp2_inst_1.bd
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_1/ip/packer_udp2_inst_1_fifo_generator_audio_0/packer_udp2_inst_1_fifo_generator_audio_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_1/ip/packer_udp2_inst_1_fifo_generator_audio_0/packer_udp2_inst_1_fifo_generator_audio_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_1/ip/packer_udp2_inst_1_fifo_generator_audio_0/packer_udp2_inst_1_fifo_generator_audio_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_1/packer_udp2_inst_1_ooc.xdc]
+
+add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_0/packer_udp2_inst_0.bd
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_0/ip/packer_udp2_inst_0_fifo_generator_audio_0/packer_udp2_inst_0_fifo_generator_audio_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_0/ip/packer_udp2_inst_0_fifo_generator_audio_0/packer_udp2_inst_0_fifo_generator_audio_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_0/ip/packer_udp2_inst_0_fifo_generator_audio_0/packer_udp2_inst_0_fifo_generator_audio_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_0/packer_udp2_inst_0_ooc.xdc]
+
+add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_9/packer_udp2_inst_9.bd
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_9/ip/packer_udp2_inst_9_fifo_generator_audio_0/packer_udp2_inst_9_fifo_generator_audio_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_9/ip/packer_udp2_inst_9_fifo_generator_audio_0/packer_udp2_inst_9_fifo_generator_audio_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_9/ip/packer_udp2_inst_9_fifo_generator_audio_0/packer_udp2_inst_9_fifo_generator_audio_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_9/packer_udp2_inst_9_ooc.xdc]
+
+add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_3/packer_udp2_inst_3.bd
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_3/ip/packer_udp2_inst_3_fifo_generator_audio_0/packer_udp2_inst_3_fifo_generator_audio_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_3/ip/packer_udp2_inst_3_fifo_generator_audio_0/packer_udp2_inst_3_fifo_generator_audio_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_3/ip/packer_udp2_inst_3_fifo_generator_audio_0/packer_udp2_inst_3_fifo_generator_audio_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_3/packer_udp2_inst_3_ooc.xdc]
+
+add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_5/packer_udp2_inst_5.bd
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_5/ip/packer_udp2_inst_5_fifo_generator_audio_0/packer_udp2_inst_5_fifo_generator_audio_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_5/ip/packer_udp2_inst_5_fifo_generator_audio_0/packer_udp2_inst_5_fifo_generator_audio_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_5/ip/packer_udp2_inst_5_fifo_generator_audio_0/packer_udp2_inst_5_fifo_generator_audio_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_5/packer_udp2_inst_5_ooc.xdc]
+
+add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_4/packer_udp2_inst_4.bd
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_4/ip/packer_udp2_inst_4_fifo_generator_audio_0/packer_udp2_inst_4_fifo_generator_audio_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_4/ip/packer_udp2_inst_4_fifo_generator_audio_0/packer_udp2_inst_4_fifo_generator_audio_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_4/ip/packer_udp2_inst_4_fifo_generator_audio_0/packer_udp2_inst_4_fifo_generator_audio_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_4/packer_udp2_inst_4_ooc.xdc]
+
+add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_2/packer_udp2_inst_2.bd
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_2/ip/packer_udp2_inst_2_fifo_generator_audio_0/packer_udp2_inst_2_fifo_generator_audio_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_2/ip/packer_udp2_inst_2_fifo_generator_audio_0/packer_udp2_inst_2_fifo_generator_audio_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_2/ip/packer_udp2_inst_2_fifo_generator_audio_0/packer_udp2_inst_2_fifo_generator_audio_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_2/packer_udp2_inst_2_ooc.xdc]
+
+add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_6/packer_udp2_inst_6.bd
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_6/ip/packer_udp2_inst_6_fifo_generator_audio_0/packer_udp2_inst_6_fifo_generator_audio_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_6/ip/packer_udp2_inst_6_fifo_generator_audio_0/packer_udp2_inst_6_fifo_generator_audio_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_6/ip/packer_udp2_inst_6_fifo_generator_audio_0/packer_udp2_inst_6_fifo_generator_audio_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_6/packer_udp2_inst_6_ooc.xdc]
+
+add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_7/packer_udp2_inst_7.bd
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_7/ip/packer_udp2_inst_7_fifo_generator_audio_0/packer_udp2_inst_7_fifo_generator_audio_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_7/ip/packer_udp2_inst_7_fifo_generator_audio_0/packer_udp2_inst_7_fifo_generator_audio_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_7/ip/packer_udp2_inst_7_fifo_generator_audio_0/packer_udp2_inst_7_fifo_generator_audio_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_7/packer_udp2_inst_7_ooc.xdc]
 
 add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_0/fm_demod2_inst_0.bd
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_0/ip/fm_demod2_inst_0_cic_compiler_3_0/fm_demod2_inst_0_cic_compiler_3_0_ooc.xdc]
@@ -276,66 +337,6 @@ set_property used_in_implementation false [get_files -all /home/reting/Desktop/G
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_10/ip/fm_demod2_inst_10_vio_0_0/fm_demod2_inst_10_vio_0_0.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_10/ip/fm_demod2_inst_10_vio_0_0/fm_demod2_inst_10_vio_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_10/fm_demod2_inst_10_ooc.xdc]
-
-add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_8/packer_udp2_inst_8.bd
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_8/ip/packer_udp2_inst_8_fifo_generator_audio_0/packer_udp2_inst_8_fifo_generator_audio_0.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_8/ip/packer_udp2_inst_8_fifo_generator_audio_0/packer_udp2_inst_8_fifo_generator_audio_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_8/ip/packer_udp2_inst_8_fifo_generator_audio_0/packer_udp2_inst_8_fifo_generator_audio_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_8/packer_udp2_inst_8_ooc.xdc]
-
-add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_1/packer_udp2_inst_1.bd
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_1/ip/packer_udp2_inst_1_fifo_generator_audio_0/packer_udp2_inst_1_fifo_generator_audio_0.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_1/ip/packer_udp2_inst_1_fifo_generator_audio_0/packer_udp2_inst_1_fifo_generator_audio_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_1/ip/packer_udp2_inst_1_fifo_generator_audio_0/packer_udp2_inst_1_fifo_generator_audio_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_1/packer_udp2_inst_1_ooc.xdc]
-
-add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_0/packer_udp2_inst_0.bd
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_0/ip/packer_udp2_inst_0_fifo_generator_audio_0/packer_udp2_inst_0_fifo_generator_audio_0.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_0/ip/packer_udp2_inst_0_fifo_generator_audio_0/packer_udp2_inst_0_fifo_generator_audio_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_0/ip/packer_udp2_inst_0_fifo_generator_audio_0/packer_udp2_inst_0_fifo_generator_audio_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_0/packer_udp2_inst_0_ooc.xdc]
-
-add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_9/packer_udp2_inst_9.bd
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_9/ip/packer_udp2_inst_9_fifo_generator_audio_0/packer_udp2_inst_9_fifo_generator_audio_0.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_9/ip/packer_udp2_inst_9_fifo_generator_audio_0/packer_udp2_inst_9_fifo_generator_audio_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_9/ip/packer_udp2_inst_9_fifo_generator_audio_0/packer_udp2_inst_9_fifo_generator_audio_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_9/packer_udp2_inst_9_ooc.xdc]
-
-add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_3/packer_udp2_inst_3.bd
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_3/ip/packer_udp2_inst_3_fifo_generator_audio_0/packer_udp2_inst_3_fifo_generator_audio_0.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_3/ip/packer_udp2_inst_3_fifo_generator_audio_0/packer_udp2_inst_3_fifo_generator_audio_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_3/ip/packer_udp2_inst_3_fifo_generator_audio_0/packer_udp2_inst_3_fifo_generator_audio_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_3/packer_udp2_inst_3_ooc.xdc]
-
-add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_5/packer_udp2_inst_5.bd
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_5/ip/packer_udp2_inst_5_fifo_generator_audio_0/packer_udp2_inst_5_fifo_generator_audio_0.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_5/ip/packer_udp2_inst_5_fifo_generator_audio_0/packer_udp2_inst_5_fifo_generator_audio_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_5/ip/packer_udp2_inst_5_fifo_generator_audio_0/packer_udp2_inst_5_fifo_generator_audio_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_5/packer_udp2_inst_5_ooc.xdc]
-
-add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_4/packer_udp2_inst_4.bd
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_4/ip/packer_udp2_inst_4_fifo_generator_audio_0/packer_udp2_inst_4_fifo_generator_audio_0.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_4/ip/packer_udp2_inst_4_fifo_generator_audio_0/packer_udp2_inst_4_fifo_generator_audio_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_4/ip/packer_udp2_inst_4_fifo_generator_audio_0/packer_udp2_inst_4_fifo_generator_audio_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_4/packer_udp2_inst_4_ooc.xdc]
-
-add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_2/packer_udp2_inst_2.bd
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_2/ip/packer_udp2_inst_2_fifo_generator_audio_0/packer_udp2_inst_2_fifo_generator_audio_0.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_2/ip/packer_udp2_inst_2_fifo_generator_audio_0/packer_udp2_inst_2_fifo_generator_audio_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_2/ip/packer_udp2_inst_2_fifo_generator_audio_0/packer_udp2_inst_2_fifo_generator_audio_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_2/packer_udp2_inst_2_ooc.xdc]
-
-add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_6/packer_udp2_inst_6.bd
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_6/ip/packer_udp2_inst_6_fifo_generator_audio_0/packer_udp2_inst_6_fifo_generator_audio_0.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_6/ip/packer_udp2_inst_6_fifo_generator_audio_0/packer_udp2_inst_6_fifo_generator_audio_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_6/ip/packer_udp2_inst_6_fifo_generator_audio_0/packer_udp2_inst_6_fifo_generator_audio_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_6/packer_udp2_inst_6_ooc.xdc]
-
-add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_7/packer_udp2_inst_7.bd
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_7/ip/packer_udp2_inst_7_fifo_generator_audio_0/packer_udp2_inst_7_fifo_generator_audio_0.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_7/ip/packer_udp2_inst_7_fifo_generator_audio_0/packer_udp2_inst_7_fifo_generator_audio_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_7/ip/packer_udp2_inst_7_fifo_generator_audio_0/packer_udp2_inst_7_fifo_generator_audio_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_7/packer_udp2_inst_7_ooc.xdc]
 
 read_ip -quiet /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]

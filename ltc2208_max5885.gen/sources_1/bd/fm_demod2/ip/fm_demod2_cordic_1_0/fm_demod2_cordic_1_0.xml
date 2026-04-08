@@ -1153,7 +1153,7 @@ set format long minimum {} maximum {}} value 0} integer {signed {attribs {resolv
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_THROTTLE_SCHEME</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_THROTTLE_SCHEME">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_THROTTLE_SCHEME">2</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_TLAST_RESOLUTION</spirit:name>
@@ -1351,7 +1351,7 @@ set format long minimum {} maximum {}} value 0} integer {signed {attribs {resolv
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>optimize_goal</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.optimize_goal" spirit:choiceRef="choice_list_e1b2f991" spirit:order="21">Resources</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.optimize_goal" spirit:choiceRef="choice_list_e1b2f991" spirit:order="21">Performance</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>out_tready</spirit:name>
