@@ -179,7 +179,7 @@ BEGIN
       C_XDEVICEFAMILY => "zynq",
       C_MODE_OF_OPERATION => 0,
       C_MODULUS => 9,
-      C_ACCUMULATOR_WIDTH => 27,
+      C_ACCUMULATOR_WIDTH => 26,
       C_CHANNELS => 1,
       C_HAS_PHASE_OUT => 0,
       C_HAS_PHASEGEN => 1,

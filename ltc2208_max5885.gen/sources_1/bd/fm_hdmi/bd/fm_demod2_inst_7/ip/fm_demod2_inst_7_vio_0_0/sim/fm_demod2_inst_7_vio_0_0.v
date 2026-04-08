@@ -48,13 +48,12 @@
 `timescale 1ns / 1ps
 module fm_demod2_inst_7_vio_0_0 (
 clk,
-probe_in0,
+
 probe_out0,
 probe_out1
 );
 
 input clk;
-input [15 : 0] probe_in0;
 
 output reg [16 : 0] probe_out0 = 'h155CC ;
 output reg [0 : 0] probe_out1 = 'h1 ;

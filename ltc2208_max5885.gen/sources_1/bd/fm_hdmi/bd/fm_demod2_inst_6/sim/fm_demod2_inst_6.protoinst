@@ -127,6 +127,14 @@
 						"TVALID": { "actual": "M_AXIS_DOUT_tvalid"}
 					}
 				},
+				"/demodulate_384k/cmpy_0/M_AXIS_DOUT": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"TDATA": { "actual": "m_axis_dout_tdata[63:0]"},
+						"TVALID": { "actual": "m_axis_dout_tvalid"}
+					}
+				},
 				"/demodulate_384k/cordic_1/M_AXIS_DOUT": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
@@ -134,6 +142,33 @@
 						"TDATA": { "actual": "m_axis_dout_tdata[23:0]"},
 						"TREADY": { "actual": "m_axis_dout_tready"},
 						"TVALID": { "actual": "m_axis_dout_tvalid"}
+					}
+				},
+				"/demodulate_384k/cordic_1/S_AXIS_CARTESIAN": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"TDATA": { "actual": "s_axis_cartesian_tdata[63:0]"},
+						"TREADY": { "actual": "s_axis_cartesian_tready"},
+						"TVALID": { "actual": "s_axis_cartesian_tvalid"}
+					}
+				},
+				"/digital_mixer/cmpy_1/S_AXIS_B": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_b_tdata[31:0]"},
+						"TVALID": { "actual": "s_axis_b_tvalid"}
+					}
+				},
+				"/digital_mixer/dds_compiler_0/M_AXIS_DATA": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "m_axis_data_tdata[31:0]"},
+						"TVALID": { "actual": "m_axis_data_tvalid"}
 					}
 				},
 				"/digital_mixer/dds_compiler_0/S_AXIS_CONFIG": {

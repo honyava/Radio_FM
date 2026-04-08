@@ -2,7 +2,7 @@
   "design": {
     "design_info": {
       "boundary_crc": "0x20EF6B830BF3D841",
-      "design_src": "/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_1/packer_udp2_inst_1.bd",
+      "design_src": "/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd",
       "device": "xc7z020clg400-2",
       "name": "packer_udp2_inst_9",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",

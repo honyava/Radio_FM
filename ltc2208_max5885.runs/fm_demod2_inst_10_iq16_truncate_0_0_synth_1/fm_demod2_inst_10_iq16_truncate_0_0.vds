@@ -1,0 +1,26 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Apr  8 12:35:26 2026
+# Process ID: 350157
+# Current directory: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_demod2_inst_10_iq16_truncate_0_0_synth_1
+# Command line: vivado -log fm_demod2_inst_10_iq16_truncate_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fm_demod2_inst_10_iq16_truncate_0_0.tcl
+# Log file: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_demod2_inst_10_iq16_truncate_0_0_synth_1/fm_demod2_inst_10_iq16_truncate_0_0.vds
+# Journal file: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_demod2_inst_10_iq16_truncate_0_0_synth_1/vivado.jou
+# Running On: reting-B650-EAGLE-AX, OS: Linux, CPU Frequency: 5039.726 MHz, CPU Physical cores: 32, Host memory: 66468 MB
+#-----------------------------------------------------------
+source fm_demod2_inst_10_iq16_truncate_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/reting/Programs/2023/Vivado/2023.2/data/ip'.
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: fm_demod2_inst_10_iq16_truncate_0_0
+INFO: [IP_Flow 19-6922] IPCACHE: Exporting cached entry ae7196b2b5beedc2 to dir: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_demod2_inst_10_iq16_truncate_0_0_synth_1
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.cache/ip/2023.2/a/e/ae7196b2b5beedc2/fm_demod2_inst_0_iq16_truncate_0_0_stub.vhdl to /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_demod2_inst_10_iq16_truncate_0_0_synth_1/fm_demod2_inst_10_iq16_truncate_0_0_stub.vhdl.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.cache/ip/2023.2/a/e/ae7196b2b5beedc2/fm_demod2_inst_0_iq16_truncate_0_0_stub.v to /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_demod2_inst_10_iq16_truncate_0_0_synth_1/fm_demod2_inst_10_iq16_truncate_0_0_stub.v.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.cache/ip/2023.2/a/e/ae7196b2b5beedc2/fm_demod2_inst_0_iq16_truncate_0_0_sim_netlist.vhdl to /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_demod2_inst_10_iq16_truncate_0_0_synth_1/fm_demod2_inst_10_iq16_truncate_0_0_sim_netlist.vhdl.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.cache/ip/2023.2/a/e/ae7196b2b5beedc2/fm_demod2_inst_0_iq16_truncate_0_0_sim_netlist.v to /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_demod2_inst_10_iq16_truncate_0_0_synth_1/fm_demod2_inst_10_iq16_truncate_0_0_sim_netlist.v.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.cache/ip/2023.2/a/e/ae7196b2b5beedc2/fm_demod2_inst_0_iq16_truncate_0_0.dcp to /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_demod2_inst_10_iq16_truncate_0_0_synth_1/fm_demod2_inst_10_iq16_truncate_0_0.dcp.
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP fm_demod2_inst_10_iq16_truncate_0_0, cache-ID = ae7196b2b5beedc2.
+INFO: [Common 17-206] Exiting Vivado at Wed Apr  8 12:35:33 2026...

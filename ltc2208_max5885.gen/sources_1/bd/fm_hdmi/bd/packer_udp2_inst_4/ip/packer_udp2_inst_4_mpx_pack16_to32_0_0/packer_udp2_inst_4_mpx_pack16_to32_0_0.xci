@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "packer_udp2_inst_4_mpx_pack16_to32_0_0",
-    "cell_name": "mpx_pack16_to32_0",
+    "cell_name": "station4/packer_udp2/mpx_pack16_to32_0",
     "component_reference": "xilinx.com:module_ref:mpx_pack16_to32:1.0",
     "ip_revision": "1",
     "gen_directory": ".",

@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Fri Mar  6 12:28:57 2026
-// Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
-// Command     : write_verilog -force -mode funcsim -rename_top fm_hdmi_udp_phy_shell_0_0 -prefix
-//               fm_hdmi_udp_phy_shell_0_0_ fm_hdmi_udp_phy_shell_0_0_sim_netlist.v
+// Date        : Wed Apr  8 12:34:01 2026
+// Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.4 LTS
+// Command     : write_verilog -force -mode funcsim
+//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_udp_phy_shell_0_0/fm_hdmi_udp_phy_shell_0_0_sim_netlist.v
 // Design      : fm_hdmi_udp_phy_shell_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,6 +13,174 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
+(* CHECK_LICENSE_TYPE = "fm_hdmi_udp_phy_shell_0_0,udp_phy_shell,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
+(* X_CORE_INFO = "udp_phy_shell,Vivado 2023.2" *) 
+(* NotValidForBitStream *)
+module fm_hdmi_udp_phy_shell_0_0
+   (rst_n,
+    phy_rxc,
+    phy_rx_ctrl,
+    phy_rxd,
+    phy_txc,
+    phy_tx_ctrl,
+    phy_txd,
+    phy_rstn,
+    iodelay_ref_clk200,
+    mdio_clk50,
+    linkspeed,
+    mdc,
+    mdio,
+    gmii_rxc,
+    gmii_rxdv,
+    gmii_rxd,
+    gmii_txen_udp,
+    gmii_txd_udp,
+    gmii_txc,
+    destination_mac,
+    destination_ip);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst_n RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst_n;
+  input phy_rxc;
+  input phy_rx_ctrl;
+  input [3:0]phy_rxd;
+  output phy_txc;
+  output phy_tx_ctrl;
+  output [3:0]phy_txd;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 phy_rstn RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME phy_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output phy_rstn;
+  input iodelay_ref_clk200;
+  input mdio_clk50;
+  output [1:0]linkspeed;
+  output mdc;
+  inout mdio;
+  output gmii_rxc;
+  output gmii_rxdv;
+  output [7:0]gmii_rxd;
+  input gmii_txen_udp;
+  input [7:0]gmii_txd_udp;
+  output gmii_txc;
+  output [47:0]destination_mac;
+  output [31:0]destination_ip;
+
+  wire \<const0> ;
+  wire \<const1> ;
+  wire [7:0]gmii_rxd;
+  wire gmii_rxdv;
+  wire gmii_txc;
+  wire [7:0]gmii_txd_udp;
+  wire gmii_txen_udp;
+  wire iodelay_ref_clk200;
+  wire phy_rx_ctrl;
+  wire phy_rxc;
+  wire [3:0]phy_rxd;
+  wire phy_tx_ctrl;
+  wire [3:0]phy_txd;
+  wire rst_n;
+
+  assign destination_ip[31] = \<const1> ;
+  assign destination_ip[30] = \<const1> ;
+  assign destination_ip[29] = \<const0> ;
+  assign destination_ip[28] = \<const0> ;
+  assign destination_ip[27] = \<const0> ;
+  assign destination_ip[26] = \<const0> ;
+  assign destination_ip[25] = \<const0> ;
+  assign destination_ip[24] = \<const0> ;
+  assign destination_ip[23] = \<const1> ;
+  assign destination_ip[22] = \<const0> ;
+  assign destination_ip[21] = \<const1> ;
+  assign destination_ip[20] = \<const0> ;
+  assign destination_ip[19] = \<const1> ;
+  assign destination_ip[18] = \<const0> ;
+  assign destination_ip[17] = \<const0> ;
+  assign destination_ip[16] = \<const0> ;
+  assign destination_ip[15] = \<const0> ;
+  assign destination_ip[14] = \<const0> ;
+  assign destination_ip[13] = \<const0> ;
+  assign destination_ip[12] = \<const0> ;
+  assign destination_ip[11] = \<const0> ;
+  assign destination_ip[10] = \<const0> ;
+  assign destination_ip[9] = \<const0> ;
+  assign destination_ip[8] = \<const1> ;
+  assign destination_ip[7] = \<const0> ;
+  assign destination_ip[6] = \<const0> ;
+  assign destination_ip[5] = \<const0> ;
+  assign destination_ip[4] = \<const0> ;
+  assign destination_ip[3] = \<const0> ;
+  assign destination_ip[2] = \<const0> ;
+  assign destination_ip[1] = \<const1> ;
+  assign destination_ip[0] = \<const1> ;
+  assign destination_mac[47] = \<const1> ;
+  assign destination_mac[46] = \<const1> ;
+  assign destination_mac[45] = \<const1> ;
+  assign destination_mac[44] = \<const1> ;
+  assign destination_mac[43] = \<const1> ;
+  assign destination_mac[42] = \<const1> ;
+  assign destination_mac[41] = \<const1> ;
+  assign destination_mac[40] = \<const1> ;
+  assign destination_mac[39] = \<const1> ;
+  assign destination_mac[38] = \<const1> ;
+  assign destination_mac[37] = \<const1> ;
+  assign destination_mac[36] = \<const1> ;
+  assign destination_mac[35] = \<const1> ;
+  assign destination_mac[34] = \<const1> ;
+  assign destination_mac[33] = \<const1> ;
+  assign destination_mac[32] = \<const1> ;
+  assign destination_mac[31] = \<const1> ;
+  assign destination_mac[30] = \<const1> ;
+  assign destination_mac[29] = \<const1> ;
+  assign destination_mac[28] = \<const1> ;
+  assign destination_mac[27] = \<const1> ;
+  assign destination_mac[26] = \<const1> ;
+  assign destination_mac[25] = \<const1> ;
+  assign destination_mac[24] = \<const1> ;
+  assign destination_mac[23] = \<const1> ;
+  assign destination_mac[22] = \<const1> ;
+  assign destination_mac[21] = \<const1> ;
+  assign destination_mac[20] = \<const1> ;
+  assign destination_mac[19] = \<const1> ;
+  assign destination_mac[18] = \<const1> ;
+  assign destination_mac[17] = \<const1> ;
+  assign destination_mac[16] = \<const1> ;
+  assign destination_mac[15] = \<const1> ;
+  assign destination_mac[14] = \<const1> ;
+  assign destination_mac[13] = \<const1> ;
+  assign destination_mac[12] = \<const1> ;
+  assign destination_mac[11] = \<const1> ;
+  assign destination_mac[10] = \<const1> ;
+  assign destination_mac[9] = \<const1> ;
+  assign destination_mac[8] = \<const1> ;
+  assign destination_mac[7] = \<const1> ;
+  assign destination_mac[6] = \<const1> ;
+  assign destination_mac[5] = \<const1> ;
+  assign destination_mac[4] = \<const1> ;
+  assign destination_mac[3] = \<const1> ;
+  assign destination_mac[2] = \<const1> ;
+  assign destination_mac[1] = \<const1> ;
+  assign destination_mac[0] = \<const1> ;
+  assign gmii_rxc = gmii_txc;
+  assign linkspeed[1] = \<const0> ;
+  assign linkspeed[0] = \<const0> ;
+  assign mdc = \<const0> ;
+  assign phy_rstn = rst_n;
+  assign phy_txc = gmii_txc;
+  GND GND
+       (.G(\<const0> ));
+  VCC VCC
+       (.P(\<const1> ));
+  fm_hdmi_udp_phy_shell_0_0_udp_phy_shell inst
+       (.IDDR_inst(gmii_rxdv),
+        .gmii_rxd(gmii_rxd),
+        .gmii_txc(gmii_txc),
+        .gmii_txd_udp(gmii_txd_udp),
+        .gmii_txen_udp(gmii_txen_udp),
+        .iodelay_ref_clk200(iodelay_ref_clk200),
+        .phy_rx_ctrl(phy_rx_ctrl),
+        .phy_rxc(phy_rxc),
+        .phy_rxd(phy_rxd),
+        .phy_tx_ctrl(phy_tx_ctrl),
+        .phy_txd(phy_txd),
+        .rst_n(rst_n));
+endmodule
+
+(* ORIG_REF_NAME = "arp_rxd" *) 
 module fm_hdmi_udp_phy_shell_0_0_arp_rxd
    (rst_n_0,
     \cur_state_reg[0]_0 ,
@@ -2702,6 +2870,7 @@ module fm_hdmi_udp_phy_shell_0_0_arp_rxd
         .O(arp_tx_en));
 endmodule
 
+(* ORIG_REF_NAME = "arp_top" *) 
 module fm_hdmi_udp_phy_shell_0_0_arp_top
    (rst_n_0,
     arp_gmii_txen,
@@ -2914,6 +3083,7 @@ module fm_hdmi_udp_phy_shell_0_0_arp_top
         .\gmii_txd_reg[6] (crc32_inst_n_48));
 endmodule
 
+(* ORIG_REF_NAME = "arp_txd" *) 
 module fm_hdmi_udp_phy_shell_0_0_arp_txd
    (arp_tx_done,
     arp_gmii_txen,
@@ -4585,6 +4755,7 @@ module fm_hdmi_udp_phy_shell_0_0_arp_txd
         .Q(tx_en_d1));
 endmodule
 
+(* ORIG_REF_NAME = "crc32" *) 
 module fm_hdmi_udp_phy_shell_0_0_crc32
    (\crc_data_reg[30]_0 ,
     Q,
@@ -5121,6 +5292,7 @@ module fm_hdmi_udp_phy_shell_0_0_crc32
         .O(\crc_data_reg[8]_0 ));
 endmodule
 
+(* ORIG_REF_NAME = "eth_ctrl" *) 
 module fm_hdmi_udp_phy_shell_0_0_eth_ctrl
    (protocol_reg_0,
     gmii_txen,
@@ -5233,173 +5405,7 @@ module fm_hdmi_udp_phy_shell_0_0_eth_ctrl
         .O(gmii_txd[7]));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "fm_hdmi_udp_phy_shell_0_0,udp_phy_shell,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
-(* X_CORE_INFO = "udp_phy_shell,Vivado 2023.2" *) 
-(* NotValidForBitStream *)
-module fm_hdmi_udp_phy_shell_0_0
-   (rst_n,
-    phy_rxc,
-    phy_rx_ctrl,
-    phy_rxd,
-    phy_txc,
-    phy_tx_ctrl,
-    phy_txd,
-    phy_rstn,
-    iodelay_ref_clk200,
-    mdio_clk50,
-    linkspeed,
-    mdc,
-    mdio,
-    gmii_rxc,
-    gmii_rxdv,
-    gmii_rxd,
-    gmii_txen_udp,
-    gmii_txd_udp,
-    gmii_txc,
-    destination_mac,
-    destination_ip);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst_n RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst_n;
-  input phy_rxc;
-  input phy_rx_ctrl;
-  input [3:0]phy_rxd;
-  output phy_txc;
-  output phy_tx_ctrl;
-  output [3:0]phy_txd;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 phy_rstn RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME phy_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output phy_rstn;
-  input iodelay_ref_clk200;
-  input mdio_clk50;
-  output [1:0]linkspeed;
-  output mdc;
-  inout mdio;
-  output gmii_rxc;
-  output gmii_rxdv;
-  output [7:0]gmii_rxd;
-  input gmii_txen_udp;
-  input [7:0]gmii_txd_udp;
-  output gmii_txc;
-  output [47:0]destination_mac;
-  output [31:0]destination_ip;
-
-  wire \<const0> ;
-  wire \<const1> ;
-  wire [7:0]gmii_rxd;
-  wire gmii_rxdv;
-  wire gmii_txc;
-  wire [7:0]gmii_txd_udp;
-  wire gmii_txen_udp;
-  wire iodelay_ref_clk200;
-  wire phy_rx_ctrl;
-  wire phy_rxc;
-  wire [3:0]phy_rxd;
-  wire phy_tx_ctrl;
-  wire [3:0]phy_txd;
-  wire rst_n;
-
-  assign destination_ip[31] = \<const1> ;
-  assign destination_ip[30] = \<const1> ;
-  assign destination_ip[29] = \<const0> ;
-  assign destination_ip[28] = \<const0> ;
-  assign destination_ip[27] = \<const0> ;
-  assign destination_ip[26] = \<const0> ;
-  assign destination_ip[25] = \<const0> ;
-  assign destination_ip[24] = \<const0> ;
-  assign destination_ip[23] = \<const1> ;
-  assign destination_ip[22] = \<const0> ;
-  assign destination_ip[21] = \<const1> ;
-  assign destination_ip[20] = \<const0> ;
-  assign destination_ip[19] = \<const1> ;
-  assign destination_ip[18] = \<const0> ;
-  assign destination_ip[17] = \<const0> ;
-  assign destination_ip[16] = \<const0> ;
-  assign destination_ip[15] = \<const0> ;
-  assign destination_ip[14] = \<const0> ;
-  assign destination_ip[13] = \<const0> ;
-  assign destination_ip[12] = \<const0> ;
-  assign destination_ip[11] = \<const0> ;
-  assign destination_ip[10] = \<const0> ;
-  assign destination_ip[9] = \<const0> ;
-  assign destination_ip[8] = \<const1> ;
-  assign destination_ip[7] = \<const0> ;
-  assign destination_ip[6] = \<const0> ;
-  assign destination_ip[5] = \<const0> ;
-  assign destination_ip[4] = \<const0> ;
-  assign destination_ip[3] = \<const0> ;
-  assign destination_ip[2] = \<const0> ;
-  assign destination_ip[1] = \<const1> ;
-  assign destination_ip[0] = \<const1> ;
-  assign destination_mac[47] = \<const1> ;
-  assign destination_mac[46] = \<const1> ;
-  assign destination_mac[45] = \<const1> ;
-  assign destination_mac[44] = \<const1> ;
-  assign destination_mac[43] = \<const1> ;
-  assign destination_mac[42] = \<const1> ;
-  assign destination_mac[41] = \<const1> ;
-  assign destination_mac[40] = \<const1> ;
-  assign destination_mac[39] = \<const1> ;
-  assign destination_mac[38] = \<const1> ;
-  assign destination_mac[37] = \<const1> ;
-  assign destination_mac[36] = \<const1> ;
-  assign destination_mac[35] = \<const1> ;
-  assign destination_mac[34] = \<const1> ;
-  assign destination_mac[33] = \<const1> ;
-  assign destination_mac[32] = \<const1> ;
-  assign destination_mac[31] = \<const1> ;
-  assign destination_mac[30] = \<const1> ;
-  assign destination_mac[29] = \<const1> ;
-  assign destination_mac[28] = \<const1> ;
-  assign destination_mac[27] = \<const1> ;
-  assign destination_mac[26] = \<const1> ;
-  assign destination_mac[25] = \<const1> ;
-  assign destination_mac[24] = \<const1> ;
-  assign destination_mac[23] = \<const1> ;
-  assign destination_mac[22] = \<const1> ;
-  assign destination_mac[21] = \<const1> ;
-  assign destination_mac[20] = \<const1> ;
-  assign destination_mac[19] = \<const1> ;
-  assign destination_mac[18] = \<const1> ;
-  assign destination_mac[17] = \<const1> ;
-  assign destination_mac[16] = \<const1> ;
-  assign destination_mac[15] = \<const1> ;
-  assign destination_mac[14] = \<const1> ;
-  assign destination_mac[13] = \<const1> ;
-  assign destination_mac[12] = \<const1> ;
-  assign destination_mac[11] = \<const1> ;
-  assign destination_mac[10] = \<const1> ;
-  assign destination_mac[9] = \<const1> ;
-  assign destination_mac[8] = \<const1> ;
-  assign destination_mac[7] = \<const1> ;
-  assign destination_mac[6] = \<const1> ;
-  assign destination_mac[5] = \<const1> ;
-  assign destination_mac[4] = \<const1> ;
-  assign destination_mac[3] = \<const1> ;
-  assign destination_mac[2] = \<const1> ;
-  assign destination_mac[1] = \<const1> ;
-  assign destination_mac[0] = \<const1> ;
-  assign gmii_rxc = gmii_txc;
-  assign linkspeed[1] = \<const0> ;
-  assign linkspeed[0] = \<const0> ;
-  assign mdc = \<const0> ;
-  assign phy_rstn = rst_n;
-  assign phy_txc = gmii_txc;
-  GND GND
-       (.G(\<const0> ));
-  VCC VCC
-       (.P(\<const1> ));
-  fm_hdmi_udp_phy_shell_0_0_udp_phy_shell inst
-       (.IDDR_inst(gmii_rxdv),
-        .gmii_rxd(gmii_rxd),
-        .gmii_txc(gmii_txc),
-        .gmii_txd_udp(gmii_txd_udp),
-        .gmii_txen_udp(gmii_txen_udp),
-        .iodelay_ref_clk200(iodelay_ref_clk200),
-        .phy_rx_ctrl(phy_rx_ctrl),
-        .phy_rxc(phy_rxc),
-        .phy_rxd(phy_rxd),
-        .phy_tx_ctrl(phy_tx_ctrl),
-        .phy_txd(phy_txd),
-        .rst_n(rst_n));
-endmodule
-
+(* ORIG_REF_NAME = "gmii_to_rgmii" *) 
 module fm_hdmi_udp_phy_shell_0_0_gmii_to_rgmii
    (D,
     gmii_txc,
@@ -5527,6 +5533,7 @@ module fm_hdmi_udp_phy_shell_0_0_gmii_to_rgmii
         .\txd_ddr[3].ODDR_inst_0 (gmii_txc));
 endmodule
 
+(* ORIG_REF_NAME = "rgmii_rxd" *) 
 module fm_hdmi_udp_phy_shell_0_0_rgmii_rxd
    (\rxdata_bus[0].IDDR_inst_0 ,
     \rxdata_bus[0].IDDR_inst_1 ,
@@ -6035,6 +6042,7 @@ module fm_hdmi_udp_phy_shell_0_0_rgmii_rxd
         .O(skip_en_i_9_n_0));
 endmodule
 
+(* ORIG_REF_NAME = "rgmii_txd" *) 
 module fm_hdmi_udp_phy_shell_0_0_rgmii_txd
    (phy_txd,
     phy_tx_ctrl,
@@ -6155,6 +6163,7 @@ module fm_hdmi_udp_phy_shell_0_0_rgmii_txd
         .S(\NLW_txd_ddr[3].ODDR_inst_S_UNCONNECTED ));
 endmodule
 
+(* ORIG_REF_NAME = "udp_phy_shell" *) 
 module fm_hdmi_udp_phy_shell_0_0_udp_phy_shell
    (gmii_rxd,
     gmii_txc,

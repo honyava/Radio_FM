@@ -2,11 +2,11 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Tue Apr  7 23:07:00 2026
--- Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
+-- Date        : Wed Apr  8 12:33:59 2026
+-- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.4 LTS
 -- Command     : write_vhdl -force -mode funcsim -rename_top fm_demod2_inst_3_axis_dc_blocker_roun_0_0 -prefix
---               fm_demod2_inst_3_axis_dc_blocker_roun_0_0_ fm_demod2_inst_8_axis_dc_blocker_roun_0_0_sim_netlist.vhdl
--- Design      : fm_demod2_inst_8_axis_dc_blocker_roun_0_0
+--               fm_demod2_inst_3_axis_dc_blocker_roun_0_0_ fm_demod2_inst_9_axis_dc_blocker_roun_0_0_sim_netlist.vhdl
+-- Design      : fm_demod2_inst_9_axis_dc_blocker_roun_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xc7z020clg400-2
@@ -2445,7 +2445,7 @@ entity fm_demod2_inst_3_axis_dc_blocker_roun_0_0 is
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of fm_demod2_inst_3_axis_dc_blocker_roun_0_0 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of fm_demod2_inst_3_axis_dc_blocker_roun_0_0 : entity is "fm_demod2_inst_8_axis_dc_blocker_roun_0_0,axis_dc_blocker_round_sat,{}";
+  attribute CHECK_LICENSE_TYPE of fm_demod2_inst_3_axis_dc_blocker_roun_0_0 : entity is "fm_demod2_inst_9_axis_dc_blocker_roun_0_0,axis_dc_blocker_round_sat,{}";
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of fm_demod2_inst_3_axis_dc_blocker_roun_0_0 : entity is "yes";
   attribute IP_DEFINITION_SOURCE : string;

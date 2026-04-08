@@ -95,10 +95,6 @@ module fm_hdmi_stations_to_packet_0_0 (
   st9_dout,
   st9_rd_data_count,
   st9_rd_en,
-  st10_empty,
-  st10_dout,
-  st10_rd_data_count,
-  st10_rd_en,
   audio_empty,
   audio_dout_bus,
   audio_rd_count_bus,
@@ -145,19 +141,15 @@ input wire st9_empty;
 input wire [31 : 0] st9_dout;
 input wire [6 : 0] st9_rd_data_count;
 output wire st9_rd_en;
-input wire st10_empty;
-input wire [31 : 0] st10_dout;
-input wire [6 : 0] st10_rd_data_count;
-output wire st10_rd_en;
-output wire [10 : 0] audio_empty;
-output wire [351 : 0] audio_dout_bus;
-output wire [76 : 0] audio_rd_count_bus;
-input wire [10 : 0] audio_rd_en;
+output wire [9 : 0] audio_empty;
+output wire [319 : 0] audio_dout_bus;
+output wire [69 : 0] audio_rd_count_bus;
+input wire [9 : 0] audio_rd_en;
 
   stations_to_packet #(
     .DATA_W(32),
     .COUNT_W(7),
-    .STATIONS(11)
+    .STATIONS(10)
   ) inst (
     .st0_empty(st0_empty),
     .st0_dout(st0_dout),
@@ -199,10 +191,6 @@ input wire [10 : 0] audio_rd_en;
     .st9_dout(st9_dout),
     .st9_rd_data_count(st9_rd_data_count),
     .st9_rd_en(st9_rd_en),
-    .st10_empty(st10_empty),
-    .st10_dout(st10_dout),
-    .st10_rd_data_count(st10_rd_data_count),
-    .st10_rd_en(st10_rd_en),
     .audio_empty(audio_empty),
     .audio_dout_bus(audio_dout_bus),
     .audio_rd_count_bus(audio_rd_count_bus),

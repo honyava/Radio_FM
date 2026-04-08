@@ -2,7 +2,7 @@
   "design": {
     "design_info": {
       "boundary_crc": "0x63ED9E5EBE59F72C",
-      "design_src": "/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_2/fm_demod2_inst_2.bd",
+      "design_src": "/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd",
       "device": "xc7z020clg400-2",
       "name": "fm_demod2_inst_4",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -225,12 +225,10 @@
                     "value_src": "constant"
                   },
                   "FREQ_HZ": {
-                    "value": "76800000",
-                    "value_src": "ip_prop"
+                    "value": "76800000"
                   },
                   "PHASE": {
-                    "value": "65.0",
-                    "value_src": "ip_prop"
+                    "value": "65.0"
                   },
                   "CLK_DOMAIN": {
                     "value": "fm_hdmi_clk_50M",
@@ -292,12 +290,10 @@
                     "value_src": "constant"
                   },
                   "FREQ_HZ": {
-                    "value": "76800000",
-                    "value_src": "ip_prop"
+                    "value": "76800000"
                   },
                   "PHASE": {
-                    "value": "65.0",
-                    "value_src": "ip_prop"
+                    "value": "65.0"
                   },
                   "CLK_DOMAIN": {
                     "value": "fm_hdmi_clk_50M",
@@ -359,12 +355,10 @@
                     "value_src": "constant"
                   },
                   "FREQ_HZ": {
-                    "value": "76800000",
-                    "value_src": "ip_prop"
+                    "value": "76800000"
                   },
                   "PHASE": {
-                    "value": "65.0",
-                    "value_src": "ip_prop"
+                    "value": "65.0"
                   },
                   "CLK_DOMAIN": {
                     "value": "fm_hdmi_clk_50M",
@@ -403,12 +397,10 @@
                     "value_src": "constant"
                   },
                   "FREQ_HZ": {
-                    "value": "76800000",
-                    "value_src": "ip_prop"
+                    "value": "76800000"
                   },
                   "PHASE": {
-                    "value": "65.0",
-                    "value_src": "ip_prop"
+                    "value": "65.0"
                   },
                   "CLK_DOMAIN": {
                     "value": "fm_hdmi_clk_50M",
@@ -1381,6 +1373,12 @@
                     "value": "0",
                     "value_src": "constant"
                   },
+                  "FREQ_HZ": {
+                    "value": "76800000"
+                  },
+                  "PHASE": {
+                    "value": "65.0"
+                  },
                   "CLK_DOMAIN": {
                     "value": "fm_hdmi_clk_50M",
                     "value_src": "ip_prop"
@@ -1692,7 +1690,7 @@
                 "value": "32"
               },
               "Output_Width": {
-                "value": "20"
+                "value": "24"
               },
               "Phase_Format": {
                 "value": "Radians"
@@ -1721,6 +1719,12 @@
               "cordic_1/M_AXIS_DOUT",
               "M_AXIS_DOUT"
             ]
+          },
+          "cmpy_0_M_AXIS_DOUT": {
+            "interface_ports": [
+              "cmpy_0/M_AXIS_DOUT",
+              "cordic_1/S_AXIS_CARTESIAN"
+            ]
           }
         },
         "nets": {
@@ -1748,18 +1752,6 @@
             "ports": [
               "tap_q",
               "del_m_0/tap_q"
-            ]
-          },
-          "cmpy_0_m_axis_dout_tdata1": {
-            "ports": [
-              "cmpy_0/m_axis_dout_tdata",
-              "cordic_1/s_axis_cartesian_tdata"
-            ]
-          },
-          "cmpy_0_m_axis_dout_tvalid1": {
-            "ports": [
-              "cmpy_0/m_axis_dout_tvalid",
-              "cordic_1/s_axis_cartesian_tvalid"
             ]
           },
           "del_m_0_out0": {
@@ -2043,7 +2035,7 @@
                 "value": "Programmable"
               },
               "Phase_Width": {
-                "value": "27"
+                "value": "26"
               },
               "S_PHASE_Has_TUSER": {
                 "value": "Not_Required"
@@ -2171,11 +2163,6 @@
               },
               "vio_apply_toggle": {
                 "direction": "I"
-              },
-              "dbg_dds_khz": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
               }
             }
           },
@@ -2187,7 +2174,7 @@
             "inst_hier_path": "digital_mixer/vio_0",
             "parameters": {
               "C_NUM_PROBE_IN": {
-                "value": "1"
+                "value": "0"
               },
               "C_NUM_PROBE_OUT": {
                 "value": "2"
@@ -2205,6 +2192,12 @@
           }
         },
         "interface_nets": {
+          "dds_compiler_0_M_AXIS_DATA": {
+            "interface_ports": [
+              "dds_compiler_0/M_AXIS_DATA",
+              "cmpy_1/S_AXIS_B"
+            ]
+          },
           "fm_dds_cfg_0_s_axis_config": {
             "interface_ports": [
               "fm_dds_cfg_0/s_axis_config",
@@ -2233,24 +2226,6 @@
             "ports": [
               "cmpy_1/m_axis_dout_tvalid",
               "m_axis_mixer_tvalid"
-            ]
-          },
-          "dds_compiler_0_m_axis_data_tdata": {
-            "ports": [
-              "dds_compiler_0/m_axis_data_tdata",
-              "cmpy_1/s_axis_b_tdata"
-            ]
-          },
-          "dds_compiler_0_m_axis_data_tvalid": {
-            "ports": [
-              "dds_compiler_0/m_axis_data_tvalid",
-              "cmpy_1/s_axis_b_tvalid"
-            ]
-          },
-          "fm_dds_cfg_0_dbg_dds_khz": {
-            "ports": [
-              "fm_dds_cfg_0/dbg_dds_khz",
-              "vio_0/probe_in0"
             ]
           },
           "lfsr_rng_0_m_axis_tdata": {

@@ -10,13 +10,13 @@
       "component_parameters": {
         "DATA_W": [ { "value": "32", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "COUNT_W": [ { "value": "7", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "STATIONS": [ { "value": "11", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "STATIONS": [ { "value": "10", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "fm_hdmi_stations_to_packet_0_0", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
         "DATA_W": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "COUNT_W": [ { "value": "7", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "STATIONS": [ { "value": "11", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+        "STATIONS": [ { "value": "10", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
@@ -84,14 +84,10 @@
         "st9_dout": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
         "st9_rd_data_count": [ { "direction": "in", "size_left": "6", "size_right": "0" } ],
         "st9_rd_en": [ { "direction": "out" } ],
-        "st10_empty": [ { "direction": "in" } ],
-        "st10_dout": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
-        "st10_rd_data_count": [ { "direction": "in", "size_left": "6", "size_right": "0" } ],
-        "st10_rd_en": [ { "direction": "out" } ],
-        "audio_empty": [ { "direction": "out", "size_left": "10", "size_right": "0" } ],
-        "audio_dout_bus": [ { "direction": "out", "size_left": "351", "size_right": "0" } ],
-        "audio_rd_count_bus": [ { "direction": "out", "size_left": "76", "size_right": "0" } ],
-        "audio_rd_en": [ { "direction": "in", "size_left": "10", "size_right": "0" } ]
+        "audio_empty": [ { "direction": "out", "size_left": "9", "size_right": "0" } ],
+        "audio_dout_bus": [ { "direction": "out", "size_left": "319", "size_right": "0" } ],
+        "audio_rd_count_bus": [ { "direction": "out", "size_left": "69", "size_right": "0" } ],
+        "audio_rd_en": [ { "direction": "in", "size_left": "9", "size_right": "0" } ]
       }
     }
   }

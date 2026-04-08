@@ -2,8 +2,8 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Wed Apr  8 09:08:10 2026
-//Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
+//Date        : Wed Apr  8 12:32:26 2026
+//Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.4 LTS
 //Command     : generate_target fm_demod2_inst_4.bd
 //Design      : fm_demod2_inst_4
 //Purpose     : IP block netlist
@@ -216,8 +216,8 @@ module demodulate_384k_imp_1A3BC9O
   wire adc_dci_0_1;
   wire [15:0]cic_compiler_2_m_axis_data_tdata;
   wire [15:0]cic_compiler_3_m_axis_data_tdata;
-  wire [63:0]cmpy_0_m_axis_dout_tdata1;
-  wire cmpy_0_m_axis_dout_tvalid1;
+  wire [63:0]cmpy_0_M_AXIS_DOUT_TDATA;
+  wire cmpy_0_M_AXIS_DOUT_TVALID;
   wire [31:0]del_m_0_out0;
   wire [31:0]del_m_0_out1;
   wire del_m_0_valid;
@@ -237,8 +237,8 @@ module demodulate_384k_imp_1A3BC9O
   assign sys_rst_n_0_1 = sys_rst_n;
   fm_demod2_inst_4_cmpy_0_0 cmpy_0
        (.aclk(adc_dci_0_1),
-        .m_axis_dout_tdata(cmpy_0_m_axis_dout_tdata1),
-        .m_axis_dout_tvalid(cmpy_0_m_axis_dout_tvalid1),
+        .m_axis_dout_tdata(cmpy_0_M_AXIS_DOUT_TDATA),
+        .m_axis_dout_tvalid(cmpy_0_M_AXIS_DOUT_TVALID),
         .s_axis_a_tdata(del_m_0_out0),
         .s_axis_a_tvalid(del_m_0_valid),
         .s_axis_b_tdata(del_m_0_out1),
@@ -250,8 +250,8 @@ module demodulate_384k_imp_1A3BC9O
         .m_axis_dout_tdata(Conn1_TDATA),
         .m_axis_dout_tready(Conn1_TREADY),
         .m_axis_dout_tvalid(Conn1_TVALID),
-        .s_axis_cartesian_tdata(cmpy_0_m_axis_dout_tdata1),
-        .s_axis_cartesian_tvalid(cmpy_0_m_axis_dout_tvalid1));
+        .s_axis_cartesian_tdata(cmpy_0_M_AXIS_DOUT_TDATA),
+        .s_axis_cartesian_tvalid(cmpy_0_M_AXIS_DOUT_TVALID));
   fm_demod2_inst_4_del_m_0_0 del_m_0
        (.aclk(adc_dci_0_1),
         .aresetn(sys_rst_n_0_1),
@@ -284,9 +284,8 @@ module digital_mixer_imp_9N1EOT
   wire adc_dci_0_1;
   wire [63:0]cmpy_1_m_axis_dout_tdata;
   wire cmpy_1_m_axis_dout_tvalid;
-  wire [31:0]dds_compiler_0_m_axis_data_tdata;
-  wire dds_compiler_0_m_axis_data_tvalid;
-  wire [15:0]fm_dds_cfg_0_dbg_dds_khz;
+  wire [31:0]dds_compiler_0_M_AXIS_DATA_TDATA;
+  wire dds_compiler_0_M_AXIS_DATA_TVALID;
   wire [31:0]fm_dds_cfg_0_s_axis_config_TDATA;
   wire fm_dds_cfg_0_s_axis_config_TVALID;
   wire [7:0]lfsr_rng_0_m_axis_tdata;
@@ -312,20 +311,19 @@ module digital_mixer_imp_9N1EOT
         .m_axis_dout_tvalid(cmpy_1_m_axis_dout_tvalid),
         .s_axis_a_tdata(s_axis_tdata_0_1),
         .s_axis_a_tvalid(xlconstant_0_dout),
-        .s_axis_b_tdata(dds_compiler_0_m_axis_data_tdata),
-        .s_axis_b_tvalid(dds_compiler_0_m_axis_data_tvalid),
+        .s_axis_b_tdata(dds_compiler_0_M_AXIS_DATA_TDATA),
+        .s_axis_b_tvalid(dds_compiler_0_M_AXIS_DATA_TVALID),
         .s_axis_ctrl_tdata(lfsr_rng_0_m_axis_tdata),
         .s_axis_ctrl_tvalid(lfsr_rng_0_m_axis_tvalid));
   fm_demod2_inst_4_dds_compiler_0_0 dds_compiler_0
        (.aclk(adc_dci_0_1),
         .aresetn(sys_rst_n_0_1),
-        .m_axis_data_tdata(dds_compiler_0_m_axis_data_tdata),
-        .m_axis_data_tvalid(dds_compiler_0_m_axis_data_tvalid),
+        .m_axis_data_tdata(dds_compiler_0_M_AXIS_DATA_TDATA),
+        .m_axis_data_tvalid(dds_compiler_0_M_AXIS_DATA_TVALID),
         .s_axis_config_tdata(fm_dds_cfg_0_s_axis_config_TDATA),
         .s_axis_config_tvalid(fm_dds_cfg_0_s_axis_config_TVALID));
   fm_demod2_inst_4_fm_dds_cfg_0_0 fm_dds_cfg_0
        (.clk(adc_dci_0_1),
-        .dbg_dds_khz(fm_dds_cfg_0_dbg_dds_khz),
         .rstn(sys_rst_n_0_1),
         .s_axis_config_tdata(fm_dds_cfg_0_s_axis_config_TDATA),
         .s_axis_config_tvalid(fm_dds_cfg_0_s_axis_config_TVALID),
@@ -339,12 +337,11 @@ module digital_mixer_imp_9N1EOT
         .rstn(sys_rst_n_0_1));
   fm_demod2_inst_4_vio_0_0 vio_0
        (.clk(adc_dci_0_1),
-        .probe_in0(fm_dds_cfg_0_dbg_dds_khz),
         .probe_out0(vio_0_probe_out0),
         .probe_out1(vio_0_probe_out1));
 endmodule
 
-(* CORE_GENERATION_INFO = "fm_demod2_inst_4,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fm_demod2_inst_4,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=25,numReposBlks=21,numNonXlnxBlks=0,numHierBlks=4,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_2/fm_demod2_inst_2.bd,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fm_demod2_inst_4.hwdef" *) 
+(* CORE_GENERATION_INFO = "fm_demod2_inst_4,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fm_demod2_inst_4,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=25,numReposBlks=21,numNonXlnxBlks=0,numHierBlks=4,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fm_demod2_inst_4.hwdef" *) 
 module fm_demod2_inst_4
    (adc_clk,
     adc_data,

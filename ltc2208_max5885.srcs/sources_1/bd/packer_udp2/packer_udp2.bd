@@ -162,6 +162,10 @@
               "PHASE": {
                 "value": "65.0",
                 "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "fm_hdmi_clk_50M",
+                "value_src": "default_prop"
               }
             }
           },

@@ -74,10 +74,10 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst_n RST" *)
 input wire rst_n;
-input wire [351 : 0] audio_dout_bus;
-input wire [10 : 0] audio_empty;
-input wire [76 : 0] audio_rd_count_bus;
-output wire [10 : 0] audio_rd_en;
+input wire [319 : 0] audio_dout_bus;
+input wire [9 : 0] audio_empty;
+input wire [69 : 0] audio_rd_count_bus;
+output wire [9 : 0] audio_rd_en;
 input wire pay_full;
 output wire pay_wr_en;
 output wire [31 : 0] pay_din;
@@ -85,7 +85,7 @@ output wire pkt_ready_pulse;
 output wire [15 : 0] tx_payload_bytes;
 
   udp_mpx_framer #(
-    .N_STATIONS(11),
+    .N_STATIONS(10),
     .SAMPLES_PER_ST(0),
     .AUDIO_COUNT_WIDTH(7),
     .MAX_PAYLOAD_BYTES(1472),

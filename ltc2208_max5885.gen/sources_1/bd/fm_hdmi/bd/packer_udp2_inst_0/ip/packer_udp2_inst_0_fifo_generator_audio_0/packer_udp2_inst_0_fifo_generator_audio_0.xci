@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "packer_udp2_inst_0_fifo_generator_audio_0",
-    "cell_name": "fifo_generator_audio",
+    "cell_name": "station0/packer_udp2/fifo_generator_audio",
     "component_reference": "xilinx.com:ip:fifo_generator:13.2",
     "ip_revision": "9",
     "gen_directory": ".",

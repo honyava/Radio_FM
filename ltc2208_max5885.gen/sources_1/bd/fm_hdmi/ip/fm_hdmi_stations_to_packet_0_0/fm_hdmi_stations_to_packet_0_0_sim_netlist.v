@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Tue Apr  7 19:37:09 2026
-// Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
-// Command     : write_verilog -force -mode funcsim -rename_top fm_hdmi_stations_to_packet_0_0 -prefix
-//               fm_hdmi_stations_to_packet_0_0_ fm_hdmi_stations_to_packet_0_0_sim_netlist.v
+// Date        : Wed Apr  8 12:33:59 2026
+// Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.4 LTS
+// Command     : write_verilog -force -mode funcsim
+//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_stations_to_packet_0_0/fm_hdmi_stations_to_packet_0_0_sim_netlist.v
 // Design      : fm_hdmi_stations_to_packet_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -57,10 +57,6 @@ module fm_hdmi_stations_to_packet_0_0
     st9_dout,
     st9_rd_data_count,
     st9_rd_en,
-    st10_empty,
-    st10_dout,
-    st10_rd_data_count,
-    st10_rd_en,
     audio_empty,
     audio_dout_bus,
     audio_rd_count_bus,
@@ -105,22 +101,15 @@ module fm_hdmi_stations_to_packet_0_0
   input [31:0]st9_dout;
   input [6:0]st9_rd_data_count;
   output st9_rd_en;
-  input st10_empty;
-  input [31:0]st10_dout;
-  input [6:0]st10_rd_data_count;
-  output st10_rd_en;
-  output [10:0]audio_empty;
-  output [351:0]audio_dout_bus;
-  output [76:0]audio_rd_count_bus;
-  input [10:0]audio_rd_en;
+  output [9:0]audio_empty;
+  output [319:0]audio_dout_bus;
+  output [69:0]audio_rd_count_bus;
+  input [9:0]audio_rd_en;
 
-  wire [10:0]audio_rd_en;
+  wire [9:0]audio_rd_en;
   wire [31:0]st0_dout;
   wire st0_empty;
   wire [6:0]st0_rd_data_count;
-  wire [31:0]st10_dout;
-  wire st10_empty;
-  wire [6:0]st10_rd_data_count;
   wire [31:0]st1_dout;
   wire st1_empty;
   wire [6:0]st1_rd_data_count;
@@ -149,7 +138,6 @@ module fm_hdmi_stations_to_packet_0_0
   wire st9_empty;
   wire [6:0]st9_rd_data_count;
 
-  assign audio_dout_bus[351:320] = st10_dout;
   assign audio_dout_bus[319:288] = st9_dout;
   assign audio_dout_bus[287:256] = st8_dout;
   assign audio_dout_bus[255:224] = st7_dout;
@@ -160,7 +148,6 @@ module fm_hdmi_stations_to_packet_0_0
   assign audio_dout_bus[95:64] = st2_dout;
   assign audio_dout_bus[63:32] = st1_dout;
   assign audio_dout_bus[31:0] = st0_dout;
-  assign audio_empty[10] = st10_empty;
   assign audio_empty[9] = st9_empty;
   assign audio_empty[8] = st8_empty;
   assign audio_empty[7] = st7_empty;
@@ -171,7 +158,6 @@ module fm_hdmi_stations_to_packet_0_0
   assign audio_empty[2] = st2_empty;
   assign audio_empty[1] = st1_empty;
   assign audio_empty[0] = st0_empty;
-  assign audio_rd_count_bus[76:70] = st10_rd_data_count;
   assign audio_rd_count_bus[69:63] = st9_rd_data_count;
   assign audio_rd_count_bus[62:56] = st8_rd_data_count;
   assign audio_rd_count_bus[55:49] = st7_rd_data_count;
@@ -183,7 +169,6 @@ module fm_hdmi_stations_to_packet_0_0
   assign audio_rd_count_bus[13:7] = st1_rd_data_count;
   assign audio_rd_count_bus[6:0] = st0_rd_data_count;
   assign st0_rd_en = audio_rd_en[0];
-  assign st10_rd_en = audio_rd_en[10];
   assign st1_rd_en = audio_rd_en[1];
   assign st2_rd_en = audio_rd_en[2];
   assign st3_rd_en = audio_rd_en[3];

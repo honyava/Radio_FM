@@ -1,0 +1,39 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-565,-192",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port port-id_wr_clk -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
+preplace port port-id_locked -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
+preplace port port-id_m_axis_tready -pg 1 -lvl 0 -x 0 -y 110 -defaultsOSRD
+preplace port port-id_rd_clk -pg 1 -lvl 0 -x 0 -y 190 -defaultsOSRD
+preplace port port-id_rst -pg 1 -lvl 0 -x 0 -y 230 -defaultsOSRD
+preplace port port-id_rst_n -pg 1 -lvl 0 -x 0 -y 250 -defaultsOSRD
+preplace port port-id_rd_en -pg 1 -lvl 0 -x 0 -y 210 -defaultsOSRD
+preplace port port-id_empty -pg 1 -lvl 3 -x 720 -y 240 -defaultsOSRD
+preplace portBus adc_data -pg 1 -lvl 0 -x 0 -y 70 -defaultsOSRD
+preplace portBus rd_data_count -pg 1 -lvl 3 -x 720 -y 260 -defaultsOSRD
+preplace portBus dout -pg 1 -lvl 3 -x 720 -y 220 -defaultsOSRD
+preplace inst fm_demod2 -pg 1 -lvl 1 -x 200 -y 90 -defaultsOSRD
+preplace inst packer_udp2 -pg 1 -lvl 2 -x 540 -y 250 -defaultsOSRD
+preplace netloc LTC_2208_0_m_axis_tdata 1 0 1 NJ 70
+preplace netloc LTC_2208_0_m_axis_tvalid 1 0 1 NJ 110
+preplace netloc adc_dci_0_1 1 0 2 20 310 NJ
+preplace netloc clk_wiz_0_locked 1 0 2 NJ 250 NJ
+preplace netloc en_0_1 1 0 1 NJ 90
+preplace netloc fm_demod2_m_axis_tdata 1 1 1 380 80n
+preplace netloc fm_demod2_m_axis_tvalid 1 1 1 370 100n
+preplace netloc packer_for_udp_Res1 1 0 2 NJ 230 NJ
+preplace netloc packer_for_udp_gmii_rxc 1 0 2 NJ 190 NJ
+preplace netloc packer_udp2_dout 1 2 1 NJ 220
+preplace netloc packer_udp2_empty 1 2 1 NJ 240
+preplace netloc packer_udp2_rd_data_count 1 2 1 NJ 260
+preplace netloc packer_udp2_s_ready 1 0 3 30 370 NJ 370 700
+preplace netloc rd_en_1 1 0 2 NJ 210 NJ
+levelinfo -pg 1 0 200 540 720
+pagesize -pg 1 -db -bbox -sgen -150 0 900 380
+"
+}
+

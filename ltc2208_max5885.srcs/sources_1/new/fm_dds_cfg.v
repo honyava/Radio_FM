@@ -5,7 +5,7 @@ module fm_dds_cfg #
     parameter integer SIG_MAX_KHZ    = 32720,   // 32.72 MHz
     parameter integer DEFAULT_RF_KHZ = 12220,   // частота по умолчанию после reset
 
-    parameter integer PINC_W         = 27,      // Phase Width в DDS
+    parameter integer PINC_W         = 26,      // Phase Width в DDS
     parameter integer DDS_TDATA_W    = 32       // ширина S_AXIS_CONFIG_tdata у DDS
 )
 (
@@ -18,16 +18,16 @@ module fm_dds_cfg #
 
     // в DDS Compiler S_AXIS_CONFIG
     output reg  [DDS_TDATA_W-1:0]       s_axis_config_tdata,
-    output reg                          s_axis_config_tvalid,
+    output reg                          s_axis_config_tvalid
 
-    // debug: только итоговая частота DDS в кГц
-    output reg  [15:0]                  dbg_dds_khz
+    // debug убран для экономии ресурсов
+    // output reg  [15:0]               dbg_dds_khz
 );
 
-    localparam [16:0] C_SIG_MIN_KHZ     = SIG_MIN_KHZ[16:0];
-    localparam [16:0] C_SIG_MAX_KHZ     = SIG_MAX_KHZ[16:0];
-    localparam [16:0] C_DEFAULT_RF_KHZ  = DEFAULT_RF_KHZ[16:0];
-    localparam [15:0] C_DEFAULT_IF_KHZ  = DEFAULT_RF_KHZ[15:0];
+    localparam [16:0] C_SIG_MIN_KHZ    = SIG_MIN_KHZ[16:0];
+    localparam [16:0] C_SIG_MAX_KHZ    = SIG_MAX_KHZ[16:0];
+    localparam [16:0] C_DEFAULT_RF_KHZ = DEFAULT_RF_KHZ[16:0];
+    localparam [15:0] C_DEFAULT_IF_KHZ = DEFAULT_RF_KHZ[15:0];
 
     // PINC = round(IF_kHz * 2^PINC_W / ADC_FS_KHZ)
     localparam [PINC_W-1:0] C_DEFAULT_PINC =
@@ -92,11 +92,9 @@ module fm_dds_cfg #
     // =========================================================
     // Combinational values
     // =========================================================
-    wire [16:0]       rf_khz_w;
     wire [15:0]       if_khz_w;
     wire [PINC_W-1:0] pinc_w;
 
-    assign rf_khz_w = clamp_rf_khz(vio_rf_khz_sync);
     assign if_khz_w = rf_to_if_khz(vio_rf_khz_sync);
     assign pinc_w   = if_khz_to_pinc(if_khz_w);
 
@@ -117,7 +115,8 @@ module fm_dds_cfg #
             s_axis_config_tdata     <= {DDS_TDATA_W{1'b0}};
             s_axis_config_tvalid    <= 1'b0;
 
-            dbg_dds_khz             <= C_DEFAULT_IF_KHZ;
+            // debug убран
+            // dbg_dds_khz          <= C_DEFAULT_IF_KHZ;
         end
         else begin
             // VIO -> capture/sync
@@ -135,7 +134,8 @@ module fm_dds_cfg #
                 s_axis_config_tdata  <= pack_cfg_tdata(C_DEFAULT_PINC);
                 s_axis_config_tvalid <= 1'b1;
 
-                dbg_dds_khz          <= C_DEFAULT_IF_KHZ;
+                // debug убран
+                // dbg_dds_khz       <= C_DEFAULT_IF_KHZ;
 
                 init_pending         <= 1'b0;
             end
@@ -143,7 +143,8 @@ module fm_dds_cfg #
                 s_axis_config_tdata  <= pack_cfg_tdata(pinc_w);
                 s_axis_config_tvalid <= 1'b1;
 
-                dbg_dds_khz          <= if_khz_w;
+                // debug убран
+                // dbg_dds_khz       <= if_khz_w;
             end
         end
     end

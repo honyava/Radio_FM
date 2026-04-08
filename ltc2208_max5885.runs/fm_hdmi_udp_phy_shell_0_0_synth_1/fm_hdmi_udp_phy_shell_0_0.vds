@@ -1,0 +1,461 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Apr  8 12:33:24 2026
+# Process ID: 323101
+# Current directory: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_udp_phy_shell_0_0_synth_1
+# Command line: vivado -log fm_hdmi_udp_phy_shell_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fm_hdmi_udp_phy_shell_0_0.tcl
+# Log file: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_udp_phy_shell_0_0_synth_1/fm_hdmi_udp_phy_shell_0_0.vds
+# Journal file: /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_udp_phy_shell_0_0_synth_1/vivado.jou
+# Running On: reting-B650-EAGLE-AX, OS: Linux, CPU Frequency: 4712.248 MHz, CPU Physical cores: 32, Host memory: 66468 MB
+#-----------------------------------------------------------
+source fm_hdmi_udp_phy_shell_0_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1339.461 ; gain = 35.840 ; free physical = 25903 ; free virtual = 33328
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/reting/Programs/2023/Vivado/2023.2/data/ip'.
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: fm_hdmi_udp_phy_shell_0_0
+Command: synth_design -top fm_hdmi_udp_phy_shell_0_0 -part xc7z020clg400-2 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-2
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 325777
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 2117.395 ; gain = 408.652 ; free physical = 481 ; free virtual = 3316
+---------------------------------------------------------------------------------
+INFO: [Synth 8-11241] undeclared symbol 'rgmii_rxc_buf', assumed default net type 'wire' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/rgmii_rxd.v:34]
+INFO: [Synth 8-6157] synthesizing module 'fm_hdmi_udp_phy_shell_0_0' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_udp_phy_shell_0_0/synth/fm_hdmi_udp_phy_shell_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'udp_phy_shell' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/new/udp_phy_shell.v:1]
+	Parameter MY_MAC bound to: 48'b000100100011010001010110011110001001000010101011 
+	Parameter MY_IP bound to: -1062731510 - type: integer 
+	Parameter DEST_MAC bound to: 48'b111111111111111111111111111111111111111111111111 
+	Parameter DEST_IP bound to: -1062731517 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'gmii_to_rgmii' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/gmii_to_rgmii.v:2]
+INFO: [Synth 8-6157] synthesizing module 'rgmii_rxd' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/rgmii_rxd.v:2]
+INFO: [Synth 8-6157] synthesizing module 'IDELAYE2' [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:75740]
+	Parameter IDELAY_TYPE bound to: FIXED - type: string 
+	Parameter IDELAY_VALUE bound to: 0 - type: integer 
+	Parameter REFCLK_FREQUENCY bound to: 200.000000 - type: double 
+INFO: [Synth 8-6155] done synthesizing module 'IDELAYE2' (0#1) [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:75740]
+INFO: [Synth 8-6157] synthesizing module 'IDDR' [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:75605]
+	Parameter DDR_CLK_EDGE bound to: SAME_EDGE_PIPELINED - type: string 
+	Parameter INIT_Q1 bound to: 1'b0 
+	Parameter INIT_Q2 bound to: 1'b0 
+	Parameter SRTYPE bound to: SYNC - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IDDR' (0#1) [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:75605]
+INFO: [Synth 8-6157] synthesizing module 'BUFG' [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:1951]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (0#1) [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:1951]
+INFO: [Synth 8-6157] synthesizing module 'BUFIO' [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2223]
+INFO: [Synth 8-6155] done synthesizing module 'BUFIO' (0#1) [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2223]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/rgmii_rxd.v:40]
+INFO: [Synth 8-6157] synthesizing module 'IDELAYCTRL' [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:75727]
+INFO: [Synth 8-6155] done synthesizing module 'IDELAYCTRL' (0#1) [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:75727]
+INFO: [Synth 8-6155] done synthesizing module 'rgmii_rxd' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/rgmii_rxd.v:2]
+INFO: [Synth 8-6157] synthesizing module 'rgmii_txd' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/rgmii_txd.v:2]
+INFO: [Synth 8-6157] synthesizing module 'ODDR' [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:96703]
+	Parameter DDR_CLK_EDGE bound to: SAME_EDGE - type: string 
+	Parameter INIT bound to: 1'b0 
+	Parameter SRTYPE bound to: SYNC - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'ODDR' (0#1) [/home/reting/Programs/2023/Vivado/2023.2/scripts/rt/data/unisim_comp.v:96703]
+INFO: [Synth 8-6155] done synthesizing module 'rgmii_txd' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/rgmii_txd.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'gmii_to_rgmii' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/gmii_to_rgmii.v:2]
+INFO: [Synth 8-6157] synthesizing module 'arp_top' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/arp_top.v:2]
+	Parameter MY_MAC bound to: 48'b000100100011010001010110011110001001000010101011 
+	Parameter MY_IP bound to: -1062731510 - type: integer 
+	Parameter DEST_MAC bound to: 48'b111111111111111111111111111111111111111111111111 
+	Parameter DEST_IP bound to: -1062731517 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'arp_rxd' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/arp_rxd.v:2]
+	Parameter MY_MAC bound to: 48'b000100100011010001010110011110001001000010101011 
+	Parameter MY_IP bound to: -1062731510 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'arp_rxd' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/arp_rxd.v:2]
+INFO: [Synth 8-6157] synthesizing module 'arp_txd' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/arp_txd.v:2]
+	Parameter MY_MAC bound to: 48'b000100100011010001010110011110001001000010101011 
+	Parameter MY_IP bound to: -1062731510 - type: integer 
+	Parameter DEST_MAC bound to: 48'b111111111111111111111111111111111111111111111111 
+	Parameter DEST_IP bound to: -1062731517 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'arp_txd' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/arp_txd.v:2]
+INFO: [Synth 8-6157] synthesizing module 'crc32' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/crc32.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'crc32' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/crc32.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'arp_top' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/arp_top.v:2]
+INFO: [Synth 8-6157] synthesizing module 'eth_ctrl' [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/eth_ctrl.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'eth_ctrl' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/imports/new/eth_ctrl.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'udp_phy_shell' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/new/udp_phy_shell.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'fm_hdmi_udp_phy_shell_0_0' (0#1) [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_udp_phy_shell_0_0/synth/fm_hdmi_udp_phy_shell_0_0.v:53]
+WARNING: [Synth 8-3848] Net linkspeed in module/entity udp_phy_shell does not have driver. [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/new/udp_phy_shell.v:23]
+WARNING: [Synth 8-3848] Net mdc in module/entity udp_phy_shell does not have driver. [/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/new/udp_phy_shell.v:24]
+WARNING: [Synth 8-7129] Port crc_data[31] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[30] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[29] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[28] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[27] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[26] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[25] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[24] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port linkspeed[1] in module udp_phy_shell is either unconnected or has no load
+WARNING: [Synth 8-7129] Port linkspeed[0] in module udp_phy_shell is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mdc in module udp_phy_shell is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mdio in module udp_phy_shell is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mdio_clk50 in module udp_phy_shell is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 2213.363 ; gain = 504.621 ; free physical = 532 ; free virtual = 1503
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 2231.176 ; gain = 522.434 ; free physical = 479 ; free virtual = 1401
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 2231.176 ; gain = 522.434 ; free physical = 478 ; free virtual = 1401
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2237.113 ; gain = 0.000 ; free physical = 482 ; free virtual = 1342
+INFO: [Netlist 29-17] Analyzing 15 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2370.957 ; gain = 0.000 ; free physical = 512 ; free virtual = 1268
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2370.992 ; gain = 0.000 ; free physical = 524 ; free virtual = 1282
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 777 ; free virtual = 1444
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 777 ; free virtual = 1444
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 773 ; free virtual = 1440
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'cur_state_reg' in module 'arp_rxd'
+INFO: [Synth 8-802] inferred FSM for state register 'cur_state_reg' in module 'arp_txd'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+              state_idle |                            00001 |                            00001
+          state_preamble |                            00010 |                            00010
+          state_eth_head |                            00100 |                            00100
+          state_arp_data |                            01000 |                            01000
+            state_rx_end |                            10000 |                            10000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'cur_state_reg' in module 'arp_rxd'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+              state_idle |                            00001 |                            00001
+          state_preamble |                            00010 |                            00010
+          state_eth_head |                            00100 |                            00100
+          state_arp_data |                            01000 |                            01000
+               state_crc |                            10000 |                            10000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'cur_state_reg' in module 'arp_txd'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 656 ; free virtual = 1358
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    6 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 2     
++---XORs : 
+	   2 Input      1 Bit         XORs := 8     
+	   3 Input      1 Bit         XORs := 6     
+	   6 Input      1 Bit         XORs := 7     
+	   8 Input      1 Bit         XORs := 1     
+	   5 Input      1 Bit         XORs := 4     
+	   7 Input      1 Bit         XORs := 7     
+	  10 Input      1 Bit         XORs := 2     
+	   9 Input      1 Bit         XORs := 3     
+	  12 Input      1 Bit         XORs := 1     
+	   4 Input      1 Bit         XORs := 1     
++---Registers : 
+	               48 Bit    Registers := 3     
+	               32 Bit    Registers := 4     
+	               16 Bit    Registers := 2     
+	                8 Bit    Registers := 45    
+	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 2     
+	                1 Bit    Registers := 12    
++---Muxes : 
+	   5 Input   48 Bit        Muxes := 1     
+	   2 Input   48 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 3     
+	   5 Input   16 Bit        Muxes := 2     
+	   2 Input   16 Bit        Muxes := 5     
+	   3 Input   16 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 5     
+	   4 Input    8 Bit        Muxes := 1     
+	   5 Input    8 Bit        Muxes := 1     
+	   2 Input    6 Bit        Muxes := 4     
+	   4 Input    6 Bit        Muxes := 1     
+	   5 Input    6 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 23    
+	   4 Input    5 Bit        Muxes := 1     
+	   5 Input    5 Bit        Muxes := 1     
+	   3 Input    5 Bit        Muxes := 3     
+	   6 Input    5 Bit        Muxes := 4     
+	   2 Input    4 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 5     
+	   5 Input    1 Bit        Muxes := 17    
+	   2 Input    1 Bit        Muxes := 34    
+	   4 Input    1 Bit        Muxes := 5     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[47] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[46] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[45] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[44] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[43] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[42] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[41] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[40] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[39] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[38] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[37] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[36] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[35] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[34] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[33] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[32] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[31] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[30] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[29] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[28] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[27] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[26] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[25] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[24] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[23] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[22] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[21] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[20] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[19] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[18] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[17] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[16] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[15] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[14] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[13] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[12] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[11] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[10] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[9] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[8] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[7] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[6] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[5] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[4] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[3] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[2] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[1] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_mac[0] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[31] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[30] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[29] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[28] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[27] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[26] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[25] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[24] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[23] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[22] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[21] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[20] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[19] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[18] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[17] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[16] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[15] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[14] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[13] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[12] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[11] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[10] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[9] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[8] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[7] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[6] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[5] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[4] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[3] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[2] driven by constant 0
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[1] driven by constant 1
+INFO: [Synth 8-3917] design fm_hdmi_udp_phy_shell_0_0 has port destination_ip[0] driven by constant 1
+WARNING: [Synth 8-7129] Port crc_data[31] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[30] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[29] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[28] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[27] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[26] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[25] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_data[24] in module arp_txd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port linkspeed[1] in module fm_hdmi_udp_phy_shell_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port linkspeed[0] in module fm_hdmi_udp_phy_shell_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mdc in module fm_hdmi_udp_phy_shell_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mdio in module fm_hdmi_udp_phy_shell_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mdio_clk50 in module fm_hdmi_udp_phy_shell_0_0 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:17 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 540 ; free virtual = 1258
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 1567 ; free virtual = 2292
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 1634 ; free virtual = 2362
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 2689 ; free virtual = 3414
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 5619 ; free virtual = 6508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 5619 ; free virtual = 6508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 5641 ; free virtual = 6530
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 5641 ; free virtual = 6530
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 5641 ; free virtual = 6530
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 5641 ; free virtual = 6530
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |BUFG       |     1|
+|2     |BUFIO      |     1|
+|3     |IDDR       |     5|
+|4     |IDELAYCTRL |     1|
+|5     |IDELAYE2   |     5|
+|6     |LUT1       |     2|
+|7     |LUT2       |    71|
+|8     |LUT3       |    24|
+|9     |LUT4       |    95|
+|10    |LUT5       |    74|
+|11    |LUT6       |   109|
+|12    |ODDR       |     5|
+|13    |FDCE       |   148|
+|14    |FDPE       |    36|
++------+-----------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 5641 ; free virtual = 6530
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 14 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 2370.992 ; gain = 522.434 ; free physical = 5642 ; free virtual = 6534
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 2370.992 ; gain = 662.250 ; free physical = 5642 ; free virtual = 6534
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2370.992 ; gain = 0.000 ; free physical = 5682 ; free virtual = 6573
+INFO: [Netlist 29-17] Analyzing 15 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2370.992 ; gain = 0.000 ; free physical = 6070 ; free virtual = 6987
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 1920ba30
+INFO: [Common 17-83] Releasing license: Synthesis
+138 Infos, 30 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 2370.992 ; gain = 1011.719 ; free physical = 6053 ; free virtual = 6970
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1625.736; main = 1343.507; forked = 284.370
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3329.426; main = 2370.961; forked = 990.480
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2394.969 ; gain = 0.000 ; free physical = 6051 ; free virtual = 6969
+INFO: [Common 17-1381] The checkpoint '/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_udp_phy_shell_0_0_synth_1/fm_hdmi_udp_phy_shell_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP fm_hdmi_udp_phy_shell_0_0, cache-ID = 770f398b56e2abe5
+INFO: [Coretcl 2-1174] Renamed 9 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2394.969 ; gain = 0.000 ; free physical = 6154 ; free virtual = 7075
+INFO: [Common 17-1381] The checkpoint '/home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.runs/fm_hdmi_udp_phy_shell_0_0_synth_1/fm_hdmi_udp_phy_shell_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file fm_hdmi_udp_phy_shell_0_0_utilization_synth.rpt -pb fm_hdmi_udp_phy_shell_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Apr  8 12:34:01 2026...
