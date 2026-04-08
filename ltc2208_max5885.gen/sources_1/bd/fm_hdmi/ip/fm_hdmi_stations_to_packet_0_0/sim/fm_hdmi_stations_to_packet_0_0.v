@@ -95,6 +95,10 @@ module fm_hdmi_stations_to_packet_0_0 (
   st9_dout,
   st9_rd_data_count,
   st9_rd_en,
+  st10_empty,
+  st10_dout,
+  st10_rd_data_count,
+  st10_rd_en,
   audio_empty,
   audio_dout_bus,
   audio_rd_count_bus,
@@ -103,53 +107,57 @@ module fm_hdmi_stations_to_packet_0_0 (
 
 input wire st0_empty;
 input wire [31 : 0] st0_dout;
-input wire [7 : 0] st0_rd_data_count;
+input wire [6 : 0] st0_rd_data_count;
 output wire st0_rd_en;
 input wire st1_empty;
 input wire [31 : 0] st1_dout;
-input wire [7 : 0] st1_rd_data_count;
+input wire [6 : 0] st1_rd_data_count;
 output wire st1_rd_en;
 input wire st2_empty;
 input wire [31 : 0] st2_dout;
-input wire [7 : 0] st2_rd_data_count;
+input wire [6 : 0] st2_rd_data_count;
 output wire st2_rd_en;
 input wire st3_empty;
 input wire [31 : 0] st3_dout;
-input wire [7 : 0] st3_rd_data_count;
+input wire [6 : 0] st3_rd_data_count;
 output wire st3_rd_en;
 input wire st4_empty;
 input wire [31 : 0] st4_dout;
-input wire [7 : 0] st4_rd_data_count;
+input wire [6 : 0] st4_rd_data_count;
 output wire st4_rd_en;
 input wire st5_empty;
 input wire [31 : 0] st5_dout;
-input wire [7 : 0] st5_rd_data_count;
+input wire [6 : 0] st5_rd_data_count;
 output wire st5_rd_en;
 input wire st6_empty;
 input wire [31 : 0] st6_dout;
-input wire [7 : 0] st6_rd_data_count;
+input wire [6 : 0] st6_rd_data_count;
 output wire st6_rd_en;
 input wire st7_empty;
 input wire [31 : 0] st7_dout;
-input wire [7 : 0] st7_rd_data_count;
+input wire [6 : 0] st7_rd_data_count;
 output wire st7_rd_en;
 input wire st8_empty;
 input wire [31 : 0] st8_dout;
-input wire [7 : 0] st8_rd_data_count;
+input wire [6 : 0] st8_rd_data_count;
 output wire st8_rd_en;
 input wire st9_empty;
 input wire [31 : 0] st9_dout;
-input wire [7 : 0] st9_rd_data_count;
+input wire [6 : 0] st9_rd_data_count;
 output wire st9_rd_en;
-output wire [9 : 0] audio_empty;
-output wire [319 : 0] audio_dout_bus;
-output wire [79 : 0] audio_rd_count_bus;
-input wire [9 : 0] audio_rd_en;
+input wire st10_empty;
+input wire [31 : 0] st10_dout;
+input wire [6 : 0] st10_rd_data_count;
+output wire st10_rd_en;
+output wire [10 : 0] audio_empty;
+output wire [351 : 0] audio_dout_bus;
+output wire [76 : 0] audio_rd_count_bus;
+input wire [10 : 0] audio_rd_en;
 
   stations_to_packet #(
     .DATA_W(32),
-    .COUNT_W(8),
-    .STATIONS(10)
+    .COUNT_W(7),
+    .STATIONS(11)
   ) inst (
     .st0_empty(st0_empty),
     .st0_dout(st0_dout),
@@ -191,6 +199,10 @@ input wire [9 : 0] audio_rd_en;
     .st9_dout(st9_dout),
     .st9_rd_data_count(st9_rd_data_count),
     .st9_rd_en(st9_rd_en),
+    .st10_empty(st10_empty),
+    .st10_dout(st10_dout),
+    .st10_rd_data_count(st10_rd_data_count),
+    .st10_rd_en(st10_rd_en),
     .audio_empty(audio_empty),
     .audio_dout_bus(audio_dout_bus),
     .audio_rd_count_bus(audio_rd_count_bus),

@@ -1,10 +1,10 @@
 module axis_dc_blocker_round_sat #
 (
-    parameter integer IN_W    = 24,   // ширина входа
-    parameter integer OUT_W   = 16,   // ширина выхода (16)
-    parameter integer ACC_W   = 40,   // внутренняя ширина mean
-    parameter integer K       = 15,   // alpha = 2^-K
-    parameter integer SHIFT_R = 8     // сдвиг вправо перед OUT_W (24->16 => 8)
+    parameter integer IN_W    = 24,
+    parameter integer OUT_W   = 16,
+    parameter integer ACC_W   = 40,
+    parameter integer K       = 15,
+    parameter integer SHIFT_R = 8   // предполагается SHIFT_R >= 1
 )
 (
     input  wire                     aclk,
@@ -21,93 +21,111 @@ module axis_dc_blocker_round_sat #
     output reg signed [OUT_W-1:0]   m_axis_tdata
 );
 
-    // ready/valid (1-stage skid-free register)
-    assign s_axis_tready = m_axis_tready | ~m_axis_tvalid;
+    // =========================================================
+    // State of DC blocker
+    // =========================================================
+    reg signed [ACC_W-1:0] mean;
 
-    // ===== DC blocker core =====
-    reg  signed [ACC_W-1:0] mean;
+    // =========================================================
+    // Stage 1 registers
+    // =========================================================
+    reg                    st1_valid;
+    reg signed [ACC_W-1:0] st1_y_ext;
 
-    reg  signed [ACC_W-1:0] x_ext;
-    reg  signed [ACC_W-1:0] diff;
-    reg  signed [ACC_W-1:0] mean_next;
-    reg  signed [ACC_W-1:0] y_ext;
+    // =========================================================
+    // AXIS handshake between stages
+    // =========================================================
+    wire st2_ready;
+    wire st1_pop;
+    wire st0_push;
 
-    always @* begin
-        // sign-extend input to ACC_W
-        x_ext     = {{(ACC_W-IN_W){s_axis_tdata[IN_W-1]}}, s_axis_tdata};
-        diff      = x_ext - mean;
-        mean_next = mean + (diff >>> K);
-        y_ext     = x_ext - mean_next;
-    end
+    assign st2_ready     = m_axis_tready | ~m_axis_tvalid;
+    assign st1_pop       = st1_valid & st2_ready;
+    assign s_axis_tready = ~st1_valid | st2_ready;
+    assign st0_push      = s_axis_tvalid & s_axis_tready;
 
-    // ===== Round-to-nearest-even with constant SHIFT_R =====
-    // Work in magnitude domain to make rounding symmetric for negative values.
-    localparam [ACC_W-1:0] ONE  = {{(ACC_W-1){1'b0}}, 1'b1};
-    localparam [ACC_W-1:0] MASK = (SHIFT_R == 0) ? {ACC_W{1'b0}} : ((ONE << SHIFT_R) - ONE);
-    localparam [ACC_W-1:0] HALF = (SHIFT_R == 0) ? {ACC_W{1'b0}} : (ONE << (SHIFT_R-1));
+    // =========================================================
+    // Stage 0 combinational math (input -> stage1 regs)
+    // mean[n+1] = mean[n] + (x[n] - mean[n]) / 2^K
+    // y[n]      = (x[n] - mean[n]) - (x[n] - mean[n]) / 2^K
+    // =========================================================
+    wire signed [ACC_W-1:0] x_ext_w;
+    assign x_ext_w = {{(ACC_W-IN_W){s_axis_tdata[IN_W-1]}}, s_axis_tdata};
 
-    reg                    sign_v;
-    reg  signed [ACC_W-1:0] abs_v_s;
-    reg  [ACC_W-1:0]       abs_v;
-    reg  [ACC_W-1:0]       trunc_u;
-    reg  [ACC_W-1:0]       rem_u;
-    reg  [ACC_W-1:0]       trunc_inc;
-    reg  signed [ACC_W-1:0] y_q;        // after rounding+shift
+    (* use_dsp = "yes" *)
+    wire signed [ACC_W-1:0] diff_w;
+    assign diff_w = x_ext_w - mean;
 
-    always @* begin
-        if (SHIFT_R == 0) begin
-            y_q = y_ext;
-        end else begin
-            sign_v  = y_ext[ACC_W-1];
-            abs_v_s = sign_v ? -y_ext : y_ext;   // signed
-            abs_v   = abs_v_s[ACC_W-1:0];        // magnitude as unsigned
+    wire signed [ACC_W-1:0] corr_w;
+    assign corr_w = diff_w >>> K;
 
-            trunc_u = abs_v >> SHIFT_R;
-            rem_u   = abs_v & MASK;
+    (* use_dsp = "yes" *)
+    wire signed [ACC_W-1:0] mean_next_w;
+    assign mean_next_w = mean + corr_w;
 
-            trunc_inc = trunc_u;
-            if (rem_u > HALF)
-                trunc_inc = trunc_u + ONE;
-            else if ((rem_u == HALF) && (trunc_u[0] == 1'b1))
-                trunc_inc = trunc_u + ONE;
+    (* use_dsp = "yes" *)
+    wire signed [ACC_W-1:0] y_ext_w;
+    assign y_ext_w = diff_w - corr_w;
 
-            y_q = sign_v ? -$signed(trunc_inc) : $signed(trunc_inc);
-        end
-    end
+    // =========================================================
+    // Stage 1 combinational math (stage1 regs -> output regs)
+    // rounding + saturation
+    // =========================================================
+    localparam signed [ACC_W-1:0] ROUND_POS =
+        ({{(ACC_W-1){1'b0}}, 1'b1} << (SHIFT_R-1));
 
-    // ===== Saturation to OUT_W =====
-    localparam signed [OUT_W-1:0] VMAX = {1'b0, {(OUT_W-1){1'b1}}}; // +max
-    localparam signed [OUT_W-1:0] VMIN = {1'b1, {(OUT_W-1){1'b0}}}; // -min
+    localparam signed [ACC_W-1:0] ROUND_NEG =
+        ROUND_POS - {{(ACC_W-1){1'b0}}, 1'b1};
+
+    wire signed [ACC_W-1:0] y_round_pre_w;
+    assign y_round_pre_w = st1_y_ext[ACC_W-1] ? (st1_y_ext + ROUND_NEG)
+                                              : (st1_y_ext + ROUND_POS);
+
+    wire signed [ACC_W-1:0] y_q_w;
+    assign y_q_w = y_round_pre_w >>> SHIFT_R;
+
+    localparam signed [OUT_W-1:0] VMAX = {1'b0, {(OUT_W-1){1'b1}}};
+    localparam signed [OUT_W-1:0] VMIN = {1'b1, {(OUT_W-1){1'b0}}};
 
     localparam signed [ACC_W-1:0] VMAX_EXT = {{(ACC_W-OUT_W){VMAX[OUT_W-1]}}, VMAX};
     localparam signed [ACC_W-1:0] VMIN_EXT = {{(ACC_W-OUT_W){VMIN[OUT_W-1]}}, VMIN};
 
-    reg signed [OUT_W-1:0] y_out;
+    wire signed [OUT_W-1:0] y_out_w;
+    assign y_out_w =
+        (y_q_w > VMAX_EXT) ? VMAX :
+        (y_q_w < VMIN_EXT) ? VMIN :
+                             y_q_w[OUT_W-1:0];
 
-    always @* begin
-        if (y_q > VMAX_EXT)
-            y_out = VMAX;
-        else if (y_q < VMIN_EXT)
-            y_out = VMIN;
-        else
-            y_out = y_q[OUT_W-1:0];
-    end
-
-    // ===== Registers + AXIS handshake =====
+    // =========================================================
+    // Registers
+    // =========================================================
     always @(posedge aclk) begin
         if (!aresetn) begin
-            mean         <= {ACC_W{1'b0}};
+            mean          <= {ACC_W{1'b0}};
+            st1_valid     <= 1'b0;
+            st1_y_ext     <= {ACC_W{1'b0}};
             m_axis_tvalid <= 1'b0;
             m_axis_tdata  <= {OUT_W{1'b0}};
         end else begin
-            // accept new input when ready
-            if (s_axis_tvalid && s_axis_tready) begin
-                mean          <= mean_next;
-                m_axis_tdata  <= y_out;
+            // -------------------------
+            // stage2: st1 -> m_axis
+            // -------------------------
+            if (st1_pop) begin
+                m_axis_tdata  <= y_out_w;
                 m_axis_tvalid <= 1'b1;
             end else if (m_axis_tvalid && m_axis_tready) begin
-                // output consumed, no new input this cycle
                 m_axis_tvalid <= 1'b0;
+            end
+
+            // -------------------------
+            // stage1: input -> st1 regs
+            // -------------------------
+            if (st0_push) begin
+                mean      <= mean_next_w;
+                st1_y_ext <= y_ext_w;
+                st1_valid <= 1'b1;
+            end else if (st1_pop) begin
+                st1_valid <= 1'b0;
             end
         end
     end

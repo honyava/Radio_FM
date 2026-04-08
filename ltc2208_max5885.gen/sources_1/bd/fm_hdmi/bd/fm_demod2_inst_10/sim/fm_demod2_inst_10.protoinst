@@ -86,6 +86,7 @@
 					"ports": {
 						"ACLK": { "actual": "adc_clk"},
 						"TDATA": { "actual": "S_AXIS_DATA_tdata[23:0]"},
+						"TREADY": { "actual": "S_AXIS_DATA_tready"},
 						"TVALID": { "actual": "S_AXIS_DATA_tvalid"}
 					}
 				},
@@ -122,6 +123,7 @@
 					"ports": {
 						"ACLK": { "actual": "adc_clk"},
 						"TDATA": { "actual": "M_AXIS_DOUT_tdata[23:0]"},
+						"TREADY": { "actual": "M_AXIS_DOUT_tready"},
 						"TVALID": { "actual": "M_AXIS_DOUT_tvalid"}
 					}
 				},
@@ -130,6 +132,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"TDATA": { "actual": "m_axis_dout_tdata[23:0]"},
+						"TREADY": { "actual": "m_axis_dout_tready"},
 						"TVALID": { "actual": "m_axis_dout_tvalid"}
 					}
 				},

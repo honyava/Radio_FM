@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Tue Apr  7 14:24:59 2026
+//Date        : Wed Apr  8 09:08:06 2026
 //Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 //Command     : generate_target fm_demod2_inst_7.bd
 //Design      : fm_demod2_inst_7
@@ -132,6 +132,7 @@ endmodule
 
 module dec384to192_blockDC_imp_11GBTSI
    (S_AXIS_DATA_tdata,
+    S_AXIS_DATA_tready,
     S_AXIS_DATA_tvalid,
     adc_clk,
     m_axis_tdata_0,
@@ -139,6 +140,7 @@ module dec384to192_blockDC_imp_11GBTSI
     m_axis_tvalid_0,
     probe_out0);
   input [23:0]S_AXIS_DATA_tdata;
+  output S_AXIS_DATA_tready;
   input S_AXIS_DATA_tvalid;
   input adc_clk;
   output [15:0]m_axis_tdata_0;
@@ -153,10 +155,12 @@ module dec384to192_blockDC_imp_11GBTSI
   wire dec384to192_M_AXIS_DATA_TREADY;
   wire dec384to192_M_AXIS_DATA_TVALID;
   wire [23:0]demodulate_384k_M_AXIS_DOUT_TDATA;
+  wire demodulate_384k_M_AXIS_DOUT_TREADY;
   wire demodulate_384k_M_AXIS_DOUT_TVALID;
   wire m_axis_tready_0_1;
   wire vio_0_probe_out0;
 
+  assign S_AXIS_DATA_tready = demodulate_384k_M_AXIS_DOUT_TREADY;
   assign adc_clk_1 = adc_clk;
   assign demodulate_384k_M_AXIS_DOUT_TDATA = S_AXIS_DATA_tdata[23:0];
   assign demodulate_384k_M_AXIS_DOUT_TVALID = S_AXIS_DATA_tvalid;
@@ -179,11 +183,13 @@ module dec384to192_blockDC_imp_11GBTSI
         .m_axis_data_tready(dec384to192_M_AXIS_DATA_TREADY),
         .m_axis_data_tvalid(dec384to192_M_AXIS_DATA_TVALID),
         .s_axis_data_tdata(demodulate_384k_M_AXIS_DOUT_TDATA),
+        .s_axis_data_tready(demodulate_384k_M_AXIS_DOUT_TREADY),
         .s_axis_data_tvalid(demodulate_384k_M_AXIS_DOUT_TVALID));
 endmodule
 
 module demodulate_384k_imp_HI723Q
    (M_AXIS_DOUT_tdata,
+    M_AXIS_DOUT_tready,
     M_AXIS_DOUT_tvalid,
     adc_clk,
     s_axis_ctrl_tdata,
@@ -193,6 +199,7 @@ module demodulate_384k_imp_HI723Q
     tap_i,
     tap_q);
   output [23:0]M_AXIS_DOUT_tdata;
+  input M_AXIS_DOUT_tready;
   output M_AXIS_DOUT_tvalid;
   input adc_clk;
   input [7:0]s_axis_ctrl_tdata;
@@ -203,6 +210,7 @@ module demodulate_384k_imp_HI723Q
   input [15:0]tap_q;
 
   wire [23:0]Conn1_TDATA;
+  wire Conn1_TREADY;
   wire Conn1_TVALID;
   wire Dec200_Res_0;
   wire adc_dci_0_1;
@@ -217,6 +225,7 @@ module demodulate_384k_imp_HI723Q
   wire lfsr_rng_0_m_axis_tvalid;
   wire sys_rst_n_0_1;
 
+  assign Conn1_TREADY = M_AXIS_DOUT_tready;
   assign Dec200_Res_0 = sample_valid;
   assign M_AXIS_DOUT_tdata[23:0] = Conn1_TDATA;
   assign M_AXIS_DOUT_tvalid = Conn1_TVALID;
@@ -239,6 +248,7 @@ module demodulate_384k_imp_HI723Q
   fm_demod2_inst_7_cordic_1_0 cordic_1
        (.aclk(adc_dci_0_1),
         .m_axis_dout_tdata(Conn1_TDATA),
+        .m_axis_dout_tready(Conn1_TREADY),
         .m_axis_dout_tvalid(Conn1_TVALID),
         .s_axis_cartesian_tdata(cmpy_0_m_axis_dout_tdata1),
         .s_axis_cartesian_tvalid(cmpy_0_m_axis_dout_tvalid1));
@@ -276,8 +286,7 @@ module digital_mixer_imp_1G31PGN
   wire cmpy_1_m_axis_dout_tvalid;
   wire [31:0]dds_compiler_0_m_axis_data_tdata;
   wire dds_compiler_0_m_axis_data_tvalid;
-  wire [15:0]fm_dds_cfg_0_dbg_if_khz;
-  wire [16:0]fm_dds_cfg_0_dbg_rf_khz;
+  wire [15:0]fm_dds_cfg_0_dbg_dds_khz;
   wire [31:0]fm_dds_cfg_0_s_axis_config_TDATA;
   wire fm_dds_cfg_0_s_axis_config_TVALID;
   wire [7:0]lfsr_rng_0_m_axis_tdata;
@@ -316,8 +325,7 @@ module digital_mixer_imp_1G31PGN
         .s_axis_config_tvalid(fm_dds_cfg_0_s_axis_config_TVALID));
   fm_demod2_inst_7_fm_dds_cfg_0_0 fm_dds_cfg_0
        (.clk(adc_dci_0_1),
-        .dbg_if_khz(fm_dds_cfg_0_dbg_if_khz),
-        .dbg_rf_khz(fm_dds_cfg_0_dbg_rf_khz),
+        .dbg_dds_khz(fm_dds_cfg_0_dbg_dds_khz),
         .rstn(sys_rst_n_0_1),
         .s_axis_config_tdata(fm_dds_cfg_0_s_axis_config_TDATA),
         .s_axis_config_tvalid(fm_dds_cfg_0_s_axis_config_TVALID),
@@ -331,8 +339,7 @@ module digital_mixer_imp_1G31PGN
         .rstn(sys_rst_n_0_1));
   fm_demod2_inst_7_vio_0_0 vio_0
        (.clk(adc_dci_0_1),
-        .probe_in0(fm_dds_cfg_0_dbg_rf_khz),
-        .probe_in1(fm_dds_cfg_0_dbg_if_khz),
+        .probe_in0(fm_dds_cfg_0_dbg_dds_khz),
         .probe_out0(vio_0_probe_out0),
         .probe_out1(vio_0_probe_out1));
 endmodule
@@ -362,6 +369,7 @@ module fm_demod2_inst_7
   wire [15:0]cic_compiler_2_m_axis_data_tdata;
   wire [15:0]cic_compiler_3_m_axis_data_tdata;
   wire [23:0]demodulate_384k_M_AXIS_DOUT_TDATA;
+  wire demodulate_384k_M_AXIS_DOUT_TREADY;
   wire demodulate_384k_M_AXIS_DOUT_TVALID;
   wire [63:0]digital_mixer_m_axis_dout_tdata_0;
   wire digital_mixer_m_axis_dout_tvalid_0;
@@ -388,6 +396,7 @@ module fm_demod2_inst_7
         .sys_rst_n(vio_0_probe_out0));
   dec384to192_blockDC_imp_11GBTSI dec384to192_blockDC
        (.S_AXIS_DATA_tdata(demodulate_384k_M_AXIS_DOUT_TDATA),
+        .S_AXIS_DATA_tready(demodulate_384k_M_AXIS_DOUT_TREADY),
         .S_AXIS_DATA_tvalid(demodulate_384k_M_AXIS_DOUT_TVALID),
         .adc_clk(adc_clk_1),
         .m_axis_tdata_0(axis_dc_blocker_roun_0_m_axis_tdata),
@@ -396,6 +405,7 @@ module fm_demod2_inst_7
         .probe_out0(vio_0_probe_out0));
   demodulate_384k_imp_HI723Q demodulate_384k
        (.M_AXIS_DOUT_tdata(demodulate_384k_M_AXIS_DOUT_TDATA),
+        .M_AXIS_DOUT_tready(demodulate_384k_M_AXIS_DOUT_TREADY),
         .M_AXIS_DOUT_tvalid(demodulate_384k_M_AXIS_DOUT_TVALID),
         .adc_clk(adc_clk_1),
         .s_axis_ctrl_tdata(lfsr_rng_0_m_axis_tdata),

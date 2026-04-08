@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Tue Apr  7 14:24:55 2026
+//Date        : Wed Apr  8 09:08:03 2026
 //Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 //Command     : generate_target fm_hdmi.bd
 //Design      : fm_hdmi
@@ -10,12 +10,10 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "fm_hdmi,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fm_hdmi,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=321,numReposBlks=250,numNonXlnxBlks=0,numHierBlks=71,maxHierDepth=3,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=76,numPkgbdBlks=20,bdsource=USER,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fm_hdmi.hwdef" *) 
+(* CORE_GENERATION_INFO = "fm_hdmi,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fm_hdmi,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=352,numReposBlks=274,numNonXlnxBlks=0,numHierBlks=78,maxHierDepth=3,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=83,numPkgbdBlks=22,bdsource=USER,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fm_hdmi.hwdef" *) 
 module fm_hdmi
    (adc_clk,
     adc_dai,
-    clk,
-    clk_10M,
     clk_50M,
     linkspeed,
     locked,
@@ -32,8 +30,6 @@ module fm_hdmi
     sys_rst_n);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.ADC_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.ADC_CLK, CLK_DOMAIN fm_hdmi_clk_50M, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) output adc_clk;
   input [15:0]adc_dai;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK, CLK_DOMAIN fm_hdmi_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input clk;
-  input clk_10M;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK_50M CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK_50M, CLK_DOMAIN fm_hdmi_clk_50M, FREQ_HZ 50000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input clk_50M;
   output [1:0]linkspeed;
   input locked;
@@ -54,8 +50,8 @@ module fm_hdmi
   wire Net;
   wire [15:0]adc_dai_1;
   wire adc_dci_0_1;
-  wire [319:0]audio_dout_bus_1;
-  wire [9:0]audio_empty_1;
+  wire [351:0]audio_dout_bus_1;
+  wire [10:0]audio_empty_1;
   wire clk_50M_1;
   wire clk_wiz_0_clk_out1;
   wire clk_wiz_0_locked;
@@ -63,7 +59,7 @@ module fm_hdmi
   wire clk_wiz_1_clkfb_out;
   wire en_0_1;
   wire [0:0]packer_for_udp_Res1;
-  wire [9:0]packer_for_udp_audio_rd_en;
+  wire [10:0]packer_for_udp_audio_rd_en;
   wire packer_for_udp_gmii_rxc;
   wire [1:0]packer_for_udp_linkspeed;
   wire packer_for_udp_mdc;
@@ -77,35 +73,39 @@ module fm_hdmi
   wire rd_en_1;
   wire [31:0]station0_dout;
   wire station0_empty;
-  wire [7:0]station0_rd_data_count;
+  wire [6:0]station0_rd_data_count;
+  wire [31:0]station10_dout;
+  wire station10_empty;
+  wire [6:0]station10_rd_data_count;
   wire [31:0]station1_dout;
   wire station1_empty;
-  wire [7:0]station1_rd_data_count;
+  wire [6:0]station1_rd_data_count;
   wire [31:0]station2_dout;
   wire station2_empty;
-  wire [7:0]station2_rd_data_count;
+  wire [6:0]station2_rd_data_count;
   wire [31:0]station3_dout;
   wire station3_empty;
-  wire [7:0]station3_rd_data_count;
+  wire [6:0]station3_rd_data_count;
   wire [31:0]station4_dout;
   wire station4_empty;
-  wire [7:0]station4_rd_data_count;
+  wire [6:0]station4_rd_data_count;
   wire [31:0]station5_dout;
   wire station5_empty;
-  wire [7:0]station5_rd_data_count;
+  wire [6:0]station5_rd_data_count;
   wire [31:0]station6_dout;
   wire station6_empty;
-  wire [7:0]station6_rd_data_count;
+  wire [6:0]station6_rd_data_count;
   wire [31:0]station7_dout;
   wire station7_empty;
-  wire [7:0]station7_rd_data_count;
+  wire [6:0]station7_rd_data_count;
   wire [31:0]station8_dout;
   wire station8_empty;
-  wire [7:0]station8_rd_data_count;
+  wire [6:0]station8_rd_data_count;
   wire [31:0]station9_dout;
   wire station9_empty;
-  wire [7:0]station9_rd_data_count;
-  wire [79:0]stations_to_packet_0_audio_rd_count_bus;
+  wire [6:0]station9_rd_data_count;
+  wire [76:0]stations_to_packet_0_audio_rd_count_bus;
+  wire stations_to_packet_0_st10_rd_en;
   wire stations_to_packet_0_st1_rd_en;
   wire stations_to_packet_0_st2_rd_en;
   wire stations_to_packet_0_st3_rd_en;
@@ -192,6 +192,18 @@ module fm_hdmi
         .rd_clk(packer_for_udp_gmii_rxc),
         .rd_data_count(station1_rd_data_count),
         .rd_en(stations_to_packet_0_st1_rd_en),
+        .rst(packer_for_udp_Res1),
+        .rst_n(clk_wiz_0_locked),
+        .wr_clk(adc_dci_0_1));
+  station10_imp_11CQB5G station10
+       (.adc_data(LTC_2208_0_m_axis_tdata),
+        .dout(station10_dout),
+        .empty(station10_empty),
+        .locked(en_0_1),
+        .m_axis_tready(LTC_2208_0_m_axis_tvalid),
+        .rd_clk(packer_for_udp_gmii_rxc),
+        .rd_data_count(station10_rd_data_count),
+        .rd_en(stations_to_packet_0_st10_rd_en),
         .rst(packer_for_udp_Res1),
         .rst_n(clk_wiz_0_locked),
         .wr_clk(adc_dci_0_1));
@@ -300,6 +312,10 @@ module fm_hdmi
         .st0_empty(station0_empty),
         .st0_rd_data_count(station0_rd_data_count),
         .st0_rd_en(rd_en_1),
+        .st10_dout(station10_dout),
+        .st10_empty(station10_empty),
+        .st10_rd_data_count(station10_rd_data_count),
+        .st10_rd_en(stations_to_packet_0_st10_rd_en),
         .st1_dout(station1_dout),
         .st1_empty(station1_empty),
         .st1_rd_data_count(station1_rd_data_count),
@@ -360,10 +376,10 @@ module packer_for_udp_imp_G2TMFZ
     phy_txd);
   output [0:0]Reset;
   input arst_n;
-  input [319:0]audio_dout_bus;
-  input [9:0]audio_empty;
-  input [79:0]audio_rd_count_bus;
-  output [9:0]audio_rd_en;
+  input [351:0]audio_dout_bus;
+  input [10:0]audio_empty;
+  input [76:0]audio_rd_count_bus;
+  output [10:0]audio_rd_en;
   output gmii_rxc;
   input iodelay_ref_clk200;
   output [1:0]linkspeed;
@@ -380,9 +396,9 @@ module packer_for_udp_imp_G2TMFZ
 
   wire [0:0]Net;
   wire Net1;
-  wire [319:0]audio_dout_bus_0_1;
-  wire [9:0]audio_empty_0_1;
-  wire [79:0]audio_rd_count_bus_0_1;
+  wire [351:0]audio_dout_bus_0_1;
+  wire [10:0]audio_empty_0_1;
+  wire [76:0]audio_rd_count_bus_0_1;
   wire [31:0]fifo_generator_payload_dout;
   wire fifo_generator_payload_full;
   wire iodelay_ref_clk200_0_1;
@@ -391,7 +407,7 @@ module packer_for_udp_imp_G2TMFZ
   wire phy_rxc_0_1;
   wire [3:0]phy_rxd_0_1;
   wire rst_n_0_1;
-  wire [9:0]udp_mpx_framer_0_audio_rd_en;
+  wire [10:0]udp_mpx_framer_0_audio_rd_en;
   wire [31:0]udp_mpx_framer_0_pay_din;
   wire udp_mpx_framer_0_pay_wr_en;
   wire udp_mpx_framer_0_pkt_ready_pulse;
@@ -415,10 +431,10 @@ module packer_for_udp_imp_G2TMFZ
   wire udp_tx_start_ctrl_0_tx_start_en;
 
   assign Reset[0] = Net;
-  assign audio_dout_bus_0_1 = audio_dout_bus[319:0];
-  assign audio_empty_0_1 = audio_empty[9:0];
-  assign audio_rd_count_bus_0_1 = audio_rd_count_bus[79:0];
-  assign audio_rd_en[9:0] = udp_mpx_framer_0_audio_rd_en;
+  assign audio_dout_bus_0_1 = audio_dout_bus[351:0];
+  assign audio_empty_0_1 = audio_empty[10:0];
+  assign audio_rd_count_bus_0_1 = audio_rd_count_bus[76:0];
+  assign audio_rd_en[10:0] = udp_mpx_framer_0_audio_rd_en;
   assign gmii_rxc = udp_phy_shell_0_gmii_rxc;
   assign iodelay_ref_clk200_0_1 = iodelay_ref_clk200;
   assign linkspeed[1:0] = udp_phy_shell_0_linkspeed;
@@ -518,7 +534,7 @@ module station0_imp_1KQSXAD
   input locked;
   input m_axis_tready;
   input rd_clk;
-  output [7:0]rd_data_count;
+  output [6:0]rd_data_count;
   input rd_en;
   input rst;
   input rst_n;
@@ -535,7 +551,7 @@ module station0_imp_1KQSXAD
   wire packer_for_udp_gmii_rxc;
   wire [31:0]packer_udp2_dout;
   wire packer_udp2_empty;
-  wire [7:0]packer_udp2_rd_data_count;
+  wire [6:0]packer_udp2_rd_data_count;
   wire packer_udp2_s_ready;
   wire rd_en_1;
 
@@ -548,7 +564,7 @@ module station0_imp_1KQSXAD
   assign en_0_1 = locked;
   assign packer_for_udp_Res1 = rst;
   assign packer_for_udp_gmii_rxc = rd_clk;
-  assign rd_data_count[7:0] = packer_udp2_rd_data_count;
+  assign rd_data_count[6:0] = packer_udp2_rd_data_count;
   assign rd_en_1 = rd_en;
   fm_demod2_inst_0 fm_demod2
        (.adc_clk(adc_dci_0_1),
@@ -559,6 +575,78 @@ module station0_imp_1KQSXAD
         .m_axis_tready_0(packer_udp2_s_ready),
         .m_axis_tvalid(fm_demod2_m_axis_tvalid));
   packer_udp2_inst_0 packer_udp2
+       (.dout(packer_udp2_dout),
+        .empty(packer_udp2_empty),
+        .rd_clk(packer_for_udp_gmii_rxc),
+        .rd_data_count(packer_udp2_rd_data_count),
+        .rd_en(rd_en_1),
+        .rst(packer_for_udp_Res1),
+        .rst_n(clk_wiz_0_locked),
+        .s_data(fm_demod2_m_axis_tdata),
+        .s_ready(packer_udp2_s_ready),
+        .s_valid(fm_demod2_m_axis_tvalid),
+        .wr_clk(adc_dci_0_1));
+endmodule
+
+module station10_imp_11CQB5G
+   (adc_data,
+    dout,
+    empty,
+    locked,
+    m_axis_tready,
+    rd_clk,
+    rd_data_count,
+    rd_en,
+    rst,
+    rst_n,
+    wr_clk);
+  input [31:0]adc_data;
+  output [31:0]dout;
+  output empty;
+  input locked;
+  input m_axis_tready;
+  input rd_clk;
+  output [6:0]rd_data_count;
+  input rd_en;
+  input rst;
+  input rst_n;
+  input wr_clk;
+
+  wire [31:0]LTC_2208_0_m_axis_tdata;
+  wire LTC_2208_0_m_axis_tvalid;
+  wire adc_dci_0_1;
+  wire clk_wiz_0_locked;
+  wire en_0_1;
+  wire [15:0]fm_demod2_m_axis_tdata;
+  wire fm_demod2_m_axis_tvalid;
+  wire packer_for_udp_Res1;
+  wire packer_for_udp_gmii_rxc;
+  wire [31:0]packer_udp2_dout;
+  wire packer_udp2_empty;
+  wire [6:0]packer_udp2_rd_data_count;
+  wire packer_udp2_s_ready;
+  wire rd_en_1;
+
+  assign LTC_2208_0_m_axis_tdata = adc_data[31:0];
+  assign LTC_2208_0_m_axis_tvalid = m_axis_tready;
+  assign adc_dci_0_1 = wr_clk;
+  assign clk_wiz_0_locked = rst_n;
+  assign dout[31:0] = packer_udp2_dout;
+  assign empty = packer_udp2_empty;
+  assign en_0_1 = locked;
+  assign packer_for_udp_Res1 = rst;
+  assign packer_for_udp_gmii_rxc = rd_clk;
+  assign rd_data_count[6:0] = packer_udp2_rd_data_count;
+  assign rd_en_1 = rd_en;
+  fm_demod2_inst_1 fm_demod2
+       (.adc_clk(adc_dci_0_1),
+        .adc_data(LTC_2208_0_m_axis_tdata),
+        .locked(en_0_1),
+        .m_axis_tdata(fm_demod2_m_axis_tdata),
+        .m_axis_tready(LTC_2208_0_m_axis_tvalid),
+        .m_axis_tready_0(packer_udp2_s_ready),
+        .m_axis_tvalid(fm_demod2_m_axis_tvalid));
+  packer_udp2_inst_10 packer_udp2
        (.dout(packer_udp2_dout),
         .empty(packer_udp2_empty),
         .rd_clk(packer_for_udp_gmii_rxc),
@@ -590,7 +678,7 @@ module station1_imp_1LC0R
   input locked;
   input m_axis_tready;
   input rd_clk;
-  output [7:0]rd_data_count;
+  output [6:0]rd_data_count;
   input rd_en;
   input rst;
   input rst_n;
@@ -607,7 +695,7 @@ module station1_imp_1LC0R
   wire packer_for_udp_gmii_rxc;
   wire [31:0]packer_udp2_dout;
   wire packer_udp2_empty;
-  wire [7:0]packer_udp2_rd_data_count;
+  wire [6:0]packer_udp2_rd_data_count;
   wire packer_udp2_s_ready;
   wire rd_en_1;
 
@@ -620,7 +708,7 @@ module station1_imp_1LC0R
   assign en_0_1 = locked;
   assign packer_for_udp_Res1 = rst;
   assign packer_for_udp_gmii_rxc = rd_clk;
-  assign rd_data_count[7:0] = packer_udp2_rd_data_count;
+  assign rd_data_count[6:0] = packer_udp2_rd_data_count;
   assign rd_en_1 = rd_en;
   fm_demod2_inst_2 fm_demod2
        (.adc_clk(adc_dci_0_1),
@@ -662,7 +750,7 @@ module station2_imp_13KY3NC
   input locked;
   input m_axis_tready;
   input rd_clk;
-  output [7:0]rd_data_count;
+  output [6:0]rd_data_count;
   input rd_en;
   input rst;
   input rst_n;
@@ -679,7 +767,7 @@ module station2_imp_13KY3NC
   wire packer_for_udp_gmii_rxc;
   wire [31:0]packer_udp2_dout;
   wire packer_udp2_empty;
-  wire [7:0]packer_udp2_rd_data_count;
+  wire [6:0]packer_udp2_rd_data_count;
   wire packer_udp2_s_ready;
   wire rd_en_1;
 
@@ -692,7 +780,7 @@ module station2_imp_13KY3NC
   assign en_0_1 = locked;
   assign packer_for_udp_Res1 = rst;
   assign packer_for_udp_gmii_rxc = rd_clk;
-  assign rd_data_count[7:0] = packer_udp2_rd_data_count;
+  assign rd_data_count[6:0] = packer_udp2_rd_data_count;
   assign rd_en_1 = rd_en;
   fm_demod2_inst_3 fm_demod2
        (.adc_clk(adc_dci_0_1),
@@ -734,7 +822,7 @@ module station3_imp_IBSMZQ
   input locked;
   input m_axis_tready;
   input rd_clk;
-  output [7:0]rd_data_count;
+  output [6:0]rd_data_count;
   input rd_en;
   input rst;
   input rst_n;
@@ -751,7 +839,7 @@ module station3_imp_IBSMZQ
   wire packer_for_udp_gmii_rxc;
   wire [31:0]packer_udp2_dout;
   wire packer_udp2_empty;
-  wire [7:0]packer_udp2_rd_data_count;
+  wire [6:0]packer_udp2_rd_data_count;
   wire packer_udp2_s_ready;
   wire rd_en_1;
 
@@ -764,7 +852,7 @@ module station3_imp_IBSMZQ
   assign en_0_1 = locked;
   assign packer_for_udp_Res1 = rst;
   assign packer_for_udp_gmii_rxc = rd_clk;
-  assign rd_data_count[7:0] = packer_udp2_rd_data_count;
+  assign rd_data_count[6:0] = packer_udp2_rd_data_count;
   assign rd_en_1 = rd_en;
   fm_demod2_inst_4 fm_demod2
        (.adc_clk(adc_dci_0_1),
@@ -806,7 +894,7 @@ module station4_imp_K70XA7
   input locked;
   input m_axis_tready;
   input rd_clk;
-  output [7:0]rd_data_count;
+  output [6:0]rd_data_count;
   input rd_en;
   input rst;
   input rst_n;
@@ -823,7 +911,7 @@ module station4_imp_K70XA7
   wire packer_for_udp_gmii_rxc;
   wire [31:0]packer_udp2_dout;
   wire packer_udp2_empty;
-  wire [7:0]packer_udp2_rd_data_count;
+  wire [6:0]packer_udp2_rd_data_count;
   wire packer_udp2_s_ready;
   wire rd_en_1;
 
@@ -836,7 +924,7 @@ module station4_imp_K70XA7
   assign en_0_1 = locked;
   assign packer_for_udp_Res1 = rst;
   assign packer_for_udp_gmii_rxc = rd_clk;
-  assign rd_data_count[7:0] = packer_udp2_rd_data_count;
+  assign rd_data_count[6:0] = packer_udp2_rd_data_count;
   assign rd_en_1 = rd_en;
   fm_demod2_inst_5 fm_demod2
        (.adc_clk(adc_dci_0_1),
@@ -878,7 +966,7 @@ module station5_imp_10QDAE9
   input locked;
   input m_axis_tready;
   input rd_clk;
-  output [7:0]rd_data_count;
+  output [6:0]rd_data_count;
   input rd_en;
   input rst;
   input rst_n;
@@ -895,7 +983,7 @@ module station5_imp_10QDAE9
   wire packer_for_udp_gmii_rxc;
   wire [31:0]packer_udp2_dout;
   wire packer_udp2_empty;
-  wire [7:0]packer_udp2_rd_data_count;
+  wire [6:0]packer_udp2_rd_data_count;
   wire packer_udp2_s_ready;
   wire rd_en_1;
 
@@ -908,7 +996,7 @@ module station5_imp_10QDAE9
   assign en_0_1 = locked;
   assign packer_for_udp_Res1 = rst;
   assign packer_for_udp_gmii_rxc = rd_clk;
-  assign rd_data_count[7:0] = packer_udp2_rd_data_count;
+  assign rd_data_count[6:0] = packer_udp2_rd_data_count;
   assign rd_en_1 = rd_en;
   fm_demod2_inst_6 fm_demod2
        (.adc_clk(adc_dci_0_1),
@@ -950,7 +1038,7 @@ module station6_imp_316136
   input locked;
   input m_axis_tready;
   input rd_clk;
-  output [7:0]rd_data_count;
+  output [6:0]rd_data_count;
   input rd_en;
   input rst;
   input rst_n;
@@ -967,7 +1055,7 @@ module station6_imp_316136
   wire packer_for_udp_gmii_rxc;
   wire [31:0]packer_udp2_dout;
   wire packer_udp2_empty;
-  wire [7:0]packer_udp2_rd_data_count;
+  wire [6:0]packer_udp2_rd_data_count;
   wire packer_udp2_s_ready;
   wire rd_en_1;
 
@@ -980,7 +1068,7 @@ module station6_imp_316136
   assign en_0_1 = locked;
   assign packer_for_udp_Res1 = rst;
   assign packer_for_udp_gmii_rxc = rd_clk;
-  assign rd_data_count[7:0] = packer_udp2_rd_data_count;
+  assign rd_data_count[6:0] = packer_udp2_rd_data_count;
   assign rd_en_1 = rd_en;
   fm_demod2_inst_7 fm_demod2
        (.adc_clk(adc_dci_0_1),
@@ -1022,7 +1110,7 @@ module station7_imp_1J0KIVW
   input locked;
   input m_axis_tready;
   input rd_clk;
-  output [7:0]rd_data_count;
+  output [6:0]rd_data_count;
   input rd_en;
   input rst;
   input rst_n;
@@ -1039,7 +1127,7 @@ module station7_imp_1J0KIVW
   wire packer_for_udp_gmii_rxc;
   wire [31:0]packer_udp2_dout;
   wire packer_udp2_empty;
-  wire [7:0]packer_udp2_rd_data_count;
+  wire [6:0]packer_udp2_rd_data_count;
   wire packer_udp2_s_ready;
   wire rd_en_1;
 
@@ -1052,7 +1140,7 @@ module station7_imp_1J0KIVW
   assign en_0_1 = locked;
   assign packer_for_udp_Res1 = rst;
   assign packer_for_udp_gmii_rxc = rd_clk;
-  assign rd_data_count[7:0] = packer_udp2_rd_data_count;
+  assign rd_data_count[6:0] = packer_udp2_rd_data_count;
   assign rd_en_1 = rd_en;
   fm_demod2_inst_8 fm_demod2
        (.adc_clk(adc_dci_0_1),
@@ -1094,7 +1182,7 @@ module station8_imp_8PP7AO
   input locked;
   input m_axis_tready;
   input rd_clk;
-  output [7:0]rd_data_count;
+  output [6:0]rd_data_count;
   input rd_en;
   input rst;
   input rst_n;
@@ -1111,7 +1199,7 @@ module station8_imp_8PP7AO
   wire packer_for_udp_gmii_rxc;
   wire [31:0]packer_udp2_dout;
   wire packer_udp2_empty;
-  wire [7:0]packer_udp2_rd_data_count;
+  wire [6:0]packer_udp2_rd_data_count;
   wire packer_udp2_s_ready;
   wire rd_en_1;
 
@@ -1124,7 +1212,7 @@ module station8_imp_8PP7AO
   assign en_0_1 = locked;
   assign packer_for_udp_Res1 = rst;
   assign packer_for_udp_gmii_rxc = rd_clk;
-  assign rd_data_count[7:0] = packer_udp2_rd_data_count;
+  assign rd_data_count[6:0] = packer_udp2_rd_data_count;
   assign rd_en_1 = rd_en;
   fm_demod2_inst_9 fm_demod2
        (.adc_clk(adc_dci_0_1),
@@ -1166,7 +1254,7 @@ module station9_imp_1MRNE7I
   input locked;
   input m_axis_tready;
   input rd_clk;
-  output [7:0]rd_data_count;
+  output [6:0]rd_data_count;
   input rd_en;
   input rst;
   input rst_n;
@@ -1183,7 +1271,7 @@ module station9_imp_1MRNE7I
   wire packer_for_udp_gmii_rxc;
   wire [31:0]packer_udp2_dout;
   wire packer_udp2_empty;
-  wire [7:0]packer_udp2_rd_data_count;
+  wire [6:0]packer_udp2_rd_data_count;
   wire packer_udp2_s_ready;
   wire rd_en_1;
 
@@ -1196,7 +1284,7 @@ module station9_imp_1MRNE7I
   assign en_0_1 = locked;
   assign packer_for_udp_Res1 = rst;
   assign packer_for_udp_gmii_rxc = rd_clk;
-  assign rd_data_count[7:0] = packer_udp2_rd_data_count;
+  assign rd_data_count[6:0] = packer_udp2_rd_data_count;
   assign rd_en_1 = rd_en;
   fm_demod2_inst_10 fm_demod2
        (.adc_clk(adc_dci_0_1),

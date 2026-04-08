@@ -167,6 +167,12 @@ set_property used_in_implementation false [get_files -all /home/reting/Desktop/G
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_9/ip/packer_udp2_inst_9_fifo_generator_audio_0/packer_udp2_inst_9_fifo_generator_audio_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_9/packer_udp2_inst_9_ooc.xdc]
 
+add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_10/packer_udp2_inst_10.bd
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_10/ip/packer_udp2_inst_10_fifo_generator_audio_0/packer_udp2_inst_10_fifo_generator_audio_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_10/ip/packer_udp2_inst_10_fifo_generator_audio_0/packer_udp2_inst_10_fifo_generator_audio_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_10/ip/packer_udp2_inst_10_fifo_generator_audio_0/packer_udp2_inst_10_fifo_generator_audio_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/packer_udp2_inst_10/packer_udp2_inst_10_ooc.xdc]
+
 add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_0/fm_demod2_inst_0.bd
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_0/ip/fm_demod2_inst_0_cic_compiler_3_0/fm_demod2_inst_0_cic_compiler_3_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_0/ip/fm_demod2_inst_0_fir_compiler_0_0/constraints/fir_compiler_v7_2.xdc]
@@ -336,6 +342,23 @@ set_property used_in_implementation false [get_files -all /home/reting/Desktop/G
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_10/ip/fm_demod2_inst_10_vio_0_0/fm_demod2_inst_10_vio_0_0.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_10/ip/fm_demod2_inst_10_vio_0_0/fm_demod2_inst_10_vio_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_10/fm_demod2_inst_10_ooc.xdc]
+
+add_files /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/fm_demod2_inst_1.bd
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_cic_compiler_3_0/fm_demod2_inst_1_cic_compiler_3_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_fir_compiler_0_0/constraints/fir_compiler_v7_2.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_fir_compiler_0_0/fm_demod2_inst_1_fir_compiler_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_fir_compiler_1_0/constraints/fir_compiler_v7_2.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_fir_compiler_1_0/fm_demod2_inst_1_fir_compiler_1_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_cic_compiler_2_0/fm_demod2_inst_1_cic_compiler_2_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_dec384to192_0/constraints/fir_compiler_v7_2.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_dec384to192_0/fm_demod2_inst_1_dec384to192_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_cmpy_0_0/fm_demod2_inst_1_cmpy_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_cordic_1_0/fm_demod2_inst_1_cordic_1_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_cmpy_1_0/fm_demod2_inst_1_cmpy_1_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_dds_compiler_0_0/fm_demod2_inst_1_dds_compiler_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_vio_0_0/fm_demod2_inst_1_vio_0_0.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/ip/fm_demod2_inst_1_vio_0_0/fm_demod2_inst_1_vio_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_1/fm_demod2_inst_1_ooc.xdc]
 
 read_ip -quiet /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 set_property used_in_implementation false [get_files -all /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]

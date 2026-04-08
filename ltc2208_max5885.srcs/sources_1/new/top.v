@@ -60,7 +60,7 @@ clk_wiz_0 clk_main (
         .adc_clk(adc_clk),
         .sys_rst_n(sys_rst_n),
         
-        .clk(sys_clk_50M),
+//        .clk(sys_clk_50M),
         
         .phy_rxc(phy_rxc)   , //rxclk              
         .phy_rx_ctrl(phy_rx_ctrl), //rx ctrl           

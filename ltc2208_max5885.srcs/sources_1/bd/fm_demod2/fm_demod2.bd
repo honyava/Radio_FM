@@ -1039,6 +1039,12 @@
               "CoefficientSource": {
                 "value": "COE_File"
               },
+              "Coefficient_Buffer_Type": {
+                "value": "Automatic"
+              },
+              "Coefficient_Fanout": {
+                "value": "false"
+              },
               "Coefficient_File": {
                 "value": "../../../../../../fir_decim2_hex.coe"
               },
@@ -1057,8 +1063,32 @@
               "Coefficient_Width": {
                 "value": "16"
               },
+              "Control_Broadcast_Fanout": {
+                "value": "false"
+              },
+              "Control_Column_Fanout": {
+                "value": "false"
+              },
+              "Control_LUT_Pipeline": {
+                "value": "false"
+              },
+              "Control_Path_Fanout": {
+                "value": "false"
+              },
+              "Data_Buffer_Type": {
+                "value": "Automatic"
+              },
+              "Data_Path_Broadcast": {
+                "value": "false"
+              },
+              "Data_Path_Fanout": {
+                "value": "false"
+              },
               "Decimation_Rate": {
                 "value": "2"
+              },
+              "Disable_Half_Band_Centre_Tap": {
+                "value": "false"
               },
               "Filter_Architecture": {
                 "value": "Systolic_Multiply_Accumulate"
@@ -1072,14 +1102,41 @@
               "M_DATA_Has_TREADY": {
                 "value": "true"
               },
+              "No_BRAM_Read_First_Mode": {
+                "value": "false"
+              },
+              "No_SRL_Attributes": {
+                "value": "false"
+              },
               "Number_Channels": {
                 "value": "1"
+              },
+              "Optimal_Column_Lengths": {
+                "value": "false"
+              },
+              "Optimization_Goal": {
+                "value": "Area"
+              },
+              "Optimization_List": {
+                "value": "None"
+              },
+              "Optimization_Selection": {
+                "value": "None"
+              },
+              "Other": {
+                "value": "false"
               },
               "Output_Rounding_Mode": {
                 "value": "Convergent_Rounding_to_Even"
               },
               "Output_Width": {
                 "value": "24"
+              },
+              "Pre_Adder_Pipeline": {
+                "value": "false"
+              },
+              "Preference_For_Other_Storage": {
+                "value": "Automatic"
               },
               "Quantization": {
                 "value": "Integer_Coefficients"
@@ -1143,6 +1200,12 @@
                   "HAS_TLAST": {
                     "value": "0",
                     "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "76800000"
+                  },
+                  "PHASE": {
+                    "value": "65.0"
                   }
                 },
                 "port_maps": {
@@ -1258,6 +1321,12 @@
                   "ASSOCIATED_RESET": {
                     "value": "aresetn",
                     "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "76800000"
+                  },
+                  "PHASE": {
+                    "value": "65.0"
                   }
                 }
               },
@@ -1292,8 +1361,8 @@
           "adc_clk_1": {
             "ports": [
               "adc_clk",
-              "axis_dc_blocker_roun_0/aclk",
-              "dec384to192/aclk"
+              "dec384to192/aclk",
+              "axis_dc_blocker_roun_0/aclk"
             ]
           },
           "axis_dc_blocker_roun_0_m_axis_tdata": {
@@ -1468,13 +1537,25 @@
                 "value": "32"
               },
               "Output_Width": {
-                "value": "21"
+                "value": "20"
               },
               "Phase_Format": {
                 "value": "Radians"
               },
+              "Pipelining_Mode": {
+                "value": "Optimal"
+              },
               "Round_Mode": {
                 "value": "Nearest_Even"
+              },
+              "flow_control": {
+                "value": "Blocking"
+              },
+              "optimize_goal": {
+                "value": "Resources"
+              },
+              "out_tready": {
+                "value": "true"
               }
             }
           }
@@ -1774,7 +1855,7 @@
                 "value": "16"
               },
               "PINC1": {
-                "value": "0001101010101010101010101011"
+                "value": "000110101010101010101"
               },
               "Parameter_Entry": {
                 "value": "Hardware_Parameters"
@@ -1783,7 +1864,7 @@
                 "value": "Programmable"
               },
               "Phase_Width": {
-                "value": "32"
+                "value": "27"
               },
               "S_PHASE_Has_TUSER": {
                 "value": "Not_Required"
@@ -1814,7 +1895,7 @@
                 "parameters": {
                   "TDATA_NUM_BYTES": {
                     "value": "4",
-                    "value_src": "constant"
+                    "value_src": "auto"
                   },
                   "TDEST_WIDTH": {
                     "value": "0",
@@ -1843,6 +1924,12 @@
                   "HAS_TLAST": {
                     "value": "0",
                     "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "76800000"
+                  },
+                  "PHASE": {
+                    "value": "65.0"
                   }
                 },
                 "port_maps": {
@@ -1871,6 +1958,12 @@
                   "ASSOCIATED_RESET": {
                     "value": "rstn",
                     "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "76800000"
+                  },
+                  "PHASE": {
+                    "value": "65.0"
                   }
                 }
               },
@@ -1892,19 +1985,9 @@
               "vio_apply_toggle": {
                 "direction": "I"
               },
-              "dbg_rf_khz": {
-                "direction": "O",
-                "left": "16",
-                "right": "0"
-              },
-              "dbg_if_khz": {
+              "dbg_dds_khz": {
                 "direction": "O",
                 "left": "15",
-                "right": "0"
-              },
-              "dbg_pinc": {
-                "direction": "O",
-                "left": "31",
                 "right": "0"
               }
             }
@@ -1917,7 +2000,7 @@
             "inst_hier_path": "digital_mixer/vio_0",
             "parameters": {
               "C_NUM_PROBE_IN": {
-                "value": "2"
+                "value": "1"
               },
               "C_NUM_PROBE_OUT": {
                 "value": "2"
@@ -1977,15 +2060,9 @@
               "cmpy_1/s_axis_b_tvalid"
             ]
           },
-          "fm_dds_cfg_0_dbg_if_khz": {
+          "fm_dds_cfg_0_dbg_dds_khz": {
             "ports": [
-              "fm_dds_cfg_0/dbg_if_khz",
-              "vio_0/probe_in1"
-            ]
-          },
-          "fm_dds_cfg_0_dbg_rf_khz": {
-            "ports": [
-              "fm_dds_cfg_0/dbg_rf_khz",
+              "fm_dds_cfg_0/dbg_dds_khz",
               "vio_0/probe_in0"
             ]
           },

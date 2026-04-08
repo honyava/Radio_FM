@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Fri Mar  6 17:21:52 2026
+// Date        : Fri Mar  6 15:27:54 2026
 // Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 // Command     : write_verilog -force -mode synth_stub -rename_top fm_hdmi_fifo_generator_0_0 -prefix
 //               fm_hdmi_fifo_generator_0_0_ fm_hdmi_fifo_generator_0_0_stub.v
@@ -17,7 +17,7 @@
 (* x_core_info = "fifo_generator_v13_2_9,Vivado 2023.2" *)
 module fm_hdmi_fifo_generator_0_0(clk, rst, din, wr_en, rd_en, dout, full, empty, 
   data_count, wr_rst_busy, rd_rst_busy)
-/* synthesis syn_black_box black_box_pad_pin="rst,din[31:0],wr_en,rd_en,dout[31:0],full,empty,data_count[9:0],wr_rst_busy,rd_rst_busy" */
+/* synthesis syn_black_box black_box_pad_pin="rst,din[31:0],wr_en,rd_en,dout[31:0],full,empty,data_count[8:0],wr_rst_busy,rd_rst_busy" */
 /* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   input rst;
@@ -27,7 +27,7 @@ module fm_hdmi_fifo_generator_0_0(clk, rst, din, wr_en, rd_en, dout, full, empty
   output [31:0]dout;
   output full;
   output empty;
-  output [9:0]data_count;
+  output [8:0]data_count;
   output wr_rst_busy;
   output rd_rst_busy;
 endmodule

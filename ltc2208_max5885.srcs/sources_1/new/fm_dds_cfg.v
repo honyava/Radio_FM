@@ -3,37 +3,54 @@ module fm_dds_cfg #
     parameter integer ADC_FS_KHZ     = 76800,   // 76.8 MHz
     parameter integer SIG_MIN_KHZ    = 12220,   // 12.22 MHz
     parameter integer SIG_MAX_KHZ    = 32720,   // 32.72 MHz
-    parameter integer DEFAULT_RF_KHZ = 12220    // частота по умолчанию после reset
+    parameter integer DEFAULT_RF_KHZ = 12220,   // частота по умолчанию после reset
+
+    parameter integer PINC_W         = 27,      // Phase Width в DDS
+    parameter integer DDS_TDATA_W    = 32       // ширина S_AXIS_CONFIG_tdata у DDS
 )
 (
-    input  wire        clk,
-    input  wire        rstn,
+    input  wire                         clk,
+    input  wire                         rstn,
 
     // от VIO
-    input  wire [16:0] vio_rf_khz,        // частота в кГц
-    input  wire        vio_apply_toggle,  // переключение 0->1 или 1->0 для применения
+    input  wire [16:0]                  vio_rf_khz,
+    input  wire                         vio_apply_toggle,
 
     // в DDS Compiler S_AXIS_CONFIG
-    output reg  [31:0] s_axis_config_tdata,
-    output reg         s_axis_config_tvalid,
+    output reg  [DDS_TDATA_W-1:0]       s_axis_config_tdata,
+    output reg                          s_axis_config_tvalid,
 
-    // debug в ILA/VIO probe_in
-    output reg  [16:0] dbg_rf_khz,
-    output reg  [15:0] dbg_if_khz,
-    output reg  [31:0] dbg_pinc
+    // debug: только итоговая частота DDS в кГц
+    output reg  [15:0]                  dbg_dds_khz
 );
 
-    localparam [16:0] C_SIG_MIN_KHZ = SIG_MIN_KHZ;
-    localparam [16:0] C_SIG_MAX_KHZ = SIG_MAX_KHZ;
-    localparam [16:0] C_ADC_FS_KHZ  = ADC_FS_KHZ;
+    localparam [16:0] C_SIG_MIN_KHZ     = SIG_MIN_KHZ[16:0];
+    localparam [16:0] C_SIG_MAX_KHZ     = SIG_MAX_KHZ[16:0];
+    localparam [16:0] C_DEFAULT_RF_KHZ  = DEFAULT_RF_KHZ[16:0];
+    localparam [15:0] C_DEFAULT_IF_KHZ  = DEFAULT_RF_KHZ[15:0];
 
-    reg apply_toggle_d;
+    // PINC = round(IF_kHz * 2^PINC_W / ADC_FS_KHZ)
+    localparam [PINC_W-1:0] C_DEFAULT_PINC =
+        (((64'd1 << PINC_W) * DEFAULT_RF_KHZ) + (ADC_FS_KHZ / 2)) / ADC_FS_KHZ;
+
+    // =========================================================
+    // Capture/sync registers for VIO inputs
+    // =========================================================
+    (* ASYNC_REG = "TRUE", SHREG_EXTRACT = "NO" *) reg [16:0] vio_rf_khz_meta;
+    (* ASYNC_REG = "TRUE", SHREG_EXTRACT = "NO" *) reg [16:0] vio_rf_khz_sync;
+
+    (* ASYNC_REG = "TRUE", SHREG_EXTRACT = "NO" *) reg        vio_apply_toggle_meta;
+    (* ASYNC_REG = "TRUE", SHREG_EXTRACT = "NO" *) reg        vio_apply_toggle_sync;
+
+    reg vio_apply_toggle_sync_d;
     reg init_pending;
 
     wire apply_pulse;
+    assign apply_pulse = vio_apply_toggle_sync ^ vio_apply_toggle_sync_d;
 
-    assign apply_pulse = (vio_apply_toggle ^ apply_toggle_d);
-
+    // =========================================================
+    // Helpers
+    // =========================================================
     function [16:0] clamp_rf_khz;
         input [16:0] rf_in;
         begin
@@ -51,67 +68,82 @@ module fm_dds_cfg #
         reg   [16:0] rf_c;
         begin
             rf_c = clamp_rf_khz(rf_in);
-            // 1-я зона Найквиста: IF = RF, ничего вычитать не нужно
+            // 1-я зона Найквиста: IF = RF
             rf_to_if_khz = rf_c[15:0];
         end
     endfunction
 
-    function [31:0] if_khz_to_pinc;
+    function [PINC_W-1:0] if_khz_to_pinc;
         input [15:0] if_khz;
         reg   [63:0] numerator;
         begin
-            // PINC = round(if_khz * 2^32 / ADC_FS_KHZ)
-            numerator      = (64'd4294967296 * if_khz) + (ADC_FS_KHZ / 2);
+            numerator      = ((64'd1 << PINC_W) * if_khz) + (ADC_FS_KHZ / 2);
             if_khz_to_pinc = numerator / ADC_FS_KHZ;
         end
     endfunction
 
-    wire [16:0] rf_khz_w;
-    wire [15:0] if_khz_w;
-    wire [31:0] pinc_w;
+    function [DDS_TDATA_W-1:0] pack_cfg_tdata;
+        input [PINC_W-1:0] pinc_in;
+        begin
+            pack_cfg_tdata = {{(DDS_TDATA_W-PINC_W){1'b0}}, pinc_in};
+        end
+    endfunction
 
-    assign rf_khz_w = clamp_rf_khz(vio_rf_khz);
-    assign if_khz_w = rf_to_if_khz(vio_rf_khz);
+    // =========================================================
+    // Combinational values
+    // =========================================================
+    wire [16:0]       rf_khz_w;
+    wire [15:0]       if_khz_w;
+    wire [PINC_W-1:0] pinc_w;
+
+    assign rf_khz_w = clamp_rf_khz(vio_rf_khz_sync);
+    assign if_khz_w = rf_to_if_khz(vio_rf_khz_sync);
     assign pinc_w   = if_khz_to_pinc(if_khz_w);
 
-    wire [15:0] default_if_khz_w;
-    wire [31:0] default_pinc_w;
-
-    assign default_if_khz_w = DEFAULT_RF_KHZ[15:0];
-    assign default_pinc_w   = ((64'd4294967296 * DEFAULT_RF_KHZ) + (ADC_FS_KHZ / 2)) / ADC_FS_KHZ;
-
+    // =========================================================
+    // Main sequential logic
+    // =========================================================
     always @(posedge clk) begin
         if (!rstn) begin
-            apply_toggle_d       <= 1'b0;
-            init_pending         <= 1'b1;
-            s_axis_config_tdata  <= 32'd0;
-            s_axis_config_tvalid <= 1'b0;
+            vio_rf_khz_meta         <= C_DEFAULT_RF_KHZ;
+            vio_rf_khz_sync         <= C_DEFAULT_RF_KHZ;
 
-            dbg_rf_khz           <= DEFAULT_RF_KHZ[16:0];
-            dbg_if_khz           <= default_if_khz_w;
-            dbg_pinc             <= default_pinc_w;
+            vio_apply_toggle_meta   <= 1'b0;
+            vio_apply_toggle_sync   <= 1'b0;
+            vio_apply_toggle_sync_d <= 1'b0;
+
+            init_pending            <= 1'b1;
+
+            s_axis_config_tdata     <= {DDS_TDATA_W{1'b0}};
+            s_axis_config_tvalid    <= 1'b0;
+
+            dbg_dds_khz             <= C_DEFAULT_IF_KHZ;
         end
         else begin
-            apply_toggle_d       <= vio_apply_toggle;
-            s_axis_config_tvalid <= 1'b0;   // pulse на 1 такт
+            // VIO -> capture/sync
+            vio_rf_khz_meta         <= vio_rf_khz;
+            vio_rf_khz_sync         <= vio_rf_khz_meta;
+
+            vio_apply_toggle_meta   <= vio_apply_toggle;
+            vio_apply_toggle_sync   <= vio_apply_toggle_meta;
+            vio_apply_toggle_sync_d <= vio_apply_toggle_sync;
+
+            // pulse на 1 такт
+            s_axis_config_tvalid    <= 1'b0;
 
             if (init_pending) begin
-                s_axis_config_tdata  <= default_pinc_w;
+                s_axis_config_tdata  <= pack_cfg_tdata(C_DEFAULT_PINC);
                 s_axis_config_tvalid <= 1'b1;
 
-                dbg_rf_khz           <= DEFAULT_RF_KHZ[16:0];
-                dbg_if_khz           <= default_if_khz_w;
-                dbg_pinc             <= default_pinc_w;
+                dbg_dds_khz          <= C_DEFAULT_IF_KHZ;
 
                 init_pending         <= 1'b0;
             end
             else if (apply_pulse) begin
-                s_axis_config_tdata  <= pinc_w;
+                s_axis_config_tdata  <= pack_cfg_tdata(pinc_w);
                 s_axis_config_tvalid <= 1'b1;
 
-                dbg_rf_khz           <= rf_khz_w;
-                dbg_if_khz           <= if_khz_w;
-                dbg_pinc             <= pinc_w;
+                dbg_dds_khz          <= if_khz_w;
             end
         end
     end

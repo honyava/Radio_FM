@@ -2,7 +2,7 @@ module stations_to_packet #
 (
     parameter integer DATA_W   = 32,
     parameter integer COUNT_W  = 8,
-    parameter integer STATIONS = 10   // здесь должен оставаться 10
+    parameter integer STATIONS = 11   // здесь должен оставаться 10
 )
 (
     // =========================================================
@@ -84,6 +84,14 @@ module stations_to_packet #
     input      [DATA_W-1:0]    st9_dout,
     input      [COUNT_W-1:0]   st9_rd_data_count,
     output                     st9_rd_en,
+    
+    // =========================================================
+    // station 10
+    // =========================================================
+    input                      st10_empty,
+    input      [DATA_W-1:0]    st10_dout,
+    input      [COUNT_W-1:0]   st10_rd_data_count,
+    output                     st10_rd_en,    
 
     // =========================================================
     // aggregate buses to/from packet_for_udp
@@ -98,6 +106,7 @@ module stations_to_packet #
     // CONCAT to packet_for_udp
     // =========================================================
     assign audio_empty = {
+        st10_empty,
         st9_empty,
         st8_empty,
         st7_empty,
@@ -111,6 +120,7 @@ module stations_to_packet #
     };
 
     assign audio_dout_bus = {
+        st10_dout,
         st9_dout,
         st8_dout,
         st7_dout,
@@ -124,6 +134,7 @@ module stations_to_packet #
     };
 
     assign audio_rd_count_bus = {
+        st10_rd_data_count,
         st9_rd_data_count,
         st8_rd_data_count,
         st7_rd_data_count,
@@ -140,6 +151,7 @@ module stations_to_packet #
     // SLICE from packet_for_udp
     // =========================================================
     assign {
+        st10_rd_en,
         st9_rd_en,
         st8_rd_en,
         st7_rd_en,

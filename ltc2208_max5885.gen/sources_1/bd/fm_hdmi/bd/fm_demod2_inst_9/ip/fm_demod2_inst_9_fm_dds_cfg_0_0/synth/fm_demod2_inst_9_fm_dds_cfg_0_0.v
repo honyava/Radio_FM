@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "fm_dds_cfg,Vivado 2023.2" *)
 (* CHECK_LICENSE_TYPE = "fm_demod2_inst_9_fm_dds_cfg_0_0,fm_dds_cfg,{}" *)
-(* CORE_GENERATION_INFO = "fm_demod2_inst_9_fm_dds_cfg_0_0,fm_dds_cfg,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=fm_dds_cfg,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,ADC_FS_KHZ=76800,SIG_MIN_KHZ=12220,SIG_MAX_KHZ=32720,DEFAULT_RF_KHZ=26620}" *)
+(* CORE_GENERATION_INFO = "fm_demod2_inst_9_fm_dds_cfg_0_0,fm_dds_cfg,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=fm_dds_cfg,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,ADC_FS_KHZ=76800,SIG_MIN_KHZ=12220,SIG_MAX_KHZ=32720,DEFAULT_RF_KHZ=26620,PINC_W=27,DDS_TDATA_W=32}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module fm_demod2_inst_9_fm_dds_cfg_0_0 (
@@ -62,9 +62,7 @@ module fm_demod2_inst_9_fm_dds_cfg_0_0 (
   vio_apply_toggle,
   s_axis_config_tdata,
   s_axis_config_tvalid,
-  dbg_rf_khz,
-  dbg_if_khz,
-  dbg_pinc
+  dbg_dds_khz
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF s_axis_config, ASSOCIATED_RESET rstn, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_50M, INSERT_VIP 0" *)
@@ -80,15 +78,15 @@ output wire [31 : 0] s_axis_config_tdata;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis_config, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 76800000, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_50M, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis_config TVALID" *)
 output wire s_axis_config_tvalid;
-output wire [16 : 0] dbg_rf_khz;
-output wire [15 : 0] dbg_if_khz;
-output wire [31 : 0] dbg_pinc;
+output wire [15 : 0] dbg_dds_khz;
 
   fm_dds_cfg #(
     .ADC_FS_KHZ(76800),
     .SIG_MIN_KHZ(12220),
     .SIG_MAX_KHZ(32720),
-    .DEFAULT_RF_KHZ(26620)
+    .DEFAULT_RF_KHZ(26620),
+    .PINC_W(27),
+    .DDS_TDATA_W(32)
   ) inst (
     .clk(clk),
     .rstn(rstn),
@@ -96,8 +94,6 @@ output wire [31 : 0] dbg_pinc;
     .vio_apply_toggle(vio_apply_toggle),
     .s_axis_config_tdata(s_axis_config_tdata),
     .s_axis_config_tvalid(s_axis_config_tvalid),
-    .dbg_rf_khz(dbg_rf_khz),
-    .dbg_if_khz(dbg_if_khz),
-    .dbg_pinc(dbg_pinc)
+    .dbg_dds_khz(dbg_dds_khz)
   );
 endmodule

@@ -1,0 +1,60 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"2.82843",
+   "Default View_TopLeft":"1495,67",
+   "ExpandedHierarchyInLayout":"/station10/fm_demod2",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port port-id_wr_clk -pg 1 -lvl 0 -x -20 -y 20 -defaultsOSRD
+preplace port port-id_locked -pg 1 -lvl 0 -x -20 -y 80 -defaultsOSRD
+preplace port port-id_m_axis_tready -pg 1 -lvl 0 -x -20 -y 110 -defaultsOSRD
+preplace port port-id_rd_clk -pg 1 -lvl 0 -x -20 -y 160 -defaultsOSRD
+preplace port port-id_rst -pg 1 -lvl 0 -x -20 -y 220 -defaultsOSRD
+preplace port port-id_rst_n -pg 1 -lvl 0 -x -20 -y 250 -defaultsOSRD
+preplace port port-id_rd_en -pg 1 -lvl 0 -x -20 -y 190 -defaultsOSRD
+preplace port port-id_empty -pg 1 -lvl 3 -x 2370 -y 230 -defaultsOSRD
+preplace portBus adc_data -pg 1 -lvl 0 -x -20 -y 50 -defaultsOSRD
+preplace portBus rd_data_count -pg 1 -lvl 3 -x 2370 -y 260 -defaultsOSRD
+preplace portBus dout -pg 1 -lvl 3 -x 2370 -y 200 -defaultsOSRD
+preplace inst fm_demod2 -pg 1 -lvl 1 -x 340 -y 92 -defaultsOSRD
+preplace inst packer_udp2 -pg 1 -lvl 2 -x 2200 -y 250 -defaultsOSRD
+preplace inst fm_demod2|Dec200 -pg 1 -lvl 2 -x 760 -y 402 -defaultsOSRD
+preplace inst fm_demod2|dec384to192_blockDC -pg 1 -lvl 4 -x 1660 -y 372 -defaultsOSRD
+preplace inst fm_demod2|demodulate_384k -pg 1 -lvl 3 -x 1210 -y 342 -defaultsOSRD
+preplace inst fm_demod2|digital_mixer -pg 1 -lvl 1 -x 420 -y 112 -defaultsOSRD
+preplace netloc LTC_2208_0_m_axis_tdata 1 0 1 70J 50n
+preplace netloc LTC_2208_0_m_axis_tvalid 1 0 1 50J 110n
+preplace netloc adc_dci_0_1 1 0 2 40 634 2040J
+preplace netloc clk_wiz_0_locked 1 0 2 0J 574 2030J
+preplace netloc en_0_1 1 0 1 60J 80n
+preplace netloc fm_demod2_m_axis_tdata 1 1 1 2000 270n
+preplace netloc fm_demod2_m_axis_tvalid 1 1 1 2020 290n
+preplace netloc packer_for_udp_Res1 1 0 2 10J 554 2010J
+preplace netloc packer_for_udp_gmii_rxc 1 0 2 30J 514 1980J
+preplace netloc packer_udp2_dout 1 2 1 2350J 200n
+preplace netloc packer_udp2_empty 1 2 1 2350J 230n
+preplace netloc packer_udp2_rd_data_count 1 2 1 NJ 260
+preplace netloc packer_udp2_s_ready 1 0 3 70 694 2050J 370 2350
+preplace netloc rd_en_1 1 0 2 20J 534 1990J
+preplace netloc fm_demod2|Dec200_m_axis_tvalid 1 2 1 1050 362n
+preplace netloc fm_demod2|LTC_2208_0_m_axis_tdata 1 0 1 230 82n
+preplace netloc fm_demod2|adc_clk_1 1 0 4 240 192 610 222 1050 222 1370
+preplace netloc fm_demod2|axis_dc_blocker_roun_0_m_axis_tdata 1 4 1 1820 342n
+preplace netloc fm_demod2|axis_dc_blocker_roun_0_m_axis_tvalid 1 4 1 N 362
+preplace netloc fm_demod2|cic_compiler_2_m_axis_data_tdata 1 2 1 N 382
+preplace netloc fm_demod2|cic_compiler_3_m_axis_data_tdata 1 2 1 N 402
+preplace netloc fm_demod2|digital_mixer_m_axis_dout_tdata_0 1 1 1 620 122n
+preplace netloc fm_demod2|digital_mixer_m_axis_dout_tvalid_0 1 1 1 600 142n
+preplace netloc fm_demod2|lfsr_rng_0_m_axis_tdata 1 1 2 NJ 82 1040
+preplace netloc fm_demod2|lfsr_rng_0_m_axis_tvalid 1 1 2 NJ 102 900
+preplace netloc fm_demod2|m_axis_tready_0_1 1 0 4 NJ 212 NJ 212 NJ 212 1380
+preplace netloc fm_demod2|m_axis_tready_1 1 0 1 N 122
+preplace netloc fm_demod2|vio_0_probe_out0 1 0 4 250 202 590 312 1030 452 1390J
+preplace netloc fm_demod2|demodulate_384k_M_AXIS_DOUT 1 3 1 N 342
+levelinfo -pg 1 -20 340 2200 2370
+levelinfo -hier fm_demod2 * 420 760 1210 1660 *
+pagesize -pg 1 -db -bbox -sgen -170 -10 3440 830
+pagesize -hier fm_demod2 -db -bbox -sgen 200 22 1850 482
+"
+}
+

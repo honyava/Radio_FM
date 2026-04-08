@@ -1,3 +1,4 @@
+import argparse
 import socket
 import threading
 import time
@@ -35,7 +36,11 @@ APP_MARKER = 0xA55A
 STATION_HDR_MAGIC = 0x5354
 NETWORK_ENDIAN = ">"
 
+# Начальная станция (id из заголовка блока ST, обычно 0 .. N-1).
 TARGET_STATION: Optional[int] = 0
+
+# Подсказка для горячих клавиш: сейчас в проекте до 11 станций (id 0..10).
+MAX_STATION_ID = 10
 
 TIME_WINDOW_S = 0.025
 SPECTRUM_WINDOW_S = 0.025
@@ -76,8 +81,11 @@ PILOT_MIN_RMS = 2e-4
 #   key 'r'          -> reset both subplots
 #   key 'h'          -> print help
 #   key '[' / ']'    -> previous / next station
-#   key '0'..'9'     -> direct station select
+#   key '0'..'9'     -> direct station select (0..9)
+#   key '='          -> station 10 (один ключ рядом с цифрами)
+#   key F1..F11      -> stations 0..10 (F1=id0 .. F11=id10)
 #   key 'm'          -> mute/unmute audio
+#   CLI: --station N -> начальная станция
 
 
 @dataclass
@@ -492,8 +500,25 @@ def print_help() -> None:
     print("  r                -> reset both subplots")
     print("  h                -> show this help")
     print("  [ / ]            -> previous / next station")
-    print("  0..9             -> select station by ID")
+    print("  0..9             -> select station by ID (0..9)")
+    print("  =                -> station 10")
+    print("  F1..F11          -> stations 0..10 (F1=0 .. F11=10)")
     print("  m                -> mute/unmute stereo audio")
+
+
+def parse_station_hotkey(key: str) -> Optional[int]:
+    """
+    Map a single key press to a station id, or None if not a station shortcut.
+    F1 -> 0, F2 -> 1, ... F11 -> 10. '=' -> 10.
+    """
+    k = (key or "").lower()
+    if k in ("=", "equal"):
+        return 10
+    if len(k) >= 2 and k[0] == "f" and k[1:].isdigit():
+        fn = int(k[1:])
+        if 1 <= fn <= 11:
+            return fn - 1
+    return None
 
 
 def u32_words_from_bytes(data: bytes) -> np.ndarray:
@@ -697,8 +722,8 @@ def update_plot(
     line_f.set_ydata(mag_db)
 
     st_text = "auto" if station_id is None else str(station_id)
-    avail_text = ",".join(map(str, available_stations[:12]))
-    if len(available_stations) > 12:
+    avail_text = ",".join(map(str, available_stations[:24]))
+    if len(available_stations) > 24:
         avail_text += ",..."
     fig.suptitle(
         "UDP MPX realtime | "
@@ -711,6 +736,19 @@ def update_plot(
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="UDP MPX receiver / spectrum viewer")
+    parser.add_argument(
+        "--station",
+        type=int,
+        default=None,
+        metavar="N",
+        help=f"начальная станция по id из пакета (часто 0..{MAX_STATION_ID})",
+    )
+    args = parser.parse_args()
+    initial_station: Optional[int] = (
+        args.station if args.station is not None else TARGET_STATION
+    )
+
     if ENABLE_AUDIO:
         if sd is None or butter is None:
             raise RuntimeError(
@@ -739,7 +777,7 @@ def main() -> None:
         stereo_decoder = StereoDecoder(FS, AUDIO_FS, deemphasis_us=DEEMPHASIS_US)
 
     print(f"Listening on {UDP_IP}:{UDP_PORT}")
-    print(f"TARGET_STATION = {TARGET_STATION}")
+    print(f"initial station = {initial_station} (override: --station N; hotkeys 0-9, =, F1-F11)")
     print(f"TIME_WINDOW_S  = {TIME_WINDOW_S}")
     print(f"SPECTRUM_WINDOW_S = {SPECTRUM_WINDOW_S}")
     print(f"AUDIO = {'on' if ENABLE_AUDIO else 'off'}")
@@ -747,7 +785,7 @@ def main() -> None:
 
     packets_received = 0
     bad_packets = 0
-    selected_station: Optional[int] = TARGET_STATION
+    selected_station: Optional[int] = initial_station
     available_stations: List[int] = []
 
     last_seq: Optional[int] = None
@@ -794,15 +832,24 @@ def main() -> None:
             cycle_station(+1)
         elif key in ("[", "left"):
             cycle_station(-1)
+        elif key == "m" and audio_player is not None:
+            state = audio_player.toggle()
+            print(f"audio {'on' if state else 'mute'}")
+            return
+
+        hot_station = parse_station_hotkey(key)
+        if hot_station is not None:
+            wanted = hot_station
         elif key.isdigit():
             wanted = int(key)
+        else:
+            wanted = None
+
+        if wanted is not None:
             if wanted in available_stations:
                 switch_station(wanted)
             else:
                 print(f"Station {wanted} is not in current active list: {available_stations}")
-        elif key == "m" and audio_player is not None:
-            state = audio_player.toggle()
-            print(f"audio {'on' if state else 'mute'}")
 
     fig.canvas.mpl_connect("key_press_event", on_ui_key)
 

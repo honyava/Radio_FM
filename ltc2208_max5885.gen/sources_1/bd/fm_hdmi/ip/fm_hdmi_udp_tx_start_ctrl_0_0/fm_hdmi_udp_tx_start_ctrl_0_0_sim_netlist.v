@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Sat Mar  7 18:01:24 2026
+// Date        : Sat Mar  7 18:01:23 2026
 // Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_udp_tx_start_ctrl_0_0/fm_hdmi_udp_tx_start_ctrl_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top fm_hdmi_udp_tx_start_ctrl_0_0 -prefix
+//               fm_hdmi_udp_tx_start_ctrl_0_0_ fm_hdmi_udp_tx_start_ctrl_0_0_sim_netlist.v
 // Design      : fm_hdmi_udp_tx_start_ctrl_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -42,7 +42,6 @@ module fm_hdmi_udp_tx_start_ctrl_0_0
         .udp_tx_done(udp_tx_done));
 endmodule
 
-(* ORIG_REF_NAME = "udp_tx_start_ctrl" *) 
 module fm_hdmi_udp_tx_start_ctrl_0_0_udp_tx_start_ctrl
    (tx_start_en,
     pkt_ready_pulse,

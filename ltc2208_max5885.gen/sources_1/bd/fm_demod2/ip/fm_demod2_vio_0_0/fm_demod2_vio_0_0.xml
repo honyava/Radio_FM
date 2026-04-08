@@ -112,7 +112,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_PROBE_IN0_WIDTH&apos;)) - 1)">16</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_PROBE_IN0_WIDTH&apos;)) - 1)">15</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -154,7 +154,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.probe_in1" xilinx:dependency="(id(&apos;PARAM_VALUE.C_NUM_PROBE_IN&apos;)>1)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.probe_in1" xilinx:dependency="(id(&apos;PARAM_VALUE.C_NUM_PROBE_IN&apos;)>1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -12745,7 +12745,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_NUM_PROBE_IN</spirit:name>
         <spirit:displayName>Input  Probe  Count</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUM_PROBE_IN" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">2</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUM_PROBE_IN" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_EN_PROBE_IN_ACTIVITY</spirit:name>
@@ -12765,7 +12765,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_PROBE_IN0_WIDTH</spirit:name>
         <spirit:displayName>PROBE IN0 WIDTH</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="MODELPARAM_VALUE.C_PROBE_IN0_WIDTH" spirit:dependency="(spirit:decode(id(&apos;PARAM_VALUE.C_PROBE_IN0_WIDTH&apos;)))" spirit:minimum="1" spirit:maximum="256" spirit:rangeType="long">17</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="MODELPARAM_VALUE.C_PROBE_IN0_WIDTH" spirit:dependency="(spirit:decode(id(&apos;PARAM_VALUE.C_PROBE_IN0_WIDTH&apos;)))" spirit:minimum="1" spirit:maximum="256" spirit:rangeType="long">16</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_PROBE_IN1_WIDTH</spirit:name>
@@ -20451,7 +20451,7 @@
     <spirit:parameter>
       <spirit:name>C_PROBE_IN0_WIDTH</spirit:name>
       <spirit:displayName>PROBE IN0 WIDTH</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_PROBE_IN0_WIDTH" spirit:order="1500" spirit:minimum="1" spirit:maximum="256" spirit:rangeType="long">17</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_PROBE_IN0_WIDTH" spirit:order="1500" spirit:minimum="1" spirit:maximum="256" spirit:rangeType="long">16</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_EN_SYNCHRONIZATION</spirit:name>
@@ -20471,7 +20471,7 @@
     <spirit:parameter>
       <spirit:name>C_NUM_PROBE_IN</spirit:name>
       <spirit:displayName>Input  Probe  Count</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_NUM_PROBE_IN" spirit:order="1100" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">2</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_NUM_PROBE_IN" spirit:order="1100" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">1</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>

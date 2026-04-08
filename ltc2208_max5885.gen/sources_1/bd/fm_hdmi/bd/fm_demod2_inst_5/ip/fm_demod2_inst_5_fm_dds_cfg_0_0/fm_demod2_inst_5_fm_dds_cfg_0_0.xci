@@ -12,13 +12,17 @@
         "SIG_MIN_KHZ": [ { "value": "12220", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "SIG_MAX_KHZ": [ { "value": "32720", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "DEFAULT_RF_KHZ": [ { "value": "26620", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "PINC_W": [ { "value": "27", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "DDS_TDATA_W": [ { "value": "32", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "fm_demod2_inst_5_fm_dds_cfg_0_0", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
         "ADC_FS_KHZ": [ { "value": "76800", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "SIG_MIN_KHZ": [ { "value": "12220", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "SIG_MAX_KHZ": [ { "value": "32720", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "DEFAULT_RF_KHZ": [ { "value": "26620", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+        "DEFAULT_RF_KHZ": [ { "value": "26620", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "PINC_W": [ { "value": "27", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "DDS_TDATA_W": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
@@ -52,9 +56,7 @@
         "vio_apply_toggle": [ { "direction": "in" } ],
         "s_axis_config_tdata": [ { "direction": "out", "size_left": "31", "size_right": "0" } ],
         "s_axis_config_tvalid": [ { "direction": "out" } ],
-        "dbg_rf_khz": [ { "direction": "out", "size_left": "16", "size_right": "0" } ],
-        "dbg_if_khz": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
-        "dbg_pinc": [ { "direction": "out", "size_left": "31", "size_right": "0" } ]
+        "dbg_dds_khz": [ { "direction": "out", "size_left": "15", "size_right": "0" } ]
       },
       "interfaces": {
         "s_axis_config": {
@@ -62,7 +64,7 @@
           "abstraction_type": "xilinx.com:interface:axis_rtl:1.0",
           "mode": "master",
           "parameters": {
-            "TDATA_NUM_BYTES": [ { "value": "4", "value_src": "constant", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "TDATA_NUM_BYTES": [ { "value": "4", "value_src": "auto", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TDEST_WIDTH": [ { "value": "0", "value_src": "constant", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TID_WIDTH": [ { "value": "0", "value_src": "constant", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TUSER_WIDTH": [ { "value": "0", "value_src": "constant", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
@@ -70,8 +72,8 @@
             "HAS_TSTRB": [ { "value": "0", "value_src": "constant", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "HAS_TKEEP": [ { "value": "0", "value_src": "constant", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "HAS_TLAST": [ { "value": "0", "value_src": "constant", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
-            "FREQ_HZ": [ { "value": "76800000", "value_src": "ip_propagated", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
-            "PHASE": [ { "value": "65.0", "value_src": "ip_propagated", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
+            "FREQ_HZ": [ { "value": "76800000", "value_src": "user", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "PHASE": [ { "value": "65.0", "value_src": "user", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
             "CLK_DOMAIN": [ { "value": "fm_hdmi_clk_50M", "value_src": "ip_propagated", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "LAYERED_METADATA": [ { "value": "undef", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
@@ -100,9 +102,9 @@
           "parameters": {
             "ASSOCIATED_BUSIF": [ { "value": "s_axis_config", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
             "ASSOCIATED_RESET": [ { "value": "rstn", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
-            "FREQ_HZ": [ { "value": "76800000", "value_src": "ip_propagated", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "FREQ_HZ": [ { "value": "76800000", "value_src": "user", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "FREQ_TOLERANCE_HZ": [ { "value": "0", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
-            "PHASE": [ { "value": "65.0", "value_src": "ip_propagated", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
+            "PHASE": [ { "value": "65.0", "value_src": "user", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
             "CLK_DOMAIN": [ { "value": "fm_hdmi_clk_50M", "value_src": "ip_propagated", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "ASSOCIATED_PORT": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]

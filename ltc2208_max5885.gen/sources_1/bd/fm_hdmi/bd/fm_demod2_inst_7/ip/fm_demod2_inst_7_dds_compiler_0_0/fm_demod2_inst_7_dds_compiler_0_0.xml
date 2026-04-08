@@ -1106,11 +1106,11 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 07 11:25:02 UTC 2026</spirit:value>
+            <spirit:value>Wed Apr 08 06:08:08 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:866fa757</spirit:value>
+            <spirit:value>9:06357a4f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1124,11 +1124,11 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 07 11:25:41 UTC 2026</spirit:value>
+            <spirit:value>Wed Apr 08 06:11:03 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:866fa757</spirit:value>
+            <spirit:value>9:06357a4f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1142,11 +1142,11 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 07 11:25:02 UTC 2026</spirit:value>
+            <spirit:value>Wed Apr 08 06:08:08 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:866fa757</spirit:value>
+            <spirit:value>9:06357a4f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1186,11 +1186,11 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 07 11:25:02 UTC 2026</spirit:value>
+            <spirit:value>Wed Apr 08 06:08:08 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:012c1c8c</spirit:value>
+            <spirit:value>9:19bb1a62</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1206,11 +1206,11 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 07 11:25:02 UTC 2026</spirit:value>
+            <spirit:value>Wed Apr 08 06:08:08 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:012c1c8c</spirit:value>
+            <spirit:value>9:19bb1a62</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1250,11 +1250,11 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 07 11:25:02 UTC 2026</spirit:value>
+            <spirit:value>Wed Apr 08 06:08:08 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:866fa757</spirit:value>
+            <spirit:value>9:06357a4f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1270,11 +1270,11 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 07 11:25:02 UTC 2026</spirit:value>
+            <spirit:value>Wed Apr 08 06:08:08 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:866fa757</spirit:value>
+            <spirit:value>9:06357a4f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2007,7 +2007,7 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ACCUMULATOR_WIDTH</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ACCUMULATOR_WIDTH">32</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ACCUMULATOR_WIDTH">27</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_CHANNELS</spirit:name>
@@ -2067,7 +2067,7 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>C_PHASE_INCREMENT_VALUE</spirit:name>
-        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_PHASE_INCREMENT_VALUE">0001101010101010101010101011,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</spirit:value>
+        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_PHASE_INCREMENT_VALUE">000110101010101010101,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_RESYNC</spirit:name>
@@ -2343,12 +2343,6 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
     <spirit:fileSet>
       <spirit:name>xilinx_externalfiles_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>fm_demod2_inst_7_dds_compiler_0_0_stub.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>fm_demod2_inst_7_dds_compiler_0_0.dcp</spirit:name>
         <spirit:userFileType>dcp</spirit:userFileType>
         <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
@@ -2356,10 +2350,15 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>fm_demod2_inst_7_dds_compiler_0_0_sim_netlist.vhdl</spirit:name>
+        <spirit:name>fm_demod2_inst_7_dds_compiler_0_0_stub.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>fm_demod2_inst_7_dds_compiler_0_0_stub.vhdl</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
-        <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
       <spirit:file>
@@ -2370,9 +2369,10 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>fm_demod2_inst_7_dds_compiler_0_0_stub.vhdl</spirit:name>
+        <spirit:name>fm_demod2_inst_7_dds_compiler_0_0_sim_netlist.vhdl</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
     </spirit:fileSet>
@@ -2723,7 +2723,7 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
     <spirit:parameter>
       <spirit:name>Phase_Width</spirit:name>
       <spirit:displayName>Phase Width</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.Phase_Width" spirit:order="9" spirit:minimum="3" spirit:maximum="48" spirit:rangeType="long">32</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.Phase_Width" spirit:order="9" spirit:minimum="3" spirit:maximum="48" spirit:rangeType="long">27</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Output_Width</spirit:name>
@@ -2849,7 +2849,7 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>PINC1</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.PINC1" spirit:order="33">0001101010101010101010101011</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.PINC1" spirit:order="33">000110101010101010101</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Phase_Offset_Angles1</spirit:name>
@@ -3160,7 +3160,7 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXIS_CONFIG.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXIS_CONFIG.LAYERED_METADATA" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXIS_CONFIG.PHASE" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXIS_CONFIG.TDATA_NUM_BYTES" xilinx:valueSource="constant_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXIS_CONFIG.TDATA_NUM_BYTES" xilinx:valueSource="auto_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXIS_CONFIG.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXIS_CONFIG.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXIS_CONFIG.TUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>

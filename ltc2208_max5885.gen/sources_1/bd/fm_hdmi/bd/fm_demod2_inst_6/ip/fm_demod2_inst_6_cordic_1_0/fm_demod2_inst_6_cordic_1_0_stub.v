@@ -2,11 +2,11 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Tue Apr  7 14:27:01 2026
+// Date        : Tue Apr  7 18:08:54 2026
 // Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
-// Command     : write_verilog -force -mode synth_stub
-//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_6/ip/fm_demod2_inst_6_cordic_1_0/fm_demod2_inst_6_cordic_1_0_stub.v
-// Design      : fm_demod2_inst_6_cordic_1_0
+// Command     : write_verilog -force -mode synth_stub -rename_top fm_demod2_inst_6_cordic_1_0 -prefix
+//               fm_demod2_inst_6_cordic_1_0_ fm_demod2_inst_8_cordic_1_0_stub.v
+// Design      : fm_demod2_inst_8_cordic_1_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg400-2
 // --------------------------------------------------------------------------------
@@ -16,12 +16,15 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "cordic_v6_0_20,Vivado 2023.2" *)
 module fm_demod2_inst_6_cordic_1_0(aclk, s_axis_cartesian_tvalid, 
-  s_axis_cartesian_tdata, m_axis_dout_tvalid, m_axis_dout_tdata)
-/* synthesis syn_black_box black_box_pad_pin="s_axis_cartesian_tvalid,s_axis_cartesian_tdata[63:0],m_axis_dout_tvalid,m_axis_dout_tdata[23:0]" */
+  s_axis_cartesian_tready, s_axis_cartesian_tdata, m_axis_dout_tvalid, 
+  m_axis_dout_tready, m_axis_dout_tdata)
+/* synthesis syn_black_box black_box_pad_pin="s_axis_cartesian_tvalid,s_axis_cartesian_tready,s_axis_cartesian_tdata[63:0],m_axis_dout_tvalid,m_axis_dout_tready,m_axis_dout_tdata[23:0]" */
 /* synthesis syn_force_seq_prim="aclk" */;
   input aclk /* synthesis syn_isclock = 1 */;
   input s_axis_cartesian_tvalid;
+  output s_axis_cartesian_tready;
   input [63:0]s_axis_cartesian_tdata;
   output m_axis_dout_tvalid;
+  input m_axis_dout_tready;
   output [23:0]m_axis_dout_tdata;
 endmodule

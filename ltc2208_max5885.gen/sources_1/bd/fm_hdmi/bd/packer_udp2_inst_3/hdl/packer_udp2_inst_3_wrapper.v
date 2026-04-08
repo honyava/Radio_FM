@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Tue Apr  7 14:25:16 2026
+//Date        : Wed Apr  8 09:08:27 2026
 //Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 //Command     : generate_target packer_udp2_inst_3_wrapper.bd
 //Design      : packer_udp2_inst_3_wrapper
@@ -25,7 +25,7 @@ module packer_udp2_inst_3_wrapper
   output [31:0]dout;
   output empty;
   input rd_clk;
-  output [7:0]rd_data_count;
+  output [6:0]rd_data_count;
   input rd_en;
   input rst;
   input rst_n;
@@ -37,7 +37,7 @@ module packer_udp2_inst_3_wrapper
   wire [31:0]dout;
   wire empty;
   wire rd_clk;
-  wire [7:0]rd_data_count;
+  wire [6:0]rd_data_count;
   wire rd_en;
   wire rst;
   wire rst_n;

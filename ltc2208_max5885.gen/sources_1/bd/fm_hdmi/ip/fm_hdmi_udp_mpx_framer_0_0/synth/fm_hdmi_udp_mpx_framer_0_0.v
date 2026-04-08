@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "udp_mpx_framer,Vivado 2023.2" *)
 (* CHECK_LICENSE_TYPE = "fm_hdmi_udp_mpx_framer_0_0,udp_mpx_framer,{}" *)
-(* CORE_GENERATION_INFO = "fm_hdmi_udp_mpx_framer_0_0,udp_mpx_framer,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=udp_mpx_framer,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,N_STATIONS=10,SAMPLES_PER_ST=0,AUDIO_COUNT_WIDTH=8,MAX_PAYLOAD_BYTES=1472,TARGET_DELAY_US=400,SAMPLE_RATE_HZ=192000,UDP_CLK_HZ=125000000,UDP_WIRE_OVERHEAD_B=54,UDP_TX_FIXED_CYCLES=8,STATION_ID_BASE=00000000,STATION_MASK=0x0000,APP_MAGIC=0x4D58,APP_VERSION=00000010,APP_MARKER=0xA55A,S\
+(* CORE_GENERATION_INFO = "fm_hdmi_udp_mpx_framer_0_0,udp_mpx_framer,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=udp_mpx_framer,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,N_STATIONS=11,SAMPLES_PER_ST=0,AUDIO_COUNT_WIDTH=7,MAX_PAYLOAD_BYTES=1472,TARGET_DELAY_US=350,SAMPLE_RATE_HZ=192000,UDP_CLK_HZ=125000000,UDP_WIRE_OVERHEAD_B=54,UDP_TX_FIXED_CYCLES=8,STATION_ID_BASE=00000000,STATION_MASK=0x0000,APP_MAGIC=0x4D58,APP_VERSION=00000010,APP_MARKER=0xA55A,S\
 TATION_HDR_MAGIC=0x5354}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
@@ -76,10 +76,10 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst_n RST" *)
 input wire rst_n;
-input wire [319 : 0] audio_dout_bus;
-input wire [9 : 0] audio_empty;
-input wire [79 : 0] audio_rd_count_bus;
-output wire [9 : 0] audio_rd_en;
+input wire [351 : 0] audio_dout_bus;
+input wire [10 : 0] audio_empty;
+input wire [76 : 0] audio_rd_count_bus;
+output wire [10 : 0] audio_rd_en;
 input wire pay_full;
 output wire pay_wr_en;
 output wire [31 : 0] pay_din;
@@ -87,11 +87,11 @@ output wire pkt_ready_pulse;
 output wire [15 : 0] tx_payload_bytes;
 
   udp_mpx_framer #(
-    .N_STATIONS(10),
+    .N_STATIONS(11),
     .SAMPLES_PER_ST(0),
-    .AUDIO_COUNT_WIDTH(8),
+    .AUDIO_COUNT_WIDTH(7),
     .MAX_PAYLOAD_BYTES(1472),
-    .TARGET_DELAY_US(400),
+    .TARGET_DELAY_US(350),
     .SAMPLE_RATE_HZ(192000),
     .UDP_CLK_HZ(125000000),
     .UDP_WIRE_OVERHEAD_B(54),

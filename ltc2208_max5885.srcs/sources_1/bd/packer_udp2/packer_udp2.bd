@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xFD79B206B1112E1B",
+      "boundary_crc": "0x20EF6B836C87F79E",
       "device": "xc7z020clg400-2",
       "gen_directory": "../../../../ltc2208_max5885.gen/sources_1/bd/packer_udp2",
       "name": "packer_udp2",
@@ -52,7 +52,7 @@
       },
       "rd_data_count": {
         "direction": "O",
-        "left": "7",
+        "left": "6",
         "right": "0"
       },
       "rd_en": {
@@ -129,7 +129,7 @@
             "value": "32"
           },
           "Input_Depth": {
-            "value": "256"
+            "value": "128"
           },
           "Performance_Options": {
             "value": "Standard_FIFO"

@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Tue Apr  7 14:25:14 2026
+//Date        : Wed Apr  8 09:08:21 2026
 //Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 //Command     : generate_target packer_udp2_inst_7.bd
 //Design      : packer_udp2_inst_7
@@ -26,7 +26,7 @@ module packer_udp2_inst_7
   output [31:0]dout;
   output empty;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.RD_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.RD_CLK, CLK_DOMAIN packer_udp2_rd_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input rd_clk;
-  output [7:0]rd_data_count;
+  output [6:0]rd_data_count;
   input rd_en;
   input rst;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RST_N RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RST_N, INSERT_VIP 0, POLARITY ACTIVE_LOW" *) input rst_n;
@@ -40,7 +40,7 @@ module packer_udp2_inst_7
   wire [31:0]fifo_generator_audio_dout;
   wire fifo_generator_audio_empty;
   wire fifo_generator_audio_full;
-  wire [7:0]fifo_generator_audio_rd_data_count;
+  wire [6:0]fifo_generator_audio_rd_data_count;
   wire [15:0]fm_demod_m_axis_tdata;
   wire fm_demod_m_axis_tvalid;
   wire [31:0]mpx_pack16_to32_0_out_data;
@@ -60,7 +60,7 @@ module packer_udp2_inst_7
   assign packer_for_udp_Res1 = rst;
   assign packer_for_udp_audio_rd_en = rd_en;
   assign packer_for_udp_gmii_rxc = rd_clk;
-  assign rd_data_count[7:0] = fifo_generator_audio_rd_data_count;
+  assign rd_data_count[6:0] = fifo_generator_audio_rd_data_count;
   assign s_ready = packer_for_udp_mpx_ready;
   packer_udp2_inst_7_fifo_generator_audio_0 fifo_generator_audio
        (.din(mpx_pack16_to32_0_out_data),

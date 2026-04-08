@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg400-2" LaunchTime="1775561173" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7z020clg400-2" LaunchTime="1775628925" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top.dcp">
   <File Type="VDS-TIMINGSUMMARY" Name="top_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="top.dcp"/>
   <File Type="RDS-UTIL-PB" Name="top_utilization_synth.pb"/>
@@ -494,6 +494,11 @@
         <Attr Name="UsedIn" Val="implementation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/constrs_1/new/deb.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/111.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
@@ -517,78 +522,82 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_2_dec384to192_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_0_fir_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_8_vio_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_10_fir_compiler_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_8_fir_compiler_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_4_fir_compiler_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_7_dec384to192_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_10_fir_compiler_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_4_fir_compiler_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_9_dec384to192_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_3_fir_compiler_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_4_cordic_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_0_cordic_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_9_cordic_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_10_cordic_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_5_cordic_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_8_cordic_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_3_fir_compiler_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_5_fir_compiler_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_6_fir_compiler_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_3_dec384to192_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_2_cordic_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_7_cordic_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_5_vio_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_6_vio_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_9_dds_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_1_fir_compiler_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_9_vio_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_5_fir_compiler_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_0_dec384to192_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_6_cordic_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_0_dds_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_4_vio_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_4_fm_dds_cfg_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_7_dds_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_10_dds_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_3_fir_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_4_fir_compiler_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_2_fir_compiler_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_6_dec384to192_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_1_fifo_generator_audio_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_8_fir_compiler_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_3_fifo_generator_audio_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_5_fifo_generator_audio_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_3_fm_dds_cfg_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_2_vio_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_10_fir_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_10_vio_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_4_dds_compiler_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_9_fir_compiler_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_6_fifo_generator_audio_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_4_fifo_generator_audio_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_10_dec384to192_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_8_fifo_generator_audio_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_7_fifo_generator_audio_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_9_fifo_generator_audio_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_1_fm_dds_cfg_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_0_vio_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_3_fir_compiler_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_9_fm_dds_cfg_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_0_fm_dds_cfg_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_8_dds_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_2_fm_dds_cfg_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_8_fir_compiler_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_7_fir_compiler_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_0_fifo_generator_audio_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_4_dec384to192_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_2_fifo_generator_audio_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_stations_to_packet_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_2_dds_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_0_fir_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_1_vio_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_7_fm_dds_cfg_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_6_fir_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_5_fir_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_8_fir_compiler_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_3_dds_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_5_dds_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_5_fm_dds_cfg_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_1_fir_compiler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_10"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_4_fir_compiler_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_1"/>
   <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_9"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_10"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_3_vio_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_2_fir_compiler_1_0"/>
   <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_8"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_9"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_8_dec384to192_0"/>
   <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_7"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_8_fm_dds_cfg_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_0_fir_compiler_1_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_8"/>
   <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_6"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_7"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_9_fir_compiler_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_5"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_6"/>
   <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_4"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_7_fir_compiler_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_5"/>
   <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_3"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_4"/>
   <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_2"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_3_cordic_1_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_3"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_6_fir_compiler_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_1_dds_compiler_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_10_fm_dds_cfg_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_2"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_7_vio_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="packer_udp2_inst_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_6"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_udp_mpx_framer_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_hdmi_udp_tx_start_ctrl_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_5_dec384to192_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_6_fm_dds_cfg_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fm_demod2_inst_6_dds_compiler_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="clk_wiz_0"/>
 </GenRun>
