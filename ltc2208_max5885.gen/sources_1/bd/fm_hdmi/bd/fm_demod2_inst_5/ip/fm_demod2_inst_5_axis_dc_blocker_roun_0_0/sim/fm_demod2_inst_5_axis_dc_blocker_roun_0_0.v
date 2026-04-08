@@ -99,7 +99,7 @@ output wire [15 : 0] m_axis_tdata;
     .OUT_W(16),
     .ACC_W(40),
     .K(15),
-    .SHIFT_R(8)
+    .SHIFT_R(6)
   ) inst (
     .aclk(aclk),
     .aresetn(aresetn),

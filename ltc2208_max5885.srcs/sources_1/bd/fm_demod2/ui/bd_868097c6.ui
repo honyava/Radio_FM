@@ -1,27 +1,27 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"-599,-292",
+   "Default View_ScaleFactor":"1.73939",
+   "Default View_TopLeft":"-160,-86",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
 preplace port S_AXIS_DATA -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
 preplace port port-id_adc_clk -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
 preplace port port-id_probe_out0 -pg 1 -lvl 0 -x 0 -y 150 -defaultsOSRD
-preplace port port-id_m_axis_tvalid_0 -pg 1 -lvl 3 -x 630 -y 100 -defaultsOSRD
+preplace port port-id_m_axis_tvalid_0 -pg 1 -lvl 3 -x 640 -y 100 -defaultsOSRD
 preplace port port-id_m_axis_tready_0 -pg 1 -lvl 0 -x 0 -y 180 -defaultsOSRD
-preplace portBus m_axis_tdata_0 -pg 1 -lvl 3 -x 630 -y 70 -defaultsOSRD
+preplace portBus m_axis_tdata_0 -pg 1 -lvl 3 -x 640 -y 70 -defaultsOSRD
 preplace inst dec384to192 -pg 1 -lvl 1 -x 160 -y 70 -defaultsOSRD
 preplace inst axis_dc_blocker_roun_0 -pg 1 -lvl 2 -x 460 -y 90 -defaultsOSRD
-preplace netloc adc_clk_1 1 0 2 20 140 300J
-preplace netloc axis_dc_blocker_roun_0_m_axis_tdata 1 2 1 610J 70n
+preplace netloc adc_clk_1 1 0 2 30 140 290J
+preplace netloc axis_dc_blocker_roun_0_m_axis_tdata 1 2 1 620J 70n
 preplace netloc axis_dc_blocker_roun_0_m_axis_tvalid 1 2 1 NJ 100
-preplace netloc m_axis_tready_0_1 1 0 3 NJ 180 NJ 180 610
-preplace netloc vio_0_probe_out0 1 0 2 NJ 150 310J
+preplace netloc m_axis_tready_0_1 1 0 3 NJ 180 NJ 180 620
+preplace netloc vio_0_probe_out0 1 0 2 NJ 150 300J
 preplace netloc dec384to192_M_AXIS_DATA 1 1 1 N 70
 preplace netloc demodulate_384k_M_AXIS_DOUT 1 0 1 NJ 60
-levelinfo -pg 1 0 160 460 630
-pagesize -pg 1 -db -bbox -sgen -160 0 820 200
+levelinfo -pg 1 0 160 460 640
+pagesize -pg 1 -db -bbox -sgen -160 0 840 200
 "
 }
 0

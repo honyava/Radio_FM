@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="43">
   <CompositeFile CompositeFileTopName="fm_hdmi" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1775644895"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1775644895"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1775644895"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1775644895"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1775663783"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1775663783"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1775663783"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1775663783"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="synth/fm_hdmi.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
@@ -196,14 +196,14 @@
       </BlockContainer>
     </BlockContainerCollection>
     <ReferenceCollection>
-      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_7">
+      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_0">
         <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
         <FileCollection>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/mpx_pack16_to32.v"/>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
         </FileCollection>
       </ModuleReference>
-      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_8">
+      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_6">
         <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
         <FileCollection>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_iq_slicer_to_2cic.v"/>
@@ -222,14 +222,52 @@
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
         </FileCollection>
       </ModuleReference>
-      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_6">
+      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_9">
+        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
+        <FileCollection>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_iq_slicer_to_2cic.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/iq16_truncate.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_dc_blocker_round_sat.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/del_m.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/lfsr_rng.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/fm_dds_cfg.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
+        </FileCollection>
+      </ModuleReference>
+      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_7">
         <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
         <FileCollection>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/mpx_pack16_to32.v"/>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
         </FileCollection>
       </ModuleReference>
-      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_7">
+      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_1">
+        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
+        <FileCollection>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/mpx_pack16_to32.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
+        </FileCollection>
+      </ModuleReference>
+      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_0">
+        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
+        <FileCollection>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_iq_slicer_to_2cic.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/iq16_truncate.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_dc_blocker_round_sat.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/del_m.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/lfsr_rng.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/fm_dds_cfg.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
+        </FileCollection>
+      </ModuleReference>
+      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_4">
+        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
+        <FileCollection>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/mpx_pack16_to32.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
+        </FileCollection>
+      </ModuleReference>
+      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmi_fm_demod2_0">
         <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
         <FileCollection>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_iq_slicer_to_2cic.v"/>
@@ -248,7 +286,21 @@
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
         </FileCollection>
       </ModuleReference>
-      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_6">
+      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmi_packer_udp2_0">
+        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
+        <FileCollection>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/mpx_pack16_to32.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
+        </FileCollection>
+      </ModuleReference>
+      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_2">
+        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
+        <FileCollection>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/mpx_pack16_to32.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
+        </FileCollection>
+      </ModuleReference>
+      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_2">
         <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
         <FileCollection>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_iq_slicer_to_2cic.v"/>
@@ -272,14 +324,7 @@
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
         </FileCollection>
       </ModuleReference>
-      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_0">
-        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
-        <FileCollection>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/mpx_pack16_to32.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
-        </FileCollection>
-      </ModuleReference>
-      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_9">
+      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_4">
         <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
         <FileCollection>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_iq_slicer_to_2cic.v"/>
@@ -289,56 +334,6 @@
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/lfsr_rng.v"/>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/fm_dds_cfg.v"/>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
-        </FileCollection>
-      </ModuleReference>
-      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_2">
-        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
-        <FileCollection>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_iq_slicer_to_2cic.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/iq16_truncate.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_dc_blocker_round_sat.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/del_m.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/lfsr_rng.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/fm_dds_cfg.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
-        </FileCollection>
-      </ModuleReference>
-      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmi_packer_udp2_0">
-        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
-        <FileCollection>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/mpx_pack16_to32.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
-        </FileCollection>
-      </ModuleReference>
-      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_0">
-        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
-        <FileCollection>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_iq_slicer_to_2cic.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/iq16_truncate.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_dc_blocker_round_sat.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/del_m.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/lfsr_rng.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/fm_dds_cfg.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
-        </FileCollection>
-      </ModuleReference>
-      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmi_fm_demod2_0">
-        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
-        <FileCollection>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_iq_slicer_to_2cic.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/iq16_truncate.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_dc_blocker_round_sat.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/del_m.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/lfsr_rng.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/fm_dds_cfg.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
-        </FileCollection>
-      </ModuleReference>
-      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_4">
-        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
-        <FileCollection>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/mpx_pack16_to32.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
         </FileCollection>
       </ModuleReference>
       <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_3">
@@ -353,21 +348,14 @@
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
         </FileCollection>
       </ModuleReference>
-      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_1">
+      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_3">
         <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
         <FileCollection>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/mpx_pack16_to32.v"/>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
         </FileCollection>
       </ModuleReference>
-      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_2">
-        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
-        <FileCollection>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/mpx_pack16_to32.v"/>
-          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
-        </FileCollection>
-      </ModuleReference>
-      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_4">
+      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_8">
         <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
         <FileCollection>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_iq_slicer_to_2cic.v"/>
@@ -379,7 +367,19 @@
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
         </FileCollection>
       </ModuleReference>
-      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_3">
+      <ModuleReference TargetName="fm_demod2" Type="Block Design" SubInstancePath="fm_hdmifm_demod2_7">
+        <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
+        <FileCollection>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_iq_slicer_to_2cic.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/iq16_truncate.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/axis_dc_blocker_round_sat.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/del_m.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/lfsr_rng.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/fm_dds_cfg.v"/>
+          <File Name="../../../../ltc2208_max5885.srcs/sources_1/bd/fm_demod2/fm_demod2.bd"/>
+        </FileCollection>
+      </ModuleReference>
+      <ModuleReference TargetName="packer_udp2" Type="Block Design" SubInstancePath="fm_hdmipacker_udp2_6">
         <TopFile Name="../../../../ltc2208_max5885.srcs/sources_1/bd/packer_udp2/packer_udp2.bd"/>
         <FileCollection>
           <File Name="../../../../ltc2208_max5885.srcs/sources_1/new/mpx_pack16_to32.v"/>

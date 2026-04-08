@@ -70,8 +70,8 @@
 // chan_seq: 0
 // num_channels: 1
 // num_paths: 1
-// data_width: 24
-// data_fract_width: 21
+// data_width: 25
+// data_fract_width: 22
 // output_rounding_mode: 4
 // output_width: 24
 // output_fract_width: 4
@@ -102,8 +102,8 @@ static xip_fir_v7_2_config gen_fm_demod2_inst_3_dec384to192_0_config() {
   config.num_channels        = 1;
   config.init_pattern        = fm_demod2_inst_3_dec384to192_0_chanpats[0];
   config.num_paths           = 1;
-  config.data_width          = 24;
-  config.data_fract_width    = 21;
+  config.data_width          = 25;
+  config.data_fract_width    = 22;
   config.output_rounding_mode= XIP_FIR_CONVERGENT_EVEN;
   config.output_width        = 24;
   config.output_fract_width  = 4,

@@ -1,24 +1,24 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"0.439573",
-   "Default View_TopLeft":"152,1046",
+   "Default View_TopLeft":"152,887",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x -20 -y 2340 -defaultsOSRD
-preplace port port-id_locked -pg 1 -lvl 0 -x -20 -y 2400 -defaultsOSRD
-preplace port port-id_sys -pg 1 -lvl 0 -x -20 -y 2610 -defaultsOSRD
-preplace port port-id_clk_50M -pg 1 -lvl 0 -x -20 -y 2440 -defaultsOSRD
+preplace port port-id_sys_rst_n -pg 1 -lvl 0 -x -30 -y 2340 -defaultsOSRD
+preplace port port-id_locked -pg 1 -lvl 0 -x -30 -y 2400 -defaultsOSRD
+preplace port port-id_sys -pg 1 -lvl 0 -x -30 -y 2610 -defaultsOSRD
+preplace port port-id_clk_50M -pg 1 -lvl 0 -x -30 -y 2440 -defaultsOSRD
 preplace port port-id_adc_clk -pg 1 -lvl 7 -x 2570 -y 2480 -defaultsOSRD
-preplace port port-id_phy_rxc -pg 1 -lvl 0 -x -20 -y 2700 -defaultsOSRD
-preplace port port-id_phy_rx_ctrl -pg 1 -lvl 0 -x -20 -y 2640 -defaultsOSRD
+preplace port port-id_phy_rxc -pg 1 -lvl 0 -x -30 -y 2700 -defaultsOSRD
+preplace port port-id_phy_rx_ctrl -pg 1 -lvl 0 -x -30 -y 2640 -defaultsOSRD
 preplace port port-id_mdio -pg 1 -lvl 7 -x 2570 -y 2610 -defaultsOSRD
 preplace port port-id_mdc -pg 1 -lvl 7 -x 2570 -y 2580 -defaultsOSRD
 preplace port port-id_phy_rstn -pg 1 -lvl 7 -x 2570 -y 2730 -defaultsOSRD
 preplace port port-id_phy_tx_ctrl -pg 1 -lvl 7 -x 2570 -y 2700 -defaultsOSRD
 preplace port port-id_phy_txc -pg 1 -lvl 7 -x 2570 -y 2670 -defaultsOSRD
-preplace portBus adc_dai -pg 1 -lvl 0 -x -20 -y 2370 -defaultsOSRD
-preplace portBus phy_rxd -pg 1 -lvl 0 -x -20 -y 2670 -defaultsOSRD
+preplace portBus adc_dai -pg 1 -lvl 0 -x -30 -y 2370 -defaultsOSRD
+preplace portBus phy_rxd -pg 1 -lvl 0 -x -30 -y 2670 -defaultsOSRD
 preplace portBus phy_txd -pg 1 -lvl 7 -x 2570 -y 2550 -defaultsOSRD
 preplace portBus linkspeed -pg 1 -lvl 7 -x 2570 -y 2640 -defaultsOSRD
 preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 120 -y 2430 -defaultsOSRD
@@ -39,7 +39,7 @@ preplace inst station9 -pg 1 -lvl 4 -x 1190 -y 2120 -defaultsOSRD
 preplace netloc LTC_2208_0_m_axis_tdata 1 3 1 970 80n
 preplace netloc LTC_2208_0_m_axis_tvalid 1 3 1 1000 120n
 preplace netloc Net 1 6 1 2550J 2610n
-preplace netloc adc_dai_1 1 0 3 10J 2340 NJ 2340 490J
+preplace netloc adc_dai_1 1 0 3 0J 2340 NJ 2340 490J
 preplace netloc adc_dci_0_1 1 2 2 490 2230 990
 preplace netloc audio_dout_bus_1 1 5 1 2020 1510n
 preplace netloc audio_empty_1 1 5 1 2060 1490n
@@ -59,7 +59,7 @@ preplace netloc packer_for_udp_phy_tx_ctrl 1 6 1 2550J 2680n
 preplace netloc packer_for_udp_phy_txc 1 6 1 2550J 2660n
 preplace netloc packer_for_udp_phy_txd 1 6 1 2540J 2550n
 preplace netloc phy_rx_ctrl_0_1 1 0 6 NJ 2640 NJ 2640 NJ 2640 NJ 2640 NJ 2640 1990J
-preplace netloc phy_rxc_0_1 1 0 6 0J 2690 NJ 2690 NJ 2690 NJ 2690 NJ 2690 NJ
+preplace netloc phy_rxc_0_1 1 0 6 -10J 2690 NJ 2690 NJ 2690 NJ 2690 NJ 2690 NJ
 preplace netloc phy_rxd_0_1 1 0 6 NJ 2670 NJ 2670 NJ 2670 NJ 2670 NJ 2670 NJ
 preplace netloc rd_en_1 1 3 3 1050 250 NJ 250 2060
 preplace netloc station0_dout 1 4 1 1480 150n
@@ -103,9 +103,9 @@ preplace netloc stations_to_packet_0_st7_rd_en 1 3 3 1050 1980 NJ 1980 2000
 preplace netloc stations_to_packet_0_st8_rd_en 1 3 3 1040 1990 NJ 1990 1990
 preplace netloc stations_to_packet_0_st9_rd_en 1 3 3 1050 2240 NJ 2240 1970
 preplace netloc sys_1 1 0 6 NJ 2610 NJ 2610 NJ 2610 NJ 2610 NJ 2610 NJ
-preplace netloc sys_rst_n_1 1 0 3 0J 2150 NJ 2150 480J
-levelinfo -pg 1 -20 120 350 660 1190 1766 2340 2570
-pagesize -pg 1 -db -bbox -sgen -170 0 4380 3750
+preplace netloc sys_rst_n_1 1 0 3 -10J 2150 NJ 2150 480J
+levelinfo -pg 1 -30 120 350 660 1190 1766 2340 2570
+pagesize -pg 1 -db -bbox -sgen -180 0 4380 3750
 "
 }
 0

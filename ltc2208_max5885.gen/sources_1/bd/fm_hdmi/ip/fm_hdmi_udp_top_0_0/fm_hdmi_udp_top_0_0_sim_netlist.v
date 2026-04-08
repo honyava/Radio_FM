@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Wed Apr  8 12:34:01 2026
-// Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.4 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_udp_top_0_0/fm_hdmi_udp_top_0_0_sim_netlist.v
+// Date        : Fri Mar  6 12:28:53 2026
+// Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
+// Command     : write_verilog -force -mode funcsim -rename_top fm_hdmi_udp_top_0_0 -prefix
+//               fm_hdmi_udp_top_0_0_ fm_hdmi_udp_top_0_0_sim_netlist.v
 // Design      : fm_hdmi_udp_top_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,88 +13,6 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "fm_hdmi_udp_top_0_0,udp_top,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
-(* X_CORE_INFO = "udp_top,Vivado 2023.2" *) 
-(* NotValidForBitStream *)
-module fm_hdmi_udp_top_0_0
-   (rst_n,
-    gmii_rxc,
-    gmii_rxdv,
-    gmii_rxd,
-    gmii_txc,
-    gmii_txen,
-    gmii_txd,
-    rxd_pkt_done,
-    rxd_wr_en,
-    rxd_wr_data,
-    rxd_wr_byte_num,
-    tx_start_en,
-    tx_data,
-    tx_byte_num,
-    destination_mac,
-    destination_ip,
-    tx_done,
-    tx_request);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst_n RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst_n;
-  input gmii_rxc;
-  input gmii_rxdv;
-  input [7:0]gmii_rxd;
-  input gmii_txc;
-  output gmii_txen;
-  output [7:0]gmii_txd;
-  output rxd_pkt_done;
-  output rxd_wr_en;
-  output [31:0]rxd_wr_data;
-  output [15:0]rxd_wr_byte_num;
-  input tx_start_en;
-  input [31:0]tx_data;
-  input [15:0]tx_byte_num;
-  input [47:0]destination_mac;
-  input [31:0]destination_ip;
-  output tx_done;
-  output tx_request;
-
-  wire [31:0]destination_ip;
-  wire [47:0]destination_mac;
-  wire gmii_rxc;
-  wire [7:0]gmii_rxd;
-  wire gmii_rxdv;
-  wire gmii_txc;
-  wire [7:0]gmii_txd;
-  wire gmii_txen;
-  wire rst_n;
-  wire rxd_pkt_done;
-  wire [15:0]rxd_wr_byte_num;
-  wire [31:0]rxd_wr_data;
-  wire rxd_wr_en;
-  wire [15:0]tx_byte_num;
-  wire [31:0]tx_data;
-  wire tx_done;
-  wire tx_request;
-  wire tx_start_en;
-
-  fm_hdmi_udp_top_0_0_udp_top inst
-       (.Q(gmii_txd),
-        .destination_ip(destination_ip),
-        .destination_mac(destination_mac),
-        .gmii_rxc(gmii_rxc),
-        .gmii_rxd(gmii_rxd),
-        .gmii_rxdv(gmii_rxdv),
-        .gmii_txc(gmii_txc),
-        .gmii_txen(gmii_txen),
-        .rst_n(rst_n),
-        .rxd_pkt_done(rxd_pkt_done),
-        .rxd_wr_byte_num(rxd_wr_byte_num),
-        .rxd_wr_data(rxd_wr_data),
-        .rxd_wr_en(rxd_wr_en),
-        .tx_byte_num(tx_byte_num),
-        .tx_data(tx_data),
-        .tx_done(tx_done),
-        .tx_request(tx_request),
-        .tx_start_en(tx_start_en));
-endmodule
-
-(* ORIG_REF_NAME = "crc32" *) 
 module fm_hdmi_udp_top_0_0_crc32
    (\crc_data_reg[26]_0 ,
     Q,
@@ -619,7 +537,87 @@ module fm_hdmi_udp_top_0_0_crc32
         .O(\crc_data_reg[9]_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "udp_rxd" *) 
+(* CHECK_LICENSE_TYPE = "fm_hdmi_udp_top_0_0,udp_top,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
+(* X_CORE_INFO = "udp_top,Vivado 2023.2" *) 
+(* NotValidForBitStream *)
+module fm_hdmi_udp_top_0_0
+   (rst_n,
+    gmii_rxc,
+    gmii_rxdv,
+    gmii_rxd,
+    gmii_txc,
+    gmii_txen,
+    gmii_txd,
+    rxd_pkt_done,
+    rxd_wr_en,
+    rxd_wr_data,
+    rxd_wr_byte_num,
+    tx_start_en,
+    tx_data,
+    tx_byte_num,
+    destination_mac,
+    destination_ip,
+    tx_done,
+    tx_request);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst_n RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst_n;
+  input gmii_rxc;
+  input gmii_rxdv;
+  input [7:0]gmii_rxd;
+  input gmii_txc;
+  output gmii_txen;
+  output [7:0]gmii_txd;
+  output rxd_pkt_done;
+  output rxd_wr_en;
+  output [31:0]rxd_wr_data;
+  output [15:0]rxd_wr_byte_num;
+  input tx_start_en;
+  input [31:0]tx_data;
+  input [15:0]tx_byte_num;
+  input [47:0]destination_mac;
+  input [31:0]destination_ip;
+  output tx_done;
+  output tx_request;
+
+  wire [31:0]destination_ip;
+  wire [47:0]destination_mac;
+  wire gmii_rxc;
+  wire [7:0]gmii_rxd;
+  wire gmii_rxdv;
+  wire gmii_txc;
+  wire [7:0]gmii_txd;
+  wire gmii_txen;
+  wire rst_n;
+  wire rxd_pkt_done;
+  wire [15:0]rxd_wr_byte_num;
+  wire [31:0]rxd_wr_data;
+  wire rxd_wr_en;
+  wire [15:0]tx_byte_num;
+  wire [31:0]tx_data;
+  wire tx_done;
+  wire tx_request;
+  wire tx_start_en;
+
+  fm_hdmi_udp_top_0_0_udp_top inst
+       (.Q(gmii_txd),
+        .destination_ip(destination_ip),
+        .destination_mac(destination_mac),
+        .gmii_rxc(gmii_rxc),
+        .gmii_rxd(gmii_rxd),
+        .gmii_rxdv(gmii_rxdv),
+        .gmii_txc(gmii_txc),
+        .gmii_txen(gmii_txen),
+        .rst_n(rst_n),
+        .rxd_pkt_done(rxd_pkt_done),
+        .rxd_wr_byte_num(rxd_wr_byte_num),
+        .rxd_wr_data(rxd_wr_data),
+        .rxd_wr_en(rxd_wr_en),
+        .tx_byte_num(tx_byte_num),
+        .tx_data(tx_data),
+        .tx_done(tx_done),
+        .tx_request(tx_request),
+        .tx_start_en(tx_start_en));
+endmodule
+
 module fm_hdmi_udp_top_0_0_udp_rxd
    (rst_n_0,
     rxd_pkt_done,
@@ -3926,7 +3924,6 @@ module fm_hdmi_udp_top_0_0_udp_rxd
         .Q(udp_byte_num[9]));
 endmodule
 
-(* ORIG_REF_NAME = "udp_top" *) 
 module fm_hdmi_udp_top_0_0_udp_top
    (Q,
     tx_done,
@@ -4122,7 +4119,6 @@ module fm_hdmi_udp_top_0_0_udp_top
         .tx_start_en(tx_start_en));
 endmodule
 
-(* ORIG_REF_NAME = "udp_txd" *) 
 module fm_hdmi_udp_top_0_0_udp_txd
    (tx_done_reg_0,
     tx_request,

@@ -2,8 +2,8 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Wed Apr  8 13:41:01 2026
-//Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.4 LTS
+//Date        : Wed Apr  8 18:56:00 2026
+//Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 //Command     : generate_target fm_demod2_inst_5.bd
 //Design      : fm_demod2_inst_5
 //Purpose     : IP block netlist
@@ -139,7 +139,7 @@ module dec384to192_blockDC_imp_T4A4SE
     m_axis_tready_0,
     m_axis_tvalid_0,
     probe_out0);
-  input [23:0]S_AXIS_DATA_tdata;
+  input [31:0]S_AXIS_DATA_tdata;
   output S_AXIS_DATA_tready;
   input S_AXIS_DATA_tvalid;
   input adc_clk;
@@ -154,7 +154,7 @@ module dec384to192_blockDC_imp_T4A4SE
   wire [23:0]dec384to192_M_AXIS_DATA_TDATA;
   wire dec384to192_M_AXIS_DATA_TREADY;
   wire dec384to192_M_AXIS_DATA_TVALID;
-  wire [23:0]demodulate_384k_M_AXIS_DOUT_TDATA;
+  wire [31:0]demodulate_384k_M_AXIS_DOUT_TDATA;
   wire demodulate_384k_M_AXIS_DOUT_TREADY;
   wire demodulate_384k_M_AXIS_DOUT_TVALID;
   wire m_axis_tready_0_1;
@@ -162,7 +162,7 @@ module dec384to192_blockDC_imp_T4A4SE
 
   assign S_AXIS_DATA_tready = demodulate_384k_M_AXIS_DOUT_TREADY;
   assign adc_clk_1 = adc_clk;
-  assign demodulate_384k_M_AXIS_DOUT_TDATA = S_AXIS_DATA_tdata[23:0];
+  assign demodulate_384k_M_AXIS_DOUT_TDATA = S_AXIS_DATA_tdata[31:0];
   assign demodulate_384k_M_AXIS_DOUT_TVALID = S_AXIS_DATA_tvalid;
   assign m_axis_tdata_0[15:0] = axis_dc_blocker_roun_0_m_axis_tdata;
   assign m_axis_tready_0_1 = m_axis_tready_0;
@@ -198,7 +198,7 @@ module demodulate_384k_imp_1M0MRM2
     sys_rst_n,
     tap_i,
     tap_q);
-  output [23:0]M_AXIS_DOUT_tdata;
+  output [31:0]M_AXIS_DOUT_tdata;
   input M_AXIS_DOUT_tready;
   output M_AXIS_DOUT_tvalid;
   input adc_clk;
@@ -209,7 +209,7 @@ module demodulate_384k_imp_1M0MRM2
   input [15:0]tap_i;
   input [15:0]tap_q;
 
-  wire [23:0]Conn1_TDATA;
+  wire [31:0]Conn1_TDATA;
   wire Conn1_TREADY;
   wire Conn1_TVALID;
   wire Dec200_Res_0;
@@ -227,7 +227,7 @@ module demodulate_384k_imp_1M0MRM2
 
   assign Conn1_TREADY = M_AXIS_DOUT_tready;
   assign Dec200_Res_0 = sample_valid;
-  assign M_AXIS_DOUT_tdata[23:0] = Conn1_TDATA;
+  assign M_AXIS_DOUT_tdata[31:0] = Conn1_TDATA;
   assign M_AXIS_DOUT_tvalid = Conn1_TVALID;
   assign adc_dci_0_1 = adc_clk;
   assign cic_compiler_2_m_axis_data_tdata = tap_i[15:0];
@@ -365,7 +365,7 @@ module fm_demod2_inst_5
   wire axis_dc_blocker_roun_0_m_axis_tvalid;
   wire [15:0]cic_compiler_2_m_axis_data_tdata;
   wire [15:0]cic_compiler_3_m_axis_data_tdata;
-  wire [23:0]demodulate_384k_M_AXIS_DOUT_TDATA;
+  wire [31:0]demodulate_384k_M_AXIS_DOUT_TDATA;
   wire demodulate_384k_M_AXIS_DOUT_TREADY;
   wire demodulate_384k_M_AXIS_DOUT_TVALID;
   wire [63:0]digital_mixer_m_axis_dout_tdata_0;

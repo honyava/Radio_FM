@@ -8,11 +8,11 @@
     "gen_directory": "../../../../../../ltc2208_max5885.gen/sources_1/bd/fm_demod2/ip/fm_demod2_axis_dc_blocker_roun_0_0",
     "parameters": {
       "component_parameters": {
-        "IN_W": [ { "value": "24", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "IN_W": [ { "value": "24", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "OUT_W": [ { "value": "16", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "ACC_W": [ { "value": "40", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "K": [ { "value": "15", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "SHIFT_R": [ { "value": "8", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "SHIFT_R": [ { "value": "6", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "fm_demod2_axis_dc_blocker_roun_0_0", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
@@ -20,7 +20,7 @@
         "OUT_W": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "ACC_W": [ { "value": "40", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "K": [ { "value": "15", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "SHIFT_R": [ { "value": "8", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+        "SHIFT_R": [ { "value": "6", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
@@ -96,8 +96,8 @@
             "HAS_TSTRB": [ { "value": "0", "value_src": "constant", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "HAS_TKEEP": [ { "value": "0", "value_src": "constant", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "HAS_TLAST": [ { "value": "0", "value_src": "constant", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
-            "FREQ_HZ": [ { "value": "76800000", "value_src": "user", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
-            "PHASE": [ { "value": "65.0", "value_src": "user", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
+            "FREQ_HZ": [ { "value": "76800000", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "PHASE": [ { "value": "65.0", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
             "CLK_DOMAIN": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "LAYERED_METADATA": [ { "value": [
                 "xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type",

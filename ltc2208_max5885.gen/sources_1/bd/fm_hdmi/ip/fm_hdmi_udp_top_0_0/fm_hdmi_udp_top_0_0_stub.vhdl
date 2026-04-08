@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Wed Apr  8 12:34:01 2026
--- Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.4 LTS
--- Command     : write_vhdl -force -mode synth_stub
---               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_udp_top_0_0/fm_hdmi_udp_top_0_0_stub.vhdl
+-- Date        : Fri Mar  6 12:28:53 2026
+-- Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
+-- Command     : write_vhdl -force -mode synth_stub -rename_top fm_hdmi_udp_top_0_0 -prefix
+--               fm_hdmi_udp_top_0_0_ fm_hdmi_udp_top_0_0_stub.vhdl
 -- Design      : fm_hdmi_udp_top_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg400-2

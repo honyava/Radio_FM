@@ -2,17 +2,59 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Wed Apr  8 12:33:59 2026
-// Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.4 LTS
-// Command     : write_verilog -force -mode funcsim -rename_top fm_demod2_inst_6_axis_dc_blocker_roun_0_0 -prefix
-//               fm_demod2_inst_6_axis_dc_blocker_roun_0_0_ fm_demod2_inst_9_axis_dc_blocker_roun_0_0_sim_netlist.v
-// Design      : fm_demod2_inst_9_axis_dc_blocker_roun_0_0
+// Date        : Wed Apr  8 18:57:10 2026
+// Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
+// Command     : write_verilog -force -mode funcsim
+//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/bd/fm_demod2_inst_6/ip/fm_demod2_inst_6_axis_dc_blocker_roun_0_0/fm_demod2_inst_6_axis_dc_blocker_roun_0_0_sim_netlist.v
+// Design      : fm_demod2_inst_6_axis_dc_blocker_roun_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7z020clg400-2
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
+(* CHECK_LICENSE_TYPE = "fm_demod2_inst_6_axis_dc_blocker_roun_0_0,axis_dc_blocker_round_sat,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
+(* X_CORE_INFO = "axis_dc_blocker_round_sat,Vivado 2023.2" *) 
+(* NotValidForBitStream *)
+module fm_demod2_inst_6_axis_dc_blocker_roun_0_0
+   (aclk,
+    aresetn,
+    s_axis_tvalid,
+    s_axis_tready,
+    s_axis_tdata,
+    m_axis_tvalid,
+    m_axis_tready,
+    m_axis_tdata);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 aclk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aclk, ASSOCIATED_BUSIF m_axis:s_axis, ASSOCIATED_RESET aresetn, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_50M, INSERT_VIP 0" *) input aclk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 aresetn RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input aresetn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TVALID" *) input s_axis_tvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TREADY" *) output s_axis_tready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis, TDATA_NUM_BYTES 3, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 76800000, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_50M, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 4} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}, INSERT_VIP 0" *) input [23:0]s_axis_tdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TVALID" *) output m_axis_tvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TREADY" *) input m_axis_tready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axis, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 76800000, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_50M, LAYERED_METADATA undef, INSERT_VIP 0" *) output [15:0]m_axis_tdata;
+
+  wire aclk;
+  wire aresetn;
+  wire [15:0]m_axis_tdata;
+  wire m_axis_tready;
+  wire m_axis_tvalid;
+  wire [23:0]s_axis_tdata;
+  wire s_axis_tready;
+  wire s_axis_tvalid;
+
+  fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat inst
+       (.aclk(aclk),
+        .aresetn(aresetn),
+        .m_axis_tdata(m_axis_tdata),
+        .m_axis_tready(m_axis_tready),
+        .m_axis_tvalid_reg_0(m_axis_tvalid),
+        .s_axis_tdata(s_axis_tdata),
+        .s_axis_tready(s_axis_tready),
+        .s_axis_tvalid(s_axis_tvalid));
+endmodule
+
+(* ORIG_REF_NAME = "axis_dc_blocker_round_sat" *) 
 module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
    (m_axis_tvalid_reg_0,
     m_axis_tdata,
@@ -147,11 +189,11 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
   wire i__carry__0_i_2_n_0;
   wire i__carry__0_i_3_n_0;
   wire i__carry__0_i_4_n_0;
+  wire i__carry__0_i_5_n_0;
   wire i__carry__1_i_1_n_0;
   wire i__carry__1_i_2_n_0;
   wire i__carry__1_i_3_n_0;
   wire i__carry__1_i_4_n_0;
-  wire i__carry__1_i_5_n_0;
   wire i__carry__2_i_1_n_0;
   wire i__carry__2_i_2_n_0;
   wire i__carry__2_i_3_n_0;
@@ -297,6 +339,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
   wire y_out_w1_carry__1_i_3_n_0;
   wire y_out_w1_carry__1_i_4_n_0;
   wire y_out_w1_carry__1_i_5_n_0;
+  wire y_out_w1_carry__1_i_6_n_0;
   wire y_out_w1_carry__1_n_0;
   wire y_out_w1_carry__1_n_1;
   wire y_out_w1_carry__1_n_2;
@@ -331,6 +374,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
   wire y_out_w2_carry__1_i_3_n_0;
   wire y_out_w2_carry__1_i_4_n_0;
   wire y_out_w2_carry__1_i_5_n_0;
+  wire y_out_w2_carry__1_i_6_n_0;
   wire y_out_w2_carry__1_n_0;
   wire y_out_w2_carry__1_n_1;
   wire y_out_w2_carry__1_n_2;
@@ -347,9 +391,9 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
   wire y_out_w2_carry_n_1;
   wire y_out_w2_carry_n_2;
   wire y_out_w2_carry_n_3;
-  wire [39:8]y_round_pre_w;
+  wire [39:6]y_round_pre_w;
   wire [3:0]\NLW__inferred__1/i__carry_O_UNCONNECTED ;
-  wire [3:0]\NLW__inferred__1/i__carry__0_O_UNCONNECTED ;
+  wire [1:0]\NLW__inferred__1/i__carry__0_O_UNCONNECTED ;
   wire [3:3]\NLW__inferred__1/i__carry__8_CO_UNCONNECTED ;
   wire NLW_diff_w_CARRYCASCOUT_UNCONNECTED;
   wire NLW_diff_w_MULTSIGNOUT_UNCONNECTED;
@@ -409,18 +453,18 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
        (.CI(\_inferred__1/i__carry_n_0 ),
         .CO({\_inferred__1/i__carry__0_n_0 ,\_inferred__1/i__carry__0_n_1 ,\_inferred__1/i__carry__0_n_2 ,\_inferred__1/i__carry__0_n_3 }),
         .CYINIT(1'b0),
-        .DI({st1_y_ext_reg_n_66,st1_y_ext_reg_n_99,st1_y_ext_reg_n_100,st1_y_ext_reg_n_101}),
-        .O(\NLW__inferred__1/i__carry__0_O_UNCONNECTED [3:0]),
-        .S({i__carry__0_i_1_n_0,i__carry__0_i_2_n_0,i__carry__0_i_3_n_0,i__carry__0_i_4_n_0}));
+        .DI({st1_y_ext_reg_n_99,i__carry__0_i_1_n_0,st1_y_ext_reg_n_66,st1_y_ext_reg_n_101}),
+        .O({y_round_pre_w[7:6],\NLW__inferred__1/i__carry__0_O_UNCONNECTED [1:0]}),
+        .S({i__carry__0_i_2_n_0,i__carry__0_i_3_n_0,i__carry__0_i_4_n_0,i__carry__0_i_5_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 \_inferred__1/i__carry__1 
        (.CI(\_inferred__1/i__carry__0_n_0 ),
         .CO({\_inferred__1/i__carry__1_n_0 ,\_inferred__1/i__carry__1_n_1 ,\_inferred__1/i__carry__1_n_2 ,\_inferred__1/i__carry__1_n_3 }),
         .CYINIT(1'b0),
-        .DI({st1_y_ext_reg_n_95,st1_y_ext_reg_n_96,st1_y_ext_reg_n_97,i__carry__1_i_1_n_0}),
+        .DI({st1_y_ext_reg_n_95,st1_y_ext_reg_n_96,st1_y_ext_reg_n_97,st1_y_ext_reg_n_98}),
         .O(y_round_pre_w[11:8]),
-        .S({i__carry__1_i_2_n_0,i__carry__1_i_3_n_0,i__carry__1_i_4_n_0,i__carry__1_i_5_n_0}));
+        .S({i__carry__1_i_1_n_0,i__carry__1_i_2_n_0,i__carry__1_i_3_n_0,i__carry__1_i_4_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 \_inferred__1/i__carry__2 
@@ -561,57 +605,59 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
         .RSTM(1'b0),
         .RSTP(1'b0),
         .UNDERFLOW(NLW_diff_w_UNDERFLOW_UNCONNECTED));
-  LUT1 #(
-    .INIT(2'h2)) 
-    i__carry__0_i_1
-       (.I0(st1_y_ext_reg_n_98),
-        .O(i__carry__0_i_1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry__0_i_2
-       (.I0(st1_y_ext_reg_n_99),
-        .O(i__carry__0_i_2_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry__0_i_3
-       (.I0(st1_y_ext_reg_n_100),
-        .O(i__carry__0_i_3_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry__0_i_4
-       (.I0(st1_y_ext_reg_n_101),
-        .O(i__carry__0_i_4_n_0));
   LUT2 #(
     .INIT(4'hB)) 
-    i__carry__1_i_1
-       (.I0(st1_y_ext_reg_n_98),
+    i__carry__0_i_1
+       (.I0(st1_y_ext_reg_n_100),
         .I1(st1_y_ext_reg_n_66),
+        .O(i__carry__0_i_1_n_0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    i__carry__0_i_2
+       (.I0(st1_y_ext_reg_n_99),
+        .I1(st1_y_ext_reg_n_98),
+        .O(i__carry__0_i_2_n_0));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    i__carry__0_i_3
+       (.I0(st1_y_ext_reg_n_66),
+        .I1(st1_y_ext_reg_n_100),
+        .I2(st1_y_ext_reg_n_99),
+        .O(i__carry__0_i_3_n_0));
+  LUT1 #(
+    .INIT(2'h2)) 
+    i__carry__0_i_4
+       (.I0(st1_y_ext_reg_n_100),
+        .O(i__carry__0_i_4_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry__0_i_5
+       (.I0(st1_y_ext_reg_n_101),
+        .O(i__carry__0_i_5_n_0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    i__carry__1_i_1
+       (.I0(st1_y_ext_reg_n_95),
+        .I1(st1_y_ext_reg_n_94),
         .O(i__carry__1_i_1_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     i__carry__1_i_2
-       (.I0(st1_y_ext_reg_n_95),
-        .I1(st1_y_ext_reg_n_94),
+       (.I0(st1_y_ext_reg_n_96),
+        .I1(st1_y_ext_reg_n_95),
         .O(i__carry__1_i_2_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     i__carry__1_i_3
-       (.I0(st1_y_ext_reg_n_96),
-        .I1(st1_y_ext_reg_n_95),
+       (.I0(st1_y_ext_reg_n_97),
+        .I1(st1_y_ext_reg_n_96),
         .O(i__carry__1_i_3_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     i__carry__1_i_4
-       (.I0(st1_y_ext_reg_n_97),
-        .I1(st1_y_ext_reg_n_96),
+       (.I0(st1_y_ext_reg_n_98),
+        .I1(st1_y_ext_reg_n_97),
         .O(i__carry__1_i_4_n_0));
-  LUT3 #(
-    .INIT(8'hD2)) 
-    i__carry__1_i_5
-       (.I0(st1_y_ext_reg_n_66),
-        .I1(st1_y_ext_reg_n_98),
-        .I2(st1_y_ext_reg_n_97),
-        .O(i__carry__1_i_5_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     i__carry__2_i_1
@@ -807,7 +853,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[0]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[8]),
+        .I2(y_round_pre_w[6]),
         .O(y_out_w[0]));
   (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
@@ -815,7 +861,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[10]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[18]),
+        .I2(y_round_pre_w[16]),
         .O(y_out_w[10]));
   (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
@@ -823,7 +869,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[11]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[19]),
+        .I2(y_round_pre_w[17]),
         .O(y_out_w[11]));
   (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
@@ -831,7 +877,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[12]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[20]),
+        .I2(y_round_pre_w[18]),
         .O(y_out_w[12]));
   (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT3 #(
@@ -839,7 +885,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[13]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[21]),
+        .I2(y_round_pre_w[19]),
         .O(y_out_w[13]));
   (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT3 #(
@@ -847,7 +893,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[14]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[22]),
+        .I2(y_round_pre_w[20]),
         .O(y_out_w[14]));
   LUT1 #(
     .INIT(2'h1)) 
@@ -865,7 +911,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
   LUT3 #(
     .INIT(8'h0E)) 
     \m_axis_tdata[15]_i_3 
-       (.I0(y_round_pre_w[23]),
+       (.I0(y_round_pre_w[21]),
         .I1(y_out_w2),
         .I2(y_out_w1),
         .O(\m_axis_tdata[15]_i_3_n_0 ));
@@ -875,7 +921,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[1]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[9]),
+        .I2(y_round_pre_w[7]),
         .O(y_out_w[1]));
   (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT3 #(
@@ -883,7 +929,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[2]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[10]),
+        .I2(y_round_pre_w[8]),
         .O(y_out_w[2]));
   (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
@@ -891,7 +937,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[3]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[11]),
+        .I2(y_round_pre_w[9]),
         .O(y_out_w[3]));
   (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
@@ -899,7 +945,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[4]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[12]),
+        .I2(y_round_pre_w[10]),
         .O(y_out_w[4]));
   (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
@@ -907,7 +953,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[5]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[13]),
+        .I2(y_round_pre_w[11]),
         .O(y_out_w[5]));
   (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
@@ -915,7 +961,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[6]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[14]),
+        .I2(y_round_pre_w[12]),
         .O(y_out_w[6]));
   (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
@@ -923,7 +969,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[7]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[15]),
+        .I2(y_round_pre_w[13]),
         .O(y_out_w[7]));
   (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
@@ -931,7 +977,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[8]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[16]),
+        .I2(y_round_pre_w[14]),
         .O(y_out_w[8]));
   (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
@@ -939,7 +985,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     \m_axis_tdata[9]_i_1 
        (.I0(y_out_w1),
         .I1(y_out_w2),
-        .I2(y_round_pre_w[17]),
+        .I2(y_round_pre_w[15]),
         .O(y_out_w[9]));
   FDRE \m_axis_tdata_reg[0] 
        (.C(aclk),
@@ -1248,7 +1294,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
        (.CI(1'b0),
         .CO({y_out_w1_carry_n_0,y_out_w1_carry_n_1,y_out_w1_carry_n_2,y_out_w1_carry_n_3}),
         .CYINIT(1'b0),
-        .DI({y_out_w1_carry_i_1_n_0,y_out_w1_carry_i_2_n_0,y_out_w1_carry_i_3_n_0,y_round_pre_w[23]}),
+        .DI({y_out_w1_carry_i_1_n_0,y_out_w1_carry_i_2_n_0,y_out_w1_carry_i_3_n_0,y_round_pre_w[21]}),
         .O(NLW_y_out_w1_carry_O_UNCONNECTED[3:0]),
         .S({y_out_w1_carry_i_4_n_0,y_out_w1_carry_i_5_n_0,y_out_w1_carry_i_6_n_0,y_out_w1_carry_i_7_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
@@ -1263,50 +1309,50 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
   LUT2 #(
     .INIT(4'hE)) 
     y_out_w1_carry__0_i_1
-       (.I0(y_round_pre_w[36]),
-        .I1(y_round_pre_w[37]),
+       (.I0(y_round_pre_w[34]),
+        .I1(y_round_pre_w[35]),
         .O(y_out_w1_carry__0_i_1_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     y_out_w1_carry__0_i_2
-       (.I0(y_round_pre_w[34]),
-        .I1(y_round_pre_w[35]),
+       (.I0(y_round_pre_w[32]),
+        .I1(y_round_pre_w[33]),
         .O(y_out_w1_carry__0_i_2_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     y_out_w1_carry__0_i_3
-       (.I0(y_round_pre_w[32]),
-        .I1(y_round_pre_w[33]),
+       (.I0(y_round_pre_w[30]),
+        .I1(y_round_pre_w[31]),
         .O(y_out_w1_carry__0_i_3_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     y_out_w1_carry__0_i_4
-       (.I0(y_round_pre_w[30]),
-        .I1(y_round_pre_w[31]),
+       (.I0(y_round_pre_w[28]),
+        .I1(y_round_pre_w[29]),
         .O(y_out_w1_carry__0_i_4_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     y_out_w1_carry__0_i_5
-       (.I0(y_round_pre_w[36]),
-        .I1(y_round_pre_w[37]),
+       (.I0(y_round_pre_w[34]),
+        .I1(y_round_pre_w[35]),
         .O(y_out_w1_carry__0_i_5_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     y_out_w1_carry__0_i_6
-       (.I0(y_round_pre_w[34]),
-        .I1(y_round_pre_w[35]),
+       (.I0(y_round_pre_w[32]),
+        .I1(y_round_pre_w[33]),
         .O(y_out_w1_carry__0_i_6_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     y_out_w1_carry__0_i_7
-       (.I0(y_round_pre_w[32]),
-        .I1(y_round_pre_w[33]),
+       (.I0(y_round_pre_w[30]),
+        .I1(y_round_pre_w[31]),
         .O(y_out_w1_carry__0_i_7_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     y_out_w1_carry__0_i_8
-       (.I0(y_round_pre_w[30]),
-        .I1(y_round_pre_w[31]),
+       (.I0(y_round_pre_w[28]),
+        .I1(y_round_pre_w[29]),
         .O(y_out_w1_carry__0_i_8_n_0));
   (* COMPARATOR_THRESHOLD = "11" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
@@ -1314,19 +1360,20 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
        (.CI(y_out_w1_carry__0_n_0),
         .CO({y_out_w1_carry__1_n_0,y_out_w1_carry__1_n_1,y_out_w1_carry__1_n_2,y_out_w1_carry__1_n_3}),
         .CYINIT(1'b0),
-        .DI({y_round_pre_w[39],y_round_pre_w[39],y_round_pre_w[39],y_out_w1_carry__1_i_1_n_0}),
+        .DI({y_round_pre_w[39],y_round_pre_w[39],y_out_w1_carry__1_i_1_n_0,y_out_w1_carry__1_i_2_n_0}),
         .O(NLW_y_out_w1_carry__1_O_UNCONNECTED[3:0]),
-        .S({y_out_w1_carry__1_i_2_n_0,y_out_w1_carry__1_i_3_n_0,y_out_w1_carry__1_i_4_n_0,y_out_w1_carry__1_i_5_n_0}));
+        .S({y_out_w1_carry__1_i_3_n_0,y_out_w1_carry__1_i_4_n_0,y_out_w1_carry__1_i_5_n_0,y_out_w1_carry__1_i_6_n_0}));
   LUT2 #(
     .INIT(4'hE)) 
     y_out_w1_carry__1_i_1
        (.I0(y_round_pre_w[38]),
         .I1(y_round_pre_w[39]),
         .O(y_out_w1_carry__1_i_1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
+  LUT2 #(
+    .INIT(4'hE)) 
     y_out_w1_carry__1_i_2
-       (.I0(y_round_pre_w[39]),
+       (.I0(y_round_pre_w[36]),
+        .I1(y_round_pre_w[37]),
         .O(y_out_w1_carry__1_i_2_n_0));
   LUT1 #(
     .INIT(2'h1)) 
@@ -1344,6 +1391,12 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
        (.I0(y_round_pre_w[38]),
         .I1(y_round_pre_w[39]),
         .O(y_out_w1_carry__1_i_5_n_0));
+  LUT2 #(
+    .INIT(4'h1)) 
+    y_out_w1_carry__1_i_6
+       (.I0(y_round_pre_w[36]),
+        .I1(y_round_pre_w[37]),
+        .O(y_out_w1_carry__1_i_6_n_0));
   (* COMPARATOR_THRESHOLD = "11" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 y_out_w1_carry__2
@@ -1361,44 +1414,44 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
   LUT2 #(
     .INIT(4'hE)) 
     y_out_w1_carry_i_1
-       (.I0(y_round_pre_w[28]),
-        .I1(y_round_pre_w[29]),
+       (.I0(y_round_pre_w[26]),
+        .I1(y_round_pre_w[27]),
         .O(y_out_w1_carry_i_1_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     y_out_w1_carry_i_2
-       (.I0(y_round_pre_w[26]),
-        .I1(y_round_pre_w[27]),
+       (.I0(y_round_pre_w[24]),
+        .I1(y_round_pre_w[25]),
         .O(y_out_w1_carry_i_2_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     y_out_w1_carry_i_3
-       (.I0(y_round_pre_w[24]),
-        .I1(y_round_pre_w[25]),
+       (.I0(y_round_pre_w[22]),
+        .I1(y_round_pre_w[23]),
         .O(y_out_w1_carry_i_3_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     y_out_w1_carry_i_4
-       (.I0(y_round_pre_w[28]),
-        .I1(y_round_pre_w[29]),
+       (.I0(y_round_pre_w[26]),
+        .I1(y_round_pre_w[27]),
         .O(y_out_w1_carry_i_4_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     y_out_w1_carry_i_5
-       (.I0(y_round_pre_w[26]),
-        .I1(y_round_pre_w[27]),
+       (.I0(y_round_pre_w[24]),
+        .I1(y_round_pre_w[25]),
         .O(y_out_w1_carry_i_5_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     y_out_w1_carry_i_6
-       (.I0(y_round_pre_w[24]),
-        .I1(y_round_pre_w[25]),
+       (.I0(y_round_pre_w[22]),
+        .I1(y_round_pre_w[23]),
         .O(y_out_w1_carry_i_6_n_0));
   LUT2 #(
     .INIT(4'h2)) 
     y_out_w1_carry_i_7
-       (.I0(y_round_pre_w[22]),
-        .I1(y_round_pre_w[23]),
+       (.I0(y_round_pre_w[20]),
+        .I1(y_round_pre_w[21]),
         .O(y_out_w1_carry_i_7_n_0));
   (* COMPARATOR_THRESHOLD = "11" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
@@ -1421,50 +1474,50 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
   LUT2 #(
     .INIT(4'h7)) 
     y_out_w2_carry__0_i_1
-       (.I0(y_round_pre_w[36]),
-        .I1(y_round_pre_w[37]),
+       (.I0(y_round_pre_w[34]),
+        .I1(y_round_pre_w[35]),
         .O(y_out_w2_carry__0_i_1_n_0));
   LUT2 #(
     .INIT(4'h7)) 
     y_out_w2_carry__0_i_2
-       (.I0(y_round_pre_w[34]),
-        .I1(y_round_pre_w[35]),
+       (.I0(y_round_pre_w[32]),
+        .I1(y_round_pre_w[33]),
         .O(y_out_w2_carry__0_i_2_n_0));
   LUT2 #(
     .INIT(4'h7)) 
     y_out_w2_carry__0_i_3
-       (.I0(y_round_pre_w[32]),
-        .I1(y_round_pre_w[33]),
+       (.I0(y_round_pre_w[30]),
+        .I1(y_round_pre_w[31]),
         .O(y_out_w2_carry__0_i_3_n_0));
   LUT2 #(
     .INIT(4'h7)) 
     y_out_w2_carry__0_i_4
-       (.I0(y_round_pre_w[30]),
-        .I1(y_round_pre_w[31]),
+       (.I0(y_round_pre_w[28]),
+        .I1(y_round_pre_w[29]),
         .O(y_out_w2_carry__0_i_4_n_0));
   LUT2 #(
     .INIT(4'h8)) 
     y_out_w2_carry__0_i_5
-       (.I0(y_round_pre_w[36]),
-        .I1(y_round_pre_w[37]),
+       (.I0(y_round_pre_w[34]),
+        .I1(y_round_pre_w[35]),
         .O(y_out_w2_carry__0_i_5_n_0));
   LUT2 #(
     .INIT(4'h8)) 
     y_out_w2_carry__0_i_6
-       (.I0(y_round_pre_w[34]),
-        .I1(y_round_pre_w[35]),
+       (.I0(y_round_pre_w[32]),
+        .I1(y_round_pre_w[33]),
         .O(y_out_w2_carry__0_i_6_n_0));
   LUT2 #(
     .INIT(4'h8)) 
     y_out_w2_carry__0_i_7
-       (.I0(y_round_pre_w[32]),
-        .I1(y_round_pre_w[33]),
+       (.I0(y_round_pre_w[30]),
+        .I1(y_round_pre_w[31]),
         .O(y_out_w2_carry__0_i_7_n_0));
   LUT2 #(
     .INIT(4'h8)) 
     y_out_w2_carry__0_i_8
-       (.I0(y_round_pre_w[30]),
-        .I1(y_round_pre_w[31]),
+       (.I0(y_round_pre_w[28]),
+        .I1(y_round_pre_w[29]),
         .O(y_out_w2_carry__0_i_8_n_0));
   (* COMPARATOR_THRESHOLD = "11" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
@@ -1474,7 +1527,7 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
         .CYINIT(1'b0),
         .DI({y_out_w2_carry__1_i_1_n_0,y_out_w2_carry__1_i_2_n_0,y_out_w2_carry__1_i_3_n_0,y_out_w2_carry__1_i_4_n_0}),
         .O(NLW_y_out_w2_carry__1_O_UNCONNECTED[3:0]),
-        .S({y_round_pre_w[39],y_round_pre_w[39],y_round_pre_w[39],y_out_w2_carry__1_i_5_n_0}));
+        .S({y_round_pre_w[39],y_round_pre_w[39],y_out_w2_carry__1_i_5_n_0,y_out_w2_carry__1_i_6_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     y_out_w2_carry__1_i_1
@@ -1485,16 +1538,17 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
     y_out_w2_carry__1_i_2
        (.I0(y_round_pre_w[39]),
         .O(y_out_w2_carry__1_i_2_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
+  LUT2 #(
+    .INIT(4'h7)) 
     y_out_w2_carry__1_i_3
-       (.I0(y_round_pre_w[39]),
+       (.I0(y_round_pre_w[38]),
+        .I1(y_round_pre_w[39]),
         .O(y_out_w2_carry__1_i_3_n_0));
   LUT2 #(
     .INIT(4'h7)) 
     y_out_w2_carry__1_i_4
-       (.I0(y_round_pre_w[38]),
-        .I1(y_round_pre_w[39]),
+       (.I0(y_round_pre_w[36]),
+        .I1(y_round_pre_w[37]),
         .O(y_out_w2_carry__1_i_4_n_0));
   LUT2 #(
     .INIT(4'h8)) 
@@ -1502,6 +1556,12 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
        (.I0(y_round_pre_w[38]),
         .I1(y_round_pre_w[39]),
         .O(y_out_w2_carry__1_i_5_n_0));
+  LUT2 #(
+    .INIT(4'h8)) 
+    y_out_w2_carry__1_i_6
+       (.I0(y_round_pre_w[36]),
+        .I1(y_round_pre_w[37]),
+        .O(y_out_w2_carry__1_i_6_n_0));
   (* COMPARATOR_THRESHOLD = "11" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 y_out_w2_carry__2
@@ -1514,91 +1574,50 @@ module fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat
   LUT2 #(
     .INIT(4'h7)) 
     y_out_w2_carry_i_1
-       (.I0(y_round_pre_w[28]),
-        .I1(y_round_pre_w[29]),
+       (.I0(y_round_pre_w[26]),
+        .I1(y_round_pre_w[27]),
         .O(y_out_w2_carry_i_1_n_0));
   LUT2 #(
     .INIT(4'h7)) 
     y_out_w2_carry_i_2
-       (.I0(y_round_pre_w[26]),
-        .I1(y_round_pre_w[27]),
+       (.I0(y_round_pre_w[24]),
+        .I1(y_round_pre_w[25]),
         .O(y_out_w2_carry_i_2_n_0));
   LUT2 #(
     .INIT(4'h7)) 
     y_out_w2_carry_i_3
-       (.I0(y_round_pre_w[24]),
-        .I1(y_round_pre_w[25]),
+       (.I0(y_round_pre_w[22]),
+        .I1(y_round_pre_w[23]),
         .O(y_out_w2_carry_i_3_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     y_out_w2_carry_i_4
-       (.I0(y_round_pre_w[23]),
+       (.I0(y_round_pre_w[21]),
         .O(y_out_w2_carry_i_4_n_0));
   LUT2 #(
     .INIT(4'h8)) 
     y_out_w2_carry_i_5
-       (.I0(y_round_pre_w[28]),
-        .I1(y_round_pre_w[29]),
+       (.I0(y_round_pre_w[26]),
+        .I1(y_round_pre_w[27]),
         .O(y_out_w2_carry_i_5_n_0));
   LUT2 #(
     .INIT(4'h8)) 
     y_out_w2_carry_i_6
-       (.I0(y_round_pre_w[26]),
-        .I1(y_round_pre_w[27]),
+       (.I0(y_round_pre_w[24]),
+        .I1(y_round_pre_w[25]),
         .O(y_out_w2_carry_i_6_n_0));
   LUT2 #(
     .INIT(4'h8)) 
     y_out_w2_carry_i_7
-       (.I0(y_round_pre_w[24]),
-        .I1(y_round_pre_w[25]),
+       (.I0(y_round_pre_w[22]),
+        .I1(y_round_pre_w[23]),
         .O(y_out_w2_carry_i_7_n_0));
   LUT2 #(
     .INIT(4'h2)) 
     y_out_w2_carry_i_8
-       (.I0(y_round_pre_w[23]),
-        .I1(y_round_pre_w[22]),
+       (.I0(y_round_pre_w[21]),
+        .I1(y_round_pre_w[20]),
         .O(y_out_w2_carry_i_8_n_0));
-endmodule
-
-(* CHECK_LICENSE_TYPE = "fm_demod2_inst_9_axis_dc_blocker_roun_0_0,axis_dc_blocker_round_sat,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
-(* X_CORE_INFO = "axis_dc_blocker_round_sat,Vivado 2023.2" *) 
-(* NotValidForBitStream *)
-module fm_demod2_inst_6_axis_dc_blocker_roun_0_0
-   (aclk,
-    aresetn,
-    s_axis_tvalid,
-    s_axis_tready,
-    s_axis_tdata,
-    m_axis_tvalid,
-    m_axis_tready,
-    m_axis_tdata);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 aclk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aclk, ASSOCIATED_BUSIF m_axis:s_axis, ASSOCIATED_RESET aresetn, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_50M, INSERT_VIP 0" *) input aclk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 aresetn RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input aresetn;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TVALID" *) input s_axis_tvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TREADY" *) output s_axis_tready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis, TDATA_NUM_BYTES 3, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 76800000, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_50M, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 4} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}, INSERT_VIP 0" *) input [23:0]s_axis_tdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TVALID" *) output m_axis_tvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TREADY" *) input m_axis_tready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axis, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 76800000, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_50M, LAYERED_METADATA undef, INSERT_VIP 0" *) output [15:0]m_axis_tdata;
-
-  wire aclk;
-  wire aresetn;
-  wire [15:0]m_axis_tdata;
-  wire m_axis_tready;
-  wire m_axis_tvalid;
-  wire [23:0]s_axis_tdata;
-  wire s_axis_tready;
-  wire s_axis_tvalid;
-
-  fm_demod2_inst_6_axis_dc_blocker_roun_0_0_axis_dc_blocker_round_sat inst
-       (.aclk(aclk),
-        .aresetn(aresetn),
-        .m_axis_tdata(m_axis_tdata),
-        .m_axis_tready(m_axis_tready),
-        .m_axis_tvalid_reg_0(m_axis_tvalid),
-        .s_axis_tdata(s_axis_tdata),
-        .s_axis_tready(s_axis_tready),
-        .s_axis_tvalid(s_axis_tvalid));
 endmodule
 `ifndef GLBL
 `define GLBL

@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "axis_dc_blocker_round_sat,Vivado 2023.2" *)
 (* CHECK_LICENSE_TYPE = "fm_demod2_inst_3_axis_dc_blocker_roun_0_0,axis_dc_blocker_round_sat,{}" *)
-(* CORE_GENERATION_INFO = "fm_demod2_inst_3_axis_dc_blocker_roun_0_0,axis_dc_blocker_round_sat,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=axis_dc_blocker_round_sat,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,IN_W=24,OUT_W=16,ACC_W=40,K=15,SHIFT_R=8}" *)
+(* CORE_GENERATION_INFO = "fm_demod2_inst_3_axis_dc_blocker_roun_0_0,axis_dc_blocker_round_sat,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=axis_dc_blocker_round_sat,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,IN_W=24,OUT_W=16,ACC_W=40,K=15,SHIFT_R=6}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module fm_demod2_inst_3_axis_dc_blocker_roun_0_0 (
@@ -100,7 +100,7 @@ output wire [15 : 0] m_axis_tdata;
     .OUT_W(16),
     .ACC_W(40),
     .K(15),
-    .SHIFT_R(8)
+    .SHIFT_R(6)
   ) inst (
     .aclk(aclk),
     .aresetn(aresetn),

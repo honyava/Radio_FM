@@ -57,7 +57,8 @@ SPECTRUM_SMOOTH_ALPHA = 0.18
 REMOVE_DC = True
 
 # Initial view limits. Set None to use auto on first draw.
-TIME_Y_LIM: Optional[Tuple[float, float]] = (-8000.0, 8000.0)
+# Полный диапазон int16 по амплитуде на осциллограмме MPX
+TIME_Y_LIM: Optional[Tuple[float, float]] = (-(2**15), 2**15)
 SPEC_Y_LIM: Tuple[float, float] = (-140.0, 5.0)
 
 # Audio / stereo decode
@@ -66,9 +67,12 @@ AUDIO_FS = 48000
 AUDIO_BLOCK_SAMPLES_IN = 4096
 AUDIO_STREAM_BLOCKSIZE = 1024
 AUDIO_MAX_BUFFER_MS = 300
-AUDIO_GAIN = 2.5
+AUDIO_GAIN = 1
 DEEMPHASIS_US = 50.0   # Европа обычно 50 мкс; для США часто 75.0
 PILOT_MIN_RMS = 2e-4
+
+# Вывод: "stereo" — левый/правый после декода L-R; "mono" — сумма (L+R)/2 на оба канала.
+AUDIO_OUTPUT_MODE_DEFAULT = "stereo"
 
 # Mouse control help:
 #   wheel            -> zoom X+Y under cursor
@@ -245,7 +249,16 @@ class StereoDecoder:
         if self.deemph_zi is not None:
             self.deemph_zi[...] = 0.0
 
-    def process(self, samples_i16: np.ndarray) -> np.ndarray:
+    def process(
+        self,
+        samples_i16: np.ndarray,
+        output_mode: str = "stereo",
+    ) -> np.ndarray:
+        """
+        output_mode:
+          - "stereo" — полный MPX-стерео (L и R могут различаться).
+          - "mono"    — даунмикс (L+R)/2 на оба канала, без «ширины» стерео.
+        """
         x = samples_i16.astype(np.float32) / FULL_SCALE
 
         mono, self.zi_mono = sosfilt(self.mono_lp, x, zi=self.zi_mono)
@@ -262,7 +275,12 @@ class StereoDecoder:
 
         left = 0.5 * (mono + lr)
         right = 0.5 * (mono - lr)
-        audio = np.column_stack((left, right)).astype(np.float32)
+
+        if output_mode == "mono":
+            m_mix = 0.5 * (left + right)
+            audio = np.column_stack((m_mix, m_mix)).astype(np.float32)
+        else:
+            audio = np.column_stack((left, right)).astype(np.float32)
 
         if self.up != 1 or self.down != 1:
             audio = resample_poly(audio, self.up, self.down, axis=0).astype(np.float32)
@@ -503,7 +521,8 @@ def print_help() -> None:
     print("  0..9             -> select station by ID (0..9)")
     print("  =                -> station 10")
     print("  F1..F11          -> stations 0..10 (F1=0 .. F11=10)")
-    print("  m                -> mute/unmute stereo audio")
+    print("  m                -> mute/unmute audio")
+    print("  s                -> toggle audio: stereo (L/R) / mono (sum on both)")
 
 
 def parse_station_hotkey(key: str) -> Optional[int]:
@@ -699,6 +718,7 @@ def update_plot(
     spec_avg: SpectrumAverager,
     interactor: PlotInteractor,
     audio_enabled: bool,
+    audio_output_mode: str,
 ) -> None:
     time_data = ring.get(time_samples).astype(np.float32)
     if len(time_data) < time_samples:
@@ -727,7 +747,8 @@ def update_plot(
         avail_text += ",..."
     fig.suptitle(
         "UDP MPX realtime | "
-        f"station={st_text} | avail=[{avail_text}] | audio={'on' if audio_enabled else 'mute'} | "
+        f"station={st_text} | avail=[{avail_text}] | "
+        f"audio={'on' if audio_enabled else 'mute'} ({audio_output_mode}) | "
         f"packets={packets_received} | bad={bad_packets} | Fs_est={sample_rate_est:.1f} Sa/s",
         fontsize=12,
     )
@@ -743,6 +764,12 @@ def main() -> None:
         default=None,
         metavar="N",
         help=f"начальная станция по id из пакета (часто 0..{MAX_STATION_ID})",
+    )
+    parser.add_argument(
+        "--audio-mode",
+        choices=("stereo", "mono"),
+        default=AUDIO_OUTPUT_MODE_DEFAULT,
+        help="stereo: L/R из MPX; mono: сумма (L+R)/2 на оба канала",
     )
     args = parser.parse_args()
     initial_station: Optional[int] = (
@@ -781,6 +808,8 @@ def main() -> None:
     print(f"TIME_WINDOW_S  = {TIME_WINDOW_S}")
     print(f"SPECTRUM_WINDOW_S = {SPECTRUM_WINDOW_S}")
     print(f"AUDIO = {'on' if ENABLE_AUDIO else 'off'}")
+    audio_output_mode: str = args.audio_mode
+    print(f"AUDIO_MODE = {audio_output_mode} (--audio-mode stereo|mono, hotkey s)")
     print_help()
 
     packets_received = 0
@@ -836,6 +865,11 @@ def main() -> None:
             state = audio_player.toggle()
             print(f"audio {'on' if state else 'mute'}")
             return
+        elif key == "s" and ENABLE_AUDIO:
+            nonlocal audio_output_mode
+            audio_output_mode = "mono" if audio_output_mode == "stereo" else "stereo"
+            print(f"audio mode -> {audio_output_mode}")
+            return
 
         hot_station = parse_station_hotkey(key)
         if hot_station is not None:
@@ -890,7 +924,9 @@ def main() -> None:
                         block = audio_in_queue.pop_block(AUDIO_BLOCK_SAMPLES_IN)
                         if block is None:
                             break
-                        stereo_audio = stereo_decoder.process(block)
+                        stereo_audio = stereo_decoder.process(
+                            block, output_mode=audio_output_mode
+                        )
                         audio_player.push(stereo_audio)
 
             h = pkt.header
@@ -925,6 +961,7 @@ def main() -> None:
                 spec_avg,
                 interactor,
                 audio_enabled=(audio_player.enabled if audio_player is not None else False),
+                audio_output_mode=audio_output_mode,
             )
             next_plot_t = now + 1.0 / PLOT_UPDATE_HZ
 

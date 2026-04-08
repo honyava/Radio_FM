@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Wed Apr  8 12:33:58 2026
-// Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.4 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/reting/Desktop/Github/Radio_FM/ltc2208_max5885.gen/sources_1/bd/fm_hdmi/ip/fm_hdmi_clk_wiz_0_2/fm_hdmi_clk_wiz_0_2_sim_netlist.v
+// Date        : Thu Mar  5 20:01:47 2026
+// Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
+// Command     : write_verilog -force -mode funcsim -rename_top fm_hdmi_clk_wiz_0_2 -prefix
+//               fm_hdmi_clk_wiz_0_2_ fm_hdmi_clk_wiz_0_2_sim_netlist.v
 // Design      : fm_hdmi_clk_wiz_0_2
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -38,7 +38,7 @@ module fm_hdmi_clk_wiz_0_2
   wire locked;
   wire resetn;
 
-  fm_hdmi_clk_wiz_0_2_clk_wiz inst
+  fm_hdmi_clk_wiz_0_2_fm_hdmi_clk_wiz_0_2_clk_wiz inst
        (.clk_adc(clk_adc),
         .clk_adcR(clk_adcR),
         .clk_in1(clk_in1),
@@ -48,7 +48,7 @@ module fm_hdmi_clk_wiz_0_2
         .resetn(resetn));
 endmodule
 
-module fm_hdmi_clk_wiz_0_2_clk_wiz
+module fm_hdmi_clk_wiz_0_2_fm_hdmi_clk_wiz_0_2_clk_wiz
    (clkfb_in,
     clk_adc,
     clk_adcR,

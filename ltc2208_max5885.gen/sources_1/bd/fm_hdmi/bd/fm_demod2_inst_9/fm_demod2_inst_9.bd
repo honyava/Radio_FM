@@ -354,12 +354,6 @@
                     "value": "0",
                     "value_src": "constant"
                   },
-                  "FREQ_HZ": {
-                    "value": "76800000"
-                  },
-                  "PHASE": {
-                    "value": "65.0"
-                  },
                   "CLK_DOMAIN": {
                     "value": "fm_hdmi_clk_50M",
                     "value_src": "ip_prop"
@@ -1099,7 +1093,7 @@
               "TDATA": {
                 "physical_name": "S_AXIS_DATA_tdata",
                 "direction": "I",
-                "left": "23",
+                "left": "31",
                 "right": "0"
               },
               "TREADY": {
@@ -1265,6 +1259,14 @@
             "xci_name": "fm_demod2_inst_9_axis_dc_blocker_roun_0_0",
             "xci_path": "ip/fm_demod2_inst_9_axis_dc_blocker_roun_0_0/fm_demod2_inst_9_axis_dc_blocker_roun_0_0.xci",
             "inst_hier_path": "dec384to192_blockDC/axis_dc_blocker_roun_0",
+            "parameters": {
+              "IN_W": {
+                "value": "24"
+              },
+              "SHIFT_R": {
+                "value": "6"
+              }
+            },
             "reference_info": {
               "ref_type": "hdl",
               "ref_name": "axis_dc_blocker_round_sat",
@@ -1372,12 +1374,6 @@
                   "HAS_TLAST": {
                     "value": "0",
                     "value_src": "constant"
-                  },
-                  "FREQ_HZ": {
-                    "value": "76800000"
-                  },
-                  "PHASE": {
-                    "value": "65.0"
                   },
                   "CLK_DOMAIN": {
                     "value": "fm_hdmi_clk_50M",
@@ -1526,7 +1522,7 @@
               "TDATA": {
                 "physical_name": "M_AXIS_DOUT_tdata",
                 "direction": "O",
-                "left": "23",
+                "left": "31",
                 "right": "0"
               },
               "TREADY": {
@@ -1690,7 +1686,7 @@
                 "value": "32"
               },
               "Output_Width": {
-                "value": "24"
+                "value": "25"
               },
               "Phase_Format": {
                 "value": "Radians"

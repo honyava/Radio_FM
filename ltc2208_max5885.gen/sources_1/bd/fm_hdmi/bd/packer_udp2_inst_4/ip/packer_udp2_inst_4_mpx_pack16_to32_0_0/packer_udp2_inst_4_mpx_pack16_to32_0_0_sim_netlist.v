@@ -2,16 +2,57 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Wed Apr  8 12:33:57 2026
-// Host        : reting-B650-EAGLE-AX running 64-bit Ubuntu 24.04.4 LTS
+// Date        : Fri Mar  6 12:28:49 2026
+// Host        : reting-ThinkBook-14-G7-IAH running 64-bit Ubuntu 24.04.4 LTS
 // Command     : write_verilog -force -mode funcsim -rename_top packer_udp2_inst_4_mpx_pack16_to32_0_0 -prefix
-//               packer_udp2_inst_4_mpx_pack16_to32_0_0_ packer_udp2_inst_8_mpx_pack16_to32_0_0_sim_netlist.v
-// Design      : packer_udp2_inst_8_mpx_pack16_to32_0_0
+//               packer_udp2_inst_4_mpx_pack16_to32_0_0_ fm_hdmi_mpx_pack16_to32_0_0_sim_netlist.v
+// Design      : fm_hdmi_mpx_pack16_to32_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7z020clg400-2
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
+
+(* CHECK_LICENSE_TYPE = "fm_hdmi_mpx_pack16_to32_0_0,mpx_pack16_to32,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
+(* X_CORE_INFO = "mpx_pack16_to32,Vivado 2023.2" *) 
+(* NotValidForBitStream *)
+module packer_udp2_inst_4_mpx_pack16_to32_0_0
+   (clk,
+    rst_n,
+    s_valid,
+    s_data,
+    s_ready,
+    out_ready,
+    out_valid,
+    out_data);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_50M, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst_n RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst_n;
+  input s_valid;
+  input [15:0]s_data;
+  output s_ready;
+  input out_ready;
+  output out_valid;
+  output [31:0]out_data;
+
+  wire clk;
+  wire [31:0]out_data;
+  wire out_ready;
+  wire out_valid;
+  wire rst_n;
+  wire [15:0]s_data;
+  wire s_ready;
+  wire s_valid;
+
+  packer_udp2_inst_4_mpx_pack16_to32_0_0_mpx_pack16_to32 inst
+       (.clk(clk),
+        .out_data(out_data),
+        .out_ready(out_ready),
+        .out_valid(out_valid),
+        .rst_n(rst_n),
+        .s_data(s_data),
+        .s_ready(s_ready),
+        .s_valid(s_valid));
+endmodule
 
 module packer_udp2_inst_4_mpx_pack16_to32_0_0_mpx_pack16_to32
    (s_ready,
@@ -379,47 +420,6 @@ module packer_udp2_inst_4_mpx_pack16_to32_0_0_mpx_pack16_to32
        (.I0(out_ready),
         .I1(half),
         .O(s_ready));
-endmodule
-
-(* CHECK_LICENSE_TYPE = "packer_udp2_inst_8_mpx_pack16_to32_0_0,mpx_pack16_to32,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
-(* X_CORE_INFO = "mpx_pack16_to32,Vivado 2023.2" *) 
-(* NotValidForBitStream *)
-module packer_udp2_inst_4_mpx_pack16_to32_0_0
-   (clk,
-    rst_n,
-    s_valid,
-    s_data,
-    s_ready,
-    out_ready,
-    out_valid,
-    out_data);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 76800000, FREQ_TOLERANCE_HZ 0, PHASE 65.0, CLK_DOMAIN fm_hdmi_clk_50M, INSERT_VIP 0" *) input clk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst_n RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst_n;
-  input s_valid;
-  input [15:0]s_data;
-  output s_ready;
-  input out_ready;
-  output out_valid;
-  output [31:0]out_data;
-
-  wire clk;
-  wire [31:0]out_data;
-  wire out_ready;
-  wire out_valid;
-  wire rst_n;
-  wire [15:0]s_data;
-  wire s_ready;
-  wire s_valid;
-
-  packer_udp2_inst_4_mpx_pack16_to32_0_0_mpx_pack16_to32 inst
-       (.clk(clk),
-        .out_data(out_data),
-        .out_ready(out_ready),
-        .out_valid(out_valid),
-        .rst_n(rst_n),
-        .s_data(s_data),
-        .s_ready(s_ready),
-        .s_valid(s_valid));
 endmodule
 `ifndef GLBL
 `define GLBL
