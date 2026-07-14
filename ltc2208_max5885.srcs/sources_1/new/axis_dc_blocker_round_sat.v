@@ -4,7 +4,8 @@ module axis_dc_blocker_round_sat #
     parameter integer OUT_W   = 16,
     parameter integer ACC_W   = 40,
     parameter integer K       = 15,
-    parameter integer SHIFT_R = 8   // предполагается SHIFT_R >= 1
+    parameter integer SHIFT_R = 8,  // предполагается SHIFT_R >= 1
+    parameter integer STARTUP_DROP = 64
 )
 (
     input  wire                     aclk,
@@ -24,11 +25,18 @@ module axis_dc_blocker_round_sat #
     // =========================================================
     // State of DC blocker
     // =========================================================
+    localparam [15:0] STARTUP_DROP_COUNT = STARTUP_DROP;
     reg signed [ACC_W-1:0] mean;
+    reg [15:0] startup_drop_count;
+    wire startup_done = (startup_drop_count == 16'd0);
 
     // =========================================================
-    // Stage 1 registers
+    // Pipeline registers
     // =========================================================
+    reg                    st0_valid;
+    reg signed [ACC_W-1:0] st0_diff;
+    reg signed [ACC_W-1:0] st0_corr;
+
     reg                    st1_valid;
     reg signed [ACC_W-1:0] st1_y_ext;
 
@@ -36,18 +44,20 @@ module axis_dc_blocker_round_sat #
     // AXIS handshake between stages
     // =========================================================
     wire st2_ready;
+    wire st1_ready;
     wire st1_pop;
+    wire st0_pop;
     wire st0_push;
 
     assign st2_ready     = m_axis_tready | ~m_axis_tvalid;
+    assign st1_ready     = ~st1_valid | st2_ready;
     assign st1_pop       = st1_valid & st2_ready;
-    assign s_axis_tready = ~st1_valid | st2_ready;
-    assign st0_push      = s_axis_tvalid & s_axis_tready;
+    assign st0_pop       = st0_valid & st1_ready;
+    assign s_axis_tready = ~st0_valid;
+    assign st0_push      = s_axis_tvalid & s_axis_tready & startup_done;
 
     // =========================================================
-    // Stage 0 combinational math (input -> stage1 regs)
-    // mean[n+1] = mean[n] + (x[n] - mean[n]) / 2^K
-    // y[n]      = (x[n] - mean[n]) - (x[n] - mean[n]) / 2^K
+    // Stage 0 combinational math (input -> stage0 regs)
     // =========================================================
     wire signed [ACC_W-1:0] x_ext_w;
     assign x_ext_w = {{(ACC_W-IN_W){s_axis_tdata[IN_W-1]}}, s_axis_tdata};
@@ -59,13 +69,18 @@ module axis_dc_blocker_round_sat #
     wire signed [ACC_W-1:0] corr_w;
     assign corr_w = diff_w >>> K;
 
+    // =========================================================
+    // Stage 1 combinational math (stage0 regs -> stage1 regs)
+    // mean[n+1] = mean[n] + (x[n] - mean[n]) / 2^K
+    // y[n] = (x[n] - mean[n]) - (x[n] - mean[n]) / 2^K
+    // =========================================================
     (* use_dsp = "yes" *)
     wire signed [ACC_W-1:0] mean_next_w;
-    assign mean_next_w = mean + corr_w;
+    assign mean_next_w = mean + st0_corr;
 
     (* use_dsp = "yes" *)
     wire signed [ACC_W-1:0] y_ext_w;
-    assign y_ext_w = diff_w - corr_w;
+    assign y_ext_w = st0_diff - st0_corr;
 
     // =========================================================
     // Stage 1 combinational math (stage1 regs -> output regs)
@@ -102,11 +117,19 @@ module axis_dc_blocker_round_sat #
     always @(posedge aclk) begin
         if (!aresetn) begin
             mean          <= {ACC_W{1'b0}};
+            st0_valid     <= 1'b0;
+            st0_diff      <= {ACC_W{1'b0}};
+            st0_corr      <= {ACC_W{1'b0}};
             st1_valid     <= 1'b0;
             st1_y_ext     <= {ACC_W{1'b0}};
             m_axis_tvalid <= 1'b0;
             m_axis_tdata  <= {OUT_W{1'b0}};
+            startup_drop_count <= STARTUP_DROP_COUNT;
         end else begin
+            if (!startup_done && s_axis_tvalid && s_axis_tready) begin
+                startup_drop_count <= startup_drop_count - 16'd1;
+            end
+
             // -------------------------
             // stage2: st1 -> m_axis
             // -------------------------
@@ -118,14 +141,24 @@ module axis_dc_blocker_round_sat #
             end
 
             // -------------------------
-            // stage1: input -> st1 regs
+            // stage1: st0 -> st1 regs
             // -------------------------
-            if (st0_push) begin
-                mean      <= mean_next_w;
-                st1_y_ext <= y_ext_w;
-                st1_valid <= 1'b1;
+            if (st0_pop) begin
+                mean          <= mean_next_w;
+                st1_y_ext     <= y_ext_w;
+                st1_valid     <= 1'b1;
+                st0_valid     <= 1'b0;
             end else if (st1_pop) begin
                 st1_valid <= 1'b0;
+            end
+
+            // -------------------------
+            // stage0: input -> st0 regs
+            // -------------------------
+            if (st0_push) begin
+                st0_diff      <= diff_w;
+                st0_corr      <= corr_w;
+                st0_valid     <= 1'b1;
             end
         end
     end

@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module mpx_pack16_to32 (
     input  wire        clk,
     input  wire        rst_n,

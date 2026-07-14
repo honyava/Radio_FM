@@ -1,4 +1,6 @@
 import argparse
+import multiprocessing as mp
+import queue
 import socket
 import threading
 import time
@@ -20,6 +22,11 @@ try:
 except ImportError:
     butter = hilbert = lfilter = resample_poly = sosfilt = sosfilt_zi = None
 
+try:
+    from rds_decoder import RDSDecoder
+except ImportError:
+    RDSDecoder = None
+
 # ============================================================
 # SETTINGS
 # ============================================================
@@ -39,8 +46,37 @@ NETWORK_ENDIAN = ">"
 # Начальная станция (id из заголовка блока ST, обычно 0 .. N-1).
 TARGET_STATION: Optional[int] = 0
 
-# Подсказка для горячих клавиш: сейчас в проекте до 11 станций (id 0..10).
-MAX_STATION_ID = 10
+# Текущая аппаратная конфигурация поддерживает 25 станций (id 0..24).
+MAX_STATION_ID = 24
+
+# Частотная сетка N=25: реальные московские станции распределены по всему FM-диапазону.
+STATION_PRESETS: Tuple[Tuple[float, str], ...] = (
+    (87.5, "Business FM"),
+    (88.3, "Ретро FM"),
+    (89.1, "Радио Jazz"),
+    (89.9, "Радио Record"),
+    (90.8, "Relax FM"),
+    (91.6, "Радио Культура"),
+    (92.8, "Радио РБК"),
+    (93.6, "Коммерсантъ FM"),
+    (94.4, "Первое спортивное радио"),
+    (95.2, "Rock FM"),
+    (96.0, "Дорожное радио"),
+    (96.8, "Детское радио"),
+    (97.6, "Вести FM"),
+    (98.4, "Новое радио"),
+    (99.2, "Орфей"),
+    (100.1, "Серебряный дождь"),
+    (100.9, "Радио Вера"),
+    (101.5, "Радио России"),
+    (102.5, "Comedy Radio"),
+    (103.4, "Маяк"),
+    (104.2, "Радио Energy"),
+    (105.0, "Радио Гордость"),
+    (105.7, "Русское радио"),
+    (107.0, "Маруся FM"),
+    (107.8, "Милицейская волна"),
+)
 
 TIME_WINDOW_S = 0.025
 SPECTRUM_WINDOW_S = 0.025
@@ -49,6 +85,7 @@ SPECTRUM_MAX_HZ = 192000 / 2
 
 PRINT_STATS_EVERY_S = 1.0
 SKIP_BAD_HEADER = True
+UDP_BATCH_PACKETS = 128
 
 # Spectrum display tuning
 FULL_SCALE = 32768.0
@@ -66,13 +103,14 @@ ENABLE_AUDIO = True
 AUDIO_FS = 48000
 AUDIO_BLOCK_SAMPLES_IN = 4096
 AUDIO_STREAM_BLOCKSIZE = 1024
-AUDIO_MAX_BUFFER_MS = 300
+AUDIO_MAX_BUFFER_MS = 800
 AUDIO_GAIN = 1
 DEEMPHASIS_US = 50.0   # Европа обычно 50 мкс; для США часто 75.0
 PILOT_MIN_RMS = 2e-4
 
 # Вывод: "stereo" — левый/правый после декода L-R; "mono" — сумма (L+R)/2 на оба канала.
-AUDIO_OUTPUT_MODE_DEFAULT = "stereo"
+AUDIO_OUTPUT_MODE_DEFAULT = "mono"
+RDS_ENABLED_DEFAULT = False
 
 # Mouse control help:
 #   wheel            -> zoom X+Y under cursor
@@ -84,10 +122,9 @@ AUDIO_OUTPUT_MODE_DEFAULT = "stereo"
 #   key 'f'          -> fit time Y once
 #   key 'r'          -> reset both subplots
 #   key 'h'          -> print help
-#   key '[' / ']'    -> previous / next station
-#   key '0'..'9'     -> direct station select (0..9)
-#   key '='          -> station 10 (один ключ рядом с цифрами)
-#   key F1..F11      -> stations 0..10 (F1=id0 .. F11=id10)
+#   left / right     -> previous / next station
+#   key '~'..'='     -> stations 0..12
+#   key 'q'..']'     -> stations 13..24
 #   key 'm'          -> mute/unmute audio
 #   CLI: --station N -> начальная станция
 
@@ -115,6 +152,25 @@ class StationBlock:
 class ParsedPacket:
     header: PacketHeader
     stations: List[StationBlock]
+    sample_matrix: Optional[np.ndarray] = None
+
+
+@dataclass
+class SelectedPacket:
+    header: PacketHeader
+    available_stations: List[int]
+    station: Optional[StationBlock]
+    selection_generation: int
+
+
+@dataclass
+class SelectedPacketBatch:
+    header: PacketHeader
+    available_stations: List[int]
+    station_id: Optional[int]
+    samples: np.ndarray
+    packet_count: int
+    selection_generation: int
 
 
 class RingInt16:
@@ -164,26 +220,36 @@ class RingInt16:
 
 class SampleBlockQueueInt16:
     def __init__(self):
-        self.buf = np.empty((0,), dtype=np.int16)
+        self.chunks: Deque[np.ndarray] = deque()
+        self.length = 0
 
     def append(self, arr: np.ndarray) -> None:
         if len(arr) == 0:
             return
         arr = np.ascontiguousarray(arr.astype(np.int16, copy=False))
-        if len(self.buf) == 0:
-            self.buf = arr.copy()
-        else:
-            self.buf = np.concatenate((self.buf, arr))
+        self.chunks.append(arr)
+        self.length += len(arr)
 
     def pop_block(self, n: int) -> Optional[np.ndarray]:
-        if len(self.buf) < n:
+        if self.length < n:
             return None
-        out = self.buf[:n].copy()
-        self.buf = self.buf[n:]
+        out = np.empty((n,), dtype=np.int16)
+        position = 0
+        while position < n:
+            chunk = self.chunks[0]
+            take = min(n - position, len(chunk))
+            out[position:position + take] = chunk[:take]
+            position += take
+            if take == len(chunk):
+                self.chunks.popleft()
+            else:
+                self.chunks[0] = chunk[take:]
+            self.length -= take
         return out
 
     def clear(self) -> None:
-        self.buf = np.empty((0,), dtype=np.int16)
+        self.chunks.clear()
+        self.length = 0
 
 
 class SpectrumAverager:
@@ -262,24 +328,20 @@ class StereoDecoder:
         x = samples_i16.astype(np.float32) / FULL_SCALE
 
         mono, self.zi_mono = sosfilt(self.mono_lp, x, zi=self.zi_mono)
-        pilot, self.zi_pilot = sosfilt(self.pilot_bp, x, zi=self.zi_pilot)
-
-        pilot_rms = float(np.sqrt(np.mean(pilot.astype(np.float64) ** 2) + 1e-20))
-        if pilot_rms < PILOT_MIN_RMS:
-            lr = np.zeros_like(mono)
-        else:
-            phase19 = np.unwrap(np.angle(hilbert(pilot)))
-            osc38 = np.cos(2.0 * phase19).astype(np.float32)
-            lr_raw = 2.0 * x * osc38
-            lr, self.zi_stereo = sosfilt(self.stereo_lp, lr_raw, zi=self.zi_stereo)
-
-        left = 0.5 * (mono + lr)
-        right = 0.5 * (mono - lr)
-
         if output_mode == "mono":
-            m_mix = 0.5 * (left + right)
-            audio = np.column_stack((m_mix, m_mix)).astype(np.float32)
+            audio = np.column_stack((mono, mono)).astype(np.float32)
         else:
+            pilot, self.zi_pilot = sosfilt(self.pilot_bp, x, zi=self.zi_pilot)
+            pilot_rms = float(np.sqrt(np.mean(pilot.astype(np.float64) ** 2) + 1e-20))
+            if pilot_rms < PILOT_MIN_RMS:
+                lr = np.zeros_like(mono)
+            else:
+                phase19 = np.unwrap(np.angle(hilbert(pilot)))
+                osc38 = np.cos(2.0 * phase19).astype(np.float32)
+                lr_raw = 2.0 * x * osc38
+                lr, self.zi_stereo = sosfilt(self.stereo_lp, lr_raw, zi=self.zi_stereo)
+            left = 0.5 * (mono + lr)
+            right = 0.5 * (mono - lr)
             audio = np.column_stack((left, right)).astype(np.float32)
 
         if self.up != 1 or self.down != 1:
@@ -317,6 +379,7 @@ class AudioPlayer:
             channels=2,
             dtype="float32",
             blocksize=self.blocksize,
+            latency="high",
             callback=self._callback,
         )
         self.stream.start()
@@ -370,6 +433,382 @@ class AudioPlayer:
             self.stream.close()
         except Exception:
             pass
+
+
+class MPXDSPWorker:
+    """Run selected-station audio DSP away from the UDP/UI thread."""
+
+    def __init__(self, audio_player, stereo_decoder, output_mode: str):
+        self.audio_player = audio_player
+        self.stereo_decoder = stereo_decoder
+        self.blocks = queue.Queue(maxsize=64)
+        self.lock = threading.Lock()
+        self.stop_event = threading.Event()
+        self.generation = 0
+        self.output_mode = output_mode
+        self.dropped_blocks = 0
+        self.thread = threading.Thread(target=self._run, name="mpx-audio", daemon=True)
+
+    def start(self) -> None:
+        self.thread.start()
+
+    def submit(self, block: np.ndarray) -> None:
+        with self.lock:
+            generation = self.generation
+        item = (generation, np.ascontiguousarray(block, dtype=np.int16))
+        try:
+            self.blocks.put_nowait(item)
+        except queue.Full:
+            try:
+                self.blocks.get_nowait()
+            except queue.Empty:
+                pass
+            with self.lock:
+                self.dropped_blocks += 1
+            self.blocks.put_nowait(item)
+
+    def reset(self) -> None:
+        with self.lock:
+            self.generation += 1
+        while True:
+            try:
+                self.blocks.get_nowait()
+            except queue.Empty:
+                break
+        if self.audio_player is not None:
+            self.audio_player.clear()
+
+    def set_output_mode(self, output_mode: str) -> None:
+        with self.lock:
+            self.output_mode = output_mode
+
+    def status(self) -> int:
+        with self.lock:
+            return self.dropped_blocks
+
+    def _run(self) -> None:
+        local_generation = -1
+        while not self.stop_event.is_set():
+            try:
+                generation, block = self.blocks.get(timeout=0.1)
+            except queue.Empty:
+                continue
+
+            if generation != local_generation:
+                if self.stereo_decoder is not None:
+                    self.stereo_decoder.reset()
+                local_generation = generation
+
+            with self.lock:
+                current_generation = self.generation
+                output_mode = self.output_mode
+            if generation != current_generation:
+                continue
+
+            if self.audio_player is not None and self.stereo_decoder is not None:
+                audio = self.stereo_decoder.process(block, output_mode=output_mode)
+                with self.lock:
+                    current_generation = self.generation
+                if generation == current_generation:
+                    self.audio_player.push(audio)
+
+    def close(self) -> None:
+        self.stop_event.set()
+        self.thread.join(timeout=2.0)
+
+
+class RDSWorker:
+    """Keep optional RDS decoding off the audio and GUI execution paths."""
+
+    def __init__(self, enabled: bool):
+        self.enabled = bool(enabled and RDSDecoder is not None)
+        self.display = "ожидание" if self.enabled else "off"
+        self.context = None
+        self.blocks = None
+        self.results = None
+        self.stop_event = None
+        self.generation = None
+        self.dropped_blocks = None
+        self.process = None
+        if not self.enabled:
+            return
+
+        self.context = mp.get_context("fork")
+        self.blocks = self.context.Queue(maxsize=128)
+        self.results = self.context.Queue(maxsize=4)
+        self.stop_event = self.context.Event()
+        self.generation = self.context.Value("Q", 0, lock=True)
+        self.dropped_blocks = self.context.Value("Q", 0, lock=True)
+        self.process = self.context.Process(
+            target=self._run, name="mpx-rds", daemon=True
+        )
+
+    def start(self) -> None:
+        if self.process is not None:
+            self.process.start()
+
+    def _publish(self, generation: int, display: str) -> None:
+        assert self.results is not None
+        try:
+            self.results.put_nowait((generation, display))
+        except queue.Full:
+            try:
+                self.results.get_nowait()
+            except queue.Empty:
+                pass
+            self.results.put_nowait((generation, display))
+
+    def _run(self) -> None:
+        assert RDSDecoder is not None
+        assert self.blocks is not None
+        assert self.stop_event is not None
+        assert self.generation is not None
+        decoder = RDSDecoder(FS)
+        local_generation = -1
+        last_display = ""
+        while not self.stop_event.is_set():
+            try:
+                block_generation, block = self.blocks.get(timeout=0.1)
+            except queue.Empty:
+                continue
+            with self.generation.get_lock():
+                current_generation = int(self.generation.value)
+            if block_generation != current_generation:
+                continue
+            if current_generation != local_generation:
+                decoder.reset()
+                local_generation = current_generation
+                last_display = "ожидание"
+                self._publish(current_generation, last_display)
+
+            display = decoder.process(block).display
+            if display != last_display:
+                last_display = display
+                self._publish(current_generation, display)
+
+    def submit(self, block: np.ndarray) -> None:
+        if not self.enabled:
+            return
+        assert self.blocks is not None
+        assert self.generation is not None
+        assert self.dropped_blocks is not None
+        with self.generation.get_lock():
+            generation = int(self.generation.value)
+        try:
+            self.blocks.put_nowait((generation, np.ascontiguousarray(block, dtype=np.int16)))
+        except queue.Full:
+            with self.dropped_blocks.get_lock():
+                self.dropped_blocks.value += 1
+
+    def reset(self) -> None:
+        if not self.enabled:
+            return
+        assert self.blocks is not None
+        assert self.results is not None
+        assert self.generation is not None
+        with self.generation.get_lock():
+            self.generation.value += 1
+        self.display = "ожидание"
+        while True:
+            try:
+                self.blocks.get_nowait()
+            except queue.Empty:
+                break
+        while True:
+            try:
+                self.results.get_nowait()
+            except queue.Empty:
+                break
+
+    def status(self) -> Tuple[str, int]:
+        if not self.enabled:
+            return "off", 0
+        assert self.results is not None
+        assert self.generation is not None
+        assert self.dropped_blocks is not None
+        with self.generation.get_lock():
+            generation = int(self.generation.value)
+        while True:
+            try:
+                result_generation, display = self.results.get_nowait()
+            except queue.Empty:
+                break
+            if result_generation == generation:
+                self.display = display
+        with self.dropped_blocks.get_lock():
+            dropped = int(self.dropped_blocks.value)
+        return self.display, dropped
+
+    def close(self) -> None:
+        if self.process is None:
+            return
+        assert self.stop_event is not None
+        self.stop_event.set()
+        self.process.join(timeout=2.0)
+        if self.process.is_alive():
+            self.process.terminate()
+            self.process.join(timeout=1.0)
+        assert self.blocks is not None
+        assert self.results is not None
+        self.blocks.close()
+        self.results.close()
+
+
+class PacketReceiverWorker:
+    """Parse UDP in a separate process and pass coarse MPX batches to the GUI."""
+
+    def __init__(self, sock: socket.socket, selected_station: Optional[int]):
+        self.sock = sock
+        self.context = mp.get_context("fork")
+        self.batches = self.context.Queue(maxsize=256)
+        self.stop_event = self.context.Event()
+        initial_station = -1 if selected_station is None else selected_station
+        self.selection = self.context.Array("q", (initial_station, 0), lock=True)
+        self.shared_counters = self.context.Array("Q", (0, 0, 0, 0, 0), lock=True)
+        self.process = self.context.Process(
+            target=self._run, name="udp-mpx-rx", daemon=True
+        )
+
+    def start(self) -> None:
+        self.process.start()
+
+    def _run(self) -> None:
+        sample_chunks: List[np.ndarray] = []
+        packet_count = 0
+        batch_generation = -1
+        last_header: Optional[PacketHeader] = None
+        available_stations: List[int] = []
+        station_id: Optional[int] = None
+        previous_sequence: Optional[int] = None
+        previous_sample_base: Optional[int] = None
+        previous_sample_count: Optional[int] = None
+
+        def flush_batch() -> None:
+            nonlocal sample_chunks, packet_count
+            if packet_count == 0 or last_header is None:
+                return
+            samples = (
+                np.concatenate(sample_chunks)
+                if sample_chunks
+                else np.empty((0,), dtype=np.int16)
+            )
+            batch = SelectedPacketBatch(
+                header=last_header,
+                available_stations=available_stations,
+                station_id=station_id,
+                samples=samples,
+                packet_count=packet_count,
+                selection_generation=batch_generation,
+            )
+            try:
+                self.batches.put_nowait(batch)
+            except queue.Full:
+                try:
+                    dropped = self.batches.get_nowait()
+                except queue.Empty:
+                    dropped = None
+                with self.shared_counters.get_lock():
+                    self.shared_counters[1] += (
+                        0 if dropped is None else dropped.packet_count
+                    )
+                self.batches.put_nowait(batch)
+            sample_chunks = []
+            packet_count = 0
+
+        while not self.stop_event.is_set():
+            try:
+                data, addr = self.sock.recvfrom(RECV_SIZE)
+            except socket.timeout:
+                continue
+            except OSError:
+                break
+            with self.selection.get_lock():
+                selected_value = int(self.selection[0])
+                selection_generation = int(self.selection[1])
+            selected_station = None if selected_value < 0 else selected_value
+            if selection_generation != batch_generation:
+                sample_chunks = []
+                packet_count = 0
+                batch_generation = selection_generation
+                previous_sequence = None
+                previous_sample_base = None
+                previous_sample_count = None
+            packet = parse_selected_packet(data, selected_station, selection_generation)
+            if packet is None:
+                with self.shared_counters.get_lock():
+                    self.shared_counters[0] += 1
+                if not SKIP_BAD_HEADER:
+                    print(f"Bad packet from {addr}, len={len(data)}")
+                continue
+
+            header = packet.header
+            if previous_sequence is not None:
+                expected_sequence = (previous_sequence + 1) & 0xFFFFFFFF
+                if header.frame_seq != expected_sequence:
+                    delta = (header.frame_seq - expected_sequence) & 0xFFFFFFFF
+                    missing = delta if delta < 0x80000000 else 0
+                    with self.shared_counters.get_lock():
+                        self.shared_counters[2] += missing
+                        self.shared_counters[3] += 1
+            if previous_sample_base is not None and previous_sample_count is not None:
+                if header.sample_base != previous_sample_base + previous_sample_count:
+                    with self.shared_counters.get_lock():
+                        self.shared_counters[4] += 1
+
+            previous_sequence = header.frame_seq
+            previous_sample_base = header.sample_base
+            previous_sample_count = header.samples_per_station
+            last_header = header
+            available_stations = packet.available_stations
+            station_id = None if packet.station is None else packet.station.station_id
+            if packet.station is not None:
+                sample_chunks.append(packet.station.samples)
+            packet_count += 1
+            if packet_count >= UDP_BATCH_PACKETS:
+                flush_batch()
+
+        flush_batch()
+
+    def pop_batches(self, limit: int = 128) -> List[SelectedPacketBatch]:
+        batches = []
+        try:
+            batches.append(self.batches.get(timeout=0.01))
+        except queue.Empty:
+            return batches
+        while len(batches) < limit:
+            try:
+                batches.append(self.batches.get_nowait())
+            except queue.Empty:
+                break
+        return batches
+
+    def counters(self) -> Tuple[int, int, int, int, int]:
+        with self.shared_counters.get_lock():
+            return tuple(int(value) for value in self.shared_counters)
+
+    def set_station(self, selected_station: Optional[int]) -> int:
+        with self.selection.get_lock():
+            self.selection[0] = -1 if selected_station is None else selected_station
+            self.selection[1] += 1
+            generation = int(self.selection[1])
+        while True:
+            try:
+                self.batches.get_nowait()
+            except queue.Empty:
+                break
+        return generation
+
+    def generation(self) -> int:
+        with self.selection.get_lock():
+            return int(self.selection[1])
+
+    def close(self) -> None:
+        self.stop_event.set()
+        self.process.join(timeout=2.0)
+        if self.process.is_alive():
+            self.process.terminate()
+            self.process.join(timeout=1.0)
+        self.batches.close()
 
 
 class PlotInteractor:
@@ -517,27 +956,45 @@ def print_help() -> None:
     print("  f                -> fit time Y")
     print("  r                -> reset both subplots")
     print("  h                -> show this help")
-    print("  [ / ]            -> previous / next station")
-    print("  0..9             -> select station by ID (0..9)")
-    print("  =                -> station 10")
-    print("  F1..F11          -> stations 0..10 (F1=0 .. F11=10)")
+    print("  left / right     -> previous / next station")
+    print("  ~ 1..0 - =       -> stations 0..12")
+    print("  q w e r t y u i o p [ ] -> stations 13..24")
     print("  m                -> mute/unmute audio")
     print("  s                -> toggle audio: stereo (L/R) / mono (sum on both)")
 
 
 def parse_station_hotkey(key: str) -> Optional[int]:
-    """
-    Map a single key press to a station id, or None if not a station shortcut.
-    F1 -> 0, F2 -> 1, ... F11 -> 10. '=' -> 10.
-    """
+    """Map a top-row or QWERTY key to one of the 25 station IDs."""
     k = (key or "").lower()
-    if k in ("=", "equal"):
-        return 10
-    if len(k) >= 2 and k[0] == "f" and k[1:].isdigit():
-        fn = int(k[1:])
-        if 1 <= fn <= 11:
-            return fn - 1
-    return None
+    hotkeys = {
+        "`": 0, "~": 0, "grave": 0,
+        "1": 1, "2": 2, "3": 3, "4": 4, "5": 5,
+        "6": 6, "7": 7, "8": 8, "9": 9, "0": 10,
+        "-": 11, "minus": 11,
+        "=": 12, "equal": 12,
+        "q": 13, "й": 13,
+        "w": 14, "ц": 14,
+        "e": 15, "у": 15,
+        "r": 16, "к": 16,
+        "t": 17, "е": 17,
+        "y": 18, "н": 18,
+        "u": 19, "г": 19,
+        "i": 20, "ш": 20,
+        "o": 21, "щ": 21,
+        "p": 22, "з": 22,
+        "[": 23, "{": 23, "bracketleft": 23, "х": 23,
+        "]": 24, "}": 24, "bracketright": 24, "ъ": 24,
+    }
+    return hotkeys.get(k)
+
+
+def station_label(station_id: Optional[int]) -> str:
+    if station_id is None:
+        return "auto"
+    if 0 <= station_id < len(STATION_PRESETS):
+        freq_mhz, name = STATION_PRESETS[station_id]
+        return f"{station_id}: {freq_mhz:.1f} MHz {name}"
+    return str(station_id)
 
 
 def u32_words_from_bytes(data: bytes) -> np.ndarray:
@@ -582,10 +1039,15 @@ def parse_packet(data: bytes) -> Optional[ParsedPacket]:
     marker = (w5 >> 16) & 0xFFFF
     station_mask = w5 & 0xFFFF
 
-    if magic != APP_MAGIC or version != APP_VERSION or marker != APP_MARKER:
+    if (
+        magic != APP_MAGIC
+        or version != APP_VERSION
+        or marker != APP_MARKER
+        or samples_per_station != 2 * words_per_station
+    ):
         return None
 
-    hdr = PacketHeader(
+    header = PacketHeader(
         magic=magic,
         version=version,
         active_stations=active_stations,
@@ -596,30 +1058,96 @@ def parse_packet(data: bytes) -> Optional[ParsedPacket]:
         station_mask=station_mask,
     )
 
-    idx = 6
-    stations: List[StationBlock] = []
-    for _ in range(active_stations):
-        if idx >= len(words):
-            return None
-        sh = int(words[idx])
-        idx += 1
+    if active_stations == 0:
+        return ParsedPacket(header=header, stations=[])
 
-        sh_magic = (sh >> 16) & 0xFFFF
-        station_id = (sh >> 8) & 0xFF
-        flags = sh & 0xFF
-        if sh_magic != STATION_HDR_MAGIC:
-            return None
+    stride = 1 + words_per_station
+    required_words = 6 + active_stations * stride
+    if len(words) < required_words:
+        return None
+    matrix = words[6:required_words].reshape(active_stations, stride)
+    station_headers = matrix[:, 0]
+    if np.any(((station_headers >> 16) & 0xFFFF) != STATION_HDR_MAGIC):
+        return None
 
-        end_idx = idx + words_per_station
-        if end_idx > len(words):
-            return None
+    sample_words = matrix[:, 1:]
+    high = ((sample_words >> 16) & 0xFFFF).astype(np.uint16).view(np.int16)
+    low = (sample_words & 0xFFFF).astype(np.uint16).view(np.int16)
+    sample_matrix = np.empty(
+        (active_stations, samples_per_station), dtype=np.int16
+    )
+    sample_matrix[:, 0::2] = high
+    sample_matrix[:, 1::2] = low
 
-        station_words = words[idx:end_idx]
-        idx = end_idx
-        samples = i16_samples_from_u32_words(station_words)
-        stations.append(StationBlock(station_id=station_id, flags=flags, samples=samples))
+    station_ids = ((station_headers >> 8) & 0xFF).astype(np.uint8)
+    flags = (station_headers & 0xFF).astype(np.uint8)
+    stations = [
+        StationBlock(int(station_ids[index]), int(flags[index]), sample_matrix[index])
+        for index in range(active_stations)
+    ]
+    return ParsedPacket(header=header, stations=stations, sample_matrix=sample_matrix)
 
-    return ParsedPacket(header=hdr, stations=stations)
+
+def parse_selected_packet(
+    data: bytes,
+    target_station: Optional[int],
+    selection_generation: int,
+) -> Optional[SelectedPacket]:
+    """Fast live-path parser that converts samples for only the selected station."""
+    words = u32_words_from_bytes(data)
+    if len(words) < 6:
+        return None
+
+    w0 = int(words[0])
+    active_stations = w0 & 0xFF
+    w4 = int(words[4])
+    samples_per_station = (w4 >> 16) & 0xFFFF
+    words_per_station = w4 & 0xFFFF
+    w5 = int(words[5])
+    if (
+        ((w0 >> 16) & 0xFFFF) != APP_MAGIC
+        or ((w0 >> 8) & 0xFF) != APP_VERSION
+        or ((w5 >> 16) & 0xFFFF) != APP_MARKER
+        or active_stations == 0
+        or samples_per_station != 2 * words_per_station
+    ):
+        return None
+
+    stride = 1 + words_per_station
+    required_words = 6 + active_stations * stride
+    if len(words) < required_words:
+        return None
+    payload = words[6:required_words]
+    station_headers = payload[np.arange(active_stations) * stride]
+    if np.any(((station_headers >> 16) & 0xFFFF) != STATION_HDR_MAGIC):
+        return None
+    station_ids = ((station_headers >> 8) & 0xFF).astype(np.uint8).tolist()
+    if len(set(station_ids)) != active_stations:
+        return None
+
+    selected_id = station_ids[0] if target_station is None else target_station
+    station = None
+    if selected_id in station_ids:
+        station_index = station_ids.index(selected_id)
+        first_word = station_index * stride + 1
+        sample_words = payload[first_word:first_word + words_per_station]
+        station = StationBlock(
+            station_id=selected_id,
+            flags=int(station_headers[station_index]) & 0xFF,
+            samples=i16_samples_from_u32_words(sample_words),
+        )
+
+    header = PacketHeader(
+        magic=APP_MAGIC,
+        version=APP_VERSION,
+        active_stations=active_stations,
+        frame_seq=int(words[1]),
+        sample_base=(int(words[3]) << 32) | int(words[2]),
+        samples_per_station=samples_per_station,
+        words_per_station=words_per_station,
+        station_mask=w5 & 0xFFFF,
+    )
+    return SelectedPacket(header, station_ids, station, selection_generation)
 
 
 def choose_station(pkt: ParsedPacket, target_station: Optional[int]) -> Optional[StationBlock]:
@@ -719,11 +1247,13 @@ def update_plot(
     interactor: PlotInteractor,
     audio_enabled: bool,
     audio_output_mode: str,
+    rds_text: str,
 ) -> None:
     time_data = ring.get(time_samples).astype(np.float32)
     if len(time_data) < time_samples:
         tmp = np.zeros((time_samples,), dtype=np.float32)
-        tmp[-len(time_data):] = time_data
+        if len(time_data):
+            tmp[-len(time_data):] = time_data
         time_data = tmp
 
     line_t.set_ydata(time_data)
@@ -735,20 +1265,22 @@ def update_plot(
     spec_data = ring.get(spec_samples)
     if len(spec_data) < spec_samples:
         tmp = np.zeros((spec_samples,), dtype=np.int16)
-        tmp[-len(spec_data):] = spec_data
+        if len(spec_data):
+            tmp[-len(spec_data):] = spec_data
         spec_data = tmp
 
     mag_db = compute_spectrum_dbfs(spec_data, spec_avg)
     line_f.set_ydata(mag_db)
 
-    st_text = "auto" if station_id is None else str(station_id)
-    avail_text = ",".join(map(str, available_stations[:24]))
-    if len(available_stations) > 24:
+    st_text = station_label(station_id)
+    avail_text = ",".join(map(str, available_stations[:25]))
+    if len(available_stations) > 25:
         avail_text += ",..."
     fig.suptitle(
         "UDP MPX realtime | "
         f"station={st_text} | avail=[{avail_text}] | "
         f"audio={'on' if audio_enabled else 'mute'} ({audio_output_mode}) | "
+        f"RDS={rds_text} | "
         f"packets={packets_received} | bad={bad_packets} | Fs_est={sample_rate_est:.1f} Sa/s",
         fontsize=12,
     )
@@ -771,6 +1303,17 @@ def main() -> None:
         default=AUDIO_OUTPUT_MODE_DEFAULT,
         help="stereo: L/R из MPX; mono: сумма (L+R)/2 на оба канала",
     )
+    parser.add_argument(
+        "--rds",
+        action="store_true",
+        default=RDS_ENABLED_DEFAULT,
+        help="включить программное декодирование RDS из MPX 57 kHz",
+    )
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        help="печатать стартовую информацию, смену станции и периодическую статистику",
+    )
     args = parser.parse_args()
     initial_station: Optional[int] = (
         args.station if args.station is not None else TARGET_STATION
@@ -787,6 +1330,10 @@ def main() -> None:
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, SO_RCVBUF)
     sock.bind((UDP_IP, UDP_PORT))
     sock.settimeout(SOCKET_TIMEOUT)
+    packet_receiver = PacketReceiverWorker(sock, initial_station)
+    packet_receiver.start()
+    rds_worker = RDSWorker(args.rds)
+    rds_worker.start()
 
     fig, line_t, line_f, time_samples, spec_samples, interactor = build_plot()
     ring = RingInt16(capacity=max(time_samples, spec_samples) * 4)
@@ -795,6 +1342,7 @@ def main() -> None:
     audio_player = None
     stereo_decoder = None
     audio_in_queue = SampleBlockQueueInt16()
+    audio_output_mode: str = args.audio_mode
     if ENABLE_AUDIO:
         audio_player = AudioPlayer(
             fs=AUDIO_FS,
@@ -802,23 +1350,21 @@ def main() -> None:
             max_buffer_ms=AUDIO_MAX_BUFFER_MS,
         )
         stereo_decoder = StereoDecoder(FS, AUDIO_FS, deemphasis_us=DEEMPHASIS_US)
+    dsp_worker = MPXDSPWorker(audio_player, stereo_decoder, audio_output_mode)
+    dsp_worker.start()
 
-    print(f"Listening on {UDP_IP}:{UDP_PORT}")
-    print(f"initial station = {initial_station} (override: --station N; hotkeys 0-9, =, F1-F11)")
-    print(f"TIME_WINDOW_S  = {TIME_WINDOW_S}")
-    print(f"SPECTRUM_WINDOW_S = {SPECTRUM_WINDOW_S}")
-    print(f"AUDIO = {'on' if ENABLE_AUDIO else 'off'}")
-    audio_output_mode: str = args.audio_mode
-    print(f"AUDIO_MODE = {audio_output_mode} (--audio-mode stereo|mono, hotkey s)")
-    print_help()
+    if args.verbose:
+        print(f"Listening on {UDP_IP}:{UDP_PORT}")
+        print(f"initial station = {station_label(initial_station)}")
+        print(f"AUDIO = {'on' if ENABLE_AUDIO else 'off'} ({audio_output_mode})")
+        print(f"RDS = {'on' if rds_worker.enabled else 'off'}")
+        print_help()
 
     packets_received = 0
     bad_packets = 0
     selected_station: Optional[int] = initial_station
     available_stations: List[int] = []
 
-    last_seq: Optional[int] = None
-    last_sample_base: Optional[int] = None
     last_stats_t = time.time()
     t_start = last_stats_t
     samples_accum = 0
@@ -829,24 +1375,25 @@ def main() -> None:
         ring.clear()
         spec_avg.reset()
         audio_in_queue.clear()
-        if stereo_decoder is not None:
-            stereo_decoder.reset()
-        if audio_player is not None:
-            audio_player.clear()
+        dsp_worker.reset()
+        rds_worker.reset()
 
     def switch_station(new_station: Optional[int]) -> None:
         nonlocal selected_station, samples_accum, t_start
         if new_station == selected_station:
             return
         selected_station = new_station
+        packet_receiver.set_station(new_station)
         samples_accum = 0
         t_start = time.time()
         reset_selected_station_pipeline()
-        print(f"Selected station -> {selected_station}")
+        if args.verbose:
+            print(f"Selected station -> {station_label(selected_station)}")
 
     def cycle_station(step: int) -> None:
         if not available_stations:
-            print("No stations discovered yet")
+            if args.verbose:
+                print("No stations discovered yet")
             return
         if selected_station not in available_stations:
             switch_station(available_stations[0])
@@ -857,25 +1404,26 @@ def main() -> None:
 
     def on_ui_key(event) -> None:
         key = event.key or ""
-        if key in ("]", "right"):
+        if key == "right":
             cycle_station(+1)
-        elif key in ("[", "left"):
+        elif key == "left":
             cycle_station(-1)
         elif key == "m" and audio_player is not None:
             state = audio_player.toggle()
-            print(f"audio {'on' if state else 'mute'}")
+            if args.verbose:
+                print(f"audio {'on' if state else 'mute'}")
             return
         elif key == "s" and ENABLE_AUDIO:
             nonlocal audio_output_mode
             audio_output_mode = "mono" if audio_output_mode == "stereo" else "stereo"
-            print(f"audio mode -> {audio_output_mode}")
+            dsp_worker.set_output_mode(audio_output_mode)
+            if args.verbose:
+                print(f"audio mode -> {audio_output_mode}")
             return
 
         hot_station = parse_station_hotkey(key)
         if hot_station is not None:
             wanted = hot_station
-        elif key.isdigit():
-            wanted = int(key)
         else:
             wanted = None
 
@@ -883,69 +1431,66 @@ def main() -> None:
             if wanted in available_stations:
                 switch_station(wanted)
             else:
-                print(f"Station {wanted} is not in current active list: {available_stations}")
+                if args.verbose:
+                    print(f"Station {wanted} is not in current active list: {available_stations}")
 
     fig.canvas.mpl_connect("key_press_event", on_ui_key)
 
     while plt.fignum_exists(fig.number):
         try:
-            data, addr = sock.recvfrom(RECV_SIZE)
-        except socket.timeout:
-            data = None
+            packet_batches = packet_receiver.pop_batches()
         except KeyboardInterrupt:
             break
 
         now = time.time()
+        (
+            bad_packets,
+            queue_drops,
+            sequence_missing,
+            sequence_discontinuities,
+            sample_base_discontinuities,
+        ) = packet_receiver.counters()
 
-        if data is not None:
-            pkt = parse_packet(data)
-            if pkt is None:
-                bad_packets += 1
-                if not SKIP_BAD_HEADER:
-                    print(f"Bad packet from {addr}, len={len(data)}")
+        for batch in packet_batches:
+            if batch.selection_generation != packet_receiver.generation():
                 continue
-
-            available_stations = sorted(st.station_id for st in pkt.stations)
+            available_stations = sorted(batch.available_stations)
             if selected_station is not None and selected_station not in available_stations:
-                print(f"Selected station {selected_station} disappeared, switching to first active")
+                if args.verbose:
+                    print(f"Selected station {selected_station} disappeared, switching to first active")
                 switch_station(available_stations[0] if available_stations else None)
 
-            st = choose_station(pkt, selected_station)
-            if st is not None:
+            if batch.station_id is not None:
                 if selected_station is None:
-                    switch_station(st.station_id)
+                    switch_station(batch.station_id)
 
-                ring.append(st.samples)
-                samples_accum += len(st.samples)
+                if packets_received == 0 and samples_accum == 0:
+                    t_start = now - len(batch.samples) / FS
+                ring.append(batch.samples)
+                samples_accum += len(batch.samples)
 
-                if ENABLE_AUDIO and audio_player is not None and stereo_decoder is not None:
-                    audio_in_queue.append(st.samples)
+                audio_enabled = (
+                    ENABLE_AUDIO
+                    and audio_player is not None
+                    and stereo_decoder is not None
+                )
+                if audio_enabled or rds_worker.enabled:
+                    audio_in_queue.append(batch.samples)
                     while True:
                         block = audio_in_queue.pop_block(AUDIO_BLOCK_SAMPLES_IN)
                         if block is None:
                             break
-                        stereo_audio = stereo_decoder.process(
-                            block, output_mode=audio_output_mode
-                        )
-                        audio_player.push(stereo_audio)
+                        if audio_enabled:
+                            dsp_worker.submit(block)
+                        rds_worker.submit(block)
 
-            h = pkt.header
-            if last_seq is not None:
-                expected_seq = (last_seq + 1) & 0xFFFFFFFF
-                if h.frame_seq != expected_seq:
-                    missed = (h.frame_seq - expected_seq) & 0xFFFFFFFF
-                    print(f"SEQ jump: got {h.frame_seq}, expected {expected_seq}, missed={missed}")
-                expected_base = last_sample_base + h.samples_per_station
-                if h.sample_base != expected_base:
-                    print(f"SAMPLE_BASE jump: got {h.sample_base}, expected {expected_base}")
-
-            last_seq = h.frame_seq
-            last_sample_base = h.sample_base
-            packets_received += 1
+            packets_received += batch.packet_count
 
         if now >= next_plot_t:
             dt = max(now - t_start, 1e-9)
             fs_est = samples_accum / dt
+            rds_text, rds_drops = rds_worker.status()
+            dsp_drops = dsp_worker.status()
             update_plot(
                 fig,
                 line_t,
@@ -956,25 +1501,34 @@ def main() -> None:
                 selected_station,
                 available_stations,
                 packets_received,
-                bad_packets,
+                bad_packets + queue_drops,
                 fs_est,
                 spec_avg,
                 interactor,
                 audio_enabled=(audio_player.enabled if audio_player is not None else False),
                 audio_output_mode=audio_output_mode,
+                rds_text=rds_text,
             )
             next_plot_t = now + 1.0 / PLOT_UPDATE_HZ
 
-        if now - last_stats_t >= PRINT_STATS_EVERY_S:
+        if args.verbose and now - last_stats_t >= PRINT_STATS_EVERY_S:
             dt = max(now - t_start, 1e-9)
             fs_est = samples_accum / dt
+            rds_text, rds_drops = rds_worker.status()
+            dsp_drops = dsp_worker.status()
             print(
                 f"packets={packets_received} bad={bad_packets} "
-                f"station={selected_station} avail={available_stations} "
-                f"ring={ring.length} Fs_est={fs_est:.1f}"
+                f"net_queue_drop={queue_drops} dsp_drop={dsp_drops} rds_drop={rds_drops} "
+                f"seq_missing={sequence_missing} seq_gaps={sequence_discontinuities} "
+                f"base_gaps={sample_base_discontinuities} "
+                f"station={station_label(selected_station)} avail={available_stations} "
+                f"ring={ring.length} Fs_est={fs_est:.1f} RDS={rds_text}"
             )
             last_stats_t = now
 
+    packet_receiver.close()
+    dsp_worker.close()
+    rds_worker.close()
     if audio_player is not None:
         audio_player.close()
 
