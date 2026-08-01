@@ -25,6 +25,8 @@ webtalk.*
 myenv/
 .venv/
 API/.venv/
+__pycache__/
+*.py[cod]
 
 # Intermediate files
 *.dcp

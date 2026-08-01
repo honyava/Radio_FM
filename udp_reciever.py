@@ -1,13 +1,21 @@
 import argparse
 import multiprocessing as mp
+import os
 import queue
 import socket
+import sys
 import threading
 import time
 from collections import deque
 from dataclasses import dataclass
 from math import gcd
+from pathlib import Path
 from typing import Deque, List, Optional, Tuple
+from urllib.parse import urlparse
+
+_SCRIPT_DIR = Path(__file__).resolve().parent
+if str(_SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_DIR))
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -27,6 +35,39 @@ try:
 except ImportError:
     RDSDecoder = None
 
+try:
+    from .tunnel_support import (
+        DEFAULT_TUNNEL_CONTROL_URL,
+        CRC32C_ACCELERATED,
+        FMPX_DISCONTINUITY,
+        FMPX_GROUP,
+        FMPX_PORT,
+        FMPX_STATIONS,
+        EmergencyVoiceSender,
+        TunnelCommandWorker,
+        TunnelControlClient,
+        TunnelPacketError,
+        TxTargets,
+        decode_selected_fmpx,
+        open_fmpx_multicast_socket,
+    )
+except ImportError:
+    from tunnel_support import (
+        DEFAULT_TUNNEL_CONTROL_URL,
+        CRC32C_ACCELERATED,
+        FMPX_DISCONTINUITY,
+        FMPX_GROUP,
+        FMPX_PORT,
+        FMPX_STATIONS,
+        EmergencyVoiceSender,
+        TunnelCommandWorker,
+        TunnelControlClient,
+        TunnelPacketError,
+        TxTargets,
+        decode_selected_fmpx,
+        open_fmpx_multicast_socket,
+    )
+
 # ============================================================
 # SETTINGS
 # ============================================================
@@ -35,6 +76,8 @@ UDP_PORT = 1234
 SO_RCVBUF = 4 * 1024 * 1024
 RECV_SIZE = 65536
 SOCKET_TIMEOUT = 0.02
+EPOCH_REORDER_GUARD_S = 1.0
+DEFAULT_TUNNEL_CRC_EVERY = 1 if CRC32C_ACCELERATED else 16
 
 FS = 192000
 APP_MAGIC = 0x4D58
@@ -46,36 +89,52 @@ NETWORK_ENDIAN = ">"
 # Начальная станция (id из заголовка блока ST, обычно 0 .. N-1).
 TARGET_STATION: Optional[int] = 0
 
-# Текущая аппаратная конфигурация поддерживает 25 станций (id 0..24).
-MAX_STATION_ID = 24
+# Оба wire-формата поддерживают до 32 станций (id 0..31).
+MAX_STATIONS = 32
+MAX_STATION_ID = MAX_STATIONS - 1
 
-# Частотная сетка N=25: реальные московские станции распределены по всему FM-диапазону.
+# Частотная сетка N=32 из текущей прошивки приёмника.
 STATION_PRESETS: Tuple[Tuple[float, str], ...] = (
+    (87.5, "Business FM"), (88.3, "Ретро FM"),
+    (89.1, "Радио Джаз"), (89.9, "Радио Рекорд"),
+    (90.3, "Авторадио"), (91.2, "Радио Sputnik"),
+    (92.0, "Москва FM"), (92.8, "Радио РБК"),
+    (93.6, "КоммерсантъFM"), (94.4, "Первое Спортивное радио"),
+    (95.2, "Rock FM"), (96.0, "Дорожное радио"),
+    (96.4, "Такси FM"), (97.2, "Радио Комсомольская правда"),
+    (98.0, "Радио Шоколад"), (98.8, "Радио Romantika"),
+    (99.6, "Радио Русский Хит"), (100.5, "Жара FM"),
+    (101.2, "DFM"), (101.8, "Наше Радио"),
+    (102.1, "Радио Монте-Карло"), (103.0, "Радио Шансон"),
+    (103.7, "Maximum"), (104.7, "Радио 7 на семи холмах"),
+    (105.0, "Радио Гордость"), (105.3, "Радио Москвы"),
+    (105.7, "Русское Радио"), (106.2, "Европа Плюс"),
+    (106.6, "Love Radio"), (107.0, "Маруся ФМ"),
+    (107.4, "Хит FM"), (107.8, "Милицейская волна"),
+)
+
+N5_STATION_PRESETS: Tuple[Tuple[float, str], ...] = (
     (87.5, "Business FM"),
-    (88.3, "Ретро FM"),
-    (89.1, "Радио Jazz"),
-    (89.9, "Радио Record"),
-    (90.8, "Relax FM"),
-    (91.6, "Радио Культура"),
     (92.8, "Радио РБК"),
-    (93.6, "Коммерсантъ FM"),
-    (94.4, "Первое спортивное радио"),
-    (95.2, "Rock FM"),
-    (96.0, "Дорожное радио"),
-    (96.8, "Детское радио"),
-    (97.6, "Вести FM"),
-    (98.4, "Новое радио"),
-    (99.2, "Орфей"),
-    (100.1, "Серебряный дождь"),
-    (100.9, "Радио Вера"),
-    (101.5, "Радио России"),
-    (102.5, "Comedy Radio"),
-    (103.4, "Маяк"),
-    (104.2, "Радио Energy"),
-    (105.0, "Радио Гордость"),
-    (105.7, "Русское радио"),
-    (107.0, "Маруся FM"),
+    (98.4, "Новое Радио"),
+    (104.2, "Радио ЭНЕРДЖИ (NRG)"),
     (107.8, "Милицейская волна"),
+)
+
+N25_STATION_PRESETS: Tuple[Tuple[float, str], ...] = (
+    (87.5, "Business FM"), (88.7, "Юмор FM"),
+    (89.5, "Калина Красная"), (90.8, "Relax FM"),
+    (92.0, "Москва FM"), (92.8, "Радио РБК"),
+    (94.0, "Восток FM"), (95.2, "Rock FM"),
+    (96.4, "Такси FM"), (97.2, "Радио Комсомольская правда"),
+    (98.4, "Новое Радио"), (99.6, "Радио Русский Хит"),
+    (100.5, "Жара FM"), (101.5, "Радио России"),
+    (102.5, "Comedy Radio"), (103.7, "Maximum"),
+    (104.7, "Радио 7 на семи холмах"),
+    (105.0, "Радио Гордость"), (105.3, "Радио Москвы"),
+    (105.7, "Русское Радио"), (106.2, "Европа Плюс"),
+    (106.6, "Love Radio"), (107.0, "Маруся ФМ"),
+    (107.4, "Хит FM"), (107.8, "Милицейская волна"),
 )
 
 TIME_WINDOW_S = 0.025
@@ -112,6 +171,34 @@ PILOT_MIN_RMS = 2e-4
 AUDIO_OUTPUT_MODE_DEFAULT = "mono"
 RDS_ENABLED_DEFAULT = False
 
+
+def sample_rate_for_display(
+    packet_format: str,
+    samples_accum: int,
+    elapsed_s: float,
+) -> float:
+    """Return the logical MPX rate without treating host packet jitter as clock drift."""
+
+    if packet_format == "tunnel":
+        return float(FS)
+    return samples_accum / max(elapsed_s, 1e-9)
+
+
+def resolve_control_targets(
+    tx_ids: Optional[str],
+    all_tx: bool,
+    legacy_tx_mask: Optional[int],
+) -> TxTargets:
+    """Resolve one CLI transmitter selector for the universal HTTPS API."""
+
+    if sum((tx_ids is not None, all_tx, legacy_tx_mask is not None)) > 1:
+        raise ValueError("use exactly one of --tx-ids, --all-tx or --tx-mask")
+    if tx_ids is not None:
+        return TxTargets.from_selector(tx_ids)
+    if legacy_tx_mask is not None:
+        return TxTargets.from_legacy_mask(legacy_tx_mask)
+    return TxTargets.all_nodes()
+
 # Mouse control help:
 #   wheel            -> zoom X+Y under cursor
 #   shift + wheel    -> zoom X only
@@ -124,8 +211,9 @@ RDS_ENABLED_DEFAULT = False
 #   key 'h'          -> print help
 #   left / right     -> previous / next station
 #   key '~'..'='     -> stations 0..12
-#   key 'q'..']'     -> stations 13..24
+#   key 'q'..'\\'    -> stations 13..25; 'z'..'n' -> stations 26..31
 #   key 'm'          -> mute/unmute audio
+#   key 'g'          -> emergency microphone on/off in tunnel mode
 #   CLI: --station N -> начальная станция
 
 
@@ -139,6 +227,8 @@ class PacketHeader:
     samples_per_station: int
     words_per_station: int
     station_mask: int
+    epoch: int = 0
+    flags: int = 0
 
 
 @dataclass
@@ -171,6 +261,7 @@ class SelectedPacketBatch:
     samples: np.ndarray
     packet_count: int
     selection_generation: int
+    discontinuity: bool = False
 
 
 class RingInt16:
@@ -657,10 +748,25 @@ class RDSWorker:
 class PacketReceiverWorker:
     """Parse UDP in a separate process and pass coarse MPX batches to the GUI."""
 
-    def __init__(self, sock: socket.socket, selected_station: Optional[int]):
+    def __init__(
+        self,
+        sock: socket.socket,
+        selected_station: Optional[int],
+        packet_format: str = "legacy",
+        tunnel_crc_every: int = 1,
+        batch_queue_size: int = 256,
+    ):
+        if packet_format not in ("legacy", "tunnel"):
+            raise ValueError("packet_format must be legacy or tunnel")
+        if tunnel_crc_every < 0:
+            raise ValueError("tunnel_crc_every must be nonnegative")
+        if batch_queue_size < 1:
+            raise ValueError("batch_queue_size must be positive")
         self.sock = sock
+        self.packet_format = packet_format
+        self.tunnel_crc_every = tunnel_crc_every
         self.context = mp.get_context("fork")
-        self.batches = self.context.Queue(maxsize=256)
+        self.batches = self.context.Queue(maxsize=batch_queue_size)
         self.stop_event = self.context.Event()
         initial_station = -1 if selected_station is None else selected_station
         self.selection = self.context.Array("q", (initial_station, 0), lock=True)
@@ -682,9 +788,15 @@ class PacketReceiverWorker:
         previous_sequence: Optional[int] = None
         previous_sample_base: Optional[int] = None
         previous_sample_count: Optional[int] = None
+        previous_epoch: Optional[int] = None
+        packet_index = 0
+        batch_discontinuity = False
+        queue_gap_pending = False
+        retired_epochs: dict[int, float] = {}
 
         def flush_batch() -> None:
-            nonlocal sample_chunks, packet_count
+            nonlocal sample_chunks, packet_count, batch_discontinuity
+            nonlocal queue_gap_pending
             if packet_count == 0 or last_header is None:
                 return
             samples = (
@@ -699,21 +811,32 @@ class PacketReceiverWorker:
                 samples=samples,
                 packet_count=packet_count,
                 selection_generation=batch_generation,
+                discontinuity=batch_discontinuity or queue_gap_pending,
             )
             try:
                 self.batches.put_nowait(batch)
+                queue_gap_pending = False
             except queue.Full:
+                dropped_packets = 0
+                while True:
+                    try:
+                        dropped = self.batches.get_nowait()
+                    except queue.Empty:
+                        break
+                    dropped_packets += dropped.packet_count
+                batch.discontinuity = True
+                queued = False
                 try:
-                    dropped = self.batches.get_nowait()
-                except queue.Empty:
-                    dropped = None
+                    self.batches.put(batch, timeout=0.02)
+                    queued = True
+                except queue.Full:
+                    dropped_packets += batch.packet_count
+                queue_gap_pending = not queued
                 with self.shared_counters.get_lock():
-                    self.shared_counters[1] += (
-                        0 if dropped is None else dropped.packet_count
-                    )
-                self.batches.put_nowait(batch)
+                    self.shared_counters[1] += dropped_packets
             sample_chunks = []
             packet_count = 0
+            batch_discontinuity = False
 
         while not self.stop_event.is_set():
             try:
@@ -733,7 +856,28 @@ class PacketReceiverWorker:
                 previous_sequence = None
                 previous_sample_base = None
                 previous_sample_count = None
-            packet = parse_selected_packet(data, selected_station, selection_generation)
+                previous_epoch = None
+                batch_discontinuity = False
+                queue_gap_pending = False
+                retired_epochs.clear()
+            if self.packet_format == "tunnel":
+                verify_crc = (
+                    self.tunnel_crc_every > 0
+                    and packet_index % self.tunnel_crc_every == 0
+                )
+                packet = parse_selected_fmpx_packet(
+                    data,
+                    selected_station,
+                    selection_generation,
+                    verify_crc=verify_crc,
+                )
+            else:
+                packet = parse_selected_packet(
+                    data,
+                    selected_station,
+                    selection_generation,
+                )
+            packet_index += 1
             if packet is None:
                 with self.shared_counters.get_lock():
                     self.shared_counters[0] += 1
@@ -742,22 +886,96 @@ class PacketReceiverWorker:
                 continue
 
             header = packet.header
+            stream_break = False
+            drop_packet = False
+            if (
+                self.packet_format == "tunnel"
+                and previous_epoch == header.epoch
+                and previous_sequence == header.frame_seq
+                and previous_sample_base == header.sample_base
+            ):
+                with self.shared_counters.get_lock():
+                    self.shared_counters[3] += 1
+                    self.shared_counters[4] += 1
+                continue
+            if self.packet_format == "tunnel":
+                now_monotonic = time.monotonic()
+                if retired_epochs:
+                    for retired_epoch, deadline in list(retired_epochs.items()):
+                        if deadline <= now_monotonic:
+                            del retired_epochs[retired_epoch]
+                explicit_break = bool(header.flags & FMPX_DISCONTINUITY)
+                if explicit_break:
+                    stale_epoch = (
+                        previous_epoch is not None
+                        and header.epoch != previous_epoch
+                        and retired_epochs.get(header.epoch, 0.0) > now_monotonic
+                    )
+                    if stale_epoch:
+                        with self.shared_counters.get_lock():
+                            self.shared_counters[3] += 1
+                        drop_packet = True
+                    else:
+                        if previous_epoch is not None and header.epoch != previous_epoch:
+                            retired_epochs[previous_epoch] = (
+                                now_monotonic + EPOCH_REORDER_GUARD_S
+                            )
+                        stream_break = True
+                        previous_sequence = None
+                        previous_sample_base = None
+                        previous_sample_count = None
+                elif previous_epoch is not None and previous_epoch != header.epoch:
+                    epoch_delta = (header.epoch - previous_epoch) & 0xFFFFFFFF
+                    if epoch_delta < 0x80000000:
+                        retired_epochs[previous_epoch] = (
+                            now_monotonic + EPOCH_REORDER_GUARD_S
+                        )
+                        stream_break = True
+                        previous_sequence = None
+                        previous_sample_base = None
+                        previous_sample_count = None
+                    else:
+                        with self.shared_counters.get_lock():
+                            self.shared_counters[3] += 1
+                        drop_packet = True
+            if drop_packet:
+                continue
             if previous_sequence is not None:
                 expected_sequence = (previous_sequence + 1) & 0xFFFFFFFF
                 if header.frame_seq != expected_sequence:
                     delta = (header.frame_seq - expected_sequence) & 0xFFFFFFFF
-                    missing = delta if delta < 0x80000000 else 0
+                    forward_gap = delta < 0x80000000
+                    missing = delta if forward_gap else 0
                     with self.shared_counters.get_lock():
                         self.shared_counters[2] += missing
                         self.shared_counters[3] += 1
+                    stream_break |= forward_gap
+                    drop_packet |= not forward_gap
             if previous_sample_base is not None and previous_sample_count is not None:
-                if header.sample_base != previous_sample_base + previous_sample_count:
+                expected_sample_base = (
+                    previous_sample_base + previous_sample_count
+                ) & 0xFFFFFFFFFFFFFFFF
+                if header.sample_base != expected_sample_base:
+                    sample_delta = (
+                        header.sample_base - expected_sample_base
+                    ) & 0xFFFFFFFFFFFFFFFF
+                    forward_sample_gap = sample_delta < 0x8000000000000000
                     with self.shared_counters.get_lock():
                         self.shared_counters[4] += 1
+                    stream_break |= forward_sample_gap
+                    drop_packet |= not forward_sample_gap
+
+            if drop_packet:
+                continue
+
+            if stream_break:
+                flush_batch()
+                batch_discontinuity = True
 
             previous_sequence = header.frame_seq
             previous_sample_base = header.sample_base
             previous_sample_count = header.samples_per_station
+            previous_epoch = header.epoch
             last_header = header
             available_stations = packet.available_stations
             station_id = None if packet.station is None else packet.station.station_id
@@ -958,13 +1176,17 @@ def print_help() -> None:
     print("  h                -> show this help")
     print("  left / right     -> previous / next station")
     print("  ~ 1..0 - =       -> stations 0..12")
-    print("  q w e r t y u i o p [ ] -> stations 13..24")
+    print(r"  q w e r t y u i o p [ ] \ -> stations 13..25")
+    print("  z x c v b n       -> stations 26..31")
     print("  m                -> mute/unmute audio")
     print("  s                -> toggle audio: stereo (L/R) / mono (sum on both)")
+    print("  g                -> toggle emergency microphone (tunnel mode)")
+    print("  l / k            -> latch / clear emergency command")
+    print("  j                -> request transmitter status")
 
 
 def parse_station_hotkey(key: str) -> Optional[int]:
-    """Map a top-row or QWERTY key to one of the 25 station IDs."""
+    """Map compact keyboard rows to one of the 32 station IDs."""
     k = (key or "").lower()
     hotkeys = {
         "`": 0, "~": 0, "grave": 0,
@@ -984,15 +1206,28 @@ def parse_station_hotkey(key: str) -> Optional[int]:
         "p": 22, "з": 22,
         "[": 23, "{": 23, "bracketleft": 23, "х": 23,
         "]": 24, "}": 24, "bracketright": 24, "ъ": 24,
+        "\\": 25, "|": 25, "backslash": 25,
+        "z": 26, "я": 26,
+        "x": 27, "ч": 27,
+        "c": 28, "с": 28,
+        "v": 29, "м": 29,
+        "b": 30, "и": 30,
+        "n": 31, "т": 31,
     }
     return hotkeys.get(k)
 
 
-def station_label(station_id: Optional[int]) -> str:
+def station_label(station_id: Optional[int], station_count: Optional[int] = None) -> str:
     if station_id is None:
         return "auto"
-    if 0 <= station_id < len(STATION_PRESETS):
-        freq_mhz, name = STATION_PRESETS[station_id]
+    if station_count == 5:
+        presets = N5_STATION_PRESETS
+    elif station_count == 25:
+        presets = N25_STATION_PRESETS
+    else:
+        presets = STATION_PRESETS
+    if 0 <= station_id < len(presets):
+        freq_mhz, name = presets[station_id]
         return f"{station_id}: {freq_mhz:.1f} MHz {name}"
     return str(station_id)
 
@@ -1043,6 +1278,7 @@ def parse_packet(data: bytes) -> Optional[ParsedPacket]:
         magic != APP_MAGIC
         or version != APP_VERSION
         or marker != APP_MARKER
+        or active_stations > MAX_STATIONS
         or samples_per_station != 2 * words_per_station
     ):
         return None
@@ -1109,6 +1345,7 @@ def parse_selected_packet(
         or ((w0 >> 8) & 0xFF) != APP_VERSION
         or ((w5 >> 16) & 0xFFFF) != APP_MARKER
         or active_stations == 0
+        or active_stations > MAX_STATIONS
         or samples_per_station != 2 * words_per_station
     ):
         return None
@@ -1148,6 +1385,46 @@ def parse_selected_packet(
         station_mask=w5 & 0xFFFF,
     )
     return SelectedPacket(header, station_ids, station, selection_generation)
+
+
+def parse_selected_fmpx_packet(
+    data: bytes,
+    target_station: Optional[int],
+    selection_generation: int,
+    *,
+    verify_crc: bool = True,
+) -> Optional[SelectedPacket]:
+    """Decode one selected S24 stream from the 32-station tunnel packet."""
+
+    selected_id = 0 if target_station is None else target_station
+    try:
+        packet = decode_selected_fmpx(
+            data,
+            selected_id,
+            verify_crc=verify_crc,
+        )
+    except TunnelPacketError:
+        return None
+
+    header = PacketHeader(
+        magic=0x464D5058,
+        version=1,
+        active_stations=FMPX_STATIONS,
+        frame_seq=packet.sequence,
+        sample_base=packet.sample_base,
+        samples_per_station=len(packet.samples),
+        words_per_station=0,
+        station_mask=0xFFFFFFFF,
+        epoch=packet.epoch,
+        flags=packet.flags,
+    )
+    station = StationBlock(packet.station_id, packet.flags, packet.samples)
+    return SelectedPacket(
+        header=header,
+        available_stations=list(range(FMPX_STATIONS)),
+        station=station,
+        selection_generation=selection_generation,
+    )
 
 
 def choose_station(pkt: ParsedPacket, target_station: Optional[int]) -> Optional[StationBlock]:
@@ -1272,9 +1549,9 @@ def update_plot(
     mag_db = compute_spectrum_dbfs(spec_data, spec_avg)
     line_f.set_ydata(mag_db)
 
-    st_text = station_label(station_id)
-    avail_text = ",".join(map(str, available_stations[:25]))
-    if len(available_stations) > 25:
+    st_text = station_label(station_id, len(available_stations))
+    avail_text = ",".join(map(str, available_stations[:MAX_STATIONS]))
+    if len(available_stations) > MAX_STATIONS:
         avail_text += ",..."
     fig.suptitle(
         "UDP MPX realtime | "
@@ -1310,6 +1587,135 @@ def main() -> None:
         help="включить программное декодирование RDS из MPX 57 kHz",
     )
     parser.add_argument(
+        "--tunnel",
+        action="store_true",
+        help="принимать новый FMPX v1 S24 поток 32 станций через SFP Ethernet",
+    )
+    parser.add_argument(
+        "--multicast-group",
+        default=FMPX_GROUP,
+        help=f"группа FMPX multicast (по умолчанию {FMPX_GROUP})",
+    )
+    parser.add_argument(
+        "--multicast-if",
+        default=None,
+        metavar="IP",
+        help="локальный IPv4 интерфейса VLAN 42, например 10.42.0.10 (обязателен)",
+    )
+    parser.add_argument(
+        "--tunnel-port",
+        type=int,
+        default=FMPX_PORT,
+        help=f"UDP-порт FMPX (по умолчанию {FMPX_PORT})",
+    )
+    parser.add_argument(
+        "--tunnel-crc-every",
+        type=int,
+        default=DEFAULT_TUNNEL_CRC_EVERY,
+        metavar="N",
+        help=(
+            "проверять CRC32C каждого N-го пакета; 1=все, 0=не проверять "
+            f"(по умолчанию {DEFAULT_TUNNEL_CRC_EVERY})"
+        ),
+    )
+    parser.add_argument(
+        "--control-url",
+        default=os.environ.get("FM_TUNNEL_CONTROL_URL"),
+        help=(
+            "HTTPS API приёмника; в tunnel-режиме по умолчанию "
+            f"{DEFAULT_TUNNEL_CONTROL_URL}; также читается "
+            "FM_TUNNEL_CONTROL_URL"
+        ),
+    )
+    parser.add_argument(
+        "--control-ca-cert",
+        default=os.environ.get("FM_TUNNEL_CONTROL_CA_CERT", ""),
+        metavar="FILE",
+        help=(
+            "доверенный сертификат центра сертификации в PEM; также читается "
+            "FM_TUNNEL_CONTROL_CA_CERT"
+        ),
+    )
+    parser.add_argument(
+        "--control-insecure-tls",
+        action="store_true",
+        help=(
+            "отключить проверку HTTPS-сертификата только для пусконаладки; "
+            "по умолчанию проверка обязательна"
+        ),
+    )
+    parser.add_argument(
+        "--control-token",
+        default="",
+        help="Bearer token API; также читается FM_TUNNEL_WEB_AUTH_TOKEN",
+    )
+    parser.add_argument(
+        "--control-token-file",
+        default="",
+        help="файл с Bearer token, если token не задан другим способом",
+    )
+    parser.add_argument(
+        "--control-timeout",
+        type=float,
+        default=2.0,
+        help="тайм-аут HTTP-команды, секунд",
+    )
+    tx_targets = parser.add_mutually_exclusive_group()
+    tx_targets.add_argument(
+        "--tx-ids",
+        default=None,
+        metavar="IDS",
+        help=(
+            "идентификаторы передатчиков 1..255, например 1,3,5-12,255"
+        ),
+    )
+    tx_targets.add_argument(
+        "--all-tx",
+        action="store_true",
+        help="адресовать все настроенные передатчики (по умолчанию)",
+    )
+    tx_targets.add_argument(
+        "--tx-mask",
+        type=lambda value: int(value, 0),
+        default=None,
+        help=(
+            "устаревшая 32-битная маска; 0x5 преобразуется в TX1,TX3"
+        ),
+    )
+    parser.add_argument(
+        "--voice-station-mask",
+        type=lambda value: int(value, 0),
+        default=0xFFFFFFFF,
+        help="маска станций для аварийного голоса",
+    )
+    parser.add_argument(
+        "--apply-at-sample",
+        type=lambda value: int(value, 0),
+        default=0,
+        help="номер отсчёта синхронного применения команды; 0=сразу",
+    )
+    parser.add_argument(
+        "--voice-host",
+        default=None,
+        help="RJ45 IPv4 приёмника для PCM голоса; по умолчанию host из control-url",
+    )
+    parser.add_argument(
+        "--voice-port",
+        type=int,
+        default=43000,
+        help="UDP-порт PCM16LE 48 kHz на приёмнике",
+    )
+    parser.add_argument(
+        "--voice-device",
+        default=None,
+        help="имя или номер входного устройства sounddevice",
+    )
+    parser.add_argument(
+        "--start-voice",
+        action="store_true",
+        help="сразу включить микрофон и аварийный режим после запуска",
+    )
+    parser.add_argument(
         "--verbose",
         action="store_true",
         help="печатать стартовую информацию, смену станции и периодическую статистику",
@@ -1318,6 +1724,33 @@ def main() -> None:
     initial_station: Optional[int] = (
         args.station if args.station is not None else TARGET_STATION
     )
+    if initial_station is not None and not 0 <= initial_station <= MAX_STATION_ID:
+        parser.error(f"--station must be in 0..{MAX_STATION_ID}")
+    if args.tunnel_crc_every < 0:
+        parser.error("--tunnel-crc-every must be nonnegative")
+    if args.tunnel and not args.multicast_if:
+        parser.error("--multicast-if is required in tunnel mode")
+    try:
+        control_targets = resolve_control_targets(
+            args.tx_ids,
+            args.all_tx,
+            args.tx_mask,
+        )
+    except ValueError as error:
+        parser.error(str(error))
+    if not 1 <= args.voice_station_mask <= 0xFFFFFFFF:
+        parser.error("--voice-station-mask must be in range 0x1..0xffffffff")
+    if not 0 <= args.apply_at_sample <= 0xFFFFFFFFFFFFFFFF:
+        parser.error("--apply-at-sample is outside u64")
+    control_url = args.control_url
+    if control_url is None and args.tunnel:
+        control_url = DEFAULT_TUNNEL_CONTROL_URL
+    if args.control_insecure_tls and args.control_ca_cert:
+        parser.error(
+            "--control-ca-cert and --control-insecure-tls are mutually exclusive"
+        )
+    if (args.control_ca_cert or args.control_insecure_tls) and not control_url:
+        parser.error("TLS options require --tunnel or --control-url")
 
     if ENABLE_AUDIO:
         if sd is None or butter is None:
@@ -1326,11 +1759,27 @@ def main() -> None:
                 "  pip install sounddevice scipy"
             )
 
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, SO_RCVBUF)
-    sock.bind((UDP_IP, UDP_PORT))
-    sock.settimeout(SOCKET_TIMEOUT)
-    packet_receiver = PacketReceiverWorker(sock, initial_station)
+    if args.tunnel:
+        sock = open_fmpx_multicast_socket(
+            args.multicast_group,
+            args.tunnel_port,
+            args.multicast_if,
+            SO_RCVBUF,
+            SOCKET_TIMEOUT,
+        )
+        packet_format = "tunnel"
+    else:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, SO_RCVBUF)
+        sock.bind((UDP_IP, UDP_PORT))
+        sock.settimeout(SOCKET_TIMEOUT)
+        packet_format = "legacy"
+    packet_receiver = PacketReceiverWorker(
+        sock,
+        initial_station,
+        packet_format=packet_format,
+        tunnel_crc_every=args.tunnel_crc_every,
+    )
     packet_receiver.start()
     rds_worker = RDSWorker(args.rds)
     rds_worker.start()
@@ -1353,11 +1802,53 @@ def main() -> None:
     dsp_worker = MPXDSPWorker(audio_player, stereo_decoder, audio_output_mode)
     dsp_worker.start()
 
+    control_token = args.control_token or os.environ.get(
+        "FM_TUNNEL_WEB_AUTH_TOKEN", ""
+    )
+    if not control_token and args.control_token_file:
+        control_token = Path(args.control_token_file).read_text(
+            encoding="utf-8"
+        ).strip()
+    control_worker = None
+    voice_sender = None
+    if control_url:
+        control_client = TunnelControlClient(
+            control_url,
+            token=control_token,
+            timeout=args.control_timeout,
+            ca_cert=args.control_ca_cert,
+            insecure_tls=args.control_insecure_tls,
+        )
+        control_worker = TunnelCommandWorker(control_client)
+        voice_host = args.voice_host or urlparse(control_url).hostname
+        if not voice_host:
+            parser.error("--voice-host is required when control-url has no host")
+        voice_device = args.voice_device
+        if voice_device is not None and voice_device.isdecimal():
+            voice_device = int(voice_device)
+        voice_sender = EmergencyVoiceSender(
+            sd,
+            voice_host,
+            port=args.voice_port,
+            device=voice_device,
+        )
+
     if args.verbose:
-        print(f"Listening on {UDP_IP}:{UDP_PORT}")
+        if args.tunnel:
+            print(
+                f"Listening FMPX on {args.multicast_group}:{args.tunnel_port} "
+                f"via {args.multicast_if}"
+            )
+            print(
+                f"CRC32C every {args.tunnel_crc_every or 'disabled'} packet(s), "
+                f"accelerated={'yes' if CRC32C_ACCELERATED else 'no'}"
+            )
+        else:
+            print(f"Listening on {UDP_IP}:{UDP_PORT}")
         print(f"initial station = {station_label(initial_station)}")
         print(f"AUDIO = {'on' if ENABLE_AUDIO else 'off'} ({audio_output_mode})")
         print(f"RDS = {'on' if rds_worker.enabled else 'off'}")
+        print(f"CONTROL = {control_url or 'off'}")
         print_help()
 
     packets_received = 0
@@ -1365,11 +1856,12 @@ def main() -> None:
     selected_station: Optional[int] = initial_station
     available_stations: List[int] = []
 
-    last_stats_t = time.time()
+    last_stats_t = time.monotonic()
     t_start = last_stats_t
     samples_accum = 0
+    observed_queue_drops = 0
 
-    next_plot_t = time.time()
+    next_plot_t = last_stats_t
 
     def reset_selected_station_pipeline() -> None:
         ring.clear()
@@ -1385,10 +1877,13 @@ def main() -> None:
         selected_station = new_station
         packet_receiver.set_station(new_station)
         samples_accum = 0
-        t_start = time.time()
+        t_start = time.monotonic()
         reset_selected_station_pipeline()
         if args.verbose:
-            print(f"Selected station -> {station_label(selected_station)}")
+            print(
+                f"Selected station -> "
+                f"{station_label(selected_station, len(available_stations))}"
+            )
 
     def cycle_station(step: int) -> None:
         if not available_stations:
@@ -1401,6 +1896,64 @@ def main() -> None:
         idx = available_stations.index(selected_station)
         idx = (idx + step) % len(available_stations)
         switch_station(available_stations[idx])
+
+    active_voice_enable_request: Optional[int] = None
+
+    def submit_control(action: str, *arguments: object) -> Optional[int]:
+        if control_worker is None:
+            print("Control is disabled; use --tunnel or --control-url")
+            return None
+        request_id = control_worker.submit(action, *arguments)
+        if request_id is None:
+            print("Control queue is full; command was not queued")
+            return None
+        print(f"control queued: {action} request={request_id}")
+        return request_id
+
+    def start_emergency_voice() -> None:
+        nonlocal active_voice_enable_request
+        if voice_sender is None:
+            print("Voice control is disabled; use --tunnel or --control-url")
+            return
+        if voice_sender.active:
+            return
+        try:
+            voice_sender.start()
+        except Exception as error:
+            print(f"microphone start failed: {error}")
+            return
+        request_id = submit_control(
+            "emergency_voice_enable",
+            control_targets,
+            args.voice_station_mask,
+            args.apply_at_sample,
+        )
+        if request_id is None:
+            try:
+                voice_sender.stop()
+            except Exception as error:
+                print(f"microphone stop failed after cleanup: {error}")
+            return
+        active_voice_enable_request = request_id
+        print(
+            f"microphone streaming to {voice_sender.destination[0]}:"
+            f"{voice_sender.destination[1]}"
+        )
+
+    def stop_emergency_voice_and_clear() -> None:
+        nonlocal active_voice_enable_request
+        active_voice_enable_request = None
+        if voice_sender is not None:
+            try:
+                voice_sender.stop()
+            except Exception as error:
+                print(f"microphone stop failed after cleanup: {error}")
+        submit_control(
+            "emergency_voice_disable",
+            control_targets,
+            args.voice_station_mask,
+            0,
+        )
 
     def on_ui_key(event) -> None:
         key = event.key or ""
@@ -1420,6 +1973,26 @@ def main() -> None:
             if args.verbose:
                 print(f"audio mode -> {audio_output_mode}")
             return
+        elif key == "g":
+            if voice_sender is not None and voice_sender.active:
+                stop_emergency_voice_and_clear()
+            else:
+                start_emergency_voice()
+            return
+        elif key == "l":
+            submit_control(
+                "latch",
+                control_targets,
+                args.voice_station_mask,
+                args.apply_at_sample,
+            )
+            return
+        elif key == "k":
+            stop_emergency_voice_and_clear()
+            return
+        elif key == "j":
+            submit_control("status")
+            return
 
         hot_station = parse_station_hotkey(key)
         if hot_station is not None:
@@ -1436,13 +2009,38 @@ def main() -> None:
 
     fig.canvas.mpl_connect("key_press_event", on_ui_key)
 
+    if args.start_voice:
+        start_emergency_voice()
+
     while plt.fignum_exists(fig.number):
         try:
             packet_batches = packet_receiver.pop_batches()
         except KeyboardInterrupt:
             break
 
-        now = time.time()
+        now = time.monotonic()
+        if control_worker is not None:
+            for result in control_worker.poll():
+                if result.error is not None:
+                    print(
+                        f"control {result.action} request={result.request_id} "
+                        f"failed: {result.error}"
+                    )
+                    if (
+                        result.action == "emergency_voice_enable"
+                        and result.request_id == active_voice_enable_request
+                        and voice_sender is not None
+                    ):
+                        active_voice_enable_request = None
+                        try:
+                            voice_sender.stop()
+                        except Exception as error:
+                            print(f"microphone stop failed after cleanup: {error}")
+                else:
+                    print(
+                        f"control {result.action} request={result.request_id} "
+                        f"receiver response: {result.response}"
+                    )
         (
             bad_packets,
             queue_drops,
@@ -1450,6 +2048,11 @@ def main() -> None:
             sequence_discontinuities,
             sample_base_discontinuities,
         ) = packet_receiver.counters()
+        if queue_drops != observed_queue_drops:
+            observed_queue_drops = queue_drops
+            reset_selected_station_pipeline()
+            samples_accum = 0
+            t_start = now
 
         for batch in packet_batches:
             if batch.selection_generation != packet_receiver.generation():
@@ -1463,6 +2066,11 @@ def main() -> None:
             if batch.station_id is not None:
                 if selected_station is None:
                     switch_station(batch.station_id)
+
+                if batch.discontinuity:
+                    reset_selected_station_pipeline()
+                    samples_accum = 0
+                    t_start = now - len(batch.samples) / FS
 
                 if packets_received == 0 and samples_accum == 0:
                     t_start = now - len(batch.samples) / FS
@@ -1486,9 +2094,13 @@ def main() -> None:
 
             packets_received += batch.packet_count
 
+        # Packet batches may have been queued before this GUI iteration.  Take
+        # the timestamp after consuming them so legacy rate accounting does not
+        # combine future samples with an earlier wall-clock value.
+        now = time.monotonic()
         if now >= next_plot_t:
             dt = max(now - t_start, 1e-9)
-            fs_est = samples_accum / dt
+            fs_est = sample_rate_for_display(packet_format, samples_accum, dt)
             rds_text, rds_drops = rds_worker.status()
             dsp_drops = dsp_worker.status()
             update_plot(
@@ -1513,7 +2125,7 @@ def main() -> None:
 
         if args.verbose and now - last_stats_t >= PRINT_STATS_EVERY_S:
             dt = max(now - t_start, 1e-9)
-            fs_est = samples_accum / dt
+            fs_est = sample_rate_for_display(packet_format, samples_accum, dt)
             rds_text, rds_drops = rds_worker.status()
             dsp_drops = dsp_worker.status()
             print(
@@ -1521,7 +2133,8 @@ def main() -> None:
                 f"net_queue_drop={queue_drops} dsp_drop={dsp_drops} rds_drop={rds_drops} "
                 f"seq_missing={sequence_missing} seq_gaps={sequence_discontinuities} "
                 f"base_gaps={sample_base_discontinuities} "
-                f"station={station_label(selected_station)} avail={available_stations} "
+                f"station={station_label(selected_station, len(available_stations))} "
+                f"avail={available_stations} "
                 f"ring={ring.length} Fs_est={fs_est:.1f} RDS={rds_text}"
             )
             last_stats_t = now
@@ -1531,6 +2144,13 @@ def main() -> None:
     rds_worker.close()
     if audio_player is not None:
         audio_player.close()
+    if voice_sender is not None:
+        try:
+            voice_sender.stop()
+        except Exception as error:
+            print(f"microphone stop failed after cleanup: {error}")
+    if control_worker is not None:
+        control_worker.close()
 
     sock.close()
     plt.ioff()
