@@ -1916,7 +1916,10 @@ def main() -> None:
     parser.add_argument(
         "--voice-device",
         default=None,
-        help="имя или номер входного устройства sounddevice",
+        help=(
+            "уникальный устойчивый фрагмент имени физического входа "
+            "из 'python3 -m sounddevice'; числовые ID нестабильны"
+        ),
     )
     parser.add_argument(
         "--start-voice",
@@ -2049,14 +2052,11 @@ def main() -> None:
         voice_host = args.voice_host or urlparse(control_url).hostname
         if not voice_host:
             parser.error("--voice-host is required when control-url has no host")
-        voice_device = args.voice_device
-        if voice_device is not None and voice_device.isdecimal():
-            voice_device = int(voice_device)
         voice_sender = EmergencyVoiceSender(
             sd,
             voice_host,
             port=args.voice_port,
-            device=voice_device,
+            device=args.voice_device,
         )
 
     if args.verbose:
@@ -2176,7 +2176,8 @@ def main() -> None:
             return
         active_voice_enable_request = request_id
         print(
-            f"microphone streaming to {voice_sender.destination[0]}:"
+            f"microphone {voice_sender.capture_device_name!r} streaming to "
+            f"{voice_sender.destination[0]}:"
             f"{voice_sender.destination[1]}"
         )
 

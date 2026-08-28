@@ -12,6 +12,7 @@ import queue
 import socket
 import ssl
 import struct
+import subprocess
 import threading
 from dataclasses import dataclass
 from typing import Any, Optional
@@ -45,6 +46,8 @@ DEFAULT_TUNNEL_CONTROL_URL = "https://192.168.10.2:443"
 VOICE_PORT = 43000
 VOICE_SAMPLE_RATE = 48000
 VOICE_SAMPLES_PER_DATAGRAM = 240
+_PIPEWIRE_DEFAULT_AUDIO_SOURCE = "@DEFAULT_AUDIO_SOURCE@"
+_PIPEWIRE_ROUTED_PORTAUDIO_DEVICES = frozenset(("default", "pipewire", "pulse"))
 
 _FMPX_PREFIX = struct.Struct(">4sBBHIIQBBH")
 _U32_BE = struct.Struct(">I")
@@ -619,6 +622,161 @@ class EmergencyVoiceSender:
         self.drops = 0
         self.input_status_events = 0
         self.lock = threading.Lock()
+        self.capture_device_name: Optional[str] = None
+
+    @staticmethod
+    def _wpctl_string_property(stdout: str, name: str) -> Optional[str]:
+        values = set()
+        for line in stdout.splitlines():
+            candidate = line.strip()
+            if candidate.startswith("*"):
+                candidate = candidate[1:].lstrip()
+            key, separator, raw_value = candidate.partition("=")
+            if not separator or key.strip() != name:
+                continue
+            try:
+                value = json.loads(raw_value.strip())
+            except json.JSONDecodeError as error:
+                raise RuntimeError(
+                    f"wpctl returned malformed {name} for the desktop "
+                    "default audio source"
+                ) from error
+            if not isinstance(value, str):
+                raise RuntimeError(
+                    f"wpctl returned non-string {name} for the desktop "
+                    "default audio source"
+                )
+            values.add(value)
+        if len(values) > 1:
+            raise RuntimeError(
+                f"wpctl returned ambiguous {name} for the desktop default "
+                "audio source"
+            )
+        return next(iter(values), None)
+
+    @classmethod
+    def _validate_pipewire_default_source(cls, stdout: str) -> str:
+        node_name = cls._wpctl_string_property(stdout, "node.name")
+        if node_name is None:
+            raise RuntimeError(
+                "cannot identify the PipeWire desktop default audio source"
+            )
+        if node_name == "auto_null" or node_name.startswith("auto_null."):
+            raise RuntimeError(
+                "the PipeWire desktop default audio source is auto_null, "
+                "not a microphone"
+            )
+        media_class = cls._wpctl_string_property(stdout, "media.class")
+        if media_class != "Audio/Source":
+            raise RuntimeError(
+                "the PipeWire desktop default audio source is not an "
+                "Audio/Source"
+            )
+        virtual = cls._wpctl_string_property(stdout, "node.virtual")
+        if virtual is not None:
+            normalized = virtual.casefold()
+            if normalized == "true":
+                raise RuntimeError(
+                    "the PipeWire desktop default audio source is virtual, "
+                    "not a physical microphone"
+                )
+            if normalized != "false":
+                raise RuntimeError(
+                    "the PipeWire desktop default audio source has an "
+                    "invalid node.virtual property"
+                )
+        return node_name
+
+    @staticmethod
+    def _run_wpctl(*arguments: str) -> str:
+        try:
+            result = subprocess.run(
+                ("wpctl", *arguments),
+                check=False,
+                capture_output=True,
+                text=True,
+                timeout=5.0,
+            )
+        except (OSError, subprocess.TimeoutExpired) as error:
+            raise RuntimeError(
+                "cannot verify the PipeWire desktop microphone with wpctl"
+            ) from error
+        if result.returncode != 0:
+            detail = result.stderr.strip() or f"exit {result.returncode}"
+            raise RuntimeError(
+                "cannot verify the PipeWire desktop microphone: " + detail
+            )
+        return result.stdout
+
+    def _resolve_input_device(self) -> int:
+        if self.sounddevice is None:
+            raise RuntimeError("sounddevice is required for microphone input")
+        if isinstance(self.device, bool) or isinstance(self.device, int):
+            raise RuntimeError(
+                "numeric sounddevice microphone IDs are not stable; pass an "
+                "explicit unique device-name selector from "
+                "'python3 -m sounddevice'"
+            )
+        if self.device is not None and not isinstance(self.device, str):
+            raise RuntimeError("microphone device must be a stable name selector")
+        if isinstance(self.device, str) and (
+            not self.device or self.device.strip() != self.device
+        ):
+            raise RuntimeError("microphone device must be a non-empty name selector")
+        if isinstance(self.device, str) and self.device.isdecimal():
+            raise RuntimeError(
+                "numeric sounddevice microphone IDs are not stable; pass an "
+                "explicit unique device-name selector from "
+                "'python3 -m sounddevice'"
+            )
+
+        selector = self.device
+        routed = selector is None or selector.casefold() in (
+            _PIPEWIRE_ROUTED_PORTAUDIO_DEVICES
+        )
+        if routed:
+            inspected = self._run_wpctl("inspect", _PIPEWIRE_DEFAULT_AUDIO_SOURCE)
+            self._validate_pipewire_default_source(inspected)
+            volume = self._run_wpctl("get-volume", _PIPEWIRE_DEFAULT_AUDIO_SOURCE)
+            if "[MUTED]" in volume:
+                raise RuntimeError("the PipeWire desktop default microphone is muted")
+
+        try:
+            info = self.sounddevice.query_devices(selector, kind="input")
+        except Exception as error:
+            label = "desktop default" if selector is None else repr(selector)
+            raise RuntimeError(f"cannot select microphone {label}: {error}") from error
+        if int(info.get("max_input_channels", 0)) < 1:
+            raise RuntimeError("the selected sounddevice has no input channel")
+        name = str(info.get("name", "")).strip()
+        if not name:
+            raise RuntimeError("the selected sounddevice has no stable name")
+        normalized_name = name.casefold()
+        if (
+            normalized_name == "null"
+            or normalized_name.startswith("auto_null")
+            or "dummy output" in normalized_name
+            or "monitor of" in normalized_name
+        ):
+            raise RuntimeError(
+                f"the selected sounddevice {name!r} is virtual, not a "
+                "physical microphone"
+            )
+        try:
+            index = int(info["index"])
+            self.sounddevice.check_input_settings(
+                device=index,
+                channels=1,
+                dtype="int16",
+                samplerate=VOICE_SAMPLE_RATE,
+            )
+        except Exception as error:
+            raise RuntimeError(
+                f"microphone {name!r} cannot capture mono S16LE at "
+                f"{VOICE_SAMPLE_RATE} sample/s: {error}"
+            ) from error
+        self.capture_device_name = name
+        return index
 
     def _callback(self, indata: np.ndarray, frames: int, _time: Any, status: Any) -> None:
         if status:
@@ -638,8 +796,7 @@ class EmergencyVoiceSender:
     def start(self) -> None:
         if self.active:
             return
-        if self.sounddevice is None:
-            raise RuntimeError("sounddevice is required for microphone input")
+        resolved_device = self._resolve_input_device()
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         sock.setblocking(False)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 1 << 20)
@@ -650,7 +807,7 @@ class EmergencyVoiceSender:
                 channels=1,
                 dtype="int16",
                 blocksize=VOICE_SAMPLES_PER_DATAGRAM,
-                device=self.device,
+                device=resolved_device,
                 callback=self._callback,
             )
             self.sock = sock
