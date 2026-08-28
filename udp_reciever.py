@@ -43,12 +43,14 @@ try:
         FMPX_GROUP,
         FMPX_PORT,
         FMPX_STATIONS,
+        FMPX_VOICE_TYPE,
         EmergencyVoiceSender,
         TunnelCommandWorker,
         TunnelControlClient,
         TunnelPacketError,
         TxTargets,
         decode_selected_fmpx,
+        decode_voice_fmpx,
         open_fmpx_multicast_socket,
     )
 except ImportError:
@@ -59,12 +61,14 @@ except ImportError:
         FMPX_GROUP,
         FMPX_PORT,
         FMPX_STATIONS,
+        FMPX_VOICE_TYPE,
         EmergencyVoiceSender,
         TunnelCommandWorker,
         TunnelControlClient,
         TunnelPacketError,
         TxTargets,
         decode_selected_fmpx,
+        decode_voice_fmpx,
         open_fmpx_multicast_socket,
     )
 
@@ -161,14 +165,15 @@ SPEC_Y_LIM: Tuple[float, float] = (-140.0, 5.0)
 ENABLE_AUDIO = True
 AUDIO_FS = 48000
 AUDIO_BLOCK_SAMPLES_IN = 4096
-AUDIO_STREAM_BLOCKSIZE = 1024
-AUDIO_MAX_BUFFER_MS = 800
+AUDIO_STREAM_BLOCKSIZE = 256
+AUDIO_MAX_BUFFER_MS = 50
 AUDIO_GAIN = 1
 DEEMPHASIS_US = 50.0   # Европа обычно 50 мкс; для США часто 75.0
 PILOT_MIN_RMS = 2e-4
 
 # Вывод: "stereo" — левый/правый после декода L-R; "mono" — сумма (L+R)/2 на оба канала.
 AUDIO_OUTPUT_MODE_DEFAULT = "mono"
+PLAYBACK_SOURCE_DEFAULT = "radio"
 RDS_ENABLED_DEFAULT = False
 
 
@@ -199,6 +204,14 @@ def resolve_control_targets(
         return TxTargets.from_legacy_mask(legacy_tx_mask)
     return TxTargets.all_nodes()
 
+
+def alternate_playback_source(source: str) -> str:
+    if source == "radio":
+        return "voice"
+    if source == "voice":
+        return "radio"
+    raise ValueError("playback source must be radio or voice")
+
 # Mouse control help:
 #   wheel            -> zoom X+Y under cursor
 #   shift + wheel    -> zoom X only
@@ -213,6 +226,7 @@ def resolve_control_targets(
 #   key '~'..'='     -> stations 0..12
 #   key 'q'..'\\'    -> stations 13..25; 'z'..'n' -> stations 26..31
 #   key 'm'          -> mute/unmute audio
+#   key 'space'      -> switch playback between RADIO and VOICE
 #   key 'g'          -> emergency microphone on/off in tunnel mode
 #   CLI: --station N -> начальная станция
 
@@ -261,6 +275,13 @@ class SelectedPacketBatch:
     samples: np.ndarray
     packet_count: int
     selection_generation: int
+    discontinuity: bool = False
+
+
+@dataclass
+class VoicePacketBatch:
+    samples: np.ndarray
+    packet_count: int
     discontinuity: bool = False
 
 
@@ -463,14 +484,17 @@ class AudioPlayer:
         self.lock = threading.Lock()
         self.chunks: Deque[np.ndarray] = deque()
         self.pending_frames = 0
-        self.max_buffer_frames = max(self.blocksize * 4, int(self.fs * max_buffer_ms / 1000.0))
+        self.max_buffer_frames = max(
+            self.blocksize * 2,
+            int(self.fs * max_buffer_ms / 1000.0),
+        )
 
         self.stream = sd.OutputStream(
             samplerate=self.fs,
             channels=2,
             dtype="float32",
             blocksize=self.blocksize,
-            latency="high",
+            latency="low",
             callback=self._callback,
         )
         self.stream.start()
@@ -524,6 +548,33 @@ class AudioPlayer:
             self.stream.close()
         except Exception:
             pass
+
+
+class VoiceDecoder:
+    """Downsample PL voice x4 and apply the matching 50-us deemphasis."""
+
+    def __init__(self, deemphasis_us: float = 50.0):
+        tau = float(deemphasis_us) * 1e-6
+        self.alpha = float(np.exp(-1.0 / (AUDIO_FS * tau)))
+        self.state = 0.0
+
+    def reset(self) -> None:
+        self.state = 0.0
+
+    def process(self, samples_s24: np.ndarray) -> np.ndarray:
+        source = np.asarray(samples_s24, dtype=np.int32)
+        if len(source) % 4:
+            raise ValueError("VOICE sample batch must contain complete x4 phases")
+        decimated = source[::4].astype(np.float64) / float(1 << 23)
+        output = np.empty_like(decimated)
+        state = self.state
+        one_minus_alpha = 1.0 - self.alpha
+        for index, sample in enumerate(decimated):
+            state = one_minus_alpha * sample + self.alpha * state
+            output[index] = state
+        self.state = state
+        mono = np.clip(output.astype(np.float32), -1.0, 1.0)
+        return np.column_stack((mono, mono))
 
 
 class MPXDSPWorker:
@@ -849,6 +900,13 @@ class PacketReceiverWorker:
                 selected_value = int(self.selection[0])
                 selection_generation = int(self.selection[1])
             selected_station = None if selected_value < 0 else selected_value
+            if (
+                self.packet_format == "tunnel"
+                and len(data) >= 6
+                and data[:4] == b"FMPX"
+                and data[5] == FMPX_VOICE_TYPE
+            ):
+                continue
             if selection_generation != batch_generation:
                 sample_chunks = []
                 packet_count = 0
@@ -1029,6 +1087,136 @@ class PacketReceiverWorker:
         self.batches.close()
 
 
+class VoicePacketReceiverWorker:
+    """Receive, validate and batch the independent type-2 VOICE timeline."""
+
+    def __init__(self, sock: socket.socket, queue_size: int = 128):
+        self.sock = sock
+        self.batches: queue.Queue[VoicePacketBatch] = queue.Queue(maxsize=queue_size)
+        self.stop_event = threading.Event()
+        self.lock = threading.Lock()
+        self.packet_count = 0
+        self.bad_packets = 0
+        self.queue_drops = 0
+        self.missing_packets = 0
+        self.discontinuities = 0
+        self.thread = threading.Thread(target=self._run, name="udp-voice-rx", daemon=True)
+
+    def start(self) -> None:
+        self.thread.start()
+
+    def _run(self) -> None:
+        chunks: List[np.ndarray] = []
+        packets = 0
+        batch_discontinuity = False
+        previous_epoch: Optional[int] = None
+        previous_sequence: Optional[int] = None
+        previous_sample_base: Optional[int] = None
+
+        def flush() -> None:
+            nonlocal chunks, packets, batch_discontinuity
+            if not packets:
+                return
+            batch = VoicePacketBatch(
+                samples=np.concatenate(chunks),
+                packet_count=packets,
+                discontinuity=batch_discontinuity,
+            )
+            try:
+                self.batches.put_nowait(batch)
+            except queue.Full:
+                dropped = 0
+                while True:
+                    try:
+                        dropped += self.batches.get_nowait().packet_count
+                    except queue.Empty:
+                        break
+                batch.discontinuity = True
+                try:
+                    self.batches.put_nowait(batch)
+                except queue.Full:
+                    dropped += batch.packet_count
+                with self.lock:
+                    self.queue_drops += dropped
+            chunks = []
+            packets = 0
+            batch_discontinuity = False
+
+        while not self.stop_event.is_set():
+            try:
+                data, _addr = self.sock.recvfrom(RECV_SIZE)
+            except socket.timeout:
+                flush()
+                continue
+            except OSError:
+                break
+            if len(data) < 6 or data[:4] != b"FMPX" or data[5] != FMPX_VOICE_TYPE:
+                continue
+            try:
+                packet = decode_voice_fmpx(data, verify_crc=True)
+            except TunnelPacketError:
+                with self.lock:
+                    self.bad_packets += 1
+                continue
+
+            discontinuity = bool(packet.flags & FMPX_DISCONTINUITY)
+            missing = 0
+            if previous_epoch is not None:
+                if packet.epoch != previous_epoch:
+                    discontinuity = True
+                else:
+                    expected_sequence = (previous_sequence + 1) & 0xFFFFFFFF
+                    expected_sample_base = (previous_sample_base + 480) & 0xFFFFFFFFFFFFFFFF
+                    if packet.sequence != expected_sequence:
+                        delta = (packet.sequence - expected_sequence) & 0xFFFFFFFF
+                        if delta >= 0x80000000:
+                            continue
+                        missing = delta
+                        discontinuity = True
+                    if packet.sample_base != expected_sample_base:
+                        discontinuity = True
+            if discontinuity:
+                flush()
+                batch_discontinuity = True
+                with self.lock:
+                    self.discontinuities += 1
+                    self.missing_packets += missing
+            previous_epoch = packet.epoch
+            previous_sequence = packet.sequence
+            previous_sample_base = packet.sample_base
+            chunks.append(packet.samples)
+            packets += 1
+            with self.lock:
+                self.packet_count += 1
+            if packets >= 4:
+                flush()
+        flush()
+
+    def pop_batches(self, limit: int = 128) -> List[VoicePacketBatch]:
+        batches = []
+        while len(batches) < limit:
+            try:
+                batches.append(self.batches.get_nowait())
+            except queue.Empty:
+                break
+        return batches
+
+    def counters(self) -> Tuple[int, int, int, int, int]:
+        with self.lock:
+            return (
+                self.packet_count,
+                self.bad_packets,
+                self.queue_drops,
+                self.missing_packets,
+                self.discontinuities,
+            )
+
+    def close(self) -> None:
+        self.stop_event.set()
+        self.thread.join(timeout=2.0)
+        self.sock.close()
+
+
 class PlotInteractor:
     def __init__(self, fig, ax_time, ax_spec, time_xlim, time_ylim, spec_xlim, spec_ylim):
         self.fig = fig
@@ -1179,6 +1367,7 @@ def print_help() -> None:
     print(r"  q w e r t y u i o p [ ] \ -> stations 13..25")
     print("  z x c v b n       -> stations 26..31")
     print("  m                -> mute/unmute audio")
+    print("  space            -> switch plots and playback: RADIO / VOICE")
     print("  s                -> toggle audio: stereo (L/R) / mono (sum on both)")
     print("  g                -> toggle emergency microphone (tunnel mode)")
     print("  l / k            -> latch / clear emergency command")
@@ -1508,6 +1697,14 @@ def compute_spectrum_dbfs(samples_i16: np.ndarray, avg: SpectrumAverager) -> np.
     return 10.0 * np.log10(np.maximum(power_avg, 1e-16))
 
 
+def voice_s24_to_i16(samples: np.ndarray) -> np.ndarray:
+    """Convert signed S24 VOICE to plot-scale S16 with ties-to-even rounding."""
+
+    values = np.asarray(samples, dtype=np.int32)
+    rounded = np.rint(values.astype(np.float64) / 256.0)
+    return np.clip(rounded, -32768, 32767).astype(np.int16)
+
+
 def update_plot(
     fig,
     line_t,
@@ -1524,6 +1721,7 @@ def update_plot(
     interactor: PlotInteractor,
     audio_enabled: bool,
     audio_output_mode: str,
+    playback_source: str,
     rds_text: str,
 ) -> None:
     time_data = ring.get(time_samples).astype(np.float32)
@@ -1534,6 +1732,9 @@ def update_plot(
         time_data = tmp
 
     line_t.set_ydata(time_data)
+    source_label = playback_source.upper()
+    line_t.axes.set_title(f"{source_label} signal")
+    line_f.axes.set_title(f"{source_label} spectrum")
     if interactor.time_auto_y:
         peak = max(1.0, float(np.max(np.abs(time_data))))
         pad = peak * 0.12
@@ -1556,7 +1757,8 @@ def update_plot(
     fig.suptitle(
         "UDP MPX realtime | "
         f"station={st_text} | avail=[{avail_text}] | "
-        f"audio={'on' if audio_enabled else 'mute'} ({audio_output_mode}) | "
+        f"audio={'on' if audio_enabled else 'mute'} "
+        f"source={source_label} ({audio_output_mode}) | "
         f"RDS={rds_text} | "
         f"packets={packets_received} | bad={bad_packets} | Fs_est={sample_rate_est:.1f} Sa/s",
         fontsize=12,
@@ -1579,6 +1781,12 @@ def main() -> None:
         choices=("stereo", "mono"),
         default=AUDIO_OUTPUT_MODE_DEFAULT,
         help="stereo: L/R из MPX; mono: сумма (L+R)/2 на оба канала",
+    )
+    parser.add_argument(
+        "--playback-source",
+        choices=("radio", "voice"),
+        default=PLAYBACK_SOURCE_DEFAULT,
+        help="источник графиков и аудио; Space переключает RADIO/VOICE",
     )
     parser.add_argument(
         "--rds",
@@ -1728,6 +1936,8 @@ def main() -> None:
         parser.error(f"--station must be in 0..{MAX_STATION_ID}")
     if args.tunnel_crc_every < 0:
         parser.error("--tunnel-crc-every must be nonnegative")
+    if args.playback_source == "voice" and not args.tunnel:
+        parser.error("--playback-source voice requires --tunnel")
     if args.tunnel and not args.multicast_if:
         parser.error("--multicast-if is required in tunnel mode")
     try:
@@ -1767,12 +1977,20 @@ def main() -> None:
             SO_RCVBUF,
             SOCKET_TIMEOUT,
         )
+        voice_sock = open_fmpx_multicast_socket(
+            args.multicast_group,
+            args.tunnel_port,
+            args.multicast_if,
+            SO_RCVBUF,
+            SOCKET_TIMEOUT,
+        )
         packet_format = "tunnel"
     else:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, SO_RCVBUF)
         sock.bind((UDP_IP, UDP_PORT))
         sock.settimeout(SOCKET_TIMEOUT)
+        voice_sock = None
         packet_format = "legacy"
     packet_receiver = PacketReceiverWorker(
         sock,
@@ -1781,17 +1999,25 @@ def main() -> None:
         tunnel_crc_every=args.tunnel_crc_every,
     )
     packet_receiver.start()
+    voice_receiver = (
+        VoicePacketReceiverWorker(voice_sock) if voice_sock is not None else None
+    )
+    if voice_receiver is not None:
+        voice_receiver.start()
     rds_worker = RDSWorker(args.rds)
     rds_worker.start()
 
     fig, line_t, line_f, time_samples, spec_samples, interactor = build_plot()
-    ring = RingInt16(capacity=max(time_samples, spec_samples) * 4)
+    radio_ring = RingInt16(capacity=max(time_samples, spec_samples) * 4)
+    voice_ring = RingInt16(capacity=max(time_samples, spec_samples) * 4)
     spec_avg = SpectrumAverager(SPECTRUM_SMOOTH_ALPHA, spec_samples // 2 + 1)
 
     audio_player = None
     stereo_decoder = None
     audio_in_queue = SampleBlockQueueInt16()
     audio_output_mode: str = args.audio_mode
+    playback_source: str = args.playback_source
+    voice_decoder = VoiceDecoder(DEEMPHASIS_US)
     if ENABLE_AUDIO:
         audio_player = AudioPlayer(
             fs=AUDIO_FS,
@@ -1847,6 +2073,7 @@ def main() -> None:
             print(f"Listening on {UDP_IP}:{UDP_PORT}")
         print(f"initial station = {station_label(initial_station)}")
         print(f"AUDIO = {'on' if ENABLE_AUDIO else 'off'} ({audio_output_mode})")
+        print(f"PLAYBACK SOURCE = {playback_source.upper()}")
         print(f"RDS = {'on' if rds_worker.enabled else 'off'}")
         print(f"CONTROL = {control_url or 'off'}")
         print_help()
@@ -1864,11 +2091,24 @@ def main() -> None:
     next_plot_t = last_stats_t
 
     def reset_selected_station_pipeline() -> None:
-        ring.clear()
+        radio_ring.clear()
+        if playback_source == "radio":
+            spec_avg.reset()
+        audio_in_queue.clear()
+        if playback_source == "radio":
+            dsp_worker.reset()
+        rds_worker.reset()
+
+    def switch_playback_source() -> None:
+        nonlocal playback_source
+        playback_source = alternate_playback_source(playback_source)
         spec_avg.reset()
         audio_in_queue.clear()
         dsp_worker.reset()
-        rds_worker.reset()
+        voice_decoder.reset()
+        if audio_player is not None:
+            audio_player.clear()
+        print(f"playback source -> {playback_source.upper()}")
 
     def switch_station(new_station: Optional[int]) -> None:
         nonlocal selected_station, samples_accum, t_start
@@ -1966,6 +2206,9 @@ def main() -> None:
             if args.verbose:
                 print(f"audio {'on' if state else 'mute'}")
             return
+        elif key in (" ", "space"):
+            switch_playback_source()
+            return
         elif key == "s" and ENABLE_AUDIO:
             nonlocal audio_output_mode
             audio_output_mode = "mono" if audio_output_mode == "stereo" else "stereo"
@@ -2012,9 +2255,29 @@ def main() -> None:
     if args.start_voice:
         start_emergency_voice()
 
+    # The multicast workers start before Matplotlib and the audio device are
+    # ready. Never turn packets accumulated during that initialization into a
+    # permanent playout delay: VOICE is deadline-bound media, so begin with
+    # the newest live batch instead of replaying the startup backlog.
+    if voice_receiver is not None:
+        stale_voice_batches = voice_receiver.pop_batches()
+        if stale_voice_batches:
+            voice_decoder.reset()
+            if args.verbose:
+                stale_voice_packets = sum(
+                    batch.packet_count for batch in stale_voice_batches
+                )
+                print(
+                    "discarded stale VOICE startup backlog: "
+                    f"{stale_voice_packets} packet(s)"
+                )
+
     while plt.fignum_exists(fig.number):
         try:
             packet_batches = packet_receiver.pop_batches()
+            voice_batches = (
+                voice_receiver.pop_batches() if voice_receiver is not None else []
+            )
         except KeyboardInterrupt:
             break
 
@@ -2048,6 +2311,17 @@ def main() -> None:
             sequence_discontinuities,
             sample_base_discontinuities,
         ) = packet_receiver.counters()
+        if voice_receiver is not None:
+            (
+                voice_packets,
+                voice_bad_packets,
+                voice_queue_drops,
+                voice_missing_packets,
+                voice_discontinuities,
+            ) = voice_receiver.counters()
+        else:
+            voice_packets = voice_bad_packets = voice_queue_drops = 0
+            voice_missing_packets = voice_discontinuities = 0
         if queue_drops != observed_queue_drops:
             observed_queue_drops = queue_drops
             reset_selected_station_pipeline()
@@ -2074,25 +2348,39 @@ def main() -> None:
 
                 if packets_received == 0 and samples_accum == 0:
                     t_start = now - len(batch.samples) / FS
-                ring.append(batch.samples)
+                radio_ring.append(batch.samples)
                 samples_accum += len(batch.samples)
 
-                audio_enabled = (
+                radio_audio_enabled = (
                     ENABLE_AUDIO
                     and audio_player is not None
                     and stereo_decoder is not None
+                    and playback_source == "radio"
                 )
-                if audio_enabled or rds_worker.enabled:
+                if radio_audio_enabled or rds_worker.enabled:
                     audio_in_queue.append(batch.samples)
                     while True:
                         block = audio_in_queue.pop_block(AUDIO_BLOCK_SAMPLES_IN)
                         if block is None:
                             break
-                        if audio_enabled:
+                        if radio_audio_enabled:
                             dsp_worker.submit(block)
                         rds_worker.submit(block)
 
             packets_received += batch.packet_count
+
+        for batch in voice_batches:
+            if batch.discontinuity:
+                voice_decoder.reset()
+                if playback_source == "voice" and audio_player is not None:
+                    audio_player.clear()
+            voice_ring.append(voice_s24_to_i16(batch.samples))
+            if (
+                playback_source == "voice"
+                and audio_player is not None
+                and audio_player.enabled
+            ):
+                audio_player.push(voice_decoder.process(batch.samples))
 
         # Packet batches may have been queued before this GUI iteration.  Take
         # the timestamp after consuming them so legacy rate accounting does not
@@ -2107,18 +2395,19 @@ def main() -> None:
                 fig,
                 line_t,
                 line_f,
-                ring,
+                voice_ring if playback_source == "voice" else radio_ring,
                 time_samples,
                 spec_samples,
                 selected_station,
                 available_stations,
                 packets_received,
-                bad_packets + queue_drops,
+                bad_packets + queue_drops + voice_bad_packets + voice_queue_drops,
                 fs_est,
                 spec_avg,
                 interactor,
                 audio_enabled=(audio_player.enabled if audio_player is not None else False),
                 audio_output_mode=audio_output_mode,
+                playback_source=playback_source,
                 rds_text=rds_text,
             )
             next_plot_t = now + 1.0 / PLOT_UPDATE_HZ
@@ -2135,11 +2424,19 @@ def main() -> None:
                 f"base_gaps={sample_base_discontinuities} "
                 f"station={station_label(selected_station, len(available_stations))} "
                 f"avail={available_stations} "
-                f"ring={ring.length} Fs_est={fs_est:.1f} RDS={rds_text}"
+                f"playback={playback_source.upper()} "
+                f"voice_packets={voice_packets} voice_bad={voice_bad_packets} "
+                f"voice_queue_drop={voice_queue_drops} "
+                f"voice_missing={voice_missing_packets} "
+                f"voice_gaps={voice_discontinuities} "
+                f"ring={(voice_ring if playback_source == 'voice' else radio_ring).length} "
+                f"Fs_est={fs_est:.1f} RDS={rds_text}"
             )
             last_stats_t = now
 
     packet_receiver.close()
+    if voice_receiver is not None:
+        voice_receiver.close()
     dsp_worker.close()
     rds_worker.close()
     if audio_player is not None:

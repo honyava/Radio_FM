@@ -37,6 +37,9 @@ FMPX_PAYLOAD_BYTES = FMPX_STATIONS * FMPX_SLICES * 3
 FMPX_KNOWN_FLAGS = 0x0001
 FMPX_DISCONTINUITY = 0x0001
 FMPX_MPX_TYPE = 1
+FMPX_VOICE_TYPE = 2
+FMPX_VOICE_STREAMS = 1
+FMPX_VOICE_SAMPLES = 480
 FMPX_S24_BE = 1
 DEFAULT_TUNNEL_CONTROL_URL = "https://192.168.10.2:443"
 VOICE_PORT = 43000
@@ -132,6 +135,15 @@ class SelectedFmpxPacket:
     samples: np.ndarray
 
 
+@dataclass(frozen=True, slots=True)
+class VoiceFmpxPacket:
+    flags: int
+    epoch: int
+    sequence: int
+    sample_base: int
+    samples: np.ndarray
+
+
 def decode_selected_fmpx(
     packet: bytes | bytearray | memoryview,
     station_id: int,
@@ -194,6 +206,60 @@ def decode_selected_fmpx(
         station_id=station_id,
         samples=rne_s24_to_mpx16(s24),
     )
+
+
+def decode_voice_fmpx(
+    packet: bytes | bytearray | memoryview,
+    *,
+    verify_crc: bool = True,
+) -> VoiceFmpxPacket:
+    """Validate and decode one type-2 VOICE packet as signed S24 samples."""
+
+    raw = memoryview(packet)
+    if len(raw) != FMPX_PACKET_BYTES:
+        raise TunnelPacketError("FMPX datagram must be exactly 1472 bytes")
+
+    (
+        magic,
+        version,
+        packet_type,
+        flags,
+        epoch,
+        sequence,
+        sample_base,
+        stream_count,
+        sample_format,
+        samples_per_stream,
+    ) = _FMPX_PREFIX.unpack_from(raw)
+    if magic != b"FMPX" or version != 1 or packet_type != FMPX_VOICE_TYPE:
+        raise TunnelPacketError("unsupported FMPX magic/version/type")
+    if flags & ~FMPX_KNOWN_FLAGS:
+        raise TunnelPacketError("unknown FMPX flags")
+    if (
+        stream_count != FMPX_VOICE_STREAMS
+        or sample_format != FMPX_S24_BE
+        or samples_per_stream != FMPX_VOICE_SAMPLES
+    ):
+        raise TunnelPacketError("invalid FMPX voice geometry")
+    if verify_crc:
+        received_crc = _U32_BE.unpack_from(raw, 28)[0]
+        expected_crc = crc32c_parts(raw[:28], raw[FMPX_HEADER_BYTES:])
+        if received_crc != expected_crc:
+            raise TunnelPacketError("FMPX CRC32C mismatch")
+
+    payload = np.frombuffer(
+        raw,
+        dtype=np.uint8,
+        count=FMPX_PAYLOAD_BYTES,
+        offset=FMPX_HEADER_BYTES,
+    ).reshape(FMPX_VOICE_SAMPLES, 3)
+    s24 = (
+        (payload[:, 0].astype(np.int32) << 16)
+        | (payload[:, 1].astype(np.int32) << 8)
+        | payload[:, 2].astype(np.int32)
+    )
+    s24 = np.where(s24 & 0x800000, s24 - 0x1000000, s24).astype(np.int32)
+    return VoiceFmpxPacket(flags, epoch, sequence, sample_base, s24)
 
 
 def open_fmpx_multicast_socket(
